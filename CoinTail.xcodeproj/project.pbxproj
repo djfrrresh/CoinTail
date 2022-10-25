@@ -1,0 +1,449 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2ECFB99519B281D33C35ACC6 /* Pods_CoinTail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11468AE1DB9C71E493D3EF5B /* Pods_CoinTail.framework */; };
+		5618DF7A2906AADA00F951D2 /* OperationsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF792906AADA00F951D2 /* OperationsTableView.swift */; };
+		5618DF7C2906AE2400F951D2 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF7B2906AE2400F951D2 /* CustomCell.swift */; };
+		5618DF7E2906AEC700F951D2 /* AddNewOperationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF7D2906AEC700F951D2 /* AddNewOperationVC.swift */; };
+		5618DF802906B7C200F951D2 /* AddNewOperationSetFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF7F2906B7C200F951D2 /* AddNewOperationSetFuncs.swift */; };
+		562795EF28EC34BA004BF7B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562795EE28EC34BA004BF7B7 /* AppDelegate.swift */; };
+		562795F828EC34BA004BF7B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 562795F728EC34BA004BF7B7 /* Assets.xcassets */; };
+		562795FB28EC34BA004BF7B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 562795F928EC34BA004BF7B7 /* LaunchScreen.storyboard */; };
+		5627960228EC3A16004BF7B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562795F228EC34BA004BF7B7 /* ViewController.swift */; };
+		5627960428EC3C54004BF7B7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5627960328EC3C54004BF7B7 /* TabBarViewController.swift */; };
+		5627960628EC3CDB004BF7B7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5627960528EC3CDB004BF7B7 /* SettingsViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		11468AE1DB9C71E493D3EF5B /* Pods_CoinTail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoinTail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EB961520D7A4400C147BA63 /* Pods-CoinTail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinTail.debug.xcconfig"; path = "Target Support Files/Pods-CoinTail/Pods-CoinTail.debug.xcconfig"; sourceTree = "<group>"; };
+		47531E248FAF4C3243B0933C /* Pods-CoinTail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinTail.release.xcconfig"; path = "Target Support Files/Pods-CoinTail/Pods-CoinTail.release.xcconfig"; sourceTree = "<group>"; };
+		5618DF792906AADA00F951D2 /* OperationsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsTableView.swift; sourceTree = "<group>"; };
+		5618DF7B2906AE2400F951D2 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		5618DF7D2906AEC700F951D2 /* AddNewOperationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewOperationVC.swift; sourceTree = "<group>"; };
+		5618DF7F2906B7C200F951D2 /* AddNewOperationSetFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewOperationSetFuncs.swift; sourceTree = "<group>"; };
+		562795EB28EC34BA004BF7B7 /* CoinTail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinTail.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		562795EE28EC34BA004BF7B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		562795F228EC34BA004BF7B7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		562795F728EC34BA004BF7B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		562795FA28EC34BA004BF7B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		562795FC28EC34BA004BF7B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5627960328EC3C54004BF7B7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		5627960528EC3CDB004BF7B7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		562795E828EC34BA004BF7B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2ECFB99519B281D33C35ACC6 /* Pods_CoinTail.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5618DF812906B80C00F951D2 /* AddNewOperations */ = {
+			isa = PBXGroup;
+			children = (
+				5618DF7F2906B7C200F951D2 /* AddNewOperationSetFuncs.swift */,
+				5618DF7D2906AEC700F951D2 /* AddNewOperationVC.swift */,
+			);
+			path = AddNewOperations;
+			sourceTree = "<group>";
+		};
+		562795E228EC34BA004BF7B7 = {
+			isa = PBXGroup;
+			children = (
+				562795ED28EC34BA004BF7B7 /* CoinTail */,
+				562795EC28EC34BA004BF7B7 /* Products */,
+				EBC6BDEE89B8492F9555229E /* Pods */,
+				BB35F5536C49DCEBCEAE42F9 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		562795EC28EC34BA004BF7B7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				562795EB28EC34BA004BF7B7 /* CoinTail.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		562795ED28EC34BA004BF7B7 /* CoinTail */ = {
+			isa = PBXGroup;
+			children = (
+				5618DF812906B80C00F951D2 /* AddNewOperations */,
+				562795EE28EC34BA004BF7B7 /* AppDelegate.swift */,
+				562795F228EC34BA004BF7B7 /* ViewController.swift */,
+				562795F728EC34BA004BF7B7 /* Assets.xcassets */,
+				562795F928EC34BA004BF7B7 /* LaunchScreen.storyboard */,
+				562795FC28EC34BA004BF7B7 /* Info.plist */,
+				5627960328EC3C54004BF7B7 /* TabBarViewController.swift */,
+				5627960528EC3CDB004BF7B7 /* SettingsViewController.swift */,
+				5618DF792906AADA00F951D2 /* OperationsTableView.swift */,
+				5618DF7B2906AE2400F951D2 /* CustomCell.swift */,
+			);
+			path = CoinTail;
+			sourceTree = "<group>";
+		};
+		BB35F5536C49DCEBCEAE42F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				11468AE1DB9C71E493D3EF5B /* Pods_CoinTail.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EBC6BDEE89B8492F9555229E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1EB961520D7A4400C147BA63 /* Pods-CoinTail.debug.xcconfig */,
+				47531E248FAF4C3243B0933C /* Pods-CoinTail.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		562795EA28EC34BA004BF7B7 /* CoinTail */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 562795FF28EC34BA004BF7B7 /* Build configuration list for PBXNativeTarget "CoinTail" */;
+			buildPhases = (
+				CC8431CAEE64D20CADE8207C /* [CP] Check Pods Manifest.lock */,
+				562795E728EC34BA004BF7B7 /* Sources */,
+				562795E828EC34BA004BF7B7 /* Frameworks */,
+				562795E928EC34BA004BF7B7 /* Resources */,
+				7F661C1A4EA5948D923BED8C /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CoinTail;
+			productName = CoinTail;
+			productReference = 562795EB28EC34BA004BF7B7 /* CoinTail.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		562795E328EC34BA004BF7B7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					562795EA28EC34BA004BF7B7 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 562795E628EC34BA004BF7B7 /* Build configuration list for PBXProject "CoinTail" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 562795E228EC34BA004BF7B7;
+			productRefGroup = 562795EC28EC34BA004BF7B7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				562795EA28EC34BA004BF7B7 /* CoinTail */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		562795E928EC34BA004BF7B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				562795FB28EC34BA004BF7B7 /* LaunchScreen.storyboard in Resources */,
+				562795F828EC34BA004BF7B7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7F661C1A4EA5948D923BED8C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoinTail/Pods-CoinTail-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoinTail/Pods-CoinTail-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CoinTail/Pods-CoinTail-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC8431CAEE64D20CADE8207C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CoinTail-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		562795E728EC34BA004BF7B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5627960228EC3A16004BF7B7 /* ViewController.swift in Sources */,
+				5627960428EC3C54004BF7B7 /* TabBarViewController.swift in Sources */,
+				562795EF28EC34BA004BF7B7 /* AppDelegate.swift in Sources */,
+				5618DF7E2906AEC700F951D2 /* AddNewOperationVC.swift in Sources */,
+				5627960628EC3CDB004BF7B7 /* SettingsViewController.swift in Sources */,
+				5618DF7C2906AE2400F951D2 /* CustomCell.swift in Sources */,
+				5618DF7A2906AADA00F951D2 /* OperationsTableView.swift in Sources */,
+				5618DF802906B7C200F951D2 /* AddNewOperationSetFuncs.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		562795F928EC34BA004BF7B7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				562795FA28EC34BA004BF7B7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		562795FD28EC34BA004BF7B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		562795FE28EC34BA004BF7B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5627960028EC34BA004BF7B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EB961520D7A4400C147BA63 /* Pods-CoinTail.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3QGCVB4WRB;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CoinTail/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = eugene.CoinTail;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5627960128EC34BA004BF7B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47531E248FAF4C3243B0933C /* Pods-CoinTail.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3QGCVB4WRB;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CoinTail/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = eugene.CoinTail;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		562795E628EC34BA004BF7B7 /* Build configuration list for PBXProject "CoinTail" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				562795FD28EC34BA004BF7B7 /* Debug */,
+				562795FE28EC34BA004BF7B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		562795FF28EC34BA004BF7B7 /* Build configuration list for PBXNativeTarget "CoinTail" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5627960028EC34BA004BF7B7 /* Debug */,
+				5627960128EC34BA004BF7B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 562795E328EC34BA004BF7B7 /* Project object */;
+}
