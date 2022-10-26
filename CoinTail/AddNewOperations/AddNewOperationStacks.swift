@@ -38,6 +38,8 @@ extension AddNewOperationVC {
         // SAVE
         setButton(button: saveButton, text: "Save operation", background: .black, textColor: .white)
 
+        // SWITCH
+        setSwitchButton(switcher: switchButton)
         
         let categoryAmountStack = UIStackView()
         categoryAmountStack.axis = .vertical
@@ -47,9 +49,7 @@ extension AddNewOperationVC {
                 
         let preFinalStack = UIStackView()
         preFinalStack.axis = .vertical
-        preFinalStack.distribution = .equalCentering
         preFinalStack.spacing = 32
-        preFinalStack.alignment = .fill
         preFinalStack.addArrangedSubview(switchButton)
         preFinalStack.addArrangedSubview(categoryAmountStack)
         preFinalStack.addArrangedSubview(descriptionStack)
@@ -57,7 +57,9 @@ extension AddNewOperationVC {
         
         let finalStack = UIStackView()
         finalStack.axis = .vertical
-        finalStack.spacing = 50
+        finalStack.alignment = .fill // Выравнивание 
+        finalStack.distribution = .equalCentering // Заполнение
+        finalStack.spacing = 102
         finalStack.addArrangedSubview(preFinalStack)
         finalStack.addArrangedSubview(saveButton)
         view.addSubview(finalStack)

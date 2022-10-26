@@ -18,7 +18,7 @@ extension AddNewOperationVC {
         button.layer.borderColor = UIColor.black.cgColor
         button.setTitleColor(textColor, for: .normal)
         button.layer.borderWidth = 1
-        button.easy.layout([Height(54)])
+        button.easy.layout([Height(56)])
     }
     
     func setTextField(textField: UITextField, text: String, background: UIColor) {
@@ -30,7 +30,12 @@ extension AddNewOperationVC {
         textField.layer.borderWidth = 1
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: textField.frame.height))
         textField.leftViewMode = .always
-        textField.easy.layout([Height(54)])
+        textField.easy.layout([Height(56)])
+    }
+    
+    func setSwitchButton(switcher: UISegmentedControl) {
+        switcher.layer.cornerRadius = 8
+        switcher.easy.layout([Height(32)])
     }
     
     func setLabel(label: UILabel, text: String) {
