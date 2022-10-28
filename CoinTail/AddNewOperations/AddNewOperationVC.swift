@@ -9,11 +9,16 @@ import UIKit
 import EasyPeasy
 
 
-class AddNewOperationVC: UIViewController {
+class AddNewOperationVC: UIViewController, СategorySendText {
+    
+    func sendCategory(category: String) {
+        categoryButton.setTitle("\(category)", for: .normal)
+    }
     
     // SWITCH
     let switchButton: UISegmentedControl = {
         let switcher = UISegmentedControl(items: ["Income", "Expense"])
+        switcher.selectedSegmentIndex = 1
         return switcher
     }()
     
@@ -63,16 +68,7 @@ class AddNewOperationVC: UIViewController {
         picker.preferredDatePickerStyle = .wheels
         return picker
     }()
-    
-    @objc func doneButtonPressed() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
         
-        self.dateTextField.text = dateFormatter.string(from: datePicker.date)
-        self.view.endEditing(true)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,6 +76,16 @@ class AddNewOperationVC: UIViewController {
         self.title = "Add a new operation"
 
         self.navigationController?.navigationBar.tintColor = .black
+        
+        self.saveButton.addTarget(self,
+                         action: #selector(saveButtonAction),
+                         for: .touchUpInside)
+        self.categoryButton.addTarget(self,
+                         action: #selector(categoryButtonAction),
+                         for: .touchUpInside)
+        self.switchButton.addTarget(self,
+                         action: #selector(switchButtonAction),
+                         for: .valueChanged)
         
         setStack()
     }

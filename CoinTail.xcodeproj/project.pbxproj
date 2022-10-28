@@ -20,6 +20,9 @@
 		5627960228EC3A16004BF7B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562795F228EC34BA004BF7B7 /* ViewController.swift */; };
 		5627960428EC3C54004BF7B7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5627960328EC3C54004BF7B7 /* TabBarViewController.swift */; };
 		5627960628EC3CDB004BF7B7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5627960528EC3CDB004BF7B7 /* SettingsViewController.swift */; };
+		56CB0EC9290A94080056EE4C /* AddNewOperationPopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0EC8290A94080056EE4C /* AddNewOperationPopVC.swift */; };
+		56CB0ECB290A941E0056EE4C /* AddNewOperationActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0ECA290A941E0056EE4C /* AddNewOperationActions.swift */; };
+		56CB0ECD290AB0980056EE4C /* AddNewOperationTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0ECC290AB0980056EE4C /* AddNewOperationTV.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		562795FC28EC34BA004BF7B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5627960328EC3C54004BF7B7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		5627960528EC3CDB004BF7B7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		56CB0EC8290A94080056EE4C /* AddNewOperationPopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewOperationPopVC.swift; sourceTree = "<group>"; };
+		56CB0ECA290A941E0056EE4C /* AddNewOperationActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewOperationActions.swift; sourceTree = "<group>"; };
+		56CB0ECC290AB0980056EE4C /* AddNewOperationTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewOperationTV.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,9 @@
 				5618DF7D2906AEC700F951D2 /* AddNewOperationVC.swift */,
 				5618DF84290800BD00F951D2 /* AddNewOperationStacks.swift */,
 				5618DF862908014E00F951D2 /* AddNewOperationStacksFunc.swift */,
+				56CB0EC8290A94080056EE4C /* AddNewOperationPopVC.swift */,
+				56CB0ECA290A941E0056EE4C /* AddNewOperationActions.swift */,
+				56CB0ECC290AB0980056EE4C /* AddNewOperationTV.swift */,
 			);
 			path = AddNewOperations;
 			sourceTree = "<group>";
@@ -234,6 +243,9 @@
 				5627960228EC3A16004BF7B7 /* ViewController.swift in Sources */,
 				5627960428EC3C54004BF7B7 /* TabBarViewController.swift in Sources */,
 				5618DF85290800BD00F951D2 /* AddNewOperationStacks.swift in Sources */,
+				56CB0EC9290A94080056EE4C /* AddNewOperationPopVC.swift in Sources */,
+				56CB0ECB290A941E0056EE4C /* AddNewOperationActions.swift in Sources */,
+				56CB0ECD290AB0980056EE4C /* AddNewOperationTV.swift in Sources */,
 				562795EF28EC34BA004BF7B7 /* AppDelegate.swift in Sources */,
 				5618DF7E2906AEC700F951D2 /* AddNewOperationVC.swift in Sources */,
 				5627960628EC3CDB004BF7B7 /* SettingsViewController.swift in Sources */,
