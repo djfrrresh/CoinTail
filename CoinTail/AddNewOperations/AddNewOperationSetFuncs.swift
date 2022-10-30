@@ -21,7 +21,8 @@ extension AddNewOperationVC {
         button.easy.layout([Height(56)])
     }
     
-    func setTextField(textField: UITextField, text: String, background: UIColor) {
+    func setTextField(textField: UITextField, text: String, background: UIColor, keyboard: UIKeyboardType) {
+        textField.keyboardType = keyboard
         textField.layer.cornerRadius = 8
         textField.autocorrectionType = .no
         textField.backgroundColor = background
@@ -60,7 +61,7 @@ extension AddNewOperationVC {
         textField.inputAccessoryView = createToolbar()
     }
     
-    func createToolbar() -> UIToolbar {
+    func createToolbar() -> UIToolbar { // Всплывающий снизу DatePicker 
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         

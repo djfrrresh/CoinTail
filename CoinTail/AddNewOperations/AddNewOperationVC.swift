@@ -8,11 +8,11 @@
 import UIKit
 import EasyPeasy
 
-
+// Указываем название протокола из AddNewOperationPopVC
 class AddNewOperationVC: UIViewController, СategorySendText {
-    
+    // Вызываем функцию из протокола и делаем всякое
     func sendCategory(category: String) {
-        categoryButton.setTitle("\(category)", for: .normal)
+        categoryButton.setTitle(category, for: .normal) // Меняет текст выбранной категории в кнопке
     }
     
     // SWITCH
@@ -71,7 +71,7 @@ class AddNewOperationVC: UIViewController, СategorySendText {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         self.view.backgroundColor = .white.withAlphaComponent(1)
         self.title = "Add a new operation"
 
@@ -87,7 +87,7 @@ class AddNewOperationVC: UIViewController, СategorySendText {
                          action: #selector(switchButtonAction),
                          for: .valueChanged)
         
-        setStack()
+        setStack() // Стаки для объектов на экране
     }
     
 }

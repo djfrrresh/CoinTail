@@ -9,7 +9,7 @@ import UIKit
 import EasyPeasy
 
 
-extension AddNewOperationPopVC {
+extension AddNewOperationPopVC: UITableViewDelegate, UITableViewDataSource {
     
     // Задается количество ячеек
     func tableView(_ tableView: UITableView,
@@ -30,15 +30,15 @@ extension AddNewOperationPopVC {
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
-        
-        categoryDelegate?.sendCategory(category: self.categories[indexPath.row])
+                
+        categoryDelegate?.sendCategory(category: self.categories[indexPath.row]) // Передаем выбранную категорию
                         
-        self.dismiss(animated: true, completion: nil)
-        print("\(self.categories[indexPath.row])")
+        self.dismiss(animated: true, completion: nil) // Закрываем PopVC
     }
     
 }
 
+// Протокол с функциями, по которому передаем данные из 1 контроллера в другой
 protocol СategorySendText: AnyObject {
     func sendCategory(category: String)
 }

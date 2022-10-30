@@ -19,12 +19,12 @@ extension AddNewOperationVC {
         
         // AMOUNT
         setLabel(label: amountLabel, text: "Amount")
-        setTextField(textField: amountTextField, text: "Enter your value", background: .lightGray.withAlphaComponent(0.2))
+        setTextField(textField: amountTextField, text: "Enter your value", background: .lightGray.withAlphaComponent(0.2), keyboard: .numberPad)
         setUniqueStack(stack: amountStack, view_1: amountLabel, view_2: amountTextField)
         
         // DESCRIPTION
         setLabel(label: descriptionLabel, text: "Description")
-        setTextField(textField: descriptionTextField, text: "For example: Bought in the store", background: .clear)
+        setTextField(textField: descriptionTextField, text: "For example: Bought in the store", background: .clear, keyboard: .default)
         setUniqueStack(stack: descriptionStack, view_1: descriptionLabel, view_2: descriptionTextField)
         
         // DATE

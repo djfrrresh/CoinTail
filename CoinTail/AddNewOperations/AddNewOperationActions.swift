@@ -33,13 +33,14 @@ extension AddNewOperationVC {
             case "Expense":
                 categories = ["Taxi", "Glocery", "Clothing", "Gym", "Service", "Subscription", "Health"]
             case "Income":
-                categories = ["Salary"]
+                categories = ["Salary", "Debt repayment", "Side job"]
             default:
                 fatalError("undefined segment")
         }
-        
+                        
         let vc = AddNewOperationPopVC(categories)
-        present(vc, animated: true, completion: nil)
+        vc.categoryDelegate = self // Связь с контроллером, откуда передаются данные
+        present(vc, animated: true, completion: nil) // Всплытие PopVC
     }
     
     @objc func switchButtonAction(target: UISegmentedControl) {
