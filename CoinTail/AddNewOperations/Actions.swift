@@ -10,17 +10,27 @@ import UIKit
 
 extension AddNewOperationVC {
     
+    @objc func createToolbarAction() -> UIToolbar { // Всплывающий снизу DatePicker
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneButtonPressed))
+        toolbar.setItems([doneButton], animated: true)
+
+        return toolbar
+    }
+    
     @objc func doneButtonPressed() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         
-        self.dateTextField.text = dateFormatter.string(from: datePicker.date)
+        self.dateButton.setTitle(dateFormatter.string(from: datePicker.date), for: .normal)
         self.view.endEditing(true)
     }
     
     @objc func saveButtonAction() {
-        
+        self.navigationController?.popViewController(animated: true) // Закрыть AddNewOperationVC
     }
     
     @objc func categoryButtonAction() {

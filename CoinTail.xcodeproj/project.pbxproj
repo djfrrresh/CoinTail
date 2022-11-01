@@ -11,18 +11,19 @@
 		5618DF7A2906AADA00F951D2 /* OperationsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF792906AADA00F951D2 /* OperationsTableView.swift */; };
 		5618DF7C2906AE2400F951D2 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF7B2906AE2400F951D2 /* CustomCell.swift */; };
 		5618DF7E2906AEC700F951D2 /* AddNewOperationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF7D2906AEC700F951D2 /* AddNewOperationVC.swift */; };
-		5618DF802906B7C200F951D2 /* AddNewOperationSetFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF7F2906B7C200F951D2 /* AddNewOperationSetFuncs.swift */; };
-		5618DF85290800BD00F951D2 /* AddNewOperationStacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF84290800BD00F951D2 /* AddNewOperationStacks.swift */; };
-		5618DF872908014E00F951D2 /* AddNewOperationStacksFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF862908014E00F951D2 /* AddNewOperationStacksFunc.swift */; };
+		5618DF802906B7C200F951D2 /* SetFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF7F2906B7C200F951D2 /* SetFuncs.swift */; };
+		5618DF85290800BD00F951D2 /* Stacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF84290800BD00F951D2 /* Stacks.swift */; };
+		5618DF872908014E00F951D2 /* StacksFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF862908014E00F951D2 /* StacksFunc.swift */; };
 		562795EF28EC34BA004BF7B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562795EE28EC34BA004BF7B7 /* AppDelegate.swift */; };
 		562795F828EC34BA004BF7B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 562795F728EC34BA004BF7B7 /* Assets.xcassets */; };
 		562795FB28EC34BA004BF7B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 562795F928EC34BA004BF7B7 /* LaunchScreen.storyboard */; };
 		5627960228EC3A16004BF7B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562795F228EC34BA004BF7B7 /* ViewController.swift */; };
 		5627960428EC3C54004BF7B7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5627960328EC3C54004BF7B7 /* TabBarViewController.swift */; };
 		5627960628EC3CDB004BF7B7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5627960528EC3CDB004BF7B7 /* SettingsViewController.swift */; };
-		56CB0EC9290A94080056EE4C /* AddNewOperationPopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0EC8290A94080056EE4C /* AddNewOperationPopVC.swift */; };
-		56CB0ECB290A941E0056EE4C /* AddNewOperationActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0ECA290A941E0056EE4C /* AddNewOperationActions.swift */; };
-		56CB0ECD290AB0980056EE4C /* AddNewOperationTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0ECC290AB0980056EE4C /* AddNewOperationTV.swift */; };
+		56CB0EC9290A94080056EE4C /* PopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0EC8290A94080056EE4C /* PopVC.swift */; };
+		56CB0ECB290A941E0056EE4C /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0ECA290A941E0056EE4C /* Actions.swift */; };
+		56CB0ECD290AB0980056EE4C /* CategoriesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0ECC290AB0980056EE4C /* CategoriesTableView.swift */; };
+		56CB0ECF2911439B0056EE4C /* AmountTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0ECE2911439B0056EE4C /* AmountTextFieldDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,9 +33,9 @@
 		5618DF792906AADA00F951D2 /* OperationsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsTableView.swift; sourceTree = "<group>"; };
 		5618DF7B2906AE2400F951D2 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		5618DF7D2906AEC700F951D2 /* AddNewOperationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewOperationVC.swift; sourceTree = "<group>"; };
-		5618DF7F2906B7C200F951D2 /* AddNewOperationSetFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewOperationSetFuncs.swift; sourceTree = "<group>"; };
-		5618DF84290800BD00F951D2 /* AddNewOperationStacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewOperationStacks.swift; sourceTree = "<group>"; };
-		5618DF862908014E00F951D2 /* AddNewOperationStacksFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewOperationStacksFunc.swift; sourceTree = "<group>"; };
+		5618DF7F2906B7C200F951D2 /* SetFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFuncs.swift; sourceTree = "<group>"; };
+		5618DF84290800BD00F951D2 /* Stacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stacks.swift; sourceTree = "<group>"; };
+		5618DF862908014E00F951D2 /* StacksFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StacksFunc.swift; sourceTree = "<group>"; };
 		562795EB28EC34BA004BF7B7 /* CoinTail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinTail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		562795EE28EC34BA004BF7B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		562795F228EC34BA004BF7B7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,9 +44,10 @@
 		562795FC28EC34BA004BF7B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5627960328EC3C54004BF7B7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		5627960528EC3CDB004BF7B7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		56CB0EC8290A94080056EE4C /* AddNewOperationPopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewOperationPopVC.swift; sourceTree = "<group>"; };
-		56CB0ECA290A941E0056EE4C /* AddNewOperationActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewOperationActions.swift; sourceTree = "<group>"; };
-		56CB0ECC290AB0980056EE4C /* AddNewOperationTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewOperationTV.swift; sourceTree = "<group>"; };
+		56CB0EC8290A94080056EE4C /* PopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopVC.swift; sourceTree = "<group>"; };
+		56CB0ECA290A941E0056EE4C /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
+		56CB0ECC290AB0980056EE4C /* CategoriesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableView.swift; sourceTree = "<group>"; };
+		56CB0ECE2911439B0056EE4C /* AmountTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTextFieldDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,13 +65,14 @@
 		5618DF812906B80C00F951D2 /* AddNewOperations */ = {
 			isa = PBXGroup;
 			children = (
-				5618DF7F2906B7C200F951D2 /* AddNewOperationSetFuncs.swift */,
+				5618DF7F2906B7C200F951D2 /* SetFuncs.swift */,
 				5618DF7D2906AEC700F951D2 /* AddNewOperationVC.swift */,
-				5618DF84290800BD00F951D2 /* AddNewOperationStacks.swift */,
-				5618DF862908014E00F951D2 /* AddNewOperationStacksFunc.swift */,
-				56CB0EC8290A94080056EE4C /* AddNewOperationPopVC.swift */,
-				56CB0ECA290A941E0056EE4C /* AddNewOperationActions.swift */,
-				56CB0ECC290AB0980056EE4C /* AddNewOperationTV.swift */,
+				5618DF84290800BD00F951D2 /* Stacks.swift */,
+				5618DF862908014E00F951D2 /* StacksFunc.swift */,
+				56CB0EC8290A94080056EE4C /* PopVC.swift */,
+				56CB0ECA290A941E0056EE4C /* Actions.swift */,
+				56CB0ECC290AB0980056EE4C /* CategoriesTableView.swift */,
+				56CB0ECE2911439B0056EE4C /* AmountTextFieldDelegate.swift */,
 			);
 			path = AddNewOperations;
 			sourceTree = "<group>";
@@ -95,18 +98,26 @@
 		562795ED28EC34BA004BF7B7 /* CoinTail */ = {
 			isa = PBXGroup;
 			children = (
+				56CB0ED0291177950056EE4C /* Resources */,
 				5618DF812906B80C00F951D2 /* AddNewOperations */,
 				562795EE28EC34BA004BF7B7 /* AppDelegate.swift */,
 				562795F228EC34BA004BF7B7 /* ViewController.swift */,
-				562795F728EC34BA004BF7B7 /* Assets.xcassets */,
-				562795F928EC34BA004BF7B7 /* LaunchScreen.storyboard */,
-				562795FC28EC34BA004BF7B7 /* Info.plist */,
 				5627960328EC3C54004BF7B7 /* TabBarViewController.swift */,
 				5627960528EC3CDB004BF7B7 /* SettingsViewController.swift */,
 				5618DF792906AADA00F951D2 /* OperationsTableView.swift */,
 				5618DF7B2906AE2400F951D2 /* CustomCell.swift */,
 			);
 			path = CoinTail;
+			sourceTree = "<group>";
+		};
+		56CB0ED0291177950056EE4C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				562795F928EC34BA004BF7B7 /* LaunchScreen.storyboard */,
+				562795F728EC34BA004BF7B7 /* Assets.xcassets */,
+				562795FC28EC34BA004BF7B7 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		BB35F5536C49DCEBCEAE42F9 /* Frameworks */ = {
@@ -242,17 +253,18 @@
 			files = (
 				5627960228EC3A16004BF7B7 /* ViewController.swift in Sources */,
 				5627960428EC3C54004BF7B7 /* TabBarViewController.swift in Sources */,
-				5618DF85290800BD00F951D2 /* AddNewOperationStacks.swift in Sources */,
-				56CB0EC9290A94080056EE4C /* AddNewOperationPopVC.swift in Sources */,
-				56CB0ECB290A941E0056EE4C /* AddNewOperationActions.swift in Sources */,
-				56CB0ECD290AB0980056EE4C /* AddNewOperationTV.swift in Sources */,
+				5618DF85290800BD00F951D2 /* Stacks.swift in Sources */,
+				56CB0EC9290A94080056EE4C /* PopVC.swift in Sources */,
+				56CB0ECB290A941E0056EE4C /* Actions.swift in Sources */,
+				56CB0ECD290AB0980056EE4C /* CategoriesTableView.swift in Sources */,
 				562795EF28EC34BA004BF7B7 /* AppDelegate.swift in Sources */,
 				5618DF7E2906AEC700F951D2 /* AddNewOperationVC.swift in Sources */,
 				5627960628EC3CDB004BF7B7 /* SettingsViewController.swift in Sources */,
 				5618DF7C2906AE2400F951D2 /* CustomCell.swift in Sources */,
+				56CB0ECF2911439B0056EE4C /* AmountTextFieldDelegate.swift in Sources */,
 				5618DF7A2906AADA00F951D2 /* OperationsTableView.swift in Sources */,
-				5618DF802906B7C200F951D2 /* AddNewOperationSetFuncs.swift in Sources */,
-				5618DF872908014E00F951D2 /* AddNewOperationStacksFunc.swift in Sources */,
+				5618DF802906B7C200F951D2 /* SetFuncs.swift in Sources */,
+				5618DF872908014E00F951D2 /* StacksFunc.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,7 +406,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3QGCVB4WRB;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CoinTail/Info.plist;
+				INFOPLIST_FILE = CoinTail/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -423,7 +435,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3QGCVB4WRB;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CoinTail/Info.plist;
+				INFOPLIST_FILE = CoinTail/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

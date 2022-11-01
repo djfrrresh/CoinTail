@@ -59,6 +59,10 @@ class AddNewOperationVC: UIViewController, СategorySendText {
         let button = UIButton()
         return button
     }()
+    let dateButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
     
     // DATE
     let datePicker: UIDatePicker = {
@@ -86,6 +90,11 @@ class AddNewOperationVC: UIViewController, СategorySendText {
         self.switchButton.addTarget(self,
                          action: #selector(switchButtonAction),
                          for: .valueChanged)
+        self.dateButton.addTarget(self,
+                         action: #selector(createToolbarAction),
+                         for: .touchUpInside)
+        
+        amountTextField.delegate = self
         
         setStack() // Стаки для объектов на экране
     }
