@@ -9,11 +9,18 @@ import UIKit
 import EasyPeasy
 
 // Указываем название протокола из AddNewOperationPopVC
-class AddNewOperationVC: UIViewController, СategorySendText {
+class AddNewOperationVC: UIViewController, СategorySendTextImage {
     // Вызываем функцию из протокола и делаем всякое
     func sendCategory(category: String) {
         categoryButton.setTitle(category, for: .normal) // Меняет текст выбранной категории в кнопке
     }
+    
+    var categoryImage: String = ""
+    func sendCategoryImage(categoryImage: String) {
+        self.categoryImage = categoryImage
+    }
+    
+    weak var addNewOpDelegate: AddNewOpSendData?
     
     // SWITCH
     let switchButton: UISegmentedControl = {
@@ -72,6 +79,18 @@ class AddNewOperationVC: UIViewController, СategorySendText {
         picker.preferredDatePickerStyle = .wheels
         return picker
     }()
+    
+    // Ссылка на HomeViewController, на объекты внутри него
+    let homeViewController: HomeViewController
+    // Инициализация переменной homeViewController
+    init(homeViewController: HomeViewController) {
+        self.homeViewController = homeViewController
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,13 +109,22 @@ class AddNewOperationVC: UIViewController, СategorySendText {
         self.switchButton.addTarget(self,
                          action: #selector(switchButtonAction),
                          for: .valueChanged)
-        self.dateButton.addTarget(self,
-                         action: #selector(createToolbarAction),
-                         for: .touchUpInside)
+//        self.dateButton.addTarget(self,
+//                         action: #selector(createToolbarAction),
+//                         for: .touchUpInside)
         
         amountTextField.delegate = self
         
         setStack() // Стаки для объектов на экране
     }
     
+}
+
+// Протокол отправки введенных значений операции
+protocol AddNewOpSendData: AnyObject {
+    func sendCategoryButtonText(categoryText: String)
+    func sendCategoryImage(categoryImage: String)
+    func sendAmount(amountText: String)
+    func sendDescription(descriptionText: String)
+    func sendDate(dateText: String)
 }

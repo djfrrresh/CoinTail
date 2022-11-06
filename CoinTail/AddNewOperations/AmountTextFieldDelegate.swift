@@ -12,7 +12,7 @@ import UIKit
 extension AddNewOperationVC: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let allowedCharactersSet = CharacterSet(charactersIn: ",.123456790")
+        let allowedCharactersSet = CharacterSet(charactersIn: ".123456790")
         let typedCharacterSet = CharacterSet(charactersIn: string)
         
         guard let textFieldString = textField.text, let range = Range(range, in: textFieldString) else {

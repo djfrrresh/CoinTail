@@ -11,14 +11,16 @@ import EasyPeasy
 
 class AddNewOperationPopVC: UIViewController {
     
-    weak var categoryDelegate: СategorySendText? // Переменная делегата, связывающая протокол с собой
+    weak var categoryDelegate: СategorySendTextImage? // Переменная делегата, связывающая протокол с собой. Передает категорию из таблицы с категориями в текст кнопки
         
     var categories: [String]
+    var categoryImages: [String]
     
     var tableView = UITableView()
         
-    public required init(_ categories: [String]) {
+    public required init(_ categories: [String], _ categoryImages: [String]) {
         self.categories = categories
+        self.categoryImages = categoryImages
         super.init(nibName: nil, bundle: nil)
     }
     

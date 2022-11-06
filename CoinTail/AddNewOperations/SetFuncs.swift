@@ -68,31 +68,49 @@ extension AddNewOperationVC {
         label.textAlignment = .left
     }
     
-//    func setDatePickerTextField(textField: UITextField, picker: UIDatePicker) {
+    func setDatePickerTextField(textField: UITextField, picker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+
+        textField.inputView = picker
+        textField.layer.borderColor = UIColor.gray.cgColor
+        let nowDate = dateFormatter.string(from: datePicker.date)
+        textField.text = "Today, \(nowDate)"
+        textField.placeholder = "Select a date"
+        textField.layer.cornerRadius = 8
+        textField.layer.borderWidth = 1
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: textField.frame.height))
+        textField.leftViewMode = .always
+        textField.easy.layout([Height(56)])
+        textField.inputAccessoryView = createToolbar()
+    }
+    
+//    func setDatePickerTextField(dateField: UIView, picker: UIDatePicker) {
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.dateStyle = .medium
 //        dateFormatter.timeStyle = .none
 //
-//        textField.inputView = picker
-//        textField.layer.borderColor = UIColor.gray.cgColor
+////        dateField.inputView = picker
+//        dateField.layer.borderColor = UIColor.gray.cgColor
 //        let nowDate = dateFormatter.string(from: datePicker.date)
-//        textField.placeholder = "Today, \(nowDate)"
-//        textField.layer.cornerRadius = 8
-//        textField.layer.borderWidth = 1
-//        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: textField.frame.height))
-//        textField.leftViewMode = .always
-//        textField.easy.layout([Height(56)])
-//        textField.inputAccessoryView = createToolbar()
+////        dateField.placeholder = "Today, \(nowDate)"
+//        dateField.layer.cornerRadius = 8
+//        dateField.layer.borderWidth = 1
+////        dateField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: dateField.frame.height))
+////        dateField.leftViewMode = .always
+//        dateField.easy.layout([Height(56)])
+////        dateField.inputAccessoryView = createToolbar()
 //    }
-//
-//    func createToolbar() -> UIToolbar { // Всплывающий снизу DatePicker
-//        let toolbar = UIToolbar()
-//        toolbar.sizeToFit()
-//
-//        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneButtonPressed))
-//        toolbar.setItems([doneButton], animated: true)
-//
-//        return toolbar
-//    }
+
+    func createToolbar() -> UIToolbar { // Всплывающий снизу DatePicker
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneButtonPressed))
+        toolbar.setItems([doneButton], animated: true)
+
+        return toolbar
+    }
     
 }

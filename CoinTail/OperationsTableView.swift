@@ -9,7 +9,53 @@ import UIKit
 import EasyPeasy
 
 
-extension HomeViewController {
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource, AddNewOpSendData {
+    
+    func setTableView() {
+        self.view.addSubview(self.tableView)
+        self.tableView.register(CustomCell.self, forCellReuseIdentifier: "HomeCustomCell")
+        self.tableView.delegate = self // Реагирование на события
+        self.tableView.dataSource = self // Здесь подаются данные
+        
+        self.tableView.easy.layout([
+            Left(0),
+            Right(0),
+            Height(300),
+            CenterX(0),
+            CenterY(150)
+        ])
+    }
+    
+    func sendCategoryButtonText(categoryText: String) {
+        print("Category: \(categoryText)")
+        self.categoryText = categoryText
+    }
+    
+    func sendAmount(amountText: String) {
+        print("Amount: \(amountText)")
+        self.amountText = amountText
+    }
+    
+    func sendDescription(descriptionText: String) {
+        print("Description: \(descriptionText)")
+        self.descriptionText = descriptionText
+    }
+    
+    func sendDate(dateText: String) {
+        print("Date: \(dateText)")
+        self.dateText = dateText
+    }
+    
+    func sendCategoryImage(categoryImage: String) {
+        print(categoryImage)
+        self.categoryImage = categoryImage
+    }
+    
+    // Добавление ячеек по 1 снизу
+    func addRowToEnd() {
+        self.cellArr.append("aaa") // Добавление в массив нового элемента
+        self.tableView.insertRows(at: [IndexPath(row: self.cellArr.count - 1, section: 0)], with: .automatic) // + 1 элемент
+    }
     
     // Задается количество ячеек
     func tableView(_ tableView: UITableView,
@@ -20,21 +66,28 @@ extension HomeViewController {
     // Ячейки заполняются
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        var content = cell.defaultContentConfiguration()
-        content.text = "\(cellArr[indexPath.row])" // Основной текст
-        content.secondaryText = "\(indexPath.row + 1)" // Доп. текст
-        cell.contentConfiguration = content
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCustomCell", for: indexPath) as? CustomCell
+        
+        let image = UIImage(systemName: categoryImage)
+        cell!.dateLabel.text = dateText
+        cell!.amountLabel.text = ("Amount: \(amountText)")
+        cell!.categoryLabel.text = categoryText
+        cell!.descriptionLabel.text = descriptionText
+        cell!.categoryImage.image = image
+        
+        return cell!
     }
     
-    // Добавление ячеек по 1 снизу
-//    @objc func addRowToEnd() {
-//            self.cellArr.append() // Добавление в массив нового элемента
-//            self.tableView.insertRows(at: [IndexPath(row: self.cellArr.count - 1,
-//                section: 0)],
-//                with: .automatic) // + 1 элемент
-//    }
+    // Выводит нажатия на ячейки в консоль
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
+        print("Cell \(indexPath.row + 1) tapped")
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 130
+      }
     
     // Функция удаления и редактирования ячеек из таблицы
 //    func tableView(_ tableView: UITableView,
@@ -86,12 +139,5 @@ extension HomeViewController {
 //
 //        return [deleteAction, editAction]
 //    }
-    
-    // Выводит нажатия на ячейки в консоль
-    func tableView(_ tableView: UITableView,
-                   didSelectRowAt indexPath: IndexPath) {
-        self.tableView.deselectRow(at: indexPath, animated: true)
-        print("Cell \(indexPath.row + 1) tapped")
-    }
     
 }

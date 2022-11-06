@@ -9,53 +9,42 @@ import UIKit
 import EasyPeasy
 
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController {
     
     // Переменная, задающая таблицы
     let tableView = UITableView()
     // Массив таблицы, содержимое которого редактируем
     var cellArr = [String]()
     
+    var amountText: String = ""
+    var descriptionText: String = ""
+    var categoryText: String = ""
+    var categoryImage: String = ""
+    var dateText: String = ""
+    
     let balance = UILabel()
-    var balanceScore: Float = 0 // Общий баланс
-//    var new_income_expense: Float = 0 // Траты/пополнения
+    var balanceScore: Int = 0 // Общий баланс
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.configureItems() // Кнопка "+"
         
-        self.view.addSubview(tableView)
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        self.tableView.delegate = self // Реагирование на события
-        self.tableView.dataSource = self // Здесь подаются данные
-        
         self.view.backgroundColor = .white.withAlphaComponent(0.9)
         self.title = "Home"
-        // Размер текста
-        balance.font = .systemFont(ofSize: 30)
+        self.balance.font = .systemFont(ofSize: 30) // Размер текста
         
         self.balance.text = "Your Balance: \(balanceScore)"
-        // Вызов текста
+        
         self.view.addSubview(balance)
-        // Расположение текста
         balance.easy.layout([
             CenterX(0),
             CenterY(-300)
         ])
         
+        setTableView() // Настройки для таблицы
+                
         self.navigationController?.navigationBar.tintColor = .black
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        self.tableView.easy.layout([
-            Left(0),
-            Right(0),
-            Height(300),
-            CenterX(0),
-            CenterY(150)
-        ])
     }
     
     // Кнопка "Добавить" в углу экрана
@@ -67,8 +56,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         )
     }
     
+    // Переход на VC с добавлением операции
     @objc func AddNewOperation() {
-        let vc = AddNewOperationVC()
+        let vc = AddNewOperationVC(homeViewController: self)
+        vc.addNewOpDelegate = self // Связь с контроллером, откуда передаются данные
+        
         navigationController?.pushViewController(vc, animated: true)
     }
 

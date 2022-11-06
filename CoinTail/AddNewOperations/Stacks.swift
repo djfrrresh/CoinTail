@@ -29,17 +29,16 @@ extension AddNewOperationVC {
         
         // DATE
         setLabel(label: dateLabel, text: "Date")
-//        setDatePickerTextField(textField: dateTextField, picker: datePicker)
-        setDatePickerButton(button: dateButton, picker: datePicker)
-//        setUniqueStack(stack: dateStack, view_1: dateLabel, view_2: dateTextField)
-        setUniqueStack(stack: dateStack, view_1: dateLabel, view_2: dateButton)
+        setDatePickerTextField(textField: dateTextField, picker: datePicker)
+//        setDatePickerButton(button: dateButton, picker: datePicker)
+        setUniqueStack(stack: dateStack, view_1: dateLabel, view_2: dateTextField)
+//        setUniqueStack(stack: dateStack, view_1: dateLabel, view_2: dateButton)
         
         // CATEGORY
         setButton(button: categoryButton, text: "Select category", background: .clear, textColor: .black)
         
         // SAVE
-        setButton(button: saveButton, text: "Save operation", background: .black, textColor: .white)
-
+            setButton(button: saveButton, text: "Save operation", background: .black, textColor: .white)
         // SWITCH
         setSwitchButton(switcher: switchButton)
         

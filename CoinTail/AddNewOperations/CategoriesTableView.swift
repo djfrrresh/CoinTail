@@ -22,7 +22,6 @@ extension AddNewOperationPopVC: UITableViewDelegate, UITableViewDataSource {
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = "\(self.categories[indexPath.row])"
-//        cell.categoryDelegate = self
         return cell
     }
     
@@ -32,6 +31,7 @@ extension AddNewOperationPopVC: UITableViewDelegate, UITableViewDataSource {
         self.tableView.deselectRow(at: indexPath, animated: true)
                 
         categoryDelegate?.sendCategory(category: self.categories[indexPath.row]) // Передаем выбранную категорию
+        categoryDelegate?.sendCategoryImage(categoryImage: self.categoryImages[indexPath.row]) // Передаем выбранную картинку категории
                         
         self.dismiss(animated: true, completion: nil) // Закрываем PopVC
     }
@@ -39,6 +39,7 @@ extension AddNewOperationPopVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 // Протокол с функциями, по которому передаем данные из 1 контроллера в другой
-protocol СategorySendText: AnyObject {
+protocol СategorySendTextImage: AnyObject {
     func sendCategory(category: String)
+    func sendCategoryImage(categoryImage: String)
 }
