@@ -16,7 +16,7 @@ class AddNewOperationPopVC: UIViewController {
     var categories: [String]
     var categoryImages: [String]
     
-    var tableView = UITableView()
+    var collectionView: UICollectionView?
         
     public required init(_ categories: [String], _ categoryImages: [String]) {
         self.categories = categories
@@ -32,14 +32,23 @@ class AddNewOperationPopVC: UIViewController {
         super.viewDidLoad()
                         
         self.view.backgroundColor = .white.withAlphaComponent(1)
-
         self.navigationController?.navigationBar.tintColor = .black
         
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        self.tableView.delegate = self // Реагирование на события
-        self.tableView.dataSource = self // Здесь подаются данные
-                                                
-        self.view.addSubview(tableView)
-        self.tableView.easy.layout([CenterX(), CenterY(), Top(50), Bottom(0), Left(0), Right(0)])
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 32
+        layout.minimumInteritemSpacing = 1
+        layout.itemSize = CGSize(width: 70, height: 70)
+        
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
+        guard let collectionView = collectionView else { return }
+        
+        collectionView.register(CustomCollectionCell.self, forCellWithReuseIdentifier: CustomCollectionCell.id)
+        collectionView.delegate = self // Реагирование на события
+        collectionView.dataSource = self // Здесь подаются данные
+        
+        self.view.addSubview(collectionView)
+        collectionView.easy.layout([Top(90), Bottom(), Left(32), Right(32)])
     }
 }

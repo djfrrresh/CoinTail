@@ -73,7 +73,6 @@ class CustomCell: UITableViewCell {
         backgroundColor = UIColor.clear
         backView.layer.cornerRadius = 8
         backView.clipsToBounds = true
-//        categoryImage.layer.cornerRadius = 20
         categoryImage.clipsToBounds = true
     } 
     

@@ -19,6 +19,7 @@ extension AddNewOperationVC: UITextFieldDelegate {
             return false
         }
         let newString = textFieldString.replacingCharacters(in: range, with: string)
+        
         if newString.isEmpty {
             textField.text = "0.00"
             return false

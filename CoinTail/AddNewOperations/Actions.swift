@@ -34,7 +34,31 @@ extension AddNewOperationVC {
     
         @objc func saveButtonAction(sender: AnyObject) {
             let amount = Double(amountTextField.text!)
-            if ((amount != 0.00 && (amount != nil)) && categoryButton.titleLabel!.text! != "Select category") {
+            let categoryText = categoryButton.titleLabel!.text!
+            
+            func checkValues(_ title: String, _ message: String) -> UIAlertController {
+                var emptyValueMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                return emptyValueMessage
+            }
+            
+            let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in } )
+            
+            if ((amount == 0.00 || amount == nil) && categoryText == "Select category") {
+                let alert = checkValues("Error", "Missing value in amount field and no category selected")
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            }
+            else if (amount == 0.00 || amount == nil) {
+                let alert = checkValues("Error", "Missing value in amount field")
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            }
+            else if (categoryText == "Select category") {
+                let alert = checkValues("Error", "No category selected")
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            }
+            else {
                 addNewOpDelegate?.sendAmount(amountText: self.amountTextField.text!)
                 addNewOpDelegate?.sendDescription(descriptionText: self.descriptionTextField.text!)
                 addNewOpDelegate?.sendCategoryButtonText(categoryText: self.categoryButton.titleLabel!.text!)
@@ -46,8 +70,6 @@ extension AddNewOperationVC {
                 // Теперь я обращаюсь к старому объекту (функции)
                 
                 self.navigationController?.popToRootViewController(animated: true) // Закрыть AddNewOperationVC
-            } else {
-                print ("error")
             }
     }
     
@@ -61,7 +83,7 @@ extension AddNewOperationVC {
         switch segment {
             case "Expense":
             
-                categories = ["Taxi", "Glocery", "Clothing", "Gym", "Service", "Subscription", "Health", "Cafe"]
+                categories = ["Transport", "Glocery", "Cloths", "Gym", "Service", "Subscription", "Health", "Cafe"]
                 categoryImages = ["car.circle", "cart.circle", "tshirt", "figure.walk.circle", "gearshape.circle", "gamecontroller", "heart.circle", "fork.knife.circle"]
             case "Income":
                 categories = ["Salary", "Debt repayment", "Side job"]

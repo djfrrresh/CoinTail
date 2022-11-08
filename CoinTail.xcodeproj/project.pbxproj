@@ -24,6 +24,7 @@
 		56CB0ECB290A941E0056EE4C /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0ECA290A941E0056EE4C /* Actions.swift */; };
 		56CB0ECD290AB0980056EE4C /* CategoriesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0ECC290AB0980056EE4C /* CategoriesTableView.swift */; };
 		56CB0ECF2911439B0056EE4C /* AmountTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0ECE2911439B0056EE4C /* AmountTextFieldDelegate.swift */; };
+		56CB0ED2291AB7190056EE4C /* CustomCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0ED1291AB7190056EE4C /* CustomCollectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		56CB0ECA290A941E0056EE4C /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		56CB0ECC290AB0980056EE4C /* CategoriesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableView.swift; sourceTree = "<group>"; };
 		56CB0ECE2911439B0056EE4C /* AmountTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTextFieldDelegate.swift; sourceTree = "<group>"; };
+		56CB0ED1291AB7190056EE4C /* CustomCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				56CB0ECA290A941E0056EE4C /* Actions.swift */,
 				56CB0ECC290AB0980056EE4C /* CategoriesTableView.swift */,
 				56CB0ECE2911439B0056EE4C /* AmountTextFieldDelegate.swift */,
+				56CB0ED1291AB7190056EE4C /* CustomCollectionCell.swift */,
 			);
 			path = AddNewOperations;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				5627960628EC3CDB004BF7B7 /* SettingsViewController.swift in Sources */,
 				5618DF7C2906AE2400F951D2 /* CustomCell.swift in Sources */,
 				56CB0ECF2911439B0056EE4C /* AmountTextFieldDelegate.swift in Sources */,
+				56CB0ED2291AB7190056EE4C /* CustomCollectionCell.swift in Sources */,
 				5618DF7A2906AADA00F951D2 /* OperationsTableView.swift in Sources */,
 				5618DF802906B7C200F951D2 /* SetFuncs.swift in Sources */,
 				5618DF872908014E00F951D2 /* StacksFunc.swift in Sources */,

@@ -9,33 +9,25 @@ import UIKit
 import EasyPeasy
 
 
-extension AddNewOperationPopVC: UITableViewDelegate, UITableViewDataSource {
-    
-    // Задается количество ячеек
-    func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
+extension AddNewOperationPopVC: UICollectionViewDelegate, UICollectionViewDataSource  {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.categories.count
     }
     
-    // Ячейки заполняются
-    func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "\(self.categories[indexPath.row])"
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionCell.id, for: indexPath) as! CustomCollectionCell
+        cell.configure(label: categories[indexPath.row], image: categoryImages[indexPath.row])
         return cell
     }
     
-    // Выводит нажатия на ячейки
-    func tableView(_ tableView: UITableView,
-                   didSelectRowAt indexPath: IndexPath) {
-        self.tableView.deselectRow(at: indexPath, animated: true)
-                
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         categoryDelegate?.sendCategory(category: self.categories[indexPath.row]) // Передаем выбранную категорию
         categoryDelegate?.sendCategoryImage(categoryImage: self.categoryImages[indexPath.row]) // Передаем выбранную картинку категории
                         
-        self.dismiss(animated: true, completion: nil) // Закрываем PopVC
+        self.dismiss(animated: true, completion: nil)
     }
-    
+        
 }
 
 // Протокол с функциями, по которому передаем данные из 1 контроллера в другой
