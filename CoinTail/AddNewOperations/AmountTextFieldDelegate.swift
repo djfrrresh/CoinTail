@@ -12,6 +12,7 @@ import UIKit
 extension AddNewOperationVC: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // Принимаемые значения для текстового поля Amount
         let allowedCharactersSet = CharacterSet(charactersIn: ".123456790")
         let typedCharacterSet = CharacterSet(charactersIn: string)
         

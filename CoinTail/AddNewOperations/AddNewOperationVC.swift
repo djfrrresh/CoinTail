@@ -15,12 +15,22 @@ class AddNewOperationVC: UIViewController, СategorySendTextImage {
         categoryButton.setTitle(category, for: .normal) // Меняет текст выбранной категории в кнопке
     }
     
+    // Достаем картинку из категорий
     var categoryImage: String = ""
     func sendCategoryImage(categoryImage: String) {
         self.categoryImage = categoryImage
     }
     
     weak var addNewOpDelegate: AddNewOpSendData?
+    
+    var expenseCategories = ["Transport", "Glocery", "Cloths", "Gym", "Service", "Subscription", "Health", "Cafe"]
+    var expenseImages = ["car.circle", "cart.circle", "tshirt", "figure.walk.circle", "gearshape.circle", "gamecontroller", "heart.circle", "fork.knife.circle"]
+    
+    var incomeCategories = ["Salary", "Debt repayment", "Side job"]
+    var incomeImages = ["dollarsign.circle", "creditcard.circle", "briefcase.circle"]
+    
+    var categories = [String]()
+    var categoryImages = [String]()
     
     // SWITCH
     let switchButton: UISegmentedControl = {
@@ -87,7 +97,6 @@ class AddNewOperationVC: UIViewController, СategorySendTextImage {
         self.homeViewController = homeViewController
         super.init(nibName: nil, bundle: nil)
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -117,10 +126,9 @@ class AddNewOperationVC: UIViewController, СategorySendTextImage {
         
         setStack() // Стаки для объектов на экране
     }
-    
 }
 
-// Протокол отправки введенных значений операции
+// Протокол отправки всех введенных значений операции
 protocol AddNewOpSendData: AnyObject {
     func sendCategoryButtonText(categoryText: String)
     func sendCategoryImage(categoryImage: String)

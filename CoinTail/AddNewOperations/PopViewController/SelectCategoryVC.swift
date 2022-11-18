@@ -17,23 +17,32 @@ class AddNewOperationPopVC: UIViewController {
     var categoryImages: [String]
     
     var collectionView: UICollectionView?
+    
+    var newCategoryName: String?
+    var newCategoryImage: String?
+    
+    let newCategoryButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
         
     public required init(_ categories: [String], _ categoryImages: [String]) {
         self.categories = categories
         self.categoryImages = categoryImages
         super.init(nibName: nil, bundle: nil)
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                        
+                                
         self.view.backgroundColor = .white.withAlphaComponent(1)
         self.navigationController?.navigationBar.tintColor = .black
+        self.title = "Select category"
         
+        // Размеры и пробелы между иконками категорий
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 32
@@ -50,5 +59,17 @@ class AddNewOperationPopVC: UIViewController {
         
         self.view.addSubview(collectionView)
         collectionView.easy.layout([Top(90), Bottom(), Left(32), Right(32)])
+        
+        self.newCategoryButton.setTitle("Add", for: .normal)
+        self.newCategoryButton.backgroundColor = .lightGray.withAlphaComponent(0.9)
+        self.newCategoryButton.layer.cornerRadius = 15
+        self.newCategoryButton.setTitleColor(.black, for: .normal)
+        self.newCategoryButton.addTarget(self,
+                         action: #selector(addNewCategoryAction),
+                         for: .touchUpInside)
+        
+        self.view.addSubview(self.newCategoryButton)
+        self.newCategoryButton.easy.layout(Bottom(20).to(view.safeAreaLayoutGuide, .bottom), Right(20).to(view.safeAreaLayoutGuide, .right), Height(64), Width(64))
     }
+    
 }

@@ -20,9 +20,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource, AddNew
         self.tableView.easy.layout([
             Left(0),
             Right(0),
-            Height(300),
+            Height(400),
             CenterX(0),
-            CenterY(150)
+            Bottom(0)
         ])
     }
     

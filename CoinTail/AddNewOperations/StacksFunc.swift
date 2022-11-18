@@ -11,6 +11,7 @@ import EasyPeasy
 
 extension AddNewOperationVC {
     
+    // Создание стака между двумя элементами
     func setUniqueStack (stack: UIStackView, view_1: UIView, view_2: UIView?) {
         stack.axis = .vertical
         stack.spacing = 6

@@ -13,7 +13,7 @@ class CustomCollectionCell: UICollectionViewCell {
     
     static let id = "CustomCollectionCell"
     
-    private let categoryImage: UIImageView = {
+    let categoryImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -29,9 +29,12 @@ class CustomCollectionCell: UICollectionViewCell {
         super.init(frame: frame)
         contentView.backgroundColor = .lightGray.withAlphaComponent(0.9)
         contentView.layer.cornerRadius = 15
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        contentView.layer.cornerRadius = 10
+        contentView.backgroundColor = .white
         contentView.addSubview(categoryImage)
         contentView.addSubview(categoryName)
-//        contentView.clipsToBounds = true
     }
     
     override func layoutSubviews() {

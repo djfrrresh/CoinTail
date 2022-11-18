@@ -11,6 +11,7 @@ import EasyPeasy
 
 extension AddNewOperationVC {
     
+    // Настройки для кнопки
     func setButton(button: UIButton, text: String, background: UIColor, textColor: UIColor) {
         button.layer.cornerRadius = 8
         button.layer.borderWidth = 1
@@ -24,6 +25,7 @@ extension AddNewOperationVC {
         button.easy.layout([Height(56)])
     }
     
+    // Настройки для пикера времени
     func setDatePickerButton(button: UIButton, picker: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
@@ -43,6 +45,7 @@ extension AddNewOperationVC {
         button.easy.layout([Height(56)])
     }
     
+    // Настройки для текстового поля
     func setTextField(textField: UITextField, text: String, background: UIColor, keyboard: UIKeyboardType, default_text: String?) {
         textField.layer.cornerRadius = 8
         textField.layer.borderWidth = 1
@@ -58,16 +61,19 @@ extension AddNewOperationVC {
         textField.easy.layout([Height(56)])
     }
     
+    // Настройки для свитчера
     func setSwitchButton(switcher: UISegmentedControl) {
         switcher.layer.cornerRadius = 8
         switcher.easy.layout([Height(32)])
     }
     
+    // Настройки для текста
     func setLabel(label: UILabel, text: String) {
         label.text = text
         label.textAlignment = .left
     }
     
+    // Настройки для текстового поля с пикером даты
     func setDatePickerTextField(textField: UITextField, picker: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
@@ -103,6 +109,7 @@ extension AddNewOperationVC {
 ////        dateField.inputAccessoryView = createToolbar()
 //    }
 
+    // Создание вертикального меню выше пикера времени с кнопками действия
     func createToolbar() -> UIToolbar { // Всплывающий снизу DatePicker
         let toolbar = UIToolbar()
         toolbar.sizeToFit()

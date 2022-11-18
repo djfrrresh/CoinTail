@@ -28,6 +28,8 @@ extension AddNewOperationVC {
         
         // Для кнопки с датой
 //        self.dateButton.setTitle(dateFormatter.string(from: datePicker.date), for: .normal)
+        
+        // Ставим выбранную дату из пикера
         self.dateTextField.text = dateFormatter.string(from: datePicker.date)
         self.view.endEditing(true)
     }
@@ -36,8 +38,9 @@ extension AddNewOperationVC {
             let amount = Double(amountTextField.text!)
             let categoryText = categoryButton.titleLabel!.text!
             
+            // Проверка поля Amount и текста из кнопки категории на наличие данных в них
             func checkValues(_ title: String, _ message: String) -> UIAlertController {
-                var emptyValueMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                let emptyValueMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
                 return emptyValueMessage
             }
             
@@ -58,7 +61,7 @@ extension AddNewOperationVC {
                 alert.addAction(ok)
                 self.present(alert, animated: true, completion: nil)
             }
-            else {
+            else { // Отправка данных в HomeViewController
                 addNewOpDelegate?.sendAmount(amountText: self.amountTextField.text!)
                 addNewOpDelegate?.sendDescription(descriptionText: self.descriptionTextField.text!)
                 addNewOpDelegate?.sendCategoryButtonText(categoryText: self.categoryButton.titleLabel!.text!)
@@ -75,26 +78,24 @@ extension AddNewOperationVC {
     
     @objc func categoryButtonAction() {
         
+        // Заполнить следующий контроллер категориями в зависимости от выбранного типа операции
         guard let segment = switchButton.titleForSegment(at: switchButton.selectedSegmentIndex) else { return }
-        
-        var categories = [String]()
-        var categoryImages = [String]()
-        
+     
         switch segment {
             case "Expense":
-            
-                categories = ["Transport", "Glocery", "Cloths", "Gym", "Service", "Subscription", "Health", "Cafe"]
-                categoryImages = ["car.circle", "cart.circle", "tshirt", "figure.walk.circle", "gearshape.circle", "gamecontroller", "heart.circle", "fork.knife.circle"]
+                categories = self.expenseCategories
+                categoryImages = self.expenseImages
             case "Income":
-                categories = ["Salary", "Debt repayment", "Side job"]
-                categoryImages = ["dollarsign.circle", "creditcard.circle", "briefcase.circle"]
+                categories = self.incomeCategories
+                categoryImages = self.incomeImages
             default:
                 fatalError("undefined segment")
         }
                     
-        let vc = AddNewOperationPopVC(categories, categoryImages)
+        let vc = AddNewOperationPopVC(self.categories, self.categoryImages) // Передаем название и иконки
         vc.categoryDelegate = self // Связь с контроллером, откуда передаются данные
-        present(vc, animated: true, completion: nil) // Всплытие PopVC
+        vc.hidesBottomBarWhenPushed = true // Спрятать TabBar
+        navigationController?.pushViewController(vc, animated: true) // Перейти в контроллер
     }
     
     @objc func switchButtonAction(target: UISegmentedControl) {

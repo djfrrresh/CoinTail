@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2ECFB99519B281D33C35ACC6 /* Pods_CoinTail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11468AE1DB9C71E493D3EF5B /* Pods_CoinTail.framework */; };
 		5618DF7A2906AADA00F951D2 /* OperationsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF792906AADA00F951D2 /* OperationsTableView.swift */; };
-		5618DF7C2906AE2400F951D2 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF7B2906AE2400F951D2 /* CustomCell.swift */; };
+		5618DF7C2906AE2400F951D2 /* HomeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF7B2906AE2400F951D2 /* HomeCustomCell.swift */; };
 		5618DF7E2906AEC700F951D2 /* AddNewOperationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF7D2906AEC700F951D2 /* AddNewOperationVC.swift */; };
 		5618DF802906B7C200F951D2 /* SetFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF7F2906B7C200F951D2 /* SetFuncs.swift */; };
 		5618DF85290800BD00F951D2 /* Stacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF84290800BD00F951D2 /* Stacks.swift */; };
@@ -20,9 +20,13 @@
 		5627960228EC3A16004BF7B7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562795F228EC34BA004BF7B7 /* HomeViewController.swift */; };
 		5627960428EC3C54004BF7B7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5627960328EC3C54004BF7B7 /* TabBarViewController.swift */; };
 		5627960628EC3CDB004BF7B7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5627960528EC3CDB004BF7B7 /* SettingsViewController.swift */; };
-		56CB0EC9290A94080056EE4C /* PopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0EC8290A94080056EE4C /* PopVC.swift */; };
-		56CB0ECB290A941E0056EE4C /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0ECA290A941E0056EE4C /* Actions.swift */; };
-		56CB0ECD290AB0980056EE4C /* CategoriesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0ECC290AB0980056EE4C /* CategoriesTableView.swift */; };
+		56727B34292413BA00E2CC43 /* CategoriesActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56727B33292413BA00E2CC43 /* CategoriesActions.swift */; };
+		56727B362924197000E2CC43 /* AddNewCategoryPopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56727B352924197000E2CC43 /* AddNewCategoryPopVC.swift */; };
+		56727B3929267ECA00E2CC43 /* CategoriesFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56727B3829267ECA00E2CC43 /* CategoriesFuncs.swift */; };
+		56727B3B292790E400E2CC43 /* PopVCCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56727B3A292790E400E2CC43 /* PopVCCollectionView.swift */; };
+		56CB0EC9290A94080056EE4C /* SelectCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0EC8290A94080056EE4C /* SelectCategoryVC.swift */; };
+		56CB0ECB290A941E0056EE4C /* AddNewOpActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0ECA290A941E0056EE4C /* AddNewOpActions.swift */; };
+		56CB0ECD290AB0980056EE4C /* CategoriesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0ECC290AB0980056EE4C /* CategoriesCollectionView.swift */; };
 		56CB0ECF2911439B0056EE4C /* AmountTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0ECE2911439B0056EE4C /* AmountTextFieldDelegate.swift */; };
 		56CB0ED2291AB7190056EE4C /* CustomCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0ED1291AB7190056EE4C /* CustomCollectionCell.swift */; };
 /* End PBXBuildFile section */
@@ -32,7 +36,7 @@
 		1EB961520D7A4400C147BA63 /* Pods-CoinTail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinTail.debug.xcconfig"; path = "Target Support Files/Pods-CoinTail/Pods-CoinTail.debug.xcconfig"; sourceTree = "<group>"; };
 		47531E248FAF4C3243B0933C /* Pods-CoinTail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinTail.release.xcconfig"; path = "Target Support Files/Pods-CoinTail/Pods-CoinTail.release.xcconfig"; sourceTree = "<group>"; };
 		5618DF792906AADA00F951D2 /* OperationsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsTableView.swift; sourceTree = "<group>"; };
-		5618DF7B2906AE2400F951D2 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		5618DF7B2906AE2400F951D2 /* HomeCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCustomCell.swift; sourceTree = "<group>"; };
 		5618DF7D2906AEC700F951D2 /* AddNewOperationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewOperationVC.swift; sourceTree = "<group>"; };
 		5618DF7F2906B7C200F951D2 /* SetFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFuncs.swift; sourceTree = "<group>"; };
 		5618DF84290800BD00F951D2 /* Stacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stacks.swift; sourceTree = "<group>"; };
@@ -45,9 +49,13 @@
 		562795FC28EC34BA004BF7B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5627960328EC3C54004BF7B7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		5627960528EC3CDB004BF7B7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		56CB0EC8290A94080056EE4C /* PopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopVC.swift; sourceTree = "<group>"; };
-		56CB0ECA290A941E0056EE4C /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
-		56CB0ECC290AB0980056EE4C /* CategoriesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableView.swift; sourceTree = "<group>"; };
+		56727B33292413BA00E2CC43 /* CategoriesActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesActions.swift; sourceTree = "<group>"; };
+		56727B352924197000E2CC43 /* AddNewCategoryPopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCategoryPopVC.swift; sourceTree = "<group>"; };
+		56727B3829267ECA00E2CC43 /* CategoriesFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesFuncs.swift; sourceTree = "<group>"; };
+		56727B3A292790E400E2CC43 /* PopVCCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopVCCollectionView.swift; sourceTree = "<group>"; };
+		56CB0EC8290A94080056EE4C /* SelectCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryVC.swift; sourceTree = "<group>"; };
+		56CB0ECA290A941E0056EE4C /* AddNewOpActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewOpActions.swift; sourceTree = "<group>"; };
+		56CB0ECC290AB0980056EE4C /* CategoriesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionView.swift; sourceTree = "<group>"; };
 		56CB0ECE2911439B0056EE4C /* AmountTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTextFieldDelegate.swift; sourceTree = "<group>"; };
 		56CB0ED1291AB7190056EE4C /* CustomCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,15 +75,13 @@
 		5618DF812906B80C00F951D2 /* AddNewOperations */ = {
 			isa = PBXGroup;
 			children = (
+				56727B3729264A1400E2CC43 /* PopViewController */,
 				5618DF7F2906B7C200F951D2 /* SetFuncs.swift */,
 				5618DF7D2906AEC700F951D2 /* AddNewOperationVC.swift */,
 				5618DF84290800BD00F951D2 /* Stacks.swift */,
 				5618DF862908014E00F951D2 /* StacksFunc.swift */,
-				56CB0EC8290A94080056EE4C /* PopVC.swift */,
-				56CB0ECA290A941E0056EE4C /* Actions.swift */,
-				56CB0ECC290AB0980056EE4C /* CategoriesTableView.swift */,
+				56CB0ECA290A941E0056EE4C /* AddNewOpActions.swift */,
 				56CB0ECE2911439B0056EE4C /* AmountTextFieldDelegate.swift */,
-				56CB0ED1291AB7190056EE4C /* CustomCollectionCell.swift */,
 			);
 			path = AddNewOperations;
 			sourceTree = "<group>";
@@ -108,9 +114,23 @@
 				5627960328EC3C54004BF7B7 /* TabBarViewController.swift */,
 				5627960528EC3CDB004BF7B7 /* SettingsViewController.swift */,
 				5618DF792906AADA00F951D2 /* OperationsTableView.swift */,
-				5618DF7B2906AE2400F951D2 /* CustomCell.swift */,
+				5618DF7B2906AE2400F951D2 /* HomeCustomCell.swift */,
 			);
 			path = CoinTail;
+			sourceTree = "<group>";
+		};
+		56727B3729264A1400E2CC43 /* PopViewController */ = {
+			isa = PBXGroup;
+			children = (
+				56727B33292413BA00E2CC43 /* CategoriesActions.swift */,
+				56727B352924197000E2CC43 /* AddNewCategoryPopVC.swift */,
+				56CB0ED1291AB7190056EE4C /* CustomCollectionCell.swift */,
+				56CB0ECC290AB0980056EE4C /* CategoriesCollectionView.swift */,
+				56CB0EC8290A94080056EE4C /* SelectCategoryVC.swift */,
+				56727B3829267ECA00E2CC43 /* CategoriesFuncs.swift */,
+				56727B3A292790E400E2CC43 /* PopVCCollectionView.swift */,
+			);
+			path = PopViewController;
 			sourceTree = "<group>";
 		};
 		56CB0ED0291177950056EE4C /* Resources */ = {
@@ -257,18 +277,22 @@
 				5627960228EC3A16004BF7B7 /* HomeViewController.swift in Sources */,
 				5627960428EC3C54004BF7B7 /* TabBarViewController.swift in Sources */,
 				5618DF85290800BD00F951D2 /* Stacks.swift in Sources */,
-				56CB0EC9290A94080056EE4C /* PopVC.swift in Sources */,
-				56CB0ECB290A941E0056EE4C /* Actions.swift in Sources */,
-				56CB0ECD290AB0980056EE4C /* CategoriesTableView.swift in Sources */,
+				56CB0EC9290A94080056EE4C /* SelectCategoryVC.swift in Sources */,
+				56CB0ECB290A941E0056EE4C /* AddNewOpActions.swift in Sources */,
+				56CB0ECD290AB0980056EE4C /* CategoriesCollectionView.swift in Sources */,
 				562795EF28EC34BA004BF7B7 /* AppDelegate.swift in Sources */,
 				5618DF7E2906AEC700F951D2 /* AddNewOperationVC.swift in Sources */,
 				5627960628EC3CDB004BF7B7 /* SettingsViewController.swift in Sources */,
-				5618DF7C2906AE2400F951D2 /* CustomCell.swift in Sources */,
+				5618DF7C2906AE2400F951D2 /* HomeCustomCell.swift in Sources */,
 				56CB0ECF2911439B0056EE4C /* AmountTextFieldDelegate.swift in Sources */,
+				56727B34292413BA00E2CC43 /* CategoriesActions.swift in Sources */,
 				56CB0ED2291AB7190056EE4C /* CustomCollectionCell.swift in Sources */,
 				5618DF7A2906AADA00F951D2 /* OperationsTableView.swift in Sources */,
 				5618DF802906B7C200F951D2 /* SetFuncs.swift in Sources */,
+				56727B362924197000E2CC43 /* AddNewCategoryPopVC.swift in Sources */,
+				56727B3B292790E400E2CC43 /* PopVCCollectionView.swift in Sources */,
 				5618DF872908014E00F951D2 /* StacksFunc.swift in Sources */,
+				56727B3929267ECA00E2CC43 /* CategoriesFuncs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
