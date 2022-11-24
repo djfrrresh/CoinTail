@@ -35,7 +35,7 @@ class AddNewOperationVC: UIViewController, СategorySendTextImage {
     // SWITCH
     let switchButton: UISegmentedControl = {
         let switcher = UISegmentedControl(items: ["Income", "Expense"])
-        switcher.selectedSegmentIndex = 1
+        switcher.selectedSegmentIndex = 0
         return switcher
     }()
     

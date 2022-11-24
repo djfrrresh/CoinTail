@@ -17,11 +17,11 @@
 		562795EF28EC34BA004BF7B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562795EE28EC34BA004BF7B7 /* AppDelegate.swift */; };
 		562795F828EC34BA004BF7B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 562795F728EC34BA004BF7B7 /* Assets.xcassets */; };
 		562795FB28EC34BA004BF7B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 562795F928EC34BA004BF7B7 /* LaunchScreen.storyboard */; };
-		5627960228EC3A16004BF7B7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562795F228EC34BA004BF7B7 /* HomeViewController.swift */; };
-		5627960428EC3C54004BF7B7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5627960328EC3C54004BF7B7 /* TabBarViewController.swift */; };
-		5627960628EC3CDB004BF7B7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5627960528EC3CDB004BF7B7 /* SettingsViewController.swift */; };
+		5627960228EC3A16004BF7B7 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562795F228EC34BA004BF7B7 /* HomeVC.swift */; };
+		5627960428EC3C54004BF7B7 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5627960328EC3C54004BF7B7 /* TabBarVC.swift */; };
+		5627960628EC3CDB004BF7B7 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5627960528EC3CDB004BF7B7 /* SettingsVC.swift */; };
 		56727B34292413BA00E2CC43 /* CategoriesActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56727B33292413BA00E2CC43 /* CategoriesActions.swift */; };
-		56727B362924197000E2CC43 /* AddNewCategoryPopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56727B352924197000E2CC43 /* AddNewCategoryPopVC.swift */; };
+		56727B362924197000E2CC43 /* AddNewCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56727B352924197000E2CC43 /* AddNewCategoryVC.swift */; };
 		56727B3929267ECA00E2CC43 /* CategoriesFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56727B3829267ECA00E2CC43 /* CategoriesFuncs.swift */; };
 		56727B3B292790E400E2CC43 /* PopVCCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56727B3A292790E400E2CC43 /* PopVCCollectionView.swift */; };
 		56CB0EC9290A94080056EE4C /* SelectCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0EC8290A94080056EE4C /* SelectCategoryVC.swift */; };
@@ -43,14 +43,14 @@
 		5618DF862908014E00F951D2 /* StacksFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StacksFunc.swift; sourceTree = "<group>"; };
 		562795EB28EC34BA004BF7B7 /* CoinTail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinTail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		562795EE28EC34BA004BF7B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		562795F228EC34BA004BF7B7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		562795F228EC34BA004BF7B7 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		562795F728EC34BA004BF7B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		562795FA28EC34BA004BF7B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		562795FC28EC34BA004BF7B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5627960328EC3C54004BF7B7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		5627960528EC3CDB004BF7B7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		5627960328EC3C54004BF7B7 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		5627960528EC3CDB004BF7B7 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		56727B33292413BA00E2CC43 /* CategoriesActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesActions.swift; sourceTree = "<group>"; };
-		56727B352924197000E2CC43 /* AddNewCategoryPopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCategoryPopVC.swift; sourceTree = "<group>"; };
+		56727B352924197000E2CC43 /* AddNewCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCategoryVC.swift; sourceTree = "<group>"; };
 		56727B3829267ECA00E2CC43 /* CategoriesFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesFuncs.swift; sourceTree = "<group>"; };
 		56727B3A292790E400E2CC43 /* PopVCCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopVCCollectionView.swift; sourceTree = "<group>"; };
 		56CB0EC8290A94080056EE4C /* SelectCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryVC.swift; sourceTree = "<group>"; };
@@ -75,9 +75,8 @@
 		5618DF812906B80C00F951D2 /* AddNewOperations */ = {
 			isa = PBXGroup;
 			children = (
-				56727B3729264A1400E2CC43 /* PopViewController */,
+				56727B3729264A1400E2CC43 /* PopView */,
 				5618DF7F2906B7C200F951D2 /* SetFuncs.swift */,
-				5618DF7D2906AEC700F951D2 /* AddNewOperationVC.swift */,
 				5618DF84290800BD00F951D2 /* Stacks.swift */,
 				5618DF862908014E00F951D2 /* StacksFunc.swift */,
 				56CB0ECA290A941E0056EE4C /* AddNewOpActions.swift */,
@@ -107,30 +106,47 @@
 		562795ED28EC34BA004BF7B7 /* CoinTail */ = {
 			isa = PBXGroup;
 			children = (
+				56727B3C292CD7F500E2CC43 /* Controllers */,
+				56727B3D292CD86500E2CC43 /* CustomCells */,
 				56CB0ED0291177950056EE4C /* Resources */,
 				5618DF812906B80C00F951D2 /* AddNewOperations */,
 				562795EE28EC34BA004BF7B7 /* AppDelegate.swift */,
-				562795F228EC34BA004BF7B7 /* HomeViewController.swift */,
-				5627960328EC3C54004BF7B7 /* TabBarViewController.swift */,
-				5627960528EC3CDB004BF7B7 /* SettingsViewController.swift */,
 				5618DF792906AADA00F951D2 /* OperationsTableView.swift */,
-				5618DF7B2906AE2400F951D2 /* HomeCustomCell.swift */,
 			);
 			path = CoinTail;
 			sourceTree = "<group>";
 		};
-		56727B3729264A1400E2CC43 /* PopViewController */ = {
+		56727B3729264A1400E2CC43 /* PopView */ = {
 			isa = PBXGroup;
 			children = (
 				56727B33292413BA00E2CC43 /* CategoriesActions.swift */,
-				56727B352924197000E2CC43 /* AddNewCategoryPopVC.swift */,
-				56CB0ED1291AB7190056EE4C /* CustomCollectionCell.swift */,
 				56CB0ECC290AB0980056EE4C /* CategoriesCollectionView.swift */,
-				56CB0EC8290A94080056EE4C /* SelectCategoryVC.swift */,
 				56727B3829267ECA00E2CC43 /* CategoriesFuncs.swift */,
 				56727B3A292790E400E2CC43 /* PopVCCollectionView.swift */,
 			);
-			path = PopViewController;
+			path = PopView;
+			sourceTree = "<group>";
+		};
+		56727B3C292CD7F500E2CC43 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				56727B352924197000E2CC43 /* AddNewCategoryVC.swift */,
+				56CB0EC8290A94080056EE4C /* SelectCategoryVC.swift */,
+				562795F228EC34BA004BF7B7 /* HomeVC.swift */,
+				5618DF7D2906AEC700F951D2 /* AddNewOperationVC.swift */,
+				5627960328EC3C54004BF7B7 /* TabBarVC.swift */,
+				5627960528EC3CDB004BF7B7 /* SettingsVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		56727B3D292CD86500E2CC43 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				56CB0ED1291AB7190056EE4C /* CustomCollectionCell.swift */,
+				5618DF7B2906AE2400F951D2 /* HomeCustomCell.swift */,
+			);
+			path = CustomCells;
 			sourceTree = "<group>";
 		};
 		56CB0ED0291177950056EE4C /* Resources */ = {
@@ -274,22 +290,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5627960228EC3A16004BF7B7 /* HomeViewController.swift in Sources */,
-				5627960428EC3C54004BF7B7 /* TabBarViewController.swift in Sources */,
+				5627960228EC3A16004BF7B7 /* HomeVC.swift in Sources */,
+				5627960428EC3C54004BF7B7 /* TabBarVC.swift in Sources */,
 				5618DF85290800BD00F951D2 /* Stacks.swift in Sources */,
 				56CB0EC9290A94080056EE4C /* SelectCategoryVC.swift in Sources */,
 				56CB0ECB290A941E0056EE4C /* AddNewOpActions.swift in Sources */,
 				56CB0ECD290AB0980056EE4C /* CategoriesCollectionView.swift in Sources */,
 				562795EF28EC34BA004BF7B7 /* AppDelegate.swift in Sources */,
 				5618DF7E2906AEC700F951D2 /* AddNewOperationVC.swift in Sources */,
-				5627960628EC3CDB004BF7B7 /* SettingsViewController.swift in Sources */,
+				5627960628EC3CDB004BF7B7 /* SettingsVC.swift in Sources */,
 				5618DF7C2906AE2400F951D2 /* HomeCustomCell.swift in Sources */,
 				56CB0ECF2911439B0056EE4C /* AmountTextFieldDelegate.swift in Sources */,
 				56727B34292413BA00E2CC43 /* CategoriesActions.swift in Sources */,
 				56CB0ED2291AB7190056EE4C /* CustomCollectionCell.swift in Sources */,
 				5618DF7A2906AADA00F951D2 /* OperationsTableView.swift in Sources */,
 				5618DF802906B7C200F951D2 /* SetFuncs.swift in Sources */,
-				56727B362924197000E2CC43 /* AddNewCategoryPopVC.swift in Sources */,
+				56727B362924197000E2CC43 /* AddNewCategoryVC.swift in Sources */,
 				56727B3B292790E400E2CC43 /* PopVCCollectionView.swift in Sources */,
 				5618DF872908014E00F951D2 /* StacksFunc.swift in Sources */,
 				56727B3929267ECA00E2CC43 /* CategoriesFuncs.swift in Sources */,

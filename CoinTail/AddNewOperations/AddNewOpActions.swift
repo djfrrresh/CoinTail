@@ -62,10 +62,14 @@ extension AddNewOperationVC {
                 self.present(alert, animated: true, completion: nil)
             }
             else { // Отправка данных в HomeViewController
+                var dateText = self.dateTextField.text!
+                if (dateText.contains("Today")) {
+                    dateText = dateText.replacingOccurrences(of: "Today, ", with: "")
+                }
+                addNewOpDelegate?.sendDate(dateText: dateText)
                 addNewOpDelegate?.sendAmount(amountText: self.amountTextField.text!)
                 addNewOpDelegate?.sendDescription(descriptionText: self.descriptionTextField.text!)
                 addNewOpDelegate?.sendCategoryButtonText(categoryText: self.categoryButton.titleLabel!.text!)
-                addNewOpDelegate?.sendDate(dateText: self.dateTextField.text!)
                 addNewOpDelegate?.sendCategoryImage(categoryImage: self.categoryImage)
                 
                 homeViewController.addRowToEnd() // homeViewController ссылается на функцию addRowToEnd
@@ -101,5 +105,20 @@ extension AddNewOperationVC {
     @objc func switchButtonAction(target: UISegmentedControl) {
         let segmentTitle = target.titleForSegment(at: target.selectedSegmentIndex)!
         print("changed segment => \(segmentTitle)")
+        
+        switch segmentTitle {
+            case "Expense":
+            self.amountTextField.text = "-0.00"
+            break
+            case "Income":
+            self.amountTextField.text = "0.00"
+            break
+            default:
+                fatalError("undefined segment")
+        }
+    }
+    
+    @objc func changeAmountValue() {
+        
     }
 }

@@ -53,7 +53,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource, AddNew
     
     // Добавление ячеек по 1 снизу
     func addRowToEnd() {
-        self.cellArr.append("aaa") // Добавление в массив нового элемента
+        self.cellArr.append(dateText) // Добавление в массив нового элемента
         self.tableView.insertRows(at: [IndexPath(row: self.cellArr.count - 1, section: 0)], with: .automatic) // + 1 элемент
     }
     
@@ -63,11 +63,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource, AddNew
         return cellArr.count
     }
     
+    func setUpDate() {
+        
+    }
+    
     // Ячейки заполняются
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCustomCell", for: indexPath) as? CustomCell
-        
+                
         let image = UIImage(systemName: categoryImage)
         cell!.dateLabel.text = dateText
         cell!.amountLabel.text = ("Amount: \(amountText)")
@@ -87,7 +91,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource, AddNew
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
-      }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return dateText
+    }
+
+    func sortByDate() {
+        
+    }
     
     // Функция удаления и редактирования ячеек из таблицы
 //    func tableView(_ tableView: UITableView,
