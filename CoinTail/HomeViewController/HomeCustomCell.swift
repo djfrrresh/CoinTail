@@ -64,7 +64,7 @@ class CustomCell: UITableViewCell {
         
         categoryImage.easy.layout([Height(60), Width(60), Left(4), CenterY()])
         amountLabel.easy.layout([Height(30), Left(10).to(categoryImage), Top(10)])
-        categoryLabel.easy.layout([Height(30), Left(20).to(categoryImage), Bottom(10)])
+        categoryLabel.easy.layout([Height(30), Left(10).to(categoryImage), Bottom(10)])
         descriptionLabel.easy.layout([Height(30), Width(120), Right(4), Top(10)])
     }
     

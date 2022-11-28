@@ -34,50 +34,47 @@ extension AddNewOperationVC {
         self.view.endEditing(true)
     }
     
-        @objc func saveButtonAction(sender: AnyObject) {
-            let amount = Double(amountTextField.text!)
-            let categoryText = categoryButton.titleLabel!.text!
-            
-            // Проверка поля Amount и текста из кнопки категории на наличие данных в них
-            func checkValues(_ title: String, _ message: String) -> UIAlertController {
-                let emptyValueMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                return emptyValueMessage
+    @objc func saveButtonAction(sender: AnyObject) {
+        guard let amount = Float(amountTextField.text!) else { fatalError("invalid amount \(String(describing: amountTextField.text))")}
+        let categoryText = categoryButton.titleLabel!.text!
+        
+        // Проверка поля Amount и текста из кнопки категории на наличие данных в них
+        func checkValues(_ title: String, _ message: String) -> UIAlertController {
+            let emptyValueMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            return emptyValueMessage
+        }
+        
+        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in } )
+        
+        if amount == 0.00 && categoryText == "Select category" {
+            let alert = checkValues("Error", "Missing value in amount field and no category selected")
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+        }
+        else if (amount == 0.00) {
+            let alert = checkValues("Error", "Missing value in amount field")
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+        }
+        else if (categoryText == "Select category") {
+            let alert = checkValues("Error", "No category selected")
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+        }
+        else { // Отправка данных в HomeViewController
+            var dateText = self.dateTextField.text!
+            if (dateText.contains("Today")) {
+                dateText = dateText.replacingOccurrences(of: "Today, ", with: "")
             }
             
-            let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in } )
+            guard let segment = switchButton.titleForSegment(at: switchButton.selectedSegmentIndex) else { return }
             
-            if ((amount == 0.00 || amount == nil) && categoryText == "Select category") {
-                let alert = checkValues("Error", "Missing value in amount field and no category selected")
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
-            }
-            else if (amount == 0.00 || amount == nil) {
-                let alert = checkValues("Error", "Missing value in amount field")
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
-            }
-            else if (categoryText == "Select category") {
-                let alert = checkValues("Error", "No category selected")
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
-            }
-            else { // Отправка данных в HomeViewController
-                var dateText = self.dateTextField.text!
-                if (dateText.contains("Today")) {
-                    dateText = dateText.replacingOccurrences(of: "Today, ", with: "")
-                }
-                addNewOpDelegate?.sendDate(dateText: dateText)
-                addNewOpDelegate?.sendAmount(amountText: self.amountTextField.text!)
-                addNewOpDelegate?.sendDescription(descriptionText: self.descriptionTextField.text!)
-                addNewOpDelegate?.sendCategoryButtonText(categoryText: self.categoryButton.titleLabel!.text!)
-                addNewOpDelegate?.sendCategoryImage(categoryImage: self.categoryImage)
-                
-                homeViewController.addRowToEnd() // homeViewController ссылается на функцию addRowToEnd
-                // Если написать HomeViewController().addRowToEnd(), то я создам новый объект
-                // Теперь я обращаюсь к старому объекту (функции)
-                
-                self.navigationController?.popToRootViewController(animated: true) // Закрыть AddNewOperationVC
-            }
+            addNewOpDelegate?.sendNewOperation(amount: amount, description: descriptionTextField.text!, category: categoryButton.titleLabel!.text!, image: categoryImage, date: datePicker.date, switcher: segment)
+            // Если написать HomeViewController().addRowToEnd(), то я создам новый объект
+            // Теперь я обращаюсь к старому объекту (функции)
+            
+            self.navigationController?.popToRootViewController(animated: true) // Закрыть AddNewOperationVC
+        }
     }
     
     @objc func categoryButtonAction() {
@@ -108,17 +105,13 @@ extension AddNewOperationVC {
         
         switch segmentTitle {
             case "Expense":
-            self.amountTextField.text = "-0.00"
+                self.amountTextField.text = "-0.00"
             break
             case "Income":
-            self.amountTextField.text = "0.00"
+                self.amountTextField.text = "0.00"
             break
             default:
                 fatalError("undefined segment")
         }
-    }
-    
-    @objc func changeAmountValue() {
-        
     }
 }

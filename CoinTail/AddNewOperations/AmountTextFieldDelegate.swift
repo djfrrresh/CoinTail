@@ -15,13 +15,15 @@ extension AddNewOperationVC: UITextFieldDelegate {
         // Принимаемые значения для текстового поля Amount
         let allowedCharactersSet = CharacterSet(charactersIn: ".123456790")
         let typedCharacterSet = CharacterSet(charactersIn: string)
-
-        guard let textFieldString = textField.text, let range = Range(range, in: textFieldString) else {
+        
+        // Проверка на тип вводимого значения
+        guard allowedCharactersSet.isSuperset(of: typedCharacterSet), let textFieldString = textField.text, let range = Range(range, in: textFieldString) else {
             return false
         }
 
         let newString = textFieldString.replacingCharacters(in: range, with: string)
         let charactersCount = String(textFieldString).count
+        
         let allowedCharacters = allowedCharactersSet.isSuperset(of: typedCharacterSet)
         
         let segment = switchButton.titleForSegment(at: switchButton.selectedSegmentIndex)

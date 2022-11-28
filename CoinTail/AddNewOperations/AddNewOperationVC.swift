@@ -10,6 +10,18 @@ import EasyPeasy
 
 // Указываем название протокола из AddNewOperationPopVC
 class AddNewOperationVC: UIViewController, СategorySendTextImage {
+    
+    // Ссылка на HomeViewController, на объекты внутри него
+    let homeViewController: HomeViewController
+    // Инициализация переменной homeViewController
+    init(homeViewController: HomeViewController) {
+        self.homeViewController = homeViewController
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // Вызываем функцию из протокола и делаем всякое
     func sendCategory(category: String) {
         categoryButton.setTitle(category, for: .normal) // Меняет текст выбранной категории в кнопке
@@ -84,22 +96,12 @@ class AddNewOperationVC: UIViewController, СategorySendTextImage {
     // DATE
     let datePicker: UIDatePicker = {
         let picker = UIDatePicker()
-        picker.timeZone = NSTimeZone.local
+//        picker.timeZone = NSTimeZone.local
+        picker.locale = Locale(identifier: "en_EU_POSIX")
         picker.datePickerMode = .date
         picker.preferredDatePickerStyle = .wheels
         return picker
     }()
-    
-    // Ссылка на HomeViewController, на объекты внутри него
-    let homeViewController: HomeViewController
-    // Инициализация переменной homeViewController
-    init(homeViewController: HomeViewController) {
-        self.homeViewController = homeViewController
-        super.init(nibName: nil, bundle: nil)
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,9 +132,5 @@ class AddNewOperationVC: UIViewController, СategorySendTextImage {
 
 // Протокол отправки всех введенных значений операции
 protocol AddNewOpSendData: AnyObject {
-    func sendCategoryButtonText(categoryText: String)
-    func sendCategoryImage(categoryImage: String)
-    func sendAmount(amountText: String)
-    func sendDescription(descriptionText: String)
-    func sendDate(dateText: String)
+    func sendNewOperation(amount: Float, description: String, category: String, image: String, date: Date, switcher: String)
 }
