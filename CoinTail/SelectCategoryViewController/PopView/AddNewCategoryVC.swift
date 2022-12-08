@@ -49,7 +49,7 @@ class CustomPopVC: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.gray.withAlphaComponent(0.85)
+//        self.view.backgroundColor = UIColor.gray.withAlphaComponent(0.85)
         
         addButton.addTarget(self, action: #selector(addNewItem), for: .touchUpInside)
         setObjectsSettings() // Настройки для элементов

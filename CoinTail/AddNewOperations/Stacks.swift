@@ -19,29 +19,32 @@ extension AddNewOperationVC {
         
         // AMOUNT
         setLabel(label: amountLabel, text: "Amount")
-        setTextField(textField: amountTextField, text: "Enter your value", background: .lightGray.withAlphaComponent(0.2), keyboard: .decimalPad, default_text: "0.00")
+        setTextField(textField: amountTextField, text: "Enter your value", background: .lightGray.withAlphaComponent(0.2), keyboard: .decimalPad)
         setUniqueStack(stack: amountStack, view_1: amountLabel, view_2: amountTextField)
         
+//        setAmountNubLabel(label: amountNumLabel, labelText: amountTextField.text ?? "0.0")
+
         // DESCRIPTION
         setLabel(label: descriptionLabel, text: "Description")
-        setTextField(textField: descriptionTextField, text: "For example: Bought in the store", background: .clear, keyboard: .default, default_text: nil)
+        setTextField(textField: descriptionTextField, text: "For example: Bought in the store", background: .clear, keyboard: .default)
         setUniqueStack(stack: descriptionStack, view_1: descriptionLabel, view_2: descriptionTextField)
         
         // DATE
         setLabel(label: dateLabel, text: "Date")
         setDatePickerTextField(textField: dateTextField, picker: datePicker)
         setUniqueStack(stack: dateStack, view_1: dateLabel, view_2: dateTextField)
+        // Для кнопки
 //        setDatePickerButton(button: dateButton, picker: datePicker)
 //        setUniqueStack(stack: dateStack, view_1: dateLabel, view_2: dateButton)
         
         // CATEGORY
-        setButton(button: categoryButton, text: "Select category", background: .clear, textColor: .black)
+        setButton(button: categoryButton, background: .clear, textColor: .black)
         
         // SAVE
-        setButton(button: saveButton, text: "Save operation", background: .black, textColor: .white)
+        setButton(button: saveButton, background: .black, textColor: .white)
         // SWITCH
         setSwitchButton(switcher: switchButton)
-        
+                
         let categoryAmountStack = UIStackView()
         categoryAmountStack.axis = .vertical
         categoryAmountStack.spacing = 16
@@ -60,7 +63,7 @@ extension AddNewOperationVC {
         finalStack.axis = .vertical
         finalStack.alignment = .fill // Выравнивание 
         finalStack.distribution = .equalCentering // Заполнение
-        finalStack.spacing = 102
+        finalStack.spacing = 70
         finalStack.addArrangedSubview(preFinalStack)
         finalStack.addArrangedSubview(saveButton)
         view.addSubview(finalStack)

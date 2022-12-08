@@ -15,6 +15,7 @@ extension AddNewOperationVC: UITextFieldDelegate {
         // Принимаемые значения для текстового поля Amount
         let allowedCharactersSet = CharacterSet(charactersIn: ".123456790")
         let typedCharacterSet = CharacterSet(charactersIn: string)
+        let allowedCharacters = allowedCharactersSet.isSuperset(of: typedCharacterSet)
         
         // Проверка на тип вводимого значения
         guard allowedCharactersSet.isSuperset(of: typedCharacterSet), let textFieldString = textField.text, let range = Range(range, in: textFieldString) else {
@@ -22,22 +23,21 @@ extension AddNewOperationVC: UITextFieldDelegate {
         }
 
         let newString = textFieldString.replacingCharacters(in: range, with: string)
+        
         let charactersCount = String(textFieldString).count
-        
-        let allowedCharacters = allowedCharactersSet.isSuperset(of: typedCharacterSet)
-        
+            
         let segment = switchButton.titleForSegment(at: switchButton.selectedSegmentIndex)
-        
         var textString: String?
      
         switch segment {
         case "Expense":
-            textString = "-0.00"
+            textString = "-0.0"
             break
         case "Income":
-            textString = "0.00"
+            textString = "0.0"
             break
-        default: break
+        default:
+            break
         }
         
         if newString.isEmpty {
@@ -51,21 +51,44 @@ extension AddNewOperationVC: UITextFieldDelegate {
             textField.text = string
             return false
         }
-        // Позволяет ставить не более 1 точки
+
+        // Возвращает допустимые значения для строки
+        // Длину общей строки не более 8 символов
+        // Длину строки после запятой
+        // Количество точек
+        return maxNumAfterComma(textFieldString: textFieldString) && maxDots(textFieldString: textFieldString, string: string) && allowedCharacters && charactersCount <= 8
+    }
+    
+    // Позволяет ставить не более 1 точки
+    func maxDots(textFieldString: String, string: String) -> Bool {
         if string == "." {
-            let countdots = textField.text!.components(separatedBy:".").count - 1
+            let countdots = textFieldString.components(separatedBy:".").count - 1
+
             if countdots == 0 {
                 return true
             } else {
                 if countdots > 0 && string == "." {
                     return false
-                } else {
-                    return true
                 }
             }
         }
+        return true
+    }
+    
+    // Позволяет ввести не более 2 цифр после точки
+    func maxNumAfterComma(textFieldString: String) -> Bool {
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 2
+        formatter.roundingMode = .up
         
-        // Возвращает допустимые значения и длину строки не более 8 символов
-        return allowedCharacters && charactersCount <= 8
+        let floatSplit = textFieldString.split(separator: ".")
+
+        if floatSplit.count > 1 {
+            let numAfterComma = floatSplit[1]
+            if numAfterComma.count > 1 {
+                return false
+            }
+        }
+        return true
     }
 }

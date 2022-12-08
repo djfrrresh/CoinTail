@@ -9,43 +9,7 @@ import UIKit
 import EasyPeasy
 
 
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource, AddNewOpSendData {
-    func sendNewOperation(amount: Float, description: String, category: String,
-                          image: String, date: Date, switcher: String) {
-        print("Category: \(category)")        
-        print("Amount: \(amount)")
-        print("Description: \(description)")
-        print("Date: \(date)")
-        print("Image: \(image)")
-        print("Switcher: \(switcher)")
-        
-        if (switcher == "Income") {
-            balanceStruct.balanceScore += amount
-            balanceStruct.incomeBalanceScore += amount
-        } else if (switcher == "Expense") {
-            balanceStruct.balanceScore -= amount
-            balanceStruct.expenseBalanceScore += amount
-        }
-                
-        self.cellArr.append(Record(amount: amount, descriptionText: description, categoryText: category, categoryImage: image, date: date)) // Добавление в массив нового элемента
-        self.tableView.insertRows(at: [IndexPath(row: self.cellArr.count - 1, section: 0)], with: .automatic) // + 1 элемент
-    }
-    
-    
-    func setTableView() {
-        self.view.addSubview(self.tableView)
-        self.tableView.register(CustomCell.self, forCellReuseIdentifier: "HomeCustomCell")
-        self.tableView.delegate = self // Реагирование на события
-        self.tableView.dataSource = self // Здесь подаются данные
-        
-        self.tableView.easy.layout([
-            Left(0),
-            Right(0),
-            Height(400),
-            CenterX(0),
-            Bottom(0)
-        ])
-    }
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
     // Задается количество ячеек
     func tableView(_ tableView: UITableView,
@@ -77,15 +41,18 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource, AddNew
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
-        print("Cell \(indexPath.row + 1) tapped")
         
-        print("Selected Value: \(cellArr[indexPath.row])")
+        print("Selected Id: \(cellArr[indexPath.row].id)")
+        
+//        print("Array: \(cellArr[indexPath.row])")
     }
     
+    // Высота ячейки
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
     }
     
+    // Удаление и редактирование ячейки
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         // Удаление ячейки
         let deleteAction = UIContextualAction(style: .destructive, title: nil) { (_, _, completionHandler) in
@@ -103,14 +70,31 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource, AddNew
         deleteAction.image = UIImage(systemName: "trash")
         deleteAction.backgroundColor = .systemRed
         
+        // Переход в AddNewOperationVC для редактирования
         let editAction = UIContextualAction(style: .normal, title: nil) { (_, _, completionHandler) in
-
-            let editCellInfo = AddNewOperationVC(homeViewController: self)
             let index = self.cellArr[indexPath.row]
-            editCellInfo.descriptionTextField.text = String(index.amount)
-            let navController = UINavigationController(rootViewController: editCellInfo)
+            let editCellInfo = AddNewOperationVC(homeViewController: self, operationID: index.id)
+                                    
+            editCellInfo.amountTextField.text = String(index.amount)
+            editCellInfo.descriptionTextField.text = String(index.descriptionText)
+            editCellInfo.categoryButton.setTitle(index.categoryText, for: .normal)
+            editCellInfo.saveButton.setTitle("Edit operation", for: .normal)
+            editCellInfo.sendCategoryImage(categoryImage: index.categoryImage)
+
+            // Проверка сегодняшней даты
+            self.checkToDay(date: index.date, textField: editCellInfo.dateTextField)
+            
+            // Сохраняет выбранный тип операции
+            guard let segment = editCellInfo.switchButton.titleForSegment(at: editCellInfo.switchButton.selectedSegmentIndex) else { return }
+            if segment == "Expense" {
+                editCellInfo.switchButton.selectedSegmentIndex = 1
+            } else {
+                editCellInfo.switchButton.selectedSegmentIndex = 0
+            }
+            
             editCellInfo.navigationItem.title = "Editing cell"
-            self.present(navController, animated: true, completion: nil)
+            editCellInfo.addNewOpDelegate = self // Связь с контроллером, откуда передаются данные
+            self.navigationController?.pushViewController(editCellInfo, animated: true)
         }
         
         editAction.image = UIImage(systemName: "square.and.pencil")

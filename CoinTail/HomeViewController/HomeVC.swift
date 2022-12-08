@@ -15,6 +15,7 @@ struct Record {
     var categoryText: String = ""
     var categoryImage: String = ""
     var date: Date
+    var id: Int
 }
 
 struct Balance {
@@ -47,17 +48,17 @@ class HomeViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = .black
     }
     
-    
     func setBalanceText(label: UILabel, fontSize: CGFloat, text: String) {
         label.font = .systemFont(ofSize: fontSize)
         label.text = text
+        label.numberOfLines = 0
         view.addSubview(label)
     }
     
     func setBalance() {
-        setBalanceText(label: balanceLabel, fontSize: 30, text: "Your Balance: \(balanceStruct.balanceScore)")
-        setBalanceText(label: incomeBalanceLabel, fontSize: 20, text: "Your Income: \(balanceStruct.incomeBalanceScore)")
-        setBalanceText(label: expenseBalanceLabel, fontSize: 20, text: "Your Expense: \(balanceStruct.expenseBalanceScore)")
+        setBalanceText(label: balanceLabel, fontSize: 30, text: "Balance: \(balanceStruct.balanceScore)")
+        setBalanceText(label: incomeBalanceLabel, fontSize: 30, text: "+ \(balanceStruct.incomeBalanceScore)")
+        setBalanceText(label: expenseBalanceLabel, fontSize: 30, text: "- \(balanceStruct.expenseBalanceScore)")
         
         balanceLabel.easy.layout(Top(20).to(view.safeAreaLayoutGuide, .top), CenterX(0))
         incomeBalanceLabel.easy.layout(Top(50).to(balanceLabel, .top), Left(16))
@@ -92,9 +93,10 @@ class HomeViewController: UIViewController {
     
     // Переход на VC с добавлением операции
     @objc func AddNewOperation() {
-        let vc = AddNewOperationVC(homeViewController: self)
+        let vc = AddNewOperationVC(homeViewController: self, operationID: nil)
         vc.addNewOpDelegate = self // Связь с контроллером, откуда передаются данные
         
+        vc.title = "Add a new operation"
         navigationController?.pushViewController(vc, animated: true)
     }
 
