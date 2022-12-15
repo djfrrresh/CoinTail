@@ -7,97 +7,77 @@
 
 import UIKit
 import EasyPeasy
+import Charts
 
 
 struct Record {
-    var amount: Float
+    var amount: Double
     var descriptionText: String = ""
     var categoryText: String = ""
     var categoryImage: String = ""
     var date: Date
     var id: Int
-}
-
-struct Balance {
-    var balanceScore: Float = 0 // Общий баланс
-    var incomeBalanceScore: Float = 0 // Пополнения
-    var expenseBalanceScore: Float = 0 // Траты
+    var type: RecordType
 }
 
 class HomeViewController: UIViewController {
     
     // Переменная, задающая таблицы
     let tableView = UITableView()
-    // Массив таблицы, содержимое которого выводим в ячейках, принимает значения из структуры
-    var cellArr = [Record]()
+    // Круговая диаграмма, показывающая наглядно сумму операций
+    var pieChart = PieChartView()
+    
+    var entries: [ChartDataEntry] = [] // Массив записей в диаграмме
 
     let balanceLabel = UILabel()
     let incomeBalanceLabel = UILabel()
     let expenseBalanceLabel = UILabel()
     
-    var balanceStruct = Balance()
+    let noTransactionlabel = UILabel(text: "No Transaction Yet!", alignment: .center)
+    let addTransactionLabel = UILabel(text: "Add a transaction ", alignment: .center)
+    
+    let switchButton: UISegmentedControl = {
+        let switcher = UISegmentedControl(items: [RecordType.income.rawValue, RecordType.expense.rawValue])
+        switcher.selectedSegmentIndex = 0
+        return switcher
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.configureItems() // Кнопка "+"
-        
+                        
         self.view.backgroundColor = .white
         self.title = "Home"
                                                                         
         self.navigationController?.navigationBar.tintColor = .black
-    }
-    
-    func setBalanceText(label: UILabel, fontSize: CGFloat, text: String) {
-        label.font = .systemFont(ofSize: fontSize)
-        label.text = text
-        label.numberOfLines = 0
-        view.addSubview(label)
-    }
-    
-    func setBalance() {
-        setBalanceText(label: balanceLabel, fontSize: 30, text: "Balance: \(balanceStruct.balanceScore)")
-        setBalanceText(label: incomeBalanceLabel, fontSize: 30, text: "+ \(balanceStruct.incomeBalanceScore)")
-        setBalanceText(label: expenseBalanceLabel, fontSize: 30, text: "- \(balanceStruct.expenseBalanceScore)")
         
-        balanceLabel.easy.layout(Top(20).to(view.safeAreaLayoutGuide, .top), CenterX(0))
-        incomeBalanceLabel.easy.layout(Top(50).to(balanceLabel, .top), Left(16))
-        expenseBalanceLabel.easy.layout(Top(50).to(balanceLabel, .top), Right(16))
+        // При добавлении addtarget у кнопок и свитчеров появляется UIControl, который работает всегда, как только кнопка / свитчер добавляется на экран
+        self.switchButton.addTarget(self, action: #selector(switchButtonAction), for: .valueChanged)
+        
+        self.view.addSubview(noTransactionlabel)
+        self.view.addSubview(addTransactionLabel)
+        self.noTransactionlabel.easy.layout(CenterX(), Top(100))
+        self.addTransactionLabel.easy.layout(Top(150), CenterX(), Width(200))
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.configureItems() // Кнопка "+"
         self.setTableView() // Настройки для таблицы
-        self.setBalance()
-        self.filteredArray()
+        self.setChartView() // Настройки для диаграммы
+        self.filterArray() // Сортировка массива в таблице
+        self.setStack() // Стаки с расположением объектов на экране
+        self.setChart() // Вывод данных на диаграмму
     }
     
-    // Отсортировать массив по дате
-    func filteredArray() {
-        self.cellArr.sort { l, r in
-            print(l, r)
-            return l.date < r.date
-        }
-        self.tableView.reloadData()
-    }
-    
-    // Кнопка "Добавить" в углу экрана
-    private func configureItems() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector (AddNewOperation)
-        )
-    }
-    
-    // Переход на VC с добавлением операции
-    @objc func AddNewOperation() {
-        let vc = AddNewOperationVC(homeViewController: self, operationID: nil)
-        vc.addNewOpDelegate = self // Связь с контроллером, откуда передаются данные
+    // viewDidLayoutSubviews используется для изменений с констреинтами и визуальной частью
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
-        vc.title = "Add a new operation"
-        navigationController?.pushViewController(vc, animated: true)
+        self.emptyData() // Вывод сообщения о добавлении операции, если таблица пустая
     }
-
+    
+    var currentSegmentType: RecordType {
+        return RecordType(rawValue: switchButton.titleForSegment(at: switchButton.selectedSegmentIndex)!)!
+    }
 }

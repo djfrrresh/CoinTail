@@ -43,7 +43,7 @@ extension AddNewOperationVC {
     }
     
     @objc func saveButtonAction(sender: AnyObject) {
-        guard let amount = Float(amountTextField.text!) else { fatalError("invalid amount \(String(describing: amountTextField.text))")}
+        guard let amount = Double(amountTextField.text!) else { fatalError("invalid amount \(String(describing: amountTextField.text))")}
         let categoryText = categoryButton.titleLabel!.text!
 
         // Проверка поля Amount и текста из кнопки категории на наличие данных в них
@@ -52,19 +52,18 @@ extension AddNewOperationVC {
     
     @objc func categoryButtonAction() {
         // Заполнить следующий контроллер категориями в зависимости от выбранного типа операции
-        guard let segment = switchButton.titleForSegment(at: switchButton.selectedSegmentIndex) else { return }
+        guard let segment = switchButton.titleForSegment(at: switchButton.selectedSegmentIndex),
+              let type = RecordType(rawValue: segment) else { return }
      
-        switch segment {
-            case "Expense":
-                categories = self.expenseCategories
-                categoryImages = self.expenseImages
-                break
-            case "Income":
-                categories = self.incomeCategories
-                categoryImages = self.incomeImages
-                break
-            default:
-                fatalError("undefined segment")
+        switch type {
+        case .expense:
+            categories = self.expenseCategories
+            categoryImages = self.expenseImages
+            break
+        case .income:
+            categories = self.incomeCategories
+            categoryImages = self.incomeImages
+            break
         }
                     
         let vc = AddNewOperationPopVC(self.categories, self.categoryImages) // Передаем название и иконки
@@ -74,21 +73,8 @@ extension AddNewOperationVC {
     }
     
     @objc func switchButtonAction(target: UISegmentedControl) {
-        let segmentTitle = target.titleForSegment(at: target.selectedSegmentIndex)!
-        
-        switch segmentTitle {
-            case "Expense":
-            let amount = Float(amountTextField.text!)
-                self.amountTextField.text = String(-(amount ?? -0.0))
-                self.categoryButton.setTitle("Select category", for: .normal)
-            break
-            case "Income":
-            let amount = Float(amountTextField.text!)
-                self.amountTextField.text = String(abs(amount  ?? 0.0));
-                self.categoryButton.setTitle("Select category", for: .normal)
-            break
-            default:
-                fatalError("undefined segment")
-        }
+        let amount = Double(amountTextField.text!)
+        self.amountTextField.text = String(abs(amount ?? 0.0));
+        self.categoryButton.setTitle(AddNewOperationVC.defaultCategory, for: .normal)
     }
 }

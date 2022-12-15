@@ -12,6 +12,7 @@ import UIKit
 extension AddNewOperationVC: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard !string.isEmpty else { return true }
         // Принимаемые значения для текстового поля Amount
         let allowedCharactersSet = CharacterSet(charactersIn: ".123456790")
         let typedCharacterSet = CharacterSet(charactersIn: string)
@@ -26,19 +27,11 @@ extension AddNewOperationVC: UITextFieldDelegate {
         
         let charactersCount = String(textFieldString).count
             
-        let segment = switchButton.titleForSegment(at: switchButton.selectedSegmentIndex)
+        let segment = switchButton.titleForSegment(at: switchButton.selectedSegmentIndex)!
+        let type = RecordType(rawValue: segment)!
         var textString: String?
      
-        switch segment {
-        case "Expense":
-            textString = "-0.0"
-            break
-        case "Income":
-            textString = "0.0"
-            break
-        default:
-            break
-        }
+        textString = "0.0"
         
         if newString.isEmpty {
             textField.text = textString

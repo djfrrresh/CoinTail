@@ -7,6 +7,7 @@
 
 import UIKit
 import EasyPeasy
+import Charts
 
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -14,7 +15,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     // Задается количество ячеек
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return cellArr.count
+        Storage.shared.records[currentSegmentType]?.count ?? 0
     }
 
     // Ячейки заполняются
@@ -22,7 +23,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCustomCell", for: indexPath) as? CustomCell
         
-        let record = cellArr[indexPath.row]
+        let record = Storage.shared.records[currentSegmentType]![indexPath.row]
         let image = UIImage(systemName: record.categoryImage)
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
@@ -42,9 +43,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                    didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
         
-        print("Selected Id: \(cellArr[indexPath.row].id)")
-        
-//        print("Array: \(cellArr[indexPath.row])")
+        print("Selected Id: \(Storage.shared.records[currentSegmentType]![indexPath.row].id)")     
     }
     
     // Высота ячейки
@@ -55,25 +54,24 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     // Удаление и редактирование ячейки
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         // Удаление ячейки
-        let deleteAction = UIContextualAction(style: .destructive, title: nil) { (_, _, completionHandler) in
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) { [self] (_, _, completionHandler) in
             
-            print("Deleted Value: \(self.cellArr[indexPath.row].amount)")
-            
-            // Не обновляется общий баланс
-            self.balanceStruct.balanceScore -= self.cellArr[indexPath.row].amount
+            print("Deleted Value: \(Storage.shared.records[currentSegmentType]![indexPath.row].amount)")
 
-            self.cellArr.remove(at: indexPath.row)
+            Storage.shared.records[currentSegmentType]!.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
                         
-            print("Balance: \(self.balanceStruct.balanceScore)")
+            print("Balance: \(Storage.shared.balance(nil))")
+            
+            self.setChart() // Обновление диаграммы после удаления ячейки
         }
         deleteAction.image = UIImage(systemName: "trash")
         deleteAction.backgroundColor = .systemRed
         
         // Переход в AddNewOperationVC для редактирования
-        let editAction = UIContextualAction(style: .normal, title: nil) { (_, _, completionHandler) in
-            let index = self.cellArr[indexPath.row]
-            let editCellInfo = AddNewOperationVC(homeViewController: self, operationID: index.id)
+        let editAction = UIContextualAction(style: .normal, title: nil) { [self] (_, _, completionHandler) in
+            let index = Storage.shared.records[currentSegmentType]![indexPath.row]
+            let editCellInfo = AddNewOperationVC(homeViewController: self, operationID: index.id, segmentIndex: switchButton.selectedSegmentIndex)
                                     
             editCellInfo.amountTextField.text = String(index.amount)
             editCellInfo.descriptionTextField.text = String(index.descriptionText)
@@ -85,10 +83,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             self.checkToDay(date: index.date, textField: editCellInfo.dateTextField)
             
             // Сохраняет выбранный тип операции
-            guard let segment = editCellInfo.switchButton.titleForSegment(at: editCellInfo.switchButton.selectedSegmentIndex) else { return }
-            if segment == "Expense" {
+            switch currentSegmentType {
+            case .expense:
                 editCellInfo.switchButton.selectedSegmentIndex = 1
-            } else {
+            case .income:
                 editCellInfo.switchButton.selectedSegmentIndex = 0
             }
             

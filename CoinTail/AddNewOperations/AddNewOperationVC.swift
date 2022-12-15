@@ -18,18 +18,14 @@ class AddNewOperationVC: UIViewController, СategorySendTextImage {
     let homeViewController: HomeViewController
     // Инициализация переменных homeViewController и operationID
     // Если написать HomeViewController().funcName(), то я создам новый объект / метод
-    init(homeViewController: HomeViewController, operationID: Int?) {
+    public required init(homeViewController: HomeViewController, operationID: Int? = nil, segmentIndex: Int) {
         self.homeViewController = homeViewController
         self.operationID = operationID
         super.init(nibName: nil, bundle: nil)
+        switchButton.selectedSegmentIndex = segmentIndex
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    // Вызываем функцию из протокола
-    func sendCategory(category: String) {
-        categoryButton.setTitle(category, for: .normal) // Меняет текст выбранной категории в кнопке
     }
     
     weak var addNewOpDelegate: AddNewOpSendData?
@@ -52,8 +48,7 @@ class AddNewOperationVC: UIViewController, СategorySendTextImage {
     
     // SWITCH
     let switchButton: UISegmentedControl = {
-        let switcher = UISegmentedControl(items: ["Income", "Expense"])
-        switcher.selectedSegmentIndex = 0
+        let switcher = UISegmentedControl(items: [RecordType.income.rawValue, RecordType.expense.rawValue])
         return switcher
     }()
     
@@ -77,13 +72,14 @@ class AddNewOperationVC: UIViewController, СategorySendTextImage {
     
     // TEXTFIELDS
     let amountTextField: UITextField = {
-        let textField = UITextField(default_text: "0.0")
+        let textField = UITextField(defaultText: "0.0")
         return textField
     }()
     let descriptionTextField: UITextField = {
-        let textField = UITextField(default_text: "")
+        let textField = UITextField(defaultText: "")
         return textField
     }()
+    
     let dateTextField: UITextField = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
@@ -91,13 +87,14 @@ class AddNewOperationVC: UIViewController, СategorySendTextImage {
         dateFormatter.dateFormat = "dd/MM/yyyy"
         let toDay = Date()
 
-        let textField  = UITextField(default_text: "Today \(dateFormatter.string(from: toDay))")
+        let textField  = UITextField(defaultText: "Today \(dateFormatter.string(from: toDay))")
         return textField
     }()
     
     // BUTTONS
+    static let defaultCategory = "Select category"
     let categoryButton: UIButton = {
-        let button = UIButton(name: "Select category")
+        let button = UIButton(name: defaultCategory)
         return button
     }()
     let saveButton: UIButton = {
@@ -127,18 +124,10 @@ class AddNewOperationVC: UIViewController, СategorySendTextImage {
 
         self.navigationController?.navigationBar.tintColor = .black
         
-        self.saveButton.addTarget(self,
-                         action: #selector(saveButtonAction),
-                         for: .touchUpInside)
-        self.categoryButton.addTarget(self,
-                         action: #selector(categoryButtonAction),
-                         for: .touchUpInside)
-        self.switchButton.addTarget(self,
-                         action: #selector(switchButtonAction),
-                         for: .valueChanged)
-//        self.dateButton.addTarget(self,
-//                         action: #selector(createToolbarAction),
-//                         for: .touchUpInside)
+        self.saveButton.addTarget(self, action: #selector(saveButtonAction), for: .touchUpInside)
+        self.categoryButton.addTarget(self, action: #selector(categoryButtonAction), for: .touchUpInside)
+        self.switchButton.addTarget(self, action: #selector(switchButtonAction), for: .valueChanged)
+//        self.dateButton.addTarget(self, action: #selector(createToolbarAction), for: .touchUpInside)
         
         amountTextField.delegate = self
         
@@ -148,5 +137,5 @@ class AddNewOperationVC: UIViewController, СategorySendTextImage {
 
 // Протокол отправки всех введенных значений операции
 protocol AddNewOpSendData: AnyObject {
-    func sendNewOperation(id: Int?, amount: Float, description: String, category: String, image: String, date: Date, switcher: String)
+    func sendNewOperation(id: Int?, amount: Double, description: String, category: String, image: String, date: Date, switcher: String, type: RecordType)
 }

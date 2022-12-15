@@ -32,6 +32,10 @@
 		56EF3726293687B90046EFCD /* UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF3725293687B90046EFCD /* UIKit.swift */; };
 		56EF3728293FAA3B0046EFCD /* HomeTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF3727293FAA3B0046EFCD /* HomeTableViewDelegate.swift */; };
 		56EF372C29421DF20046EFCD /* HomeFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF372B29421DF20046EFCD /* HomeFuncs.swift */; };
+		56EF37302945361E0046EFCD /* HomeVCActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF372F2945361E0046EFCD /* HomeVCActions.swift */; };
+		56EF3732294891B70046EFCD /* OperationsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF3731294891B70046EFCD /* OperationsChartView.swift */; };
+		56EF37342948F0400046EFCD /* HomeStacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF37332948F0400046EFCD /* HomeStacks.swift */; };
+		56EF3737294BA5AE0046EFCD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF3736294BA5AE0046EFCD /* Data.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +68,10 @@
 		56EF3725293687B90046EFCD /* UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKit.swift; sourceTree = "<group>"; };
 		56EF3727293FAA3B0046EFCD /* HomeTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewDelegate.swift; sourceTree = "<group>"; };
 		56EF372B29421DF20046EFCD /* HomeFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFuncs.swift; sourceTree = "<group>"; };
+		56EF372F2945361E0046EFCD /* HomeVCActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCActions.swift; sourceTree = "<group>"; };
+		56EF3731294891B70046EFCD /* OperationsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsChartView.swift; sourceTree = "<group>"; };
+		56EF37332948F0400046EFCD /* HomeStacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStacks.swift; sourceTree = "<group>"; };
+		56EF3736294BA5AE0046EFCD /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +120,7 @@
 		562795ED28EC34BA004BF7B7 /* CoinTail */ = {
 			isa = PBXGroup;
 			children = (
+				56EF3735294BA59B0046EFCD /* Storage */,
 				56EF3724293687910046EFCD /* Extensions */,
 				56EF3723293257B00046EFCD /* SelectCategoryViewController */,
 				56EF37222932572E0046EFCD /* TabBarViewController */,
@@ -149,11 +158,14 @@
 		56EF3720293256B40046EFCD /* HomeViewController */ = {
 			isa = PBXGroup;
 			children = (
-				5618DF792906AADA00F951D2 /* OperationsTableView.swift */,
-				5618DF7B2906AE2400F951D2 /* HomeCustomCell.swift */,
 				562795F228EC34BA004BF7B7 /* HomeVC.swift */,
+				5618DF792906AADA00F951D2 /* OperationsTableView.swift */,
+				56EF3731294891B70046EFCD /* OperationsChartView.swift */,
+				5618DF7B2906AE2400F951D2 /* HomeCustomCell.swift */,
 				56EF3727293FAA3B0046EFCD /* HomeTableViewDelegate.swift */,
 				56EF372B29421DF20046EFCD /* HomeFuncs.swift */,
+				56EF372F2945361E0046EFCD /* HomeVCActions.swift */,
+				56EF37332948F0400046EFCD /* HomeStacks.swift */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";
@@ -190,6 +202,14 @@
 				56EF3725293687B90046EFCD /* UIKit.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		56EF3735294BA59B0046EFCD /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				56EF3736294BA5AE0046EFCD /* Data.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		BB35F5536C49DCEBCEAE42F9 /* Frameworks */ = {
@@ -328,12 +348,14 @@
 				5627960428EC3C54004BF7B7 /* TabBarVC.swift in Sources */,
 				5618DF85290800BD00F951D2 /* Stacks.swift in Sources */,
 				56CB0EC9290A94080056EE4C /* SelectCategoryVC.swift in Sources */,
+				56EF37302945361E0046EFCD /* HomeVCActions.swift in Sources */,
 				56CB0ECB290A941E0056EE4C /* AddNewOpActions.swift in Sources */,
 				56CB0ECD290AB0980056EE4C /* CategoriesCollectionView.swift in Sources */,
 				562795EF28EC34BA004BF7B7 /* AppDelegate.swift in Sources */,
 				56EF372C29421DF20046EFCD /* HomeFuncs.swift in Sources */,
 				5618DF7E2906AEC700F951D2 /* AddNewOperationVC.swift in Sources */,
 				5627960628EC3CDB004BF7B7 /* SettingsVC.swift in Sources */,
+				56EF37342948F0400046EFCD /* HomeStacks.swift in Sources */,
 				5618DF7C2906AE2400F951D2 /* HomeCustomCell.swift in Sources */,
 				56CB0ECF2911439B0056EE4C /* AmountTextFieldDelegate.swift in Sources */,
 				56727B34292413BA00E2CC43 /* CategoriesActions.swift in Sources */,
@@ -342,7 +364,9 @@
 				5618DF802906B7C200F951D2 /* SetUIFuncs.swift in Sources */,
 				56727B362924197000E2CC43 /* AddNewCategoryVC.swift in Sources */,
 				56EF3728293FAA3B0046EFCD /* HomeTableViewDelegate.swift in Sources */,
+				56EF3737294BA5AE0046EFCD /* Data.swift in Sources */,
 				56727B3B292790E400E2CC43 /* PopVCCollectionView.swift in Sources */,
+				56EF3732294891B70046EFCD /* OperationsChartView.swift in Sources */,
 				5618DF872908014E00F951D2 /* AddNewOperationFuncs.swift in Sources */,
 				56727B3929267ECA00E2CC43 /* CategoriesFuncs.swift in Sources */,
 			);

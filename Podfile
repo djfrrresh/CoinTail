@@ -6,5 +6,6 @@ target 'CoinTail' do
   use_frameworks!
 
   pod "EasyPeasy"
+  pod "Charts"
 
 end

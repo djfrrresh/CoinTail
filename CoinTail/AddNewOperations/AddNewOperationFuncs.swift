@@ -31,10 +31,10 @@ extension AddNewOperationVC {
     }
     
     // Проверка поля Amount и текста из кнопки категории на наличие данных в них
-    func checkAmountCategory(amount: Float, categoryText: String) {
+    func checkAmountCategory(amount: Double, categoryText: String) {
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in } )
 
-        if (abs(amount) == 0.0 && categoryText == "Select category") {
+        if (abs(amount) == 0.0 && categoryText == AddNewOperationVC.defaultCategory) {
             let alert = checkValues("Error", "Missing value in amount field and no category selected")
             alert.addAction(ok)
             self.present(alert, animated: true, completion: nil)
@@ -44,7 +44,7 @@ extension AddNewOperationVC {
             alert.addAction(ok)
             self.present(alert, animated: true, completion: nil)
         }
-        else if (categoryText == "Select category") {
+        else if (categoryText == AddNewOperationVC.defaultCategory) {
             let alert = checkValues("Error", "No category selected")
             alert.addAction(ok)
             self.present(alert, animated: true, completion: nil)
@@ -57,9 +57,10 @@ extension AddNewOperationVC {
                 dateText = dateText.replacingOccurrences(of: "Today, ", with: "")
             }
             
-            guard let segment = switchButton.titleForSegment(at: switchButton.selectedSegmentIndex) else { return }
+            guard let segment = switchButton.titleForSegment(at: switchButton.selectedSegmentIndex),
+                  let type = RecordType(rawValue: segment) else { return }
 
-            addNewOpDelegate?.sendNewOperation(id: operationID, amount: abs(amount), description: descriptionTextField.text!, category: categoryButton.titleLabel!.text!, image: categoryImage, date: datePicker.date, switcher: segment)
+            addNewOpDelegate?.sendNewOperation(id: operationID, amount: abs(amount), description: descriptionTextField.text!, category: categoryButton.titleLabel!.text!, image: categoryImage, date: datePicker.date, switcher: segment, type: type)
             
             self.navigationController?.popToRootViewController(animated: true) // Закрыть AddNewOperationVC
         }
@@ -69,6 +70,11 @@ extension AddNewOperationVC {
     func checkValues(_ title: String, _ message: String) -> UIAlertController {
         let emptyValueMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
         return emptyValueMessage
+    }
+    
+    // Вызываем функцию из протокола
+    func sendCategory(category: String) {
+        categoryButton.setTitle(category, for: .normal) // Меняет текст выбранной категории в кнопке
     }
     
 }

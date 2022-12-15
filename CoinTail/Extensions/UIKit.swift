@@ -15,8 +15,19 @@ extension UIButton {
     }
 }
 extension UITextField {
-    convenience init(default_text: String) {
+    convenience init(defaultText: String) {
         self.init()
-        self.text = default_text
+        self.text = defaultText
+    }
+}
+
+extension UILabel {
+    convenience init(text: String, alignment: NSTextAlignment = .left) {
+        self.init()
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.text = text
+        self.textColor = .black
+        self.textAlignment = alignment
+        self.adjustsFontSizeToFitWidth = true
     }
 }
