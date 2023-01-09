@@ -9,7 +9,7 @@ The main stack i'm focus on is here:
 * Delegates ✅
 * Custom UI ✅
 
-<img width="275" alt="Screenshot 2023-01-09" src="[https://user-images.githubusercontent.com/74953662/145541659-7eb41f0c-f478-4ca0-9081-be8763dfe275.png](https://user-images.githubusercontent.com/118223099/211383594-5364322c-6ebf-4433-a4f1-eb7f59b838f1.png)">
+<img width="275" alt="Screenshot 2023-01-09" src="https://user-images.githubusercontent.com/118223099/211383594-5364322c-6ebf-4433-a4f1-eb7f59b838f1.png">
 
 ![2023-01-09 at 22 37 11](https://user-images.githubusercontent.com/118223099/211383765-22bc3b42-e470-4be1-9cba-7fa5f8f145f7.png)
 
