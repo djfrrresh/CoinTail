@@ -1,4 +1,4 @@
-# CoinTail
+# CoinTail | Swift Mobile App
 
 It's my first pet project on Swift that allows controlling budget. 
 The main stack i'm focus on is here:
@@ -8,6 +8,8 @@ The main stack i'm focus on is here:
 * CocoaPods ✅
 * Delegates ✅
 * Custom UI ✅
+
+## Screenshots
 
 <img width="300" alt="Screenshot 2023-01-09 v1" src="https://user-images.githubusercontent.com/118223099/211383594-5364322c-6ebf-4433-a4f1-eb7f59b838f1.png">
 
