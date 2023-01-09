@@ -7,9 +7,9 @@
 
 import UIKit
 import EasyPeasy
-import Charts
 
 
+// Структура ячейки для массива с ними
 struct Record {
     var amount: Double
     var descriptionText: String = ""
@@ -20,64 +20,101 @@ struct Record {
     var type: RecordType
 }
 
-class HomeViewController: UIViewController {
+// UIViewController согласно шаблону проектирования MVC обеспечивает взаимосвязь модели (Controller) и представления (View)
+class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // Переменная, задающая таблицы
     let tableView = UITableView()
-    // Круговая диаграмма, показывающая наглядно сумму операций
-    var pieChart = PieChartView()
     
-    var entries: [ChartDataEntry] = [] // Массив записей в диаграмме
-
+    weak var pieChartDelegate: HomeVCSendData?
+        
+    // Возвращает текущий выбранный тип
+    var currentSegmentType: RecordType {
+        return RecordType(rawValue: switchButton.titleForSegment(at: switchButton.selectedSegmentIndex)!)!
+    }
+    
     let balanceLabel = UILabel()
     let incomeBalanceLabel = UILabel()
     let expenseBalanceLabel = UILabel()
     
-    let noTransactionlabel = UILabel(text: "No Transaction Yet!", alignment: .center)
-    let addTransactionLabel = UILabel(text: "Add a transaction ", alignment: .center)
+    var operationIsEmpty = UILabel()
     
+    var operationName: String?
+    
+    let noTransactionlabel = UILabel(text: """
+No Transaction Yet.
+Add first transaction
+""", alignment: .center)
+    
+    let balanceView = UIView()
+    let incomeView = UIView()
+    let expenceView = UIView()
+        
+    let addTransactionButton: UIButton = {
+        let button = UIButton(name: "Add transaction")
+        return button
+    }()
+    let chartViewButton: UIButton = {
+        let button = UIButton(name: "Pie Chart")
+        return button
+    }()
     let switchButton: UISegmentedControl = {
         let switcher = UISegmentedControl(items: [RecordType.income.rawValue, RecordType.expense.rawValue])
         switcher.selectedSegmentIndex = 0
         return switcher
     }()
-
+    
+    var progressView: UIView = {
+       let view = UIView()
+        view.layer.cornerRadius = 8
+        view.layer.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
+        view.layer.borderWidth = 1
+        view.layer.masksToBounds = true
+        view.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        return view
+    }()
+    
+    // viewDidLoad вызывается только при первой загрузке контроллера представления — после этого оно остается в памяти
     override func viewDidLoad() {
         super.viewDidLoad()
                         
         self.view.backgroundColor = .white
         self.title = "Home"
-                                                                        
+                                                                                
         self.navigationController?.navigationBar.tintColor = .black
         
-        // При добавлении addtarget у кнопок и свитчеров появляется UIControl, который работает всегда, как только кнопка / свитчер добавляется на экран
-        self.switchButton.addTarget(self, action: #selector(switchButtonAction), for: .valueChanged)
+        self.noTransactionlabel.numberOfLines = 0
+        self.operationIsEmpty.numberOfLines = 0
         
-        self.view.addSubview(noTransactionlabel)
-        self.view.addSubview(addTransactionLabel)
-        self.noTransactionlabel.easy.layout(CenterX(), Top(100))
-        self.addTransactionLabel.easy.layout(Top(150), CenterX(), Width(200))
+        self.configureItems() // Кнопка "+"
+        self.buttonTargets() // Таргеты для кнопок
+        self.subviews() // Отображение и размеры вьюшек
+        
+        // Привязка функций кнопки к UIView
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.pieChartAction))
+        progressView.addGestureRecognizer(tap)
+        
+        view.bringSubviewToFront(addTransactionButton)
     }
     
+    // Если нужно обновить содержимое в контроллере представления, используется viewWillAppear
+    // Так как он вызывается каждый раз, когда появляется представление
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.configureItems() // Кнопка "+"
         self.setTableView() // Настройки для таблицы
-        self.setChartView() // Настройки для диаграммы
         self.filterArray() // Сортировка массива в таблице
         self.setStack() // Стаки с расположением объектов на экране
-        self.setChart() // Вывод данных на диаграмму
     }
-    
+
     // viewDidLayoutSubviews используется для изменений с констреинтами и визуальной частью
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         self.emptyData() // Вывод сообщения о добавлении операции, если таблица пустая
     }
-    
-    var currentSegmentType: RecordType {
-        return RecordType(rawValue: switchButton.titleForSegment(at: switchButton.selectedSegmentIndex)!)!
-    }
+}
+
+protocol HomeVCSendData: AnyObject {
+    func sendNewOperation(switchButtonValue: String)
 }

@@ -14,7 +14,7 @@ class TabBarViewController: UITabBarController {
         super.viewDidLoad()
         // Указаные контроллеры будут управляться через TabBar
         let vc1 = HomeViewController()
-        let vc2 = SettingsViewController()
+        let vc2 = SettingsViewController(currencyVC: CurrencyTableVC())
         
         vc1.navigationItem.largeTitleDisplayMode = .always
         vc2.navigationItem.largeTitleDisplayMode = .always

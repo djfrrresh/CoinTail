@@ -9,7 +9,7 @@ import UIKit
 import Charts
 
 
-extension HomeViewController: ChartViewDelegate {
+extension PieChartViewController: ChartViewDelegate {
     
     func configureChart( _ pieChart: PieChartView) {
         pieChart.rotationEnabled = false
@@ -21,6 +21,7 @@ extension HomeViewController: ChartViewDelegate {
         pieChart.holeRadiusPercent = 0.3
         pieChart.transparentCircleRadiusPercent = 0.35
         pieChart.centerText = "Balance"
+        
         let legend: Legend = pieChart.legend // Убрать список записей внизу диаграммы
         legend.enabled = false
     }

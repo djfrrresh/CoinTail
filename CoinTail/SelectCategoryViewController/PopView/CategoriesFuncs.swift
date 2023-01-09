@@ -30,11 +30,11 @@ extension CustomPopVC {
         self.popUpView.addSubview(self.errorLabel)
         self.popUpView.addSubview(self.addButton)
         
-        self.popUpView.easy.layout(CenterX(),CenterY(), Left(20), Right(20), Height(300))
-        self.titleLabel.easy.layout(CenterX(), Top(10))
-        self.categoryTextField.easy.layout(Top(10).to(titleLabel, .bottom), Height(40), Left(20), Right(20))
-        self.errorLabel.easy.layout(Bottom(10).to(addButton, .top), CenterX(), Height(50))
-        self.addButton.easy.layout(Bottom(32), CenterX(), Left(32), Right(16), Height(64))
+        self.popUpView.easy.layout([CenterX(),CenterY(), Left(20), Right(20), Height(300)])
+        self.titleLabel.easy.layout([CenterX(), Top(10)])
+        self.categoryTextField.easy.layout([Top(10).to(titleLabel, .bottom), Height(40), Left(20), Right(20)])
+        self.errorLabel.easy.layout([Bottom(10).to(addButton, .top), CenterX(), Height(50)])
+        self.addButton.easy.layout([Bottom(32), CenterX(), Left(32), Right(16), Height(64)])
     }
     
     // Задать настройки для элементов
@@ -68,8 +68,10 @@ extension CustomPopVC {
         flowLayout.scrollDirection = .horizontal
         
         collectionView = UICollectionView(frame: .infinite, collectionViewLayout: flowLayout)
+        
         guard let collectionView = collectionView else {return}
         collectionView.register(CustomCollectionCell.self, forCellWithReuseIdentifier: CustomCollectionCell.id)
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
@@ -77,8 +79,9 @@ extension CustomPopVC {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.allowsMultipleSelection = false
         collectionView.scrollIndicatorInsets = .zero
+        
         popUpView.addSubview(collectionView)
-        collectionView.easy.layout(Bottom().to(errorLabel, .top), Left(), Right(), Top(10).to(categoryTextField, .bottom))
+        collectionView.easy.layout([Bottom().to(errorLabel, .top), Left(), Right(), Top(10).to(categoryTextField, .bottom)])
     }
     
 }

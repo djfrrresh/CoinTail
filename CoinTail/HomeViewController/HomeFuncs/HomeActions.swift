@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import EasyPeasy
 
 
 extension HomeViewController {
@@ -19,10 +20,26 @@ extension HomeViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc func test() {
+        print("aaa")
+    }
+
+    @objc func pieChartAction() {
+        let pieChartVC = PieChartViewController(homeViewController: self, segmentIndex: switchButton.selectedSegmentIndex)
+        
+        print("segmentType HomeVC: \(self.currentSegmentType.rawValue)")
+        
+        pieChartDelegate?.sendNewOperation(switchButtonValue: self.currentSegmentType.rawValue)
+        
+        self.present(pieChartVC, animated: true, completion: nil)
+    }
+    
     @objc func switchButtonAction(target: UISegmentedControl) {
         print("cellArr: \(Storage.shared.records[currentSegmentType]!)")
+        
+        setEmptyOperationsLabel()
+        
         tableView.reloadData()
-        setChart()
     }
     
 }

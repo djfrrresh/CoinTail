@@ -20,7 +20,6 @@ extension AddNewOperationVC {
         button.layer.borderColor = UIColor.black.cgColor
         
         button.setTitleColor(textColor, for: .normal)
-//        button.setTitle(text, for: .normal)
         
         button.easy.layout([Height(56)])
     }

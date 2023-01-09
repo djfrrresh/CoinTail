@@ -22,8 +22,6 @@ extension AddNewOperationVC {
         setTextField(textField: amountTextField, text: "Enter your value", background: .lightGray.withAlphaComponent(0.2), keyboard: .decimalPad)
         setUniqueStack(stack: amountStack, view_1: amountLabel, view_2: amountTextField)
         
-//        setAmountNubLabel(label: amountNumLabel, labelText: amountTextField.text ?? "0.0")
-
         // DESCRIPTION
         setLabel(label: descriptionLabel, text: "Description")
         setTextField(textField: descriptionTextField, text: "For example: Bought in the store", background: .clear, keyboard: .default)

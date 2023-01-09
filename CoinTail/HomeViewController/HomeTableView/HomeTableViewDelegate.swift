@@ -12,18 +12,25 @@ extension HomeViewController: AddNewOpSendData {
     
     func sendNewOperation(id: Int?, amount: Double, description: String, category: String,
                           image: String, date: Date, switcher: String, type: RecordType) {
+        
         var amount = amount
         if type == .expense && amount > 0 {
             amount *= -1
         }
-        print("Category: \(category)")
-        print("Amount: \(amount)")
-        print("Description: \(description)")
-        print("Date: \(date)")
-        print("Image: \(image)")
-        print("Switcher: \(switcher)")
-        print("ID: \(id ?? 0)")
-        print("Type: \(type)")
+        
+        print("""
+_______________________________
+Category: \(category)
+Amount: \(amount)
+Description: \(description)
+Date: \(date)
+Image: \(image)
+Switcher: \(switcher)
+ID: \(id ?? 0)
+Type: \(type)
+_______________________________
+""")
+        
         // аналогично if id != nil, тут мы распаковываем значение
         if let oldCellId = id {
             // ix это индекс, который возвращается, если имеется совпадение. Вместо $0 стоят searchedRecord

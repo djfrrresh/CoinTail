@@ -42,7 +42,7 @@ class AddNewOperationPopVC: UIViewController {
         self.navigationController?.navigationBar.tintColor = .black
         self.title = "Select category"
         
-        // Размеры и пробелы между иконками категорий
+        // Размеры и расстояние между иконками категорий
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 32
@@ -69,7 +69,7 @@ class AddNewOperationPopVC: UIViewController {
                          for: .touchUpInside)
         
         self.view.addSubview(self.newCategoryButton)
-        self.newCategoryButton.easy.layout(Bottom(20).to(view.safeAreaLayoutGuide, .bottom), Right(20).to(view.safeAreaLayoutGuide, .right), Height(64), Width(64))
+        self.newCategoryButton.easy.layout([Bottom(20).to(view.safeAreaLayoutGuide, .bottom), Right(20).to(view.safeAreaLayoutGuide, .right), Height(64), Width(64)])
     }
     
 }

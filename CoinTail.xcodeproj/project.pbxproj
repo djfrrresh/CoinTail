@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		2ECFB99519B281D33C35ACC6 /* Pods_CoinTail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11468AE1DB9C71E493D3EF5B /* Pods_CoinTail.framework */; };
 		5618DF7A2906AADA00F951D2 /* OperationsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF792906AADA00F951D2 /* OperationsTableView.swift */; };
-		5618DF7C2906AE2400F951D2 /* HomeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF7B2906AE2400F951D2 /* HomeCustomCell.swift */; };
+		5618DF7C2906AE2400F951D2 /* HomeTableCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF7B2906AE2400F951D2 /* HomeTableCustomCell.swift */; };
 		5618DF7E2906AEC700F951D2 /* AddNewOperationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF7D2906AEC700F951D2 /* AddNewOperationVC.swift */; };
 		5618DF802906B7C200F951D2 /* SetUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF7F2906B7C200F951D2 /* SetUIFuncs.swift */; };
-		5618DF85290800BD00F951D2 /* Stacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF84290800BD00F951D2 /* Stacks.swift */; };
-		5618DF872908014E00F951D2 /* AddNewOperationFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF862908014E00F951D2 /* AddNewOperationFuncs.swift */; };
+		5618DF85290800BD00F951D2 /* AddNewOpStacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF84290800BD00F951D2 /* AddNewOpStacks.swift */; };
+		5618DF872908014E00F951D2 /* AddNewOpFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618DF862908014E00F951D2 /* AddNewOpFuncs.swift */; };
 		562795EF28EC34BA004BF7B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562795EE28EC34BA004BF7B7 /* AppDelegate.swift */; };
 		562795F828EC34BA004BF7B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 562795F728EC34BA004BF7B7 /* Assets.xcassets */; };
 		562795FB28EC34BA004BF7B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 562795F928EC34BA004BF7B7 /* LaunchScreen.storyboard */; };
@@ -27,15 +27,21 @@
 		56CB0EC9290A94080056EE4C /* SelectCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0EC8290A94080056EE4C /* SelectCategoryVC.swift */; };
 		56CB0ECB290A941E0056EE4C /* AddNewOpActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0ECA290A941E0056EE4C /* AddNewOpActions.swift */; };
 		56CB0ECD290AB0980056EE4C /* CategoriesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0ECC290AB0980056EE4C /* CategoriesCollectionView.swift */; };
-		56CB0ECF2911439B0056EE4C /* AmountTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0ECE2911439B0056EE4C /* AmountTextFieldDelegate.swift */; };
+		56CB0ECF2911439B0056EE4C /* AmountTFDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0ECE2911439B0056EE4C /* AmountTFDelegate.swift */; };
 		56CB0ED2291AB7190056EE4C /* CustomCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB0ED1291AB7190056EE4C /* CustomCollectionCell.swift */; };
 		56EF3726293687B90046EFCD /* UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF3725293687B90046EFCD /* UIKit.swift */; };
 		56EF3728293FAA3B0046EFCD /* HomeTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF3727293FAA3B0046EFCD /* HomeTableViewDelegate.swift */; };
 		56EF372C29421DF20046EFCD /* HomeFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF372B29421DF20046EFCD /* HomeFuncs.swift */; };
-		56EF37302945361E0046EFCD /* HomeVCActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF372F2945361E0046EFCD /* HomeVCActions.swift */; };
+		56EF37302945361E0046EFCD /* HomeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF372F2945361E0046EFCD /* HomeActions.swift */; };
 		56EF3732294891B70046EFCD /* OperationsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF3731294891B70046EFCD /* OperationsChartView.swift */; };
 		56EF37342948F0400046EFCD /* HomeStacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF37332948F0400046EFCD /* HomeStacks.swift */; };
 		56EF3737294BA5AE0046EFCD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF3736294BA5AE0046EFCD /* Data.swift */; };
+		56EF373C295467530046EFCD /* PieChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF373B295467530046EFCD /* PieChartVC.swift */; };
+		56EF373E2954FC210046EFCD /* PieChartFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF373D2954FC210046EFCD /* PieChartFuncs.swift */; };
+		56EF3740295B0FA60046EFCD /* CurrencyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF373F295B0FA60046EFCD /* CurrencyTableView.swift */; };
+		56EF3742295B10170046EFCD /* GeneralFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF3741295B10170046EFCD /* GeneralFuncs.swift */; };
+		56EF3744295B11660046EFCD /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF3743295B11660046EFCD /* Actions.swift */; };
+		56EF3747295BADDC0046EFCD /* CurrencySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF3746295BADDC0046EFCD /* CurrencySearch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,11 +49,11 @@
 		1EB961520D7A4400C147BA63 /* Pods-CoinTail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinTail.debug.xcconfig"; path = "Target Support Files/Pods-CoinTail/Pods-CoinTail.debug.xcconfig"; sourceTree = "<group>"; };
 		47531E248FAF4C3243B0933C /* Pods-CoinTail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinTail.release.xcconfig"; path = "Target Support Files/Pods-CoinTail/Pods-CoinTail.release.xcconfig"; sourceTree = "<group>"; };
 		5618DF792906AADA00F951D2 /* OperationsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsTableView.swift; sourceTree = "<group>"; };
-		5618DF7B2906AE2400F951D2 /* HomeCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCustomCell.swift; sourceTree = "<group>"; };
+		5618DF7B2906AE2400F951D2 /* HomeTableCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableCustomCell.swift; sourceTree = "<group>"; };
 		5618DF7D2906AEC700F951D2 /* AddNewOperationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewOperationVC.swift; sourceTree = "<group>"; };
 		5618DF7F2906B7C200F951D2 /* SetUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUIFuncs.swift; sourceTree = "<group>"; };
-		5618DF84290800BD00F951D2 /* Stacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stacks.swift; sourceTree = "<group>"; };
-		5618DF862908014E00F951D2 /* AddNewOperationFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewOperationFuncs.swift; sourceTree = "<group>"; };
+		5618DF84290800BD00F951D2 /* AddNewOpStacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewOpStacks.swift; sourceTree = "<group>"; };
+		5618DF862908014E00F951D2 /* AddNewOpFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewOpFuncs.swift; sourceTree = "<group>"; };
 		562795EB28EC34BA004BF7B7 /* CoinTail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinTail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		562795EE28EC34BA004BF7B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		562795F228EC34BA004BF7B7 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -63,15 +69,21 @@
 		56CB0EC8290A94080056EE4C /* SelectCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryVC.swift; sourceTree = "<group>"; };
 		56CB0ECA290A941E0056EE4C /* AddNewOpActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewOpActions.swift; sourceTree = "<group>"; };
 		56CB0ECC290AB0980056EE4C /* CategoriesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionView.swift; sourceTree = "<group>"; };
-		56CB0ECE2911439B0056EE4C /* AmountTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTextFieldDelegate.swift; sourceTree = "<group>"; };
+		56CB0ECE2911439B0056EE4C /* AmountTFDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTFDelegate.swift; sourceTree = "<group>"; };
 		56CB0ED1291AB7190056EE4C /* CustomCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionCell.swift; sourceTree = "<group>"; };
 		56EF3725293687B90046EFCD /* UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKit.swift; sourceTree = "<group>"; };
 		56EF3727293FAA3B0046EFCD /* HomeTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewDelegate.swift; sourceTree = "<group>"; };
 		56EF372B29421DF20046EFCD /* HomeFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFuncs.swift; sourceTree = "<group>"; };
-		56EF372F2945361E0046EFCD /* HomeVCActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCActions.swift; sourceTree = "<group>"; };
+		56EF372F2945361E0046EFCD /* HomeActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeActions.swift; sourceTree = "<group>"; };
 		56EF3731294891B70046EFCD /* OperationsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsChartView.swift; sourceTree = "<group>"; };
 		56EF37332948F0400046EFCD /* HomeStacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStacks.swift; sourceTree = "<group>"; };
 		56EF3736294BA5AE0046EFCD /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		56EF373B295467530046EFCD /* PieChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartVC.swift; sourceTree = "<group>"; };
+		56EF373D2954FC210046EFCD /* PieChartFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartFuncs.swift; sourceTree = "<group>"; };
+		56EF373F295B0FA60046EFCD /* CurrencyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableView.swift; sourceTree = "<group>"; };
+		56EF3741295B10170046EFCD /* GeneralFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralFuncs.swift; sourceTree = "<group>"; };
+		56EF3743295B11660046EFCD /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
+		56EF3746295BADDC0046EFCD /* CurrencySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySearch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,12 +101,8 @@
 		5618DF812906B80C00F951D2 /* AddNewOperations */ = {
 			isa = PBXGroup;
 			children = (
+				56EF374F295DCA720046EFCD /* AddNewOpFuncs */,
 				5618DF7D2906AEC700F951D2 /* AddNewOperationVC.swift */,
-				5618DF7F2906B7C200F951D2 /* SetUIFuncs.swift */,
-				5618DF84290800BD00F951D2 /* Stacks.swift */,
-				5618DF862908014E00F951D2 /* AddNewOperationFuncs.swift */,
-				56CB0ECA290A941E0056EE4C /* AddNewOpActions.swift */,
-				56CB0ECE2911439B0056EE4C /* AmountTextFieldDelegate.swift */,
 			);
 			path = AddNewOperations;
 			sourceTree = "<group>";
@@ -120,6 +128,7 @@
 		562795ED28EC34BA004BF7B7 /* CoinTail */ = {
 			isa = PBXGroup;
 			children = (
+				56EF373A295466770046EFCD /* PieChartViewController */,
 				56EF3735294BA59B0046EFCD /* Storage */,
 				56EF3724293687910046EFCD /* Extensions */,
 				56EF3723293257B00046EFCD /* SelectCategoryViewController */,
@@ -128,7 +137,6 @@
 				56EF3720293256B40046EFCD /* HomeViewController */,
 				56CB0ED0291177950056EE4C /* Resources */,
 				5618DF812906B80C00F951D2 /* AddNewOperations */,
-				562795EE28EC34BA004BF7B7 /* AppDelegate.swift */,
 			);
 			path = CoinTail;
 			sourceTree = "<group>";
@@ -136,10 +144,9 @@
 		56727B3729264A1400E2CC43 /* PopView */ = {
 			isa = PBXGroup;
 			children = (
-				56727B33292413BA00E2CC43 /* CategoriesActions.swift */,
+				56727B352924197000E2CC43 /* AddNewCategoryVC.swift */,
 				56CB0ECC290AB0980056EE4C /* CategoriesCollectionView.swift */,
 				56727B3829267ECA00E2CC43 /* CategoriesFuncs.swift */,
-				56727B352924197000E2CC43 /* AddNewCategoryVC.swift */,
 				56727B3A292790E400E2CC43 /* PopVCCollectionView.swift */,
 			);
 			path = PopView;
@@ -148,6 +155,7 @@
 		56CB0ED0291177950056EE4C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				562795EE28EC34BA004BF7B7 /* AppDelegate.swift */,
 				562795F928EC34BA004BF7B7 /* LaunchScreen.storyboard */,
 				562795F728EC34BA004BF7B7 /* Assets.xcassets */,
 				562795FC28EC34BA004BF7B7 /* Info.plist */,
@@ -158,14 +166,9 @@
 		56EF3720293256B40046EFCD /* HomeViewController */ = {
 			isa = PBXGroup;
 			children = (
+				56EF3750295DCAF50046EFCD /* HomeFuncs */,
+				56EF37382951E3870046EFCD /* HomeTableView */,
 				562795F228EC34BA004BF7B7 /* HomeVC.swift */,
-				5618DF792906AADA00F951D2 /* OperationsTableView.swift */,
-				56EF3731294891B70046EFCD /* OperationsChartView.swift */,
-				5618DF7B2906AE2400F951D2 /* HomeCustomCell.swift */,
-				56EF3727293FAA3B0046EFCD /* HomeTableViewDelegate.swift */,
-				56EF372B29421DF20046EFCD /* HomeFuncs.swift */,
-				56EF372F2945361E0046EFCD /* HomeVCActions.swift */,
-				56EF37332948F0400046EFCD /* HomeStacks.swift */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";
@@ -173,6 +176,8 @@
 		56EF37212932570E0046EFCD /* SettingsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				56EF3752295DCB970046EFCD /* CurrencyTableView */,
+				56EF3751295DCB7B0046EFCD /* Funcs */,
 				5627960528EC3CDB004BF7B7 /* SettingsVC.swift */,
 			);
 			path = SettingsViewController;
@@ -191,6 +196,7 @@
 			children = (
 				56727B3729264A1400E2CC43 /* PopView */,
 				56CB0ED1291AB7190056EE4C /* CustomCollectionCell.swift */,
+				56727B33292413BA00E2CC43 /* CategoriesActions.swift */,
 				56CB0EC8290A94080056EE4C /* SelectCategoryVC.swift */,
 			);
 			path = SelectCategoryViewController;
@@ -210,6 +216,74 @@
 				56EF3736294BA5AE0046EFCD /* Data.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		56EF37382951E3870046EFCD /* HomeTableView */ = {
+			isa = PBXGroup;
+			children = (
+				5618DF792906AADA00F951D2 /* OperationsTableView.swift */,
+				5618DF7B2906AE2400F951D2 /* HomeTableCustomCell.swift */,
+				56EF3727293FAA3B0046EFCD /* HomeTableViewDelegate.swift */,
+			);
+			path = HomeTableView;
+			sourceTree = "<group>";
+		};
+		56EF37392951E3B40046EFCD /* PieChartView */ = {
+			isa = PBXGroup;
+			children = (
+				56EF3731294891B70046EFCD /* OperationsChartView.swift */,
+			);
+			path = PieChartView;
+			sourceTree = "<group>";
+		};
+		56EF373A295466770046EFCD /* PieChartViewController */ = {
+			isa = PBXGroup;
+			children = (
+				56EF37392951E3B40046EFCD /* PieChartView */,
+				56EF373B295467530046EFCD /* PieChartVC.swift */,
+				56EF373D2954FC210046EFCD /* PieChartFuncs.swift */,
+			);
+			path = PieChartViewController;
+			sourceTree = "<group>";
+		};
+		56EF374F295DCA720046EFCD /* AddNewOpFuncs */ = {
+			isa = PBXGroup;
+			children = (
+				56CB0ECE2911439B0056EE4C /* AmountTFDelegate.swift */,
+				5618DF862908014E00F951D2 /* AddNewOpFuncs.swift */,
+				5618DF7F2906B7C200F951D2 /* SetUIFuncs.swift */,
+				56CB0ECA290A941E0056EE4C /* AddNewOpActions.swift */,
+				5618DF84290800BD00F951D2 /* AddNewOpStacks.swift */,
+			);
+			path = AddNewOpFuncs;
+			sourceTree = "<group>";
+		};
+		56EF3750295DCAF50046EFCD /* HomeFuncs */ = {
+			isa = PBXGroup;
+			children = (
+				56EF37332948F0400046EFCD /* HomeStacks.swift */,
+				56EF372F2945361E0046EFCD /* HomeActions.swift */,
+				56EF372B29421DF20046EFCD /* HomeFuncs.swift */,
+			);
+			path = HomeFuncs;
+			sourceTree = "<group>";
+		};
+		56EF3751295DCB7B0046EFCD /* Funcs */ = {
+			isa = PBXGroup;
+			children = (
+				56EF3741295B10170046EFCD /* GeneralFuncs.swift */,
+				56EF3743295B11660046EFCD /* Actions.swift */,
+			);
+			path = Funcs;
+			sourceTree = "<group>";
+		};
+		56EF3752295DCB970046EFCD /* CurrencyTableView */ = {
+			isa = PBXGroup;
+			children = (
+				56EF373F295B0FA60046EFCD /* CurrencyTableView.swift */,
+				56EF3746295BADDC0046EFCD /* CurrencySearch.swift */,
+			);
+			path = CurrencyTableView;
 			sourceTree = "<group>";
 		};
 		BB35F5536C49DCEBCEAE42F9 /* Frameworks */ = {
@@ -346,18 +420,22 @@
 				56EF3726293687B90046EFCD /* UIKit.swift in Sources */,
 				5627960228EC3A16004BF7B7 /* HomeVC.swift in Sources */,
 				5627960428EC3C54004BF7B7 /* TabBarVC.swift in Sources */,
-				5618DF85290800BD00F951D2 /* Stacks.swift in Sources */,
+				5618DF85290800BD00F951D2 /* AddNewOpStacks.swift in Sources */,
 				56CB0EC9290A94080056EE4C /* SelectCategoryVC.swift in Sources */,
-				56EF37302945361E0046EFCD /* HomeVCActions.swift in Sources */,
+				56EF37302945361E0046EFCD /* HomeActions.swift in Sources */,
+				56EF3740295B0FA60046EFCD /* CurrencyTableView.swift in Sources */,
 				56CB0ECB290A941E0056EE4C /* AddNewOpActions.swift in Sources */,
 				56CB0ECD290AB0980056EE4C /* CategoriesCollectionView.swift in Sources */,
+				56EF3744295B11660046EFCD /* Actions.swift in Sources */,
 				562795EF28EC34BA004BF7B7 /* AppDelegate.swift in Sources */,
 				56EF372C29421DF20046EFCD /* HomeFuncs.swift in Sources */,
 				5618DF7E2906AEC700F951D2 /* AddNewOperationVC.swift in Sources */,
 				5627960628EC3CDB004BF7B7 /* SettingsVC.swift in Sources */,
 				56EF37342948F0400046EFCD /* HomeStacks.swift in Sources */,
-				5618DF7C2906AE2400F951D2 /* HomeCustomCell.swift in Sources */,
-				56CB0ECF2911439B0056EE4C /* AmountTextFieldDelegate.swift in Sources */,
+				56EF3742295B10170046EFCD /* GeneralFuncs.swift in Sources */,
+				56EF3747295BADDC0046EFCD /* CurrencySearch.swift in Sources */,
+				5618DF7C2906AE2400F951D2 /* HomeTableCustomCell.swift in Sources */,
+				56CB0ECF2911439B0056EE4C /* AmountTFDelegate.swift in Sources */,
 				56727B34292413BA00E2CC43 /* CategoriesActions.swift in Sources */,
 				56CB0ED2291AB7190056EE4C /* CustomCollectionCell.swift in Sources */,
 				5618DF7A2906AADA00F951D2 /* OperationsTableView.swift in Sources */,
@@ -367,8 +445,10 @@
 				56EF3737294BA5AE0046EFCD /* Data.swift in Sources */,
 				56727B3B292790E400E2CC43 /* PopVCCollectionView.swift in Sources */,
 				56EF3732294891B70046EFCD /* OperationsChartView.swift in Sources */,
-				5618DF872908014E00F951D2 /* AddNewOperationFuncs.swift in Sources */,
+				56EF373C295467530046EFCD /* PieChartVC.swift in Sources */,
+				5618DF872908014E00F951D2 /* AddNewOpFuncs.swift in Sources */,
 				56727B3929267ECA00E2CC43 /* CategoriesFuncs.swift in Sources */,
+				56EF373E2954FC210046EFCD /* PieChartFuncs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

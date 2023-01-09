@@ -11,44 +11,35 @@ import EasyPeasy
 
 class SettingsViewController: UIViewController {
     
-    let button = UIButton()
-    let alertView = UIAlertView()
+    let changeCurrencyButton = UIButton(name: "Lari")
+    
+    let currencyLabel = UILabel()
+    
+    let currencyStack = UIStackView()
+    
+    let currencyVC: CurrencyTableVC
+    init(currencyVC: CurrencyTableVC) {
+        self.currencyVC = currencyVC
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .darkGray
-        
+        self.view.backgroundColor = .white
         self.title = "Settings"
         
-        buttonFunc()
-    }
-    
-    func buttonFunc() {
-        // Кнопка
-        self.button.backgroundColor = .black
-        self.button.setTitle("Change Background Button", for: .normal)
-        self.button.addTarget(self,
-                               action: #selector(buttonAction),
-                               for: .touchUpInside)
-        // Вызов кнопки
-        self.view.addSubview(button)
-        // Размеры и расположение кнопки
-        self.button.easy.layout([
-            Width(250),
-            Height(120),
-            CenterX(0.0),
-            CenterY(0.0)
-        ])
-    }
-    
-    @objc func buttonAction(sender: UIButton!) {
-        print("Button tapped")
-        if (view.backgroundColor == .darkGray) {
-        self.view.backgroundColor = .gray
-        } else {
-            self.view.backgroundColor = .darkGray
-        }
+        setLabel(label: currencyLabel, text: "Select Currency")
+        setButton(button: self.changeCurrencyButton, background: .white, textColor: .black)
+        changeCurrencyButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        
+        setUniqueStack(stack: currencyStack, view_1: currencyLabel, view_2: changeCurrencyButton)
+        
+        view.addSubview(currencyStack)
+        currencyStack.easy.layout([Left(16), Right(16), CenterY(), CenterX()])
     }
     
 }
