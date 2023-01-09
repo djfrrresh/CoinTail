@@ -3,10 +3,10 @@
 It's my first pet project on Swift that allows controlling budget. 
 The main stack i'm focus on is here:
 
-* MVC ✅
+* MVC Pattern ✅
 * UIKit without using a storyboard ✅
-* CocoaPods ✅
-* Delegates ✅
+* CocoaPods (EasyPeasy, Charts) ✅
+* Delegates between Controllers ✅
 * Custom UI ✅
 
 ## Screenshots
