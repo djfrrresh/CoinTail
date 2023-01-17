@@ -19,4 +19,4 @@ The main stack i'm focus on is here:
 
 <img width="300" alt="Screenshot 2023-01-09 v3" src="https://user-images.githubusercontent.com/118223099/211383847-a6e68ab5-52d9-4a1d-af49-681636f326cc.png">
 
-<img width="300" alt="Screenshot 2023-01-09 v3" src="https://user-images.githubusercontent.com/118223099/211383857-83197e0b-21d7-4f89-920c-7370a32e500e.png">
+<img width="300" alt="Screenshot 2023-01-09 v3" src="https://user-images.githubusercontent.com/118223099/212990061-4f91ded4-b61d-490e-9241-215a2025a9f5.png">
