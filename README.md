@@ -11,7 +11,7 @@ The main stack i'm focus on is here:
 
 ## Screenshots
 
-<img width="300" alt="Screenshot 2023-01-09 v1" src="https://user-images.githubusercontent.com/118223099/211383594-5364322c-6ebf-4433-a4f1-eb7f59b838f1.png">
+<img width="300" alt="Screenshot 2023-01-17 v1" src="https://user-images.githubusercontent.com/118223099/212990061-4f91ded4-b61d-490e-9241-215a2025a9f5.png">
 
 <img width="300" alt="Screenshot 2023-01-09 v2" src="https://user-images.githubusercontent.com/118223099/211383765-22bc3b42-e470-4be1-9cba-7fa5f8f145f7.png">
 
