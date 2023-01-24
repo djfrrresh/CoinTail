@@ -1,8 +1,7 @@
 # CoinTail | Swift Mobile App
 
 It's my first pet project on Swift that allows controlling budget. 
-The main stack i'm focus on is here:
-
+### The main stack i'm focus on is here:
 * MVC Pattern ✅
 * UIKit without using a storyboard ✅
 * CocoaPods (EasyPeasy, Charts) ✅
@@ -10,12 +9,12 @@ The main stack i'm focus on is here:
 * Custom UI ✅
 * Singleton ✅
 
-For development, I was guided by the following programming principles:
+### For development, I was guided by the following programming principles:
 * DRY
 * KISS
 * YAGNI
 
-## Screenshots
+### Screenshots
 
 <img width="300" alt="Screenshot 2023-01-09 v1" src="https://user-images.githubusercontent.com/118223099/212991084-d9535164-7c37-40bd-9e1c-3e331aeb6233.png">
 
