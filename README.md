@@ -8,6 +8,7 @@ The main stack i'm focus on is here:
 * CocoaPods (EasyPeasy, Charts) ✅
 * Delegates between Controllers ✅
 * Custom UI ✅
+* Singleton ✅
 
 ## Screenshots
 
