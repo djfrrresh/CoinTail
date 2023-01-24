@@ -22,11 +22,7 @@ It's my first pet project on Swift that allows controlling budget. Of the main f
 * Delegates between Controllers ✅
 * Custom UI ✅
 * Singleton ✅
-
-### For development, I was guided by the following programming principles:
-* DRY
-* KISS
-* YAGNI
+* Adhering to the following develop principles - DRY, KISS, YAGNI
 
 ### Screenshots
 
