@@ -1,11 +1,11 @@
 # CoinTail | Swift Mobile App
 
 It's my first pet project on Swift that allows controlling budget. Of the main functions in the application, **the following are implemented**: 
-* adding operations with a division into expenses and incomes
-* editing operations through a table
-* searching for operations in the main menu
-* selecting categories and adding new ones
-* bar and pie charts
+* Adding operations with a division into expenses and incomes
+* Editing operations through a table
+* Searching for operations in the main menu
+* Selecting categories and adding new ones
+* Bar and pie charts
 
 ### The plans for the development of the application include:
 * A function of translation into another language
