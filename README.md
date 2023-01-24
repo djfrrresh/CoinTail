@@ -7,7 +7,7 @@ It's my first pet project on Swift that allows controlling budget. Of the main f
 * selecting categories and adding new ones
 * bar and pie charts
 
-### The plans for the development** of the application include:
+### The plans for the development of the application include:
 * A function of translation into another language
 * Self-completion of new operations (the last operations can be duplicated)
 * Currency converter
