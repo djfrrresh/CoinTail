@@ -15,7 +15,7 @@ It's my first pet project on Swift that allows controlling budget. Of the main f
 * Attaching photos
 
 
-### The main stack i'm focus on is here:
+### The main stack i'm focusing on is here:
 * MVC Pattern ✅
 * UIKit without using a Storyboard ✅
 * CocoaPods (EasyPeasy, Charts, FSCalendar) ✅
