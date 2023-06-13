@@ -1,0 +1,56 @@
+PODS:
+  - Charts (4.1.0):
+    - Charts/Core (= 4.1.0)
+  - Charts/Core (4.1.0):
+    - SwiftAlgorithms (~> 1.0)
+  - EasyPeasy (1.10.0)
+  - MultipleProgressBar (0.1.0)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
+  - RxSwift (6.5.0)
+  - SwiftAlgorithms (1.0.0)
+  - SwiftLint (0.52.2)
+
+DEPENDENCIES:
+  - Charts
+  - EasyPeasy
+  - MultipleProgressBar (from `https://github.com/adriatikgashi/MultipleProgressBar`)
+  - RxCocoa (= 6.5.0)
+  - RxSwift (= 6.5.0)
+  - SwiftLint
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Charts
+    - EasyPeasy
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SwiftAlgorithms
+    - SwiftLint
+
+EXTERNAL SOURCES:
+  MultipleProgressBar:
+    :git: https://github.com/adriatikgashi/MultipleProgressBar
+
+CHECKOUT OPTIONS:
+  MultipleProgressBar:
+    :commit: 54f2a76cd86e5cdc2b87ca90a8b5b705a08e4237
+    :git: https://github.com/adriatikgashi/MultipleProgressBar
+
+SPEC CHECKSUMS:
+  Charts: 354f86803d11d9c35de280587fef50d1af063978
+  EasyPeasy: b9b1bae024d21a7dfa9bad26d6826d88348cc6f1
+  MultipleProgressBar: 6d67e7049b58706cd2540ef04815b0da84c784c3
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
+  SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
+  SwiftLint: 1ac76dac888ca05cb0cf24d0c85887ec1209961d
+
+PODFILE CHECKSUM: 16d0fc1dadf544800da13a791e043d50ddf34969
+
+COCOAPODS: 1.11.3

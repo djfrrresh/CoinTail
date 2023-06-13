@@ -3,29 +3,93 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05A210E63EBDFB94B49A8572 /* Pods_CoinTail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B14C3A5B22BF9300A1B7AE6 /* Pods_CoinTail.framework */; };
 		560AFBC12A1394A30054B502 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBC02A1394A30054B502 /* AppDelegate.swift */; };
-		560AFBC32A1394A30054B502 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBC22A1394A30054B502 /* SceneDelegate.swift */; };
-		560AFBC52A1394A30054B502 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBC42A1394A30054B502 /* ViewController.swift */; };
-		560AFBC82A1394A30054B502 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 560AFBC62A1394A30054B502 /* Main.storyboard */; };
+		560AFBC52A1394A30054B502 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBC42A1394A30054B502 /* HomeVC.swift */; };
 		560AFBCB2A1394A30054B502 /* CoinTail.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBC92A1394A30054B502 /* CoinTail.xcdatamodeld */; };
 		560AFBCD2A1394A40054B502 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 560AFBCC2A1394A40054B502 /* Assets.xcassets */; };
 		560AFBD02A1394A40054B502 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 560AFBCE2A1394A40054B502 /* LaunchScreen.storyboard */; };
+		560AFBDB2A13B26A0054B502 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBDA2A13B26A0054B502 /* Array.swift */; };
+		560AFBE02A13B2E40054B502 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBDF2A13B2E40054B502 /* UIButton.swift */; };
+		560AFBE82A13B5520054B502 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBE72A13B5520054B502 /* UILabel.swift */; };
+		560AFBEA2A13B5EA0054B502 /* UISegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBE92A13B5EA0054B502 /* UISegmentedControl.swift */; };
+		560AFBEC2A13BF110054B502 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBEB2A13BF110054B502 /* UITextField.swift */; };
+		560AFBF02A13C1DF0054B502 /* BasicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBEF2A13C1DF0054B502 /* BasicVC.swift */; };
+		560AFBF22A13C28E0054B502 /* BasicVCFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBF12A13C28E0054B502 /* BasicVCFuncs.swift */; };
+		560AFC032A16AF5A0054B502 /* HomeUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC022A16AF5A0054B502 /* HomeUIFuncs.swift */; };
+		560AFC052A16B06D0054B502 /* HomeUXFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC042A16B06D0054B502 /* HomeUXFuncs.swift */; };
+		560AFC192A1BAC810054B502 /* HomeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC182A1BAC810054B502 /* HomeActions.swift */; };
+		560AFC1C2A1BEE640054B502 /* Records.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC1B2A1BEE640054B502 /* Records.swift */; };
+		560AFC1F2A1BF4970054B502 /* MonthSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC1E2A1BF4970054B502 /* MonthSections.swift */; };
+		560AFC272A1BF5A30054B502 /* HomeCategoryCellCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC262A1BF5A30054B502 /* HomeCategoryCellCV.swift */; };
+		560AFC292A1BF62D0054B502 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC282A1BF62D0054B502 /* DateCell.swift */; };
+		560AFC2B2A1BF8EB0054B502 /* HomeCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC2A2A1BF8EB0054B502 /* HomeCVDataSource.swift */; };
+		560AFC2D2A1BFBD80054B502 /* HomeCVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC2C2A1BFBD80054B502 /* HomeCVDelegate.swift */; };
+		560AFC312A1BFFF80054B502 /* HomeCVFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC302A1BFFF80054B502 /* HomeCVFuncs.swift */; };
+		560AFC332A1C04260054B502 /* HomeTVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC322A1C04260054B502 /* HomeTVDelegate.swift */; };
+		560AFC352A1C04C40054B502 /* HomeCVAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC342A1C04C40054B502 /* HomeCVAddCell.swift */; };
+		560AFC392A1C0FC30054B502 /* PieChartFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC382A1C0FC30054B502 /* PieChartFuncs.swift */; };
+		560AFC3C2A1C10170054B502 /* ChartsAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC3B2A1C10170054B502 /* ChartsAnimation.swift */; };
+		560AFC3E2A1C10680054B502 /* ChartsSetEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC3D2A1C10680054B502 /* ChartsSetEntries.swift */; };
+		560AFC402A1D08D10054B502 /* HomeCVCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC3F2A1D08D10054B502 /* HomeCVCategory.swift */; };
+		560AFC432A1D091F0054B502 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC422A1D091F0054B502 /* Record.swift */; };
+		56DBB6CE2A3724BC0087271D /* HomeOperationCellCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */; };
+		56DBB6DD2A3728600087271D /* HomeOperationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6DC2A3728600087271D /* HomeOperationCell.swift */; };
+		56DBB6EA2A372E220087271D /* HomeDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6E92A372E220087271D /* HomeDateCell.swift */; };
+		56DBB6EC2A372EB60087271D /* HomeCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6EB2A372EB60087271D /* HomeCategoryCell.swift */; };
+		56DBB6EE2A37337F0087271D /* HomeDateCellCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6ED2A37337F0087271D /* HomeDateCellCV.swift */; };
+		56DBB6F22A3738240087271D /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6F12A3738240087271D /* CategoryCell.swift */; };
+		56DBB6F42A37485A0087271D /* OperationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6F32A37485A0087271D /* OperationCell.swift */; };
+		56DBB6F72A3893A80087271D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6F62A3893A80087271D /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B14C3A5B22BF9300A1B7AE6 /* Pods_CoinTail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoinTail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		560AFBBD2A1394A30054B502 /* CoinTail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinTail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		560AFBC02A1394A30054B502 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		560AFBC22A1394A30054B502 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		560AFBC42A1394A30054B502 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		560AFBC72A1394A30054B502 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		560AFBC42A1394A30054B502 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		560AFBCA2A1394A30054B502 /* CoinTail.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoinTail.xcdatamodel; sourceTree = "<group>"; };
 		560AFBCC2A1394A40054B502 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		560AFBCF2A1394A40054B502 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		560AFBD12A1394A40054B502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		560AFBDA2A13B26A0054B502 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		560AFBDF2A13B2E40054B502 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		560AFBE72A13B5520054B502 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		560AFBE92A13B5EA0054B502 /* UISegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISegmentedControl.swift; sourceTree = "<group>"; };
+		560AFBEB2A13BF110054B502 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		560AFBEF2A13C1DF0054B502 /* BasicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicVC.swift; sourceTree = "<group>"; };
+		560AFBF12A13C28E0054B502 /* BasicVCFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicVCFuncs.swift; sourceTree = "<group>"; };
+		560AFC022A16AF5A0054B502 /* HomeUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUIFuncs.swift; sourceTree = "<group>"; };
+		560AFC042A16B06D0054B502 /* HomeUXFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUXFuncs.swift; sourceTree = "<group>"; };
+		560AFC182A1BAC810054B502 /* HomeActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeActions.swift; sourceTree = "<group>"; };
+		560AFC1B2A1BEE640054B502 /* Records.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Records.swift; sourceTree = "<group>"; };
+		560AFC1E2A1BF4970054B502 /* MonthSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSections.swift; sourceTree = "<group>"; };
+		560AFC262A1BF5A30054B502 /* HomeCategoryCellCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCategoryCellCV.swift; sourceTree = "<group>"; };
+		560AFC282A1BF62D0054B502 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		560AFC2A2A1BF8EB0054B502 /* HomeCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCVDataSource.swift; sourceTree = "<group>"; };
+		560AFC2C2A1BFBD80054B502 /* HomeCVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCVDelegate.swift; sourceTree = "<group>"; };
+		560AFC302A1BFFF80054B502 /* HomeCVFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCVFuncs.swift; sourceTree = "<group>"; };
+		560AFC322A1C04260054B502 /* HomeTVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTVDelegate.swift; sourceTree = "<group>"; };
+		560AFC342A1C04C40054B502 /* HomeCVAddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCVAddCell.swift; sourceTree = "<group>"; };
+		560AFC382A1C0FC30054B502 /* PieChartFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartFuncs.swift; sourceTree = "<group>"; };
+		560AFC3B2A1C10170054B502 /* ChartsAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsAnimation.swift; sourceTree = "<group>"; };
+		560AFC3D2A1C10680054B502 /* ChartsSetEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsSetEntries.swift; sourceTree = "<group>"; };
+		560AFC3F2A1D08D10054B502 /* HomeCVCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCVCategory.swift; sourceTree = "<group>"; };
+		560AFC422A1D091F0054B502 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOperationCellCV.swift; sourceTree = "<group>"; };
+		56DBB6DC2A3728600087271D /* HomeOperationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOperationCell.swift; sourceTree = "<group>"; };
+		56DBB6E92A372E220087271D /* HomeDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDateCell.swift; sourceTree = "<group>"; };
+		56DBB6EB2A372EB60087271D /* HomeCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCategoryCell.swift; sourceTree = "<group>"; };
+		56DBB6ED2A37337F0087271D /* HomeDateCellCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDateCellCV.swift; sourceTree = "<group>"; };
+		56DBB6F12A3738240087271D /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		56DBB6F32A37485A0087271D /* OperationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationCell.swift; sourceTree = "<group>"; };
+		56DBB6F62A3893A80087271D /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		680A4ABDD57FA7D2BCBF0655 /* Pods-CoinTail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinTail.release.xcconfig"; path = "Target Support Files/Pods-CoinTail/Pods-CoinTail.release.xcconfig"; sourceTree = "<group>"; };
+		97C2E2F8970E949AB696B493 /* Pods-CoinTail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinTail.debug.xcconfig"; path = "Target Support Files/Pods-CoinTail/Pods-CoinTail.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05A210E63EBDFB94B49A8572 /* Pods_CoinTail.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +109,8 @@
 			children = (
 				560AFBBF2A1394A30054B502 /* CoinTail */,
 				560AFBBE2A1394A30054B502 /* Products */,
+				F53419FB73A201142E6555E8 /* Pods */,
+				DF4F2DE35D5661B36127AF8A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,16 +125,247 @@
 		560AFBBF2A1394A30054B502 /* CoinTail */ = {
 			isa = PBXGroup;
 			children = (
-				560AFBC02A1394A30054B502 /* AppDelegate.swift */,
-				560AFBC22A1394A30054B502 /* SceneDelegate.swift */,
-				560AFBC42A1394A30054B502 /* ViewController.swift */,
-				560AFBC62A1394A30054B502 /* Main.storyboard */,
+				56DBB6CB2A3358F10087271D /* Application */,
+				560AFC1A2A1BEE4E0054B502 /* Storage */,
+				560AFBFE2A16AF030054B502 /* Home */,
+				560AFBD82A13B2450054B502 /* Extensions */,
+				560AFBD72A1394EC0054B502 /* Resources */,
+			);
+			path = CoinTail;
+			sourceTree = "<group>";
+		};
+		560AFBD72A1394EC0054B502 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				560AFBCC2A1394A40054B502 /* Assets.xcassets */,
-				560AFBCE2A1394A40054B502 /* LaunchScreen.storyboard */,
 				560AFBD12A1394A40054B502 /* Info.plist */,
 				560AFBC92A1394A30054B502 /* CoinTail.xcdatamodeld */,
 			);
-			path = CoinTail;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		560AFBD82A13B2450054B502 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				560AFBED2A13C1CA0054B502 /* Controllers */,
+				560AFBDC2A13B2A40054B502 /* UIKit */,
+				560AFBD92A13B2550054B502 /* Foundation */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		560AFBD92A13B2550054B502 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				560AFBDA2A13B26A0054B502 /* Array.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		560AFBDC2A13B2A40054B502 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				560AFBDF2A13B2E40054B502 /* UIButton.swift */,
+				560AFBE72A13B5520054B502 /* UILabel.swift */,
+				560AFBE92A13B5EA0054B502 /* UISegmentedControl.swift */,
+				560AFBEB2A13BF110054B502 /* UITextField.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		560AFBED2A13C1CA0054B502 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				560AFBEE2A13C1D30054B502 /* BasicVC */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		560AFBEE2A13C1D30054B502 /* BasicVC */ = {
+			isa = PBXGroup;
+			children = (
+				560AFBEF2A13C1DF0054B502 /* BasicVC.swift */,
+				560AFBF12A13C28E0054B502 /* BasicVCFuncs.swift */,
+			);
+			path = BasicVC;
+			sourceTree = "<group>";
+		};
+		560AFBFE2A16AF030054B502 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				560AFC232A1BF5510054B502 /* HomeCV */,
+				560AFC202A1BF4CD0054B502 /* HomeTV */,
+				560AFBFF2A16AF200054B502 /* HomeFuncs */,
+				560AFBC42A1394A30054B502 /* HomeVC.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		560AFBFF2A16AF200054B502 /* HomeFuncs */ = {
+			isa = PBXGroup;
+			children = (
+				560AFC022A16AF5A0054B502 /* HomeUIFuncs.swift */,
+				560AFC042A16B06D0054B502 /* HomeUXFuncs.swift */,
+				560AFC182A1BAC810054B502 /* HomeActions.swift */,
+			);
+			path = HomeFuncs;
+			sourceTree = "<group>";
+		};
+		560AFC1A2A1BEE4E0054B502 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				560AFC412A1D09030054B502 /* Structs */,
+				560AFC1B2A1BEE640054B502 /* Records.swift */,
+				56DBB6F62A3893A80087271D /* Colors.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		560AFC202A1BF4CD0054B502 /* HomeTV */ = {
+			isa = PBXGroup;
+			children = (
+				560AFC322A1C04260054B502 /* HomeTVDelegate.swift */,
+			);
+			path = HomeTV;
+			sourceTree = "<group>";
+		};
+		560AFC232A1BF5510054B502 /* HomeCV */ = {
+			isa = PBXGroup;
+			children = (
+				56DBB6DA2A3728390087271D /* HomeGlobalCV */,
+				560AFC2A2A1BF8EB0054B502 /* HomeCVDataSource.swift */,
+				560AFC2C2A1BFBD80054B502 /* HomeCVDelegate.swift */,
+				560AFC342A1C04C40054B502 /* HomeCVAddCell.swift */,
+				560AFC302A1BFFF80054B502 /* HomeCVFuncs.swift */,
+			);
+			path = HomeCV;
+			sourceTree = "<group>";
+		};
+		560AFC242A1BF5720054B502 /* HomeDateCV */ = {
+			isa = PBXGroup;
+			children = (
+				56DBB6EF2A3735360087271D /* Cells */,
+				56DBB6E92A372E220087271D /* HomeDateCell.swift */,
+				56DBB6ED2A37337F0087271D /* HomeDateCellCV.swift */,
+			);
+			path = HomeDateCV;
+			sourceTree = "<group>";
+		};
+		560AFC252A1BF5850054B502 /* HomeCategoryCV */ = {
+			isa = PBXGroup;
+			children = (
+				560AFC362A1C0EDC0054B502 /* HomeCharts */,
+				56DBB6F02A3738170087271D /* Cells */,
+				56DBB6EB2A372EB60087271D /* HomeCategoryCell.swift */,
+				560AFC262A1BF5A30054B502 /* HomeCategoryCellCV.swift */,
+			);
+			path = HomeCategoryCV;
+			sourceTree = "<group>";
+		};
+		560AFC362A1C0EDC0054B502 /* HomeCharts */ = {
+			isa = PBXGroup;
+			children = (
+				560AFC3A2A1C0FFD0054B502 /* ChartsGeneralFuncs */,
+				560AFC372A1C0F910054B502 /* PieChart */,
+			);
+			path = HomeCharts;
+			sourceTree = "<group>";
+		};
+		560AFC372A1C0F910054B502 /* PieChart */ = {
+			isa = PBXGroup;
+			children = (
+				560AFC382A1C0FC30054B502 /* PieChartFuncs.swift */,
+			);
+			path = PieChart;
+			sourceTree = "<group>";
+		};
+		560AFC3A2A1C0FFD0054B502 /* ChartsGeneralFuncs */ = {
+			isa = PBXGroup;
+			children = (
+				560AFC3B2A1C10170054B502 /* ChartsAnimation.swift */,
+				560AFC3D2A1C10680054B502 /* ChartsSetEntries.swift */,
+			);
+			path = ChartsGeneralFuncs;
+			sourceTree = "<group>";
+		};
+		560AFC412A1D09030054B502 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				560AFC1E2A1BF4970054B502 /* MonthSections.swift */,
+				560AFC3F2A1D08D10054B502 /* HomeCVCategory.swift */,
+				560AFC422A1D091F0054B502 /* Record.swift */,
+			);
+			path = Structs;
+			sourceTree = "<group>";
+		};
+		56DBB6CB2A3358F10087271D /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				560AFBCE2A1394A40054B502 /* LaunchScreen.storyboard */,
+				560AFBC02A1394A30054B502 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		56DBB6CC2A3724AB0087271D /* HomeOperationCV */ = {
+			isa = PBXGroup;
+			children = (
+				56DBB6F52A3748780087271D /* Cells */,
+				56DBB6DC2A3728600087271D /* HomeOperationCell.swift */,
+				56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */,
+			);
+			path = HomeOperationCV;
+			sourceTree = "<group>";
+		};
+		56DBB6DA2A3728390087271D /* HomeGlobalCV */ = {
+			isa = PBXGroup;
+			children = (
+				560AFC252A1BF5850054B502 /* HomeCategoryCV */,
+				560AFC242A1BF5720054B502 /* HomeDateCV */,
+				56DBB6CC2A3724AB0087271D /* HomeOperationCV */,
+			);
+			path = HomeGlobalCV;
+			sourceTree = "<group>";
+		};
+		56DBB6EF2A3735360087271D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				560AFC282A1BF62D0054B502 /* DateCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		56DBB6F02A3738170087271D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				56DBB6F12A3738240087271D /* CategoryCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		56DBB6F52A3748780087271D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				56DBB6F32A37485A0087271D /* OperationCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		DF4F2DE35D5661B36127AF8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0B14C3A5B22BF9300A1B7AE6 /* Pods_CoinTail.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F53419FB73A201142E6555E8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				97C2E2F8970E949AB696B493 /* Pods-CoinTail.debug.xcconfig */,
+				680A4ABDD57FA7D2BCBF0655 /* Pods-CoinTail.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +375,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 560AFBD42A1394A40054B502 /* Build configuration list for PBXNativeTarget "CoinTail" */;
 			buildPhases = (
+				D23A90DD06FC697464A7A5BC /* [CP] Check Pods Manifest.lock */,
 				560AFBB92A1394A30054B502 /* Sources */,
 				560AFBBA2A1394A30054B502 /* Frameworks */,
 				560AFBBB2A1394A30054B502 /* Resources */,
+				56FEDCE42A2F8189003E2E25 /* ShellScript */,
+				936F29BADED2690298924089 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -106,7 +407,7 @@
 				};
 			};
 			buildConfigurationList = 560AFBB82A1394A30054B502 /* Build configuration list for PBXProject "CoinTail" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -130,35 +431,116 @@
 			files = (
 				560AFBD02A1394A40054B502 /* LaunchScreen.storyboard in Resources */,
 				560AFBCD2A1394A40054B502 /* Assets.xcassets in Resources */,
-				560AFBC82A1394A30054B502 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		56FEDCE42A2F8189003E2E25 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		936F29BADED2690298924089 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoinTail/Pods-CoinTail-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoinTail/Pods-CoinTail-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CoinTail/Pods-CoinTail-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D23A90DD06FC697464A7A5BC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CoinTail-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		560AFBB92A1394A30054B502 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				560AFC402A1D08D10054B502 /* HomeCVCategory.swift in Sources */,
+				56DBB6EC2A372EB60087271D /* HomeCategoryCell.swift in Sources */,
+				56DBB6F42A37485A0087271D /* OperationCell.swift in Sources */,
+				560AFC352A1C04C40054B502 /* HomeCVAddCell.swift in Sources */,
+				560AFC272A1BF5A30054B502 /* HomeCategoryCellCV.swift in Sources */,
+				560AFC392A1C0FC30054B502 /* PieChartFuncs.swift in Sources */,
+				560AFC312A1BFFF80054B502 /* HomeCVFuncs.swift in Sources */,
+				560AFC2D2A1BFBD80054B502 /* HomeCVDelegate.swift in Sources */,
+				560AFBEC2A13BF110054B502 /* UITextField.swift in Sources */,
+				560AFC032A16AF5A0054B502 /* HomeUIFuncs.swift in Sources */,
+				560AFC2B2A1BF8EB0054B502 /* HomeCVDataSource.swift in Sources */,
+				560AFC1F2A1BF4970054B502 /* MonthSections.swift in Sources */,
 				560AFBCB2A1394A30054B502 /* CoinTail.xcdatamodeld in Sources */,
-				560AFBC52A1394A30054B502 /* ViewController.swift in Sources */,
+				560AFC292A1BF62D0054B502 /* DateCell.swift in Sources */,
+				560AFC052A16B06D0054B502 /* HomeUXFuncs.swift in Sources */,
+				560AFC192A1BAC810054B502 /* HomeActions.swift in Sources */,
+				560AFBDB2A13B26A0054B502 /* Array.swift in Sources */,
+				56DBB6CE2A3724BC0087271D /* HomeOperationCellCV.swift in Sources */,
+				560AFBC52A1394A30054B502 /* HomeVC.swift in Sources */,
+				560AFC1C2A1BEE640054B502 /* Records.swift in Sources */,
 				560AFBC12A1394A30054B502 /* AppDelegate.swift in Sources */,
-				560AFBC32A1394A30054B502 /* SceneDelegate.swift in Sources */,
+				56DBB6EE2A37337F0087271D /* HomeDateCellCV.swift in Sources */,
+				560AFBF22A13C28E0054B502 /* BasicVCFuncs.swift in Sources */,
+				56DBB6F22A3738240087271D /* CategoryCell.swift in Sources */,
+				560AFBE82A13B5520054B502 /* UILabel.swift in Sources */,
+				560AFC432A1D091F0054B502 /* Record.swift in Sources */,
+				560AFBE02A13B2E40054B502 /* UIButton.swift in Sources */,
+				560AFC332A1C04260054B502 /* HomeTVDelegate.swift in Sources */,
+				560AFC3E2A1C10680054B502 /* ChartsSetEntries.swift in Sources */,
+				56DBB6EA2A372E220087271D /* HomeDateCell.swift in Sources */,
+				560AFBEA2A13B5EA0054B502 /* UISegmentedControl.swift in Sources */,
+				56DBB6F72A3893A80087271D /* Colors.swift in Sources */,
+				56DBB6DD2A3728600087271D /* HomeOperationCell.swift in Sources */,
+				560AFBF02A13C1DF0054B502 /* BasicVC.swift in Sources */,
+				560AFC3C2A1C10170054B502 /* ChartsAnimation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		560AFBC62A1394A30054B502 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				560AFBC72A1394A30054B502 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		560AFBCE2A1394A40054B502 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -195,7 +577,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -221,9 +603,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_QUOTE_LINKER_ARGUMENTS_FOR_COMPILER_DRIVER = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-Wno-quoted-include-in-framework-header";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -255,7 +639,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -275,8 +659,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_QUOTE_LINKER_ARGUMENTS_FOR_COMPILER_DRIVER = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-Wno-quoted-include-in-framework-header";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -286,6 +672,7 @@
 		};
 		560AFBD52A1394A40054B502 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97C2E2F8970E949AB696B493 /* Pods-CoinTail.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -293,17 +680,35 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4UL99FQPDT;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CoinTail/Info.plist;
+				INFOPLIST_FILE = CoinTail/Resources/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"Algorithms\"",
+					"-framework",
+					"\"Charts\"",
+					"-framework",
+					"\"EasyPeasy\"",
+					"-framework",
+					"\"MultipleProgressBar\"",
+					"-framework",
+					"\"RxCocoa\"",
+					"-framework",
+					"\"RxRelay\"",
+					"-framework",
+					"\"RxSwift\"",
+					"-Wno-quoted-include-in-framework-header",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = eugene.CoinTail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -314,6 +719,7 @@
 		};
 		560AFBD62A1394A40054B502 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 680A4ABDD57FA7D2BCBF0655 /* Pods-CoinTail.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -321,17 +727,35 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4UL99FQPDT;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CoinTail/Info.plist;
+				INFOPLIST_FILE = CoinTail/Resources/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"Algorithms\"",
+					"-framework",
+					"\"Charts\"",
+					"-framework",
+					"\"EasyPeasy\"",
+					"-framework",
+					"\"MultipleProgressBar\"",
+					"-framework",
+					"\"RxCocoa\"",
+					"-framework",
+					"\"RxRelay\"",
+					"-framework",
+					"\"RxSwift\"",
+					"-Wno-quoted-include-in-framework-header",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = eugene.CoinTail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
