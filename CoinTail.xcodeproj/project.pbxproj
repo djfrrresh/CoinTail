@@ -214,7 +214,7 @@
 		560AFC1A2A1BEE4E0054B502 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				560AFC412A1D09030054B502 /* Structs */,
+				560AFC412A1D09030054B502 /* Models */,
 				560AFC1B2A1BEE640054B502 /* Records.swift */,
 				56DBB6F62A3893A80087271D /* Colors.swift */,
 			);
@@ -288,14 +288,14 @@
 			path = ChartsGeneralFuncs;
 			sourceTree = "<group>";
 		};
-		560AFC412A1D09030054B502 /* Structs */ = {
+		560AFC412A1D09030054B502 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				560AFC1E2A1BF4970054B502 /* MonthSections.swift */,
 				560AFC3F2A1D08D10054B502 /* HomeCVCategory.swift */,
 				560AFC422A1D091F0054B502 /* Record.swift */,
 			);
-			path = Structs;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		56DBB6CB2A3358F10087271D /* Application */ = {
