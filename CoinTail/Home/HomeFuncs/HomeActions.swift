@@ -11,7 +11,13 @@ import UIKit
 extension HomeVC {
     
     @objc func addNewOperationAction() {
-        print("addNewOperationAction")
+        var segmentIndex = homeTypeSwitcher.selectedSegmentIndex
+        
+        segmentIndex = segmentIndex == 0 ? 0 : segmentIndex - 1
+        
+        let vc = AddOperationVC(segmentIndex: segmentIndex)
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func searchBarAction() {
@@ -20,10 +26,9 @@ extension HomeVC {
     
     @objc func switchAction() {
         // Обновление сегмента
-        segment = RecordType(rawValue: typeSwitcher.titleForSegment(at: typeSwitcher.selectedSegmentIndex) ?? "Total") ?? .allOperations
+        homeSegment = RecordType(rawValue: homeTypeSwitcher.titleForSegment(at: homeTypeSwitcher.selectedSegmentIndex) ?? "Total") ?? .allOperations
         
         filterMonths() // Сортировка коллекции с операциями
-        setEntries() // Добавление записей в диаграммы
     }
     
 }

@@ -9,15 +9,13 @@ import UIKit
 
 
 // Структура операции
-struct Record {
+struct Record: Equatable {
     var amount: Double
     var descriptionText: String = ""
-    var categoryText: String = ""
-    var categoryImage: UIImage
     var date: Date
     var id: Int
     var type: RecordType
-    var categoryColor: UIColor
+    var category: Category
 }
 
 enum RecordType: String {

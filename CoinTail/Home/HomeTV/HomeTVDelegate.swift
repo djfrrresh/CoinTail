@@ -30,7 +30,6 @@ extension HomeVC: UITableViewDelegate {
 
         let dateLabel: UILabel = {
             let label = UILabel()
-            label.translatesAutoresizingMaskIntoConstraints = false
             label.text = dateFormatter.string(from: date)
             return label
         }()

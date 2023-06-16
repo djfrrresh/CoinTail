@@ -27,6 +27,7 @@ final class HomeDateCell: UICollectionViewCell {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: dateLayout)
         cv.register(DateCVCell.self, forCellWithReuseIdentifier: DateCVCell.id)
         cv.scrollIndicatorInsets = .zero
+        cv.backgroundColor = .clear
         
         cv.allowsMultipleSelection = false
         cv.showsHorizontalScrollIndicator = false

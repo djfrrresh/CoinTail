@@ -19,7 +19,10 @@ extension HomeDateCell: UICollectionViewDataSource, UICollectionViewDelegate, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DateCVCell.id, for: indexPath) as? DateCVCell else {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: DateCVCell.id,
+            for: indexPath
+        ) as? DateCVCell else {
             fatalError("Unable to dequeue DateCVCell.")
         }
         

@@ -11,7 +11,7 @@ import EasyPeasy
 
 extension UITextField {
     
-    convenience init(defaultText: String, background: UIColor, keyboard: UIKeyboardType, placeholder: String) {
+    convenience init(defaultText: String = "", background: UIColor, keyboard: UIKeyboardType, placeholder: String) {
         self.init()
         
         // Граница текстового поля и радиус

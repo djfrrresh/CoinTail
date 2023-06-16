@@ -3,4 +3,305 @@
    uuid = "C0E30F98-DFE0-4B5D-BBFD-A62AEB2EEF49"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "09010342-2D33-416C-BFB4-57BFD102EB10"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CoinTail/Home/HomeCV/HomeGlobalCV/HomeCategoryCV/HomeCharts/ChartsFuncs/ChartsAnimation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "pieChartAction()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "56D35944-7D06-48A5-969F-0397647E5592"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CoinTail/Home/AddOperationVC/AddOperationVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "AddOperationVC"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "56D35944-7D06-48A5-969F-0397647E5592 - f30fa560b9f23fb3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CoinTail.AddOperationVC.addOperationSegment.getter : CoinTail.RecordType"
+                  moduleName = "CoinTail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fakin_kiska/Desktop/xCock/CoinTail/CoinTail/Home/AddOperationVC/AddOperationVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "56D35944-7D06-48A5-969F-0397647E5592 - 9313c57a1fb5efa7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CoinTail.AddOperationVC.addOperationSegment.setter : CoinTail.RecordType"
+                  moduleName = "CoinTail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fakin_kiska/Desktop/xCock/CoinTail/CoinTail/Home/AddOperationVC/AddOperationVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  uuid = "56D35944-7D06-48A5-969F-0397647E5592 - efd4f413a15143b6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CoinTail.AddOperationVC.addOperationSegment.modify : CoinTail.RecordType"
+                  moduleName = "CoinTail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fakin_kiska/Desktop/xCock/CoinTail/CoinTail/Home/AddOperationVC/AddOperationVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "56D35944-7D06-48A5-969F-0397647E5592 - dd787f7fac4202d9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CoinTail.AddOperationVC.addOperationSegment.modify : CoinTail.RecordType with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "CoinTail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fakin_kiska/Desktop/xCock/CoinTail/CoinTail/Home/AddOperationVC/AddOperationVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "56D35944-7D06-48A5-969F-0397647E5592 - 9bdbcc35ea39056e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CoinTail.AddOperationVC.init(operationID: Swift.Optional&lt;Swift.Int&gt;, segmentIndex: Swift.Int) -&gt; CoinTail.AddOperationVC"
+                  moduleName = "CoinTail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fakin_kiska/Desktop/xCock/CoinTail/CoinTail/Home/AddOperationVC/AddOperationVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "284">
+               </Location>
+               <Location
+                  uuid = "56D35944-7D06-48A5-969F-0397647E5592 - a4ef40d1680fbe1f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CoinTail.AddOperationVC.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;CoinTail.AddOperationVC&gt;"
+                  moduleName = "CoinTail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fakin_kiska/Desktop/xCock/CoinTail/CoinTail/Home/AddOperationVC/AddOperationVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "244">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8B9BEC83-C389-46B1-A585-15F222B844F6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CoinTail/Home/AddOperationVC/AddOperationFuncs/AmountTFDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "textFieldDidChange(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "61567AAB-B63C-4D17-885A-2610008D7763"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CoinTail/Storage/Records.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "editRecord(for:replacingRecord:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D3FDCA62-BAEC-4967-971A-6A6F6B0A5032"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CoinTail/Storage/Records.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "editRecord(for:replacingRecord:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "77BE8ABF-916F-4B03-90CF-2C7A2399BE99"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CoinTail/Home/HomeCV/HomeGlobalCV/HomeCategoryCV/HomeCategoryCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "packBins(data:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "77BE8ABF-916F-4B03-90CF-2C7A2399BE99 - 44dd81c8b5a5481d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static CoinTail.HomeCategoryCell.packBins(data: Swift.Array&lt;CoinTail.Category&gt;) -&gt; (Swift.Int, Swift.Array&lt;CoinTail.Category&gt;)"
+                  moduleName = "CoinTail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fakin_kiska/Desktop/xCock/CoinTail/CoinTail/Home/HomeCV/HomeGlobalCV/HomeCategoryCV/HomeCategoryCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "167"
+                  endingLineNumber = "167"
+                  offsetFromSymbolStart = "2192">
+               </Location>
+               <Location
+                  uuid = "77BE8ABF-916F-4B03-90CF-2C7A2399BE99 - 44dd81c8b5a5481d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static CoinTail.HomeCategoryCell.packBins(data: Swift.Array&lt;CoinTail.Category&gt;) -&gt; (Swift.Int, Swift.Array&lt;CoinTail.Category&gt;)"
+                  moduleName = "CoinTail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fakin_kiska/Desktop/xCock/CoinTail/CoinTail/Home/HomeCV/HomeGlobalCV/HomeCategoryCV/HomeCategoryCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "167"
+                  endingLineNumber = "167"
+                  offsetFromSymbolStart = "2300">
+               </Location>
+               <Location
+                  uuid = "77BE8ABF-916F-4B03-90CF-2C7A2399BE99 - 44dd81c8b5a5481d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static CoinTail.HomeCategoryCell.packBins(data: Swift.Array&lt;CoinTail.Category&gt;) -&gt; (Swift.Int, Swift.Array&lt;CoinTail.Category&gt;)"
+                  moduleName = "CoinTail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fakin_kiska/Desktop/xCock/CoinTail/CoinTail/Home/HomeCV/HomeGlobalCV/HomeCategoryCV/HomeCategoryCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "167"
+                  endingLineNumber = "167"
+                  offsetFromSymbolStart = "2288">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E7199361-20A2-418B-BF4A-57D7375D1BEE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CoinTail/Home/HomeCV/HomeGlobalCV/HomeCategoryCV/HomeCharts/ChartsFuncs/ChartsAnimation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "pieChartAction()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FD8DE324-4189-4139-9D54-7F26026FBB9F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CoinTail/Home/HomeCV/HomeGlobalCV/HomeCategoryCV/HomeCharts/ChartsFuncs/ChartsAnimation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "pieChartAction()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A22E0064-10FA-49AE-B482-1B5E81E69E03"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CoinTail/Home/HomeCV/HomeGlobalCV/HomeCategoryCV/HomeCharts/ChartsFuncs/ChartsAnimation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "pieChartAction()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9B9A4D8B-5B9F-466B-AAC4-430C680A8E25"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CoinTail/Home/HomeCV/HomeGlobalCV/HomeCategoryCV/HomeCharts/ChartsFuncs/ChartsAnimation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "HomeCategoryCell"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -25,17 +25,17 @@ final class HomeOperationCell: UICollectionViewCell {
             layout.scrollDirection = .vertical
             layout.minimumLineSpacing = 0
             layout.minimumInteritemSpacing = 0
-            layout.itemSize = CGSize(width: 68, height: 68)
             return layout
         }()
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: operationLayout)
-        cv.register(OperationCVCell.self, forCellWithReuseIdentifier: OperationCVCell.id)
-        cv.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         cv.scrollIndicatorInsets = .zero
+        cv.backgroundColor = .clear
+        cv.register(OperationCVCell.self, forCellWithReuseIdentifier: OperationCVCell.id)
+        cv.register(OperationCVHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: OperationCVHeader.id)
         
         cv.allowsMultipleSelection = false
-        cv.showsHorizontalScrollIndicator = false
+        cv.showsVerticalScrollIndicator = false
         cv.isScrollEnabled = true
         return cv
     }()
@@ -86,6 +86,7 @@ final class HomeOperationCell: UICollectionViewCell {
             for record in monthSection.records {
                 height += OperationCVCell.size(data: record).height
             }
+            height += 32
         }
         
         return .init(

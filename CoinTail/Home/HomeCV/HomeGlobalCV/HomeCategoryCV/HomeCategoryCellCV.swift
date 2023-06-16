@@ -19,16 +19,19 @@ extension HomeCategoryCell: UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCVCell.id, for: indexPath) as? CategoryCVCell else {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: CategoryCVCell.id,
+            for: indexPath
+        ) as? CategoryCVCell else {
             fatalError("Unable to dequeue DateCVCell.")
         }
         
         let categoryLabel: String?
         let categoryColor: UIColor?
-
+        
         categoryLabel = categoriesArrCellData[indexPath.row].name
         categoryColor = categoriesArrCellData[indexPath.row].color
-
+        
         cell.categoryName.text = categoryLabel
         cell.backView.backgroundColor = categoryColor
         
@@ -37,7 +40,7 @@ extension HomeCategoryCell: UICollectionViewDataSource, UICollectionViewDelegate
     
     // Определение размера ячейки
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CategoryCVCell.size()
+        return CategoryCVCell.size(data: categoriesArrCellData[indexPath.row].name)
     }
     
 }

@@ -21,7 +21,6 @@ extension UILabel {
         self.font = .systemFont(ofSize: fontSize)
         
         self.adjustsFontSizeToFitWidth = true
-        self.translatesAutoresizingMaskIntoConstraints = false
     }
     
 }

@@ -1,5 +1,5 @@
 //
-//  MonthSections.swift
+//  MonthSection.swift
 //  CoinTail
 //
 //  Created by Eugene on 22.05.23.
@@ -12,7 +12,8 @@ struct MonthSection {
     var month: Date
     var records: [Record]
     
-    static func group(groupRecords: [Record]) -> [MonthSection] {
+    static func group(section: RecordType) -> [MonthSection] {
+        var groupRecords = Records.shared.getRecords(for: section)
         let dictionary = Dictionary.init(grouping: groupRecords) { record in
             firstDayOfMonth(date: record.date)
         }.map { values in

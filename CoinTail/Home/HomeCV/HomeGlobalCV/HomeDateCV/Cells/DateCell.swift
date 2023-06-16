@@ -24,6 +24,13 @@ final class DateCVCell: UICollectionViewCell {
     
     let periodLabel: UILabel = getPeriodLabel()
     
+    static func getPeriodLabel() -> UILabel {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.textColor = .black
+        return label
+    }
+    
     override init (frame: CGRect) {
         super.init(frame: frame)
         
@@ -47,8 +54,7 @@ final class DateCVCell: UICollectionViewCell {
         periodLabel.easy.layout([
             Left(8),
             Right(8),
-            CenterX(),
-            CenterY()
+            Center()
         ])
     }
     
@@ -67,13 +73,6 @@ final class DateCVCell: UICollectionViewCell {
            }
        }
    }
-    
-    static func getPeriodLabel() -> UILabel {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.textColor = .black
-        return label
-    }
     
     static func size(data: String) -> CGSize {
         let period = getPeriodLabel()

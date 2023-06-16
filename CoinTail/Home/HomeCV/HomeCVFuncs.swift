@@ -10,9 +10,11 @@ import UIKit
 
 extension HomeVC {
     
-    // Отсортировать массив операций по месяцам (убывание)
     func filterMonths() {
-        monthSections = MonthSection.group(groupRecords: Records.shared.records[segment]!)
+        categoriesArr = Categories.shared.getCategories(for: homeSegment)
+        monthSections = MonthSection.group(section: homeSegment)
+
+        // Отсортировать массив операций по месяцам (убывание)
         monthSections.sort { l, r in
             return l.month > r.month
         }

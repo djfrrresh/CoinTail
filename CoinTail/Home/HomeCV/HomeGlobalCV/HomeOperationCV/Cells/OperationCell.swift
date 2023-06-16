@@ -74,8 +74,7 @@ final class OperationCVCell: UICollectionViewCell {
         ])
 
         categoryImage.easy.layout([
-            CenterY(),
-            CenterX(),
+            Center(),
             Height(44),
             Width(44)
         ])
@@ -126,7 +125,7 @@ final class OperationCVCell: UICollectionViewCell {
         let textWidth: CGFloat = UIScreen.main.bounds.width - 16 - 8 * 2 - amountWidth - 16 - 16 - 24
         let label = getCategoryLabel()
         
-        label.text = data.categoryText
+        label.text = data.category.name
         let labelHeight = label.sizeThatFits(.init(width: textWidth, height: 0)).height
         
         // Конечный размер ячейки определяется по высоте backImage или высоте текста категории

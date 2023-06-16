@@ -27,11 +27,11 @@ extension HomeCategoryCell {
     }
 
     // Принимает все записи диаграммы и цвета категорий для отображения
-    func updatePieChartData(values: [ChartDataEntry], colors: [UIColor]) {
-        let dataSet = PieChartDataSet(entries: values, label: "")
+    func updatePieChartData() {
+        let dataSet = PieChartDataSet(entries: pieChartEntries, label: "")
         let data = PieChartData(dataSets: [dataSet])
 
-        dataSet.colors = colors
+        dataSet.colors = pieChartColors
         pieChart.data = data
         pieChart.notifyDataSetChanged()
     }

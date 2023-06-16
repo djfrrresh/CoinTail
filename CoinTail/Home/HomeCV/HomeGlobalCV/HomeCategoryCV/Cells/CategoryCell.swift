@@ -15,18 +15,20 @@ final class CategoryCVCell: UICollectionViewCell {
     
     let backView: UIView = {
         let view = UIView()
-        view.backgroundColor = .clear
+        view.backgroundColor = .black
         view.layer.cornerRadius = 15
         return view
     }()
     
-    let categoryName: UILabel = {
+    let categoryName: UILabel = getCategoryLabel()
+    
+    static func getCategoryLabel() -> UILabel {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = .white
         label.numberOfLines = 1
         return label
-    }()
+    }
     
     override init (frame: CGRect) {
         super.init(frame: frame)
@@ -44,25 +46,22 @@ final class CategoryCVCell: UICollectionViewCell {
         super.layoutSubviews()
         
         backView.easy.layout([
-            Left(),
-            Right(),
-            Height(32),
-            CenterY()
+            Edges()
         ])
         
         categoryName.easy.layout([
-            Left(16),
-            Right(16),
-            CenterX(),
-            CenterY()
+            Center()
         ])
     }
     
-    static func size() -> CGSize {
-        return .init(
-            width: UIScreen.main.bounds.width - 16 * 2,
-            height: 32
-        )
+    static func size(data: String) -> CGSize {
+        let category = getCategoryLabel()
+        category.text = data
+                
+        let textWidth = category.sizeThatFits(.init(width: 0, height: 0)).width
+        
+        // Динамический размер одной ячейки с отступами по 16 с краёв
+        return .init(width: textWidth + 16 * 2, height: 32)
     }
 
 }

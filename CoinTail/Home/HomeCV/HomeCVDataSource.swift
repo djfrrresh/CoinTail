@@ -8,7 +8,12 @@
 import UIKit
 
 
-extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CategoryDelegate {
+
+    func categoryIsHidden(isHidden: Bool) {
+            categoryIsHidden = isHidden
+            globalCV.reloadData()
+    }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
@@ -37,24 +42,33 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch cellIdentifier(for: indexPath) {
         case HomeDateCell.id:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeDateCell.id, for: indexPath) as? HomeDateCell else {
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: HomeDateCell.id,
+                for: indexPath
+            ) as? HomeDateCell else {
                 fatalError("Unable to dequeue HomeSelectedDateCell.")
             }
                         
             return cell
         case HomeCategoryCell.id:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCategoryCell.id, for: indexPath) as? HomeCategoryCell else { fatalError("Unable to dequeue HomeCategoryCell.")
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: HomeCategoryCell.id,
+                for: indexPath
+            ) as? HomeCategoryCell else { fatalError("Unable to dequeue HomeCategoryCell.")
             }
-
-            // Добавление данных в диаграммы
-            cell.updatePieChartData(values: pieChartEntries, colors: pieChartColors)
-            cell.progressView.updateViews(usageModels: progressValues)
-
-            cell.categoriesArrCellData = categoriesArr
-
+            
+            cell.categoryDelegate = self
+            
+            cell.chartsUpdate(homeSegment)
+            
+            cell.categoriesArrCellData = HomeCategoryCell.packBins(data: categoriesArr).1
+                        
             return cell
         case HomeOperationCell.id:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeOperationCell.id, for: indexPath) as? HomeOperationCell else { fatalError("Unable to dequeue HomeOperationCell.")
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: HomeOperationCell.id,
+                for: indexPath
+            ) as? HomeOperationCell else { fatalError("Unable to dequeue HomeOperationCell.")
             }
 
             cell.monthSectionsCellData = monthSections
@@ -85,7 +99,7 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
         case HomeDateCell.id:
             return HomeDateCell.size()
         case HomeCategoryCell.id:
-            return HomeCategoryCell.size()
+            return HomeCategoryCell.size(categoryIsHidden: categoryIsHidden, data: HomeCategoryCell.packBins(data: categoriesArr).0)
         case HomeOperationCell.id:
             return HomeOperationCell.size(data: monthSections)
         default:

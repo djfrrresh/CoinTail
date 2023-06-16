@@ -11,7 +11,7 @@ import UIKit
 extension HomeVC {
         
     func homeButtonTargets() {
-        typeSwitcher.addTarget(self, action: #selector(switchAction), for: .valueChanged)
+        homeTypeSwitcher.addTarget(self, action: #selector(switchAction), for: .valueChanged)
     }
         
 }

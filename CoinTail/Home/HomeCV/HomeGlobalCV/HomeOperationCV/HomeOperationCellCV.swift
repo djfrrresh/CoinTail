@@ -21,19 +21,22 @@ extension HomeOperationCell: UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OperationCVCell.id, for: indexPath) as? OperationCVCell else {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: OperationCVCell.id,
+            for: indexPath
+        ) as? OperationCVCell else {
             fatalError("Unable to dequeue DateCVCell.")
         }
         
-        let recordData: Record?
+        let recordData: Record
         let section = monthSectionsCellData[indexPath.section]
         
         recordData = section.records[indexPath.row]
         
-        let image = recordData?.categoryImage
-        let amount = "\(recordData?.amount ?? 1)"
-        let category = recordData?.categoryText
-        let backView = recordData?.categoryColor
+        let image = recordData.category.image
+        let amount = "\(recordData.amount)"
+        let category = recordData.category.name
+        let backView = recordData.category.color
                 
         cell.amountLabel.text = amount
         cell.categoryLabel.text = category
@@ -42,11 +45,24 @@ extension HomeOperationCell: UICollectionViewDataSource, UICollectionViewDelegat
         
         // Ставит цвет в зависимости от типа операции
         cell.setAmountColor(
-            recordType: RecordType(rawValue: (recordData?.type)?.rawValue ?? "allOperations") ?? .allOperations,
+            recordType: RecordType(rawValue: (recordData.type).rawValue ) ?? .allOperations,
             amountLabel: cell.amountLabel
         )
                 
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let recordData: Record
+        let section = monthSectionsCellData[indexPath.section]
+        
+        recordData = section.records[indexPath.row]
+        
+        let vc = AddOperationVC(operationID: recordData.id)
+        
+        guard let topController = UIApplication.shared.windows.first?.rootViewController as? UINavigationController else { return }
+        
+        topController.pushViewController(vc, animated: true)
     }
     
     // Определение размера ячейки
@@ -59,6 +75,26 @@ extension HomeOperationCell: UICollectionViewDataSource, UICollectionViewDelegat
         guard let record = recordData else { return .init(width: 0, height: 0) }
 
         return OperationCVCell.size(data: record)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: OperationCVHeader.id,
+            for: indexPath) as? OperationCVHeader else { fatalError("Unable to dequeue OperationCVHeader.")
+        }
+        
+        
+        let section = monthSectionsCellData[indexPath.section]
+        let date = section.month
+        
+        headerView.dateLabel.text = headerView.dateFormatter.string(from: date)
+        
+        return headerView
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        CGSize(width: UIScreen.main.bounds.width, height: 32)
     }
     
 }

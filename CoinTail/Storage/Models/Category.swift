@@ -8,8 +8,9 @@
 import UIKit
 
 
-struct HomeCVCategory: Hashable {
+struct Category: Hashable {
     var name: String
     var color: UIColor
-    var type: RecordType
+    var image: UIImage?
+    var type: RecordType?
 }
