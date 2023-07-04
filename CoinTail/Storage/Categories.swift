@@ -63,4 +63,14 @@ final class Categories {
     func addNewCategory(_ category: Category, type: RecordType) {
         categories[type]?.append(category)
     }
+    
+    func categoriesUpdate(records: [Record]) {
+        var newCategories = [Category]()
+        for record in records {
+            if !newCategories.contains(record.category) {
+                newCategories.append(record.category)
+            }
+        }
+        totalCategories = newCategories
+    }
 }

@@ -14,24 +14,68 @@ final class Records {
 
     var total = [Record]()
     
-    let categories = Categories.shared
+    // TODO: Сменить на 0, если отсутствует Mock!
+    var recordID = 8
+        
+    // Получает сумму из операций за указанный период времени
+    func getAmount(for period: Periods, type: RecordType, step: Int = 0, category: Category? = nil) -> Double {
+        return getRecords(for: period, type: type, step: step, category: category).reduce(0.0) { $0 + $1.amount }
+    }
     
-    // Получает операции по типу
-    func getRecords(for segment: RecordType) -> [Record] {
-        switch segment {
-        case .expense:
-            return total.filter { $0.type == .expense }
-        case .income:
-            return total.filter { $0.type == .income }
-        case .allOperations:
-            return total
+    // Получает операции за указанный период времени
+    func getRecords(for period: Periods, type: RecordType, step: Int = 0, category: Category? = nil) -> [Record] {
+        let currentYear = Calendar.current.component(.year, from: Date())
+        let currentMonth = Calendar.current.component(.month, from: Date())
+        
+        var array = [Record]()
+        var records = total.filter { $0.type == type }
+        
+        if type == .allOperations {
+            records = total
         }
+        
+        if let category = category {
+            records = records.filter { $0.category == category }
+        }
+        
+        switch period {
+        case .allTheTime:
+            array = records
+        case .year:
+            array = records.filter { Calendar.current.component(.year, from: $0.date) == currentYear - step }
+        case .quarter:
+            let year = Int.norm(hi: currentYear, lo: currentMonth - 1 - step * 3, base: 12).nhi
+            let desiredMonth = Int.norm(hi: currentYear, lo: currentMonth - 1 - step * 3, base: 12).nlo + 1
+            let desiredQuarter = desiredMonth / 3
+                        
+            array = records.filter { Int(ceil(Double(Calendar.current.component(.month, from: $0.date)) / 3)) == desiredQuarter && Calendar.current.component(.year, from: $0.date) == year }
+        case .month:
+            let year = Int.norm(hi: currentYear, lo: currentMonth - 1 - step, base: 12).nhi
+            let desiredMonth = Int.norm(hi: currentYear, lo: currentMonth - 1 - step, base: 12).nlo + 1
+            
+            array = records.filter { Calendar.current.component(.month, from: $0.date) == desiredMonth && Calendar.current.component(.year, from: $0.date) == year }
+        }
+        
+        return array
     }
         
     // Добавление новой операции и категории в массив
-    func addNewOperation(record: Record) {
+    func addRecord(record: Record) {
         total.append(record)
-        categoriesUpdate(record: record)
+    }
+    
+    // Удаляет операцию по ее ID
+    func deleteRecord(for id: Int, completion: ((Bool) -> Void)? = nil) {
+        guard let record = getRecord(for: id) else {
+            completion?(false)
+            return
+        }
+        guard let index = total.firstIndex(of: record) else {
+            completion?(false)
+            return
+        }
+        total.remove(at: index)
+        completion?(true)
     }
     
     // Получить операцию по ее ID
@@ -49,24 +93,7 @@ final class Records {
             return
         }
         total[index] = replacingRecord
-        categoriesUpdate()
         completion?(true)
-    }
-    
-    private func categoriesUpdate(record: Record? = nil) {
-        if let record = record {
-            if !categories.totalCategories.contains(record.category) {
-                categories.totalCategories.append(record.category)
-            }
-        } else {
-            var newCategories = [Category]()
-            for record in total {
-                if !newCategories.contains(record.category) {
-                    newCategories.append(record.category)
-                }
-            }
-            categories.totalCategories = newCategories
-        }
     }
 
 }

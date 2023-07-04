@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow()
-        window?.rootViewController = UINavigationController(rootViewController: HomeVC()) // Корневой контроллер
+        window?.rootViewController = TabBar() // Корневой контроллер
         window?.makeKeyAndVisible() // Отображение окна
         return true
     }
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        return container
 //    }()
 //
-//    // MARK: - Core Data Saving support
+    // MARK: - Core Data Saving support
 //    func saveContext () {
 //        let context = persistentContainer.viewContext
 //        if context.hasChanges {
