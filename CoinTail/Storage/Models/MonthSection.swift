@@ -12,7 +12,7 @@ struct MonthSection {
     var month: Date
     var records: [Record]
     
-    static func group(section: RecordType, groupRecords: [Record]) -> [MonthSection] {
+    static func groupRecords(section: RecordType, groupRecords: [Record]) -> [MonthSection] {
         let dictionary = Dictionary.init(grouping: groupRecords) { record in
             firstDayOfMonth(date: record.date)
         }.map { values in

@@ -81,9 +81,10 @@ extension HomeOperationCell: UICollectionViewDataSource, UICollectionViewDelegat
         guard let headerView = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind,
             withReuseIdentifier: OperationCVHeader.id,
-            for: indexPath) as? OperationCVHeader else { fatalError("Unable to dequeue OperationCVHeader.")
+            for: indexPath
+        ) as? OperationCVHeader else {
+            fatalError("Unable to dequeue OperationCVHeader.")
         }
-        
         
         let section = monthSectionsCellData[indexPath.section]
         let date = section.month

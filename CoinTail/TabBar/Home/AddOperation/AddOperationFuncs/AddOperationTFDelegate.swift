@@ -37,8 +37,8 @@ extension AddOperationVC: UITextFieldDelegate {
         
         // Все введенные значения пользователем
         let allString = textFieldString.replacingCharacters(in: range, with: string)
-        // Проверка на точку в начале строки
-        if (allString.starts(with: ".")) { return false }
+        // Проверка на точку и нули в начале строки
+        if allString.starts(with: ".") || allString.starts(with: "0") { return false }
         
         // Количество цифр в строке
         let charactersCount = String(textFieldString).count

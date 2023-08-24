@@ -43,7 +43,6 @@ final class OperationCVHeader: UICollectionReusableView {
             CenterY(),
             Left()
         ])
-        
     }
     
 }

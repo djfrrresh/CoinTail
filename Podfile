@@ -7,8 +7,8 @@ target 'CoinTail' do
     pod 'EasyPeasy'
     pod 'Charts'
     pod 'MultipleProgressBar', :git => "https://github.com/adriatikgashi/MultipleProgressBar"
+    pod 'SwiftLint'
     pod 'RxSwift', '6.5.0'
     pod 'RxCocoa', '6.5.0'
-    pod 'SwiftLint'
 
 end

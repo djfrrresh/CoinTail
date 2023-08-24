@@ -10,6 +10,16 @@ import UIKit
 
 extension BasicVC {
     
+    // Всплывающий алерт при ошибке
+    func errorAlert(_ message: String) {
+        let alertAction = UIAlertAction(title: "OK", style: .default)
+        
+        let alertView = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        
+        alertView.addAction(alertAction)
+        self.present(alertView, animated: true)
+    }
+    
     // Создание стака между элементами
     func setStack(stack: UIStackView, axis: NSLayoutConstraint.Axis, spacing: CGFloat, alignment: UIStackView.Alignment, distribution: UIStackView.Distribution, viewsArray: [UIView]) {
         stack.axis = axis

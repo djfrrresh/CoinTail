@@ -5,7 +5,7 @@
 //  Created by Eugene on 23.05.23.
 //
 
-import UIKit
+import Foundation
 
 
 // Структура операции
@@ -16,10 +16,4 @@ struct Record: Equatable {
     var id: Int
     var type: RecordType
     var category: Category
-}
-
-enum RecordType: String {
-    case expense = "Expense"
-    case income = "Income"
-    case allOperations = "Total"
 }

@@ -14,6 +14,8 @@ extension BudgetsVC {
         let vc = AddBudgetVC()
         vc.hidesBottomBarWhenPushed = true // Спрятать TabBar
         
+        self.navigationItem.rightBarButtonItem?.target = nil
+        
         navigationController?.pushViewController(vc, animated: true)
     }
     

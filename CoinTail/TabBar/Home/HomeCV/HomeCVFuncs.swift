@@ -16,7 +16,7 @@ extension HomeVC {
         Categories.shared.categoriesUpdate(records: getRecord)
         
         categoriesArr = Categories.shared.getCategories(for: homeSegment)
-        monthSections = MonthSection.group(section: homeSegment, groupRecords: getRecord)
+        monthSections = MonthSection.groupRecords(section: homeSegment, groupRecords: getRecord)
         
         balanceLabel.text = "Total: $\(Records.shared.getAmount(for: .allTheTime, type: .allOperations))"
     

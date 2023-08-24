@@ -22,7 +22,20 @@ final class Records {
         return getRecords(for: period, type: type, step: step, category: category).reduce(0.0) { $0 + $1.amount }
     }
     
+    // Получает сумму из категории с сегодняшнего дня до указанного периода (неделя / месяц)
+    func getAmount(date: Date, untilDate: Date, category: Category) -> Double? {
+        let calendar = Calendar.current
+        guard let startDate = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: date)),
+              let endDate = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: untilDate)) else { return nil }
+        
+        var records = total.filter { $0.type == .expense }
+        
+        records = records.filter { $0.category == category }
+        return records.filter { $0.date >= startDate && $0.date <= endDate }.reduce(0.0) { $0 + $1.amount }
+    }
+    
     // Получает операции за указанный период времени
+    // TODO: Исправить кривой фильтр по кварталам
     func getRecords(for period: Periods, type: RecordType, step: Int = 0, category: Category? = nil) -> [Record] {
         let currentYear = Calendar.current.component(.year, from: Date())
         let currentMonth = Calendar.current.component(.month, from: Date())
@@ -64,6 +77,11 @@ final class Records {
         total.append(record)
     }
     
+    // Получить операцию по ее ID
+    func getRecord(for id: Int) -> Record? {
+        return total.filter { $0.id == id }.first
+    }
+    
     // Удаляет операцию по ее ID
     func deleteRecord(for id: Int, completion: ((Bool) -> Void)? = nil) {
         guard let record = getRecord(for: id) else {
@@ -78,11 +96,7 @@ final class Records {
         completion?(true)
     }
     
-    // Получить операцию по ее ID
-    func getRecord(for id: Int) -> Record? {
-        return total.filter { $0.id == id }.first
-    }
-        
+    // Отредактировать операцию по ее ID
     func editRecord(for id: Int, replacingRecord: Record, completion: ((Bool) -> Void)? = nil) {
         guard let record = getRecord(for: id) else {
             completion?(false)

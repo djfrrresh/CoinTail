@@ -45,6 +45,7 @@ final class OperationCVCell: UICollectionViewCell {
         super.init(frame: frame)
         
         contentView.addSubview(backView)
+        
         backView.addSubview(backImage)
         backView.addSubview(categoryLabel)
         backView.addSubview(amountLabel)

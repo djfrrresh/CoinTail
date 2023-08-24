@@ -12,16 +12,6 @@ import EasyPeasy
 extension AddBudgetVC {
     
     func setAddBudgetStack() {
-        let nameStack = UIStackView()
-        setStack(
-            stack: nameStack,
-            axis: .vertical,
-            spacing: 6,
-            alignment: .fill,
-            distribution: .fill,
-            viewsArray: [budgetNameLabel, budgetNameTF]
-        )
-        
         let amountStack = UIStackView()
         setStack(
             stack: amountStack,
@@ -39,7 +29,7 @@ extension AddBudgetVC {
             spacing: 16,
             alignment: .fill,
             distribution: .fill,
-            viewsArray: [amountStack, categoriesButton]
+            viewsArray: [amountStack, categoryButton]
         )
         
         let preFinalStack = UIStackView()
@@ -49,11 +39,7 @@ extension AddBudgetVC {
             spacing: 32,
             alignment: .fill,
             distribution: .fill,
-            viewsArray: [
-                periodSwitcher,
-                nameStack,
-                categoryAmountStack
-            ]
+            viewsArray: [periodSwitcher, categoryAmountStack]
         )
         
         let finalStack = UIStackView()

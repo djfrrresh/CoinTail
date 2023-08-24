@@ -9,6 +9,12 @@ import UIKit
 
 
 class BudgetsVC: BasicVC {
+        
+    var daySections = [DaySection]() {
+        didSet {
+            budgetCV.reloadData()
+        }
+    }
     
     let budgetCV: UICollectionView = {
         let budgetLayout: UICollectionViewFlowLayout = {
@@ -21,12 +27,20 @@ class BudgetsVC: BasicVC {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: budgetLayout)
         cv.backgroundColor = .clear
         cv.register(BudgetCell.self, forCellWithReuseIdentifier: BudgetCell.id)
+        cv.register(BudgetCVHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: BudgetCVHeader.id)
         
         cv.showsVerticalScrollIndicator = false
         cv.alwaysBounceVertical = true
         cv.delaysContentTouches = true
         return cv
     }()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        budgetNavBar()
+        filterBudgets()
+    }
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +52,6 @@ class BudgetsVC: BasicVC {
         budgetCV.delegate = self
         
         budgetSubviews()
-        budgetNavBar()
     }
     
 }

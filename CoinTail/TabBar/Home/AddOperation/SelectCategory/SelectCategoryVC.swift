@@ -57,7 +57,7 @@ class SelectCategoryVC: BasicVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Select a category"
+        self.title = "Select category"
     }
     
     override func viewDidLayoutSubviews() {

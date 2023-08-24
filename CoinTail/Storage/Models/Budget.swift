@@ -8,9 +8,11 @@
 import UIKit
 
 
-struct Budget {
-    var name: String
-    var category: [Category]
+struct Budget: Equatable {
+    var category: Category
     var amount: Double
-    var period: Date
+    var startDate: Date
+    var untilDate: Date
+    var id: Int
+    var segmentIndex: Int
 }

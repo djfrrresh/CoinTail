@@ -12,7 +12,7 @@ PODS:
     - RxSwift (= 6.5.0)
   - RxSwift (6.5.0)
   - SwiftAlgorithms (1.0.0)
-  - SwiftLint (0.52.2)
+  - SwiftLint (0.52.3)
 
 DEPENDENCIES:
   - Charts
@@ -42,15 +42,15 @@ CHECKOUT OPTIONS:
     :git: https://github.com/adriatikgashi/MultipleProgressBar
 
 SPEC CHECKSUMS:
-  Charts: 354f86803d11d9c35de280587fef50d1af063978
+  Charts: ce0768268078eee0336f122c3c4ca248e4e204c5
   EasyPeasy: b9b1bae024d21a7dfa9bad26d6826d88348cc6f1
   MultipleProgressBar: 6d67e7049b58706cd2540ef04815b0da84c784c3
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
-  SwiftLint: 1ac76dac888ca05cb0cf24d0c85887ec1209961d
+  SwiftLint: 76ec9c62ad369cff2937474cb34c9af3fa270b7b
 
-PODFILE CHECKSUM: 16d0fc1dadf544800da13a791e043d50ddf34969
+PODFILE CHECKSUM: 548bcae6fbef9d944a3b481062f46e8383ccd15d
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

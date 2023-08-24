@@ -1,7 +1,6 @@
 import UIKit
 
 public struct UsagesModel {
-    
     var color: UIColor
     var value: Double
     
@@ -41,11 +40,7 @@ public final class MultiProgressView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
         
-        if #available(iOS 9.0, *) {
-            self.collectionView.widthAnchor.constraint(equalToConstant: self.frame.width).isActive = true
-        } else {
-            // Fallback on earlier versions
-        }
+        self.collectionView.widthAnchor.constraint(equalToConstant: self.frame.width).isActive = true
         
         UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveLinear, animations: {
             self.layoutIfNeeded()
@@ -70,20 +65,9 @@ public final class MultiProgressView: UIView {
     private func setupViews() {
         addSubview(collectionView)
         
-        if #available(iOS 9.0, *) {
-            NSLayoutConstraint.activate([
-                collectionView.heightAnchor.constraint(equalTo: heightAnchor),
-            ])
-        } else {
-            // Fallback on earlier versions
-        }
-        if #available(iOS 9.0, *) {
-            NSLayoutConstraint.activate([
-                collectionView.heightAnchor.constraint(equalTo: heightAnchor),
-            ])
-        } else {
-            // Fallback on earlier versions
-        }
+        NSLayoutConstraint.activate([
+            collectionView.heightAnchor.constraint(equalTo: heightAnchor),
+        ])
     }
     
     required init?(coder: NSCoder) {

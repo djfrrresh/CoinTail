@@ -13,6 +13,8 @@ class AddOperationVC: BasicVC {
     
     var operationID: Int?
     
+    var category: Category?
+    
     let addOperationTypeSwitcher: UISegmentedControl = {
         let switcher = UISegmentedControl(items: [
             RecordType.income.rawValue,
@@ -21,8 +23,6 @@ class AddOperationVC: BasicVC {
         return switcher
     }()
     var addOperationSegment: RecordType = .income
-
-    var category: Category?
     
     let amountLabel = UILabel(text: "Amount", alignment: .left)
     let descriptionLabel = UILabel(text: "Description", alignment: .left)
@@ -85,12 +85,10 @@ class AddOperationVC: BasicVC {
         textColor: .white
     )
     
-    // Инициализация переменных homeVC и operationID
     public required init(segmentIndex: Int) {
         addOperationTypeSwitcher.selectedSegmentIndex = segmentIndex
         super.init(nibName: nil, bundle: nil)
         
-        switchSegment()
         addOperationNavBar()
         
         self.title = "Add new operation"
@@ -114,7 +112,6 @@ class AddOperationVC: BasicVC {
         addOperationTypeSwitcher.selectedSegmentIndex = addOperationSegment == .income ? 0 : 1
         
         self.title = "Editing operation"
-        saveOperationButton.setTitle("Edit operation", for: .normal)
         addOperationTypeSwitcher.isHidden = true
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(

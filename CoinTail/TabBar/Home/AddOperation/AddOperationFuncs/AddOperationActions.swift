@@ -28,14 +28,10 @@ extension AddOperationVC {
     
     // Сохранение операции
     @objc func saveButtonAction(sender: AnyObject) {
-        saveOperationButton.removeTarget(nil, action: nil, for: .allEvents)
-        categoryButton.removeTarget(nil, action: nil, for: .allEvents)
-        
         let amount = Double(amountTF.text ?? "") ?? 0
         
         let categoryText = categoryButton.titleLabel?.text ?? "category"
 
-        // Проверка поля Amount и текста из кнопки категории на наличие данных в них
         recordValidation(amount: amount, categoryText: categoryText) { [weak self] amount, category in
             guard let strongSelf = self else { return }
             var dateText = strongSelf.dateTF.text!
@@ -58,6 +54,9 @@ extension AddOperationVC {
                 type: strongSelf.addOperationSegment,
                 category: category
             )
+            
+            strongSelf.saveOperationButton.removeTarget(nil, action: nil, for: .allEvents)
+            strongSelf.categoryButton.removeTarget(nil, action: nil, for: .allEvents)
                         
             if let operationID = strongSelf.operationID {
                 Records.shared.editRecord(for: operationID, replacingRecord: record)
@@ -71,7 +70,25 @@ extension AddOperationVC {
     
     // Переключение типа операции
     @objc func switchButtonAction(target: UISegmentedControl) {
-        switchSegment()
+        categoryButton.setTitle(AddOperationVC.defaultCategory, for: .normal)
+        
+        let segment = addOperationTypeSwitcher.titleForSegment(at: addOperationTypeSwitcher.selectedSegmentIndex)
+        
+        addOperationSegment = RecordType(rawValue: segment ?? "") ?? .income
+        
+        // Добавление неудаляемого знака минуса в тип "траты"
+        if addOperationSegment == .expense {
+            if !amountTF.text!.hasPrefix("-") {
+                amountTF.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: amountTF.frame.height))
+                amountTF.leftViewMode = .always
+                amountTF.text = "-" + amountTF.text!
+            }
+        } else { // Удаление минуса
+            amountTF.text = amountTF.text?.replacingOccurrences(
+                of: "-",
+                with: ""
+            )
+        }
     }
     
     // Повтор последней операции

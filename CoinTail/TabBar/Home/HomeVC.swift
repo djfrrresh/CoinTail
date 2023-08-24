@@ -25,8 +25,6 @@ class HomeVC: BasicVC, SelectedDate {
         }
     }
     
-    // Категории по типам операций
-    var categoriesArr: [Category] = []
     // Операции, сортированные по месяцам
     var monthSections = [MonthSection]() {
         didSet {
@@ -34,6 +32,10 @@ class HomeVC: BasicVC, SelectedDate {
         }
     }
     
+    // Категории по типам операций
+    var categoriesArr: [Category] = []
+    
+    // Выбранная категория
     var categorySort: Category? {
         didSet {
             homeGlobalCV.reloadData()
@@ -94,6 +96,7 @@ class HomeVC: BasicVC, SelectedDate {
         period = .allTheTime
         filterMonths()
         homeNavBar() // Кнопки в навбаре
+        homeButtonTargets() // Таргеты для кнопок
     }
 
     override func viewDidLoad() {
@@ -104,6 +107,8 @@ class HomeVC: BasicVC, SelectedDate {
 
         // Сюда подаются данные
         homeGlobalCV.dataSource = self
+                                        
+        homeSubviews() // Отображение и размеры вьюшек
         
         let dateFormatter: DateFormatter = {
             let formatter = DateFormatter()
@@ -135,9 +140,7 @@ class HomeVC: BasicVC, SelectedDate {
 
             Records.shared.addRecord(record: Record(amount: -550, date: date, id: 8, type: .expense, category: Category(name: "Subscription", color: categoryColor.subscriptionColor!, image: UIImage(systemName: "gamecontroller")!, type: .expense)))
         }
-                                        
-        homeSubviews() // Отображение и размеры вьюшек
-        homeButtonTargets() // Таргеты для кнопок
+
     }
 
 }

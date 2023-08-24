@@ -121,36 +121,4 @@ extension AddOperationVC {
         return toolbar
     }
     
-    // Всплывающий алерт при ошибке
-    func errorAlert(_ message: String) {
-        let alertAction = UIAlertAction(title: "OK", style: .default)
-        
-        let alertView = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        
-        alertView.addAction(alertAction)
-        self.present(alertView, animated: true)
-    }
-    
-    func switchSegment() {
-        categoryButton.setTitle(AddOperationVC.defaultCategory, for: .normal)
-        
-        let segment = addOperationTypeSwitcher.titleForSegment(at: addOperationTypeSwitcher.selectedSegmentIndex)
-        
-        addOperationSegment = RecordType(rawValue: segment ?? "") ?? .income
-        
-        // Добавление неудаляемого знака минуса в тип "траты"
-        if addOperationSegment == .expense {
-            if !amountTF.text!.hasPrefix("-") {
-                amountTF.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: amountTF.frame.height))
-                amountTF.leftViewMode = .always
-                amountTF.text = "-" + amountTF.text!
-            }
-        } else { // Удаление минуса
-            amountTF.text = amountTF.text?.replacingOccurrences(
-                of: "-",
-                with: ""
-            )
-        }
-    }
-    
 }

@@ -19,27 +19,38 @@ final class BudgetCell: UICollectionViewCell {
         view.layer.cornerRadius = 10
         return view
     }()
+    var backImage: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 8
+        return view
+    }()
     
-    let budgetProgressView: UIProgressView = {
+    let budgetProgress: UIProgressView = {
         let progress = UIProgressView()
-        progress.setProgress(0.5, animated: true)
+        progress.setProgress(0, animated: true)
         progress.trackTintColor = .systemGray2
-        progress.tintColor = UIColor(named: "income")
         return progress
     }()
     
-    let budgetName: UILabel = {
+    let categoryLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
         label.textColor = .darkGray
         return label
     }()
     
-    let budgetAmount: UILabel = {
+    let amountLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
         label.textColor = .darkGray
         return label
+    }()
+    
+    let categoryImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.tintColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+        return imageView
     }()
     
     override init(frame: CGRect) {
@@ -48,9 +59,13 @@ final class BudgetCell: UICollectionViewCell {
         backgroundColor = .clear
                 
         addSubview(backView)
-        backView.addSubview(budgetProgressView)
-        backView.addSubview(budgetAmount)
-        backView.addSubview(budgetName)
+        
+        backView.addSubview(backImage)
+        backView.addSubview(budgetProgress)
+        backView.addSubview(amountLabel)
+        backView.addSubview(categoryLabel)
+        
+        backImage.addSubview(categoryImage)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -62,22 +77,49 @@ final class BudgetCell: UICollectionViewCell {
         
         backView.easy.layout(Edges())
         
-        budgetAmount.easy.layout([
+        backImage.easy.layout([
+            CenterY(),
+            Left(8),
+            Height(50),
+            Width(50)
+        ])
+        
+        categoryImage.easy.layout([
+            Center(),
+            Height(40),
+            Width(40)
+        ])
+        
+        amountLabel.easy.layout([
             Right(8),
             Top(8)
         ])
         
-        budgetName.easy.layout([
-            Left(8),
+        categoryLabel.easy.layout([
+            Left(8).to(backImage, .right),
             Top(8)
         ])
         
-        budgetProgressView.easy.layout([
+        budgetProgress.easy.layout([
             Height(12),
-            Left(8),
+            Left(8).to(backImage, .right),
             Right(8),
             Bottom(8)
         ])
+    }
+    
+    func calculateProgressView(amount: Double, total: Double) {
+        let value = amount / total
+        
+        if value >= 0.75 {
+            budgetProgress.tintColor = UIColor(named: "expense")
+        } else if value >= 0.5 && value < 0.75 {
+            budgetProgress.tintColor = UIColor(named: "budget")
+        } else {
+            budgetProgress.tintColor = UIColor(named: "income")
+        }
+        
+        budgetProgress.setProgress(Float(value), animated: true)
     }
     
     static func size() -> CGSize {

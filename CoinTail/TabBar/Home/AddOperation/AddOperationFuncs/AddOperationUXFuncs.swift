@@ -10,6 +10,11 @@ import UIKit
 
 extension AddOperationVC: SendСategoryData {
     
+    func sendCategoryData(category: Category) {
+        self.category = category
+        categoryButton.setTitle(category.name, for: .normal)
+    }
+    
     // Установка таргетов для кнопок
     func setTargets() {
         saveOperationButton.addTarget(self, action: #selector(saveButtonAction), for: .touchUpInside)
@@ -31,11 +36,6 @@ extension AddOperationVC: SendСategoryData {
             guard let category = self.category else { return }
             completion?(amount, category)
         }
-    }
-    
-    func sendCategoryData(category: Category) {
-        self.category = category
-        categoryButton.setTitle(category.name, for: .normal)
     }
     
 }
