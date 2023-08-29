@@ -48,6 +48,7 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
         cv.register(CategoryCVCell.self, forCellWithReuseIdentifier: CategoryCVCell.id)
 
         cv.allowsMultipleSelection = false
+        cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
         cv.isScrollEnabled = false
         cv.isHidden = true

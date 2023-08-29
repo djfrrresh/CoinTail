@@ -12,6 +12,7 @@ import MultipleProgressBar
 
 class HomeVC: BasicVC, SelectedDate {
     
+    // Передает выбранный период и обнуляет счетчик шагов для диаграммы
     func selected(period: Periods) {
         self.period = period
         currentStep = 0
@@ -25,7 +26,7 @@ class HomeVC: BasicVC, SelectedDate {
         }
     }
     
-    // Операции, сортированные по месяцам
+    // Операции, записанные в массив по месяцам
     var monthSections = [MonthSection]() {
         didSet {
             homeGlobalCV.reloadData()
@@ -76,12 +77,12 @@ class HomeVC: BasicVC, SelectedDate {
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: operationLayout)
         cv.backgroundColor = .clear
-        // Регистрация трех ячеек коллекции
         cv.register(HomeOperationCell.self, forCellWithReuseIdentifier: HomeOperationCell.id)
         cv.register(HomeCategoryCell.self, forCellWithReuseIdentifier: HomeCategoryCell.id)
         cv.register(HomeDateCell.self, forCellWithReuseIdentifier: HomeDateCell.id)
         
         cv.showsVerticalScrollIndicator = false
+        cv.showsHorizontalScrollIndicator = false
         cv.alwaysBounceVertical = true
         cv.delaysContentTouches = true
         
@@ -94,7 +95,7 @@ class HomeVC: BasicVC, SelectedDate {
         super.viewWillAppear(animated)
         
         period = .allTheTime
-        filterMonths()
+        filterMonths() // Сортировка операций по убыванию по дате
         homeNavBar() // Кнопки в навбаре
         homeButtonTargets() // Таргеты для кнопок
     }
@@ -102,11 +103,9 @@ class HomeVC: BasicVC, SelectedDate {
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        // Реагирование на события
-        homeGlobalCV.delegate = self
+        homeGlobalCV.delegate = self // Реагирование на события
 
-        // Сюда подаются данные
-        homeGlobalCV.dataSource = self
+        homeGlobalCV.dataSource = self // Подача данных
                                         
         homeSubviews() // Отображение и размеры вьюшек
         

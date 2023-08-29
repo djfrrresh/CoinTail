@@ -10,6 +10,14 @@ import UIKit
 
 class CreateCategoryVC: BasicVC, UIGestureRecognizerDelegate {
     
+    // Передача новой категории в SelectCategoryVC
+    weak var addNewCategoryDelegate: AddNewCategory?
+    
+    // Картинки для создания категории
+    static let newImages = Categories.shared.createCategoryImages
+    
+    var selectedColor: UIColor?
+    
     // Всплывающее окно добавления новой категории
     let popUpView: UIView = {
        let popUp = UIView()
@@ -18,6 +26,7 @@ class CreateCategoryVC: BasicVC, UIGestureRecognizerDelegate {
         popUp.layer.borderWidth = 1
         popUp.layer.masksToBounds = true
         popUp.layer.borderColor = UIColor.black.cgColor
+        
         return popUp
     }()
     
@@ -28,6 +37,7 @@ class CreateCategoryVC: BasicVC, UIGestureRecognizerDelegate {
             layout.minimumLineSpacing = 8
             layout.minimumInteritemSpacing = 1
             layout.itemSize = CGSize(width: 50, height: 50)
+            
             return layout
         }()
         
@@ -37,6 +47,7 @@ class CreateCategoryVC: BasicVC, UIGestureRecognizerDelegate {
         cv.scrollIndicatorInsets = .zero
         cv.register(SelectCategoryCVCell.self, forCellWithReuseIdentifier: SelectCategoryCVCell.id)
         
+        cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
         cv.allowsMultipleSelection = false
         
@@ -55,6 +66,7 @@ class CreateCategoryVC: BasicVC, UIGestureRecognizerDelegate {
             color: .black
         )
         label.isHidden = true
+        
         return label
     }()
 
@@ -66,9 +78,6 @@ class CreateCategoryVC: BasicVC, UIGestureRecognizerDelegate {
     
     // Выбранная картинка, передается в делегате
     var selectedCategoryImage = UIImage(systemName: newImages[0]) ?? UIImage(systemName: "house")!
-    
-    // Передача новой категории в SelectCategoryVC
-    weak var addNewCategoryDelegate: AddNewCategory?
 
     let addButton = UIButton(
         name: "Add category".localized(),
@@ -80,19 +89,15 @@ class CreateCategoryVC: BasicVC, UIGestureRecognizerDelegate {
         background: .white,
         textColor: .black
     )
-
-    // Картинки для создания категории
-    static let newImages = Categories.shared.createCategoryImages
-    
-    var selectedColor: UIColor?
     
     override func viewDidLoad() {
         super.viewDidLoad()
                 
         self.view.backgroundColor = .clear
-        self.view.isOpaque = false
+        self.view.isOpaque = false // Выключает прозрачность view
                         
         createCategoryCV.delegate = self
+        
         createCategoryCV.dataSource = self
                         
         createTargets() // Таргеты для кнопок

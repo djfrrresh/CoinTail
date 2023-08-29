@@ -42,8 +42,10 @@ final class HomeDateCell: UICollectionViewCell {
         cv.backgroundColor = .clear
         
         cv.allowsMultipleSelection = false
+        cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
         cv.isScrollEnabled = true
+        
         return cv
     }()
     

@@ -220,8 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				560AFBCC2A1394A40054B502 /* Assets.xcassets */,
-				560AFBD12A1394A40054B502 /* Info.plist */,
-				560AFBC92A1394A30054B502 /* CoinTail.xcdatamodeld */,
 				5656E9BC2A97732000070045 /* Localizable.strings */,
 			);
 			path = Resources;
@@ -444,6 +442,8 @@
 			children = (
 				560AFBCE2A1394A40054B502 /* LaunchScreen.storyboard */,
 				560AFBC02A1394A30054B502 /* AppDelegate.swift */,
+				560AFBD12A1394A40054B502 /* Info.plist */,
+				560AFBC92A1394A30054B502 /* CoinTail.xcdatamodeld */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -983,7 +983,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4UL99FQPDT;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CoinTail/Resources/Info.plist;
+				INFOPLIST_FILE = CoinTail/Application/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CoinTail;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1031,7 +1031,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4UL99FQPDT;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CoinTail/Resources/Info.plist;
+				INFOPLIST_FILE = CoinTail/Application/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CoinTail;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

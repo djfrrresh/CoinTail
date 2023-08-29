@@ -42,7 +42,7 @@ class AddOperationVC: BasicVC {
         placeholder: "For example: Bought in the store".localized()
     )
     let dateTF: UITextField = {
-        let todayString = dateFormatter.string(from: Date())
+        let todayString = operationDateFormatter.string(from: Date())
 
         let textField  = UITextField(
             defaultText: "\(todayText) \(todayString)",
@@ -51,14 +51,14 @@ class AddOperationVC: BasicVC {
             placeholder: "Select date".localized()
         )
         
-        textField.inputView = datePicker
+        textField.inputView = operationDatePicker
         textField.inputAccessoryView = createToolbar()
         textField.tintColor = .clear
         
         return textField
     }()
     
-    static let dateFormatter: DateFormatter = {
+    static let operationDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
@@ -66,7 +66,7 @@ class AddOperationVC: BasicVC {
         return formatter
     }()
     
-    static let datePicker: UIDatePicker = {
+    static let operationDatePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.timeZone = NSTimeZone.local
         picker.locale = Locale(identifier: "en_EU_POSIX")
@@ -104,21 +104,23 @@ class AddOperationVC: BasicVC {
     
     init(operationID: Int) {
         self.operationID = operationID
+        
         super.init(nibName: nil, bundle: nil)
         
         // Передаем значения операции из редактируемой ячейки
         guard let record = Records.shared.getRecord(for: operationID) else { return }
+        
         category = record.category
         amountTF.text = "\(record.amount)"
         descriptionTF.text = record.descriptionText
         categoryButton.setTitle(record.category.name, for: .normal)
-        dateTF.text = Self.dateFormatter.string(from: record.date)
+        dateTF.text = Self.operationDateFormatter.string(from: record.date)
         addOperationSegment = record.type
         addOperationTypeSwitcher.selectedSegmentIndex = addOperationSegment == .income ? 0 : 1
-        
-        self.title = "Editing operation".localized()
         addOperationTypeSwitcher.isHidden = true
         
+        self.title = "Editing operation".localized()
+                
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .trash,
             target: self,
@@ -132,7 +134,7 @@ class AddOperationVC: BasicVC {
         amountTF.delegate = self
         dateTF.delegate = self
         
-        setAddOpStack() // Стаки для объектов на экране
+        setAddOpStack() // Stack'и для view на экране
     }
     
     override func viewWillAppear(_ animated: Bool) {

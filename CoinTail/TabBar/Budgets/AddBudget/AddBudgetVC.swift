@@ -11,7 +11,6 @@ import UIKit
 class AddBudgetVC: BasicVC {
     
     var budgetCategory: Category?
-    
     var budgetID: Int?
             
     let budgetAmountLabel = UILabel(text: "Amount".localized(), alignment: .left)
@@ -42,14 +41,16 @@ class AddBudgetVC: BasicVC {
             "Month".localized()
         ])
         switcher.selectedSegmentIndex = 1
+        
         return switcher
     }()
     
     init(budgetID: Int) {
         self.budgetID = budgetID
+        
         super.init(nibName: nil, bundle: nil)
 
-        // Передаем значения операции из редактируемой ячейки
+        // Передаем значения бюджета из редактируемой ячейки
         guard let budget = Budgets.shared.getBudget(for: budgetID) else { return }
         
         budgetCategory = budget.category

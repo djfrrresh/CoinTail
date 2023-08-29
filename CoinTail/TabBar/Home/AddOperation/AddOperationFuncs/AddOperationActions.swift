@@ -12,8 +12,8 @@ extension AddOperationVC {
     
     // Кнопка done в ToolBar'е для dateTF
     @objc func doneButtonAction() {        
-        let date = AddOperationVC.datePicker.date
-        let formatter = AddOperationVC.dateFormatter
+        let date = AddOperationVC.operationDatePicker.date
+        let formatter = AddOperationVC.operationDateFormatter
         
         // Проверка на сегодняшнюю дату
         if formatter.string(from: date) == formatter.string(from: (Date())) {
@@ -41,7 +41,7 @@ extension AddOperationVC {
                 dateText = dateText.replacingOccurrences(of: "\(AddOperationVC.todayText), ", with: "")
             }
             
-            let date = AddOperationVC.dateFormatter.date(from: dateText) ?? Date()
+            let date = AddOperationVC.operationDateFormatter.date(from: dateText) ?? Date()
             let desctiption = strongSelf.descriptionTF.text ?? ""
                         
             Records.shared.recordID += 1
@@ -103,7 +103,7 @@ extension AddOperationVC {
             strongSelf.amountTF.text = "\(record.amount)"
             strongSelf.descriptionTF.text = record.descriptionText
             strongSelf.categoryButton.setTitle(record.category.name, for: .normal)
-            strongSelf.dateTF.text = Self.dateFormatter.string(from: record.date)
+            strongSelf.dateTF.text = Self.operationDateFormatter.string(from: record.date)
             strongSelf.addOperationSegment = record.type
             strongSelf.addOperationTypeSwitcher.selectedSegmentIndex = strongSelf.addOperationSegment == .income ? 0 : 1
         }

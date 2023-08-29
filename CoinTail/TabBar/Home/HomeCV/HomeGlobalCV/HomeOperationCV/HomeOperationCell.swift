@@ -38,7 +38,9 @@ final class HomeOperationCell: UICollectionViewCell {
         
         cv.allowsMultipleSelection = false
         cv.showsVerticalScrollIndicator = false
+        cv.showsHorizontalScrollIndicator = false
         cv.isScrollEnabled = true
+        
         return cv
     }()
 
