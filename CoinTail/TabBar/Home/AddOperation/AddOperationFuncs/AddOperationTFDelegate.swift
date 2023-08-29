@@ -70,6 +70,7 @@ extension AddOperationVC: UITextFieldDelegate {
                 return false
             }
         }
+        
         return true
     }
     
@@ -87,6 +88,7 @@ extension AddOperationVC: UITextFieldDelegate {
                 return false
             }
         }
+        
         return true
     }
 }

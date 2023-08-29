@@ -10,6 +10,7 @@ import UIKit
 
 class BudgetsVC: BasicVC {
         
+    // Массив бюджетов с сортировкой по дням
     var daySections = [DaySection]() {
         didSet {
             budgetCV.reloadData()
@@ -26,15 +27,14 @@ class BudgetsVC: BasicVC {
         }()
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: budgetLayout)
-        // Отступ сверху
-        cv.contentInset = .init(top: 16, left: 0, bottom: 0, right: 0)
+        cv.contentInset = .init(top: 16, left: 0, bottom: 0, right: 0) // Отступ сверху
         cv.backgroundColor = .clear
         cv.register(BudgetCell.self, forCellWithReuseIdentifier: BudgetCell.id)
         cv.register(BudgetCVHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: BudgetCVHeader.id)
         
         cv.showsVerticalScrollIndicator = false
-        cv.alwaysBounceVertical = true
-        cv.delaysContentTouches = true
+        cv.showsHorizontalScrollIndicator = false
+        cv.alwaysBounceVertical = true // Подпрыгивание коллекции
         
         return cv
     }()
@@ -43,8 +43,7 @@ class BudgetsVC: BasicVC {
         super.viewWillAppear(animated)
         
         budgetNavBar()
-        // Отсортировать бюджеты по убыванию по дате
-        filterBudgets()
+        filterBudgets() // Сортировка бюджетов по убыванию по дате
     }
         
     override func viewDidLoad() {
@@ -61,6 +60,7 @@ class BudgetsVC: BasicVC {
         let dateFormatter: DateFormatter = {
             let formatter = DateFormatter()
             formatter.dateFormat = "dd/MM/yyyy"
+            
             return formatter
         }()
         let string = "12/08/2021"

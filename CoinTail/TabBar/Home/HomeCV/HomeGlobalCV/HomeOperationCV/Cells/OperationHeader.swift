@@ -17,11 +17,13 @@ final class OperationCVHeader: UICollectionReusableView {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_EN")
         formatter.dateFormat = "MMMM yyyy"
+        
         return formatter
     }()
     
     var dateLabel: UILabel = {
         let label = UILabel()
+        
         return label
     }()
     

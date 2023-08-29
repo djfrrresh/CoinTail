@@ -19,6 +19,7 @@ struct MonthSection {
         }.map { values in
             MonthSection(month: values.key, records: values.value)
         }
+        
         return dictionary
     }
 }

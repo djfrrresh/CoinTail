@@ -27,6 +27,7 @@ final class HomeOperationCell: UICollectionViewCell {
             layout.scrollDirection = .vertical
             layout.minimumLineSpacing = 0
             layout.minimumInteritemSpacing = 0
+            
             return layout
         }()
         
@@ -38,7 +39,9 @@ final class HomeOperationCell: UICollectionViewCell {
         
         cv.allowsMultipleSelection = false
         cv.showsVerticalScrollIndicator = false
+        cv.showsHorizontalScrollIndicator = false
         cv.isScrollEnabled = true
+        
         return cv
     }()
 
@@ -60,6 +63,7 @@ final class HomeOperationCell: UICollectionViewCell {
             formatter.dateStyle = .medium
             formatter.timeStyle = .none
             formatter.dateFormat = "dd/MM/yyyy"
+            
             return formatter
         }()
         

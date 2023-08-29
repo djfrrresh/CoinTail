@@ -19,6 +19,7 @@ struct DaySection {
         }.map { values in
             DaySection(day: values.key, budgets: values.value)
         }
+        
         return dictionary
     }
 }
