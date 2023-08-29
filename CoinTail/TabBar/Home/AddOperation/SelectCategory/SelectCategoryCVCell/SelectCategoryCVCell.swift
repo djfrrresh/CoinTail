@@ -20,6 +20,7 @@ final class SelectCategoryCVCell: UICollectionViewCell {
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.black.cgColor
         view.clipsToBounds = true
+        
         return view
     }()
     
@@ -27,18 +28,21 @@ final class SelectCategoryCVCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+        
         return imageView
     }()
     
     let categoryName: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        
         return label
     }()
     
     var categoryColor: UIColor = {
         var color = UIColor()
         color = .clear
+        
         return color
     }()
     

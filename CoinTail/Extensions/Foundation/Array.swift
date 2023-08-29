@@ -17,6 +17,7 @@ extension Array where Element: Equatable {
             guard !uniqueValues.contains(item) else { return }
             uniqueValues.append(item)
         }
+        
         return uniqueValues
     }
     

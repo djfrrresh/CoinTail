@@ -60,6 +60,7 @@ class HomeVC: BasicVC, SelectedDate {
         ])
         // Выбранный по умолчанию сегмент
         segmentedControl.selectedSegmentIndex = 0
+        
         return segmentedControl
     }()
     // Возвращает операции по выбранному типу
@@ -112,6 +113,7 @@ class HomeVC: BasicVC, SelectedDate {
         let dateFormatter: DateFormatter = {
             let formatter = DateFormatter()
             formatter.dateFormat = "dd/MM/yyyy"
+            
             return formatter
         }()
         let string = "01/02/2019"

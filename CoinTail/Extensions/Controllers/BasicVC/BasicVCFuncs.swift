@@ -41,6 +41,7 @@ extension BasicVC {
     private func endEditingRecognizer() -> UIGestureRecognizer {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing(_:)))
         tap.cancelsTouchesInView = false
+        
         return tap
     }
     

@@ -20,6 +20,7 @@ class SelectCategoryVC: BasicVC {
             layout.minimumLineSpacing = 48
             layout.minimumInteritemSpacing = 1
             layout.itemSize = CGSize(width: 70, height: 70)
+            
             return layout
         }()
         

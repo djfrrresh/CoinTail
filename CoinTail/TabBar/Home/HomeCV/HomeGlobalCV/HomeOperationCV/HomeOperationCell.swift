@@ -27,6 +27,7 @@ final class HomeOperationCell: UICollectionViewCell {
             layout.scrollDirection = .vertical
             layout.minimumLineSpacing = 0
             layout.minimumInteritemSpacing = 0
+            
             return layout
         }()
         
@@ -62,6 +63,7 @@ final class HomeOperationCell: UICollectionViewCell {
             formatter.dateStyle = .medium
             formatter.timeStyle = .none
             formatter.dateFormat = "dd/MM/yyyy"
+            
             return formatter
         }()
         

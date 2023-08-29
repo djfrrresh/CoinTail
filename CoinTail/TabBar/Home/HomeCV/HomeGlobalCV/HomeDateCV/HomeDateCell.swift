@@ -33,6 +33,7 @@ final class HomeDateCell: UICollectionViewCell {
             layout.scrollDirection = .horizontal
             layout.minimumLineSpacing = 12
             layout.minimumInteritemSpacing = 12
+            
             return layout
         }()
 

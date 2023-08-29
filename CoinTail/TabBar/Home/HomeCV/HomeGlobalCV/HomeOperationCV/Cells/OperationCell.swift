@@ -16,11 +16,13 @@ final class OperationCVCell: UICollectionViewCell {
     var backView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
+        
         return view
     }()
     var backImage: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 8
+        
         return view
     }()
          
@@ -28,6 +30,7 @@ final class OperationCVCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+        
         return imageView
     }()
     var arrowImage: UIImageView = {
@@ -35,6 +38,7 @@ final class OperationCVCell: UICollectionViewCell {
         // Иконка стрелки у суммы
         image.image = UIImage(systemName: "chevron.right")?.withRenderingMode(.alwaysTemplate)
         image.tintColor = UIColor.gray
+        
         return image
     }()
 
@@ -105,6 +109,7 @@ final class OperationCVCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 15)
+        
         return label
     }
     
@@ -112,6 +117,7 @@ final class OperationCVCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.boldSystemFont(ofSize: 15)
+        
         return label
     }
     

@@ -20,6 +20,7 @@ class AddOperationVC: BasicVC {
             RecordType.income.rawValue,
             RecordType.expense.rawValue
         ])
+        
         return switcher
     }()
     var addOperationSegment: RecordType = .income
@@ -63,6 +64,7 @@ class AddOperationVC: BasicVC {
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
         formatter.dateFormat = "dd/MM/yyyy"
+        
         return formatter
     }()
     
@@ -72,6 +74,7 @@ class AddOperationVC: BasicVC {
         picker.locale = Locale(identifier: "en_EU_POSIX")
         picker.datePickerMode = .date
         picker.preferredDatePickerStyle = .wheels
+        
         return picker
     }()
     
