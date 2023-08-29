@@ -18,18 +18,22 @@ extension AddBudgetVC {
         budgetValidation(amount: amount, categoryText: categoryText, isEditingBudget: isEditing) { [weak self] amount, category in
             guard let strongSelf = self else { return }
             
-            let date = strongSelf.budgetDateUntil()
-                        
-            Budgets.shared.budgetID += 1
+            var startDate: Date = Date()
+            var untilDate: Date = strongSelf.budgetDateUntil()
 
+            if let budgetID = strongSelf.budgetID {
+                startDate = Budgets.shared.getBudget(for: budgetID)?.startDate ?? startDate
+                untilDate = Budgets.shared.getBudget(for: budgetID)?.untilDate ?? untilDate
+            }
+            
             let budget = Budget(
                 category: category,
                 amount: amount,
-                startDate: Date(),
-                untilDate: date,
-                id: Budgets.shared.budgetID,
-                segmentIndex: strongSelf.periodSwitcher.selectedSegmentIndex
+                startDate: startDate,
+                untilDate: untilDate,
+                id: Budgets.shared.budgetID
             )
+            Budgets.shared.budgetID += 1
                    
             strongSelf.saveBudgetButton.removeTarget(nil, action: nil, for: .allEvents)
 
@@ -59,13 +63,13 @@ extension AddBudgetVC {
     @objc func removeBudget() {
         guard let id = budgetID else { return }
         
-        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { [weak self] _ in
+        let confirmAction = UIAlertAction(title: "Confirm".localized(), style: .default) { [weak self] _ in
             Budgets.shared.deleteBudget(for: id)
             self?.navigationController?.popToRootViewController(animated: true)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel)
         
-        let alertView = UIAlertController(title: "Delete operation", message: "Are you sure?", preferredStyle: .alert)
+        let alertView = UIAlertController(title: "Delete operation".localized(), message: "Are you sure?".localized(), preferredStyle: .alert)
         
         alertView.addAction(confirmAction)
         alertView.addAction(cancelAction)

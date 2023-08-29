@@ -6,3 +6,99 @@
   
 */
 
+// RecordType
+"Expense" = "Expense";
+"Income" = "Income";
+"Total" = "Total";
+
+// Categories
+/// income
+"Salary" = "Salary";
+"Debt repayment" = "Debt repayment";
+"Side job" = "Side job";
+"Pleasant finds" = "Pleasant finds";
+/// expense
+"Transport" = "Transport";
+"Groceries" = "Groceries";
+"Cloths" = "Cloths";
+"Gym" = "Gym";
+"Service" = "Service";
+"Subscription" = "Subscription";
+"Health" = "Health";
+"Cafe" = "Cafe";
+
+// TabBar
+"Home" = "Home";
+"Budgets" = "Budgets";
+"Settings" = "Settings";
+
+// HomeVC
+/// Title
+"Total balance:" = "Total balance:";
+/// Periods CV
+"All the time" = "All the time";
+"Year" = "Year";
+"Quarter" = "Quarter";
+"3 months" = "3 months";
+"Month" = "Month";
+
+// BudgetsVC
+/// Title
+"Budgets" = "Budgets";
+
+// AddBudgetVC
+"Amount" = "Amount";
+"Select period" = "Select period";
+"Enter your amount" = "Enter your amount";
+"Save Budget" = "Save Budget";
+"Edit Budget" = "Edit Budget";
+"Select category" = "Select category";
+"Week" = "Week";
+/// Title
+"Add new Budget" = "Add new Budget";
+"Editing budget" = "Editing budget";
+/// Alert
+"Missing value in amount field" = "Missing value in amount field";
+"No category selected" = "No category selected";
+"There is already a budget for this category" = "There is already a budget for this category";
+"Error" = "Error";
+"Confirm" = "Confirm";
+"Cancel" = "Cancel";
+"Delete operation" = "Delete operation";
+"Are you sure?" = "Are you sure?";
+
+// AddOperationVC
+"Amount" = "Amount";
+"Description" = "Description";
+"Date" = "Date";
+"Enter your value" = "Enter your value";
+"For example: Bought in the store" = "For example: Bought in the store";
+"Today" = "Today";
+"Select date" = "Select date";
+"Select category" = "Select category";
+"Save operation" = "Save operation";
+/// Title
+"Add new operation" = "Add new operation";
+"Editing operation" = "Editing operation";
+/// Alert
+"Missing value in amount field" = "Missing value in amount field";
+"No category selected" = "No category selected";
+"Confirm" = "Confirm";
+"Cancel" = "Cancel";
+"Repeat last operation" = "Repeat last operation";
+"Do you want to repeat the last operation?" = "Do you want to repeat the last operation?";
+"Delete operation" = "Delete operation";
+"Are you sure?" = "Are you sure?";
+
+// SelectCategoryVC
+/// Title
+"Select category" = "Select category";
+
+// CreateCategoryVC
+"Missing category name or no icon selected!" = "Missing category name or no icon selected!";
+"Type a category name" = "Type a category name";
+"Add category" = "Add category";
+"Select color" = "Select color";
+"New category" = "New category";
+/// Title
+"Add new category" = "Add new category";

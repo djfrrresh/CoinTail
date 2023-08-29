@@ -18,7 +18,7 @@ extension BudgetsVC {
             Left(16),
             Right(16),
             CenterX(),
-            Top(20).to(self.view.safeAreaLayoutGuide, .top),
+            Top().to(self.view.safeAreaLayoutGuide, .top),
             Bottom()
         ])
     }

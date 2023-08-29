@@ -188,23 +188,26 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
     private func getPeriodLabel(step: Int = 0) -> String {
         let currentYear = Calendar.current.component(.year, from: Date())
         let currentMonth = Calendar.current.component(.month, from: Date())
+        let yearText = "Year".localized()
                 
         switch period {
         case .allTheTime:
-            return "All the time"
+            return "All the time".localized()
         case .year:
-            return "Year \(currentYear - step)"
+            return "\(yearText) \(currentYear - step)"
         case .quarter:
             let year = Int.norm(hi: currentYear, lo: currentMonth - 1 - step * 3, base: 12).nhi
             let desiredMonth = Int.norm(hi: currentYear, lo: currentMonth - 1 - step * 3, base: 12).nlo + 1
             let desiredQuarter = desiredMonth / 3
+            let quarterText = "Quarter".localized()
             
-            return "Year \(year), Quarter \(desiredQuarter)"
+            return "\(yearText) \(year), \(quarterText) \(desiredQuarter)"
         case .month:
             let year = Int.norm(hi: currentYear, lo: currentMonth - 1 - step, base: 12).nhi
             let desiredMonth = Int.norm(hi: currentYear, lo: currentMonth - 1 - step, base: 12).nlo + 1
+            let monthText = "Month".localized()
             
-            return "Year \(year), Month \(desiredMonth)"
+            return "\(yearText) \(year), \(monthText) \(desiredMonth)"
         }
     }
     

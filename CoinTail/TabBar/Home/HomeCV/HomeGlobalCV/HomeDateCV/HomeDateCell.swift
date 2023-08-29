@@ -15,7 +15,12 @@ final class HomeDateCell: UICollectionViewCell {
     
     weak var periodDelegate: SelectedDate?
     
-    let periods: [String] = ["All the time", "Year", "3 months", "Month"]
+    let periods: [String] = [
+        "All the time".localized(),
+        "Year".localized(),
+        "3 months".localized(),
+        "Month".localized()
+    ]
     var period: Periods? {
         didSet {
             dateCV.reloadData()

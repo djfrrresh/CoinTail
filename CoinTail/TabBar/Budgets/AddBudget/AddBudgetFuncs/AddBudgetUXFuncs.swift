@@ -27,13 +27,14 @@ extension AddBudgetVC: SendСategoryData {
         let missingAmount = amount == 0
         let missingCategory = categoryText == AddBudgetVC.defaultCategory
         let budgetCategory = Budgets.shared.getBudget(for: categoryText)
+        let activeBudgetByCategory = budgetCategory?.isActive
 
         if missingAmount {
-            errorAlert("Missing value in amount field")
+            errorAlert("Missing value in amount field".localized())
         } else if missingCategory {
-            errorAlert("No category selected")
-        } else if budgetCategory != nil && !isEditingBudget {
-            errorAlert("There is already a budget for this category")
+            errorAlert("No category selected".localized())
+        } else if budgetCategory != nil && !isEditingBudget && activeBudgetByCategory! {
+            errorAlert("There is already a budget for this category".localized())
         } else {
             guard let category = self.budgetCategory else { return }
             completion?(amount, category)

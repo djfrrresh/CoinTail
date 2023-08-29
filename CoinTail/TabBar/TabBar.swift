@@ -19,9 +19,9 @@ class TabBar: UITabBarController {
         let budgetsVC = UINavigationController(rootViewController: BudgetsVC())
         let settingsVC = UINavigationController(rootViewController: SettingsVC())
                 
-        homeVC.title = "Home"
-        budgetsVC.title = "Budgets"
-        settingsVC.title = "Settings"
+        homeVC.title = "Home".localized()
+        budgetsVC.title = "Budgets".localized()
+        settingsVC.title = "Settings".localized()
                 
         // Цвет фона TabBar'а
         UITabBar.appearance().backgroundColor = .systemGray6

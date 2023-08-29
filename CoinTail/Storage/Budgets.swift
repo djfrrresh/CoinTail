@@ -15,7 +15,8 @@ final class Budgets {
     // Массив всех бюджетов
     var budgets = [Budget]()
     
-    var budgetID = 0
+    // TODO: исправить на 0, если отсутствует Mock!
+    var budgetID = 3
     
     // Добавить бюджет
     func addNewBudget(budget: Budget) {
@@ -29,7 +30,7 @@ final class Budgets {
     
     // Сверить бюджет по категории
     func getBudget(for categoryName: String) -> Budget? {
-        return budgets.filter { $0.category.name == categoryName }.first
+        return budgets.filter { $0.category.name == categoryName }.last
     }
     
     // Отредактировать бюджет по его ID

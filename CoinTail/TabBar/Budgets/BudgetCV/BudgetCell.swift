@@ -108,8 +108,8 @@ final class BudgetCell: UICollectionViewCell {
         ])
     }
     
-    func calculateProgressView(amount: Double, total: Double) {
-        let value = amount / total
+    func calculateProgressView(sum: Double, total: Double) {
+        let value = sum / total
         
         if value >= 0.75 {
             budgetProgress.tintColor = UIColor(named: "expense")
@@ -120,6 +120,11 @@ final class BudgetCell: UICollectionViewCell {
         }
         
         budgetProgress.setProgress(Float(value), animated: true)
+    }
+    
+    func calculatePercent(sum: Double, total: Double) -> String {
+        let stringPercent = (sum / total) * 100
+        return String(format: "%.0f", stringPercent)
     }
     
     static func size() -> CGSize {

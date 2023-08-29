@@ -25,12 +25,18 @@ final class BudgetCVHeader: UICollectionReusableView {
         return label
     }()
     
+    var separatorLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
     override init (frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = .clear
         
         addSubview(dateLabel)
+        addSubview(separatorLabel)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -43,6 +49,15 @@ final class BudgetCVHeader: UICollectionReusableView {
             CenterY(),
             Left()
         ])
+        
+        separatorLabel.easy.layout([
+            CenterY(),
+            Right()
+        ])
+    }
+    
+    func separator(isVisible: Bool) {
+        separatorLabel.isHidden = !isVisible
     }
     
 }

@@ -14,6 +14,7 @@ final class Categories {
     
     var totalCategories = [Category]()
     
+    // TODO: сделать перевод категорий здесь
     // Стандартные категории
     var categories: [RecordType: [Category]] = [
         .income: [
@@ -24,7 +25,7 @@ final class Categories {
         ],
         .expense: [
             Category(name: "Transport", color: Colors.shared.transportColor ?? .clear, image: UIImage(systemName: "car")!, type: .expense),
-            Category(name: "Glocery", color: Colors.shared.gloceryColor ?? .clear, image: UIImage(systemName: "cart")!, type: .expense),
+            Category(name: "Groceries", color: Colors.shared.gloceryColor ?? .clear, image: UIImage(systemName: "cart")!, type: .expense),
             Category(name: "Cloths", color: Colors.shared.clothsColor ?? .clear, image: UIImage(systemName: "tshirt")!, type: .expense),
             Category(name: "Gym", color: Colors.shared.gymColor ?? .clear, image: UIImage(systemName: "figure.walk")!, type: .expense),
             Category(name: "Service", color: Colors.shared.serviceColor ?? .clear, image: UIImage(systemName: "gearshape")!, type: .expense),
@@ -48,6 +49,7 @@ final class Categories {
         "fuelpump"
     ]
     
+    // Получить категории по типам на главном меню
     func getCategories(for sectionType: RecordType) -> [Category] {
         switch sectionType {
         case .expense:
@@ -64,13 +66,14 @@ final class Categories {
         categories[type]?.append(category)
     }
     
+    // Обновить категории в коллекции
     func categoriesUpdate(records: [Record]) {
         var newCategories = [Category]()
-        for record in records {
-            if !newCategories.contains(record.category) {
-                newCategories.append(record.category)
-            }
+        
+        for record in records where !newCategories.contains(record.category) {
+            newCategories.append(record.category)
         }
+        
         totalCategories = newCategories
     }
 }

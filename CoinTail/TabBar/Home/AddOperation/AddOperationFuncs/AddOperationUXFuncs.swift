@@ -29,9 +29,9 @@ extension AddOperationVC: SendСategoryData {
         let missingCategory = categoryText == AddOperationVC.defaultCategory
 
         if missingAmount {
-            errorAlert("Missing value in amount field")
+            errorAlert("Missing value in amount field".localized())
         } else if missingCategory {
-            errorAlert("No category selected")
+            errorAlert("No category selected".localized())
         } else {
             guard let category = self.category else { return }
             completion?(amount, category)

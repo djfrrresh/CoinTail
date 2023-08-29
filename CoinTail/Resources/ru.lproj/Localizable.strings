@@ -6,3 +6,102 @@
   
 */
 
+// RecordType
+// TODO: исправить баг, если написать переводом RecordType в свитчерах, то не будет обновляться таблица
+// TODO: для форматтеров поменять строки formatter.locale = Locale(identifier: "en_EN")
+"Expense" = "Expense";
+"Income" = "Income";
+"Total" = "Total";
+
+// Categories
+/// income
+"Salary" = "Зарплата";
+"Debt repayment" = "Возврат долга";
+"Side job" = "Подработка";
+"Pleasant finds" = "Приятные находки";
+/// expense
+"Transport" = "Транспорт";
+"Groceries" = "Продукты";
+"Cloths" = "Одежда";
+"Gym" = "Спортивный зал";
+"Service" = "Сервисное обслуживание";
+"Subscription" = "Онлайн-подписка";
+"Health" = "Здоровье";
+"Cafe" = "Кафе";
+
+// TabBar
+"Home" = "Главная";
+"Budgets" = "Бюджеты";
+"Settings" = "Настройки";
+
+// HomeVC
+/// NavBar
+"Total balance:" = "Общий баланс:";
+/// Periods CV
+"All the time" = "Всё время";
+"Year" = "Год";
+"Quarter" = "Квартал";
+"3 months" = "3 месяца";
+"Month" = "Месяц";
+
+// BudgetsVC
+/// NavBar
+"Budgets" = "Бюджеты";
+
+// AddBudgetVC
+"Amount" = "Сумма";
+"Select period" = "Выберите период";
+"Enter your amount" = "Введите сумму";
+"Save Budget" = "Сохранить бюджет";
+"Edit Budget" = "Отредактировать бюджет";
+"Select category" = "Выбрать категорию";
+"Week" = "Неделя";
+/// NavBar
+"Editing budget" = "Редактирование бюджета";
+"Add new Budget" = "Добавить новый бюджет";
+/// Alert
+"Missing value in amount field" = "Отсутствует значение в поле с суммой";
+"No category selected" = "Не выбрана категория";
+"There is already a budget for this category" = "Уже существует бюджет с такой категорией";
+"Error" = "Ошибка";
+"Confirm" = "Подтвердить";
+"Cancel" = "Отменить";
+"Delete operation" = "Удалить операцию";
+"Are you sure?" = "Вы уверены?";
+
+// AddOperationVC
+"Amount" = "Сумма";
+"Description" = "Описание";
+"Date" = "Дата";
+"Enter your value" = "Введите ваше значение";
+"For example: Bought in the store" = "Например: Покупка в магазине";
+"Today" = "Сегодня";
+"Select date" = "Выберите дату";
+"Select category" = "Выберите категорию";
+"Save operation" = "Сохранить операцию";
+/// NavBar
+"Add new operation" = "Добавить новую операцию";
+"Editing operation" = "Отредактировать операцию";
+/// Alert
+"Missing value in amount field" = "Отсутствует значение в поле суммы";
+"No category selected" = "Не выбрана категория";
+"Confirm" = "Подтвердить";
+"Cancel" = "Отменить";
+"Repeat last operation" = "Повторить последнюю операцию";
+"Do you want to repeat the last operation?" = "Вы хотите повторить последнюю операцию?";
+"Delete operation" = "Удалить операцию";
+"Are you sure?" = "Вы уверены?";
+
+// SelectCategoryVC
+/// NavBar
+"Select category" = "Выбрать категорию";
+
+// CreateCategoryVC
+"Missing category name or no icon selected!" = "Отсутствует имя категории или не выбрана иконка!";
+"Type a category name" = "Напишите название категории";
+"Add category" = "Добавить категорию";
+"Select color" = "Выбрать цвет";
+"New category" = "Новая категория";
+/// Title
+"Add new category" = "Добавить новую категорию";
+

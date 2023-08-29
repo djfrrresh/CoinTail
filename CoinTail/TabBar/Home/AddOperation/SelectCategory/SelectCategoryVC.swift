@@ -41,7 +41,7 @@ class SelectCategoryVC: BasicVC {
             
     var addOperationVCSegmentType: String?
     var addOperationVCSegment: RecordType {
-        RecordType(rawValue: addOperationVCSegmentType ?? "Income") ?? .income
+        RecordType(rawValue: addOperationVCSegmentType ?? "Expense") ?? .expense
     }
     
     // Получаем тип операции из AddOperationVC для отображения категорий
@@ -57,7 +57,7 @@ class SelectCategoryVC: BasicVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Select category"
+        self.title = "Select category".localized()
     }
     
     override func viewDidLayoutSubviews() {

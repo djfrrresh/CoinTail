@@ -24,29 +24,31 @@ class AddOperationVC: BasicVC {
     }()
     var addOperationSegment: RecordType = .income
     
-    let amountLabel = UILabel(text: "Amount", alignment: .left)
-    let descriptionLabel = UILabel(text: "Description", alignment: .left)
-    let dateLabel = UILabel(text: "Date", alignment: .left)
+    let amountLabel = UILabel(text: "Amount".localized(), alignment: .left)
+    let descriptionLabel = UILabel(text: "Description".localized(), alignment: .left)
+    let dateLabel = UILabel(text: "Date".localized(), alignment: .left)
+    
+    static let todayText = "Today".localized()
     
     let amountTF = UITextField(
         defaultText: "0.00",
         background: .lightGray.withAlphaComponent(0.2),
         keyboard: .decimalPad,
-        placeholder: "Enter your value"
+        placeholder: "Enter your value".localized()
     )
     let descriptionTF = UITextField(
         background: .clear,
         keyboard: .default,
-        placeholder: "For example: Bought in the store"
+        placeholder: "For example: Bought in the store".localized()
     )
     let dateTF: UITextField = {
         let todayString = dateFormatter.string(from: Date())
 
         let textField  = UITextField(
-            defaultText: "Today \(todayString)",
+            defaultText: "\(todayText) \(todayString)",
             background: .clear,
             keyboard: .numberPad,
-            placeholder: "Select date"
+            placeholder: "Select date".localized()
         )
         
         textField.inputView = datePicker
@@ -73,25 +75,28 @@ class AddOperationVC: BasicVC {
         return picker
     }()
     
-    static let defaultCategory = "Select category"
+    static let defaultCategory = "Select category".localized()
     let categoryButton = UIButton(
         name: defaultCategory,
         background: .clear,
         textColor: .black
     )
     let saveOperationButton = UIButton(
-        name: "Save operation",
+        name: "Save operation".localized(),
         background: .black,
         textColor: .white
     )
     
     public required init(segmentIndex: Int) {
         addOperationTypeSwitcher.selectedSegmentIndex = segmentIndex
+        addOperationSegment = segmentIndex == 0 ? .income : .expense
+        amountTF.text = segmentIndex == 0 ? "0.00" : "-0.00"
+        
         super.init(nibName: nil, bundle: nil)
         
         addOperationNavBar()
         
-        self.title = "Add new operation"
+        self.title = "Add new operation".localized()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -111,7 +116,7 @@ class AddOperationVC: BasicVC {
         addOperationSegment = record.type
         addOperationTypeSwitcher.selectedSegmentIndex = addOperationSegment == .income ? 0 : 1
         
-        self.title = "Editing operation"
+        self.title = "Editing operation".localized()
         addOperationTypeSwitcher.isHidden = true
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(

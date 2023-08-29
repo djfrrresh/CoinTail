@@ -22,20 +22,20 @@ final class Records {
         return getRecords(for: period, type: type, step: step, category: category).reduce(0.0) { $0 + $1.amount }
     }
     
-    // Получает сумму из категории с сегодняшнего дня до указанного периода (неделя / месяц)
+    // Получает сумму из категории с начальной даты до конечной с указанным периодом (неделя / месяц)
     func getAmount(date: Date, untilDate: Date, category: Category) -> Double? {
         let calendar = Calendar.current
         guard let startDate = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: date)),
               let endDate = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: untilDate)) else { return nil }
         
         var records = total.filter { $0.type == .expense }
-        
         records = records.filter { $0.category == category }
+        
         return records.filter { $0.date >= startDate && $0.date <= endDate }.reduce(0.0) { $0 + $1.amount }
     }
     
-    // Получает операции за указанный период времени
     // TODO: Исправить кривой фильтр по кварталам
+    // Получает операции за указанный период времени
     func getRecords(for period: Periods, type: RecordType, step: Int = 0, category: Category? = nil) -> [Record] {
         let currentYear = Calendar.current.component(.year, from: Date())
         let currentMonth = Calendar.current.component(.month, from: Date())
@@ -72,7 +72,7 @@ final class Records {
         return array
     }
         
-    // Добавление новой операции и категории в массив
+    // Добавление новой операции
     func addRecord(record: Record) {
         total.append(record)
     }
@@ -84,29 +84,27 @@ final class Records {
     
     // Удаляет операцию по ее ID
     func deleteRecord(for id: Int, completion: ((Bool) -> Void)? = nil) {
-        guard let record = getRecord(for: id) else {
+        guard let record = getRecord(for: id),
+              let index = total.firstIndex(of: record) else {
             completion?(false)
             return
         }
-        guard let index = total.firstIndex(of: record) else {
-            completion?(false)
-            return
-        }
+        
         total.remove(at: index)
+        
         completion?(true)
     }
     
     // Отредактировать операцию по ее ID
     func editRecord(for id: Int, replacingRecord: Record, completion: ((Bool) -> Void)? = nil) {
-        guard let record = getRecord(for: id) else {
+        guard let record = getRecord(for: id),
+              let index = total.firstIndex(of: record) else {
             completion?(false)
             return
         }
-        guard let index = total.firstIndex(of: record) else {
-            completion?(false)
-            return
-        }
+        
         total[index] = replacingRecord
+        
         completion?(true)
     }
 

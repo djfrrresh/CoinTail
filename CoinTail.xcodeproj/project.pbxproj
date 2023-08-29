@@ -27,12 +27,12 @@
 		560AFC272A1BF5A30054B502 /* HomeCategoryCellCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC262A1BF5A30054B502 /* HomeCategoryCellCV.swift */; };
 		560AFC292A1BF62D0054B502 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC282A1BF62D0054B502 /* DateCell.swift */; };
 		560AFC2B2A1BF8EB0054B502 /* HomeCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC2A2A1BF8EB0054B502 /* HomeCVDataSource.swift */; };
-		560AFC312A1BFFF80054B502 /* HomeCVFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC302A1BFFF80054B502 /* HomeCVFuncs.swift */; };
 		560AFC392A1C0FC30054B502 /* PieChartFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC382A1C0FC30054B502 /* PieChartFuncs.swift */; };
 		560AFC3C2A1C10170054B502 /* ChartsAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC3B2A1C10170054B502 /* ChartsAnimation.swift */; };
 		560AFC3E2A1C10680054B502 /* ChartsSetEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC3D2A1C10680054B502 /* ChartsSetEntries.swift */; };
 		560AFC402A1D08D10054B502 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC3F2A1D08D10054B502 /* Category.swift */; };
 		560AFC432A1D091F0054B502 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC422A1D091F0054B502 /* Record.swift */; };
+		56191ECF2A9CBC6D00D47052 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56191ECE2A9CBC6D00D47052 /* Date.swift */; };
 		5642DAEB2A4080BF00ADF475 /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642DAEA2A4080BF00ADF475 /* Dates.swift */; };
 		5642DAED2A40D2BE00ADF475 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642DAEC2A40D2BE00ADF475 /* Int.swift */; };
 		5642DB112A4329AB00ADF475 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642DB102A4329AB00ADF475 /* TabBar.swift */; };
@@ -112,12 +112,12 @@
 		560AFC262A1BF5A30054B502 /* HomeCategoryCellCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCategoryCellCV.swift; sourceTree = "<group>"; };
 		560AFC282A1BF62D0054B502 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
 		560AFC2A2A1BF8EB0054B502 /* HomeCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCVDataSource.swift; sourceTree = "<group>"; };
-		560AFC302A1BFFF80054B502 /* HomeCVFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCVFuncs.swift; sourceTree = "<group>"; };
 		560AFC382A1C0FC30054B502 /* PieChartFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartFuncs.swift; sourceTree = "<group>"; };
 		560AFC3B2A1C10170054B502 /* ChartsAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsAnimation.swift; sourceTree = "<group>"; };
 		560AFC3D2A1C10680054B502 /* ChartsSetEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsSetEntries.swift; sourceTree = "<group>"; };
 		560AFC3F2A1D08D10054B502 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		560AFC422A1D091F0054B502 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		56191ECE2A9CBC6D00D47052 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		5642DAEA2A4080BF00ADF475 /* Dates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dates.swift; sourceTree = "<group>"; };
 		5642DAEC2A40D2BE00ADF475 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		5642DB102A4329AB00ADF475 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
@@ -243,6 +243,7 @@
 				560AFBDA2A13B26A0054B502 /* Array.swift */,
 				5642DAEC2A40D2BE00ADF475 /* Int.swift */,
 				5656E9B82A97707400070045 /* String.swift */,
+				56191ECE2A9CBC6D00D47052 /* Date.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -299,7 +300,7 @@
 		560AFC1A2A1BEE4E0054B502 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				560AFC412A1D09030054B502 /* Models */,
+				560AFC412A1D09030054B502 /* Structs */,
 				560AFC1B2A1BEE640054B502 /* Records.swift */,
 				56DBB7092A3B44090087271D /* Categories.swift */,
 				56DBB6F62A3893A80087271D /* Colors.swift */,
@@ -313,7 +314,6 @@
 			children = (
 				56DBB6DA2A3728390087271D /* HomeGlobalCV */,
 				560AFC2A2A1BF8EB0054B502 /* HomeCVDataSource.swift */,
-				560AFC302A1BFFF80054B502 /* HomeCVFuncs.swift */,
 			);
 			path = HomeCV;
 			sourceTree = "<group>";
@@ -365,7 +365,7 @@
 			path = ChartsFuncs;
 			sourceTree = "<group>";
 		};
-		560AFC412A1D09030054B502 /* Models */ = {
+		560AFC412A1D09030054B502 /* Structs */ = {
 			isa = PBXGroup;
 			children = (
 				560AFC1E2A1BF4970054B502 /* MonthSection.swift */,
@@ -376,7 +376,7 @@
 				5642DB2A2A4F313A00ADF475 /* Budget.swift */,
 				5656E9BE2A9777FA00070045 /* RecordType.swift */,
 			);
-			path = Models;
+			path = Structs;
 			sourceTree = "<group>";
 		};
 		5642DB0F2A43297500ADF475 /* TabBar */ = {
@@ -773,7 +773,6 @@
 				564F08FE2A531AEE004C89C7 /* AddBudgetVC.swift in Sources */,
 				56DBB6F92A39D69A0087271D /* OperationHeader.swift in Sources */,
 				5642DB142A432B0800ADF475 /* SettingsVC.swift in Sources */,
-				560AFC312A1BFFF80054B502 /* HomeCVFuncs.swift in Sources */,
 				560AFBEC2A13BF110054B502 /* UITextField.swift in Sources */,
 				560AFC032A16AF5A0054B502 /* HomeUIFuncs.swift in Sources */,
 				560AFC2B2A1BF8EB0054B502 /* HomeCVDataSource.swift in Sources */,
@@ -784,6 +783,7 @@
 				56EFDFE22A535294003A6A45 /* AddBudgetUIFuncs.swift in Sources */,
 				5642DB112A4329AB00ADF475 /* TabBar.swift in Sources */,
 				56DBB71D2A3B63310087271D /* CreateCategoryUXFuncs.swift in Sources */,
+				56191ECF2A9CBC6D00D47052 /* Date.swift in Sources */,
 				56DBB7212A3B64A00087271D /* CreateCategoryActions.swift in Sources */,
 				56EFDFE82A54502E003A6A45 /* Budgets.swift in Sources */,
 				560AFBCB2A1394A30054B502 /* CoinTail.xcdatamodeld in Sources */,

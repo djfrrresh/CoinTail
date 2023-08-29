@@ -14,32 +14,32 @@ class AddBudgetVC: BasicVC {
     
     var budgetID: Int?
             
-    let budgetAmountLabel = UILabel(text: "Amount", alignment: .left)
-    let budgetPeriodLabel = UILabel(text: "Select period", alignment: .left)
+    let budgetAmountLabel = UILabel(text: "Amount".localized(), alignment: .left)
+    let budgetPeriodLabel = UILabel(text: "Select period".localized(), alignment: .left)
     
     let budgetAmountTF = UITextField(
         defaultText: "0",
         background: .lightGray.withAlphaComponent(0.2),
         keyboard: .numberPad,
-        placeholder: "Enter your value"
+        placeholder: "Enter your amount".localized()
     )
     
-    static let defaultCategory = "Select category"
+    static let defaultCategory = "Select category".localized()
     let categoryButton = UIButton(
         name: defaultCategory,
         background: .clear,
         textColor: .black
     )
     let saveBudgetButton = UIButton(
-        name: "Save Budget",
+        name: "Save Budget".localized(),
         background: .black,
         textColor: .white
     )
     
     let periodSwitcher: UISegmentedControl = {
         let switcher = UISegmentedControl(items: [
-            "Week",
-            "Month"
+            "Week".localized(),
+            "Month".localized()
         ])
         switcher.selectedSegmentIndex = 1
         return switcher
@@ -55,10 +55,10 @@ class AddBudgetVC: BasicVC {
         budgetCategory = budget.category
         categoryButton.setTitle(budget.category.name, for: .normal)
         budgetAmountTF.text = "\(budget.amount)"
-        periodSwitcher.selectedSegmentIndex = budget.segmentIndex
-        saveBudgetButton.setTitle("Edit Budget", for: .normal)
+        saveBudgetButton.setTitle("Edit Budget".localized(), for: .normal)
+        periodSwitcher.isHidden = true
 
-        self.title = "Editing budget"
+        self.title = "Editing budget".localized()
 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .trash,
@@ -70,7 +70,7 @@ class AddBudgetVC: BasicVC {
     public required init() {
         super.init(nibName: nil, bundle: nil)
         
-        self.title = "Add new Budget"
+        self.title = "Add new Budget".localized()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

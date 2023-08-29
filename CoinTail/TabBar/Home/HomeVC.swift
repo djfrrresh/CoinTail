@@ -49,15 +49,13 @@ class HomeVC: BasicVC, SelectedDate {
             homeGlobalCV.reloadData()
         }
     }
-            
-    let categoryColor = Colors.shared
-    
+                
     // Переключатель типов операций
     let homeTypeSwitcher: UISegmentedControl = {
         var segmentedControl = UISegmentedControl(items: [
-            RecordType.allOperations.rawValue,
-            RecordType.income.rawValue,
-            RecordType.expense.rawValue
+            RecordType.allOperations.rawValue.localized(),
+            RecordType.income.rawValue.localized(),
+            RecordType.expense.rawValue.localized()
         ])
         // Выбранный по умолчанию сегмент
         segmentedControl.selectedSegmentIndex = 0
@@ -72,6 +70,7 @@ class HomeVC: BasicVC, SelectedDate {
             let layout = UICollectionViewFlowLayout()
             layout.minimumInteritemSpacing = 0
             layout.minimumLineSpacing = 8
+            
             return layout
         }()
         
@@ -85,6 +84,7 @@ class HomeVC: BasicVC, SelectedDate {
         cv.showsVerticalScrollIndicator = false
         cv.alwaysBounceVertical = true
         cv.delaysContentTouches = true
+        
         return cv
     }()
     
@@ -116,29 +116,31 @@ class HomeVC: BasicVC, SelectedDate {
             return formatter
         }()
         let string = "01/02/2019"
-        let string2 = "12/08/2021"
+        let string2 = "15/08/2021"
         let string3 = "27/05/2023"
                 
-        Records.shared.addRecord(record: Record(amount: 100, date: Date(), id: 0, type: .income, category: Category(name: "Salary", color: categoryColor.salaryColor!, image: UIImage(systemName: "dollarsign")!, type: .income)))
+        let categoryColor = Colors.shared
 
-        Records.shared.addRecord(record: Record(amount: -250, date: Date(), id: 1, type: .expense, category: Category(name: "Transport", color: categoryColor.transportColor!, image: UIImage(systemName: "car")!, type: .expense)))
+        Records.shared.addRecord(record: Record(amount: 100, date: Date(), id: 0, type: .income, category: Category(name: "Salary".localized(), color: categoryColor.salaryColor!, image: UIImage(systemName: "dollarsign")!, type: .income)))
+
+        Records.shared.addRecord(record: Record(amount: -250, date: Date(), id: 1, type: .expense, category: Category(name: "Transport".localized(), color: categoryColor.transportColor!, image: UIImage(systemName: "car")!, type: .expense)))
 
         if let date = dateFormatter.date(from: string) {
-            Records.shared.addRecord(record: Record(amount: 300, date: date, id: 2, type: .income, category: Category(name: "Pleasant finds", color: categoryColor.pleasantFindsColor!, image: UIImage(systemName: "heart")!, type: .income)))
+            Records.shared.addRecord(record: Record(amount: 300, date: date, id: 2, type: .income, category: Category(name: "Pleasant finds".localized(), color: categoryColor.pleasantFindsColor!, image: UIImage(systemName: "heart")!, type: .income)))
 
-            Records.shared.addRecord(record: Record(amount: 350, date: date, id: 3, type: .income, category: Category(name: "Pleasant finds", color: categoryColor.pleasantFindsColor!, image: UIImage(systemName: "heart")!, type: .income)))
+            Records.shared.addRecord(record: Record(amount: 350, date: date, id: 3, type: .income, category: Category(name: "Pleasant finds".localized(), color: categoryColor.pleasantFindsColor!, image: UIImage(systemName: "heart")!, type: .income)))
 
-            Records.shared.addRecord(record: Record(amount: -150, date: date, id: 4, type: .expense, category: Category(name: "Glocery", color: categoryColor.gloceryColor!, image: UIImage(systemName: "cart")!, type: .expense)))
+            Records.shared.addRecord(record: Record(amount: -150, date: date, id: 4, type: .expense, category: Category(name: "Groceries".localized(), color: categoryColor.gloceryColor!, image: UIImage(systemName: "cart")!, type: .expense)))
         }
         if let date = dateFormatter.date(from: string2) {
-            Records.shared.addRecord(record: Record(amount: 400, date: date, id: 5, type: .income, category: Category(name: "Debt repayment", color: categoryColor.debtRepaymentColor!, image: UIImage(systemName: "creditcard")!, type: .income)))
+            Records.shared.addRecord(record: Record(amount: 400, date: date, id: 5, type: .income, category: Category(name: "Debt repayment".localized(), color: categoryColor.debtRepaymentColor!, image: UIImage(systemName: "creditcard")!, type: .income)))
 
-            Records.shared.addRecord(record: Record(amount: -450, date: date, id: 6, type: .expense, category: Category(name: "Service", color: categoryColor.serviceColor!, image: UIImage(systemName: "gear")!, type: .expense)))
+            Records.shared.addRecord(record: Record(amount: -450, date: date, id: 6, type: .expense, category: Category(name: "Service".localized(), color: categoryColor.serviceColor!, image: UIImage(systemName: "gearshape")!, type: .expense)))
         }
         if let date = dateFormatter.date(from: string3) {
-            Records.shared.addRecord(record: Record(amount: 500, date: date, id: 7, type: .income, category: Category(name: "Salary", color: categoryColor.salaryColor!, image: UIImage(systemName: "dollarsign")!, type: .income)))
+            Records.shared.addRecord(record: Record(amount: 500, date: date, id: 7, type: .income, category: Category(name: "Salary".localized(), color: categoryColor.salaryColor!, image: UIImage(systemName: "dollarsign")!, type: .income)))
 
-            Records.shared.addRecord(record: Record(amount: -550, date: date, id: 8, type: .expense, category: Category(name: "Subscription", color: categoryColor.subscriptionColor!, image: UIImage(systemName: "gamecontroller")!, type: .expense)))
+            Records.shared.addRecord(record: Record(amount: -550, date: date, id: 8, type: .expense, category: Category(name: "Subscription".localized(), color: categoryColor.subscriptionColor!, image: UIImage(systemName: "gamecontroller")!, type: .expense)))
         }
 
     }

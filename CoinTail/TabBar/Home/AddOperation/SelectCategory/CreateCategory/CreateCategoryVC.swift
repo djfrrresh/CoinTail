@@ -44,13 +44,13 @@ class CreateCategoryVC: BasicVC, UIGestureRecognizerDelegate {
     }()
     
     let titleLabel = UILabel(
-        text: "Add new category",
+        text: "Add new category".localized(),
         alignment: .center,
         color: .black
     )
     let errorLabel: UILabel = {
         let label = UILabel(
-            text: "Missing category name or no icon selected!",
+            text: "Missing category name or no icon selected!".localized(),
             alignment: .center,
             color: .black
         )
@@ -61,7 +61,7 @@ class CreateCategoryVC: BasicVC, UIGestureRecognizerDelegate {
     let categoryTF = UITextField(
         background: .white,
         keyboard: .default,
-        placeholder: "Print a category name"
+        placeholder: "Type a category name".localized()
     )
     
     // Выбранная картинка, передается в делегате
@@ -71,12 +71,12 @@ class CreateCategoryVC: BasicVC, UIGestureRecognizerDelegate {
     weak var addNewCategoryDelegate: AddNewCategory?
 
     let addButton = UIButton(
-        name: "Add new category",
+        name: "Add category".localized(),
         background: .white,
         textColor: .black
     )
     let selectColorButton = UIButton(
-        name: "Select color",
+        name: "Select color".localized(),
         background: .white,
         textColor: .black
     )

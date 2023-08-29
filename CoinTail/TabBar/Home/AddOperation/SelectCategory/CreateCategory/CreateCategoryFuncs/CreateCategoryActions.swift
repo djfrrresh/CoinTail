@@ -20,7 +20,7 @@ extension CreateCategoryVC {
             errorAnimate()
         } else {
             addNewCategoryDelegate?.sendNewCategoryData(category: Category(
-                name: categoryTF.text ?? "new category",
+                name: categoryTF.text ?? "New category".localized(),
                 color: selectedColor ?? .white,
                 image: selectedCategoryImage)
             )

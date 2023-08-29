@@ -17,7 +17,7 @@ extension AddOperationVC {
         
         // Проверка на сегодняшнюю дату
         if formatter.string(from: date) == formatter.string(from: (Date())) {
-            dateTF.text = "Today \(formatter.string(from: date))"
+            dateTF.text = "\(AddOperationVC.todayText) \(formatter.string(from: date))"
         } else {
             // Ставим выбранную дату из пикера
             dateTF.text = formatter.string(from: date)
@@ -36,9 +36,9 @@ extension AddOperationVC {
             guard let strongSelf = self else { return }
             var dateText = strongSelf.dateTF.text!
             
-            if (dateText.contains("Today")) {
+            if (dateText.contains(AddOperationVC.todayText)) {
                 // Удаление "Today" с DateTF
-                dateText = dateText.replacingOccurrences(of: "Today, ", with: "")
+                dateText = dateText.replacingOccurrences(of: "\(AddOperationVC.todayText), ", with: "")
             }
             
             let date = AddOperationVC.dateFormatter.date(from: dateText) ?? Date()
@@ -81,7 +81,7 @@ extension AddOperationVC {
             if !amountTF.text!.hasPrefix("-") {
                 amountTF.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: amountTF.frame.height))
                 amountTF.leftViewMode = .always
-                amountTF.text = "-" + amountTF.text!
+                amountTF.text = "-" + (amountTF.text ?? "0.00")
             }
         } else { // Удаление минуса
             amountTF.text = amountTF.text?.replacingOccurrences(
@@ -93,7 +93,7 @@ extension AddOperationVC {
     
     // Повтор последней операции
     @objc func repeatOperationAction() {
-        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { [weak self] _ in
+        let confirmAction = UIAlertAction(title: "Confirm".localized(), style: .default) { [weak self] _ in
             guard let strongSelf = self,
                   let id = Records.shared.total.last?.id,
                   let record = Records.shared.getRecord(for: id) else { return }
@@ -107,9 +107,9 @@ extension AddOperationVC {
             strongSelf.addOperationSegment = record.type
             strongSelf.addOperationTypeSwitcher.selectedSegmentIndex = strongSelf.addOperationSegment == .income ? 0 : 1
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel)
         
-        let alertView = UIAlertController(title: "Repeat last operation", message: "Do you want to repeat the last operation?", preferredStyle: .alert)
+        let alertView = UIAlertController(title: "Repeat last operation".localized(), message: "Do you want to repeat the last operation?".localized(), preferredStyle: .alert)
         
         alertView.addAction(confirmAction)
         alertView.addAction(cancelAction)
@@ -122,6 +122,7 @@ extension AddOperationVC {
         saveOperationButton.removeTarget(nil, action: nil, for: .allEvents)
         categoryButton.removeTarget(nil, action: nil, for: .allEvents)
         
+        // TODO: возможно нужно поменять "Income" на localized
         // Передаем название и иконки категорий по типу операций
         let vc = SelectCategoryVC(segmentTitle: addOperationTypeSwitcher.titleForSegment(at: addOperationTypeSwitcher.selectedSegmentIndex) ?? "Income")
 
@@ -135,13 +136,13 @@ extension AddOperationVC {
     @objc func removeOperation() {
         guard let id = operationID else { return }
         
-        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { [weak self] _ in
+        let confirmAction = UIAlertAction(title: "Confirm".localized(), style: .default) { [weak self] _ in
             Records.shared.deleteRecord(for: id)
             self?.navigationController?.popToRootViewController(animated: true)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel)
         
-        let alertView = UIAlertController(title: "Delete operation", message: "Are you sure?", preferredStyle: .alert)
+        let alertView = UIAlertController(title: "Delete operation".localized(), message: "Are you sure?".localized(), preferredStyle: .alert)
         
         alertView.addAction(confirmAction)
         alertView.addAction(cancelAction)
