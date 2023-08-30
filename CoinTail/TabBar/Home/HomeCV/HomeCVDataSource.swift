@@ -94,7 +94,7 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
             
             cell.chartsUpdate(homeSegment, records: records)
             
-            cell.categoriesArrCellData = HomeCategoryCell.packBins(data: categoriesArr).1
+            cell.categoriesArrCellData = HomeCategoryCell.packBins(data: categoriesByType).1
             
             cell.amountForPeriodLabel.text = "\(Records.shared.getAmount(for: period, type: homeSegment, step: currentStep, category: categorySort))"
             cell.periodLabel.text = getPeriodLabel(step: currentStep)
@@ -142,7 +142,7 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
         case HomeDateCell.id:
             return HomeDateCell.size()
         case HomeCategoryCell.id:
-            return HomeCategoryCell.size(categoryIsHidden: categoryIsHidden, data: HomeCategoryCell.packBins(data: categoriesArr).0)
+            return HomeCategoryCell.size(categoryIsHidden: categoryIsHidden, data: HomeCategoryCell.packBins(data: categoriesByType).0)
         case HomeOperationCell.id:
             return HomeOperationCell.size(data: monthSections)
         default:

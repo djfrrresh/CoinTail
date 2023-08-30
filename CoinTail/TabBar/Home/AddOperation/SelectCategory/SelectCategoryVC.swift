@@ -13,9 +13,9 @@ class SelectCategoryVC: BasicVC {
     
     weak var categoryDelegate: SendСategoryData? // Передает категорию
     
-    var selectCategoryCV: UICollectionView = {
+    let selectCategoryCV: UICollectionView = {
         let layout: UICollectionViewFlowLayout = {
-            var layout = UICollectionViewFlowLayout()
+            let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .vertical
             layout.minimumLineSpacing = 48
             layout.minimumInteritemSpacing = 1

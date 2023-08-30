@@ -49,7 +49,7 @@ extension HomeVC {
         
         Categories.shared.categoriesUpdate(records: getRecord)
         
-        categoriesArr = Categories.shared.getCategories(for: homeSegment)
+        categoriesByType = Categories.shared.getCategories(for: homeSegment)
         monthSections = MonthSection.groupRecords(section: homeSegment, groupRecords: getRecord)
         
         let totalBalance = "Total balance:".localized()

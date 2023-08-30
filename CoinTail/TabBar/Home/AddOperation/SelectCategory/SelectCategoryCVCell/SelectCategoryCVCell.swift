@@ -39,7 +39,7 @@ final class SelectCategoryCVCell: UICollectionViewCell {
         return label
     }()
     
-    var categoryColor: UIColor = {
+    let categoryColor: UIColor = {
         var color = UIColor()
         color = .clear
         

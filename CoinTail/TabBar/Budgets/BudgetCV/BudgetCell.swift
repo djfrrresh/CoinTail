@@ -20,7 +20,7 @@ final class BudgetCell: UICollectionViewCell {
         
         return view
     }()
-    var backImage: UIView = {
+    let backImage: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 8
         

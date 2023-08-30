@@ -5,7 +5,7 @@
 //  Created by Eugene on 22.05.23.
 //
 
-import UIKit
+import Foundation
 
 
 // Секции по месяцам для операций

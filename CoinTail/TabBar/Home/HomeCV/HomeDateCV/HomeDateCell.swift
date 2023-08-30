@@ -29,7 +29,7 @@ final class HomeDateCell: UICollectionViewCell {
     
     let dateCV: UICollectionView = {
         let dateLayout: UICollectionViewFlowLayout = {
-            var layout = UICollectionViewFlowLayout()
+            let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .horizontal
             layout.minimumLineSpacing = 12
             layout.minimumInteritemSpacing = 12
@@ -78,4 +78,5 @@ final class HomeDateCell: UICollectionViewCell {
             height: 32
         )
     }
+    
 }

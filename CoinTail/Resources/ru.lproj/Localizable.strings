@@ -105,3 +105,6 @@
 /// Title
 "Add new category" = "Добавить новую категорию";
 
+// SettingsVC
+/// Title
+"Settings" = "Настройки";

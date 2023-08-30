@@ -21,7 +21,7 @@ final class OperationCVHeader: UICollectionReusableView {
         return formatter
     }()
     
-    var dateLabel: UILabel = {
+    let dateLabel: UILabel = {
         let label = UILabel()
         
         return label

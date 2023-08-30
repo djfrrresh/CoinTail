@@ -102,3 +102,7 @@
 "New category" = "New category";
 /// Title
 "Add new category" = "Add new category";
+
+// SettingsVC
+/// Title
+"Settings" = "Settings";

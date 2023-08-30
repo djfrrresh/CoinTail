@@ -34,7 +34,7 @@ class HomeVC: BasicVC, SelectedDate {
     }
     
     // Категории по типам операций
-    var categoriesArr: [Category] = []
+    var categoriesByType: [Category] = []
     
     // Выбранная категория
     var categorySort: Category? {
@@ -53,7 +53,7 @@ class HomeVC: BasicVC, SelectedDate {
                 
     // Переключатель типов операций
     let homeTypeSwitcher: UISegmentedControl = {
-        var segmentedControl = UISegmentedControl(items: [
+        let segmentedControl = UISegmentedControl(items: [
             RecordType.allOperations.rawValue.localized(),
             RecordType.income.rawValue.localized(),
             RecordType.expense.rawValue.localized()
@@ -68,7 +68,7 @@ class HomeVC: BasicVC, SelectedDate {
     
     // Глобальная коллекция, содержащая выбор даты, диаграммы и операции
     let homeGlobalCV: UICollectionView = {
-        let operationLayout: UICollectionViewFlowLayout = {
+        let globalLayout: UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()
             layout.minimumInteritemSpacing = 0
             layout.minimumLineSpacing = 8
@@ -76,7 +76,7 @@ class HomeVC: BasicVC, SelectedDate {
             return layout
         }()
         
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: operationLayout)
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: globalLayout)
         cv.backgroundColor = .clear
         cv.register(HomeOperationCell.self, forCellWithReuseIdentifier: HomeOperationCell.id)
         cv.register(HomeCategoryCell.self, forCellWithReuseIdentifier: HomeCategoryCell.id)
@@ -90,7 +90,7 @@ class HomeVC: BasicVC, SelectedDate {
         return cv
     }()
     
-    var balanceLabel = UILabel()
+    let balanceLabel = UILabel()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

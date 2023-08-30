@@ -5,7 +5,7 @@
 //  Created by Eugene on 19.06.23.
 //
 
-import UIKit
+import Foundation
 
 
 enum Periods: Int {

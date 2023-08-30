@@ -20,12 +20,12 @@ final class BudgetCVHeader: UICollectionReusableView {
         return formatter
     }()
     
-    var dateLabel: UILabel = {
+    let dateLabel: UILabel = {
         let label = UILabel()
         return label
     }()
     
-    var separatorLabel: UILabel = {
+    let separatorLabel: UILabel = {
         let label = UILabel()
         return label
     }()
