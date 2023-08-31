@@ -6,6 +6,13 @@
   
 */
 
+// General
+"Amount" = "Amount";
+"Error" = "Error";
+"Confirm" = "Confirm";
+"Cancel" = "Cancel";
+"Are you sure?" = "Are you sure?";
+
 // RecordType
 "Expense" = "Expense";
 "Income" = "Income";
@@ -43,11 +50,12 @@
 "Month" = "Month";
 
 // BudgetsVC
+"Active" = "Active";
+"Non active" = "Non active";
 /// Title
 "Budgets" = "Budgets";
 
 // AddBudgetVC
-"Amount" = "Amount";
 "Select period" = "Select period";
 "Enter your amount" = "Enter your amount";
 "Save Budget" = "Save Budget";
@@ -61,14 +69,9 @@
 "Missing value in amount field" = "Missing value in amount field";
 "No category selected" = "No category selected";
 "There is already a budget for this category" = "There is already a budget for this category";
-"Error" = "Error";
-"Confirm" = "Confirm";
-"Cancel" = "Cancel";
-"Delete operation" = "Delete operation";
-"Are you sure?" = "Are you sure?";
+"Delete budget" = "Delete budget";
 
 // AddOperationVC
-"Amount" = "Amount";
 "Description" = "Description";
 "Date" = "Date";
 "Enter your value" = "Enter your value";
@@ -83,12 +86,9 @@
 /// Alert
 "Missing value in amount field" = "Missing value in amount field";
 "No category selected" = "No category selected";
-"Confirm" = "Confirm";
-"Cancel" = "Cancel";
 "Repeat last operation" = "Repeat last operation";
 "Do you want to repeat the last operation?" = "Do you want to repeat the last operation?";
 "Delete operation" = "Delete operation";
-"Are you sure?" = "Are you sure?";
 
 // SelectCategoryVC
 /// Title
@@ -100,5 +100,15 @@
 "Add category" = "Add category";
 "Select color" = "Select color";
 "New category" = "New category";
+"Category" = "Category";
 /// Title
 "Add new category" = "Add new category";
+
+// SettingsVC
+"Currency" = "Currency";
+"Notifications" = "Notifications";
+"Rate app" = "Rate app";
+"About app" = "About app";
+"Delete data" = "Delete data";
+/// Title
+"Settings" = "Settings";

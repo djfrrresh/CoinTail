@@ -48,6 +48,10 @@
 		5656E9B92A97707500070045 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656E9B82A97707400070045 /* String.swift */; };
 		5656E9BA2A97732000070045 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5656E9BC2A97732000070045 /* Localizable.strings */; };
 		5656E9BF2A9777FA00070045 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656E9BE2A9777FA00070045 /* RecordType.swift */; };
+		5665C1372A9F5B2200B11D34 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665C1362A9F5B2200B11D34 /* Currency.swift */; };
+		5665C13A2A9F5F6900B11D34 /* SettingsCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665C1392A9F5F6900B11D34 /* SettingsCVDataSource.swift */; };
+		5665C13D2A9F614A00B11D34 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665C13C2A9F614A00B11D34 /* SettingsCell.swift */; };
+		5665C1402A9F6B0800B11D34 /* SettingsUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665C13F2A9F6B0800B11D34 /* SettingsUIFuncs.swift */; };
 		56DBB6CE2A3724BC0087271D /* HomeOperationCellCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */; };
 		56DBB6DD2A3728600087271D /* HomeOperationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6DC2A3728600087271D /* HomeOperationCell.swift */; };
 		56DBB6EA2A372E220087271D /* HomeDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6E92A372E220087271D /* HomeDateCell.swift */; };
@@ -135,6 +139,10 @@
 		5656E9BB2A97732000070045 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5656E9BD2A97732200070045 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5656E9BE2A9777FA00070045 /* RecordType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
+		5665C1362A9F5B2200B11D34 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		5665C1392A9F5F6900B11D34 /* SettingsCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCVDataSource.swift; sourceTree = "<group>"; };
+		5665C13C2A9F614A00B11D34 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
+		5665C13F2A9F6B0800B11D34 /* SettingsUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUIFuncs.swift; sourceTree = "<group>"; };
 		56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOperationCellCV.swift; sourceTree = "<group>"; };
 		56DBB6DC2A3728600087271D /* HomeOperationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOperationCell.swift; sourceTree = "<group>"; };
 		56DBB6E92A372E220087271D /* HomeDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDateCell.swift; sourceTree = "<group>"; };
@@ -310,7 +318,9 @@
 		560AFC232A1BF5510054B502 /* HomeCV */ = {
 			isa = PBXGroup;
 			children = (
-				56DBB6DA2A3728390087271D /* HomeGlobalCV */,
+				56DBB6CC2A3724AB0087271D /* HomeOperationCV */,
+				560AFC242A1BF5720054B502 /* HomeDateCV */,
+				560AFC252A1BF5850054B502 /* HomeCategoryCV */,
 				560AFC2A2A1BF8EB0054B502 /* HomeCVDataSource.swift */,
 			);
 			path = HomeCV;
@@ -373,6 +383,7 @@
 				5642DAEA2A4080BF00ADF475 /* Dates.swift */,
 				5642DB2A2A4F313A00ADF475 /* Budget.swift */,
 				5656E9BE2A9777FA00070045 /* RecordType.swift */,
+				5665C1362A9F5B2200B11D34 /* Currency.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -391,6 +402,8 @@
 		5642DB122A432AFB00ADF475 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				5665C13E2A9F6ADD00B11D34 /* SettingsFuncs */,
+				5665C1382A9F5F5300B11D34 /* SettingsCV */,
 				5642DB132A432B0800ADF475 /* SettingsVC.swift */,
 			);
 			path = Settings;
@@ -437,6 +450,23 @@
 			path = AddBudget;
 			sourceTree = "<group>";
 		};
+		5665C1382A9F5F5300B11D34 /* SettingsCV */ = {
+			isa = PBXGroup;
+			children = (
+				5665C13C2A9F614A00B11D34 /* SettingsCell.swift */,
+				5665C1392A9F5F6900B11D34 /* SettingsCVDataSource.swift */,
+			);
+			path = SettingsCV;
+			sourceTree = "<group>";
+		};
+		5665C13E2A9F6ADD00B11D34 /* SettingsFuncs */ = {
+			isa = PBXGroup;
+			children = (
+				5665C13F2A9F6B0800B11D34 /* SettingsUIFuncs.swift */,
+			);
+			path = SettingsFuncs;
+			sourceTree = "<group>";
+		};
 		56DBB6CB2A3358F10087271D /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -456,16 +486,6 @@
 				56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */,
 			);
 			path = HomeOperationCV;
-			sourceTree = "<group>";
-		};
-		56DBB6DA2A3728390087271D /* HomeGlobalCV */ = {
-			isa = PBXGroup;
-			children = (
-				560AFC252A1BF5850054B502 /* HomeCategoryCV */,
-				560AFC242A1BF5720054B502 /* HomeDateCV */,
-				56DBB6CC2A3724AB0087271D /* HomeOperationCV */,
-			);
-			path = HomeGlobalCV;
 			sourceTree = "<group>";
 		};
 		56DBB6EF2A3735360087271D /* Cells */ = {
@@ -758,6 +778,7 @@
 				56DBB7082A3B434C0087271D /* SelectCategoryVC.swift in Sources */,
 				5656E9B92A97707500070045 /* String.swift in Sources */,
 				5642DB172A432BA200ADF475 /* BudgetsVC.swift in Sources */,
+				5665C1372A9F5B2200B11D34 /* Currency.swift in Sources */,
 				56DBB6F42A37485A0087271D /* OperationCell.swift in Sources */,
 				56EFDFF02A5D9176003A6A45 /* DaySection.swift in Sources */,
 				5642DB252A4DDAC400ADF475 /* BudgetUIFuncs.swift in Sources */,
@@ -773,7 +794,9 @@
 				564F08FE2A531AEE004C89C7 /* AddBudgetVC.swift in Sources */,
 				56DBB6F92A39D69A0087271D /* OperationHeader.swift in Sources */,
 				5642DB142A432B0800ADF475 /* SettingsVC.swift in Sources */,
+				5665C1402A9F6B0800B11D34 /* SettingsUIFuncs.swift in Sources */,
 				560AFBEC2A13BF110054B502 /* UITextField.swift in Sources */,
+				5665C13D2A9F614A00B11D34 /* SettingsCell.swift in Sources */,
 				560AFC032A16AF5A0054B502 /* HomeUIFuncs.swift in Sources */,
 				560AFC2B2A1BF8EB0054B502 /* HomeCVDataSource.swift in Sources */,
 				5642DB292A4DE3B700ADF475 /* BudgetActions.swift in Sources */,
@@ -817,6 +840,7 @@
 				56EFDFEE2A5751EC003A6A45 /* BudgetCVDelegate.swift in Sources */,
 				560AFBE02A13B2E40054B502 /* UIButton.swift in Sources */,
 				560AFC3E2A1C10680054B502 /* ChartsSetEntries.swift in Sources */,
+				5665C13A2A9F5F6900B11D34 /* SettingsCVDataSource.swift in Sources */,
 				56DBB6EA2A372E220087271D /* HomeDateCell.swift in Sources */,
 				560AFBEA2A13B5EA0054B502 /* UISegmentedControl.swift in Sources */,
 				56DBB7122A3B4C570087271D /* SelectCategoryCVCell.swift in Sources */,

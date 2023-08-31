@@ -5,7 +5,7 @@
 //  Created by Eugene on 11.07.23.
 //
 
-import UIKit
+import Foundation
 
 
 // Секции по дням для бюджетов

@@ -34,7 +34,6 @@ final class Records {
         return records.filter { $0.date >= startDate && $0.date <= endDate }.reduce(0.0) { $0 + $1.amount }
     }
     
-    // TODO: Исправить кривой фильтр по кварталам
     // Получает операции за указанный период времени
     func getRecords(for period: Periods, type: RecordType, step: Int = 0, category: Category? = nil) -> [Record] {
         let currentYear = Calendar.current.component(.year, from: Date())
@@ -59,9 +58,14 @@ final class Records {
         case .quarter:
             let year = Int.norm(hi: currentYear, lo: currentMonth - 1 - step * 3, base: 12).nhi
             let desiredMonth = Int.norm(hi: currentYear, lo: currentMonth - 1 - step * 3, base: 12).nlo + 1
-            let desiredQuarter = desiredMonth / 3
-                        
-            array = records.filter { Int(ceil(Double(Calendar.current.component(.month, from: $0.date)) / 3)) == desiredQuarter && Calendar.current.component(.year, from: $0.date) == year }
+            let desiredQuarter = (desiredMonth - 1) / 3 + 1
+
+            array = records.filter {
+                let recordQuarter = (Calendar.current.component(.month, from: $0.date) - 1) / 3 + 1
+                let recordYear = Calendar.current.component(.year, from: $0.date)
+                
+                return recordQuarter == desiredQuarter && recordYear == year
+            }
         case .month:
             let year = Int.norm(hi: currentYear, lo: currentMonth - 1 - step, base: 12).nhi
             let desiredMonth = Int.norm(hi: currentYear, lo: currentMonth - 1 - step, base: 12).nlo + 1

@@ -24,7 +24,7 @@ extension SelectCategoryVC: UICollectionViewDataSource {
             fatalError("Unable to dequeue SelectCategoryCVCell.")
         }
         
-        let categoryLabel = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].name.localized() ?? "Category"
+        let categoryLabel = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].name ?? "Category".localized()
         let categoryImage = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].image ?? UIImage(systemName: "house")!
         let categoryColor = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].color ?? .clear
         

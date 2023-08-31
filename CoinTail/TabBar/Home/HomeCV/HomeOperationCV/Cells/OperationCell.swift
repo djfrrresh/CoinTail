@@ -13,27 +13,27 @@ final class OperationCVCell: UICollectionViewCell {
     
     static let id = "OperationCVCell"
     
-    var backView: UIView = {
+    let backView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
         
         return view
     }()
-    var backImage: UIView = {
+    let backImage: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 8
         
         return view
     }()
          
-    var categoryImage: UIImageView = {
+    let categoryImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         
         return imageView
     }()
-    var arrowImage: UIImageView = {
+    let arrowImage: UIImageView = {
         let image = UIImageView()
         // Иконка стрелки у суммы
         image.image = UIImage(systemName: "chevron.right")?.withRenderingMode(.alwaysTemplate)
@@ -42,8 +42,8 @@ final class OperationCVCell: UICollectionViewCell {
         return image
     }()
 
-    var amountLabel: UILabel = getAmountLabel()
-    var categoryLabel: UILabel = getCategoryLabel()
+    let amountLabel: UILabel = getAmountLabel()
+    let categoryLabel: UILabel = getCategoryLabel()
     
     override init (frame: CGRect) {
         super.init(frame: frame)

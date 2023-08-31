@@ -35,7 +35,7 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
      
     let categoriesCV: UICollectionView = {
         let categoryLayout: UICollectionViewFlowLayout = {
-            var layout = UICollectionViewFlowLayout()
+            let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .vertical
             layout.minimumLineSpacing = 12
             layout.minimumInteritemSpacing = 12
@@ -58,7 +58,7 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
     }()
         
     // Линейная диаграмма
-    var progressView: MultiProgressView = {
+    let progressView: MultiProgressView = {
         let progressChart = MultiProgressView()
         progressChart.layer.cornerRadius = 8
         progressChart.layer.masksToBounds = true

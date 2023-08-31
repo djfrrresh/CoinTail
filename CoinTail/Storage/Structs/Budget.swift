@@ -5,7 +5,7 @@
 //  Created by Eugene on 30.06.23.
 //
 
-import UIKit
+import Foundation
 
 
 struct Budget: Equatable {
