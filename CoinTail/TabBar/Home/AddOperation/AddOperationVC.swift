@@ -43,7 +43,7 @@ class AddOperationVC: BasicVC {
         placeholder: "For example: Bought in the store".localized()
     )
     let dateTF: UITextField = {
-        let todayString = operationDateFormatter.string(from: Date())
+        let todayString = operationDF.string(from: Date())
 
         let textField  = UITextField(
             defaultText: "\(todayText) \(todayString)",
@@ -59,7 +59,7 @@ class AddOperationVC: BasicVC {
         return textField
     }()
     
-    static let operationDateFormatter: DateFormatter = {
+    static let operationDF: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
@@ -71,7 +71,6 @@ class AddOperationVC: BasicVC {
     static let operationDatePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.timeZone = NSTimeZone.local
-        picker.locale = Locale(identifier: "en_EU_POSIX")
         picker.datePickerMode = .date
         picker.preferredDatePickerStyle = .wheels
         
@@ -117,7 +116,7 @@ class AddOperationVC: BasicVC {
         amountTF.text = "\(record.amount)"
         descriptionTF.text = record.descriptionText
         categoryButton.setTitle(record.category.name, for: .normal)
-        dateTF.text = Self.operationDateFormatter.string(from: record.date)
+        dateTF.text = Self.operationDF.string(from: record.date)
         addOperationSegment = record.type
         addOperationTypeSwitcher.selectedSegmentIndex = addOperationSegment == .income ? 0 : 1
         addOperationTypeSwitcher.isHidden = true

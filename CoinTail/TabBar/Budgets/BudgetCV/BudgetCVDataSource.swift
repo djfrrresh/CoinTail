@@ -66,7 +66,7 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
         let activeSectionIndex = daySections.firstIndex { $0.budgets[0].isActive ?? false }
         let nonActiveSectionIndex = daySections.firstIndex { !($0.budgets[0].isActive ?? false) }
         
-        headerView.separatorLabel.text = indexPath.section == activeSectionIndex ? "Active" : "Non active"
+        headerView.separatorLabel.text = indexPath.section == activeSectionIndex ? "Active".localized() : "Non active".localized()
         
         headerView.dateLabel.text = headerView.dateFormatter.string(from: day)
         headerView.separator(isVisible: indexPath.section == activeSectionIndex || indexPath.section == nonActiveSectionIndex)

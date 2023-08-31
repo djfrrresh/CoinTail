@@ -11,11 +11,11 @@ import UIKit
 class SettingsVC: BasicVC {
     
     let settingsMenu = [
-        "Currency",
-        "Notifications",
-        "Rate app",
-        "About app",
-        "Delete data"
+        "Currency".localized(),
+        "Notifications".localized(),
+        "Rate app".localized(),
+        "About app".localized(),
+        "Delete data".localized()
     ]
     let settingsMenuImages = [
         "dollarsign",

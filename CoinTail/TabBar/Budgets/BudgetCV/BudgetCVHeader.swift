@@ -15,8 +15,7 @@ final class BudgetCVHeader: UICollectionReusableView {
 
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_EN")
-        formatter.dateFormat = "MMM dd, yyyy"
+        formatter.dateFormat = "MMM d, yyyy"
         return formatter
     }()
     

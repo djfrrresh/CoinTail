@@ -198,7 +198,7 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
         case .quarter:
             let year = Int.norm(hi: currentYear, lo: currentMonth - 1 - step * 3, base: 12).nhi
             let desiredMonth = Int.norm(hi: currentYear, lo: currentMonth - 1 - step * 3, base: 12).nlo + 1
-            let desiredQuarter = desiredMonth / 3
+            let desiredQuarter = desiredMonth / 3 + 1
             let quarterText = "Quarter".localized()
             
             return "\(yearText) \(year), \(quarterText) \(desiredQuarter)"

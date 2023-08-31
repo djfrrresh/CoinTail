@@ -58,7 +58,7 @@ final class HomeOperationCell: UICollectionViewCell {
     
     // Проверка на сегодняшнюю дату
     func checkToday(date: Date, textField: UITextField) {
-        let dateFormatter:  DateFormatter = {
+        let headerDF:  DateFormatter = {
             let formatter = DateFormatter()
             formatter.dateStyle = .medium
             formatter.timeStyle = .none
@@ -67,10 +67,10 @@ final class HomeOperationCell: UICollectionViewCell {
             return formatter
         }()
         
-        if (dateFormatter.string(from: date) == dateFormatter.string(from: Date())) {
-            textField.text = "Today \(dateFormatter.string(from: date))"
+        if (headerDF.string(from: date) == headerDF.string(from: Date())) {
+            textField.text = "Today \(headerDF.string(from: date))"
         } else {
-            textField.text = dateFormatter.string(from: date)
+            textField.text = headerDF.string(from: date)
         }
     }
 

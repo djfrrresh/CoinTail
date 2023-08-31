@@ -42,15 +42,15 @@ class HomeVC: BasicVC, SelectedDate {
             homeGlobalCV.reloadData()
         }
     }
-    
-    var categoryIsHidden: Bool = true
-    
+        
     var currentStep: Int = 0 {
         didSet {
             homeGlobalCV.reloadData()
         }
     }
-                
+             
+    var categoryIsHidden: Bool = true
+
     // Переключатель типов операций
     let homeTypeSwitcher: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(items: [
@@ -58,12 +58,11 @@ class HomeVC: BasicVC, SelectedDate {
             RecordType.income.rawValue.localized(),
             RecordType.expense.rawValue.localized()
         ])
-        // Выбранный по умолчанию сегмент
         segmentedControl.selectedSegmentIndex = 0
         
         return segmentedControl
     }()
-    // Возвращает операции по выбранному типу
+    // Используется для возврата операций по выбранному типу
     var homeSegment: RecordType = .allOperations
     
     // Глобальная коллекция, содержащая выбор даты, диаграммы и операции
@@ -72,7 +71,7 @@ class HomeVC: BasicVC, SelectedDate {
             let layout = UICollectionViewFlowLayout()
             layout.minimumInteritemSpacing = 0
             layout.minimumLineSpacing = 8
-            
+
             return layout
         }()
         
@@ -85,7 +84,6 @@ class HomeVC: BasicVC, SelectedDate {
         cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
         cv.alwaysBounceVertical = true
-        cv.delaysContentTouches = true
         
         return cv
     }()
