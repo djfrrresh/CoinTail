@@ -23,37 +23,32 @@ extension HomeCategoryCell {
     
     // Анимация появления круговой диаграммы вместо плоской
     @objc func pieChartAction() {
+        let targetAlpha: CGFloat
+        let targetVisibility: Bool
+        
         if pieChart.isHidden {
-            UIView.animate(withDuration: 0.3) { [self] in
-                pieChart.isHidden = false
-                categoriesCV.isHidden = false
-                progressView.isHidden = true
-                arrowImageLeft.isHidden = false
-                arrowImageRight.isHidden = false
-                
-                pieChart.alpha = 1
-                categoriesCV.alpha = 1
-                progressView.alpha = 0
-                
-//                self.contentView.layoutIfNeeded()
-            }
+            targetAlpha = 1
+            targetVisibility = false
         } else {
-            UIView.animate(withDuration: 0.3) { [self] in
-                pieChart.isHidden = true
-                categoriesCV.isHidden = true
-                progressView.isHidden = false
-                arrowImageLeft.isHidden = true
-                arrowImageRight.isHidden = true
-                
-                pieChart.easy.clear()
-
-                pieChart.alpha = 0
-                categoriesCV.alpha = 0
-                progressView.alpha = 1
-
-//                self.contentView.layoutIfNeeded()
-            }
+            targetAlpha = 0
+            targetVisibility = true
+            pieChart.easy.clear()
         }
+        
+        UIView.animate(withDuration: 0.3) { [self] in
+            pieChart.isHidden = targetVisibility
+            categoriesCV.isHidden = targetVisibility
+            progressView.isHidden = !targetVisibility
+            arrowImageLeft.isHidden = !targetVisibility
+            arrowImageRight.isHidden = !targetVisibility
+
+            pieChart.alpha = targetAlpha
+            categoriesCV.alpha = targetAlpha
+            progressView.alpha = 1 - targetAlpha
+
+            self.contentView.layoutIfNeeded()
+        }
+        
         categoryisHiddenDelegate?.categoryIsHidden(isHidden: pieChart.isHidden)
     }
     

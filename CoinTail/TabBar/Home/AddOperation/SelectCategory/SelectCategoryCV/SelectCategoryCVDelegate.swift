@@ -18,7 +18,7 @@ extension SelectCategoryVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let categoryLabel = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].name ?? "Category".localized()
-        let categoryImage = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].image ?? UIImage(named: "house")!
+        let categoryImage = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].image ?? UIImage(named: "house")
         let categoryColor = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].color ?? .clear
         
         categoryDelegate?.sendCategoryData(

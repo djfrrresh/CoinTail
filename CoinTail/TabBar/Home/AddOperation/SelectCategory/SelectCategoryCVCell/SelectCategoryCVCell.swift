@@ -79,13 +79,12 @@ final class SelectCategoryCVCell: UICollectionViewCell {
     
     // Изменение цвета выбранной иконки
     override var isSelected: Bool {
-       didSet{
+       didSet {
            if isSelected {
                UIView.animate(withDuration: 0.3) { [self] in // for animation effect
                    backView.layer.borderWidth = 3
                }
-           }
-           else {
+           } else {
                UIView.animate(withDuration: 0.3) { [self] in // for animation effect
                    backView.layer.borderWidth = 1
                }

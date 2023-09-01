@@ -34,18 +34,22 @@ final class Records {
         return records.filter { $0.date >= startDate && $0.date <= endDate }.reduce(0.0) { $0 + $1.amount }
     }
     
+    //TODO: оптимизировать функцию
     // Получает операции за указанный период времени
     func getRecords(for period: Periods, type: RecordType, step: Int = 0, category: Category? = nil) -> [Record] {
-        let currentYear = Calendar.current.component(.year, from: Date())
-        let currentMonth = Calendar.current.component(.month, from: Date())
+        let calendar = Calendar.current
+        let currentYear = calendar.component(.year, from: Date())
+        let currentMonth = calendar.component(.month, from: Date())
         
         var array = [Record]()
+        // Фильтрация операций по типу
         var records = total.filter { $0.type == type }
         
         if type == .allOperations {
             records = total
         }
         
+        // Если выбрана категория, фильтруем по категории
         if let category = category {
             records = records.filter { $0.category == category }
         }
@@ -54,15 +58,15 @@ final class Records {
         case .allTheTime:
             array = records
         case .year:
-            array = records.filter { Calendar.current.component(.year, from: $0.date) == currentYear - step }
+            array = records.filter { calendar.component(.year, from: $0.date) == currentYear - step }
         case .quarter:
             let year = Int.norm(hi: currentYear, lo: currentMonth - 1 - step * 3, base: 12).nhi
             let desiredMonth = Int.norm(hi: currentYear, lo: currentMonth - 1 - step * 3, base: 12).nlo + 1
             let desiredQuarter = (desiredMonth - 1) / 3 + 1
 
             array = records.filter {
-                let recordQuarter = (Calendar.current.component(.month, from: $0.date) - 1) / 3 + 1
-                let recordYear = Calendar.current.component(.year, from: $0.date)
+                let recordQuarter = (calendar.component(.month, from: $0.date) - 1) / 3 + 1
+                let recordYear = calendar.component(.year, from: $0.date)
                 
                 return recordQuarter == desiredQuarter && recordYear == year
             }
@@ -70,7 +74,7 @@ final class Records {
             let year = Int.norm(hi: currentYear, lo: currentMonth - 1 - step, base: 12).nhi
             let desiredMonth = Int.norm(hi: currentYear, lo: currentMonth - 1 - step, base: 12).nlo + 1
             
-            array = records.filter { Calendar.current.component(.month, from: $0.date) == desiredMonth && Calendar.current.component(.year, from: $0.date) == year }
+            array = records.filter { calendar.component(.month, from: $0.date) == desiredMonth && calendar.component(.year, from: $0.date) == year }
         }
         
         return array

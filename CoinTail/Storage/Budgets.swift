@@ -19,7 +19,7 @@ final class Budgets {
     var budgetID = 3
     
     // Добавить бюджет
-    func addNewBudget(budget: Budget) {
+    func addNewBudget(_ budget: Budget) {
         budgets.append(budget)        
     }
     
@@ -35,11 +35,8 @@ final class Budgets {
     
     // Отредактировать бюджет по его ID
     func editBudget(for id: Int, replacingBudget: Budget, completion: ((Bool) -> Void)? = nil) {
-        guard let budget = getBudget(for: id) else {
-            completion?(false)
-            return
-        }
-        guard let index = budgets.firstIndex(of: budget) else {
+        guard let budget = getBudget(for: id),
+              let index = budgets.firstIndex(of: budget) else {
             completion?(false)
             return
         }
@@ -50,11 +47,8 @@ final class Budgets {
     
     // Удаляет бюджет по его ID
     func deleteBudget(for id: Int, completion: ((Bool) -> Void)? = nil) {
-        guard let budget = getBudget(for: id) else {
-            completion?(false)
-            return
-        }
-        guard let index = budgets.firstIndex(of: budget) else {
+        guard let budget = getBudget(for: id),
+              let index = budgets.firstIndex(of: budget) else {
             completion?(false)
             return
         }

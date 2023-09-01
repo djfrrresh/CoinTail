@@ -77,7 +77,7 @@ class CreateCategoryVC: BasicVC, UIGestureRecognizerDelegate {
     )
     
     // Выбранная картинка, передается в делегате
-    var selectedCategoryImage = UIImage(systemName: newImages[0]) ?? UIImage(systemName: "house")!
+    var selectedCategoryImage = UIImage(systemName: newImages[0])
 
     let addButton = UIButton(
         name: "Add category".localized(),

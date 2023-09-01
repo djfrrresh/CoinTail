@@ -14,14 +14,10 @@ extension AddOperationVC {
     @objc func doneButtonAction() {        
         let date = AddOperationVC.operationDatePicker.date
         let formatter = AddOperationVC.operationDF
+        let dateString = formatter.string(from: date)
         
-        // Проверка на сегодняшнюю дату
-        if formatter.string(from: date) == formatter.string(from: (Date())) {
-            dateTF.text = "\(AddOperationVC.todayText) \(formatter.string(from: date))"
-        } else {
-            // Ставим выбранную дату из пикера
-            dateTF.text = formatter.string(from: date)
-        }
+        // Ставим выбранную дату из пикера или сегодняшнюю с припиской Today
+        dateTF.text = dateString == formatter.string(from: Date()) ? "\(AddOperationVC.todayText) \(dateString)" : dateString
         
         self.view.endEditing(true)
     }
@@ -34,14 +30,10 @@ extension AddOperationVC {
 
         recordValidation(amount: amount, categoryText: categoryText) { [weak self] amount, category in
             guard let strongSelf = self else { return }
-            var dateText = strongSelf.dateTF.text!
             
-            if (dateText.contains(AddOperationVC.todayText)) {
-                // Удаление "Today" с DateTF
-                dateText = dateText.replacingOccurrences(of: "\(AddOperationVC.todayText), ", with: "")
-            }
-            
-            let date = AddOperationVC.operationDF.date(from: dateText) ?? Date()
+            guard let dateTFText = strongSelf.dateTF.text else { return }
+            let dateString = strongSelf.deleteTodayFromDateTF(dateTFText)
+            let date = AddOperationVC.operationDF.date(from: dateString) ?? Date()
             let desctiption = strongSelf.descriptionTF.text ?? ""
                         
             Records.shared.recordID += 1
@@ -68,48 +60,67 @@ extension AddOperationVC {
         }
     }
     
+    // Удаление "Today" с DateTF
+    private func deleteTodayFromDateTF(_ text: String) -> String {
+        if (text.contains(AddOperationVC.todayText)) {
+            return text.replacingOccurrences(of: "\(AddOperationVC.todayText), ", with: "")
+        }
+        
+        return ""
+    }
+    
     // Переключение типа операции
     @objc func switchButtonAction(target: UISegmentedControl) {
+        // Сбрасываем выбранную категорию на значение по умолчанию
         categoryButton.setTitle(AddOperationVC.defaultCategory, for: .normal)
         
         let segment = addOperationTypeSwitcher.titleForSegment(at: addOperationTypeSwitcher.selectedSegmentIndex)
         
         addOperationSegment = RecordType(rawValue: segment ?? "") ?? .income
         
-        // Добавление неудаляемого знака минуса в тип "траты"
+        // Добавляем или удаляем знак минуса в зависимости от типа операции
         if addOperationSegment == .expense {
-            if !amountTF.text!.hasPrefix("-") {
-                amountTF.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: amountTF.frame.height))
-                amountTF.leftViewMode = .always
-                amountTF.text = "-" + (amountTF.text ?? "0.00")
-            }
-        } else { // Удаление минуса
-            amountTF.text = amountTF.text?.replacingOccurrences(
-                of: "-",
-                with: ""
-            )
+            addMinusIfNeeded()
+        } else {
+            removeMinusIfNeeded()
         }
+    }
+    
+    // Добавление знака минуса
+    private func addMinusIfNeeded() {
+        guard !amountTF.text!.hasPrefix("-") else {
+            return
+        }
+
+        amountTF.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: amountTF.frame.height))
+        amountTF.leftViewMode = .always
+        amountTF.text = "-" + (amountTF.text ?? "0.00")
+    }
+
+    // Удаление минуса
+    private func removeMinusIfNeeded() {
+        // Удаляем знак минуса, если он есть
+        amountTF.text = amountTF.text?.replacingOccurrences(of: "-", with: "")
     }
     
     // Повтор последней операции
     @objc func repeatOperationAction() {
+        let alertView = UIAlertController(
+            title: "Repeat last operation".localized(),
+            message: "Do you want to repeat the last operation?".localized(),
+            preferredStyle: .alert
+        )
+        
         let confirmAction = UIAlertAction(title: "Confirm".localized(), style: .default) { [weak self] _ in
-            guard let strongSelf = self,
-                  let id = Records.shared.total.last?.id,
-                  let record = Records.shared.getRecord(for: id) else { return }
-
-            strongSelf.addOperationTypeSwitcher.isHidden = true
-            strongSelf.category = record.category
-            strongSelf.amountTF.text = "\(record.amount)"
-            strongSelf.descriptionTF.text = record.descriptionText
-            strongSelf.categoryButton.setTitle(record.category.name, for: .normal)
-            strongSelf.dateTF.text = Self.operationDF.string(from: record.date)
-            strongSelf.addOperationSegment = record.type
-            strongSelf.addOperationTypeSwitcher.selectedSegmentIndex = strongSelf.addOperationSegment == .income ? 0 : 1
+            guard let strongSelf = self else { return }
+            
+            if let lastRecord = Records.shared.total.last {
+                strongSelf.addOperationTypeSwitcher.isHidden = true
+    
+                strongSelf.setFormWithRecord(lastRecord)
+            }
         }
         let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel)
-        
-        let alertView = UIAlertController(title: "Repeat last operation".localized(), message: "Do you want to repeat the last operation?".localized(), preferredStyle: .alert)
         
         alertView.addAction(confirmAction)
         alertView.addAction(cancelAction)
@@ -117,17 +128,26 @@ extension AddOperationVC {
         self.present(alertView, animated: true)
     }
     
+    private func setFormWithRecord(_ record: Record) {
+        category = record.category
+        amountTF.text = "\(record.amount)"
+        descriptionTF.text = record.descriptionText
+        categoryButton.setTitle(record.category.name, for: .normal)
+        dateTF.text = Self.operationDF.string(from: record.date)
+        addOperationSegment = record.type
+        addOperationTypeSwitcher.selectedSegmentIndex = addOperationSegment == .income ? 0 : 1
+    }
+    
     // Переход на экран с выбором категории
-    @objc func categoryButtonAction() {
+    @objc func goToSelectCategoryVC() {
         saveOperationButton.removeTarget(nil, action: nil, for: .allEvents)
         categoryButton.removeTarget(nil, action: nil, for: .allEvents)
         
         // Передаем название и иконки категорий по типу операций
         let vc = SelectCategoryVC(segmentTitle: addOperationTypeSwitcher.titleForSegment(at: addOperationTypeSwitcher.selectedSegmentIndex) ?? "Income")
-
         vc.categoryDelegate = self
-        
         vc.hidesBottomBarWhenPushed = true // Спрятать TabBar
+        
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -135,13 +155,17 @@ extension AddOperationVC {
     @objc func removeOperation() {
         guard let id = operationID else { return }
         
+        let alertView = UIAlertController(
+            title: "Delete operation".localized(),
+            message: "Are you sure?".localized(),
+            preferredStyle: .alert
+        )
+        
         let confirmAction = UIAlertAction(title: "Confirm".localized(), style: .default) { [weak self] _ in
             Records.shared.deleteRecord(for: id)
             self?.navigationController?.popToRootViewController(animated: true)
         }
         let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel)
-        
-        let alertView = UIAlertController(title: "Delete operation".localized(), message: "Are you sure?".localized(), preferredStyle: .alert)
         
         alertView.addAction(confirmAction)
         alertView.addAction(cancelAction)

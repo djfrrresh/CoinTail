@@ -18,7 +18,7 @@ extension AddOperationVC: SendСategoryData {
     // Установка таргетов для кнопок
     func setTargets() {
         saveOperationButton.addTarget(self, action: #selector(saveButtonAction), for: .touchUpInside)
-        categoryButton.addTarget(self, action: #selector(categoryButtonAction), for: .touchUpInside)
+        categoryButton.addTarget(self, action: #selector(goToSelectCategoryVC), for: .touchUpInside)
         addOperationTypeSwitcher.addTarget(self, action: #selector(switchButtonAction), for: .valueChanged)
         amountTF.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }

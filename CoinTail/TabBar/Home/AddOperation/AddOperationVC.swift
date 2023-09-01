@@ -51,7 +51,6 @@ class AddOperationVC: BasicVC {
             keyboard: .numberPad,
             placeholder: "Select date".localized()
         )
-        
         textField.inputView = operationDatePicker
         textField.inputAccessoryView = createToolbar()
         textField.tintColor = .clear

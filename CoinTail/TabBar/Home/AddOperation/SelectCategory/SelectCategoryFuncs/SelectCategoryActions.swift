@@ -11,7 +11,7 @@ import UIKit
 extension SelectCategoryVC {
     
     // Открывается окно с созданием новой категории
-    @objc func addNewCategoryAction() {
+    @objc func goToCreateCategoryVC() {
         let vc = CreateCategoryVC()
         vc.addNewCategoryDelegate = self
         vc.modalPresentationStyle = .overCurrentContext

@@ -25,7 +25,7 @@ extension SelectCategoryVC: UICollectionViewDataSource {
         }
         
         let categoryLabel = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].name ?? "Category".localized()
-        let categoryImage = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].image ?? UIImage(systemName: "house")!
+        let categoryImage = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].image ?? UIImage(systemName: "house")
         let categoryColor = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].color ?? .clear
         
         cell.categoryName.text = categoryLabel

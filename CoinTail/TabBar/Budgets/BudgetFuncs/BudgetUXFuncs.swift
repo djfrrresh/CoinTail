@@ -10,7 +10,7 @@ import UIKit
 
 extension BudgetsVC {
     
-    func filterBudgets() {
+    func sortBudgets() {
         let budgets = Budgets.shared.budgets
         
         daySections = DaySection.groupBudgets(groupBudgets: budgets)

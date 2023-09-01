@@ -13,9 +13,10 @@ final class BudgetCVHeader: UICollectionReusableView {
     
     static let id = "BudgetCVHeader"
 
-    let dateFormatter: DateFormatter = {
+    let headerDF: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d, yyyy"
+        
         return formatter
     }()
     

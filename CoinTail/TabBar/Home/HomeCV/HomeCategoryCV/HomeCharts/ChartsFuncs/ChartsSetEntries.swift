@@ -21,42 +21,38 @@ extension HomeCategoryCell {
         
         // Секции == категории, по которым идет сортировка
         let chartSections = setDictionary(segment, records: records)
-
-        for (entry, _) in chartSections {
+        
+        for (_, chartSectionsEntry) in chartSections {
             var sum: Double = 0
-                        
-            // Перебор операций по категориям
-            for i in 0..<(chartSections[entry]!.count) {
+            let color: UIColor?
+            
+            if segment == .expense || segment == .income {
+                // Цвет берется из категории в операции
+                color = chartSectionsEntry.first?.category.color
+            } else {
+                // Цвет берется по типу операции
+                color = chartSectionsEntry.first?.type == .expense ? UIColor(named: "expense") : UIColor(named: "income")
+            }
+
+            // Смена итерации, если цвет не найден
+            guard let chartColor = color else { continue }
+
+            pieChartColors.append(chartColor)
+
+            for i in 0..<chartSectionsEntry.count {
                 // Преобразование в положительное число
-                let amount = abs(chartSections[entry]![i].amount)
+                let amount = abs(chartSectionsEntry[i].amount)
                 // Сумма всех операций в данной категории
                 sum += amount
             }
-            
-            // Добавление записей и цветов в диаграммы
-            switch segment {
-            case .expense, .income:
-                // Цвет берется из категории в операции
-                let color: UIColor = chartSections[entry]?.first?.category.color ?? .black
-                    
-                pieChartColors.append(color)
-                
-                let progressBarEntry = UsagesModel(color: color, value: sum)
-                progressChartEntries.append(progressBarEntry)
-            case .allOperations:
-                // Цвет берется по типу операции
-                let color: UIColor? = chartSections[entry]![0].type == .expense ? UIColor(named: "expense") : UIColor(named: "income")
-                
-                pieChartColors.append(color ?? .black)
-                
-                let progressBarEntry = UsagesModel(color: color ?? .black, value: sum)
-                progressChartEntries.append(progressBarEntry)
-            }
-            
+
+            // Добавление записи в диаграммы
+            let progressBarEntry = UsagesModel(color: chartColor, value: sum)
+            progressChartEntries.append(progressBarEntry)
+
             let pieChartEntry = PieChartDataEntry(value: sum, label: "")
-            pieChartEntries.append(pieChartEntry) // Добавление записи
+            pieChartEntries.append(pieChartEntry)
         }
-    
     }
     
     // Устанавливаем словарь, который будем перебирать для получения цветов и суммы операций

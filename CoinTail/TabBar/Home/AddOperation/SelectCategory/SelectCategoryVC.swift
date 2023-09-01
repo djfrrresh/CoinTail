@@ -88,7 +88,7 @@ class SelectCategoryVC: BasicVC {
             Width(64)
         ])
             
-        newCategoryButton.addTarget(self, action: #selector(addNewCategoryAction), for: .touchUpInside)
+        newCategoryButton.addTarget(self, action: #selector(goToCreateCategoryVC), for: .touchUpInside)
     }
     
 }

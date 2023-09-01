@@ -27,7 +27,7 @@ extension BudgetsVC {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,
             target: self,
-            action: #selector (addBudgetAction)
+            action: #selector (goToAddBudgetVC)
         )
     }
     

@@ -12,6 +12,7 @@ class TabBar: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         delegate = self
 
         // Навигационные контроллеры (с которых можно переходить в другие)

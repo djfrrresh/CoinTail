@@ -10,20 +10,25 @@ import UIKit
 
 extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CategoryIsHiddenDelegate, ArrowTapDelegate, SendCategoryCellDelegate, PushVC {
     
+    // Скрытие / показ категорий при нажатии на диаграмму
     func categoryIsHidden(isHidden: Bool) {
         categoryIsHidden = isHidden
+        
         homeGlobalCV.reloadData()
     }
     
+    // Пролистывание круговой диаграммы
     func arrowTap(isLeft: Bool) {
         currentStep += isLeft ? 1 : -1
-        filterMonths()
+        
+        sortRecords()
     }
     
+    // При нажатии на категорию помечает ее выбранной в коллекции
     func sendCategory(category: Category) {
         categorySort = categorySort == category ? nil : category
-                
-        filterMonths()
+        
+        sortRecords()
     }
     
     // Переход на контроллер для редактирования операции
@@ -96,7 +101,13 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
             
             cell.categoriesArrCellData = HomeCategoryCell.packBins(data: categoriesByType).1
             
-            cell.amountForPeriodLabel.text = "\(Records.shared.getAmount(for: period, type: homeSegment, step: currentStep, category: categorySort))"
+            let amountText = Records.shared.getAmount(
+                for: period,
+                type: homeSegment,
+                step: currentStep,
+                category: categorySort
+            )
+            cell.amountForPeriodLabel.text = "\(amountText)"
             cell.periodLabel.text = getPeriodLabel(step: currentStep)
             cell.category = categorySort
             
@@ -142,7 +153,10 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
         case HomeDateCell.id:
             return HomeDateCell.size()
         case HomeCategoryCell.id:
-            return HomeCategoryCell.size(categoryIsHidden: categoryIsHidden, data: HomeCategoryCell.packBins(data: categoriesByType).0)
+            return HomeCategoryCell.size(
+                categoryIsHidden: categoryIsHidden,
+                data: HomeCategoryCell.packBins(data: categoriesByType).0
+            )
         case HomeOperationCell.id:
             return HomeOperationCell.size(data: monthSections)
         default:
@@ -198,7 +212,7 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
         case .quarter:
             let year = Int.norm(hi: currentYear, lo: currentMonth - 1 - step * 3, base: 12).nhi
             let desiredMonth = Int.norm(hi: currentYear, lo: currentMonth - 1 - step * 3, base: 12).nlo + 1
-            let desiredQuarter = desiredMonth / 3 + 1
+            let desiredQuarter = desiredMonth / 3
             let quarterText = "Quarter".localized()
             
             return "\(yearText) \(year), \(quarterText) \(desiredQuarter)"
