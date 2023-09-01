@@ -17,11 +17,13 @@ final class BudgetCell: UICollectionViewCell {
         let view = UIView()
         view.backgroundColor = .systemGray6
         view.layer.cornerRadius = 10
+        
         return view
     }()
-    var backImage: UIView = {
+    let backImage: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 8
+        
         return view
     }()
     
@@ -29,6 +31,7 @@ final class BudgetCell: UICollectionViewCell {
         let progress = UIProgressView()
         progress.setProgress(0, animated: true)
         progress.trackTintColor = .systemGray2
+        
         return progress
     }()
     
@@ -36,6 +39,7 @@ final class BudgetCell: UICollectionViewCell {
         let label = UILabel()
         label.numberOfLines = 1
         label.textColor = .darkGray
+        
         return label
     }()
     
@@ -43,6 +47,7 @@ final class BudgetCell: UICollectionViewCell {
         let label = UILabel()
         label.numberOfLines = 1
         label.textColor = .darkGray
+        
         return label
     }()
     
@@ -50,6 +55,7 @@ final class BudgetCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+        
         return imageView
     }()
     
@@ -124,6 +130,7 @@ final class BudgetCell: UICollectionViewCell {
     
     func calculatePercent(sum: Double, total: Double) -> String {
         let stringPercent = (sum / total) * 100
+        
         return String(format: "%.0f", stringPercent)
     }
     

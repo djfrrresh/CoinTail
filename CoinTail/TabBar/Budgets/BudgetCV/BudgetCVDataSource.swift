@@ -15,9 +15,9 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let daySection = daySections[section].budgets
+        let dayItems = daySections[section].budgets
         
-        return daySection.count
+        return dayItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -66,9 +66,9 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
         let activeSectionIndex = daySections.firstIndex { $0.budgets[0].isActive ?? false }
         let nonActiveSectionIndex = daySections.firstIndex { !($0.budgets[0].isActive ?? false) }
         
-        headerView.separatorLabel.text = indexPath.section == activeSectionIndex ? "Active" : "Non active"
+        headerView.separatorLabel.text = indexPath.section == activeSectionIndex ? "Active".localized() : "Non active".localized()
         
-        headerView.dateLabel.text = headerView.dateFormatter.string(from: day)
+        headerView.dateLabel.text = headerView.headerDF.string(from: day)
         headerView.separator(isVisible: indexPath.section == activeSectionIndex || indexPath.section == nonActiveSectionIndex)
 
         return headerView

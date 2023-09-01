@@ -12,7 +12,8 @@ extension CreateCategoryVC: UICollectionViewDelegate {
     
     // Действия при нажатии на ячейку
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedCategoryImage = UIImage(systemName: CreateCategoryVC.newImages[indexPath.row]) ?? UIImage(systemName: "house")!
+        guard let image = UIImage(systemName: CreateCategoryVC.newImages[indexPath.row]) else { return }
+        selectedCategoryImage = image
         
         createCategoryCV.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
     }

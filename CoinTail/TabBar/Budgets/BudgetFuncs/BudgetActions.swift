@@ -10,7 +10,7 @@ import UIKit
 
 extension BudgetsVC {
     
-    @objc func addBudgetAction() {
+    @objc func goToAddBudgetVC() {
         let vc = AddBudgetVC()
         vc.hidesBottomBarWhenPushed = true // Спрятать TabBar
         

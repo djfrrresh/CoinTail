@@ -10,7 +10,7 @@ import UIKit
 
 extension HomeVC {
     
-    @objc func addNewOperationAction() {
+    @objc func goToAddOperationVC() {
         self.navigationItem.rightBarButtonItem?.target = nil
         
         var segmentIndex = homeTypeSwitcher.selectedSegmentIndex
@@ -21,8 +21,7 @@ extension HomeVC {
         
         navigationController?.pushViewController(vc, animated: true)
         
-        // Ставит задержку на время анимации перехода.
-        // Чтобы диаграмма не обнулялась раньше времени
+        // Ставит задержку на время анимации перехода. Чтобы диаграмма не обнулялась раньше времени
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) { [self] in
             categorySort = nil
         }
@@ -34,7 +33,7 @@ extension HomeVC {
         
         categorySort = nil
         
-        filterMonths() // Сортировка коллекции с операциями
+        sortRecords() // Сортировка коллекции с операциями
     }
     
 }

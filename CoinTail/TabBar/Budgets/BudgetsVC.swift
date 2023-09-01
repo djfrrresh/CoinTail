@@ -10,6 +10,7 @@ import UIKit
 
 class BudgetsVC: BasicVC {
         
+    // Массив бюджетов с сортировкой по дням
     var daySections = [DaySection]() {
         didSet {
             budgetCV.reloadData()
@@ -26,15 +27,14 @@ class BudgetsVC: BasicVC {
         }()
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: budgetLayout)
-        // Отступ сверху
-        cv.contentInset = .init(top: 16, left: 0, bottom: 0, right: 0)
+        cv.contentInset = .init(top: 16, left: 0, bottom: 0, right: 0) // Отступ сверху
         cv.backgroundColor = .clear
         cv.register(BudgetCell.self, forCellWithReuseIdentifier: BudgetCell.id)
         cv.register(BudgetCVHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: BudgetCVHeader.id)
         
         cv.showsVerticalScrollIndicator = false
-        cv.alwaysBounceVertical = true
-        cv.delaysContentTouches = true
+        cv.showsHorizontalScrollIndicator = false
+        cv.alwaysBounceVertical = true // Подпрыгивание коллекции
         
         return cv
     }()
@@ -43,8 +43,7 @@ class BudgetsVC: BasicVC {
         super.viewWillAppear(animated)
         
         budgetNavBar()
-        // Отсортировать бюджеты по убыванию по дате
-        filterBudgets()
+        sortBudgets() // Сортировка бюджетов по убыванию по дате
     }
         
     override func viewDidLoad() {
@@ -61,6 +60,7 @@ class BudgetsVC: BasicVC {
         let dateFormatter: DateFormatter = {
             let formatter = DateFormatter()
             formatter.dateFormat = "dd/MM/yyyy"
+            
             return formatter
         }()
         let string = "12/08/2021"
@@ -70,9 +70,9 @@ class BudgetsVC: BasicVC {
         
         let categoryColor = Colors.shared
         
-        Budgets.shared.addNewBudget(budget: Budget(category: Category(name: "Service".localized(), color: categoryColor.serviceColor!, image: UIImage(systemName: "gearshape")!, type: .expense), amount: 500, startDate: dateFormatter.date(from: string)!, untilDate: dateFormatter.date(from: stringUntil)!, id: 0))
-        Budgets.shared.addNewBudget(budget: Budget(category: Category(name: "Groceries".localized(), color: categoryColor.gloceryColor!, image: UIImage(systemName: "cart")!, type: .expense), amount: 1000, startDate: dateFormatter.date(from: string)!, untilDate: dateFormatter.date(from: stringUntil)!, id: 1))
-        Budgets.shared.addNewBudget(budget: Budget(category: Category(name: "Transport".localized(), color: categoryColor.transportColor!, image: UIImage(systemName: "car")!, type: .expense), amount: 200, startDate: dateFormatter.date(from: string1)!, untilDate: dateFormatter.date(from: stringUntil1)!, id: 2))
+        Budgets.shared.addNewBudget(Budget(category: Category(name: "Service".localized(), color: categoryColor.serviceColor!, image: UIImage(systemName: "gearshape")!, type: .expense), amount: 500, startDate: dateFormatter.date(from: string)!, untilDate: dateFormatter.date(from: stringUntil)!, id: 0))
+        Budgets.shared.addNewBudget(Budget(category: Category(name: "Groceries".localized(), color: categoryColor.gloceryColor!, image: UIImage(systemName: "cart")!, type: .expense), amount: 1000, startDate: dateFormatter.date(from: string)!, untilDate: dateFormatter.date(from: stringUntil)!, id: 1))
+        Budgets.shared.addNewBudget(Budget(category: Category(name: "Transport".localized(), color: categoryColor.transportColor!, image: UIImage(systemName: "car")!, type: .expense), amount: 200, startDate: dateFormatter.date(from: string1)!, untilDate: dateFormatter.date(from: stringUntil1)!, id: 2))
     }
     
 }

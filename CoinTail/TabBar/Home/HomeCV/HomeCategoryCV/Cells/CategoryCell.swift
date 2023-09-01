@@ -17,6 +17,7 @@ final class CategoryCVCell: UICollectionViewCell {
         let view = UIView()
         view.backgroundColor = .black
         view.layer.cornerRadius = 15
+        
         return view
     }()
     
@@ -25,6 +26,7 @@ final class CategoryCVCell: UICollectionViewCell {
         imageView.image = UIImage(systemName: "xmark")
         imageView.tintColor = .white
         imageView.contentMode = .scaleAspectFit
+        
         return imageView
     }()
     
@@ -37,6 +39,7 @@ final class CategoryCVCell: UICollectionViewCell {
         label.textAlignment = .center
         label.textColor = .white
         label.numberOfLines = 1
+        
         return label
     }
     

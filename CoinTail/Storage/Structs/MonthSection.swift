@@ -5,7 +5,7 @@
 //  Created by Eugene on 22.05.23.
 //
 
-import UIKit
+import Foundation
 
 
 // Секции по месяцам для операций
@@ -19,6 +19,7 @@ struct MonthSection {
         }.map { values in
             MonthSection(month: values.key, records: values.value)
         }
+        
         return dictionary
     }
 }

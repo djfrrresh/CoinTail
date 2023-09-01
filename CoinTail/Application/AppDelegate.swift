@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.rootViewController = TabBar() // Корневой контроллер
         window?.makeKeyAndVisible() // Отображение окна
+        
         return true
     }
 

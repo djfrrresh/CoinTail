@@ -47,7 +47,10 @@ extension AddOperationVC: UITextFieldDelegate {
         // Длину общей строки не более 8 символов
         // Длину строки после запятой
         // Количество точек
-        return maxNumAfterComma(textFieldString: textFieldString) && maxDots(textFieldString: textFieldString, string: string) && allowedCharacters && charactersCount <= 8
+        return maxNumAfterComma(textFieldString: textFieldString)
+        && maxDots(textFieldString: textFieldString, string: string)
+        && allowedCharacters
+        && charactersCount <= 8
     }
     
     // Позволять не удалять минус из поля Amount
@@ -70,6 +73,7 @@ extension AddOperationVC: UITextFieldDelegate {
                 return false
             }
         }
+        
         return true
     }
     
@@ -87,6 +91,7 @@ extension AddOperationVC: UITextFieldDelegate {
                 return false
             }
         }
+        
         return true
     }
 }

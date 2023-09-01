@@ -9,7 +9,15 @@ import UIKit
 import EasyPeasy
 
 
-extension HomeVC {
+extension HomeVC: SelectedDate {
+    
+    // Передает выбранный период и обнуляет счетчик шагов для диаграммы
+    func selectedPeriod(_ period: Periods) {
+        self.period = period
+        currentStep = 0
+        
+        sortRecords()
+    }
     
     func homeSubviews() {
         self.view.addSubview(homeTypeSwitcher)
@@ -40,26 +48,33 @@ extension HomeVC {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,
             target: self,
-            action: #selector (addNewOperationAction)
+            action: #selector (goToAddOperationVC)
         )
     }
     
-    func filterMonths() {
-        let getRecord = Records.shared.getRecords(for: period, type: homeSegment, step: currentStep, category: categorySort)
+    func sortRecords() {
+        let getRecord = Records.shared.getRecords(
+            for: period,
+            type: homeSegment,
+            step: currentStep,
+            category: categorySort
+        )
         
+        // Обновление категорий
         Categories.shared.categoriesUpdate(records: getRecord)
-        
-        categoriesArr = Categories.shared.getCategories(for: homeSegment)
+        categoriesByType = Categories.shared.getCategories(for: homeSegment)
+        // Группировка записей
         monthSections = MonthSection.groupRecords(section: homeSegment, groupRecords: getRecord)
         
+        // Вычисление общего баланса
         let totalBalance = "Total balance:".localized()
-        balanceLabel.text = "\(totalBalance) $\(Records.shared.getAmount(for: .allTheTime, type: .allOperations))"
-    
-        // Отсортировать массив операций по месяцам (убывание)
+        let allTimeAmount = Records.shared.getAmount(for: .allTheTime, type: .allOperations)
+        balanceLabel.text = "\(totalBalance) $\(allTimeAmount)"
+        
+        // Отсортировать операции по месяцам (убывание)
         monthSections.sort { l, r in
             return l.month > r.month
         }
     }
-
 
 }

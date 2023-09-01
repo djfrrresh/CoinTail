@@ -11,19 +11,23 @@ import UIKit
 extension AddBudgetVC {
     
     @objc func saveBudgetAction() {
-        let amount = Double(budgetAmountTF.text ?? "0") ?? 0
+        guard let amountText = budgetAmountTF.text, let amount = Double(amountText) else {
+            return
+        }
         let categoryText = categoryButton.titleLabel?.text ?? AddBudgetVC.defaultCategory
-        let isEditing = budgetID != nil ? true : false
+        let isEditing = budgetID != nil
         
         budgetValidation(amount: amount, categoryText: categoryText, isEditingBudget: isEditing) { [weak self] amount, category in
             guard let strongSelf = self else { return }
             
-            var startDate: Date = Date()
-            var untilDate: Date = strongSelf.budgetDateUntil()
-
-            if let budgetID = strongSelf.budgetID {
-                startDate = Budgets.shared.getBudget(for: budgetID)?.startDate ?? startDate
-                untilDate = Budgets.shared.getBudget(for: budgetID)?.untilDate ?? untilDate
+            var startDate, untilDate: Date
+            
+            if let budgetID = strongSelf.budgetID, let budget = Budgets.shared.getBudget(for: budgetID) {
+                startDate = budget.startDate
+                untilDate = budget.untilDate
+            } else {
+                startDate = Date()
+                untilDate = strongSelf.budgetDateUntil()
             }
             
             let budget = Budget(
@@ -31,16 +35,20 @@ extension AddBudgetVC {
                 amount: amount,
                 startDate: startDate,
                 untilDate: untilDate,
-                id: Budgets.shared.budgetID
+                id: isEditing ? strongSelf.budgetID! : Budgets.shared.budgetID
             )
-            Budgets.shared.budgetID += 1
-                   
+            
+            if !isEditing {
+                Budgets.shared.budgetID += 1
+            }
+            
             strongSelf.saveBudgetButton.removeTarget(nil, action: nil, for: .allEvents)
 
+            // TODO: можно при редактировании выбрать активный бюджет с такой же категорией 
             if let budgetID = strongSelf.budgetID {
                 Budgets.shared.editBudget(for: budgetID, replacingBudget: budget)
             } else {
-                Budgets.shared.addNewBudget(budget: budget)
+                Budgets.shared.addNewBudget(budget)
             }
             
             strongSelf.navigationController?.popToRootViewController(animated: true)
@@ -93,6 +101,7 @@ extension AddBudgetVC {
         let dateComponents: DateComponents = {
             var components = DateComponents()
             components.day = daysToAdd
+            
             return components
         }()
         let currentDate = Date()

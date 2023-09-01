@@ -27,6 +27,7 @@ final class HomeOperationCell: UICollectionViewCell {
             layout.scrollDirection = .vertical
             layout.minimumLineSpacing = 0
             layout.minimumInteritemSpacing = 0
+            
             return layout
         }()
         
@@ -38,7 +39,9 @@ final class HomeOperationCell: UICollectionViewCell {
         
         cv.allowsMultipleSelection = false
         cv.showsVerticalScrollIndicator = false
+        cv.showsHorizontalScrollIndicator = false
         cv.isScrollEnabled = true
+        
         return cv
     }()
 
@@ -55,18 +58,19 @@ final class HomeOperationCell: UICollectionViewCell {
     
     // Проверка на сегодняшнюю дату
     func checkToday(date: Date, textField: UITextField) {
-        let dateFormatter:  DateFormatter = {
+        let headerDF:  DateFormatter = {
             let formatter = DateFormatter()
             formatter.dateStyle = .medium
             formatter.timeStyle = .none
             formatter.dateFormat = "dd/MM/yyyy"
+            
             return formatter
         }()
         
-        if (dateFormatter.string(from: date) == dateFormatter.string(from: Date())) {
-            textField.text = "Today \(dateFormatter.string(from: date))"
+        if (headerDF.string(from: date) == headerDF.string(from: Date())) {
+            textField.text = "Today \(headerDF.string(from: date))"
         } else {
-            textField.text = dateFormatter.string(from: date)
+            textField.text = headerDF.string(from: date)
         }
     }
 
@@ -96,4 +100,5 @@ final class HomeOperationCell: UICollectionViewCell {
             height: height
         )
     }
+    
 }

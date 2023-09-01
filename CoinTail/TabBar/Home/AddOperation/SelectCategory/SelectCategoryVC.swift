@@ -11,15 +11,16 @@ import EasyPeasy
 
 class SelectCategoryVC: BasicVC {
     
-    weak var categoryDelegate: SendСategoryData? // Переменная делегата, связывающая протокол с собой. Передает категорию из таблицы с категориями в текст кнопки
+    weak var categoryDelegate: SendСategoryData? // Передает категорию
     
-    var selectCategoryCV: UICollectionView = {
+    let selectCategoryCV: UICollectionView = {
         let layout: UICollectionViewFlowLayout = {
-            var layout = UICollectionViewFlowLayout()
+            let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .vertical
             layout.minimumLineSpacing = 48
             layout.minimumInteritemSpacing = 1
             layout.itemSize = CGSize(width: 70, height: 70)
+            
             return layout
         }()
         
@@ -29,6 +30,7 @@ class SelectCategoryVC: BasicVC {
         
         cv.allowsMultipleSelection = false
         cv.showsVerticalScrollIndicator = false
+        cv.showsHorizontalScrollIndicator = false
         
         return cv
     }()
@@ -44,8 +46,8 @@ class SelectCategoryVC: BasicVC {
         RecordType(rawValue: addOperationVCSegmentType ?? "Expense") ?? .expense
     }
     
-    // Получаем тип операции из AddOperationVC для отображения категорий
     public required init(segmentTitle: String) {
+        // Получаем тип операции из AddOperationVC для отображения категорий
         self.addOperationVCSegmentType = segmentTitle
         
         super.init(nibName: nil, bundle: nil)
@@ -65,8 +67,9 @@ class SelectCategoryVC: BasicVC {
 
         newCategoryButton.removeTarget(nil, action: nil, for: .allEvents)
 
-        selectCategoryCV.delegate = self // Реагирование на события
-        selectCategoryCV.dataSource = self // Здесь подаются данные
+        selectCategoryCV.delegate = self
+        
+        selectCategoryCV.dataSource = self
         
         self.view.addSubview(newCategoryButton)
         self.view.addSubview(selectCategoryCV)
@@ -85,7 +88,7 @@ class SelectCategoryVC: BasicVC {
             Width(64)
         ])
             
-        newCategoryButton.addTarget(self, action: #selector(addNewCategoryAction), for: .touchUpInside)
+        newCategoryButton.addTarget(self, action: #selector(goToCreateCategoryVC), for: .touchUpInside)
     }
     
 }

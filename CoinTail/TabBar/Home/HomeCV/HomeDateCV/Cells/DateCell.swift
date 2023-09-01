@@ -19,6 +19,7 @@ final class DateCVCell: UICollectionViewCell {
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.lightGray.cgColor
         view.layer.cornerRadius = 8
+        
         return view
     }()
     
@@ -28,6 +29,7 @@ final class DateCVCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = .black
+        
         return label
     }
     

@@ -6,9 +6,16 @@
   
 */
 
-// RecordType
 // TODO: исправить баг, если написать переводом RecordType в свитчерах, то не будет обновляться таблица
-// TODO: для форматтеров поменять строки formatter.locale = Locale(identifier: "en_EN")
+
+// General
+"Amount" = "Сумма";
+"Error" = "Ошибка";
+"Confirm" = "Подтвердить";
+"Cancel" = "Отмена";
+"Are you sure?" = "Вы уверены?";
+
+// RecordType
 "Expense" = "Expense";
 "Income" = "Income";
 "Total" = "Total";
@@ -45,15 +52,16 @@
 "Month" = "Месяц";
 
 // BudgetsVC
+"Active" = "Активно";
+"Non active" = "Неактивно";
 /// NavBar
 "Budgets" = "Бюджеты";
 
 // AddBudgetVC
-"Amount" = "Сумма";
 "Select period" = "Выберите период";
 "Enter your amount" = "Введите сумму";
 "Save Budget" = "Сохранить бюджет";
-"Edit Budget" = "Отредактировать бюджет";
+"Edit Budget" = "Редактировать бюджет";
 "Select category" = "Выбрать категорию";
 "Week" = "Неделя";
 /// NavBar
@@ -63,14 +71,9 @@
 "Missing value in amount field" = "Отсутствует значение в поле с суммой";
 "No category selected" = "Не выбрана категория";
 "There is already a budget for this category" = "Уже существует бюджет с такой категорией";
-"Error" = "Ошибка";
-"Confirm" = "Подтвердить";
-"Cancel" = "Отменить";
-"Delete operation" = "Удалить операцию";
-"Are you sure?" = "Вы уверены?";
+"Delete бюджет" = "Удалить бюджет";
 
 // AddOperationVC
-"Amount" = "Сумма";
 "Description" = "Описание";
 "Date" = "Дата";
 "Enter your value" = "Введите ваше значение";
@@ -81,16 +84,13 @@
 "Save operation" = "Сохранить операцию";
 /// NavBar
 "Add new operation" = "Добавить новую операцию";
-"Editing operation" = "Отредактировать операцию";
+"Editing operation" = "Редактировать операцию";
 /// Alert
 "Missing value in amount field" = "Отсутствует значение в поле суммы";
 "No category selected" = "Не выбрана категория";
-"Confirm" = "Подтвердить";
-"Cancel" = "Отменить";
 "Repeat last operation" = "Повторить последнюю операцию";
 "Do you want to repeat the last operation?" = "Вы хотите повторить последнюю операцию?";
 "Delete operation" = "Удалить операцию";
-"Are you sure?" = "Вы уверены?";
 
 // SelectCategoryVC
 /// NavBar
@@ -102,6 +102,15 @@
 "Add category" = "Добавить категорию";
 "Select color" = "Выбрать цвет";
 "New category" = "Новая категория";
+"Category" = "Категория";
 /// Title
 "Add new category" = "Добавить новую категорию";
 
+// SettingsVC
+"Currency" = "Валюта";
+"Notifications" = "Уведомления";
+"Rate app" = "Оценить приложение";
+"About app" = "О приложении";
+"Delete data" = "Удалить данные";
+/// Title
+"Settings" = "Настройки";

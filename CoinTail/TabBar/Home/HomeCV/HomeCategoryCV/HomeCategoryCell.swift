@@ -35,10 +35,11 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
      
     let categoriesCV: UICollectionView = {
         let categoryLayout: UICollectionViewFlowLayout = {
-            var layout = UICollectionViewFlowLayout()
+            let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .vertical
             layout.minimumLineSpacing = 12
             layout.minimumInteritemSpacing = 12
+            
             return layout
         }()
 
@@ -48,6 +49,7 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
         cv.register(CategoryCVCell.self, forCellWithReuseIdentifier: CategoryCVCell.id)
 
         cv.allowsMultipleSelection = false
+        cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
         cv.isScrollEnabled = false
         cv.isHidden = true
@@ -56,11 +58,12 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
     }()
         
     // Линейная диаграмма
-    var progressView: MultiProgressView = {
+    let progressView: MultiProgressView = {
         let progressChart = MultiProgressView()
         progressChart.layer.cornerRadius = 8
         progressChart.layer.masksToBounds = true
         progressChart.isHidden = false
+        
         return progressChart
     }()
     
@@ -68,6 +71,7 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
     let pieChart: PieChartView = {
         let pieChart = PieChartView()
         pieChart.isHidden = true
+        
         return pieChart
     }()
     
@@ -75,6 +79,7 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
     let amountForPeriodLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
+        
         return label
     }()
     
@@ -82,6 +87,7 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
         let imageView = UIImageView(image: UIImage(systemName: "chevron.left"))
         imageView.tintColor = .gray
         imageView.isHidden = true
+        
         return imageView
     }()
     
@@ -89,6 +95,7 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
         let imageView = UIImageView(image: UIImage(systemName: "chevron.right"))
         imageView.tintColor = .gray
         imageView.isHidden = true
+        
         return imageView
     }()
     
@@ -234,6 +241,7 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
                 categories.append(cat)
             }
         }
+        
         return (bins.count, categories)
     }
     
@@ -245,6 +253,7 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
         let periodLabelHeight: CGFloat = 32
             
         height = categoryIsHidden ? progressViewHeight + periodLabelHeight + 16 : pieChartHeight + 16 + categoryCVHeight + periodLabelHeight + 16
+        
         return .init(
             width: UIScreen.main.bounds.width - 16 * 2,
             height: height
