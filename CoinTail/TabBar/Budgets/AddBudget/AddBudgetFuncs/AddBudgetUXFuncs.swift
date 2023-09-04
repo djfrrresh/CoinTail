@@ -13,6 +13,7 @@ extension AddBudgetVC: SendСategoryData {
     // Присылает категорию с SelectCategoryVC
     func sendCategoryData(category: Category) {
         self.budgetCategory = category
+        
         categoryButton.setTitle(category.name, for: .normal)
     }
     

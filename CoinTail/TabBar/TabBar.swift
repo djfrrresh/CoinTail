@@ -18,20 +18,22 @@ class TabBar: UITabBarController {
         // Навигационные контроллеры (с которых можно переходить в другие)
         let homeVC = UINavigationController(rootViewController: HomeVC())
         let budgetsVC = UINavigationController(rootViewController: BudgetsVC())
+        let accountsVC = UINavigationController(rootViewController: AccountsVC())
         let settingsVC = UINavigationController(rootViewController: SettingsVC())
                 
         homeVC.title = "Home".localized()
         budgetsVC.title = "Budgets".localized()
+        accountsVC.title = "Accounts".localized()
         settingsVC.title = "Settings".localized()
-                
+        
         UITabBar.appearance().backgroundColor = .systemGray6 // Цвет фона TabBar'а
         UITabBar.appearance().tintColor = .black // Цвет иконок и текста
         
         // Установка контроллеров на TabBar
-        self.setViewControllers([homeVC, budgetsVC, settingsVC], animated: false)
+        self.setViewControllers([homeVC, budgetsVC, accountsVC, settingsVC], animated: false)
                         
         guard let items = self.tabBar.items else { return }
-        let images = ["house", "target", "gear"]
+        let images = ["house", "target", "creditcard", "gear"]
         
         // Установка иконок
         for i in 0..<items.count {

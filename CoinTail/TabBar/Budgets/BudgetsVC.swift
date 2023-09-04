@@ -50,7 +50,7 @@ class BudgetsVC: BasicVC {
         super.viewDidLoad()
         
         self.title = "Budgets".localized()
-        
+                
         budgetCV.dataSource = self
         
         budgetCV.delegate = self

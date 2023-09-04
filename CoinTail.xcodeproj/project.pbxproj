@@ -52,6 +52,20 @@
 		5665C13A2A9F5F6900B11D34 /* SettingsCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665C1392A9F5F6900B11D34 /* SettingsCVDataSource.swift */; };
 		5665C13D2A9F614A00B11D34 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665C13C2A9F614A00B11D34 /* SettingsCell.swift */; };
 		5665C1402A9F6B0800B11D34 /* SettingsUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665C13F2A9F6B0800B11D34 /* SettingsUIFuncs.swift */; };
+		568EF0202AA603BF00EB042D /* AccountsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF01F2AA603BF00EB042D /* AccountsVC.swift */; };
+		568EF0232AA607E000EB042D /* AccountsUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0222AA607E000EB042D /* AccountsUIFuncs.swift */; };
+		568EF0262AA608D000EB042D /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0252AA608D000EB042D /* AccountCell.swift */; };
+		568EF0282AA6094D00EB042D /* AccountCVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0272AA6094D00EB042D /* AccountCVDelegate.swift */; };
+		568EF02A2AA609B500EB042D /* AccountCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0292AA609B500EB042D /* AccountCVDataSource.swift */; };
+		568EF02C2AA609F400EB042D /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF02B2AA609F400EB042D /* Account.swift */; };
+		568EF02E2AA60A5000EB042D /* Accounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF02D2AA60A5000EB042D /* Accounts.swift */; };
+		568EF0302AA60CCA00EB042D /* AccountsUXFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF02F2AA60CCA00EB042D /* AccountsUXFuncs.swift */; };
+		568EF0332AA6116900EB042D /* AddAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0322AA6116900EB042D /* AddAccountVC.swift */; };
+		568EF0352AA611F000EB042D /* AccountsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0342AA611F000EB042D /* AccountsActions.swift */; };
+		568EF0382AA61C7200EB042D /* AddAccountUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0372AA61C7200EB042D /* AddAccountUIFuncs.swift */; };
+		568EF03A2AA61EC200EB042D /* AddAccountTFDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0392AA61EC200EB042D /* AddAccountTFDelegate.swift */; };
+		568EF03C2AA61F8E00EB042D /* AddAccountUXFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF03B2AA61F8E00EB042D /* AddAccountUXFuncs.swift */; };
+		568EF03E2AA61FB900EB042D /* AddAccountActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF03D2AA61FB900EB042D /* AddAccountActions.swift */; };
 		56DBB6CE2A3724BC0087271D /* HomeOperationCellCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */; };
 		56DBB6DD2A3728600087271D /* HomeOperationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6DC2A3728600087271D /* HomeOperationCell.swift */; };
 		56DBB6EA2A372E220087271D /* HomeDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6E92A372E220087271D /* HomeDateCell.swift */; };
@@ -143,6 +157,20 @@
 		5665C1392A9F5F6900B11D34 /* SettingsCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCVDataSource.swift; sourceTree = "<group>"; };
 		5665C13C2A9F614A00B11D34 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		5665C13F2A9F6B0800B11D34 /* SettingsUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUIFuncs.swift; sourceTree = "<group>"; };
+		568EF01F2AA603BF00EB042D /* AccountsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsVC.swift; sourceTree = "<group>"; };
+		568EF0222AA607E000EB042D /* AccountsUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsUIFuncs.swift; sourceTree = "<group>"; };
+		568EF0252AA608D000EB042D /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
+		568EF0272AA6094D00EB042D /* AccountCVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCVDelegate.swift; sourceTree = "<group>"; };
+		568EF0292AA609B500EB042D /* AccountCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCVDataSource.swift; sourceTree = "<group>"; };
+		568EF02B2AA609F400EB042D /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		568EF02D2AA60A5000EB042D /* Accounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accounts.swift; sourceTree = "<group>"; };
+		568EF02F2AA60CCA00EB042D /* AccountsUXFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsUXFuncs.swift; sourceTree = "<group>"; };
+		568EF0322AA6116900EB042D /* AddAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountVC.swift; sourceTree = "<group>"; };
+		568EF0342AA611F000EB042D /* AccountsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsActions.swift; sourceTree = "<group>"; };
+		568EF0372AA61C7200EB042D /* AddAccountUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountUIFuncs.swift; sourceTree = "<group>"; };
+		568EF0392AA61EC200EB042D /* AddAccountTFDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountTFDelegate.swift; sourceTree = "<group>"; };
+		568EF03B2AA61F8E00EB042D /* AddAccountUXFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountUXFuncs.swift; sourceTree = "<group>"; };
+		568EF03D2AA61FB900EB042D /* AddAccountActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountActions.swift; sourceTree = "<group>"; };
 		56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOperationCellCV.swift; sourceTree = "<group>"; };
 		56DBB6DC2A3728600087271D /* HomeOperationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOperationCell.swift; sourceTree = "<group>"; };
 		56DBB6E92A372E220087271D /* HomeDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDateCell.swift; sourceTree = "<group>"; };
@@ -311,6 +339,7 @@
 				56DBB7092A3B44090087271D /* Categories.swift */,
 				56DBB6F62A3893A80087271D /* Colors.swift */,
 				56EFDFE72A54502E003A6A45 /* Budgets.swift */,
+				568EF02D2AA60A5000EB042D /* Accounts.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -384,6 +413,7 @@
 				5642DB2A2A4F313A00ADF475 /* Budget.swift */,
 				5656E9BE2A9777FA00070045 /* RecordType.swift */,
 				5665C1362A9F5B2200B11D34 /* Currency.swift */,
+				568EF02B2AA609F400EB042D /* Account.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -393,6 +423,7 @@
 			children = (
 				560AFBFE2A16AF030054B502 /* Home */,
 				5642DB152A432B9000ADF475 /* Budgets */,
+				568EF01E2AA603AE00EB042D /* Accounts */,
 				5642DB122A432AFB00ADF475 /* Settings */,
 				5642DB102A4329AB00ADF475 /* TabBar.swift */,
 			);
@@ -465,6 +496,57 @@
 				5665C13F2A9F6B0800B11D34 /* SettingsUIFuncs.swift */,
 			);
 			path = SettingsFuncs;
+			sourceTree = "<group>";
+		};
+		568EF01E2AA603AE00EB042D /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				568EF0312AA6115600EB042D /* AddAccount */,
+				568EF0242AA608BC00EB042D /* AccountsCV */,
+				568EF0212AA607C800EB042D /* AccountsFuncs */,
+				568EF01F2AA603BF00EB042D /* AccountsVC.swift */,
+			);
+			path = Accounts;
+			sourceTree = "<group>";
+		};
+		568EF0212AA607C800EB042D /* AccountsFuncs */ = {
+			isa = PBXGroup;
+			children = (
+				568EF0222AA607E000EB042D /* AccountsUIFuncs.swift */,
+				568EF02F2AA60CCA00EB042D /* AccountsUXFuncs.swift */,
+				568EF0342AA611F000EB042D /* AccountsActions.swift */,
+			);
+			path = AccountsFuncs;
+			sourceTree = "<group>";
+		};
+		568EF0242AA608BC00EB042D /* AccountsCV */ = {
+			isa = PBXGroup;
+			children = (
+				568EF0252AA608D000EB042D /* AccountCell.swift */,
+				568EF0272AA6094D00EB042D /* AccountCVDelegate.swift */,
+				568EF0292AA609B500EB042D /* AccountCVDataSource.swift */,
+			);
+			path = AccountsCV;
+			sourceTree = "<group>";
+		};
+		568EF0312AA6115600EB042D /* AddAccount */ = {
+			isa = PBXGroup;
+			children = (
+				568EF0362AA61C6200EB042D /* AddAccountFuncs */,
+				568EF0322AA6116900EB042D /* AddAccountVC.swift */,
+			);
+			path = AddAccount;
+			sourceTree = "<group>";
+		};
+		568EF0362AA61C6200EB042D /* AddAccountFuncs */ = {
+			isa = PBXGroup;
+			children = (
+				568EF0372AA61C7200EB042D /* AddAccountUIFuncs.swift */,
+				568EF0392AA61EC200EB042D /* AddAccountTFDelegate.swift */,
+				568EF03B2AA61F8E00EB042D /* AddAccountUXFuncs.swift */,
+				568EF03D2AA61FB900EB042D /* AddAccountActions.swift */,
+			);
+			path = AddAccountFuncs;
 			sourceTree = "<group>";
 		};
 		56DBB6CB2A3358F10087271D /* Application */ = {
@@ -783,12 +865,17 @@
 				56EFDFF02A5D9176003A6A45 /* DaySection.swift in Sources */,
 				5642DB252A4DDAC400ADF475 /* BudgetUIFuncs.swift in Sources */,
 				5642DAEB2A4080BF00ADF475 /* Periods.swift in Sources */,
+				568EF0332AA6116900EB042D /* AddAccountVC.swift in Sources */,
 				56DBB71F2A3B641E0087271D /* CreateCategoryUIFuncs.swift in Sources */,
 				56DBB7012A3B36D30087271D /* AddOperationUIFuncs.swift in Sources */,
+				568EF0232AA607E000EB042D /* AccountsUIFuncs.swift in Sources */,
 				56EFDFE62A535346003A6A45 /* AddBudgetUXFuncs.swift in Sources */,
 				56DBB7052A3B3A370087271D /* AddOperationUXFuncs.swift in Sources */,
 				56DBB72B2A3B873B0087271D /* SelectCategoryUXFuncs.swift in Sources */,
+				568EF0282AA6094D00EB042D /* AccountCVDelegate.swift in Sources */,
+				568EF0202AA603BF00EB042D /* AccountsVC.swift in Sources */,
 				5642DB2E2A4F34CC00ADF475 /* BudgetCVDataSource.swift in Sources */,
+				568EF03E2AA61FB900EB042D /* AddAccountActions.swift in Sources */,
 				560AFC272A1BF5A30054B502 /* HomeCategoryCellCV.swift in Sources */,
 				560AFC392A1C0FC30054B502 /* PieChartFuncs.swift in Sources */,
 				564F08FE2A531AEE004C89C7 /* AddBudgetVC.swift in Sources */,
@@ -806,10 +893,14 @@
 				56EFDFE22A535294003A6A45 /* AddBudgetUIFuncs.swift in Sources */,
 				5642DB112A4329AB00ADF475 /* TabBar.swift in Sources */,
 				56DBB71D2A3B63310087271D /* CreateCategoryUXFuncs.swift in Sources */,
+				568EF02E2AA60A5000EB042D /* Accounts.swift in Sources */,
 				56191ECF2A9CBC6D00D47052 /* Date.swift in Sources */,
 				56DBB7212A3B64A00087271D /* CreateCategoryActions.swift in Sources */,
+				568EF0262AA608D000EB042D /* AccountCell.swift in Sources */,
 				56EFDFE82A54502E003A6A45 /* Budgets.swift in Sources */,
+				568EF02C2AA609F400EB042D /* Account.swift in Sources */,
 				560AFBCB2A1394A30054B502 /* CoinTail.xcdatamodeld in Sources */,
+				568EF02A2AA609B500EB042D /* AccountCVDataSource.swift in Sources */,
 				5642DB302A4F34F900ADF475 /* BudgetCell.swift in Sources */,
 				560AFC292A1BF62D0054B502 /* DateCell.swift in Sources */,
 				56DBB70A2A3B44090087271D /* Categories.swift in Sources */,
@@ -817,6 +908,7 @@
 				560AFC192A1BAC810054B502 /* HomeActions.swift in Sources */,
 				56EFDFEC2A574771003A6A45 /* BudgetCVHeader.swift in Sources */,
 				560AFBDB2A13B26A0054B502 /* Array.swift in Sources */,
+				568EF03C2AA61F8E00EB042D /* AddAccountUXFuncs.swift in Sources */,
 				56DBB7292A3B68B00087271D /* ColorPickerFuncs.swift in Sources */,
 				56DBB6FF2A3B36190087271D /* AddOperationTFDelegate.swift in Sources */,
 				56DBB6CE2A3724BC0087271D /* HomeOperationCellCV.swift in Sources */,
@@ -829,6 +921,7 @@
 				56DBB71A2A3B609E0087271D /* CreateCategoryVC.swift in Sources */,
 				560AFBC12A1394A30054B502 /* AppDelegate.swift in Sources */,
 				56DBB7262A3B672C0087271D /* CreateCategoryCVDelegate.swift in Sources */,
+				568EF0352AA611F000EB042D /* AccountsActions.swift in Sources */,
 				56DBB6EE2A37337F0087271D /* HomeDateCellCV.swift in Sources */,
 				5642DB272A4DE36300ADF475 /* BudgetUXFuncs.swift in Sources */,
 				56DBB7032A3B38470087271D /* AddOperationActions.swift in Sources */,
@@ -840,6 +933,8 @@
 				56EFDFEE2A5751EC003A6A45 /* BudgetCVDelegate.swift in Sources */,
 				560AFBE02A13B2E40054B502 /* UIButton.swift in Sources */,
 				560AFC3E2A1C10680054B502 /* ChartsSetEntries.swift in Sources */,
+				568EF0382AA61C7200EB042D /* AddAccountUIFuncs.swift in Sources */,
+				568EF03A2AA61EC200EB042D /* AddAccountTFDelegate.swift in Sources */,
 				5665C13A2A9F5F6900B11D34 /* SettingsCVDataSource.swift in Sources */,
 				56DBB6EA2A372E220087271D /* HomeDateCell.swift in Sources */,
 				560AFBEA2A13B5EA0054B502 /* UISegmentedControl.swift in Sources */,
@@ -847,6 +942,7 @@
 				56DBB6F72A3893A80087271D /* Colors.swift in Sources */,
 				56DBB7242A3B667F0087271D /* CreateCategoryCVDataSource.swift in Sources */,
 				5642DB2B2A4F313A00ADF475 /* Budget.swift in Sources */,
+				568EF0302AA60CCA00EB042D /* AccountsUXFuncs.swift in Sources */,
 				56DBB6DD2A3728600087271D /* HomeOperationCell.swift in Sources */,
 				560AFBF02A13C1DF0054B502 /* BasicVC.swift in Sources */,
 				560AFC3C2A1C10170054B502 /* ChartsAnimation.swift in Sources */,
