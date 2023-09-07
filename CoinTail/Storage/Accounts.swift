@@ -28,7 +28,7 @@ final class Accounts {
         return accounts.filter { $0.id == id }.first
     }
     
-    // Сверить счет по названию
+    // Получить счет по его имени
     func getAccount(for name: String) -> Account? {
         return accounts.filter { $0.name == name }.last
     }
@@ -55,6 +55,25 @@ final class Accounts {
         
         accounts.remove(at: index)
         completion?(true)
+    }
+    
+    // Перевод средств между счетами
+    func transferBetweenAccounts(from sourceAccountName: String, to targetAccountName: String, amount: Double) {
+        var firstAccount: Account
+        var secondAccount: Account
+
+        guard let sourceAccount = getAccount(for: sourceAccountName),
+              let targetAccount = getAccount(for: targetAccountName) else { return }
+        
+        firstAccount = sourceAccount
+        secondAccount = targetAccount
+        
+        // Снимаем деньги с исходного счета и добавляем их на целевой счет
+        firstAccount.amount -= amount
+        secondAccount.amount += amount
+        
+        editAccount(for: sourceAccount.id, replacingAccount: firstAccount)
+        editAccount(for: targetAccount.id, replacingAccount: secondAccount)
     }
     
 }

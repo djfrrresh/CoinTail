@@ -8,7 +8,7 @@
 import UIKit
 
 
-extension AccountsVC: UICollectionViewDelegate {
+extension AccountsVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let accountData = accounts[indexPath.row]
@@ -19,6 +19,11 @@ extension AccountsVC: UICollectionViewDelegate {
         vc.hidesBottomBarWhenPushed = true // Спрятать TabBar
 
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    // Определение размера ячейки
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return AccountCell.size()
     }
 
 }

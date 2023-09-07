@@ -20,14 +20,22 @@ extension AccountsVC {
     }
     
     func accountsSubviews() {
+        self.view.addSubview(transferButton)
         self.view.addSubview(accountsCV)
+        
+        transferButton.easy.layout([
+            CenterX(),
+            Width(60),
+            Height(40),
+            Bottom(16).to(self.view.safeAreaLayoutGuide, .bottom)
+        ])
         
         accountsCV.easy.layout([
             Left(16),
             Right(16),
             CenterX(),
             Top().to(self.view.safeAreaLayoutGuide, .top),
-            Bottom()
+            Bottom(16).to(transferButton, .top)
         ])
     }
     

@@ -12,11 +12,17 @@ extension AccountsVC {
     
     @objc func goToAddAccountVC() {
         let vc = AddAccountVC()
-        vc.hidesBottomBarWhenPushed = true // Спрятать TabBar
+        vc.hidesBottomBarWhenPushed = true
         
         self.navigationItem.rightBarButtonItem?.target = nil
         
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc func goToAccountsTransferVC() {
+        let vc = AccountsTransferVC()
+        vc.hidesBottomBarWhenPushed = true
+                
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }

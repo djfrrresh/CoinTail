@@ -19,4 +19,8 @@ extension AccountsVC {
         }
     }
     
+    func accountButtonTargets() {
+        transferButton.addTarget(self, action: #selector(goToAccountsTransferVC), for: .touchUpInside)
+    }
+    
 }

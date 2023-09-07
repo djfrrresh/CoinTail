@@ -16,6 +16,16 @@ class AccountsVC: BasicVC {
         }
     }
     
+    let transferButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "arrow.up.right.and.arrow.down.left.rectangle"), for: .normal)
+        button.backgroundColor = .lightGray.withAlphaComponent(0.5)
+        button.tintColor = .darkGray
+        button.layer.cornerRadius = 8
+        
+        return button
+    }()
+    
     let accountsCV: UICollectionView = {
         let accountsLayout: UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()
@@ -42,6 +52,7 @@ class AccountsVC: BasicVC {
         
         accountsNavBar()
         sortAccounts()
+        accountButtonTargets()
     }
     
     override func viewDidLoad() {

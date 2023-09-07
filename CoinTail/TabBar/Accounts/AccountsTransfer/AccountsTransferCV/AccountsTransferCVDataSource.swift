@@ -1,21 +1,21 @@
 //
-//  AccountCVDataSource.swift
+//  AccountsTransferCVDataSource.swift
 //  CoinTail
 //
-//  Created by Eugene on 04.09.23.
+//  Created by Eugene on 07.09.23.
 //
 
 import UIKit
 
 
-extension AccountsVC: UICollectionViewDataSource {
+extension AccountsTransferVC: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {        
-        return accounts.count
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return accountsArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -26,7 +26,7 @@ extension AccountsVC: UICollectionViewDataSource {
             fatalError("Unable to dequeue AccountCell.")
         }
         
-        let accountData: Account = accounts[indexPath.row]
+        let accountData: Account = accountsArr[indexPath.row]
         
         cell.amountLabel.text = "\(accountData.amount)"
         cell.nameLabel.text = accountData.name
