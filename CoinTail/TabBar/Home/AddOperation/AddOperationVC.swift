@@ -12,8 +12,8 @@ import EasyPeasy
 class AddOperationVC: BasicVC {
     
     var operationID: Int?
-    
     var category: Category?
+    var account: Account?
     
     let addOperationTypeSwitcher: UISegmentedControl = {
         let switcher = UISegmentedControl(items: [
@@ -77,8 +77,15 @@ class AddOperationVC: BasicVC {
     }()
     
     static let defaultCategory = "Select category".localized()
+    static let defaultAccount = "Select account".localized()
+    
     let categoryButton = UIButton(
         name: defaultCategory,
+        background: .clear,
+        textColor: .black
+    )
+    let accountButton = UIButton(
+        name: defaultAccount,
         background: .clear,
         textColor: .black
     )
@@ -115,6 +122,8 @@ class AddOperationVC: BasicVC {
         amountTF.text = "\(record.amount)"
         descriptionTF.text = record.descriptionText
         categoryButton.setTitle(record.category.name, for: .normal)
+        accountButton.setTitle(record.account?.name ?? AddOperationVC.defaultAccount, for: .normal)
+        saveOperationButton.setTitle("Edit operation", for: .normal)
         dateTF.text = Self.operationDF.string(from: record.date)
         addOperationSegment = record.type
         addOperationTypeSwitcher.selectedSegmentIndex = addOperationSegment == .income ? 0 : 1

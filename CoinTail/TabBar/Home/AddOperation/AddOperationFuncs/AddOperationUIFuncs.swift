@@ -35,14 +35,14 @@ extension AddOperationVC {
         )
         
         // CATEGORY BUTTON && AMOUNT
-        let categoryAmountStack = UIStackView()
+        let amountCategoryAccountStack = UIStackView()
         setStack(
-            stack: categoryAmountStack,
+            stack: amountCategoryAccountStack,
             axis: .vertical,
             spacing: 16,
             alignment: .fill,
             distribution: .fill,
-            viewsArray: [amountStack, categoryButton]
+            viewsArray: [amountStack, categoryButton, accountButton]
         )
         
         // DESCRIPTION
@@ -76,7 +76,7 @@ extension AddOperationVC {
             distribution: .fill,
             viewsArray: [
                 addOperationTypeSwitcher,
-                categoryAmountStack,
+                amountCategoryAccountStack,
                 descriptionStack,
                 dateStack
             ]

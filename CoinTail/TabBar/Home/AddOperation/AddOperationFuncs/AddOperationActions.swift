@@ -25,17 +25,18 @@ extension AddOperationVC {
     // Сохранение операции
     @objc func saveButtonAction(sender: AnyObject) {
         let amount = Double(amountTF.text ?? "") ?? 0
-        
-        let categoryText = categoryButton.titleLabel?.text ?? "category"
+        guard let categoryText = categoryButton.titleLabel?.text,
+              let accountText = accountButton.titleLabel?.text else { return }
 
-        recordValidation(amount: amount, categoryText: categoryText) { [weak self] amount, category in
+        recordValidation(amount: amount, categoryText: categoryText, accountText: accountText) { [weak self] amount, category in
             guard let strongSelf = self else { return }
-            
             guard let dateTFText = strongSelf.dateTF.text else { return }
+            
             let dateString = strongSelf.deleteTodayFromDateTF(dateTFText)
             let date = AddOperationVC.operationDF.date(from: dateString) ?? Date()
             let desctiption = strongSelf.descriptionTF.text ?? ""
-                        
+            let account = strongSelf.account ?? nil
+            
             Records.shared.recordID += 1
 
             let record = Record(
@@ -44,11 +45,13 @@ extension AddOperationVC {
                 date: date,
                 id: Records.shared.recordID,
                 type: strongSelf.addOperationSegment,
-                category: category
+                category: category,
+                account: account
             )
-            
+                        
             strongSelf.saveOperationButton.removeTarget(nil, action: nil, for: .allEvents)
             strongSelf.categoryButton.removeTarget(nil, action: nil, for: .allEvents)
+            strongSelf.accountButton.removeTarget(nil, action: nil, for: .allEvents)
                         
             if let operationID = strongSelf.operationID {
                 Records.shared.editRecord(for: operationID, replacingRecord: record)
@@ -66,7 +69,7 @@ extension AddOperationVC {
             return text.replacingOccurrences(of: "\(AddOperationVC.todayText), ", with: "")
         }
         
-        return ""
+        return text
     }
     
     // Переключение типа операции
@@ -136,6 +139,9 @@ extension AddOperationVC {
         dateTF.text = Self.operationDF.string(from: record.date)
         addOperationSegment = record.type
         addOperationTypeSwitcher.selectedSegmentIndex = addOperationSegment == .income ? 0 : 1
+        if let accountName = Accounts.shared.getAccount(for: record.account?.name ?? AddOperationVC.defaultAccount)?.name {
+            accountButton.setTitle(accountName, for: .normal)
+        }
     }
     
     // Переход на экран с выбором категории
@@ -172,4 +178,17 @@ extension AddOperationVC {
 
         self.present(alertView, animated: true)
     }
+    
+    @objc func goToAccountsVC() {
+        saveOperationButton.removeTarget(nil, action: nil, for: .allEvents)
+        categoryButton.removeTarget(nil, action: nil, for: .allEvents)
+        accountButton.removeTarget(nil, action: nil, for: .allEvents)
+        
+        let vc = AccountsVC(isSelected: true)
+        vc.accountDelegate = self
+        vc.hidesBottomBarWhenPushed = true
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }

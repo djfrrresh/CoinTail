@@ -28,7 +28,17 @@ extension AccountsVC: UICollectionViewDataSource {
         
         let accountData: Account = accounts[indexPath.row]
         
-        cell.amountLabel.text = "\(accountData.amount)"
+        var totalAmountForCash: Double = accountData.balance
+        
+        // Подсчет баланса счета из операций
+        if let cashAccount = Accounts.shared.getAccount(for: accountData.name) {
+            totalAmountForCash += Records.shared.calculateTotalBalance(for: cashAccount)
+            
+            // Обновить баланс для счета
+            Accounts.shared.editBalance(for: cashAccount.id, replacingBalance: totalAmountForCash)
+        }
+        
+        cell.amountLabel.text = "\(totalAmountForCash)"
         cell.nameLabel.text = accountData.name
         
         return cell

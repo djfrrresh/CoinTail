@@ -10,6 +10,10 @@ import UIKit
 
 class AccountsVC: BasicVC {
     
+    weak var accountDelegate: SendAccount? // Передает счет
+    
+    var isSelected: Bool = false
+    
     var accounts = [Account]() {
         didSet {
             accountsCV.reloadData()
@@ -47,28 +51,40 @@ class AccountsVC: BasicVC {
         return cv
     }()
     
+    public required init() {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.title = "Accounts".localized()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    init(isSelected: Bool) {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.isSelected = isSelected
+        transferButton.isHidden = true
+        
+        self.title = "Account selection".localized()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        accountsNavBar()
         sortAccounts()
+        accountsNavBar()
         accountButtonTargets()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Accounts".localized()
-
         accountsCV.dataSource = self
         
         accountsCV.delegate = self
         
         accountsSubviews()
-        
-        Accounts.shared.addNewAccount(Account(id: 0, name: "Cash", amount: 200))
-        Accounts.shared.addNewAccount(Account(id: 1, name: "Card 1", amount: 1000))
-        Accounts.shared.addNewAccount(Account(id: 2, name: "Card 2", amount: 50))
     }
     
 }

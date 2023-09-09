@@ -13,7 +13,12 @@ final class Accounts {
     static let shared = Accounts()
 
     // Массив всех счетов
-    var accounts = [Account]()
+//    var accounts = [Account]()
+    var accounts: [Account] = [
+        Account(id: 0, name: "Cash", balance: 200),
+        Account(id: 1, name: "Card 1", balance: 1000),
+        Account(id: 2, name: "Card 2", balance: 50)
+    ]
     
     // TODO: исправить на 0, если отсутствует Mock!
     var accountID = 3
@@ -45,6 +50,18 @@ final class Accounts {
         completion?(true)
     }
     
+    // Отредактировать баланс счета
+    func editBalance(for id: Int, replacingBalance: Double, completion: ((Bool) -> Void)? = nil) {
+        guard let account = getAccount(for: id),
+              let index = accounts.firstIndex(of: account) else {
+            completion?(false)
+            return
+        }
+        
+        accounts[index].balance = replacingBalance
+        completion?(true)
+    }
+    
     // Удаляет счет по его ID
     func deleteAccount(for id: Int, completion: ((Bool) -> Void)? = nil) {
         guard let account = getAccount(for: id),
@@ -69,8 +86,8 @@ final class Accounts {
         secondAccount = targetAccount
         
         // Снимаем деньги с исходного счета и добавляем их на целевой счет
-        firstAccount.amount -= amount
-        secondAccount.amount += amount
+        firstAccount.balance -= amount
+        secondAccount.balance += amount
         
         editAccount(for: sourceAccount.id, replacingAccount: firstAccount)
         editAccount(for: targetAccount.id, replacingAccount: secondAccount)

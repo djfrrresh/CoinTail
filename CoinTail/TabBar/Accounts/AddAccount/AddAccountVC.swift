@@ -42,7 +42,7 @@ class AddAccountVC: BasicVC {
         // Передаем значения бюджета из редактируемой ячейки
         guard let account = Accounts.shared.getAccount(for: accountID) else { return }
         
-        accountAmountTF.text = "\(account.amount)"
+        accountAmountTF.text = "\(account.balance)"
         accountNameTF.text = account.name
         saveAccountButton.setTitle("Edit Account".localized(), for: .normal)
 

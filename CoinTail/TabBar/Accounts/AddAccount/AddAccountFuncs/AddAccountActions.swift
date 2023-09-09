@@ -24,7 +24,7 @@ extension AddAccountVC {
             let account = Account(
                 id: isEditing ? strongSelf.accountID! : Accounts.shared.accountID,
                 name: nameText,
-                amount: amount
+                balance: amount
             )
             
             if !isEditing {
@@ -39,7 +39,7 @@ extension AddAccountVC {
                 Accounts.shared.addNewAccount(account)
             }
             
-            strongSelf.navigationController?.popToRootViewController(animated: true)
+            strongSelf.navigationController?.popViewController(animated: true)
         }
     }
     

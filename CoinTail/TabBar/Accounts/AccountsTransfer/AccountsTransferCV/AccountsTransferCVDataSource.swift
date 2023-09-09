@@ -28,7 +28,7 @@ extension AccountsTransferVC: UICollectionViewDataSource {
         
         let accountData: Account = accountsArr[indexPath.row]
         
-        cell.amountLabel.text = "\(accountData.amount)"
+        cell.amountLabel.text = "\(accountData.balance)"
         cell.nameLabel.text = accountData.name
         
         return cell

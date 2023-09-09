@@ -15,7 +15,7 @@ extension AccountsVC {
                     
         // Отсортировать массив счетов по деньгам (убывание)
         accounts.sort { l, r in
-            return l.amount > r.amount
+            return l.balance > r.balance
         }
     }
     
