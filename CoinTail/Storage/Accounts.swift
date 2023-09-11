@@ -14,10 +14,16 @@ final class Accounts {
 
     // Массив всех счетов
 //    var accounts = [Account]()
+    // Массив истории переводов
+//    var transferHistory = [TransferHistory]()
+    static let account1 = Account(id: 0, name: "Cash", balance: 200)
+    static let account2 = Account(id: 1, name: "Card 1", balance: 1000)
+    static let account3 = Account(id: 2, name: "Card 2", balance: 50)
+
     var accounts: [Account] = [
-        Account(id: 0, name: "Cash", balance: 200),
-        Account(id: 1, name: "Card 1", balance: 1000),
-        Account(id: 2, name: "Card 2", balance: 50)
+        account1,
+        account2,
+        account3
     ]
     
     // TODO: исправить на 0, если отсутствует Mock!
@@ -72,25 +78,6 @@ final class Accounts {
         
         accounts.remove(at: index)
         completion?(true)
-    }
-    
-    // Перевод средств между счетами
-    func transferBetweenAccounts(from sourceAccountName: String, to targetAccountName: String, amount: Double) {
-        var firstAccount: Account
-        var secondAccount: Account
-
-        guard let sourceAccount = getAccount(for: sourceAccountName),
-              let targetAccount = getAccount(for: targetAccountName) else { return }
-        
-        firstAccount = sourceAccount
-        secondAccount = targetAccount
-        
-        // Снимаем деньги с исходного счета и добавляем их на целевой счет
-        firstAccount.balance -= amount
-        secondAccount.balance += amount
-        
-        editAccount(for: sourceAccount.id, replacingAccount: firstAccount)
-        editAccount(for: targetAccount.id, replacingAccount: secondAccount)
     }
     
 }

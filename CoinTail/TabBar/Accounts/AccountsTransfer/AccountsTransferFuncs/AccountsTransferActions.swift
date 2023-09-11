@@ -38,7 +38,21 @@ extension AccountsTransferVC {
         transferValidation(amount: amount) { [weak self] sourceAccount, targetAccount in
             guard let strongSelf = self else { return }
             
-            Accounts.shared.transferBetweenAccounts(from: sourceAccount, to: targetAccount, amount: amount)
+            // Формируем перевод
+            Transfers.shared.transferBetweenAccounts(
+                from: sourceAccount,
+                to: targetAccount,
+                amount: amount
+            )
+            
+            let transferHistory = TransferHistory(
+                sourceAccount: sourceAccount,
+                targetAccount: targetAccount,
+                amount: amount
+            )
+            
+            // Добавляем в историю перевод между счетами
+            Transfers.shared.addNewTransfer(transferHistory)
             
             strongSelf.navigationController?.popToRootViewController(animated: true)
         }

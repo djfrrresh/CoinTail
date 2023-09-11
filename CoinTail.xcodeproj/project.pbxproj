@@ -73,6 +73,14 @@
 		568EF04B2AA9277200EB042D /* AccountsTransferCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF04A2AA9277200EB042D /* AccountsTransferCVDataSource.swift */; };
 		568EF04D2AA927D900EB042D /* AccountsTransferCVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF04C2AA927D900EB042D /* AccountsTransferCVDelegate.swift */; };
 		568EF04F2AA93C5E00EB042D /* AccountsTransferTFDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF04E2AA93C5E00EB042D /* AccountsTransferTFDelegate.swift */; };
+		568EF0522AAF5BBC00EB042D /* TransfersHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0512AAF5BBC00EB042D /* TransfersHistoryVC.swift */; };
+		568EF0542AAFA6C200EB042D /* TransferHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0532AAFA6C200EB042D /* TransferHistory.swift */; };
+		568EF0572AAFAEF000EB042D /* TransfersHistoryUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0562AAFAEF000EB042D /* TransfersHistoryUIFuncs.swift */; };
+		568EF0592AAFAF9C00EB042D /* TransfersHistoryUXFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0582AAFAF9C00EB042D /* TransfersHistoryUXFuncs.swift */; };
+		568EF05C2AAFB0A200EB042D /* TransfersHistoryCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF05B2AAFB0A200EB042D /* TransfersHistoryCVDataSource.swift */; };
+		568EF05E2AAFB10100EB042D /* TransfersHistoryCVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF05D2AAFB10100EB042D /* TransfersHistoryCVDelegate.swift */; };
+		568EF0602AAFB17100EB042D /* TransfersHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF05F2AAFB17100EB042D /* TransfersHistoryCell.swift */; };
+		568EF0622AAFB44300EB042D /* Transfers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0612AAFB44300EB042D /* Transfers.swift */; };
 		56DBB6CE2A3724BC0087271D /* HomeOperationCellCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */; };
 		56DBB6DD2A3728600087271D /* HomeOperationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6DC2A3728600087271D /* HomeOperationCell.swift */; };
 		56DBB6EA2A372E220087271D /* HomeDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6E92A372E220087271D /* HomeDateCell.swift */; };
@@ -185,6 +193,14 @@
 		568EF04A2AA9277200EB042D /* AccountsTransferCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsTransferCVDataSource.swift; sourceTree = "<group>"; };
 		568EF04C2AA927D900EB042D /* AccountsTransferCVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsTransferCVDelegate.swift; sourceTree = "<group>"; };
 		568EF04E2AA93C5E00EB042D /* AccountsTransferTFDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsTransferTFDelegate.swift; sourceTree = "<group>"; };
+		568EF0512AAF5BBC00EB042D /* TransfersHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersHistoryVC.swift; sourceTree = "<group>"; };
+		568EF0532AAFA6C200EB042D /* TransferHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferHistory.swift; sourceTree = "<group>"; };
+		568EF0562AAFAEF000EB042D /* TransfersHistoryUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersHistoryUIFuncs.swift; sourceTree = "<group>"; };
+		568EF0582AAFAF9C00EB042D /* TransfersHistoryUXFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersHistoryUXFuncs.swift; sourceTree = "<group>"; };
+		568EF05B2AAFB0A200EB042D /* TransfersHistoryCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersHistoryCVDataSource.swift; sourceTree = "<group>"; };
+		568EF05D2AAFB10100EB042D /* TransfersHistoryCVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersHistoryCVDelegate.swift; sourceTree = "<group>"; };
+		568EF05F2AAFB17100EB042D /* TransfersHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersHistoryCell.swift; sourceTree = "<group>"; };
+		568EF0612AAFB44300EB042D /* Transfers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfers.swift; sourceTree = "<group>"; };
 		56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOperationCellCV.swift; sourceTree = "<group>"; };
 		56DBB6DC2A3728600087271D /* HomeOperationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOperationCell.swift; sourceTree = "<group>"; };
 		56DBB6E92A372E220087271D /* HomeDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDateCell.swift; sourceTree = "<group>"; };
@@ -354,6 +370,7 @@
 				56DBB6F62A3893A80087271D /* Colors.swift */,
 				56EFDFE72A54502E003A6A45 /* Budgets.swift */,
 				568EF02D2AA60A5000EB042D /* Accounts.swift */,
+				568EF0612AAFB44300EB042D /* Transfers.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -428,6 +445,7 @@
 				5656E9BE2A9777FA00070045 /* RecordType.swift */,
 				5665C1362A9F5B2200B11D34 /* Currency.swift */,
 				568EF02B2AA609F400EB042D /* Account.swift */,
+				568EF0532AAFA6C200EB042D /* TransferHistory.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -515,6 +533,7 @@
 		568EF01E2AA603AE00EB042D /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
+				568EF0502AAF5BB200EB042D /* TransfersHistoryVC */,
 				568EF03F2AA8CA3800EB042D /* AccountsTransfer */,
 				568EF0312AA6115600EB042D /* AddAccount */,
 				568EF0242AA608BC00EB042D /* AccountsCV */,
@@ -592,6 +611,35 @@
 				568EF04C2AA927D900EB042D /* AccountsTransferCVDelegate.swift */,
 			);
 			path = AccountsTransferCV;
+			sourceTree = "<group>";
+		};
+		568EF0502AAF5BB200EB042D /* TransfersHistoryVC */ = {
+			isa = PBXGroup;
+			children = (
+				568EF05A2AAFB05C00EB042D /* TransfersHistoryCV */,
+				568EF0552AAFAE6700EB042D /* TransfersHistoryFuncs */,
+				568EF0512AAF5BBC00EB042D /* TransfersHistoryVC.swift */,
+			);
+			path = TransfersHistoryVC;
+			sourceTree = "<group>";
+		};
+		568EF0552AAFAE6700EB042D /* TransfersHistoryFuncs */ = {
+			isa = PBXGroup;
+			children = (
+				568EF0562AAFAEF000EB042D /* TransfersHistoryUIFuncs.swift */,
+				568EF0582AAFAF9C00EB042D /* TransfersHistoryUXFuncs.swift */,
+			);
+			path = TransfersHistoryFuncs;
+			sourceTree = "<group>";
+		};
+		568EF05A2AAFB05C00EB042D /* TransfersHistoryCV */ = {
+			isa = PBXGroup;
+			children = (
+				568EF05B2AAFB0A200EB042D /* TransfersHistoryCVDataSource.swift */,
+				568EF05D2AAFB10100EB042D /* TransfersHistoryCVDelegate.swift */,
+				568EF05F2AAFB17100EB042D /* TransfersHistoryCell.swift */,
+			);
+			path = TransfersHistoryCV;
 			sourceTree = "<group>";
 		};
 		56DBB6CB2A3358F10087271D /* Application */ = {
@@ -904,7 +952,9 @@
 				56DBB7152A3B4EA60087271D /* SelectCategoryCVDataSource.swift in Sources */,
 				56DBB7082A3B434C0087271D /* SelectCategoryVC.swift in Sources */,
 				5656E9B92A97707500070045 /* String.swift in Sources */,
+				568EF0522AAF5BBC00EB042D /* TransfersHistoryVC.swift in Sources */,
 				5642DB172A432BA200ADF475 /* BudgetsVC.swift in Sources */,
+				568EF0542AAFA6C200EB042D /* TransferHistory.swift in Sources */,
 				5665C1372A9F5B2200B11D34 /* Currency.swift in Sources */,
 				56DBB6F42A37485A0087271D /* OperationCell.swift in Sources */,
 				56EFDFF02A5D9176003A6A45 /* DaySection.swift in Sources */,
@@ -919,6 +969,7 @@
 				56DBB72B2A3B873B0087271D /* SelectCategoryUXFuncs.swift in Sources */,
 				568EF0282AA6094D00EB042D /* AccountCVDelegate.swift in Sources */,
 				568EF0202AA603BF00EB042D /* AccountsVC.swift in Sources */,
+				568EF0602AAFB17100EB042D /* TransfersHistoryCell.swift in Sources */,
 				5642DB2E2A4F34CC00ADF475 /* BudgetCVDataSource.swift in Sources */,
 				568EF03E2AA61FB900EB042D /* AddAccountActions.swift in Sources */,
 				560AFC272A1BF5A30054B502 /* HomeCategoryCellCV.swift in Sources */,
@@ -940,6 +991,7 @@
 				56DBB71D2A3B63310087271D /* CreateCategoryUXFuncs.swift in Sources */,
 				568EF02E2AA60A5000EB042D /* Accounts.swift in Sources */,
 				568EF04B2AA9277200EB042D /* AccountsTransferCVDataSource.swift in Sources */,
+				568EF0622AAFB44300EB042D /* Transfers.swift in Sources */,
 				56191ECF2A9CBC6D00D47052 /* Date.swift in Sources */,
 				56DBB7212A3B64A00087271D /* CreateCategoryActions.swift in Sources */,
 				568EF0262AA608D000EB042D /* AccountCell.swift in Sources */,
@@ -950,6 +1002,7 @@
 				560AFBCB2A1394A30054B502 /* CoinTail.xcdatamodeld in Sources */,
 				568EF02A2AA609B500EB042D /* AccountCVDataSource.swift in Sources */,
 				5642DB302A4F34F900ADF475 /* BudgetCell.swift in Sources */,
+				568EF0572AAFAEF000EB042D /* TransfersHistoryUIFuncs.swift in Sources */,
 				560AFC292A1BF62D0054B502 /* DateCell.swift in Sources */,
 				56DBB70A2A3B44090087271D /* Categories.swift in Sources */,
 				560AFC052A16B06D0054B502 /* HomeUXFuncs.swift in Sources */,
@@ -958,6 +1011,7 @@
 				560AFBDB2A13B26A0054B502 /* Array.swift in Sources */,
 				568EF03C2AA61F8E00EB042D /* AddAccountUXFuncs.swift in Sources */,
 				56DBB7292A3B68B00087271D /* ColorPickerFuncs.swift in Sources */,
+				568EF0592AAFAF9C00EB042D /* TransfersHistoryUXFuncs.swift in Sources */,
 				56DBB6FF2A3B36190087271D /* AddOperationTFDelegate.swift in Sources */,
 				56DBB6CE2A3724BC0087271D /* HomeOperationCellCV.swift in Sources */,
 				560AFBC52A1394A30054B502 /* HomeVC.swift in Sources */,
@@ -982,6 +1036,8 @@
 				560AFC432A1D091F0054B502 /* Record.swift in Sources */,
 				56EFDFEE2A5751EC003A6A45 /* BudgetCVDelegate.swift in Sources */,
 				560AFBE02A13B2E40054B502 /* UIButton.swift in Sources */,
+				568EF05E2AAFB10100EB042D /* TransfersHistoryCVDelegate.swift in Sources */,
+				568EF05C2AAFB0A200EB042D /* TransfersHistoryCVDataSource.swift in Sources */,
 				560AFC3E2A1C10680054B502 /* ChartsSetEntries.swift in Sources */,
 				568EF0382AA61C7200EB042D /* AddAccountUIFuncs.swift in Sources */,
 				568EF0412AA8CA5100EB042D /* AccountsTransferVC.swift in Sources */,

@@ -29,6 +29,15 @@ class AccountsVC: BasicVC {
         
         return button
     }()
+    let historyButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "arrowshape.turn.up.backward.badge.clock"), for: .normal)
+        button.backgroundColor = .lightGray.withAlphaComponent(0.5)
+        button.tintColor = .darkGray
+        button.layer.cornerRadius = 8
+        
+        return button
+    }()
     
     let accountsCV: UICollectionView = {
         let accountsLayout: UICollectionViewFlowLayout = {

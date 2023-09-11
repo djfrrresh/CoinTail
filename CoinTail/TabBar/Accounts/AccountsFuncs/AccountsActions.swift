@@ -25,4 +25,11 @@ extension AccountsVC {
                 
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @objc func goToAccountsHistoryVC() {
+        let vc = TransfersHistoryVC()
+        vc.hidesBottomBarWhenPushed = true
+                
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }

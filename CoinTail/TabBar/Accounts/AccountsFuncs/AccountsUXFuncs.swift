@@ -21,6 +21,7 @@ extension AccountsVC {
     
     func accountButtonTargets() {
         transferButton.addTarget(self, action: #selector(goToAccountsTransferVC), for: .touchUpInside)
+        historyButton.addTarget(self, action: #selector(goToAccountsHistoryVC), for: .touchUpInside)
     }
     
 }

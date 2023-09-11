@@ -21,11 +21,19 @@ extension AccountsVC {
     
     func accountsSubviews() {
         self.view.addSubview(transferButton)
+        self.view.addSubview(historyButton)
         self.view.addSubview(accountsCV)
         
         transferButton.easy.layout([
-            CenterX(),
-            Width(60),
+            Left(40),
+            Width(80),
+            Height(40),
+            Bottom(16).to(self.view.safeAreaLayoutGuide, .bottom)
+        ])
+        
+        historyButton.easy.layout([
+            Right(40),
+            Width(80),
             Height(40),
             Bottom(16).to(self.view.safeAreaLayoutGuide, .bottom)
         ])
