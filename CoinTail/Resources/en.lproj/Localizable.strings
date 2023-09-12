@@ -112,3 +112,7 @@
 "Delete data" = "Delete data";
 /// Title
 "Settings" = "Settings";
+
+// AccountsVC
+/// Title
+"Accounts" = "Accounts";

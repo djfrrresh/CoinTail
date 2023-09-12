@@ -140,4 +140,5 @@ final class BudgetCell: UICollectionViewCell {
             height: 60
         )
     }
+    
 }

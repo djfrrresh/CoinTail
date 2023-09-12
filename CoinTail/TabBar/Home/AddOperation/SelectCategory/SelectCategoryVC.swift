@@ -11,7 +11,7 @@ import EasyPeasy
 
 class SelectCategoryVC: BasicVC {
     
-    weak var categoryDelegate: SendСategoryData? // Передает категорию
+    weak var categoryDelegate: SendСategory? // Передает категорию
     
     let selectCategoryCV: UICollectionView = {
         let layout: UICollectionViewFlowLayout = {

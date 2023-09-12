@@ -114,3 +114,7 @@
 "Delete data" = "Удалить данные";
 /// Title
 "Settings" = "Настройки";
+
+// AccountsVC
+/// Title
+"Accounts" = "Счета";

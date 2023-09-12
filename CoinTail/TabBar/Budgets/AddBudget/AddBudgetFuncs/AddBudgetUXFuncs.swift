@@ -8,11 +8,12 @@
 import UIKit
 
 
-extension AddBudgetVC: SendСategoryData {
+extension AddBudgetVC: SendСategory {
     
     // Присылает категорию с SelectCategoryVC
     func sendCategoryData(category: Category) {
         self.budgetCategory = category
+        
         categoryButton.setTitle(category.name, for: .normal)
     }
     

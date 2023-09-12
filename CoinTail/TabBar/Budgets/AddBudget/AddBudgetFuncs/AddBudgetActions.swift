@@ -73,6 +73,7 @@ extension AddBudgetVC {
         
         let confirmAction = UIAlertAction(title: "Confirm".localized(), style: .default) { [weak self] _ in
             Budgets.shared.deleteBudget(for: id)
+            
             self?.navigationController?.popToRootViewController(animated: true)
         }
         let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel)
@@ -85,7 +86,6 @@ extension AddBudgetVC {
         self.present(alertView, animated: true)
     }
     
-    // 
     private func budgetDateUntil() -> Date {
         var daysToAdd: Int
         
