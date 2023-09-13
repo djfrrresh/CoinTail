@@ -8,7 +8,7 @@
 import UIKit
 
 
-class AddAccountVC: BasicVC {
+final class AddAccountVC: BasicVC {
     
     var accountID: Int?
     
