@@ -21,6 +21,7 @@ final class HomeDateCell: UICollectionViewCell {
         "3 months".localized(),
         "Month".localized()
     ]
+    
     var period: Periods? {
         didSet {
             dateCV.reloadData()

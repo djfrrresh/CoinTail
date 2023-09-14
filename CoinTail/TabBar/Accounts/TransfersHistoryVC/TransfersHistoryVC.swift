@@ -8,7 +8,7 @@
 import UIKit
 
 
-class TransfersHistoryVC: BasicVC {
+final class TransfersHistoryVC: BasicVC {
     
     var transfers = [TransferHistory]() {
         didSet {

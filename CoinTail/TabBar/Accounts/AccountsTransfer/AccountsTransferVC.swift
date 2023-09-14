@@ -8,7 +8,7 @@
 import UIKit
 
 
-class AccountsTransferVC: BasicVC {
+final class AccountsTransferVC: BasicVC {
     
     var accountsArr = Accounts.shared.accounts
         

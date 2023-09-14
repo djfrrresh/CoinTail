@@ -81,6 +81,15 @@
 		568EF05E2AAFB10100EB042D /* TransfersHistoryCVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF05D2AAFB10100EB042D /* TransfersHistoryCVDelegate.swift */; };
 		568EF0602AAFB17100EB042D /* TransfersHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF05F2AAFB17100EB042D /* TransfersHistoryCell.swift */; };
 		568EF0622AAFB44300EB042D /* Transfers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0612AAFB44300EB042D /* Transfers.swift */; };
+		568EF0642AB0D81200EB042D /* SettingsCVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0632AB0D81200EB042D /* SettingsCVDelegate.swift */; };
+		568EF0672AB0D99700EB042D /* CurrenciesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0662AB0D99700EB042D /* CurrenciesVC.swift */; };
+		568EF06A2AB0E74200EB042D /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0692AB0E74200EB042D /* CurrencyCell.swift */; };
+		568EF06C2AB0FC1800EB042D /* CurrencyCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF06B2AB0FC1800EB042D /* CurrencyCVDataSource.swift */; };
+		568EF06E2AB0FC4F00EB042D /* CurrencyCVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF06D2AB0FC4F00EB042D /* CurrencyCVDelegate.swift */; };
+		568EF0712AB0FFAA00EB042D /* CurrenciesUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0702AB0FFAA00EB042D /* CurrenciesUIFuncs.swift */; };
+		568EF0732AB1DA3E00EB042D /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0722AB1DA3E00EB042D /* Currencies.swift */; };
+		568EF0752AB1F76000EB042D /* CurrencyCVHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0742AB1F76000EB042D /* CurrencyCVHeader.swift */; };
+		568EF0772AB3816A00EB042D /* CurrenciesSearching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0762AB3816A00EB042D /* CurrenciesSearching.swift */; };
 		56DBB6CE2A3724BC0087271D /* HomeOperationCellCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */; };
 		56DBB6DD2A3728600087271D /* HomeOperationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6DC2A3728600087271D /* HomeOperationCell.swift */; };
 		56DBB6EA2A372E220087271D /* HomeDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6E92A372E220087271D /* HomeDateCell.swift */; };
@@ -201,6 +210,15 @@
 		568EF05D2AAFB10100EB042D /* TransfersHistoryCVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersHistoryCVDelegate.swift; sourceTree = "<group>"; };
 		568EF05F2AAFB17100EB042D /* TransfersHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersHistoryCell.swift; sourceTree = "<group>"; };
 		568EF0612AAFB44300EB042D /* Transfers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfers.swift; sourceTree = "<group>"; };
+		568EF0632AB0D81200EB042D /* SettingsCVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCVDelegate.swift; sourceTree = "<group>"; };
+		568EF0662AB0D99700EB042D /* CurrenciesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesVC.swift; sourceTree = "<group>"; };
+		568EF0692AB0E74200EB042D /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
+		568EF06B2AB0FC1800EB042D /* CurrencyCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCVDataSource.swift; sourceTree = "<group>"; };
+		568EF06D2AB0FC4F00EB042D /* CurrencyCVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCVDelegate.swift; sourceTree = "<group>"; };
+		568EF0702AB0FFAA00EB042D /* CurrenciesUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesUIFuncs.swift; sourceTree = "<group>"; };
+		568EF0722AB1DA3E00EB042D /* Currencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
+		568EF0742AB1F76000EB042D /* CurrencyCVHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCVHeader.swift; sourceTree = "<group>"; };
+		568EF0762AB3816A00EB042D /* CurrenciesSearching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesSearching.swift; sourceTree = "<group>"; };
 		56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOperationCellCV.swift; sourceTree = "<group>"; };
 		56DBB6DC2A3728600087271D /* HomeOperationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOperationCell.swift; sourceTree = "<group>"; };
 		56DBB6E92A372E220087271D /* HomeDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDateCell.swift; sourceTree = "<group>"; };
@@ -371,6 +389,7 @@
 				56EFDFE72A54502E003A6A45 /* Budgets.swift */,
 				568EF02D2AA60A5000EB042D /* Accounts.swift */,
 				568EF0612AAFB44300EB042D /* Transfers.swift */,
+				568EF0722AB1DA3E00EB042D /* Currencies.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -465,6 +484,7 @@
 		5642DB122A432AFB00ADF475 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				568EF0652AB0D96A00EB042D /* Currencies */,
 				5665C13E2A9F6ADD00B11D34 /* SettingsFuncs */,
 				5665C1382A9F5F5300B11D34 /* SettingsCV */,
 				5642DB132A432B0800ADF475 /* SettingsVC.swift */,
@@ -518,6 +538,7 @@
 			children = (
 				5665C13C2A9F614A00B11D34 /* SettingsCell.swift */,
 				5665C1392A9F5F6900B11D34 /* SettingsCVDataSource.swift */,
+				568EF0632AB0D81200EB042D /* SettingsCVDelegate.swift */,
 			);
 			path = SettingsCV;
 			sourceTree = "<group>";
@@ -640,6 +661,36 @@
 				568EF05F2AAFB17100EB042D /* TransfersHistoryCell.swift */,
 			);
 			path = TransfersHistoryCV;
+			sourceTree = "<group>";
+		};
+		568EF0652AB0D96A00EB042D /* Currencies */ = {
+			isa = PBXGroup;
+			children = (
+				568EF06F2AB0FF6300EB042D /* CurrenciesFuncs */,
+				568EF0682AB0E73300EB042D /* CurrenciesCV */,
+				568EF0662AB0D99700EB042D /* CurrenciesVC.swift */,
+			);
+			path = Currencies;
+			sourceTree = "<group>";
+		};
+		568EF0682AB0E73300EB042D /* CurrenciesCV */ = {
+			isa = PBXGroup;
+			children = (
+				568EF0692AB0E74200EB042D /* CurrencyCell.swift */,
+				568EF06B2AB0FC1800EB042D /* CurrencyCVDataSource.swift */,
+				568EF06D2AB0FC4F00EB042D /* CurrencyCVDelegate.swift */,
+				568EF0742AB1F76000EB042D /* CurrencyCVHeader.swift */,
+			);
+			path = CurrenciesCV;
+			sourceTree = "<group>";
+		};
+		568EF06F2AB0FF6300EB042D /* CurrenciesFuncs */ = {
+			isa = PBXGroup;
+			children = (
+				568EF0702AB0FFAA00EB042D /* CurrenciesUIFuncs.swift */,
+				568EF0762AB3816A00EB042D /* CurrenciesSearching.swift */,
+			);
+			path = CurrenciesFuncs;
 			sourceTree = "<group>";
 		};
 		56DBB6CB2A3358F10087271D /* Application */ = {
@@ -969,12 +1020,14 @@
 				56DBB72B2A3B873B0087271D /* SelectCategoryUXFuncs.swift in Sources */,
 				568EF0282AA6094D00EB042D /* AccountCVDelegate.swift in Sources */,
 				568EF0202AA603BF00EB042D /* AccountsVC.swift in Sources */,
+				568EF06A2AB0E74200EB042D /* CurrencyCell.swift in Sources */,
 				568EF0602AAFB17100EB042D /* TransfersHistoryCell.swift in Sources */,
 				5642DB2E2A4F34CC00ADF475 /* BudgetCVDataSource.swift in Sources */,
 				568EF03E2AA61FB900EB042D /* AddAccountActions.swift in Sources */,
 				560AFC272A1BF5A30054B502 /* HomeCategoryCellCV.swift in Sources */,
 				560AFC392A1C0FC30054B502 /* PieChartFuncs.swift in Sources */,
 				564F08FE2A531AEE004C89C7 /* AddBudgetVC.swift in Sources */,
+				568EF0642AB0D81200EB042D /* SettingsCVDelegate.swift in Sources */,
 				56DBB6F92A39D69A0087271D /* OperationHeader.swift in Sources */,
 				5642DB142A432B0800ADF475 /* SettingsVC.swift in Sources */,
 				5665C1402A9F6B0800B11D34 /* SettingsUIFuncs.swift in Sources */,
@@ -994,6 +1047,8 @@
 				568EF0622AAFB44300EB042D /* Transfers.swift in Sources */,
 				56191ECF2A9CBC6D00D47052 /* Date.swift in Sources */,
 				56DBB7212A3B64A00087271D /* CreateCategoryActions.swift in Sources */,
+				568EF06C2AB0FC1800EB042D /* CurrencyCVDataSource.swift in Sources */,
+				568EF06E2AB0FC4F00EB042D /* CurrencyCVDelegate.swift in Sources */,
 				568EF0262AA608D000EB042D /* AccountCell.swift in Sources */,
 				568EF0462AA8E43100EB042D /* AccountsTransferUXFuncs.swift in Sources */,
 				56EFDFE82A54502E003A6A45 /* Budgets.swift in Sources */,
@@ -1014,6 +1069,7 @@
 				568EF0592AAFAF9C00EB042D /* TransfersHistoryUXFuncs.swift in Sources */,
 				56DBB6FF2A3B36190087271D /* AddOperationTFDelegate.swift in Sources */,
 				56DBB6CE2A3724BC0087271D /* HomeOperationCellCV.swift in Sources */,
+				568EF0772AB3816A00EB042D /* CurrenciesSearching.swift in Sources */,
 				560AFBC52A1394A30054B502 /* HomeVC.swift in Sources */,
 				56DBB7172A3B50140087271D /* SelectCategoryCVDelegate.swift in Sources */,
 				560AFC1C2A1BEE640054B502 /* Records.swift in Sources */,
@@ -1025,13 +1081,16 @@
 				56DBB71A2A3B609E0087271D /* CreateCategoryVC.swift in Sources */,
 				560AFBC12A1394A30054B502 /* AppDelegate.swift in Sources */,
 				56DBB7262A3B672C0087271D /* CreateCategoryCVDelegate.swift in Sources */,
+				568EF0752AB1F76000EB042D /* CurrencyCVHeader.swift in Sources */,
 				568EF0352AA611F000EB042D /* AccountsActions.swift in Sources */,
+				568EF0672AB0D99700EB042D /* CurrenciesVC.swift in Sources */,
 				56DBB6EE2A37337F0087271D /* HomeDateCellCV.swift in Sources */,
 				5642DB272A4DE36300ADF475 /* BudgetUXFuncs.swift in Sources */,
 				56DBB7032A3B38470087271D /* AddOperationActions.swift in Sources */,
 				56EFDFE42A5352EE003A6A45 /* AddBudgetActions.swift in Sources */,
 				560AFBF22A13C28E0054B502 /* BasicVCFuncs.swift in Sources */,
 				56DBB6F22A3738240087271D /* CategoryCell.swift in Sources */,
+				568EF0712AB0FFAA00EB042D /* CurrenciesUIFuncs.swift in Sources */,
 				560AFBE82A13B5520054B502 /* UILabel.swift in Sources */,
 				560AFC432A1D091F0054B502 /* Record.swift in Sources */,
 				56EFDFEE2A5751EC003A6A45 /* BudgetCVDelegate.swift in Sources */,
@@ -1049,6 +1108,7 @@
 				56DBB6F72A3893A80087271D /* Colors.swift in Sources */,
 				56DBB7242A3B667F0087271D /* CreateCategoryCVDataSource.swift in Sources */,
 				568EF0442AA8E3FA00EB042D /* AccountsTransferUIFuncs.swift in Sources */,
+				568EF0732AB1DA3E00EB042D /* Currencies.swift in Sources */,
 				5642DB2B2A4F313A00ADF475 /* Budget.swift in Sources */,
 				568EF0302AA60CCA00EB042D /* AccountsUXFuncs.swift in Sources */,
 				56DBB6DD2A3728600087271D /* HomeOperationCell.swift in Sources */,
