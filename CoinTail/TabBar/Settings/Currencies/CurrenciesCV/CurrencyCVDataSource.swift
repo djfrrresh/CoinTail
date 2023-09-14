@@ -19,7 +19,11 @@ extension CurrenciesVC: UICollectionViewDataSource {
         case 0:
             return favouriteCurrencies.count
         case 1:
-            return Currencies.shared.currencyNames.count
+            if isSearching {
+                return filteredData.count
+            } else {
+                return Currencies.shared.currencyNames.count
+            }
         default:
             return 0
         }
@@ -45,10 +49,17 @@ extension CurrenciesVC: UICollectionViewDataSource {
             currency = favouriteCurrencies[indexPath.row]
             array = favouriteCurrencies
         case 1:
-            currency = Currencies.shared.currencyNames[indexPath.row]
-            currencyCode = Currencies.shared.currencyCodes[indexPath.row]
-            currencyName = currency.name
-            array = Currencies.shared.currencyNames
+            if isSearching {
+                currency = filteredData[indexPath.row]
+                currencyCode = "\(filteredData[indexPath.row])"
+                currencyName = currency.name
+                array = filteredData
+            } else {
+                currency = Currencies.shared.currencyNames[indexPath.row]
+                currencyCode = Currencies.shared.currencyCodes[indexPath.row]
+                currencyName = currency.name
+                array = Currencies.shared.currencyNames
+            }
         default:
             return cell
         }

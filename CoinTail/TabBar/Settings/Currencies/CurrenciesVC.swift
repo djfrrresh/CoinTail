@@ -18,6 +18,19 @@ final class CurrenciesVC: BasicVC, GetCurrencyIndex {
     
     var favouriteCurrencies: [Currency] { Currencies.shared.favouriteCurrencies }
     var selectedCurrency: Currency { Currencies.shared.selectedCurrency }
+    var filteredData = [Currency]()
+    var isSearching: Bool = false
+    
+    let currencySearchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.placeholder = "Type USD or Dollar for search"
+        searchBar.barTintColor = UIColor.clear
+        searchBar.backgroundColor = UIColor.clear
+        searchBar.isTranslucent = true
+        searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        
+        return searchBar
+    }()
     
     let currenciesCV: UICollectionView = {
         let currenciesLayout: UICollectionViewFlowLayout = {
@@ -47,6 +60,7 @@ final class CurrenciesVC: BasicVC, GetCurrencyIndex {
         self.title = "Select currency"
         
         currenciesCV.delegate = self
+        currencySearchBar.delegate = self
         
         currenciesCV.dataSource = self
         

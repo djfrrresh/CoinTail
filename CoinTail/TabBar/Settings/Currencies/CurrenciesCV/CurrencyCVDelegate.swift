@@ -22,7 +22,11 @@ extension CurrenciesVC: UICollectionViewDelegateFlowLayout, UICollectionViewDele
         case 0:
             currency = favouriteCurrencies[indexPath.row]
         case 1:
-            currency = Currencies.shared.currencyNames[indexPath.row]
+            if isSearching {
+                currency = filteredData[indexPath.row]
+            } else {
+                currency = Currencies.shared.currencyNames[indexPath.row]
+            }
         default:
             return
         }
