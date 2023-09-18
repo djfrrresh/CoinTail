@@ -22,7 +22,7 @@ final class HomeDateCell: UICollectionViewCell {
         "Month".localized()
     ]
     
-    var period: Periods? {
+    var period: DatePeriods? {
         didSet {
             dateCV.reloadData()
         }

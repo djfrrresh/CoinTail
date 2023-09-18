@@ -12,7 +12,7 @@ import MultipleProgressBar
 
 class HomeVC: BasicVC {
     
-    var period: Periods = .allTheTime {
+    var period: DatePeriods = .allTheTime {
         didSet {
             homeGlobalCV.reloadData()
         }

@@ -18,7 +18,7 @@ final class Records {
     var recordID = 8
         
     // Получает сумму из операций за указанный период времени
-    func getAmount(for period: Periods, type: RecordType, step: Int = 0, category: Category? = nil) -> Double {
+    func getAmount(for period: DatePeriods, type: RecordType, step: Int = 0, category: Category? = nil) -> Double {
         return getRecords(for: period, type: type, step: step, category: category).reduce(0.0) { $0 + $1.amount }
     }
     
@@ -36,7 +36,7 @@ final class Records {
     
     //TODO: оптимизировать функцию
     // Получает операции за указанный период времени
-    func getRecords(for period: Periods, type: RecordType, step: Int = 0, category: Category? = nil) -> [Record] {
+    func getRecords(for period: DatePeriods, type: RecordType, step: Int = 0, category: Category? = nil) -> [Record] {
         let calendar = Calendar.current
         let currentYear = calendar.component(.year, from: Date())
         let currentMonth = calendar.component(.month, from: Date())

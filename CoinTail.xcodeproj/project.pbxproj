@@ -33,7 +33,7 @@
 		560AFC402A1D08D10054B502 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC3F2A1D08D10054B502 /* Category.swift */; };
 		560AFC432A1D091F0054B502 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC422A1D091F0054B502 /* Record.swift */; };
 		56191ECF2A9CBC6D00D47052 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56191ECE2A9CBC6D00D47052 /* Date.swift */; };
-		5642DAEB2A4080BF00ADF475 /* Periods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642DAEA2A4080BF00ADF475 /* Periods.swift */; };
+		5642DAEB2A4080BF00ADF475 /* DatePeriods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642DAEA2A4080BF00ADF475 /* DatePeriods.swift */; };
 		5642DAED2A40D2BE00ADF475 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642DAEC2A40D2BE00ADF475 /* Int.swift */; };
 		5642DB112A4329AB00ADF475 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642DB102A4329AB00ADF475 /* TabBar.swift */; };
 		5642DB142A432B0800ADF475 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642DB132A432B0800ADF475 /* SettingsVC.swift */; };
@@ -90,6 +90,13 @@
 		568EF0732AB1DA3E00EB042D /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0722AB1DA3E00EB042D /* Currencies.swift */; };
 		568EF0752AB1F76000EB042D /* CurrencyCVHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0742AB1F76000EB042D /* CurrencyCVHeader.swift */; };
 		568EF0772AB3816A00EB042D /* CurrenciesSearching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0762AB3816A00EB042D /* CurrenciesSearching.swift */; };
+		568EF07A2AB3A2D100EB042D /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0792AB3A2D100EB042D /* NotificationsVC.swift */; };
+		568EF07C2AB3AE0F00EB042D /* NotificationPeriods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF07B2AB3AE0F00EB042D /* NotificationPeriods.swift */; };
+		568EF07F2AB3BAD000EB042D /* NotificationsUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF07E2AB3BAD000EB042D /* NotificationsUIFuncs.swift */; };
+		568EF0812AB4B44E00EB042D /* NotificationsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0802AB4B44E00EB042D /* NotificationsDelegate.swift */; };
+		568EF0832AB4B5C800EB042D /* NotificationsUXFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0822AB4B5C800EB042D /* NotificationsUXFuncs.swift */; };
+		568EF0852AB4BE3800EB042D /* NotificationsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0842AB4BE3800EB042D /* NotificationsActions.swift */; };
+		568EF0872AB4C09F00EB042D /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0862AB4C09F00EB042D /* Notifications.swift */; };
 		56DBB6CE2A3724BC0087271D /* HomeOperationCellCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */; };
 		56DBB6DD2A3728600087271D /* HomeOperationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6DC2A3728600087271D /* HomeOperationCell.swift */; };
 		56DBB6EA2A372E220087271D /* HomeDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6E92A372E220087271D /* HomeDateCell.swift */; };
@@ -160,7 +167,7 @@
 		560AFC3F2A1D08D10054B502 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		560AFC422A1D091F0054B502 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		56191ECE2A9CBC6D00D47052 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		5642DAEA2A4080BF00ADF475 /* Periods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Periods.swift; sourceTree = "<group>"; };
+		5642DAEA2A4080BF00ADF475 /* DatePeriods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePeriods.swift; sourceTree = "<group>"; };
 		5642DAEC2A40D2BE00ADF475 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		5642DB102A4329AB00ADF475 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		5642DB132A432B0800ADF475 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
@@ -219,6 +226,13 @@
 		568EF0722AB1DA3E00EB042D /* Currencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
 		568EF0742AB1F76000EB042D /* CurrencyCVHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCVHeader.swift; sourceTree = "<group>"; };
 		568EF0762AB3816A00EB042D /* CurrenciesSearching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesSearching.swift; sourceTree = "<group>"; };
+		568EF0792AB3A2D100EB042D /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
+		568EF07B2AB3AE0F00EB042D /* NotificationPeriods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPeriods.swift; sourceTree = "<group>"; };
+		568EF07E2AB3BAD000EB042D /* NotificationsUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsUIFuncs.swift; sourceTree = "<group>"; };
+		568EF0802AB4B44E00EB042D /* NotificationsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsDelegate.swift; sourceTree = "<group>"; };
+		568EF0822AB4B5C800EB042D /* NotificationsUXFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsUXFuncs.swift; sourceTree = "<group>"; };
+		568EF0842AB4BE3800EB042D /* NotificationsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsActions.swift; sourceTree = "<group>"; };
+		568EF0862AB4C09F00EB042D /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOperationCellCV.swift; sourceTree = "<group>"; };
 		56DBB6DC2A3728600087271D /* HomeOperationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOperationCell.swift; sourceTree = "<group>"; };
 		56DBB6E92A372E220087271D /* HomeDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDateCell.swift; sourceTree = "<group>"; };
@@ -390,6 +404,7 @@
 				568EF02D2AA60A5000EB042D /* Accounts.swift */,
 				568EF0612AAFB44300EB042D /* Transfers.swift */,
 				568EF0722AB1DA3E00EB042D /* Currencies.swift */,
+				568EF0862AB4C09F00EB042D /* Notifications.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -459,12 +474,13 @@
 				56EFDFEF2A5D9176003A6A45 /* DaySection.swift */,
 				560AFC3F2A1D08D10054B502 /* Category.swift */,
 				560AFC422A1D091F0054B502 /* Record.swift */,
-				5642DAEA2A4080BF00ADF475 /* Periods.swift */,
+				5642DAEA2A4080BF00ADF475 /* DatePeriods.swift */,
 				5642DB2A2A4F313A00ADF475 /* Budget.swift */,
 				5656E9BE2A9777FA00070045 /* RecordType.swift */,
 				5665C1362A9F5B2200B11D34 /* Currency.swift */,
 				568EF02B2AA609F400EB042D /* Account.swift */,
 				568EF0532AAFA6C200EB042D /* TransferHistory.swift */,
+				568EF07B2AB3AE0F00EB042D /* NotificationPeriods.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -484,6 +500,7 @@
 		5642DB122A432AFB00ADF475 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				568EF0782AB3A2C200EB042D /* Notifications */,
 				568EF0652AB0D96A00EB042D /* Currencies */,
 				5665C13E2A9F6ADD00B11D34 /* SettingsFuncs */,
 				5665C1382A9F5F5300B11D34 /* SettingsCV */,
@@ -691,6 +708,26 @@
 				568EF0762AB3816A00EB042D /* CurrenciesSearching.swift */,
 			);
 			path = CurrenciesFuncs;
+			sourceTree = "<group>";
+		};
+		568EF0782AB3A2C200EB042D /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				568EF07D2AB3BAC000EB042D /* NotificationsFuncs */,
+				568EF0792AB3A2D100EB042D /* NotificationsVC.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		568EF07D2AB3BAC000EB042D /* NotificationsFuncs */ = {
+			isa = PBXGroup;
+			children = (
+				568EF07E2AB3BAD000EB042D /* NotificationsUIFuncs.swift */,
+				568EF0802AB4B44E00EB042D /* NotificationsDelegate.swift */,
+				568EF0822AB4B5C800EB042D /* NotificationsUXFuncs.swift */,
+				568EF0842AB4BE3800EB042D /* NotificationsActions.swift */,
+			);
+			path = NotificationsFuncs;
 			sourceTree = "<group>";
 		};
 		56DBB6CB2A3358F10087271D /* Application */ = {
@@ -1010,7 +1047,7 @@
 				56DBB6F42A37485A0087271D /* OperationCell.swift in Sources */,
 				56EFDFF02A5D9176003A6A45 /* DaySection.swift in Sources */,
 				5642DB252A4DDAC400ADF475 /* BudgetUIFuncs.swift in Sources */,
-				5642DAEB2A4080BF00ADF475 /* Periods.swift in Sources */,
+				5642DAEB2A4080BF00ADF475 /* DatePeriods.swift in Sources */,
 				568EF0332AA6116900EB042D /* AddAccountVC.swift in Sources */,
 				56DBB71F2A3B641E0087271D /* CreateCategoryUIFuncs.swift in Sources */,
 				56DBB7012A3B36D30087271D /* AddOperationUIFuncs.swift in Sources */,
@@ -1022,6 +1059,7 @@
 				568EF0202AA603BF00EB042D /* AccountsVC.swift in Sources */,
 				568EF06A2AB0E74200EB042D /* CurrencyCell.swift in Sources */,
 				568EF0602AAFB17100EB042D /* TransfersHistoryCell.swift in Sources */,
+				568EF0832AB4B5C800EB042D /* NotificationsUXFuncs.swift in Sources */,
 				5642DB2E2A4F34CC00ADF475 /* BudgetCVDataSource.swift in Sources */,
 				568EF03E2AA61FB900EB042D /* AddAccountActions.swift in Sources */,
 				560AFC272A1BF5A30054B502 /* HomeCategoryCellCV.swift in Sources */,
@@ -1044,6 +1082,7 @@
 				56DBB71D2A3B63310087271D /* CreateCategoryUXFuncs.swift in Sources */,
 				568EF02E2AA60A5000EB042D /* Accounts.swift in Sources */,
 				568EF04B2AA9277200EB042D /* AccountsTransferCVDataSource.swift in Sources */,
+				568EF07A2AB3A2D100EB042D /* NotificationsVC.swift in Sources */,
 				568EF0622AAFB44300EB042D /* Transfers.swift in Sources */,
 				56191ECF2A9CBC6D00D47052 /* Date.swift in Sources */,
 				56DBB7212A3B64A00087271D /* CreateCategoryActions.swift in Sources */,
@@ -1056,6 +1095,7 @@
 				568EF0482AA8F7C100EB042D /* AccountsTransferActions.swift in Sources */,
 				560AFBCB2A1394A30054B502 /* CoinTail.xcdatamodeld in Sources */,
 				568EF02A2AA609B500EB042D /* AccountCVDataSource.swift in Sources */,
+				568EF0872AB4C09F00EB042D /* Notifications.swift in Sources */,
 				5642DB302A4F34F900ADF475 /* BudgetCell.swift in Sources */,
 				568EF0572AAFAEF000EB042D /* TransfersHistoryUIFuncs.swift in Sources */,
 				560AFC292A1BF62D0054B502 /* DateCell.swift in Sources */,
@@ -1066,8 +1106,10 @@
 				560AFBDB2A13B26A0054B502 /* Array.swift in Sources */,
 				568EF03C2AA61F8E00EB042D /* AddAccountUXFuncs.swift in Sources */,
 				56DBB7292A3B68B00087271D /* ColorPickerFuncs.swift in Sources */,
+				568EF0852AB4BE3800EB042D /* NotificationsActions.swift in Sources */,
 				568EF0592AAFAF9C00EB042D /* TransfersHistoryUXFuncs.swift in Sources */,
 				56DBB6FF2A3B36190087271D /* AddOperationTFDelegate.swift in Sources */,
+				568EF07C2AB3AE0F00EB042D /* NotificationPeriods.swift in Sources */,
 				56DBB6CE2A3724BC0087271D /* HomeOperationCellCV.swift in Sources */,
 				568EF0772AB3816A00EB042D /* CurrenciesSearching.swift in Sources */,
 				560AFBC52A1394A30054B502 /* HomeVC.swift in Sources */,
@@ -1103,6 +1145,7 @@
 				568EF03A2AA61EC200EB042D /* AddAccountTFDelegate.swift in Sources */,
 				5665C13A2A9F5F6900B11D34 /* SettingsCVDataSource.swift in Sources */,
 				56DBB6EA2A372E220087271D /* HomeDateCell.swift in Sources */,
+				568EF0812AB4B44E00EB042D /* NotificationsDelegate.swift in Sources */,
 				560AFBEA2A13B5EA0054B502 /* UISegmentedControl.swift in Sources */,
 				56DBB7122A3B4C570087271D /* SelectCategoryCVCell.swift in Sources */,
 				56DBB6F72A3893A80087271D /* Colors.swift in Sources */,
@@ -1113,6 +1156,7 @@
 				568EF0302AA60CCA00EB042D /* AccountsUXFuncs.swift in Sources */,
 				56DBB6DD2A3728600087271D /* HomeOperationCell.swift in Sources */,
 				560AFBF02A13C1DF0054B502 /* BasicVC.swift in Sources */,
+				568EF07F2AB3BAD000EB042D /* NotificationsUIFuncs.swift in Sources */,
 				560AFC3C2A1C10170054B502 /* ChartsAnimation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

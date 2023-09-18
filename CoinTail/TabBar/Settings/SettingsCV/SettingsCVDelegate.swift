@@ -17,13 +17,13 @@ extension SettingsVC: UICollectionViewDelegate {
         case 0:
             vc = CurrenciesVC()
         case 1:
-            vc = CurrenciesVC()
+            vc = NotificationsVC()
         case 2:
-            vc = CurrenciesVC()
+            vc = UIViewController()
         case 3:
-            vc = CurrenciesVC()
+            vc = UIViewController()
         case 4:
-            vc = CurrenciesVC()
+            vc = UIViewController()
         default:
             fatalError("no VC")
         }

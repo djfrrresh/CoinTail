@@ -12,7 +12,7 @@ import EasyPeasy
 extension HomeVC: SelectedDate {
     
     // Передает выбранный период и обнуляет счетчик шагов для диаграммы
-    func selectedPeriod(_ period: Periods) {
+    func selectedPeriod(_ period: DatePeriods) {
         self.period = period
         currentStep = 0
         
