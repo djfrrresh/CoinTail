@@ -9,16 +9,6 @@ import UIKit
 
 
 extension SettingsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    // Переход на контроллер
-//    func pushVC(vc: UIViewController) {
-//        self.navigationItem.rightBarButtonItem?.target = nil
-//
-//        let vc = vc
-//        vc.hidesBottomBarWhenPushed = true // Спрятать TabBar
-//
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1

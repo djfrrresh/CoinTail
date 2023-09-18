@@ -9,7 +9,7 @@ import UIKit
 
 
 protocol SelectedDate: AnyObject {
-    func selectedPeriod(_ period: Periods)
+    func selectedPeriod(_ period: DatePeriods)
 }
 
 extension HomeDateCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -42,7 +42,7 @@ extension HomeDateCell: UICollectionViewDataSource, UICollectionViewDelegate, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        periodDelegate?.selectedPeriod(Periods(rawValue: Periods.RawValue(indexPath.row)) ?? .allTheTime)
+        periodDelegate?.selectedPeriod(DatePeriods(rawValue: DatePeriods.RawValue(indexPath.row)) ?? .allTheTime)
     }
     
     // Отступ слева и справа от экрана

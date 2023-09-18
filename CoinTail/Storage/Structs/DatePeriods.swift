@@ -8,7 +8,7 @@
 import Foundation
 
 // TODO: сделать дефолт значения и сменить тип на String
-enum Periods: Int {
+enum DatePeriods: Int {
     case allTheTime
     case year
     case quarter
