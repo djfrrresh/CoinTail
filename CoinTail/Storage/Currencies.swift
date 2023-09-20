@@ -38,4 +38,26 @@ class Currencies {
         return array.contains(currency)
     }
     
+    // Возвращаем массив с уникальными валютами из избранных + выбранной валюты
+    func currenciesToChoose() -> [Currency] {
+        var combinedCurrencies: [Currency] = [selectedCurrency] + favouriteCurrencies
+        
+        if let index = combinedCurrencies.firstIndex(of: selectedCurrency) {
+            combinedCurrencies.remove(at: index)
+        }
+                
+        return combinedCurrencies
+    }
+    
+    func getNextIndex(currentIndex: Int) -> Int {
+        let currencies: [Currency] = Currencies.shared.currenciesToChoose()
+        let nextIndex = currentIndex + 1
+                                
+        return nextIndex < currencies.count ? nextIndex : 0
+    }
+    
+    func getCurrency(for currencyCode: String) -> Currency {
+        return currenciesToChoose().filter { "\($0)" == currencyCode }.last ?? selectedCurrency
+    }
+    
 }

@@ -99,6 +99,14 @@ extension AddOperationVC {
             Top(10).to(self.view.safeAreaLayoutGuide, .top),
             Bottom(10).to(self.view.safeAreaLayoutGuide, .bottom)
         ])
+        
+        self.view.addSubview(currencyButton)
+        currencyButton.easy.layout([
+            Right(8).to(amountTF, .right),
+            Height(32),
+            Width(48),
+            CenterY().to(amountTF)
+        ])
     }
     
     // Создание меню выше пикера времени с кнопками действия

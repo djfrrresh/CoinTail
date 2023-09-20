@@ -59,6 +59,14 @@ extension AddBudgetVC {
             Top(10).to(self.view.safeAreaLayoutGuide, .top),
             Bottom(10).to(self.view.safeAreaLayoutGuide, .bottom)
         ])
+        
+        self.view.addSubview(currencyButton)
+        currencyButton.easy.layout([
+            Right(8).to(budgetAmountTF, .right),
+            Height(32),
+            Width(48),
+            CenterY().to(budgetAmountTF)
+        ])
     }
     
 }

@@ -12,4 +12,5 @@ struct Account: Equatable {
     var id: Int
     var name: String
     var balance: Double
+    var currency: Currency
 }

@@ -12,6 +12,8 @@ class AddBudgetVC: BasicVC {
     
     var budgetCategory: Category?
     var budgetID: Int?
+    var currency: Currency = Currencies.shared.selectedCurrency
+    var currentIndex = 0
             
     let budgetAmountLabel = UILabel(text: "Amount".localized(), alignment: .left)
     let budgetPeriodLabel = UILabel(text: "Select period".localized(), alignment: .left)
@@ -26,6 +28,11 @@ class AddBudgetVC: BasicVC {
     static let defaultCategory = "Select category".localized()
     let categoryButton = UIButton(
         name: defaultCategory,
+        background: .clear,
+        textColor: .black
+    )
+    let currencyButton = UIButton(
+        name: "\(Currencies.shared.selectedCurrency)",
         background: .clear,
         textColor: .black
     )
@@ -54,8 +61,9 @@ class AddBudgetVC: BasicVC {
         guard let budget = Budgets.shared.getBudget(for: budgetID) else { return }
         
         budgetCategory = budget.category
-        categoryButton.setTitle(budget.category.name, for: .normal)
         budgetAmountTF.text = "\(budget.amount)"
+        categoryButton.setTitle(budget.category.name, for: .normal)
+        currencyButton.setTitle("\(budget.currency)", for: .normal)
         saveBudgetButton.setTitle("Edit Budget".localized(), for: .normal)
         periodSwitcher.isHidden = true
 

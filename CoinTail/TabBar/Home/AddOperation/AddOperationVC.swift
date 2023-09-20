@@ -14,6 +14,8 @@ class AddOperationVC: BasicVC {
     var operationID: Int?
     var category: Category?
     var account: Account?
+    var currency: Currency = Currencies.shared.selectedCurrency
+    var currentIndex = 0
     
     let addOperationTypeSwitcher: UISegmentedControl = {
         let switcher = UISegmentedControl(items: [
@@ -89,6 +91,11 @@ class AddOperationVC: BasicVC {
         background: .clear,
         textColor: .black
     )
+    let currencyButton = UIButton(
+        name: "\(Currencies.shared.selectedCurrency)",
+        background: .clear,
+        textColor: .black
+    )
     let saveOperationButton = UIButton(
         name: "Save operation".localized(),
         background: .black,
@@ -123,6 +130,7 @@ class AddOperationVC: BasicVC {
         descriptionTF.text = record.descriptionText
         categoryButton.setTitle(record.category.name, for: .normal)
         accountButton.setTitle(record.account?.name ?? AddOperationVC.defaultAccount, for: .normal)
+        currencyButton.setTitle("\(record.currency)", for: .normal)
         saveOperationButton.setTitle("Edit operation", for: .normal)
         dateTF.text = Self.operationDF.string(from: record.date)
         addOperationSegment = record.type

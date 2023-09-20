@@ -70,9 +70,51 @@ class BudgetsVC: BasicVC {
         
         let categoryColor = Colors.shared
         
-        Budgets.shared.addNewBudget(Budget(category: Category(name: "Service".localized(), color: categoryColor.serviceColor!, image: UIImage(systemName: "gearshape")!, type: .expense), amount: 500, startDate: dateFormatter.date(from: string)!, untilDate: dateFormatter.date(from: stringUntil)!, id: 0))
-        Budgets.shared.addNewBudget(Budget(category: Category(name: "Groceries".localized(), color: categoryColor.gloceryColor!, image: UIImage(systemName: "cart")!, type: .expense), amount: 1000, startDate: dateFormatter.date(from: string)!, untilDate: dateFormatter.date(from: stringUntil)!, id: 1))
-        Budgets.shared.addNewBudget(Budget(category: Category(name: "Transport".localized(), color: categoryColor.transportColor!, image: UIImage(systemName: "car")!, type: .expense), amount: 200, startDate: dateFormatter.date(from: string1)!, untilDate: dateFormatter.date(from: stringUntil1)!, id: 2))
+        Budgets.shared.addNewBudget(
+            Budget(
+                category: Category(
+                    name: "Service".localized(),
+                    color: categoryColor.serviceColor!,
+                    image: UIImage(systemName: "gearshape")!,
+                    type: .expense
+                ),
+                amount: 500,
+                startDate: dateFormatter.date(from: string)!,
+                untilDate: dateFormatter.date(from: stringUntil)!,
+                id: 0,
+                currency: Currency.USD
+            )
+        )
+        Budgets.shared.addNewBudget(
+            Budget(
+                category: Category(
+                    name: "Groceries".localized(),
+                    color: categoryColor.gloceryColor!,
+                    image: UIImage(systemName: "cart")!,
+                    type: .expense
+                ),
+                amount: 1000,
+                startDate: dateFormatter.date(from: string)!,
+                untilDate: dateFormatter.date(from: stringUntil)!,
+                id: 1,
+                currency: Currency.RUB
+            )
+        )
+        Budgets.shared.addNewBudget(
+            Budget(
+                category: Category(
+                    name: "Transport".localized(),
+                    color: categoryColor.transportColor!,
+                    image: UIImage(systemName: "car")!,
+                    type: .expense
+                ),
+                amount: 200,
+                startDate: dateFormatter.date(from: string1)!,
+                untilDate: dateFormatter.date(from: stringUntil1)!,
+                id: 2,
+                currency: Currency.AED
+            )
+        )
     }
     
 }

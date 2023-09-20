@@ -18,10 +18,10 @@ extension CreateCategoryVC: UICollectionViewDataSource {
     // Ячейки заполняются
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = createCategoryCV.dequeueReusableCell(
-            withReuseIdentifier: SelectCategoryCVCell.id,
+            withReuseIdentifier: CreateCategoryCell.id,
             for: indexPath
-        ) as? SelectCategoryCVCell else {
-            fatalError("Unable to dequeue SelectCategoryCVCell.")
+        ) as? CreateCategoryCell else {
+            fatalError("Unable to dequeue CreateCategoryCell.")
         }
         
         cell.categoryImage.image = UIImage(systemName: CreateCategoryVC.newImages[indexPath.row])

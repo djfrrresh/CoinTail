@@ -39,9 +39,10 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
         
         cell.calculateProgressView(sum: sumByCategory, total: budgetData.amount)
         cell.categoryLabel.text = budgetData.category.name
-        cell.amountLabel.text = "\(sumByCategory) / \(budgetData.amount) (\(percentText)%)"
+        cell.amountLabel.text = "\(sumByCategory) / \(budgetData.amount)"
         cell.categoryImage.image = budgetData.category.image
         cell.backImage.backgroundColor = budgetData.category.color
+        cell.currencyLabel.text = "\(budgetData.currency) (\(percentText)%)"
         
         return cell
     }

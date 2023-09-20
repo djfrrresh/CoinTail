@@ -17,4 +17,5 @@ struct Record: Equatable {
     var type: RecordType
     var category: Category
     var account: Account?
+    var currency: Currency
 }

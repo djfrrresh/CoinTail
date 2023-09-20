@@ -26,8 +26,9 @@ extension AddOperationVC {
     @objc func saveButtonAction(sender: AnyObject) {
         let amount = Double(amountTF.text ?? "") ?? 0
         guard let categoryText = categoryButton.titleLabel?.text,
-              let accountText = accountButton.titleLabel?.text else { return }
-
+              let accountText = accountButton.titleLabel?.text,
+              let currencyText = currencyButton.titleLabel?.text else { return }
+        
         recordValidation(amount: amount, categoryText: categoryText, accountText: accountText) { [weak self] amount, category in
             guard let strongSelf = self else { return }
             guard let dateTFText = strongSelf.dateTF.text else { return }
@@ -36,6 +37,8 @@ extension AddOperationVC {
             let date = AddOperationVC.operationDF.date(from: dateString) ?? Date()
             let desctiption = strongSelf.descriptionTF.text ?? ""
             let account = strongSelf.account ?? nil
+            strongSelf.setCurrency(currencyCode: currencyText)
+            let currency = strongSelf.currency
             
             Records.shared.recordID += 1
 
@@ -46,7 +49,8 @@ extension AddOperationVC {
                 id: Records.shared.recordID,
                 type: strongSelf.addOperationSegment,
                 category: category,
-                account: account
+                account: account,
+                currency: strongSelf.currency
             )
                         
             strongSelf.saveOperationButton.removeTarget(nil, action: nil, for: .allEvents)
@@ -139,6 +143,7 @@ extension AddOperationVC {
         dateTF.text = Self.operationDF.string(from: record.date)
         addOperationSegment = record.type
         addOperationTypeSwitcher.selectedSegmentIndex = addOperationSegment == .income ? 0 : 1
+        currencyButton.setTitle("\(record.currency)", for: .normal)
         if let accountName = Accounts.shared.getAccount(for: record.account?.name ?? AddOperationVC.defaultAccount)?.name {
             accountButton.setTitle(accountName, for: .normal)
         }
@@ -189,6 +194,12 @@ extension AddOperationVC {
         vc.hidesBottomBarWhenPushed = true
         
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func changeCurrency() {
+        currentIndex = Currencies.shared.getNextIndex(currentIndex: currentIndex)
+
+        currencyButton.setTitle("\(Currencies.shared.currenciesToChoose()[currentIndex])", for: .normal)
     }
     
 }

@@ -16,9 +16,24 @@ final class Accounts {
 //    var accounts = [Account]()
     // Массив истории переводов
 //    var transferHistory = [TransferHistory]()
-    static let account1 = Account(id: 0, name: "Cash", balance: 200)
-    static let account2 = Account(id: 1, name: "Card 1", balance: 1000)
-    static let account3 = Account(id: 2, name: "Card 2", balance: 50)
+    static let account1 = Account(
+        id: 0,
+        name: "Cash",
+        balance: 200,
+        currency: Currency.USD
+    )
+    static let account2 = Account(
+        id: 1,
+        name: "Card 1",
+        balance: 1000,
+        currency: Currency.RUB
+    )
+    static let account3 = Account(
+        id: 2,
+        name: "Card 2",
+        balance: 50,
+        currency: Currency.USD
+    )
 
     var accounts: [Account] = [
         account1,

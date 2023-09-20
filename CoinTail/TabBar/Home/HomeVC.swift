@@ -84,7 +84,7 @@ class HomeVC: BasicVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+                
         period = .allTheTime
         sortRecords() // Сортировка операций по убыванию по дате
         homeNavBar() // Кнопки в навбаре
@@ -112,21 +112,156 @@ class HomeVC: BasicVC {
                 
         let categoryColor = Colors.shared
 
-        Records.shared.addRecord(record: Record(amount: 100, date: Date(), id: 0, type: .income, category: Category(name: "Salary".localized(), color: categoryColor.salaryColor!, image: UIImage(systemName: "dollarsign")!, type: .income)))
-        Records.shared.addRecord(record: Record(amount: -250, date: Date(), id: 1, type: .expense, category: Category(name: "Transport".localized(), color: categoryColor.transportColor!, image: UIImage(systemName: "car")!, type: .expense)))
+        Records.shared.addRecord(
+            record: Record(
+                amount: 100,
+                date: Date(),
+                id: 0,
+                type: .income,
+                category: Category(
+                    name: "Salary".localized(),
+                    color: categoryColor.salaryColor!,
+                    image: UIImage(systemName: "dollarsign")!,
+                    type: .income
+                ),
+                account: Accounts.account2,
+                currency: Currency.EUR
+            )
+        )
+        Records.shared.addRecord(
+            record: Record(
+                amount: -250,
+                date: Date(),
+                id: 1,
+                type: .expense,
+                category: Category(
+                    name: "Transport".localized(),
+                    color: categoryColor.transportColor!,
+                    image: UIImage(systemName: "car")!,
+                    type: .expense
+                ),
+                account: Accounts.account3,
+                currency: Currency.USD
+            )
+        )
 
         if let date = dateFormatter.date(from: string) {
-            Records.shared.addRecord(record: Record(amount: 300, date: date, id: 2, type: .income, category: Category(name: "Pleasant finds".localized(), color: categoryColor.pleasantFindsColor!, image: UIImage(systemName: "heart")!, type: .income)))
-            Records.shared.addRecord(record: Record(amount: 350, date: date, id: 3, type: .income, category: Category(name: "Pleasant finds".localized(), color: categoryColor.pleasantFindsColor!, image: UIImage(systemName: "heart")!, type: .income)))
-            Records.shared.addRecord(record: Record(amount: -150, date: date, id: 4, type: .expense, category: Category(name: "Groceries".localized(), color: categoryColor.gloceryColor!, image: UIImage(systemName: "cart")!, type: .expense)))
+            Records.shared.addRecord(
+                record: Record(
+                    amount: 300,
+                    date: date,
+                    id: 2,
+                    type: .income,
+                    category: Category(
+                        name: "Pleasant finds".localized(),
+                        color: categoryColor.pleasantFindsColor!,
+                        image: UIImage(systemName: "heart")!,
+                        type: .income
+                    ),
+                    account: Accounts.account1,
+                    currency: Currency.EUR
+                )
+            )
+            Records.shared.addRecord(
+                record: Record(
+                    amount: 350,
+                    date: date,
+                    id: 3,
+                    type: .income,
+                    category: Category(
+                        name: "Pleasant finds".localized(),
+                        color: categoryColor.pleasantFindsColor!,
+                        image: UIImage(systemName: "heart")!,
+                        type: .income
+                    ),
+                    account: Accounts.account2,
+                    currency: Currency.RUB
+                )
+            )
+            Records.shared.addRecord(
+                record: Record(
+                    amount: -150,
+                    date: date,
+                    id: 4,
+                    type: .expense,
+                    category: Category(
+                        name: "Groceries".localized(),
+                        color: categoryColor.gloceryColor!,
+                        image: UIImage(systemName: "cart")!,
+                        type: .expense),
+                    account: Accounts.account1,
+                    currency: Currency.USD
+                )
+            )
         }
         if let date = dateFormatter.date(from: string2) {
-            Records.shared.addRecord(record: Record(amount: 400, date: date, id: 5, type: .income, category: Category(name: "Debt repayment".localized(), color: categoryColor.debtRepaymentColor!, image: UIImage(systemName: "creditcard")!, type: .income)))
-            Records.shared.addRecord(record: Record(amount: -450, date: date, id: 6, type: .expense, category: Category(name: "Service".localized(), color: categoryColor.serviceColor!, image: UIImage(systemName: "gearshape")!, type: .expense)))
+            Records.shared.addRecord(
+                record: Record(
+                    amount: 400,
+                    date: date,
+                    id: 5,
+                    type: .income,
+                    category: Category(
+                        name: "Debt repayment".localized(),
+                        color: categoryColor.debtRepaymentColor!,
+                        image: UIImage(systemName: "creditcard")!,
+                        type: .income
+                    ),
+                    account: Accounts.account3,
+                    currency: Currency.RUB
+                )
+            )
+            
+            Records.shared.addRecord(
+                record: Record(
+                    amount: -450,
+                    date: date,
+                    id: 6,
+                    type: .expense,
+                    category: Category(
+                        name: "Service".localized(),
+                        color: categoryColor.serviceColor!,
+                        image: UIImage(systemName: "gearshape")!,
+                        type: .expense
+                    ),
+                    account: Accounts.account3,
+                    currency: Currency.USD
+                )
+            )
         }
         if let date = dateFormatter.date(from: string3) {
-            Records.shared.addRecord(record: Record(amount: 500, date: date, id: 7, type: .income, category: Category(name: "Salary".localized(), color: categoryColor.salaryColor!, image: UIImage(systemName: "dollarsign")!, type: .income)))
-            Records.shared.addRecord(record: Record(amount: -550, date: date, id: 8, type: .expense, category: Category(name: "Subscription".localized(), color: categoryColor.subscriptionColor!, image: UIImage(systemName: "gamecontroller")!, type: .expense)))
+            Records.shared.addRecord(
+                record: Record(
+                    amount: 500,
+                    date: date,
+                    id: 7,
+                    type: .income,
+                    category: Category(
+                        name: "Salary".localized(),
+                        color: categoryColor.salaryColor!,
+                        image: UIImage(systemName: "dollarsign")!,
+                        type: .income
+                    ),
+                    account: Accounts.account1,
+                    currency: Currency.USD
+                )
+            )
+            Records.shared.addRecord(
+                record: Record(
+                    amount: -550,
+                    date: date,
+                    id: 8,
+                    type: .expense,
+                    category: Category(
+                        name: "Subscription".localized(),
+                        color: categoryColor.subscriptionColor!,
+                        image: UIImage(systemName: "gamecontroller")!,
+                        type: .expense
+                    ),
+                    account: Accounts.account2,
+                    currency: Currency.EUR
+                )
+            )
         }
 
     }

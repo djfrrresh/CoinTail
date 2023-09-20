@@ -11,9 +11,10 @@ import UIKit
 extension AddBudgetVC {
     
     @objc func saveBudgetAction() {
-        guard let amountText = budgetAmountTF.text, let amount = Double(amountText) else {
-            return
-        }
+        guard let amountText = budgetAmountTF.text,
+              let amount = Double(amountText),
+              let currencyText = currencyButton.titleLabel?.text else { return }
+        
         let categoryText = categoryButton.titleLabel?.text ?? AddBudgetVC.defaultCategory
         let isEditing = budgetID != nil
         
@@ -30,12 +31,16 @@ extension AddBudgetVC {
                 untilDate = strongSelf.budgetDateUntil()
             }
             
+            strongSelf.setCurrency(currencyCode: currencyText)
+            let currency = strongSelf.currency
+            
             let budget = Budget(
                 category: category,
                 amount: amount,
                 startDate: startDate,
                 untilDate: untilDate,
-                id: isEditing ? strongSelf.budgetID! : Budgets.shared.budgetID
+                id: isEditing ? strongSelf.budgetID! : Budgets.shared.budgetID,
+                currency: currency
             )
             
             if !isEditing {
@@ -108,6 +113,12 @@ extension AddBudgetVC {
         let futureDate = Calendar.current.date(byAdding: dateComponents, to: currentDate) ?? currentDate
         
         return futureDate
+    }
+    
+    @objc func changeCurrency() {
+        currentIndex = Currencies.shared.getNextIndex(currentIndex: currentIndex)
+
+        currencyButton.setTitle("\(Currencies.shared.currenciesToChoose()[currentIndex])", for: .normal)
     }
     
 }

@@ -1,17 +1,17 @@
 //
-//  CategoryCVCell.swift
+//  SelectCategoryCell.swift
 //  CoinTail
 //
-//  Created by Eugene on 15.06.23.
+//  Created by Eugene on 20.09.23.
 //
 
 import UIKit
 import EasyPeasy
 
 
-final class SelectCategoryCVCell: UICollectionViewCell {
+final class SelectCategoryCell: UICollectionViewCell {
     
-    static let id = "SelectCategoryCVCell"
+    static let id = "SelectCategoryCell"
 
     let backView: UIView = {
         let view = UIView()
@@ -19,6 +19,15 @@ final class SelectCategoryCVCell: UICollectionViewCell {
         view.layer.cornerRadius = 8
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.black.cgColor
+        view.clipsToBounds = true
+        
+        return view
+    }()
+    
+    let backImageView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.layer.cornerRadius = 8
         view.clipsToBounds = true
         
         return view
@@ -32,13 +41,6 @@ final class SelectCategoryCVCell: UICollectionViewCell {
         return imageView
     }()
     
-    let categoryName: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        
-        return label
-    }()
-    
     let categoryColor: UIColor = {
         var color = UIColor()
         color = .clear
@@ -46,12 +48,23 @@ final class SelectCategoryCVCell: UICollectionViewCell {
         return color
     }()
     
+    let categoryLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 1
+        label.textColor = .darkGray
+        
+        return label
+    }()
+    
     override init (frame: CGRect) {
         super.init(frame: frame)
         
         contentView.addSubview(backView)
-        contentView.addSubview(categoryName)
-        backView.addSubview(categoryImage)
+        
+        backView.addSubview(backImageView)
+        backView.addSubview(categoryLabel)
+        
+        backImageView.addSubview(categoryImage)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -64,31 +77,30 @@ final class SelectCategoryCVCell: UICollectionViewCell {
             Edges()
         ])
         
-        categoryImage.easy.layout([
-            Center(),
-            Height(52),
-            Width(52)
+        backImageView.easy.layout([
+            CenterY(),
+            Height(40),
+            Width(40),
+            Left(8)
         ])
         
-        categoryName.easy.layout([
-            Left(4),
-            Right(4),
-            Top(10).to(backView, .bottom)
+        categoryImage.easy.layout([
+            Center(),
+            Height(32),
+            Width(32)
+        ])
+        
+        categoryLabel.easy.layout([
+            CenterY(),
+            Left(8).to(backImageView, .right)
         ])
     }
     
-    // Изменение цвета выбранной иконки
-    override var isSelected: Bool {
-       didSet {
-           if isSelected {
-               UIView.animate(withDuration: 0.3) { [self] in // for animation effect
-                   backView.layer.borderWidth = 3
-               }
-           } else {
-               UIView.animate(withDuration: 0.3) { [self] in // for animation effect
-                   backView.layer.borderWidth = 1
-               }
-           }
-       }
-   }
+    static func size() -> CGSize {
+        return .init(
+            width: UIScreen.main.bounds.width - 16 - 16,
+            height: 60
+        )
+    }
+    
 }

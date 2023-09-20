@@ -17,6 +17,10 @@ class CreateCategoryVC: BasicVC, UIGestureRecognizerDelegate {
     static let newImages = Categories.shared.createCategoryImages
     
     var selectedColor: UIColor?
+    var segmentTitle: String?
+    var addOperationVCSegment: RecordType {
+        RecordType(rawValue: segmentTitle ?? "Expense") ?? .expense
+    }
     
     // Всплывающее окно добавления новой категории
     let popUpView: UIView = {
@@ -45,7 +49,7 @@ class CreateCategoryVC: BasicVC, UIGestureRecognizerDelegate {
         cv.backgroundColor = .clear
         cv.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         cv.scrollIndicatorInsets = .zero
-        cv.register(SelectCategoryCVCell.self, forCellWithReuseIdentifier: SelectCategoryCVCell.id)
+        cv.register(CreateCategoryCell.self, forCellWithReuseIdentifier: CreateCategoryCell.id)
         
         cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
@@ -84,11 +88,25 @@ class CreateCategoryVC: BasicVC, UIGestureRecognizerDelegate {
         background: .white,
         textColor: .black
     )
+    let parentalCategoryButton = UIButton(
+        name: "Add parental category".localized(),
+        background: .white,
+        textColor: .black
+    )
     let selectColorButton = UIButton(
         name: "Select color".localized(),
         background: .white,
         textColor: .black
     )
+    
+    public required init(segmentTitle: String) {
+        self.segmentTitle = segmentTitle
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

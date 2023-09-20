@@ -13,7 +13,8 @@ extension AddAccountVC {
     @objc func saveAccountAction() {
         guard let amountText = accountAmountTF.text,
               let amount = Double(amountText),
-              let nameText = accountNameTF.text else {
+              let nameText = accountNameTF.text,
+              let currencyText = currencyButton.titleLabel?.text else {
             return
         }
         let isEditing = accountID != nil
@@ -21,10 +22,14 @@ extension AddAccountVC {
         accountValidation(amount: amount, name: nameText, isEditingAccount: isEditing) { [weak self] amount, nameText in
             guard let strongSelf = self else { return }
             
+            strongSelf.setCurrency(currencyCode: currencyText)
+            let currency = strongSelf.currency
+            
             let account = Account(
                 id: isEditing ? strongSelf.accountID! : Accounts.shared.accountID,
                 name: nameText,
-                balance: amount
+                balance: amount,
+                currency: currency
             )
             
             if !isEditing {
@@ -61,4 +66,11 @@ extension AddAccountVC {
 
         self.present(alertView, animated: true)
     }
+    
+    @objc func changeCurrency() {
+        currentIndex = Currencies.shared.getNextIndex(currentIndex: currentIndex)
+
+        currencyButton.setTitle("\(Currencies.shared.currenciesToChoose()[currentIndex])", for: .normal)
+    }
+    
 }

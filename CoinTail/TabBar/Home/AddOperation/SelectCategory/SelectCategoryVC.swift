@@ -12,25 +12,26 @@ import EasyPeasy
 class SelectCategoryVC: BasicVC {
     
     weak var categoryDelegate: SendСategory? // Передает категорию
-    
+        
     let selectCategoryCV: UICollectionView = {
         let layout: UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .vertical
-            layout.minimumLineSpacing = 48
-            layout.minimumInteritemSpacing = 1
-            layout.itemSize = CGSize(width: 70, height: 70)
+            layout.minimumLineSpacing = 8
+            layout.minimumInteritemSpacing = 8
             
             return layout
         }()
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.contentInset = .init(top: 16, left: 0, bottom: 0, right: 0) // Отступ сверху
         cv.backgroundColor = .clear
-        cv.register(SelectCategoryCVCell.self, forCellWithReuseIdentifier: SelectCategoryCVCell.id)
+        cv.register(SelectCategoryCell.self, forCellWithReuseIdentifier: SelectCategoryCell.id)
         
         cv.allowsMultipleSelection = false
         cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
+        cv.alwaysBounceVertical = false
         
         return cv
     }()
@@ -65,7 +66,6 @@ class SelectCategoryVC: BasicVC {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        newCategoryButton.removeTarget(nil, action: nil, for: .allEvents)
 
         selectCategoryCV.delegate = self
         
@@ -74,18 +74,18 @@ class SelectCategoryVC: BasicVC {
         self.view.addSubview(newCategoryButton)
         self.view.addSubview(selectCategoryCV)
         
-        selectCategoryCV.easy.layout([
-            Top(90),
-            Bottom(70).to(newCategoryButton, .bottom),
-            Left(32),
-            Right(32)
-        ])
-        
         newCategoryButton.easy.layout([
             Bottom(20).to(self.view.safeAreaLayoutGuide, .bottom),
             Right(20).to(self.view.safeAreaLayoutGuide, .right),
             Height(64),
             Width(64)
+        ])
+        
+        selectCategoryCV.easy.layout([
+            Top().to(self.view.safeAreaLayoutGuide, .top),
+            Bottom(16).to(newCategoryButton, .top),
+            Left(16),
+            Right(16)
         ])
             
         newCategoryButton.addTarget(self, action: #selector(goToCreateCategoryVC), for: .touchUpInside)

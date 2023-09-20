@@ -40,17 +40,20 @@ extension HomeOperationCell: UICollectionViewDataSource, UICollectionViewDelegat
         let image = recordData.category.image
         let amount = "\(recordData.amount)"
         let category = recordData.category.name
+        let currency = "\(recordData.currency)"
         let backView = recordData.category.color
                 
         cell.amountLabel.text = amount
         cell.categoryLabel.text = category
         cell.categoryImage.image = image
+        cell.currencyLabel.text = currency
         cell.backImage.backgroundColor = backView
         
         // Ставит цвет в зависимости от типа операции
         cell.setAmountColor(
             recordType: RecordType(rawValue: (recordData.type).rawValue ) ?? .allOperations,
-            amountLabel: cell.amountLabel
+            amountLabel: cell.amountLabel,
+            currencyLabel: cell.currencyLabel
         )
                 
         return cell

@@ -19,12 +19,13 @@ extension CreateCategoryVC {
         popUpView.addSubview(addButton)
         popUpView.addSubview(createCategoryCV)
         popUpView.addSubview(selectColorButton)
+        popUpView.addSubview(parentalCategoryButton)
         
         popUpView.easy.layout([
             Center(),
             Left(20),
             Right(20),
-            Height(300)
+            Height(380)
         ])
         
         titleLabel.easy.layout([
@@ -39,18 +40,6 @@ extension CreateCategoryVC {
             Right(20)
         ])
         
-        errorLabel.easy.layout([
-            Top(20).to(addButton, .bottom),
-            CenterX()
-        ])
-        
-        addButton.easy.layout([
-            Top(16).to(selectColorButton, .bottom),
-            CenterX(),
-            Left(16),
-            Right(16)
-        ])
-        
         createCategoryCV.easy.layout([
             Height(50),
             Left(),
@@ -63,7 +52,27 @@ extension CreateCategoryVC {
             CenterX(),
             Left(16),
             Right(16)
-        ])        
+        ])
+        
+        errorLabel.easy.layout([
+            Top(20).to(addButton, .bottom),
+            CenterX()
+        ])
+        
+        parentalCategoryButton.easy.layout([
+            Top(16).to(selectColorButton, .bottom),
+            CenterX(),
+            Left(16),
+            Right(16)
+        ])
+
+        addButton.easy.layout([
+            Top(16).to(parentalCategoryButton, .bottom),
+            CenterX(),
+            Left(16),
+            Right(16)
+        ])
+            
     }
     
     // Анимация вывода ошибки
@@ -73,7 +82,7 @@ extension CreateCategoryVC {
                 errorLabel.isHidden = false
                 errorLabel.alpha = 1
 
-                popUpView.easy.layout([Height(350)])
+                popUpView.easy.layout([Height(420)])
                 
                 view.layoutIfNeeded()
             }

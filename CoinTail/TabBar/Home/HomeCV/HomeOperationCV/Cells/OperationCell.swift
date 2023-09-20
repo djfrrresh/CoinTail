@@ -44,6 +44,7 @@ final class OperationCVCell: UICollectionViewCell {
 
     let amountLabel: UILabel = getAmountLabel()
     let categoryLabel: UILabel = getCategoryLabel()
+    let currencyLabel: UILabel = getCurrencyLabel()
     
     override init (frame: CGRect) {
         super.init(frame: frame)
@@ -53,6 +54,7 @@ final class OperationCVCell: UICollectionViewCell {
         backView.addSubview(backImage)
         backView.addSubview(categoryLabel)
         backView.addSubview(amountLabel)
+        backView.addSubview(currencyLabel)
         backView.addSubview(arrowImage)
         
         backImage.addSubview(categoryImage)
@@ -98,9 +100,15 @@ final class OperationCVCell: UICollectionViewCell {
             CenterY()
         ])
         
-        amountLabel.easy.layout([
+        currencyLabel.easy.layout([
             Height(16),
             Right(16).to(arrowImage, .left),
+            CenterY()
+        ])
+        
+        amountLabel.easy.layout([
+            Height(16),
+            Right(4).to(currencyLabel, .left),
             CenterY()
         ])
     }
@@ -121,15 +129,26 @@ final class OperationCVCell: UICollectionViewCell {
         return label
     }
     
+    static func getCurrencyLabel() -> UILabel {
+        let label = UILabel()
+        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 15)
+        
+        return label
+    }
+    
     static func size(data: Record) -> CGSize {
         let imageHeight: CGFloat = 56
         let amount = getAmountLabel()
+        let currency = getCurrencyLabel()
         amount.text = String(data.amount)
+        currency.text = "\(data.currency)"
         
         // sizeThatFits вычисляет и возвращает окончательный размер
         let amountWidth = amount.sizeThatFits(.init(width: 0, height: 0)).width
+        let currencyWidth = currency.sizeThatFits(.init(width: 0, height: 0)).width
 
-        let textWidth: CGFloat = UIScreen.main.bounds.width - 16 - 8 * 2 - amountWidth - 16 - 16 - 24
+        let textWidth: CGFloat = UIScreen.main.bounds.width - 16 - 8 * 2 - amountWidth - currencyWidth - 4 - 16 - 16 - 24
         let label = getCategoryLabel()
         
         label.text = data.category.name
@@ -145,14 +164,17 @@ final class OperationCVCell: UICollectionViewCell {
     }
     
     // Ставит цвет текста в зависимости от типа операции
-    func setAmountColor(recordType: RecordType, amountLabel: UILabel) {
+    func setAmountColor(recordType: RecordType, amountLabel: UILabel, currencyLabel: UILabel) {
         switch recordType {
         case .expense:
             amountLabel.textColor = .systemRed
+            currencyLabel.textColor = .systemRed
         case .income:
             amountLabel.textColor = .systemGreen
+            currencyLabel.textColor = .systemGreen
         default:
             amountLabel.textColor = .black
+            currencyLabel.textColor = .black
         }
     }
 

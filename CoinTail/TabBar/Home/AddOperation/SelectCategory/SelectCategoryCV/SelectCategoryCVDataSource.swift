@@ -18,19 +18,19 @@ extension SelectCategoryVC: UICollectionViewDataSource {
     // Ячейки заполняются
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: SelectCategoryCVCell.id,
+            withReuseIdentifier: SelectCategoryCell.id,
             for: indexPath
-        ) as? SelectCategoryCVCell else {
-            fatalError("Unable to dequeue SelectCategoryCVCell.")
+        ) as? SelectCategoryCell else {
+            fatalError("Unable to dequeue SelectCategoryCell.")
         }
         
         let categoryLabel = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].name ?? "Category".localized()
         let categoryImage = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].image ?? UIImage(systemName: "house")
         let categoryColor = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].color ?? .clear
         
-        cell.categoryName.text = categoryLabel
+        cell.categoryLabel.text = categoryLabel
         cell.categoryImage.image = categoryImage
-        cell.backView.backgroundColor = categoryColor
+        cell.backImageView.backgroundColor = categoryColor
         
         return cell
     }

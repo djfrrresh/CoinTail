@@ -24,8 +24,8 @@ final class Categories {
         ],
         .expense: [
             Category(name: "Transport".localized(), color: Colors.shared.transportColor ?? .clear, image: UIImage(systemName: "car"), type: .expense),
-            Category(name: "Groceries".localized(), color: Colors.shared.gloceryColor ?? .clear, image: UIImage(systemName: "cart"), type: .expense),
             Category(name: "Cloths".localized(), color: Colors.shared.clothsColor ?? .clear, image: UIImage(systemName: "tshirt"), type: .expense),
+            Category(name: "Groceries".localized(), color: Colors.shared.gloceryColor ?? .clear, image: UIImage(systemName: "cart"), type: .expense),
             Category(name: "Gym".localized(), color: Colors.shared.gymColor ?? .clear, image: UIImage(systemName: "figure.walk"), type: .expense),
             Category(name: "Service".localized(), color: Colors.shared.serviceColor ?? .clear, image: UIImage(systemName: "gearshape"), type: .expense),
             Category(name: "Subscription".localized(), color: Colors.shared.subscriptionColor ?? .clear, image: UIImage(systemName: "gamecontroller"), type: .expense),

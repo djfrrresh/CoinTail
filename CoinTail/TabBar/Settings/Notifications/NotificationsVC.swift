@@ -44,6 +44,7 @@ class NotificationsVC: BasicVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // Проверка доступа к уведомлениям на случай, если юзер выключит их в настройках при включенных уведомлениях на экране
         notificationCenter.requestAuthorization(options: [.alert, .badge ,.sound]) { [weak self] granted, _ in
             guard let strongSelf = self else { return }
 

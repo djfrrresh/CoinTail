@@ -12,6 +12,11 @@ extension AddAccountVC {
     
     func addAccountTargets() {
         saveAccountButton.addTarget(self, action: #selector(saveAccountAction), for: .touchUpInside)
+        currencyButton.addTarget(self, action: #selector(changeCurrency), for: .touchUpInside)
+    }
+    
+    func setCurrency(currencyCode: String) {
+        self.currency = Currencies.shared.getCurrency(for: currencyCode)
     }
     
     func accountValidation(amount: Double, name: String, isEditingAccount: Bool, completion: ((Double, String) -> Void)? = nil) {

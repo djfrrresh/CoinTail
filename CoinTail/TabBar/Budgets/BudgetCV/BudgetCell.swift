@@ -51,6 +51,14 @@ final class BudgetCell: UICollectionViewCell {
         return label
     }()
     
+    let currencyLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 1
+        label.textColor = .darkGray
+        
+        return label
+    }()
+    
     let categoryImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -70,6 +78,7 @@ final class BudgetCell: UICollectionViewCell {
         backView.addSubview(budgetProgress)
         backView.addSubview(amountLabel)
         backView.addSubview(categoryLabel)
+        backView.addSubview(currencyLabel)
         
         backImage.addSubview(categoryImage)
     }
@@ -96,13 +105,18 @@ final class BudgetCell: UICollectionViewCell {
             Width(40)
         ])
         
-        amountLabel.easy.layout([
+        categoryLabel.easy.layout([
+            Left(8).to(backImage, .right),
+            Top(8)
+        ])
+        
+        currencyLabel.easy.layout([
             Right(8),
             Top(8)
         ])
         
-        categoryLabel.easy.layout([
-            Left(8).to(backImage, .right),
+        amountLabel.easy.layout([
+            Right(4).to(currencyLabel, .left),
             Top(8)
         ])
         

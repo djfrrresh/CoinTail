@@ -17,10 +17,15 @@ extension AddBudgetVC: SendСategory {
         categoryButton.setTitle(category.name, for: .normal)
     }
     
+    func setCurrency(currencyCode: String) {
+        self.currency = Currencies.shared.getCurrency(for: currencyCode)
+    }
+    
     // Таргеты для кнопок
     func addBudgetTargets() {
         saveBudgetButton.addTarget(self, action: #selector(saveBudgetAction), for: .touchUpInside)
         categoryButton.addTarget(self, action: #selector(selectCategoryAction), for: .touchUpInside)
+        currencyButton.addTarget(self, action: #selector(changeCurrency), for: .touchUpInside)
     }
     
     // Проверка поля Amount и текста из кнопки категории на наличие данных в них

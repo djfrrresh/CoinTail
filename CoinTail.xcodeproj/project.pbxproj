@@ -97,6 +97,7 @@
 		568EF0832AB4B5C800EB042D /* NotificationsUXFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0822AB4B5C800EB042D /* NotificationsUXFuncs.swift */; };
 		568EF0852AB4BE3800EB042D /* NotificationsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0842AB4BE3800EB042D /* NotificationsActions.swift */; };
 		568EF0872AB4C09F00EB042D /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0862AB4C09F00EB042D /* Notifications.swift */; };
+		568EF0892ABB439100EB042D /* SelectCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0882ABB439100EB042D /* SelectCategoryCell.swift */; };
 		56DBB6CE2A3724BC0087271D /* HomeOperationCellCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */; };
 		56DBB6DD2A3728600087271D /* HomeOperationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6DC2A3728600087271D /* HomeOperationCell.swift */; };
 		56DBB6EA2A372E220087271D /* HomeDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6E92A372E220087271D /* HomeDateCell.swift */; };
@@ -114,7 +115,7 @@
 		56DBB7082A3B434C0087271D /* SelectCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB7072A3B434C0087271D /* SelectCategoryVC.swift */; };
 		56DBB70A2A3B44090087271D /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB7092A3B44090087271D /* Categories.swift */; };
 		56DBB70F2A3B4BA90087271D /* SelectCategoryActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB70E2A3B4BA90087271D /* SelectCategoryActions.swift */; };
-		56DBB7122A3B4C570087271D /* SelectCategoryCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB7112A3B4C570087271D /* SelectCategoryCVCell.swift */; };
+		56DBB7122A3B4C570087271D /* CreateCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB7112A3B4C570087271D /* CreateCategoryCell.swift */; };
 		56DBB7152A3B4EA60087271D /* SelectCategoryCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB7142A3B4EA60087271D /* SelectCategoryCVDataSource.swift */; };
 		56DBB7172A3B50140087271D /* SelectCategoryCVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB7162A3B50140087271D /* SelectCategoryCVDelegate.swift */; };
 		56DBB71A2A3B609E0087271D /* CreateCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB7192A3B609E0087271D /* CreateCategoryVC.swift */; };
@@ -233,6 +234,7 @@
 		568EF0822AB4B5C800EB042D /* NotificationsUXFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsUXFuncs.swift; sourceTree = "<group>"; };
 		568EF0842AB4BE3800EB042D /* NotificationsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsActions.swift; sourceTree = "<group>"; };
 		568EF0862AB4C09F00EB042D /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		568EF0882ABB439100EB042D /* SelectCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryCell.swift; sourceTree = "<group>"; };
 		56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOperationCellCV.swift; sourceTree = "<group>"; };
 		56DBB6DC2A3728600087271D /* HomeOperationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOperationCell.swift; sourceTree = "<group>"; };
 		56DBB6E92A372E220087271D /* HomeDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDateCell.swift; sourceTree = "<group>"; };
@@ -250,7 +252,7 @@
 		56DBB7072A3B434C0087271D /* SelectCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryVC.swift; sourceTree = "<group>"; };
 		56DBB7092A3B44090087271D /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		56DBB70E2A3B4BA90087271D /* SelectCategoryActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryActions.swift; sourceTree = "<group>"; };
-		56DBB7112A3B4C570087271D /* SelectCategoryCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryCVCell.swift; sourceTree = "<group>"; };
+		56DBB7112A3B4C570087271D /* CreateCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryCell.swift; sourceTree = "<group>"; };
 		56DBB7142A3B4EA60087271D /* SelectCategoryCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryCVDataSource.swift; sourceTree = "<group>"; };
 		56DBB7162A3B50140087271D /* SelectCategoryCVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryCVDelegate.swift; sourceTree = "<group>"; };
 		56DBB7192A3B609E0087271D /* CreateCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryVC.swift; sourceTree = "<group>"; };
@@ -802,7 +804,6 @@
 			children = (
 				56DBB7182A3B60790087271D /* CreateCategory */,
 				56DBB7132A3B4E470087271D /* SelectCategoryCV */,
-				56DBB7102A3B4C470087271D /* SelectCategoryCVCell */,
 				56DBB70B2A3B4A880087271D /* SelectCategoryFuncs */,
 				56DBB7072A3B434C0087271D /* SelectCategoryVC.swift */,
 			);
@@ -818,19 +819,12 @@
 			path = SelectCategoryFuncs;
 			sourceTree = "<group>";
 		};
-		56DBB7102A3B4C470087271D /* SelectCategoryCVCell */ = {
-			isa = PBXGroup;
-			children = (
-				56DBB7112A3B4C570087271D /* SelectCategoryCVCell.swift */,
-			);
-			path = SelectCategoryCVCell;
-			sourceTree = "<group>";
-		};
 		56DBB7132A3B4E470087271D /* SelectCategoryCV */ = {
 			isa = PBXGroup;
 			children = (
 				56DBB7142A3B4EA60087271D /* SelectCategoryCVDataSource.swift */,
 				56DBB7162A3B50140087271D /* SelectCategoryCVDelegate.swift */,
+				568EF0882ABB439100EB042D /* SelectCategoryCell.swift */,
 			);
 			path = SelectCategoryCV;
 			sourceTree = "<group>";
@@ -859,6 +853,7 @@
 		56DBB7222A3B666E0087271D /* CreateCategoryCV */ = {
 			isa = PBXGroup;
 			children = (
+				56DBB7112A3B4C570087271D /* CreateCategoryCell.swift */,
 				56DBB7232A3B667F0087271D /* CreateCategoryCVDataSource.swift */,
 				56DBB7252A3B672C0087271D /* CreateCategoryCVDelegate.swift */,
 			);
@@ -1104,6 +1099,7 @@
 				560AFC192A1BAC810054B502 /* HomeActions.swift in Sources */,
 				56EFDFEC2A574771003A6A45 /* BudgetCVHeader.swift in Sources */,
 				560AFBDB2A13B26A0054B502 /* Array.swift in Sources */,
+				568EF0892ABB439100EB042D /* SelectCategoryCell.swift in Sources */,
 				568EF03C2AA61F8E00EB042D /* AddAccountUXFuncs.swift in Sources */,
 				56DBB7292A3B68B00087271D /* ColorPickerFuncs.swift in Sources */,
 				568EF0852AB4BE3800EB042D /* NotificationsActions.swift in Sources */,
@@ -1147,7 +1143,7 @@
 				56DBB6EA2A372E220087271D /* HomeDateCell.swift in Sources */,
 				568EF0812AB4B44E00EB042D /* NotificationsDelegate.swift in Sources */,
 				560AFBEA2A13B5EA0054B502 /* UISegmentedControl.swift in Sources */,
-				56DBB7122A3B4C570087271D /* SelectCategoryCVCell.swift in Sources */,
+				56DBB7122A3B4C570087271D /* CreateCategoryCell.swift in Sources */,
 				56DBB6F72A3893A80087271D /* Colors.swift in Sources */,
 				56DBB7242A3B667F0087271D /* CreateCategoryCVDataSource.swift in Sources */,
 				568EF0442AA8E3FA00EB042D /* AccountsTransferUIFuncs.swift in Sources */,
@@ -1313,7 +1309,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4UL99FQPDT;
+				DEVELOPMENT_TEAM = 3QGCVB4WRB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoinTail/Application/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CoinTail;
@@ -1361,7 +1357,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4UL99FQPDT;
+				DEVELOPMENT_TEAM = 3QGCVB4WRB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoinTail/Application/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CoinTail;

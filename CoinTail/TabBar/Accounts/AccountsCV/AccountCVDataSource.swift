@@ -40,6 +40,7 @@ extension AccountsVC: UICollectionViewDataSource {
         
         cell.amountLabel.text = "\(totalAmountForCash)"
         cell.nameLabel.text = accountData.name
+        cell.currencyLabel.text = "\(accountData.currency)"
         
         return cell
     }

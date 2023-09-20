@@ -20,12 +20,17 @@ extension AddOperationVC: SendСategory, SendAccount {
         accountButton.setTitle(account.name, for: .normal)
     }
     
+    func setCurrency(currencyCode: String) {
+        self.currency = Currencies.shared.getCurrency(for: currencyCode)
+    }
+    
     // Установка таргетов для кнопок
     func setTargets() {
         saveOperationButton.addTarget(self, action: #selector(saveButtonAction), for: .touchUpInside)
         categoryButton.addTarget(self, action: #selector(goToSelectCategoryVC), for: .touchUpInside)
         accountButton.addTarget(self, action: #selector(goToAccountsVC), for: .touchUpInside)
         addOperationTypeSwitcher.addTarget(self, action: #selector(switchButtonAction), for: .valueChanged)
+        currencyButton.addTarget(self, action: #selector(changeCurrency), for: .touchUpInside)
         amountTF.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     

@@ -24,6 +24,7 @@ extension CreateCategoryVC {
                 color: selectedColor ?? .white,
                 image: selectedCategoryImage)
             )
+            
             dismiss(animated: true, completion: nil)
         }
     }
@@ -32,7 +33,15 @@ extension CreateCategoryVC {
     @objc func didTapSelectColor() {
         let colorPickerVC = UIColorPickerViewController()
         colorPickerVC.delegate = self
+        
         present(colorPickerVC, animated: true)
+    }
+    
+    @objc func goToSelectCategoryVC() {
+        let vc = SelectCategoryVC(segmentTitle: segmentTitle ?? "Expense")
+        vc.categoryDelegate = self
+        
+        present(vc, animated: true)
     }
 
 }

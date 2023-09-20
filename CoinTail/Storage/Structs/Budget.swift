@@ -14,6 +14,7 @@ struct Budget: Equatable {
     var startDate: Date
     var untilDate: Date
     var id: Int
+    var currency: Currency
     var isActive: Bool? { // Проверка бюджета на активность по дате
         let calendar = Calendar.current
         

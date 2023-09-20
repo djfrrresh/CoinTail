@@ -12,7 +12,7 @@ protocol SendСategory: AnyObject {
     func sendCategoryData(category: Category)
 }
 
-extension SelectCategoryVC: UICollectionViewDelegate {
+extension SelectCategoryVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     // При нажатии на категорию закрывается контроллер и она передается в кнопку
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -31,6 +31,10 @@ extension SelectCategoryVC: UICollectionViewDelegate {
         )
                         
         navigationController?.popViewController(animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return SelectCategoryCell.size()
     }
     
 }

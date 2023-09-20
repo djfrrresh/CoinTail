@@ -14,6 +14,8 @@ final class AddAccountVC: BasicVC {
     
     let accountAmountLabel = UILabel(text: "Amount".localized(), alignment: .left)
     let accountNameLabel = UILabel(text: "Account name".localized(), alignment: .left)
+    var currency: Currency = Currencies.shared.selectedCurrency
+    var currentIndex = 0
     
     let accountAmountTF = UITextField(
         defaultText: "0",
@@ -28,6 +30,11 @@ final class AddAccountVC: BasicVC {
         placeholder: "Enter account name".localized()
     )
     
+    let currencyButton = UIButton(
+        name: "\(Currencies.shared.selectedCurrency)",
+        background: .clear,
+        textColor: .black
+    )
     let saveAccountButton = UIButton(
         name: "Save Account".localized(),
         background: .black,
@@ -45,6 +52,7 @@ final class AddAccountVC: BasicVC {
         accountAmountTF.text = "\(account.balance)"
         accountNameTF.text = account.name
         saveAccountButton.setTitle("Edit Account".localized(), for: .normal)
+        currencyButton.setTitle("\(account.currency)", for: .normal)
 
         self.title = "Editing account".localized()
 

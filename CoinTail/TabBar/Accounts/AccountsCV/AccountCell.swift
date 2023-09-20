@@ -37,6 +37,14 @@ final class AccountCell: UICollectionViewCell {
         return label
     }()
     
+    let currencyLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 1
+        label.textColor = .darkGray
+        
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -46,6 +54,7 @@ final class AccountCell: UICollectionViewCell {
         
         backView.addSubview(amountLabel)
         backView.addSubview(nameLabel)
+        backView.addSubview(currencyLabel)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -62,8 +71,13 @@ final class AccountCell: UICollectionViewCell {
             CenterY()
         ])
         
-        amountLabel.easy.layout([
+        currencyLabel.easy.layout([
             Right(8),
+            CenterY()
+        ])
+        
+        amountLabel.easy.layout([
+            Right(4).to(currencyLabel, .left),
             CenterY()
         ])
     }
