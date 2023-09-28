@@ -65,9 +65,10 @@ extension AddBudgetVC {
         categoryButton.removeTarget(nil, action: nil, for: .allEvents)
         
         // Передаем название и иконки категорий по типу операций
-        let vc = SelectCategoryVC(segmentTitle: "Expense")
+        let vc = SelectCategoryVC(segmentTitle: "Expense", isParental: true)
 
-        vc.categoryDelegate = self
+        // TODO: category delegate
+        vc.subcategoryDelegate = self
         
         vc.hidesBottomBarWhenPushed = true // Спрятать TabBar
         navigationController?.pushViewController(vc, animated: true)

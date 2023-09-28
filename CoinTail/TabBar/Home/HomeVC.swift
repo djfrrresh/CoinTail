@@ -118,12 +118,7 @@ class HomeVC: BasicVC {
                 date: Date(),
                 id: 0,
                 type: .income,
-                category: Category(
-                    name: "Salary".localized(),
-                    color: categoryColor.salaryColor!,
-                    image: UIImage(systemName: "dollarsign")!,
-                    type: .income
-                ),
+                categoryID: Categories.shared.categories[.income]![0].id,
                 account: Accounts.account2,
                 currency: Currency.EUR
             )
@@ -134,12 +129,7 @@ class HomeVC: BasicVC {
                 date: Date(),
                 id: 1,
                 type: .expense,
-                category: Category(
-                    name: "Transport".localized(),
-                    color: categoryColor.transportColor!,
-                    image: UIImage(systemName: "car")!,
-                    type: .expense
-                ),
+                categoryID: Categories.shared.categories[.expense]![0].id,
                 account: Accounts.account3,
                 currency: Currency.USD
             )
@@ -152,12 +142,7 @@ class HomeVC: BasicVC {
                     date: date,
                     id: 2,
                     type: .income,
-                    category: Category(
-                        name: "Pleasant finds".localized(),
-                        color: categoryColor.pleasantFindsColor!,
-                        image: UIImage(systemName: "heart")!,
-                        type: .income
-                    ),
+                    categoryID: Categories.shared.categories[.income]![3].id,
                     account: Accounts.account1,
                     currency: Currency.EUR
                 )
@@ -168,12 +153,7 @@ class HomeVC: BasicVC {
                     date: date,
                     id: 3,
                     type: .income,
-                    category: Category(
-                        name: "Pleasant finds".localized(),
-                        color: categoryColor.pleasantFindsColor!,
-                        image: UIImage(systemName: "heart")!,
-                        type: .income
-                    ),
+                    categoryID: Categories.shared.categories[.income]![3].id,
                     account: Accounts.account2,
                     currency: Currency.RUB
                 )
@@ -184,16 +164,13 @@ class HomeVC: BasicVC {
                     date: date,
                     id: 4,
                     type: .expense,
-                    category: Category(
-                        name: "Groceries".localized(),
-                        color: categoryColor.gloceryColor!,
-                        image: UIImage(systemName: "cart")!,
-                        type: .expense),
+                    categoryID: Categories.shared.categories[.expense]![2].id,
                     account: Accounts.account1,
                     currency: Currency.USD
                 )
             )
         }
+        
         if let date = dateFormatter.date(from: string2) {
             Records.shared.addRecord(
                 record: Record(
@@ -201,12 +178,7 @@ class HomeVC: BasicVC {
                     date: date,
                     id: 5,
                     type: .income,
-                    category: Category(
-                        name: "Debt repayment".localized(),
-                        color: categoryColor.debtRepaymentColor!,
-                        image: UIImage(systemName: "creditcard")!,
-                        type: .income
-                    ),
+                    categoryID: Categories.shared.categories[.income]![1].id,
                     account: Accounts.account3,
                     currency: Currency.RUB
                 )
@@ -218,17 +190,13 @@ class HomeVC: BasicVC {
                     date: date,
                     id: 6,
                     type: .expense,
-                    category: Category(
-                        name: "Service".localized(),
-                        color: categoryColor.serviceColor!,
-                        image: UIImage(systemName: "gearshape")!,
-                        type: .expense
-                    ),
+                    categoryID: Categories.shared.categories[.expense]![4].id,
                     account: Accounts.account3,
                     currency: Currency.USD
                 )
             )
         }
+        
         if let date = dateFormatter.date(from: string3) {
             Records.shared.addRecord(
                 record: Record(
@@ -236,12 +204,7 @@ class HomeVC: BasicVC {
                     date: date,
                     id: 7,
                     type: .income,
-                    category: Category(
-                        name: "Salary".localized(),
-                        color: categoryColor.salaryColor!,
-                        image: UIImage(systemName: "dollarsign")!,
-                        type: .income
-                    ),
+                    categoryID: Categories.shared.categories[.income]![0].id,
                     account: Accounts.account1,
                     currency: Currency.USD
                 )
@@ -252,12 +215,7 @@ class HomeVC: BasicVC {
                     date: date,
                     id: 8,
                     type: .expense,
-                    category: Category(
-                        name: "Subscription".localized(),
-                        color: categoryColor.subscriptionColor!,
-                        image: UIImage(systemName: "gamecontroller")!,
-                        type: .expense
-                    ),
+                    categoryID: Categories.shared.categories[.expense]![5].id,
                     account: Accounts.account2,
                     currency: Currency.EUR
                 )

@@ -12,6 +12,7 @@ class CreateCategoryVC: BasicVC, UIGestureRecognizerDelegate {
     
     // Передача новой категории в SelectCategoryVC
     weak var addNewCategoryDelegate: AddNewCategory?
+    weak var addNewSubcategoryDelegate: AddNewSubcategory?
     
     // Картинки для создания категории
     static let newImages = Categories.shared.createCategoryImages
@@ -88,8 +89,9 @@ class CreateCategoryVC: BasicVC, UIGestureRecognizerDelegate {
         background: .white,
         textColor: .black
     )
+    static let defaultParentalCategoryText = "Add parental category".localized()
     let parentalCategoryButton = UIButton(
-        name: "Add parental category".localized(),
+        name: defaultParentalCategoryText,
         background: .white,
         textColor: .black
     )

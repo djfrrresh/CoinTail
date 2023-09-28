@@ -28,7 +28,10 @@ extension HomeCategoryCell {
             
             if segment == .expense || segment == .income {
                 // Цвет берется из категории в операции
-                color = chartSectionsEntry.first?.category.color
+                guard let categoryID = chartSectionsEntry.first?.categoryID else { return }
+                let category = Categories.shared.getCategory(for: categoryID)
+
+                color = category?.color
             } else {
                 // Цвет берется по типу операции
                 color = chartSectionsEntry.first?.type == .expense ? UIColor(named: "expense") : UIColor(named: "income")
@@ -57,8 +60,10 @@ extension HomeCategoryCell {
     
     // Устанавливаем словарь, который будем перебирать для получения цветов и суммы операций
     private func setDictionary(_ segment: RecordType, records: [Record]) -> [String: [Record]] {
-        return Dictionary(grouping: records, by: {
-            segment == .allOperations ? $0.category.type?.rawValue ?? "Total" : $0.category.name
+        Dictionary(grouping: records, by: {
+            guard let category = Categories.shared.getCategory(for: $0.categoryID) else { return "" }
+            
+            return segment == .allOperations ? category.type?.rawValue ?? "Total" : category.name
         })
     }
     

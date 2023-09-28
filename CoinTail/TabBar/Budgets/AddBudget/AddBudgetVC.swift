@@ -10,7 +10,7 @@ import UIKit
 
 class AddBudgetVC: BasicVC {
     
-    var budgetCategory: Category?
+    var budgetCategoryID: Int?
     var budgetID: Int?
     var currency: Currency = Currencies.shared.selectedCurrency
     var currentIndex = 0
@@ -60,7 +60,8 @@ class AddBudgetVC: BasicVC {
         // Передаем значения бюджета из редактируемой ячейки
         guard let budget = Budgets.shared.getBudget(for: budgetID) else { return }
         
-        budgetCategory = budget.category
+        //TODO: Category
+//        budgetCategory = budget.category
         budgetAmountTF.text = "\(budget.amount)"
         categoryButton.setTitle(budget.category.name, for: .normal)
         currencyButton.setTitle("\(budget.currency)", for: .normal)

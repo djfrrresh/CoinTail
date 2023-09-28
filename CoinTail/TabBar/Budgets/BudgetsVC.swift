@@ -72,12 +72,7 @@ class BudgetsVC: BasicVC {
         
         Budgets.shared.addNewBudget(
             Budget(
-                category: Category(
-                    name: "Service".localized(),
-                    color: categoryColor.serviceColor!,
-                    image: UIImage(systemName: "gearshape")!,
-                    type: .expense
-                ),
+                category: Categories.shared.categories[.expense]![4],
                 amount: 500,
                 startDate: dateFormatter.date(from: string)!,
                 untilDate: dateFormatter.date(from: stringUntil)!,
@@ -87,12 +82,7 @@ class BudgetsVC: BasicVC {
         )
         Budgets.shared.addNewBudget(
             Budget(
-                category: Category(
-                    name: "Groceries".localized(),
-                    color: categoryColor.gloceryColor!,
-                    image: UIImage(systemName: "cart")!,
-                    type: .expense
-                ),
+                category: Categories.shared.categories[.expense]![2],
                 amount: 1000,
                 startDate: dateFormatter.date(from: string)!,
                 untilDate: dateFormatter.date(from: stringUntil)!,
@@ -102,12 +92,7 @@ class BudgetsVC: BasicVC {
         )
         Budgets.shared.addNewBudget(
             Budget(
-                category: Category(
-                    name: "Transport".localized(),
-                    color: categoryColor.transportColor!,
-                    image: UIImage(systemName: "car")!,
-                    type: .expense
-                ),
+                category: Categories.shared.categories[.expense]![0],
                 amount: 200,
                 startDate: dateFormatter.date(from: string1)!,
                 untilDate: dateFormatter.date(from: stringUntil1)!,

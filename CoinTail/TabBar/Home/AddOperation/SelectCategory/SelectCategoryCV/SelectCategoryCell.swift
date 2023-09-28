@@ -12,12 +12,12 @@ import EasyPeasy
 final class SelectCategoryCell: UICollectionViewCell {
     
     static let id = "SelectCategoryCell"
-
+        
     let backView: UIView = {
         let view = UIView()
         view.backgroundColor = .white.withAlphaComponent(0.9)
         view.layer.cornerRadius = 8
-        view.layer.borderWidth = 1
+        view.layer.borderWidth = 0
         view.layer.borderColor = UIColor.black.cgColor
         view.clipsToBounds = true
         
@@ -94,6 +94,10 @@ final class SelectCategoryCell: UICollectionViewCell {
             CenterY(),
             Left(8).to(backImageView, .right)
         ])
+    }
+    
+    func headerSettings() {
+        backView.layer.borderWidth = 0.5
     }
     
     static func size() -> CGSize {

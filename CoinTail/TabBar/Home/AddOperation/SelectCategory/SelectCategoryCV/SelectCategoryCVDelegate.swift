@@ -8,27 +8,17 @@
 import UIKit
 
 
-protocol SendСategory: AnyObject {
-    func sendCategoryData(category: Category)
+protocol SendSubcategoryID: AnyObject {
+    func sendSubcategoryData(id: Int)
 }
 
 extension SelectCategoryVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     // При нажатии на категорию закрывается контроллер и она передается в кнопку
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let subcategoryID = Categories.shared.categories[addOperationVCSegment]?[indexPath.section].subcategories?[indexPath.row] else { return }
         
-        let categoryLabel = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].name ?? "Category".localized()
-        let categoryImage = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].image ?? UIImage(named: "house")
-        let categoryColor = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].color ?? .clear
-        
-        categoryDelegate?.sendCategoryData(
-            category: Category(
-                name: categoryLabel,
-                color: categoryColor,
-                image: categoryImage,
-                type: addOperationVCSegment
-            )
-        )
+        subcategoryDelegate?.sendSubcategoryData(id: subcategoryID)
                         
         navigationController?.popViewController(animated: true)
     }

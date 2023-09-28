@@ -8,9 +8,18 @@
 import UIKit
 
 
-struct Category: Hashable {
+protocol CategoryProtocol {
+    var id: Int { get set }
+    var name: String { get set }
+    var color: UIColor { get set }
+    var image: UIImage? { get set }
+}
+
+struct Category: CategoryProtocol, Equatable {
+    var id: Int
     var name: String
     var color: UIColor
     var image: UIImage?
     var type: RecordType?
+    var subcategories: [Int]?
 }

@@ -33,7 +33,7 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
         let sumByCategory = abs(Records.shared.getAmount(
             date: budgetData.startDate,
             untilDate: budgetData.untilDate,
-            category: budgetData.category
+            categoryID: budgetData.category.id
         ) ?? 0)
         let percentText = cell.calculatePercent(sum: sumByCategory, total: budgetData.amount)
         

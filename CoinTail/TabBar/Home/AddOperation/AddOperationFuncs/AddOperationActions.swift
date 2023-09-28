@@ -48,9 +48,9 @@ extension AddOperationVC {
                 date: date,
                 id: Records.shared.recordID,
                 type: strongSelf.addOperationSegment,
-                category: category,
+                categoryID: category.id,
                 account: account,
-                currency: strongSelf.currency
+                currency: currency
             )
                         
             strongSelf.saveOperationButton.removeTarget(nil, action: nil, for: .allEvents)
@@ -136,10 +136,11 @@ extension AddOperationVC {
     }
     
     private func setFormWithRecord(_ record: Record) {
-        category = record.category
+        categoryID = record.categoryID
         amountTF.text = "\(record.amount)"
         descriptionTF.text = record.descriptionText
-        categoryButton.setTitle(record.category.name, for: .normal)
+        guard let category = Categories.shared.getCategory(for: record.categoryID) else { return }
+        categoryButton.setTitle(category.name, for: .normal)
         dateTF.text = Self.operationDF.string(from: record.date)
         addOperationSegment = record.type
         addOperationTypeSwitcher.selectedSegmentIndex = addOperationSegment == .income ? 0 : 1
@@ -154,9 +155,12 @@ extension AddOperationVC {
         saveOperationButton.removeTarget(nil, action: nil, for: .allEvents)
         categoryButton.removeTarget(nil, action: nil, for: .allEvents)
         
+        let segmentTitle = addOperationTypeSwitcher.titleForSegment(at: addOperationTypeSwitcher.selectedSegmentIndex) ?? "Income"
+        
         // Передаем название и иконки категорий по типу операций
-        let vc = SelectCategoryVC(segmentTitle: addOperationTypeSwitcher.titleForSegment(at: addOperationTypeSwitcher.selectedSegmentIndex) ?? "Income")
+        let vc = SelectCategoryVC(segmentTitle: segmentTitle, isParental: false)
         vc.categoryDelegate = self
+        vc.subcategoryDelegate = self
         vc.hidesBottomBarWhenPushed = true // Спрятать TabBar
         
         navigationController?.pushViewController(vc, animated: true)

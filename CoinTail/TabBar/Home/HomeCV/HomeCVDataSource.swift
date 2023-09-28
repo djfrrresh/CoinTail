@@ -91,7 +91,7 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
             ) as? HomeCategoryCell else { fatalError("Unable to dequeue HomeCategoryCell.")
             }
             
-            let records = Records.shared.getRecords(for: period, type: homeSegment, step: currentStep, category: categorySort)
+            let records = Records.shared.getRecords(for: period, type: homeSegment, step: currentStep, categoryID: categorySort?.id)
             
             cell.categoryisHiddenDelegate = self
             cell.arrowTapDelegate = self
@@ -105,14 +105,17 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
                 for: period,
                 type: homeSegment,
                 step: currentStep,
-                category: categorySort
+                category: categorySort?.id
             )
             cell.amountForPeriodLabel.text = "\(amountText)"
             cell.periodLabel.text = getPeriodLabel(step: currentStep)
             cell.category = categorySort
             
             let rightArrowIsHidden = currentStep == 0 || period == .allTheTime
-            let leftArrowIsHidden = lastStep(for: Records.shared.total, category: categorySort) == currentStep || period == .allTheTime
+            let leftArrowIsHidden = lastStep(
+                for: Records.shared.total,
+                categoryID: categorySort?.id
+            ) == currentStep || period == .allTheTime
             
             cell.arrowIsHidden(left: leftArrowIsHidden, right: rightArrowIsHidden)
                                     
@@ -164,11 +167,11 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
         }
     }
     
-    private func lastStep(for records: [Record], category: Category? = nil) -> Int {
+    private func lastStep(for records: [Record], categoryID: Int? = nil) -> Int {
         var records = records
         
-        if let category = category {
-            records = records.filter { $0.category == category }
+        if let category = categoryID {
+            records = records.filter { $0.categoryID == category }
         }
         
         records.sort { l, r in

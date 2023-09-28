@@ -37,11 +37,13 @@ extension HomeOperationCell: UICollectionViewDataSource, UICollectionViewDelegat
         
         recordData = section.records[indexPath.row]
         
-        let image = recordData.category.image
+        guard let categoryData = Categories.shared.getCategory(for: recordData.categoryID) else { return cell }
+        
+        let image = categoryData.image
         let amount = "\(recordData.amount)"
-        let category = recordData.category.name
+        let category = categoryData.name
         let currency = "\(recordData.currency)"
-        let backView = recordData.category.color
+        let backView = categoryData.color
                 
         cell.amountLabel.text = amount
         cell.categoryLabel.text = category

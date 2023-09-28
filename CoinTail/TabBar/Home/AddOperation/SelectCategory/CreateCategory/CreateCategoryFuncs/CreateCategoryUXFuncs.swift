@@ -8,10 +8,12 @@
 import UIKit
 
 
-extension CreateCategoryVC: SendСategory {
-    
-    func sendCategoryData(category: Category) {
-        parentalCategoryButton.setTitle(category.name, for: .normal)
+extension CreateCategoryVC: SendCategoryID {
+
+    func sendCategoryData(id: Int) {
+        let category = Categories.shared.getCategory(for: id)
+        
+        parentalCategoryButton.setTitle(category?.name, for: .normal)
     }
     
     // Закрывает всплывающее окно при нажатии за его пределы

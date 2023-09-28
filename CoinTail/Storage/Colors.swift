@@ -17,6 +17,10 @@ final class Colors {
     let debtRepaymentColor = UIColor(named: "debtRepayment")
     let sideJobColor = UIColor(named: "sideJob")
     let pleasantFindsColor = UIColor(named: "pleasantFinds")
+    // Subcategories
+    let firstJobColor = UIColor(named: "firstJob")
+    let secondJobColor = UIColor(named: "secondJob")
+    let jacketPocketColor = UIColor(named: "jacketPocket")
     
     // Expense
     let transportColor = UIColor(named: "transport")
@@ -27,5 +31,9 @@ final class Colors {
     let subscriptionColor = UIColor(named: "subscription")
     let healthColor = UIColor(named: "health")
     let cafeColor = UIColor(named: "cafe")
+    // Subcategories
+    let busColor = UIColor(named: "bus")
+    let sparColor = UIColor(named: "spar")
+    let walmartColor = UIColor(named: "walmart")
     
 }

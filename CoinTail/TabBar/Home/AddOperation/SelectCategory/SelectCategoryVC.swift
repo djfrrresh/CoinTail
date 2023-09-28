@@ -11,8 +11,11 @@ import EasyPeasy
 
 class SelectCategoryVC: BasicVC {
     
-    weak var categoryDelegate: SendСategory? // Передает категорию
-        
+    weak var subcategoryDelegate: SendSubcategoryID? // Передает подкатегорию
+    weak var categoryDelegate: SendCategoryID? // Передает подкатегорию
+    var isParental: Bool = false
+    var section: Int?
+            
     let selectCategoryCV: UICollectionView = {
         let layout: UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()
@@ -27,6 +30,7 @@ class SelectCategoryVC: BasicVC {
         cv.contentInset = .init(top: 16, left: 0, bottom: 0, right: 0) // Отступ сверху
         cv.backgroundColor = .clear
         cv.register(SelectCategoryCell.self, forCellWithReuseIdentifier: SelectCategoryCell.id)
+        cv.register(SelectCategoryCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SelectCategoryCell.id)
         
         cv.allowsMultipleSelection = false
         cv.showsVerticalScrollIndicator = false
@@ -47,16 +51,19 @@ class SelectCategoryVC: BasicVC {
         RecordType(rawValue: addOperationVCSegmentType ?? "Expense") ?? .expense
     }
     
-    public required init(segmentTitle: String) {
+    public required init(segmentTitle: String, isParental: Bool) {
         // Получаем тип операции из AddOperationVC для отображения категорий
         self.addOperationVCSegmentType = segmentTitle
+        self.isParental = isParental
+        
+        newCategoryButton.isHidden = isParental
         
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,7 +72,6 @@ class SelectCategoryVC: BasicVC {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
 
         selectCategoryCV.delegate = self
         

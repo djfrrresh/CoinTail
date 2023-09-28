@@ -8,11 +8,24 @@
 import UIKit
 
 
-extension SelectCategoryVC: UICollectionViewDataSource {
+protocol SendCategoryID: AnyObject {
+    func sendCategoryData(id: Int)
+}
 
+extension SelectCategoryVC: UICollectionViewDataSource {
+    
     // Количество категорий
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return Categories.shared.categories[addOperationVCSegment]?.count ?? 0
+    }
+
+    // Количество подкатегорий
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if isParental {
+            return 0
+        } else {
+            return Categories.shared.categories[addOperationVCSegment]?[section].subcategories?.count ?? 0
+        }
     }
     
     // Ячейки заполняются
@@ -23,16 +36,62 @@ extension SelectCategoryVC: UICollectionViewDataSource {
         ) as? SelectCategoryCell else {
             fatalError("Unable to dequeue SelectCategoryCell.")
         }
+                
+        guard let subcategoryID = Categories.shared.categories[addOperationVCSegment]?[indexPath.section].subcategories?[indexPath.row] else { return cell }
         
-        let categoryLabel = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].name ?? "Category".localized()
-        let categoryImage = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].image ?? UIImage(systemName: "house")
-        let categoryColor = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].color ?? .clear
+        let subcategoryData = Categories.shared.getSubcategory(for: subcategoryID)
         
-        cell.categoryLabel.text = categoryLabel
-        cell.categoryImage.image = categoryImage
-        cell.backImageView.backgroundColor = categoryColor
+        let subcategoryLabel = subcategoryData?.name
+        let subcategoryImage = subcategoryData?.image
+        let subcategoryColor = subcategoryData?.color
+
+        cell.categoryLabel.text = subcategoryLabel
+        cell.categoryImage.image = subcategoryImage
+        cell.backImageView.backgroundColor = subcategoryColor
         
         return cell
     }
       
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: SelectCategoryCell.id,
+            for: indexPath
+        ) as? SelectCategoryCell else {
+            fatalError("Unable to dequeue SelectCategoryCell.")
+        }
+        
+        headerView.tag = indexPath.section
+        headerView.headerSettings()
+        
+        guard let categoryLabel = Categories.shared.categories[addOperationVCSegment]?[indexPath.section].name,
+              let categoryImage = Categories.shared.categories[addOperationVCSegment]?[indexPath.section].image,
+              let categoryColor = Categories.shared.categories[addOperationVCSegment]?[indexPath.section].color else { return headerView }
+        
+        headerView.categoryLabel.text = categoryLabel
+        headerView.categoryImage.image = categoryImage
+        headerView.backImageView.backgroundColor = categoryColor
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapDetected))
+        headerView.addGestureRecognizer(tapGestureRecognizer)
+
+        return headerView
+    }
+    
+    @objc func tapDetected(_ sender: UITapGestureRecognizer) {
+        guard let headerViewID = sender.view?.tag else { return }
+        
+//        categoryDelegate?.sendCategoryData(id: categoryID)
+        
+        let cell = selectCategoryCV.cellForItem(at: IndexPath(item: 0, section: headerViewID)) as? SelectCategoryCell
+        print(cell)
+
+        // TODO: переделать закрытие поп-ап контроллера и навигационного
+//        navigationController?.popViewController(animated: true)
+//        self.dismiss(animated: true, completion: nil)
+    }
+        
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        CGSize(width: UIScreen.main.bounds.width, height: 60)
+    }
 }

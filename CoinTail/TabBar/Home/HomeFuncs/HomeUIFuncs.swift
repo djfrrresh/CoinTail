@@ -57,7 +57,7 @@ extension HomeVC: SelectedDate {
             for: period,
             type: homeSegment,
             step: currentStep,
-            category: categorySort
+            categoryID: categorySort?.id
         )
         
         // Обновление категорий

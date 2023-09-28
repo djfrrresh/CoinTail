@@ -12,7 +12,8 @@ import EasyPeasy
 class AddOperationVC: BasicVC {
     
     var operationID: Int?
-    var category: Category?
+    var categoryID: Int?
+    var subcategoryID: Int?
     var account: Account?
     var currency: Currency = Currencies.shared.selectedCurrency
     var currentIndex = 0
@@ -125,10 +126,11 @@ class AddOperationVC: BasicVC {
         // Передаем значения операции из редактируемой ячейки
         guard let record = Records.shared.getRecord(for: operationID) else { return }
         
-        category = record.category
+        categoryID = record.categoryID
         amountTF.text = "\(record.amount)"
         descriptionTF.text = record.descriptionText
-        categoryButton.setTitle(record.category.name, for: .normal)
+        guard let category = Categories.shared.getCategory(for: record.categoryID) else { return }
+        categoryButton.setTitle(category.name, for: .normal)
         accountButton.setTitle(record.account?.name ?? AddOperationVC.defaultAccount, for: .normal)
         currencyButton.setTitle("\(record.currency)", for: .normal)
         saveOperationButton.setTitle("Edit operation", for: .normal)

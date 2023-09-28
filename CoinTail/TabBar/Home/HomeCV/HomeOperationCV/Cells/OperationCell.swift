@@ -151,7 +151,13 @@ final class OperationCVCell: UICollectionViewCell {
         let textWidth: CGFloat = UIScreen.main.bounds.width - 16 - 8 * 2 - amountWidth - currencyWidth - 4 - 16 - 16 - 24
         let label = getCategoryLabel()
         
-        label.text = data.category.name
+        guard let category = Categories.shared.getCategory(for: data.categoryID) else {
+            return .init(
+                        width: 0,
+                        height: 0
+                    )
+        }
+        label.text = category.name
         let labelHeight = label.sizeThatFits(.init(width: textWidth, height: 0)).height
         
         // Конечный размер ячейки определяется по высоте backImage или высоте текста категории

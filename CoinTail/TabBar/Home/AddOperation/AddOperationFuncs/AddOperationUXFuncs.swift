@@ -8,11 +8,22 @@
 import UIKit
 
 
-extension AddOperationVC: SendСategory, SendAccount {
+extension AddOperationVC: SendSubcategoryID, SendAccount, SendCategoryID {
     
-    func sendCategoryData(category: Category) {
-        self.category = category
-        categoryButton.setTitle(category.name, for: .normal)
+    func sendCategoryData(id: Int) {
+        self.categoryID = id
+        
+        let category = Categories.shared.getCategory(for: id)
+        
+        categoryButton.setTitle(category?.name, for: .normal)
+    }
+    
+    func sendSubcategoryData(id: Int) {
+        self.subcategoryID = id
+        
+        let subcategory = Categories.shared.getSubcategory(for: id)
+        
+        categoryButton.setTitle(subcategory?.name, for: .normal)
     }
     
     func sendAccountData(account: Account) {
@@ -47,7 +58,11 @@ extension AddOperationVC: SendСategory, SendAccount {
         } else if missingAccount && self.account != nil {
             errorAlert("No account selected".localized())
         } else {
-            guard let category = self.category else { return }
+            //TODO: subcategory
+            guard let subcategoryID = self.subcategoryID,
+                  let subcategory = Categories.shared.getSubcategory(for: subcategoryID)?.parentCategory,
+                  let category = Categories.shared.getCategory(for: subcategory) else { return }
+            
             completion?(amount, category)
         }
     }

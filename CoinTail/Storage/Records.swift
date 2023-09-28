@@ -18,25 +18,25 @@ final class Records {
     var recordID = 8
         
     // Получает сумму из операций за указанный период времени
-    func getAmount(for period: DatePeriods, type: RecordType, step: Int = 0, category: Category? = nil) -> Double {
-        return getRecords(for: period, type: type, step: step, category: category).reduce(0.0) { $0 + $1.amount }
+    func getAmount(for period: DatePeriods, type: RecordType, step: Int = 0, category: Int? = nil) -> Double {
+        return getRecords(for: period, type: type, step: step, categoryID: category).reduce(0.0) { $0 + $1.amount }
     }
     
     // Получает сумму из категории с начальной даты до конечной с указанным периодом (неделя / месяц)
-    func getAmount(date: Date, untilDate: Date, category: Category) -> Double? {
+    func getAmount(date: Date, untilDate: Date, categoryID: Int) -> Double? {
         let calendar = Calendar.current
         guard let startDate = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: date)),
               let endDate = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: untilDate)) else { return nil }
         
         var records = total.filter { $0.type == .expense }
-        records = records.filter { $0.category == category }
+        records = records.filter { $0.categoryID == categoryID }
         
         return records.filter { $0.date >= startDate && $0.date <= endDate }.reduce(0.0) { $0 + $1.amount }
     }
     
     //TODO: оптимизировать функцию
     // Получает операции за указанный период времени
-    func getRecords(for period: DatePeriods, type: RecordType, step: Int = 0, category: Category? = nil) -> [Record] {
+    func getRecords(for period: DatePeriods, type: RecordType, step: Int = 0, categoryID: Int? = nil) -> [Record] {
         let calendar = Calendar.current
         let currentYear = calendar.component(.year, from: Date())
         let currentMonth = calendar.component(.month, from: Date())
@@ -50,8 +50,8 @@ final class Records {
         }
         
         // Если выбрана категория, фильтруем по категории
-        if let category = category {
-            records = records.filter { $0.category == category }
+        if let category = categoryID {
+            records = records.filter { $0.categoryID == categoryID }
         }
         
         switch period {
