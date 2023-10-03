@@ -10,7 +10,7 @@ import UIKit
 
 class AccountsVC: BasicVC {
     
-    weak var accountDelegate: SendAccount? // Передает счет
+    weak var accountDelegate: SendAccountID? // Передает счет
     
     var isSelected: Bool = false
     
@@ -74,6 +74,7 @@ class AccountsVC: BasicVC {
         
         self.isSelected = isSelected
         transferButton.isHidden = true
+        historyButton.isHidden = true
         
         self.title = "Account selection".localized()
     }

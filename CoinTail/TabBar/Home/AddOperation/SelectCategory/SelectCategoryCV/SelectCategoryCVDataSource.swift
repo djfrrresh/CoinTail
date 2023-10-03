@@ -79,16 +79,14 @@ extension SelectCategoryVC: UICollectionViewDataSource {
     }
     
     @objc func tapDetected(_ sender: UITapGestureRecognizer) {
-        guard let headerViewID = sender.view?.tag else { return }
+        guard let headerViewID = sender.view?.tag,
+              let categoryID = Categories.shared.categories[addOperationVCSegment]?[headerViewID].id else { return }
         
-//        categoryDelegate?.sendCategoryData(id: categoryID)
-        
-        let cell = selectCategoryCV.cellForItem(at: IndexPath(item: 0, section: headerViewID)) as? SelectCategoryCell
-        print(cell)
-
+        categoryDelegate?.sendCategoryData(id: categoryID)
+                
         // TODO: переделать закрытие поп-ап контроллера и навигационного
-//        navigationController?.popViewController(animated: true)
-//        self.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
         
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

@@ -22,4 +22,5 @@ struct Category: CategoryProtocol, Equatable {
     var image: UIImage?
     var type: RecordType?
     var subcategories: [Int]?
+    var isEditable: Bool = true
 }

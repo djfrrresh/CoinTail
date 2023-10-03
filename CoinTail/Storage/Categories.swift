@@ -28,21 +28,24 @@ final class Categories {
                 type: .income,
                 subcategories: [
                     0, 1
-                ]
+                ],
+                isEditable: false
             ),
             Category(
                 id: 1,
                 name: "Debt repayment".localized(),
                 color: Colors.shared.debtRepaymentColor ?? .clear,
                 image: UIImage(systemName: "creditcard"),
-                type: .income
+                type: .income,
+                isEditable: false
             ),
             Category(
                 id: 2,
                 name: "Side job".localized(),
                 color: Colors.shared.sideJobColor ?? .clear,
                 image: UIImage(systemName: "briefcase"),
-                type: .income
+                type: .income,
+                isEditable: false
             ),
             Category(
                 id: 3,
@@ -52,7 +55,8 @@ final class Categories {
                 type: .income,
                 subcategories: [
                     5
-                ]
+                ],
+                isEditable: false
             )
         ],
         
@@ -65,14 +69,16 @@ final class Categories {
                 type: .expense,
                 subcategories: [
                     2
-                ]
+                ],
+                isEditable: false
             ),
             Category(
                 id: 5,
                 name: "Cloths".localized(),
                 color: Colors.shared.clothsColor ?? .clear,
                 image: UIImage(systemName: "tshirt"),
-                type: .expense
+                type: .expense,
+                isEditable: false
             ),
             Category(
                 id: 6,
@@ -82,42 +88,48 @@ final class Categories {
                 type: .expense,
                 subcategories: [
                     3, 4
-                ]
+                ],
+                isEditable: false
             ),
             Category(
                 id: 7,
                 name: "Gym".localized(),
                 color: Colors.shared.gymColor ?? .clear,
                 image: UIImage(systemName: "figure.walk"),
-                type: .expense
+                type: .expense,
+                isEditable: false
             ),
             Category(
                 id: 8,
                 name: "Service".localized(),
                 color: Colors.shared.serviceColor ?? .clear,
                 image: UIImage(systemName: "gearshape"),
-                type: .expense
+                type: .expense,
+                isEditable: false
             ),
             Category(
                 id: 9,
                 name: "Subscription".localized(),
                 color: Colors.shared.subscriptionColor ?? .clear,
                 image: UIImage(systemName: "gamecontroller"),
-                type: .expense
+                type: .expense,
+                isEditable: false
             ),
             Category(
                 id: 10,
                 name: "Health".localized(),
                 color: Colors.shared.healthColor ?? .clear,
                 image: UIImage(systemName: "cross.case"),
-                type: .expense
+                type: .expense,
+                isEditable: false
             ),
             Category(
                 id: 11,
                 name: "Cafe".localized(),
                 color: Colors.shared.cafeColor ?? .clear,
                 image: UIImage(systemName: "fork.knife"),
-                type: .expense
+                type: .expense,
+                isEditable: false
             )
         ]
     ]
@@ -199,8 +211,25 @@ final class Categories {
     }
     
     //  Добавление новой подкатегории
-    func addNewSubategory(_ subcategory: Subcategory) {
+    func addNewSubcategory(_ subcategory: Subcategory) {
         subcategories.append(subcategory)
+    }
+    
+    func addSubcategoryToCategory(for categoryID: Int, to type: RecordType, subcategoryID: Int) {
+        guard var category = categories[type]?.first(where: { $0.id == categoryID }) else {
+            return
+        }
+        
+        if category.subcategories == nil {
+            category.subcategories = [subcategoryID]
+        } else {
+            category.subcategories?.append(subcategoryID)
+        }
+        
+        // Обновите категорию в массиве
+        if let index = categories[type]?.firstIndex(where: { $0.id == categoryID }) {
+            categories[type]?[index] = category
+        }
     }
     
     // Обновить категории в коллекции

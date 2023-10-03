@@ -14,24 +14,22 @@ final class Accounts {
 
     // Массив всех счетов
 //    var accounts = [Account]()
-    // Массив истории переводов
-//    var transferHistory = [TransferHistory]()
     static let account1 = Account(
         id: 0,
         name: "Cash",
-        balance: 200,
+        startBalance: 200,
         currency: Currency.USD
     )
     static let account2 = Account(
         id: 1,
         name: "Card 1",
-        balance: 1000,
+        startBalance: 1000,
         currency: Currency.RUB
     )
     static let account3 = Account(
         id: 2,
         name: "Card 2",
-        balance: 50,
+        startBalance: 50,
         currency: Currency.USD
     )
 
@@ -79,7 +77,7 @@ final class Accounts {
             return
         }
         
-        accounts[index].balance = replacingBalance
+        accounts[index].amountBalance = replacingBalance
         completion?(true)
     }
     

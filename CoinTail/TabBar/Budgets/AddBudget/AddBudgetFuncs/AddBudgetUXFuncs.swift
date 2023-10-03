@@ -8,14 +8,15 @@
 import UIKit
 
 
-extension AddBudgetVC: SendSubcategoryID {
+extension AddBudgetVC: SendCategoryID {
     
     // Присылает категорию с SelectCategoryVC
-    //TODO: переделать под категории из хедера
-    func sendSubcategoryData(id: Int) {
-//        self.budgetCategoryID = id
-//
-//        categoryButton.setTitle(id.name, for: .normal)
+    func sendCategoryData(id: Int) {
+        self.budgetCategoryID = id
+        
+        let category = Categories.shared.getCategory(for: id)
+
+        categoryButton.setTitle(category?.name, for: .normal)
     }
     
     func setCurrency(currencyCode: String) {
@@ -43,9 +44,9 @@ extension AddBudgetVC: SendSubcategoryID {
         } else if budgetCategory != nil && !isEditingBudget && activeBudgetByCategory! {
             errorAlert("There is already a budget for this category".localized())
         } else {
-            // TODO: передать категорию self.budgetCategory
-//            guard let category = self.budgetCategory else { return }
-            let category = Category(id: 111, name: "Example", color: .black)
+            guard let categoryID = budgetCategoryID,
+            let category = Categories.shared.getCategory(for: categoryID) else { return }
+            
             completion?(amount, category)
         }
     }

@@ -11,8 +11,9 @@ import UIKit
 protocol AddNewCategory: AnyObject {
     func sendNewCategoryData(category: Category)
 }
+
 protocol AddNewSubcategory: AnyObject {
-    func sendNewSubategoryData(subcategory: Subcategory)
+    func sendNewSubcategoryData(subcategory: Subcategory)
 }
 
 extension CreateCategoryVC {
@@ -22,6 +23,8 @@ extension CreateCategoryVC {
         if (categoryTF.text?.isEmpty == true) {
             errorAnimate()
         } else {
+            guard let categoryText = categoryTF.text else { return }
+
             let isSubcategory = parentalCategoryButton.titleLabel?.text == CreateCategoryVC.defaultParentalCategoryText ? false : true
             
             if isSubcategory {
@@ -30,11 +33,14 @@ extension CreateCategoryVC {
                 let subcategoryID = Categories.shared.lastSubcategoryID + 1
                 let parentalCategoryID = Categories.shared.getCategoryID(for: parentalCategoryText, type: addOperationVCSegment)
                 
-                addNewSubcategoryDelegate?.sendNewSubategoryData(
+                Categories.shared.addSubcategoryToCategory(for: parentalCategoryID, to: addOperationVCSegment, subcategoryID: subcategoryID)
+                
+                addNewSubcategoryDelegate?.sendNewSubcategoryData(
                     subcategory: Subcategory(
                         id: subcategoryID,
-                        name: categoryTF.text ?? "New subcategory".localized(),
+                        name: categoryText,
                         color: selectedColor ?? .white,
+                        image: selectedCategoryImage,
                         parentCategory: parentalCategoryID
                     )
                 )
@@ -44,7 +50,7 @@ extension CreateCategoryVC {
                 addNewCategoryDelegate?.sendNewCategoryData(
                     category: Category(
                         id: categoryID,
-                        name: categoryTF.text ?? "New category".localized(),
+                        name: categoryText,
                         color: selectedColor ?? .white,
                         image: selectedCategoryImage
                     )

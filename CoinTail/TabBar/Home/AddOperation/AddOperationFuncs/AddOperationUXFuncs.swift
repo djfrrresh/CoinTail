@@ -8,7 +8,7 @@
 import UIKit
 
 
-extension AddOperationVC: SendSubcategoryID, SendAccount, SendCategoryID {
+extension AddOperationVC: SendSubcategoryID, SendAccountID, SendCategoryID {
     
     func sendCategoryData(id: Int) {
         self.categoryID = id
@@ -26,8 +26,11 @@ extension AddOperationVC: SendSubcategoryID, SendAccount, SendCategoryID {
         categoryButton.setTitle(subcategory?.name, for: .normal)
     }
     
-    func sendAccountData(account: Account) {
-        self.account = account
+    func sendAccountData(accountID: Int) {
+        self.accountID = accountID
+        
+        guard let account = Accounts.shared.getAccount(for: accountID) else { return }
+        
         accountButton.setTitle(account.name, for: .normal)
     }
     
@@ -55,7 +58,7 @@ extension AddOperationVC: SendSubcategoryID, SendAccount, SendCategoryID {
             errorAlert("Missing value in amount field".localized())
         } else if missingCategory {
             errorAlert("No category selected".localized())
-        } else if missingAccount && self.account != nil {
+        } else if missingAccount && self.accountID != nil {
             errorAlert("No account selected".localized())
         } else {
             //TODO: subcategory

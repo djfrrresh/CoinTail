@@ -36,8 +36,8 @@ final class Transfers {
         secondAccount = targetAccount
         
         // Снимаем деньги с исходного счета и добавляем их на целевой счет
-        firstAccount.balance -= amount
-        secondAccount.balance += amount
+        firstAccount.startBalance -= amount
+        secondAccount.startBalance += amount
         
         Accounts.shared.editAccount(for: sourceAccount.id, replacingAccount: firstAccount)
         Accounts.shared.editAccount(for: targetAccount.id, replacingAccount: secondAccount)

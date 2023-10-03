@@ -119,7 +119,7 @@ class HomeVC: BasicVC {
                 id: 0,
                 type: .income,
                 categoryID: Categories.shared.categories[.income]![0].id,
-                account: Accounts.account2,
+                accountID: Accounts.shared.accounts[0].id,
                 currency: Currency.EUR
             )
         )
@@ -130,7 +130,7 @@ class HomeVC: BasicVC {
                 id: 1,
                 type: .expense,
                 categoryID: Categories.shared.categories[.expense]![0].id,
-                account: Accounts.account3,
+                accountID: Accounts.shared.accounts[2].id,
                 currency: Currency.USD
             )
         )
@@ -143,7 +143,7 @@ class HomeVC: BasicVC {
                     id: 2,
                     type: .income,
                     categoryID: Categories.shared.categories[.income]![3].id,
-                    account: Accounts.account1,
+                    accountID: Accounts.shared.accounts[1].id,
                     currency: Currency.EUR
                 )
             )
@@ -154,7 +154,7 @@ class HomeVC: BasicVC {
                     id: 3,
                     type: .income,
                     categoryID: Categories.shared.categories[.income]![3].id,
-                    account: Accounts.account2,
+                    accountID: Accounts.shared.accounts[1].id,
                     currency: Currency.RUB
                 )
             )
@@ -165,7 +165,7 @@ class HomeVC: BasicVC {
                     id: 4,
                     type: .expense,
                     categoryID: Categories.shared.categories[.expense]![2].id,
-                    account: Accounts.account1,
+                    accountID: Accounts.shared.accounts[0].id,
                     currency: Currency.USD
                 )
             )
@@ -179,7 +179,7 @@ class HomeVC: BasicVC {
                     id: 5,
                     type: .income,
                     categoryID: Categories.shared.categories[.income]![1].id,
-                    account: Accounts.account3,
+                    accountID: Accounts.shared.accounts[2].id,
                     currency: Currency.RUB
                 )
             )
@@ -191,7 +191,7 @@ class HomeVC: BasicVC {
                     id: 6,
                     type: .expense,
                     categoryID: Categories.shared.categories[.expense]![4].id,
-                    account: Accounts.account3,
+                    accountID: Accounts.shared.accounts[2].id,
                     currency: Currency.USD
                 )
             )
@@ -205,7 +205,7 @@ class HomeVC: BasicVC {
                     id: 7,
                     type: .income,
                     categoryID: Categories.shared.categories[.income]![0].id,
-                    account: Accounts.account1,
+                    accountID: Accounts.shared.accounts[0].id,
                     currency: Currency.USD
                 )
             )
@@ -216,7 +216,7 @@ class HomeVC: BasicVC {
                     id: 8,
                     type: .expense,
                     categoryID: Categories.shared.categories[.expense]![5].id,
-                    account: Accounts.account2,
+                    accountID: Accounts.shared.accounts[1].id,
                     currency: Currency.EUR
                 )
             )

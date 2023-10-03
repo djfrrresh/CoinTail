@@ -116,9 +116,9 @@ final class Records {
         completion?(true)
     }
     
-    func calculateTotalBalance(for account: Account) -> Double {
+    func calculateTotalBalance(for accountID: Int) -> Double {
         let totalAmount = total.reduce(0) { (result, record) -> Double in
-            if let recordAccount = record.account, recordAccount == account {
+            if let recordAccountID = record.accountID, recordAccountID == accountID {
                 return result + record.amount
             } else {
                 return result

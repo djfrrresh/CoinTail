@@ -14,7 +14,7 @@ class AddOperationVC: BasicVC {
     var operationID: Int?
     var categoryID: Int?
     var subcategoryID: Int?
-    var account: Account?
+    var accountID: Int?
     var currency: Currency = Currencies.shared.selectedCurrency
     var currentIndex = 0
     
@@ -126,18 +126,27 @@ class AddOperationVC: BasicVC {
         // Передаем значения операции из редактируемой ячейки
         guard let record = Records.shared.getRecord(for: operationID) else { return }
         
-        categoryID = record.categoryID
-        amountTF.text = "\(record.amount)"
-        descriptionTF.text = record.descriptionText
-        guard let category = Categories.shared.getCategory(for: record.categoryID) else { return }
-        categoryButton.setTitle(category.name, for: .normal)
-        accountButton.setTitle(record.account?.name ?? AddOperationVC.defaultAccount, for: .normal)
         currencyButton.setTitle("\(record.currency)", for: .normal)
         saveOperationButton.setTitle("Edit operation", for: .normal)
         dateTF.text = Self.operationDF.string(from: record.date)
         addOperationSegment = record.type
         addOperationTypeSwitcher.selectedSegmentIndex = addOperationSegment == .income ? 0 : 1
         addOperationTypeSwitcher.isHidden = true
+        categoryID = record.categoryID
+        amountTF.text = "\(record.amount)"
+        descriptionTF.text = record.descriptionText
+        
+        guard let categoryName = Categories.shared.getCategory(for: record.categoryID)?.name else { return }
+        categoryButton.setTitle(categoryName, for: .normal)
+        
+        var accountName: String = ""
+        if let accountID = record.accountID {
+            guard let account = Accounts.shared.getAccount(for: accountID) else { return }
+            accountName = account.name
+        } else {
+            accountName = AddOperationVC.defaultAccount
+        }
+        accountButton.setTitle(accountName, for: .normal)
         
         self.title = "Editing operation".localized()
                 

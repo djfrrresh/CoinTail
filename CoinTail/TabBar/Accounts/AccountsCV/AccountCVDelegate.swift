@@ -8,8 +8,8 @@
 import UIKit
 
 
-protocol SendAccount: AnyObject {
-    func sendAccountData(account: Account)
+protocol SendAccountID: AnyObject {
+    func sendAccountData(accountID: Int)
 }
 
 extension AccountsVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -21,7 +21,7 @@ extension AccountsVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayo
 
         // Если мы зашли с экрана создания операции, то при нажатии на счет он передается в кнопку, иначе переходим на экран редактирования счета
         if isSelected {
-            accountDelegate?.sendAccountData(account: accountData)
+            accountDelegate?.sendAccountData(accountID: accountData.id)
             
             self.navigationController?.popViewController(animated: true)
         } else {

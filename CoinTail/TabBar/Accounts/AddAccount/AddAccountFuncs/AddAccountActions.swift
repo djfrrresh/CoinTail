@@ -28,7 +28,7 @@ extension AddAccountVC {
             let account = Account(
                 id: isEditing ? strongSelf.accountID! : Accounts.shared.accountID,
                 name: nameText,
-                balance: amount,
+                startBalance: amount,
                 currency: currency
             )
             

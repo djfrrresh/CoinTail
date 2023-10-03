@@ -36,7 +36,7 @@ extension AddOperationVC {
             let dateString = strongSelf.deleteTodayFromDateTF(dateTFText)
             let date = AddOperationVC.operationDF.date(from: dateString) ?? Date()
             let desctiption = strongSelf.descriptionTF.text ?? ""
-            let account = strongSelf.account ?? nil
+            let accountID = strongSelf.accountID ?? nil
             strongSelf.setCurrency(currencyCode: currencyText)
             let currency = strongSelf.currency
             
@@ -49,7 +49,7 @@ extension AddOperationVC {
                 id: Records.shared.recordID,
                 type: strongSelf.addOperationSegment,
                 categoryID: category.id,
-                account: account,
+                accountID: accountID,
                 currency: currency
             )
                         
@@ -145,7 +145,8 @@ extension AddOperationVC {
         addOperationSegment = record.type
         addOperationTypeSwitcher.selectedSegmentIndex = addOperationSegment == .income ? 0 : 1
         currencyButton.setTitle("\(record.currency)", for: .normal)
-        if let accountName = Accounts.shared.getAccount(for: record.account?.name ?? AddOperationVC.defaultAccount)?.name {
+        guard let accountID = record.accountID else { return }
+        if let accountName = Accounts.shared.getAccount(for: accountID)?.name {
             accountButton.setTitle(accountName, for: .normal)
         }
     }

@@ -11,6 +11,7 @@ import Foundation
 struct Account: Equatable {
     var id: Int
     var name: String
-    var balance: Double
+    var startBalance: Double
+    var amountBalance: Double = 0
     var currency: Currency
 }

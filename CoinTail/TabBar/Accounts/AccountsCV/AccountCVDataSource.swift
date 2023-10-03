@@ -27,12 +27,10 @@ extension AccountsVC: UICollectionViewDataSource {
         }
         
         let accountData: Account = accounts[indexPath.row]
-        
-        var totalAmountForCash: Double = accountData.balance
-        
-        // Подсчет баланса счета из операций
-        if let cashAccount = Accounts.shared.getAccount(for: accountData.name) {
-            totalAmountForCash += Records.shared.calculateTotalBalance(for: cashAccount)
+        var totalAmountForCash: Double = accountData.startBalance
+
+        if let cashAccount = Accounts.shared.getAccount(for: accountData.id) {
+            totalAmountForCash += Records.shared.calculateTotalBalance(for: cashAccount.id)
             
             // Обновить баланс для счета
             Accounts.shared.editBalance(for: cashAccount.id, replacingBalance: totalAmountForCash)

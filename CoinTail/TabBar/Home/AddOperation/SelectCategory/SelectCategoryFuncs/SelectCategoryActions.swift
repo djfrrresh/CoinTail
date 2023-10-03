@@ -14,6 +14,7 @@ extension SelectCategoryVC {
     @objc func goToCreateCategoryVC() {
         let vc = CreateCategoryVC(segmentTitle: addOperationVCSegmentType ?? "Expense")
         vc.addNewCategoryDelegate = self
+        vc.addNewSubcategoryDelegate = self
         vc.modalPresentationStyle = .overCurrentContext
 
         self.present(vc, animated: true, completion: nil)

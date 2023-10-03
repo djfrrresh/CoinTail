@@ -8,7 +8,6 @@
 import Foundation
 
 
-// TODO: передавать в категорию и счет айди, а не целые структуры
 struct Record: Equatable {
     var amount: Double
     var descriptionText: String = ""
@@ -16,6 +15,6 @@ struct Record: Equatable {
     var id: Int
     var type: RecordType
     var categoryID: Int
-    var account: Account?
+    var accountID: Int?
     var currency: Currency
 }
