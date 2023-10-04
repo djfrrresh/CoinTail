@@ -11,7 +11,7 @@ import UIKit
 extension SelectCategoryVC: AddNewCategory, AddNewSubcategory {
     
     func sendNewCategoryData(category: Category) {
-        Categories.shared.addNewCategory(category, type: addOperationVCSegment)
+        Categories.shared.addNewCategory(category, type: operationSegmentType)
         
         selectCategoryCV.reloadData()
     }

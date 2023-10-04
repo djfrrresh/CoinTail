@@ -24,7 +24,7 @@ extension SettingsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLa
             withReuseIdentifier: SettingsCell.id,
             for: indexPath
         ) as? SettingsCell else {
-            fatalError("Unable to dequeue SettingsCell.")
+            return UICollectionViewCell()
         }
         
         cell.menuLabel.text = settingsMenu[indexPath.row]

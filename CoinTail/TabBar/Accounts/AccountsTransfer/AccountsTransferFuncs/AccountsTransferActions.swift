@@ -48,7 +48,8 @@ extension AccountsTransferVC {
             let transferHistory = TransferHistory(
                 sourceAccount: sourceAccount,
                 targetAccount: targetAccount,
-                amount: amount
+                amount: amount,
+                date: Date()
             )
             
             // Добавляем в историю перевод между счетами

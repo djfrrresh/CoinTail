@@ -72,7 +72,7 @@ class BudgetsVC: BasicVC {
         
         Budgets.shared.addNewBudget(
             Budget(
-                category: Categories.shared.categories[.expense]![4],
+                categoryID: Categories.shared.categories[.expense]![4].id,
                 amount: 500,
                 startDate: dateFormatter.date(from: string)!,
                 untilDate: dateFormatter.date(from: stringUntil)!,
@@ -82,7 +82,7 @@ class BudgetsVC: BasicVC {
         )
         Budgets.shared.addNewBudget(
             Budget(
-                category: Categories.shared.categories[.expense]![2],
+                categoryID: Categories.shared.categories[.expense]![2].id,
                 amount: 1000,
                 startDate: dateFormatter.date(from: string)!,
                 untilDate: dateFormatter.date(from: stringUntil)!,
@@ -92,7 +92,7 @@ class BudgetsVC: BasicVC {
         )
         Budgets.shared.addNewBudget(
             Budget(
-                category: Categories.shared.categories[.expense]![0],
+                categoryID: Categories.shared.categories[.expense]![0].id,
                 amount: 200,
                 startDate: dateFormatter.date(from: string1)!,
                 untilDate: dateFormatter.date(from: stringUntil1)!,

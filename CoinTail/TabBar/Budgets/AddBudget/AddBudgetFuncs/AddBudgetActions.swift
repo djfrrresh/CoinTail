@@ -18,7 +18,7 @@ extension AddBudgetVC {
         let categoryText = categoryButton.titleLabel?.text ?? AddBudgetVC.defaultCategory
         let isEditing = budgetID != nil
         
-        budgetValidation(amount: amount, categoryText: categoryText, isEditingBudget: isEditing) { [weak self] amount, category in
+        budgetValidation(amount: amount, categoryText: categoryText, isEditingBudget: isEditing) { [weak self] amount, categoryID in
             guard let strongSelf = self else { return }
             
             var startDate, untilDate: Date
@@ -35,7 +35,7 @@ extension AddBudgetVC {
             let currency = strongSelf.currency
             
             let budget = Budget(
-                category: category,
+                categoryID: categoryID,
                 amount: amount,
                 startDate: startDate,
                 untilDate: untilDate,
@@ -49,7 +49,6 @@ extension AddBudgetVC {
             
             strongSelf.saveBudgetButton.removeTarget(nil, action: nil, for: .allEvents)
 
-            // TODO: можно при редактировании выбрать активный бюджет с такой же категорией 
             if let budgetID = strongSelf.budgetID {
                 Budgets.shared.editBudget(for: budgetID, replacingBudget: budget)
             } else {
@@ -75,20 +74,16 @@ extension AddBudgetVC {
     
     @objc func removeBudget() {
         guard let id = budgetID else { return }
-        
-        let confirmAction = UIAlertAction(title: "Confirm".localized(), style: .default) { [weak self] _ in
+
+        confirmationAlert(
+            title: "Delete budget".localized(),
+            message: "Are you sure?".localized(),
+            confirmActionTitle: "Confirm".localized()
+        ) { [weak self] in
             Budgets.shared.deleteBudget(for: id)
             
             self?.navigationController?.popToRootViewController(animated: true)
         }
-        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel)
-        
-        let alertView = UIAlertController(title: "Delete operation".localized(), message: "Are you sure?".localized(), preferredStyle: .alert)
-        
-        alertView.addAction(confirmAction)
-        alertView.addAction(cancelAction)
-
-        self.present(alertView, animated: true)
     }
     
     private func budgetDateUntil() -> Date {

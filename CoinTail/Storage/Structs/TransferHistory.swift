@@ -8,9 +8,9 @@
 import Foundation
 
 
-// TODO: добавить дату перевода и отсортировать
 struct TransferHistory {
     var sourceAccount: String
     var targetAccount: String
     var amount: Double
+    var date: Date
 }

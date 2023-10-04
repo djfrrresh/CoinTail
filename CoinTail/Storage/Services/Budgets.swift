@@ -28,9 +28,12 @@ final class Budgets {
         return budgets.filter { $0.id == id }.first
     }
     
-    // Сверить бюджет по категории
+    // Получить бюджет по названию
     func getBudget(for categoryName: String) -> Budget? {
-        return budgets.filter { $0.category.name == categoryName }.last
+        return budgets.filter {
+            guard let category = Categories.shared.getCategory(for: $0.categoryID) else { return false }
+
+            return category.name == categoryName }.last
     }
     
     // Отредактировать бюджет по его ID

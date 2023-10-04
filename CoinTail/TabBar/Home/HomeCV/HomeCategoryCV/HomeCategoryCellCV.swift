@@ -27,7 +27,7 @@ extension HomeCategoryCell: UICollectionViewDataSource, UICollectionViewDelegate
             withReuseIdentifier: CategoryCVCell.id,
             for: indexPath
         ) as? CategoryCVCell else {
-            fatalError("Unable to dequeue DateCVCell.")
+            return UICollectionViewCell()
         }
         
         let categoryLabel: String?

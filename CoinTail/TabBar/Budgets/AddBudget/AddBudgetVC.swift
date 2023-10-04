@@ -54,27 +54,20 @@ class AddBudgetVC: BasicVC {
     
     init(budgetID: Int) {
         self.budgetID = budgetID
-        
         super.init(nibName: nil, bundle: nil)
 
-        // Передаем значения бюджета из редактируемой ячейки
         guard let budget = Budgets.shared.getBudget(for: budgetID) else { return }
         
-        //TODO: Category
-//        budgetCategory = budget.category
-        budgetAmountTF.text = "\(budget.amount)"
-        categoryButton.setTitle(budget.category.name, for: .normal)
-        currencyButton.setTitle("\(budget.currency)", for: .normal)
-        saveBudgetButton.setTitle("Edit Budget".localized(), for: .normal)
-        periodSwitcher.isHidden = true
-
         self.title = "Editing budget".localized()
-
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .trash,
             target: self,
-            action: #selector (removeBudget)
+            action: #selector(removeBudget)
         )
+        
+        // Установка значений для View
+        setupUI(with: budget)
     }
     
     public required init() {

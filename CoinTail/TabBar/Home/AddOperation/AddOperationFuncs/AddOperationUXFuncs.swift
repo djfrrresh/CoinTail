@@ -63,8 +63,7 @@ extension AddOperationVC: SendSubcategoryID, SendAccountID, SendCategoryID {
         } else {
             //TODO: subcategory
             guard let subcategoryID = self.subcategoryID,
-                  let subcategory = Categories.shared.getSubcategory(for: subcategoryID)?.parentCategory,
-                  let category = Categories.shared.getCategory(for: subcategory) else { return }
+                  let category = Categories.shared.getCategory(for: subcategoryID) else { return }
             
             completion?(amount, category)
         }

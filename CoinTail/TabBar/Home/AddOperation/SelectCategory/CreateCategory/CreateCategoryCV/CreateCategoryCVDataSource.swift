@@ -21,7 +21,7 @@ extension CreateCategoryVC: UICollectionViewDataSource {
             withReuseIdentifier: CreateCategoryCell.id,
             for: indexPath
         ) as? CreateCategoryCell else {
-            fatalError("Unable to dequeue CreateCategoryCell.")
+            return UICollectionViewCell()
         }
         
         cell.categoryImage.image = UIImage(systemName: CreateCategoryVC.newImages[indexPath.row])

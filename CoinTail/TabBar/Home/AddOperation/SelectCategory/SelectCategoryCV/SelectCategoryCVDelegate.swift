@@ -16,7 +16,7 @@ extension SelectCategoryVC: UICollectionViewDelegate, UICollectionViewDelegateFl
     
     // При нажатии на категорию закрывается контроллер и она передается в кнопку
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let subcategoryID = Categories.shared.categories[addOperationVCSegment]?[indexPath.section].subcategories?[indexPath.row] else { return }
+        guard let subcategoryID = Categories.shared.categories[operationSegmentType]?[indexPath.section].subcategories?[indexPath.row] else { return }
         
         subcategoryDelegate?.sendSubcategoryData(id: subcategoryID)
                         

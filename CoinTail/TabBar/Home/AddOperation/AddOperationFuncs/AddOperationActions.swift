@@ -112,13 +112,11 @@ extension AddOperationVC {
     
     // Повтор последней операции
     @objc func repeatOperationAction() {
-        let alertView = UIAlertController(
+        confirmationAlert(
             title: "Repeat last operation".localized(),
             message: "Do you want to repeat the last operation?".localized(),
-            preferredStyle: .alert
-        )
-        
-        let confirmAction = UIAlertAction(title: "Confirm".localized(), style: .default) { [weak self] _ in
+            confirmActionTitle: "Confirm".localized()
+        ) { [weak self] in
             guard let strongSelf = self else { return }
             
             if let lastRecord = Records.shared.total.last {
@@ -127,27 +125,33 @@ extension AddOperationVC {
                 strongSelf.setFormWithRecord(lastRecord)
             }
         }
-        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel)
-        
-        alertView.addAction(confirmAction)
-        alertView.addAction(cancelAction)
-
-        self.present(alertView, animated: true)
     }
     
     private func setFormWithRecord(_ record: Record) {
-        categoryID = record.categoryID
+        // Сумма
         amountTF.text = "\(record.amount)"
+        
+        // Описание
         descriptionTF.text = record.descriptionText
-        guard let category = Categories.shared.getCategory(for: record.categoryID) else { return }
-        categoryButton.setTitle(category.name, for: .normal)
+        
+        // Дата
         dateTF.text = Self.operationDF.string(from: record.date)
+        
+        // Тип операции
         addOperationSegment = record.type
         addOperationTypeSwitcher.selectedSegmentIndex = addOperationSegment == .income ? 0 : 1
+        
+        // Валюта
         currencyButton.setTitle("\(record.currency)", for: .normal)
-        guard let accountID = record.accountID else { return }
-        if let accountName = Accounts.shared.getAccount(for: accountID)?.name {
-            accountButton.setTitle(accountName, for: .normal)
+        
+        // Категория
+        if let category = Categories.shared.getCategory(for: record.categoryID) {
+            categoryButton.setTitle(category.name, for: .normal)
+        }
+        
+        // Счет
+        if let accountID = record.accountID, let account = Accounts.shared.getAccount(for: accountID) {
+            accountButton.setTitle(account.name, for: .normal)
         }
     }
     
@@ -171,22 +175,15 @@ extension AddOperationVC {
     @objc func removeOperation() {
         guard let id = operationID else { return }
         
-        let alertView = UIAlertController(
+        confirmationAlert(
             title: "Delete operation".localized(),
             message: "Are you sure?".localized(),
-            preferredStyle: .alert
-        )
-        
-        let confirmAction = UIAlertAction(title: "Confirm".localized(), style: .default) { [weak self] _ in
+            confirmActionTitle: "Confirm".localized()
+        ) { [weak self] in
             Records.shared.deleteRecord(for: id)
+            
             self?.navigationController?.popToRootViewController(animated: true)
         }
-        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel)
-        
-        alertView.addAction(confirmAction)
-        alertView.addAction(cancelAction)
-
-        self.present(alertView, animated: true)
     }
     
     @objc func goToAccountsVC() {
@@ -201,6 +198,7 @@ extension AddOperationVC {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    // Изменение валюты
     @objc func changeCurrency() {
         currentIndex = Currencies.shared.getNextIndex(currentIndex: currentIndex)
 

@@ -11,6 +11,37 @@ import EasyPeasy
 
 extension AddOperationVC {
     
+    func setupUI(with record: Record) {
+        // Дата
+        dateTF.text = Self.operationDF.string(from: record.date)
+        
+        // Тип операции
+        addOperationSegment = record.type
+        addOperationTypeSwitcher.selectedSegmentIndex = addOperationSegment == .income ? 0 : 1
+        addOperationTypeSwitcher.isHidden = true
+        
+        // Сумма
+        amountTF.text = "\(record.amount)"
+        // Описание
+        descriptionTF.text = record.descriptionText
+        
+        // Категория
+        if let categoryName = Categories.shared.getCategory(for: record.categoryID)?.name {
+            categoryButton.setTitle(categoryName, for: .normal)
+        }
+        categoryID = record.categoryID
+        
+        // Счет
+        if let accountID = record.accountID, let account = Accounts.shared.getAccount(for: accountID) {
+            accountButton.setTitle(account.name, for: .normal)
+        } else {
+            accountButton.setTitle(AddOperationVC.defaultAccount, for: .normal)
+        }
+        currencyButton.setTitle("\(record.currency)", for: .normal)
+        
+        saveOperationButton.setTitle("Edit operation", for: .normal)
+    }
+    
     func addOperationNavBar() {
         let barButton = UIBarButtonItem(
             image: UIImage(systemName: "dollarsign.arrow.circlepath"),

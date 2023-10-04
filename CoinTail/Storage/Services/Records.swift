@@ -34,7 +34,6 @@ final class Records {
         return records.filter { $0.date >= startDate && $0.date <= endDate }.reduce(0.0) { $0 + $1.amount }
     }
     
-    //TODO: оптимизировать функцию
     // Получает операции за указанный период времени
     func getRecords(for period: DatePeriods, type: RecordType, step: Int = 0, categoryID: Int? = nil) -> [Record] {
         let calendar = Calendar.current
@@ -50,7 +49,7 @@ final class Records {
         }
         
         // Если выбрана категория, фильтруем по категории
-        if let category = categoryID {
+        if let categoryID = categoryID {
             records = records.filter { $0.categoryID == categoryID }
         }
         

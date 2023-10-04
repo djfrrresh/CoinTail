@@ -12,6 +12,10 @@ extension TransfersHistoryVC {
     
     func sortTransfers() {
         transfers = Transfers.shared.transfersHistory
+        
+        transfers.sort { l, r in
+            return l.date > r.date
+        }
     }
     
 }

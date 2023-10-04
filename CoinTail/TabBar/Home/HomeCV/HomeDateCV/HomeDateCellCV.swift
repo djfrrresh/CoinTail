@@ -27,7 +27,7 @@ extension HomeDateCell: UICollectionViewDataSource, UICollectionViewDelegate, UI
             withReuseIdentifier: DateCVCell.id,
             for: indexPath
         ) as? DateCVCell else {
-            fatalError("Unable to dequeue DateCVCell.")
+            return UICollectionViewCell()
         }
         
         cell.periodLabel.text = periods[indexPath.row]

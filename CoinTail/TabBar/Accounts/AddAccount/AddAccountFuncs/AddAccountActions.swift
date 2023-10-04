@@ -48,23 +48,18 @@ extension AddAccountVC {
         }
     }
     
-    // TODO: вынести алерты 
     @objc func removeAccount() {
         guard let id = accountID else { return }
-        
-        let confirmAction = UIAlertAction(title: "Confirm".localized(), style: .default) { [weak self] _ in
+
+        confirmationAlert(
+            title: "Delete account".localized(),
+            message: "Are you sure?".localized(),
+            confirmActionTitle: "Confirm".localized()
+        ) { [weak self] in
             Accounts.shared.deleteAccount(for: id)
             
             self?.navigationController?.popToRootViewController(animated: true)
         }
-        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel)
-        
-        let alertView = UIAlertController(title: "Delete operation".localized(), message: "Are you sure?".localized(), preferredStyle: .alert)
-        
-        alertView.addAction(confirmAction)
-        alertView.addAction(cancelAction)
-
-        self.present(alertView, animated: true)
     }
     
     @objc func changeCurrency() {

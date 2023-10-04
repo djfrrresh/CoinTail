@@ -16,7 +16,7 @@ extension SelectCategoryVC: UICollectionViewDataSource {
     
     // Количество категорий
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return Categories.shared.categories[addOperationVCSegment]?.count ?? 0
+        return categories[operationSegmentType]?.count ?? 0
     }
 
     // Количество подкатегорий
@@ -24,7 +24,8 @@ extension SelectCategoryVC: UICollectionViewDataSource {
         if isParental {
             return 0
         } else {
-            return Categories.shared.categories[addOperationVCSegment]?[section].subcategories?.count ?? 0
+            let subcategoriesCount = categories[operationSegmentType]?[section].subcategories?.count
+            return subcategoriesCount ?? 0
         }
     }
     
@@ -34,10 +35,10 @@ extension SelectCategoryVC: UICollectionViewDataSource {
             withReuseIdentifier: SelectCategoryCell.id,
             for: indexPath
         ) as? SelectCategoryCell else {
-            fatalError("Unable to dequeue SelectCategoryCell.")
+            return UICollectionViewCell()
         }
                 
-        guard let subcategoryID = Categories.shared.categories[addOperationVCSegment]?[indexPath.section].subcategories?[indexPath.row] else { return cell }
+        guard let subcategoryID = categories[operationSegmentType]?[indexPath.section].subcategories?[indexPath.row] else { return cell }
         
         let subcategoryData = Categories.shared.getSubcategory(for: subcategoryID)
         
@@ -58,15 +59,15 @@ extension SelectCategoryVC: UICollectionViewDataSource {
             withReuseIdentifier: SelectCategoryCell.id,
             for: indexPath
         ) as? SelectCategoryCell else {
-            fatalError("Unable to dequeue SelectCategoryCell.")
+            return UICollectionViewCell()
         }
         
         headerView.tag = indexPath.section
         headerView.headerSettings()
         
-        guard let categoryLabel = Categories.shared.categories[addOperationVCSegment]?[indexPath.section].name,
-              let categoryImage = Categories.shared.categories[addOperationVCSegment]?[indexPath.section].image,
-              let categoryColor = Categories.shared.categories[addOperationVCSegment]?[indexPath.section].color else { return headerView }
+        guard let categoryLabel = categories[operationSegmentType]?[indexPath.section].name,
+              let categoryImage = categories[operationSegmentType]?[indexPath.section].image,
+              let categoryColor = categories[operationSegmentType]?[indexPath.section].color else { return headerView }
         
         headerView.categoryLabel.text = categoryLabel
         headerView.categoryImage.image = categoryImage
@@ -80,11 +81,11 @@ extension SelectCategoryVC: UICollectionViewDataSource {
     
     @objc func tapDetected(_ sender: UITapGestureRecognizer) {
         guard let headerViewID = sender.view?.tag,
-              let categoryID = Categories.shared.categories[addOperationVCSegment]?[headerViewID].id else { return }
+              let categoryID = categories[operationSegmentType]?[headerViewID].id else { return }
         
         categoryDelegate?.sendCategoryData(id: categoryID)
                 
-        // TODO: переделать закрытие поп-ап контроллера и навигационного
+        // TODO: переделать закрытие поп-ап и навигационного контроллера после редизайна
         navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
     }

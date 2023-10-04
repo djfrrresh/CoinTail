@@ -80,5 +80,3 @@ final class SettingsCell: UICollectionViewCell {
     }
     
 }
-
-

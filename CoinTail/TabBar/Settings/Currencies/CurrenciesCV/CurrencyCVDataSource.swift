@@ -34,7 +34,7 @@ extension CurrenciesVC: UICollectionViewDataSource {
             withReuseIdentifier: CurrencyCell.id,
             for: indexPath
         ) as? CurrencyCell else {
-            fatalError("Unable to dequeue CurrencyCell.")
+            return UICollectionViewCell()
         }
         
         var currencyCode, currencyName: String
@@ -81,7 +81,7 @@ extension CurrenciesVC: UICollectionViewDataSource {
             withReuseIdentifier: CurrencyCVHeader.id,
             for: indexPath
         ) as? CurrencyCVHeader else {
-            fatalError("Unable to dequeue CurrencyCVHeader.")
+            return UICollectionViewCell()
         }
         
         var text: String

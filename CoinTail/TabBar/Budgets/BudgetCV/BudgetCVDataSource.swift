@@ -25,23 +25,25 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
             withReuseIdentifier: BudgetCell.id,
             for: indexPath
         ) as? BudgetCell else {
-            fatalError("Unable to dequeue BudgetCell.")
+            return UICollectionViewCell()
         }
         
         let section = daySections[indexPath.section]
         let budgetData: Budget = section.budgets[indexPath.row]
+        let categoryID = budgetData.categoryID
+        guard let category = Categories.shared.getCategory(for: categoryID) else { return cell }
         let sumByCategory = abs(Records.shared.getAmount(
             date: budgetData.startDate,
             untilDate: budgetData.untilDate,
-            categoryID: budgetData.category.id
+            categoryID: categoryID
         ) ?? 0)
         let percentText = cell.calculatePercent(sum: sumByCategory, total: budgetData.amount)
         
         cell.calculateProgressView(sum: sumByCategory, total: budgetData.amount)
-        cell.categoryLabel.text = budgetData.category.name
+        cell.categoryLabel.text = category.name
         cell.amountLabel.text = "\(sumByCategory) / \(budgetData.amount)"
-        cell.categoryImage.image = budgetData.category.image
-        cell.backImage.backgroundColor = budgetData.category.color
+        cell.categoryImage.image = category.image
+        cell.backImage.backgroundColor = category.color
         cell.currencyLabel.text = "\(budgetData.currency) (\(percentText)%)"
         
         return cell
@@ -59,7 +61,7 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
             withReuseIdentifier: BudgetCVHeader.id,
             for: indexPath
         ) as? BudgetCVHeader else {
-            fatalError("Unable to dequeue BudgetCVHeader.")
+            return UICollectionViewCell()
         }
         
         let section = daySections[indexPath.section]

@@ -14,9 +14,24 @@ final class Transfers {
     
     // История переводов между счетами
     var transfersHistory: [TransferHistory] = [
-        TransferHistory(sourceAccount: "Cash", targetAccount: "Card 1", amount: 300),
-        TransferHistory(sourceAccount: "Card 1", targetAccount: "Card 2", amount: 1000),
-        TransferHistory(sourceAccount: "Card 2", targetAccount: "Card 1", amount: 50)
+        TransferHistory(
+            sourceAccount: "Cash",
+            targetAccount: "Card 1",
+            amount: 300,
+            date: Date()
+        ),
+        TransferHistory(
+            sourceAccount: "Card 1",
+            targetAccount: "Card 2",
+            amount: 1000,
+            date: Date()
+        ),
+        TransferHistory(
+            sourceAccount: "Card 2",
+            targetAccount: "Card 1",
+            amount: 50,
+            date: Date()
+        )
     ]
     
     // Добавить новый перевод

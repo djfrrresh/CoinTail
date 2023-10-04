@@ -12,8 +12,10 @@ class Notifications {
     
     static let shared = Notifications()
 
+    // Вкл / выкл
     var toggleStatus: Bool = false
     
+    // Выбранный период
     var periodSwitcher: NotificationPeriods = .day
     
 }

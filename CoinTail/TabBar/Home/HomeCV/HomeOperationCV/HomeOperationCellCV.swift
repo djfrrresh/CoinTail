@@ -29,7 +29,7 @@ extension HomeOperationCell: UICollectionViewDataSource, UICollectionViewDelegat
             withReuseIdentifier: OperationCVCell.id,
             for: indexPath
         ) as? OperationCVCell else {
-            fatalError("Unable to dequeue DateCVCell.")
+            return UICollectionViewCell()
         }
         
         let recordData: Record
@@ -88,7 +88,7 @@ extension HomeOperationCell: UICollectionViewDataSource, UICollectionViewDelegat
             withReuseIdentifier: OperationCVHeader.id,
             for: indexPath
         ) as? OperationCVHeader else {
-            fatalError("Unable to dequeue OperationCVHeader.")
+            return UICollectionViewCell()
         }
         
         let section = monthSectionsCellData[indexPath.section]

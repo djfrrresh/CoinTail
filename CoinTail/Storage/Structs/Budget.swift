@@ -9,7 +9,7 @@ import Foundation
 
 
 struct Budget: Equatable {
-    var category: Category
+    var categoryID: Int
     var amount: Double
     var startDate: Date
     var untilDate: Date

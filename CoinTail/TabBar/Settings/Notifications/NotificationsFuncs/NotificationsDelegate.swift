@@ -13,15 +13,17 @@ extension NotificationsVC: UNUserNotificationCenterDelegate {
     
     // Получение уведомления при открытом приложении
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .sound])
+        completionHandler([.list, .banner, .sound])
         
         print(#function)
     }
     
-    // TODO: сделать перенос на экран с добавлением операции
     // Срабатывает при нажатии на уведомление
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print(#function)
+        let vc = AddOperationVC(segmentIndex: 0)
+        vc.hidesBottomBarWhenPushed = true // Спрятать TabBar
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

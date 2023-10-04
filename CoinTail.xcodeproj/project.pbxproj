@@ -99,6 +99,8 @@
 		568EF0872AB4C09F00EB042D /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0862AB4C09F00EB042D /* Notifications.swift */; };
 		568EF0892ABB439100EB042D /* SelectCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0882ABB439100EB042D /* SelectCategoryCell.swift */; };
 		568EF08B2ABC93B500EB042D /* Subcategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF08A2ABC93B500EB042D /* Subcategory.swift */; };
+		569E52282ACD887900A4FCA7 /* AmountValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E52272ACD887900A4FCA7 /* AmountValidationHelper.swift */; };
+		569E522A2ACDB59500A4FCA7 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E52292ACDB59500A4FCA7 /* KeyboardManager.swift */; };
 		56DBB6CE2A3724BC0087271D /* HomeOperationCellCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */; };
 		56DBB6DD2A3728600087271D /* HomeOperationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6DC2A3728600087271D /* HomeOperationCell.swift */; };
 		56DBB6EA2A372E220087271D /* HomeDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6E92A372E220087271D /* HomeDateCell.swift */; };
@@ -237,6 +239,8 @@
 		568EF0862AB4C09F00EB042D /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		568EF0882ABB439100EB042D /* SelectCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryCell.swift; sourceTree = "<group>"; };
 		568EF08A2ABC93B500EB042D /* Subcategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subcategory.swift; sourceTree = "<group>"; };
+		569E52272ACD887900A4FCA7 /* AmountValidationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountValidationHelper.swift; sourceTree = "<group>"; };
+		569E52292ACDB59500A4FCA7 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOperationCellCV.swift; sourceTree = "<group>"; };
 		56DBB6DC2A3728600087271D /* HomeOperationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOperationCell.swift; sourceTree = "<group>"; };
 		56DBB6E92A372E220087271D /* HomeDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDateCell.swift; sourceTree = "<group>"; };
@@ -400,15 +404,8 @@
 		560AFC1A2A1BEE4E0054B502 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				569E522B2ACDB87000A4FCA7 /* Services */,
 				560AFC412A1D09030054B502 /* Structs */,
-				560AFC1B2A1BEE640054B502 /* Records.swift */,
-				56DBB7092A3B44090087271D /* Categories.swift */,
-				56DBB6F62A3893A80087271D /* Colors.swift */,
-				56EFDFE72A54502E003A6A45 /* Budgets.swift */,
-				568EF02D2AA60A5000EB042D /* Accounts.swift */,
-				568EF0612AAFB44300EB042D /* Transfers.swift */,
-				568EF0722AB1DA3E00EB042D /* Currencies.swift */,
-				568EF0862AB4C09F00EB042D /* Notifications.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -735,6 +732,23 @@
 			path = NotificationsFuncs;
 			sourceTree = "<group>";
 		};
+		569E522B2ACDB87000A4FCA7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				568EF02D2AA60A5000EB042D /* Accounts.swift */,
+				569E52272ACD887900A4FCA7 /* AmountValidationHelper.swift */,
+				56EFDFE72A54502E003A6A45 /* Budgets.swift */,
+				56DBB7092A3B44090087271D /* Categories.swift */,
+				56DBB6F62A3893A80087271D /* Colors.swift */,
+				568EF0722AB1DA3E00EB042D /* Currencies.swift */,
+				569E52292ACDB59500A4FCA7 /* KeyboardManager.swift */,
+				568EF0612AAFB44300EB042D /* Transfers.swift */,
+				568EF0862AB4C09F00EB042D /* Notifications.swift */,
+				560AFC1B2A1BEE640054B502 /* Records.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		56DBB6CB2A3358F10087271D /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -1049,6 +1063,7 @@
 				568EF0332AA6116900EB042D /* AddAccountVC.swift in Sources */,
 				56DBB71F2A3B641E0087271D /* CreateCategoryUIFuncs.swift in Sources */,
 				56DBB7012A3B36D30087271D /* AddOperationUIFuncs.swift in Sources */,
+				569E52282ACD887900A4FCA7 /* AmountValidationHelper.swift in Sources */,
 				568EF0232AA607E000EB042D /* AccountsUIFuncs.swift in Sources */,
 				56EFDFE62A535346003A6A45 /* AddBudgetUXFuncs.swift in Sources */,
 				56DBB7052A3B3A370087271D /* AddOperationUXFuncs.swift in Sources */,
@@ -1154,6 +1169,7 @@
 				568EF0732AB1DA3E00EB042D /* Currencies.swift in Sources */,
 				5642DB2B2A4F313A00ADF475 /* Budget.swift in Sources */,
 				568EF0302AA60CCA00EB042D /* AccountsUXFuncs.swift in Sources */,
+				569E522A2ACDB59500A4FCA7 /* KeyboardManager.swift in Sources */,
 				56DBB6DD2A3728600087271D /* HomeOperationCell.swift in Sources */,
 				560AFBF02A13C1DF0054B502 /* BasicVC.swift in Sources */,
 				568EF07F2AB3BAD000EB042D /* NotificationsUIFuncs.swift in Sources */,

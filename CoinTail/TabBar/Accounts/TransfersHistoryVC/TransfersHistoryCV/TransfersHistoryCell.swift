@@ -30,6 +30,17 @@ class TransfersHistoryCell: UICollectionViewCell {
         return imageView
     }()
     
+    let headerDF: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy"
+        
+        return formatter
+    }()
+    
+    let dateLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
     let sourceAccountLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
@@ -58,6 +69,7 @@ class TransfersHistoryCell: UICollectionViewCell {
         backgroundColor = .clear
                 
         addSubview(backView)
+        addSubview(dateLabel)
         
         backView.addSubview(amountLabel)
         backView.addSubview(arrowImage)
@@ -72,7 +84,12 @@ class TransfersHistoryCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backView.easy.layout(Edges())
+        backView.easy.layout([
+            Left(),
+            Right(),
+            Bottom(),
+            Height(60)
+        ])
         
         sourceAccountLabel.easy.layout([
             CenterY(),
@@ -86,19 +103,24 @@ class TransfersHistoryCell: UICollectionViewCell {
         
         amountLabel.easy.layout([
             CenterX(),
-            Top(8).to(self, .top)
+            CenterY(-10)
+        ])
+        
+        dateLabel.easy.layout([
+            Top(),
+            Left()
         ])
         
         arrowImage.easy.layout([
             CenterX(),
-            Top(4).to(amountLabel, .bottom)
+            CenterY(10)
         ])
     }
     
     static func size() -> CGSize {
         return .init(
             width: UIScreen.main.bounds.width - 16 - 16,
-            height: 60
+            height: 80
         )
     }
     

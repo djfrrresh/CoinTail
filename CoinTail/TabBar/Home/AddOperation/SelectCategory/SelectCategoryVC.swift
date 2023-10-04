@@ -11,8 +11,11 @@ import EasyPeasy
 
 class SelectCategoryVC: BasicVC {
     
+    let categories = Categories.shared.categories
+    
     weak var subcategoryDelegate: SendSubcategoryID? // Передает подкатегорию
     weak var categoryDelegate: SendCategoryID? // Передает подкатегорию
+    
     var isParental: Bool = false
     var section: Int?
             
@@ -46,14 +49,14 @@ class SelectCategoryVC: BasicVC {
         textColor: .black
     )
             
-    var addOperationVCSegmentType: String?
-    var addOperationVCSegment: RecordType {
-        RecordType(rawValue: addOperationVCSegmentType ?? "Expense") ?? .expense
+    var rawSegmentType: String?
+    var operationSegmentType: RecordType {
+        RecordType(rawValue: rawSegmentType ?? "Expense") ?? .expense
     }
     
     public required init(segmentTitle: String, isParental: Bool) {
         // Получаем тип операции из AddOperationVC для отображения категорий
-        self.addOperationVCSegmentType = segmentTitle
+        self.rawSegmentType = segmentTitle
         self.isParental = isParental
         
         newCategoryButton.isHidden = isParental

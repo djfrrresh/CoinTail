@@ -23,7 +23,7 @@ extension AccountsTransferVC: UICollectionViewDataSource {
             withReuseIdentifier: AccountCell.id,
             for: indexPath
         ) as? AccountCell else {
-            fatalError("Unable to dequeue AccountCell.")
+            return UICollectionViewCell()
         }
         
         let accountData: Account = accountsArr[indexPath.row]

@@ -23,7 +23,7 @@ extension TransfersHistoryVC: UICollectionViewDataSource {
             withReuseIdentifier: TransfersHistoryCell.id,
             for: indexPath
         ) as? TransfersHistoryCell else {
-            fatalError("Unable to dequeue TransfersHistoryCell.")
+            return UICollectionViewCell()
         }
         
         let transferData: TransferHistory = transfers[indexPath.row]
@@ -31,6 +31,7 @@ extension TransfersHistoryVC: UICollectionViewDataSource {
         cell.amountLabel.text = "\(transferData.amount)"
         cell.sourceAccountLabel.text = transferData.sourceAccount
         cell.targetAccountLabel.text = transferData.targetAccount
+        cell.dateLabel.text = cell.headerDF.string(from: transferData.date)
         
         return cell
     }

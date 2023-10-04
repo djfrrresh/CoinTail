@@ -19,7 +19,7 @@ extension NotificationsVC {
                 
                 guard granted else {
                     DispatchQueue.main.async {
-                        strongSelf.permissonAlert()
+                        strongSelf.notificationsPermission()
                         
                         strongSelf.onOffToggle.isOn = false
                     }
@@ -45,6 +45,7 @@ extension NotificationsVC {
             // Отключение уведомлений по идентификатору
             notificationCenter.removePendingNotificationRequests(withIdentifiers: ["operationNotifications"])
             
+            // Сохранить в настройки приложения положение выключателя
             Notifications.shared.toggleStatus = onOffToggle.isOn
         }
     }
@@ -56,21 +57,18 @@ extension NotificationsVC {
         Notifications.shared.periodSwitcher = notificationSegment
     }
     
-    private func permissonAlert() {
-        let settingsAction = UIAlertAction(title: "Go to Settings", style: .default) { _ in
+    // Проверка на то, включены ли уведомления в настройках
+    private func notificationsPermission() {
+        confirmationAlert(
+            title: "Error",
+            message: "You need to enable notifications in settings",
+            confirmActionTitle: "Go to Settings"
+        ) {
             let isRegisteredForRemoteNotifications = UIApplication.shared.isRegisteredForRemoteNotifications
             if !isRegisteredForRemoteNotifications {
                 UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
             }
         }
-        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel)
-        
-        let alertView = UIAlertController(title: "Error", message: "You need to enable notifications in settings", preferredStyle: .alert)
-        
-        alertView.addAction(settingsAction)
-        alertView.addAction(cancelAction)
-        
-        self.present(alertView, animated: true)
     }
     
 }

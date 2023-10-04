@@ -63,7 +63,7 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
         case 2:
             return HomeOperationCell.id
         default:
-            fatalError("no section")
+            return ""
         }
     }
 
@@ -76,7 +76,7 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
                 withReuseIdentifier: HomeDateCell.id,
                 for: indexPath
             ) as? HomeDateCell else {
-                fatalError("Unable to dequeue HomeSelectedDateCell.")
+                return UICollectionViewCell()
             }
             
             cell.periodDelegate = self
@@ -88,7 +88,8 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: HomeCategoryCell.id,
                 for: indexPath
-            ) as? HomeCategoryCell else { fatalError("Unable to dequeue HomeCategoryCell.")
+            ) as? HomeCategoryCell else {
+                return UICollectionViewCell()
             }
             
             let records = Records.shared.getRecords(for: period, type: homeSegment, step: currentStep, categoryID: categorySort?.id)
@@ -124,7 +125,8 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: HomeOperationCell.id,
                 for: indexPath
-            ) as? HomeOperationCell else { fatalError("Unable to dequeue HomeOperationCell.")
+            ) as? HomeOperationCell else {
+                return UICollectionViewCell()
             }
 
             cell.monthSectionsCellData = monthSections
@@ -132,7 +134,7 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 
             return cell
         default:
-            fatalError("no section")
+            return UICollectionViewCell()
         }
     }
     
@@ -146,7 +148,7 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
         case HomeOperationCell.id:
             return .init(top: 0, left: 0, bottom: 0, right: 0)
         default:
-            fatalError("no section")
+            return .init(top: 0, left: 0, bottom: 0, right: 0)
         }
     }
     
@@ -163,7 +165,7 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
         case HomeOperationCell.id:
             return HomeOperationCell.size(data: monthSections)
         default:
-            fatalError("no section")
+            return CGSize(width: 0, height: 0)
         }
     }
     

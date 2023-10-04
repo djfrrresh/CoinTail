@@ -11,6 +11,24 @@ import EasyPeasy
 
 extension AddBudgetVC {
     
+    func setupUI(with budget: Budget) {
+        periodSwitcher.isHidden = true
+
+        // Сумма
+        budgetAmountTF.text = "\(budget.amount)"
+        
+        // Категория
+        if let categoryName = Categories.shared.getCategory(for: budget.categoryID)?.name {
+            categoryButton.setTitle(categoryName, for: .normal)
+        }
+        budgetCategoryID = budget.categoryID
+        
+        // Счет
+        currencyButton.setTitle("\(budget.currency)", for: .normal)
+                        
+        saveBudgetButton.setTitle("Edit Budget".localized(), for: .normal)
+    }
+    
     func setAddBudgetStack() {
         let amountStack = UIStackView()
         setStack(

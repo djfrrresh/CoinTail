@@ -20,6 +20,21 @@ extension BasicVC {
         self.present(alertView, animated: true)
     }
     
+    // Алерт с подтверждением действия
+    func confirmationAlert(title: String, message: String, confirmActionTitle: String, confirmActionHandler: @escaping () -> Void) {
+        let confirmAction = UIAlertAction(title: confirmActionTitle, style: .default) { _ in
+            confirmActionHandler()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel)
+        
+        let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alertView.addAction(confirmAction)
+        alertView.addAction(cancelAction)
+        
+        self.present(alertView, animated: true)
+    }
+    
     // Создание стака между элементами
     func setStack(stack: UIStackView, axis: NSLayoutConstraint.Axis, spacing: CGFloat, alignment: UIStackView.Alignment, distribution: UIStackView.Distribution, viewsArray: [UIView]) {
         stack.axis = axis
@@ -32,7 +47,7 @@ extension BasicVC {
         }
     }
     
-    // Убрать клавиатуру при нажатии на экран
+    // Убрать клавиатуру при нажатии на экран за пределы клавиатуры
     func setupHideKeyboardOnTap() {
         self.view.addGestureRecognizer(endEditingRecognizer())
         navigationController?.navigationBar.addGestureRecognizer(endEditingRecognizer())

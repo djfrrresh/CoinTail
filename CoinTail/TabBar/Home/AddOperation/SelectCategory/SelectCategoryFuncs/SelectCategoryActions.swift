@@ -12,7 +12,7 @@ extension SelectCategoryVC {
     
     // Открывается окно с созданием новой категории
     @objc func goToCreateCategoryVC() {
-        let vc = CreateCategoryVC(segmentTitle: addOperationVCSegmentType ?? "Expense")
+        let vc = CreateCategoryVC(segmentTitle: rawSegmentType ?? "Expense")
         vc.addNewCategoryDelegate = self
         vc.addNewSubcategoryDelegate = self
         vc.modalPresentationStyle = .overCurrentContext
