@@ -9,48 +9,52 @@ import UIKit
 
 
 // В поле Amount подставляются только цифры и символ "."
-extension AddOperationVC: UITextFieldDelegate {
+extension AddOperationVC {
     
     // range - размер строки, string - вводимое значение пользователем
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        // Позволяет не писать символы в текстовое поле с датой
-        guard textField != dateTF else { return false }
-        
-        // Позволяет удалить символы в строке, если достигнута максимальная длина (8)
-        guard !string.isEmpty else { return true }
-        
-        // Принимаемые значения для текстового поля Amount
-        let allowedCharactersSet = CharacterSet(charactersIn: ".1234567890")
-        let typedCharacterSet = CharacterSet(charactersIn: string)
-        let allowedCharacters = allowedCharactersSet.isSuperset(of: typedCharacterSet)
-        
-        // Проверка на тип вводимого значения
-        guard allowedCharactersSet.isSuperset(of: typedCharacterSet), let textFieldString = textField.text, let range = Range(range, in: textFieldString) else {
+        if textField == amountTF {
+            // Позволяет удалить символы в строке, если достигнута максимальная длина (8)
+            guard !string.isEmpty else { return true }
+            
+            // Принимаемые значения для текстового поля Amount
+            let allowedCharactersSet = CharacterSet(charactersIn: ".1234567890")
+            let typedCharacterSet = CharacterSet(charactersIn: string)
+            let allowedCharacters = allowedCharactersSet.isSuperset(of: typedCharacterSet)
+            
+            // Проверка на тип вводимого значения
+            guard allowedCharactersSet.isSuperset(of: typedCharacterSet), let textFieldString = textField.text, let range = Range(range, in: textFieldString) else {
+                return false
+            }
+            
+            // Заменяет начальные нули в поле на вводимый текст
+            if textField.text == "0.00" || textField.text == "-0.00" {
+                textField.text = addOperationSegment == .income ? string : "-\(string)"
+            }
+            
+            // Все введенные значения пользователем
+            let allString = textFieldString.replacingCharacters(in: range, with: string)
+            // Проверка на точку и нули в начале строки
+            if allString.starts(with: ".") || allString.starts(with: "0") { return false }
+            
+            // Количество цифр в строке
+            let charactersCount = String(textFieldString).count
+            
+            // Возвращает допустимые значения для строки (цифры и точку)
+            // Длину общей строки не более 8 символов
+            // Длину строки после запятой
+            // Количество точек
+            return maxNumAfterComma(textFieldString: textFieldString)
+            && maxDots(textFieldString: textFieldString, string: string)
+            && allowedCharacters
+            && charactersCount <= 8
+        } else if textField == dateTF {
+            // Позволяет не писать символы в текстовое поле с датой
             return false
+        } else {
+            // Доступность для ввода текста в других TextField
+            return true
         }
-        
-        // Заменяет начальные нули в поле на вводимый текст
-        if textField.text == "0.00" || textField.text == "-0.00" {
-            textField.text = addOperationSegment == .income ? string : "-\(string)"
-        }
-        
-        // Все введенные значения пользователем
-        let allString = textFieldString.replacingCharacters(in: range, with: string)
-        // Проверка на точку и нули в начале строки
-        if allString.starts(with: ".") || allString.starts(with: "0") { return false }
-        
-        // Количество цифр в строке
-        let charactersCount = String(textFieldString).count
-
-        // Возвращает допустимые значения для строки (цифры и точку)
-        // Длину общей строки не более 8 символов
-        // Длину строки после запятой
-        // Количество точек
-        return maxNumAfterComma(textFieldString: textFieldString)
-        && maxDots(textFieldString: textFieldString, string: string)
-        && allowedCharacters
-        && charactersCount <= 8
     }
     
     // Позволять не удалять минус из поля Amount

@@ -21,13 +21,13 @@ final class AddAccountVC: BasicVC {
         defaultText: "0",
         background: .lightGray.withAlphaComponent(0.2),
         keyboard: .numberPad,
-        placeholder: "Enter your amount".localized()
+        placeholder: "Enter amount".localized()
     )
     let accountNameTF = UITextField(
         defaultText: "",
         background: .lightGray.withAlphaComponent(0.2),
         keyboard: .default,
-        placeholder: "Enter account name".localized()
+        placeholder: "For example: Cash".localized()
     )
     
     let currencyButton = UIButton(
@@ -54,7 +54,7 @@ final class AddAccountVC: BasicVC {
         saveAccountButton.setTitle("Edit Account".localized(), for: .normal)
         currencyButton.setTitle("\(account.currency)", for: .normal)
 
-        self.title = "Editing account".localized()
+        self.title = "Editing Account".localized()
 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .trash,
@@ -82,6 +82,7 @@ final class AddAccountVC: BasicVC {
         super.viewDidLoad()
                 
         accountAmountTF.delegate = self
+        accountNameTF.delegate = self
         
         setAddAccountStack()
     }

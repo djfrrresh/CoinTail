@@ -7,112 +7,152 @@
 */
 
 // General
-"Amount" = "Amount";
-"Error" = "Error";
-"Confirm" = "Confirm";
-"Cancel" = "Cancel";
-"Are you sure?" = "Are you sure?";
+"Amount"               = "Amount";
+"Error"                = "Error";
+"Confirm"              = "Confirm";
+"Cancel"               = "Cancel";
+"Are you sure?"        = "Are you sure?";
+"Select category"      = "Select category";
+"No category selected" = "No category selected";
+"Week"                 = "Week";
+"Enter amount"         = "Enter amount";
 
 // RecordType
 "Expense" = "Expense";
-"Income" = "Income";
-"Total" = "Total";
+"Income"  = "Income";
+"Total"   = "Total";
 
 // Categories
 /// income
-"Salary" = "Salary";
+"Salary"         = "Salary";
 "Debt repayment" = "Debt repayment";
-"Side job" = "Side job";
+"Side job"       = "Side job";
 "Pleasant finds" = "Pleasant finds";
 /// expense
-"Transport" = "Transport";
-"Groceries" = "Groceries";
-"Cloths" = "Cloths";
-"Gym" = "Gym";
-"Service" = "Service";
-"Subscription" = "Subscription";
-"Health" = "Health";
-"Cafe" = "Cafe";
+"Transport"      = "Transport";
+"Groceries"      = "Groceries";
+"Cloths"         = "Cloths";
+"Gym"            = "Gym";
+"Service"        = "Service";
+"Subscription"   = "Subscription";
+"Health"         = "Health";
+"Cafe"           = "Cafe";
+
+// Subcategories
+/// income
+"First Job"     = "First Job";
+"Second Job"    = "Second Job";
+"Jacket pocket" = "Jacket pocket";
+/// expense
+"Bus"           = "Bus";
+"Walmart"       = "Walmart";
+"Spar"          = "Spar";
+
+// Accounts
+"Card 1" = "Card 1";
+"Card 2" = "Card 2";
+"Cash"   = "Cash";
 
 // TabBar
-"Home" = "Home";
-"Budgets" = "Budgets";
+"Home"     = "Home";
+"Budgets"  = "Budgets";
+"Accounts" = "Accounts";
 "Settings" = "Settings";
 
 // HomeVC
 /// Title
 "Total balance:" = "Total balance:";
 /// Periods CV
-"All the time" = "All the time";
-"Year" = "Year";
-"Quarter" = "Quarter";
-"3 months" = "3 months";
-"Month" = "Month";
+"All the time"   = "All the time";
+"Year"           = "Year";
+"Quarter"        = "Quarter";
+"3 months"       = "3 months";
+"Month"          = "Month";
 
 // BudgetsVC
-"Active" = "Active";
+"Active"     = "Active";
 "Non active" = "Non active";
-/// Title
-"Budgets" = "Budgets";
 
 // AddBudgetVC
-"Select period" = "Select period";
-"Enter your amount" = "Enter your amount";
-"Save Budget" = "Save Budget";
-"Edit Budget" = "Edit Budget";
-"Select category" = "Select category";
-"Week" = "Week";
+"Save Budget"                                 = "Save Budget";
+"Edit Budget"                                 = "Edit Budget";
 /// Title
-"Add new Budget" = "Add new Budget";
-"Editing budget" = "Editing budget";
+"Add new Budget"                              = "Add new Budget";
+"Editing budget"                              = "Editing budget";
 /// Alert
-"Missing value in amount field" = "Missing value in amount field";
-"No category selected" = "No category selected";
+"Missing value in amount field"               = "Missing value in amount field";
 "There is already a budget for this category" = "There is already a budget for this category";
-"Delete budget" = "Delete budget";
+"Delete budget"                               = "Delete budget";
 
 // AddOperationVC
-"Description" = "Description";
-"Date" = "Date";
-"Enter your value" = "Enter your value";
-"For example: Bought in the store" = "For example: Bought in the store";
-"Today" = "Today";
-"Select date" = "Select date";
-"Select category" = "Select category";
-"Save operation" = "Save operation";
+"Description"                               = "Description";
+"Date"                                      = "Date";
+"For example: Bought in the store"          = "For example: Bought in the store";
+"Today"                                     = "Today";
+"Save operation"                            = "Save operation";
+"Edit operation"                            = "Edit operation";
+"Select account"                            = "Select account";
 /// Title
-"Add new operation" = "Add new operation";
-"Editing operation" = "Editing operation";
+"Add new operation"                         = "Add new operation";
+"Editing operation"                         = "Editing operation";
 /// Alert
-"Missing value in amount field" = "Missing value in amount field";
-"No category selected" = "No category selected";
-"Repeat last operation" = "Repeat last operation";
+"Missing value in amount field"             = "Missing value in amount field";
+"Repeat last operation"                     = "Repeat last operation";
 "Do you want to repeat the last operation?" = "Do you want to repeat the last operation?";
-"Delete operation" = "Delete operation";
-
-// SelectCategoryVC
-/// Title
-"Select category" = "Select category";
+"Delete operation"                          = "Delete operation";
 
 // CreateCategoryVC
 "Missing category name or no icon selected!" = "Missing category name or no icon selected!";
-"Type a category name" = "Type a category name";
-"Add category" = "Add category";
-"Select color" = "Select color";
-"New category" = "New category";
-"Category" = "Category";
+"Type a category name"                       = "Type a category name";
+"Add category"                               = "Add category";
+"Select color"                               = "Select color";
+"New category"                               = "New category";
+"Category"                                   = "Category";
+"Select parental category"                   = "Select parental category";
 /// Title
-"Add new category" = "Add new category";
+"Add new category"                           = "Add new category";
 
 // SettingsVC
-"Currency" = "Currency";
+"Currency"      = "Currency";
 "Notifications" = "Notifications";
-"Rate app" = "Rate app";
-"About app" = "About app";
-"Delete data" = "Delete data";
-/// Title
-"Settings" = "Settings";
+"Rate app"      = "Rate app";
+"About app"     = "About app";
+"Delete data"   = "Delete data";
 
-// AccountsVC
+// AddAccountVC
+"Account name"      = "Account name";
+"For example: Cash" = "For example: Cash";
+"Save Account"      = "Save Account";
+"Edit Account"      = "Edit Account";
 /// Title
-"Accounts" = "Accounts";
+"Add new Account"   = "Add new Account";
+"Editing Account"   = "Editing Account";
+
+// AccountsTransferVC
+"First Account"             = "First Account";
+"Second Account"            = "Second Account";
+"Save Transfer"             = "Save Transfer";
+/// Title
+"Transfer between accounts" = "Transfer between accounts";
+
+// TransfersHistoryVC
+/// Title
+"Transfers history" = "Transfers history";
+
+// CurrenciesVC
+"Type USD or Dollar for search" = "Type USD or Dollar for search";
+"Favourites"                    = "Favourites";
+"All currencies"                = "All currencies";
+/// Title
+"Currencies"                    = "Currencies";
+
+// NotificationsVC
+"Enable / disable reminder" = "Enable / disable reminder";
+"Select period"             = "Select period";
+"Day"                       = "Day";
+/// Title
+"Notifications"             = "Notifications";
+
+// AboutAppVC
+"CoinTail is a reliable assistant in accounting for income and expenses, managing accounts and budgets. Convenient charts will help you control your finances" = "CoinTail is a reliable assistant in accounting for income and expenses, managing accounts and budgets. Convenient charts will help you control your finances";
+"Connect with Developer" = "Connect with Developer";

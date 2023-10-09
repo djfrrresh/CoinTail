@@ -19,21 +19,26 @@ extension SettingsVC: UICollectionViewDelegate {
         case 1:
             vc = NotificationsVC()
         case 2:
-            vc = UIViewController()
+            rateApp()
         case 3:
-            vc = UIViewController()
+            vc = AboutAppVC()
         case 4:
-            vc = UIViewController()
+            return
         default:
-            fatalError("no VC")
+            return
         }
         
         if let vc = vc {
-            vc.hidesBottomBarWhenPushed = true
-            
-            navigationController?.pushViewController(vc, animated: true)
-        }
+            if vc == AboutAppVC() {
+                vc.modalPresentationStyle = .overCurrentContext
 
+                self.present(vc, animated: true, completion: nil)
+            } else {
+                vc.hidesBottomBarWhenPushed = true
+                
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
     
 }

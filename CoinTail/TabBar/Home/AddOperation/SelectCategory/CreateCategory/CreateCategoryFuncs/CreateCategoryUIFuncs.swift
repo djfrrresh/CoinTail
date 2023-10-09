@@ -14,7 +14,7 @@ extension CreateCategoryVC {
     func setPopupElements() {
         self.view.addSubview(popUpView)
         popUpView.addSubview(titleLabel)
-        popUpView.addSubview(categoryTF)
+        popUpView.addSubview(categoryNameTF)
         popUpView.addSubview(errorLabel)
         popUpView.addSubview(addButton)
         popUpView.addSubview(createCategoryCV)
@@ -33,7 +33,7 @@ extension CreateCategoryVC {
             Top(10)
         ])
         
-        categoryTF.easy.layout([
+        categoryNameTF.easy.layout([
             Top(10).to(titleLabel, .bottom),
             Height(40),
             Left(20),
@@ -44,7 +44,7 @@ extension CreateCategoryVC {
             Height(50),
             Left(),
             Right(),
-            Top(10).to(categoryTF, .bottom)
+            Top(10).to(categoryNameTF, .bottom)
         ])
         
         selectColorButton.easy.layout([
@@ -77,7 +77,7 @@ extension CreateCategoryVC {
     
     // Анимация вывода ошибки
     func errorAnimate() {
-        if categoryTF.text?.isEmpty == true {
+        if categoryNameTF.text?.isEmpty == true {
             UIView.animate(withDuration: 0.1) { [self] in
                 errorLabel.isHidden = false
                 errorLabel.alpha = 1

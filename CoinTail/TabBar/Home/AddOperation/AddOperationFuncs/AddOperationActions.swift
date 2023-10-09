@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import EasyPeasy
 
 
 extension AddOperationVC {
@@ -29,7 +30,7 @@ extension AddOperationVC {
               let accountText = accountButton.titleLabel?.text,
               let currencyText = currencyButton.titleLabel?.text else { return }
         
-        recordValidation(amount: amount, categoryText: categoryText, accountText: accountText) { [weak self] amount, category in
+        recordValidation(amount: amount, categoryText: categoryText, accountText: accountText) { [weak self] amount, categoryID in
             guard let strongSelf = self else { return }
             guard let dateTFText = strongSelf.dateTF.text else { return }
             
@@ -48,7 +49,7 @@ extension AddOperationVC {
                 date: date,
                 id: Records.shared.recordID,
                 type: strongSelf.addOperationSegment,
-                categoryID: category.id,
+                categoryID: categoryID,
                 accountID: accountID,
                 currency: currency
             )
@@ -203,6 +204,52 @@ extension AddOperationVC {
         currentIndex = Currencies.shared.getNextIndex(currentIndex: currentIndex)
 
         currencyButton.setTitle("\(Currencies.shared.currenciesToChoose()[currentIndex])", for: .normal)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+//        guard let userInfo = notification.userInfo else { return }
+//
+//        let animationDuration = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+//        let keyboardHeight = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
+        
+//        print(keyboardHeight)
+//
+//        print(descriptionTF.superview?.frame.origin.y)
+        
+//        let viewTop = dateTF.frame.origin.y
+//        let viewBottom = viewTop + dateTF.frame.size.height
+//
+//        // Определяем, насколько UIView перекрыт клавиатурой
+//        let overlap = viewBottom - (UIScreen.main.bounds.height - keyboardHeight)
+        
+//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y == 0 {
+//                self.view.frame.origin.y -= keyboardSize.height
+//            }
+//        }
+        
+//        finalStack.easy.layout([
+//            Bottom(keyboardHeight),
+//            Top(-keyboardHeight)
+//        ])
+//
+//        self.view.needsUpdateConstraints()
+//
+//        UIView.animate(withDuration: animationDuration) {
+//            self.view.layoutIfNeeded()
+//        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+//        finalStack.easy.layout([Bottom(10).to(self.view.safeAreaLayoutGuide, .bottom)])
+        
+//        if self.view.frame.origin.y != 0 {
+//            self.view.frame.origin.y = 0
+//        }
+//
+//        UIView.animate(withDuration: 0.2) {
+//            self.view.layoutIfNeeded()
+//        }
     }
     
 }

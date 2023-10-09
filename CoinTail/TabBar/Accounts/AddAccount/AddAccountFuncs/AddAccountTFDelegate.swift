@@ -8,10 +8,14 @@
 import UIKit
 
 
-extension AddAccountVC: UITextFieldDelegate {
+extension AddAccountVC {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        AmountValidationHelper.isValidInput(textField, shouldChangeCharactersIn: range, replacementString: string)
+        if textField == accountAmountTF {
+            return AmountValidationHelper.isValidInput(textField, shouldChangeCharactersIn: range, replacementString: string)
+        } else {
+            return true
+        }
     }
 
 }

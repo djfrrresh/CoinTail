@@ -16,19 +16,19 @@ final class Accounts {
 //    var accounts = [Account]()
     static let account1 = Account(
         id: 0,
-        name: "Cash",
+        name: "Cash".localized(),
         startBalance: 200,
         currency: Currency.USD
     )
     static let account2 = Account(
         id: 1,
-        name: "Card 1",
+        name: "Card 1".localized(),
         startBalance: 1000,
         currency: Currency.RUB
     )
     static let account3 = Account(
         id: 2,
-        name: "Card 2",
+        name: "Card 2".localized(),
         startBalance: 50,
         currency: Currency.USD
     )

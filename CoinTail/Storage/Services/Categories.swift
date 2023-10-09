@@ -137,42 +137,42 @@ final class Categories {
     var subcategories: [Subcategory] = [
         Subcategory(
             id: 0,
-            name: "First Job",
+            name: "First Job".localized(),
             color: Colors.shared.firstJobColor ?? .clear,
             image: UIImage(systemName: "bag.badge.plus"),
             parentCategory: 0
         ),
         Subcategory(
             id: 1,
-            name: "Second Job",
+            name: "Second Job".localized(),
             color: Colors.shared.secondJobColor ?? .clear,
             image: UIImage(systemName: "eurosign"),
             parentCategory: 0
         ),
         Subcategory(
             id: 2,
-            name: "Bus",
+            name: "Bus".localized(),
             color: Colors.shared.busColor ?? .clear,
             image: UIImage(systemName: "bus.fill"),
             parentCategory: 4
         ),
         Subcategory(
             id: 3,
-            name: "Walmart",
+            name: "Walmart".localized(),
             color: Colors.shared.walmartColor ?? .clear,
             image: UIImage(systemName: "basket"),
             parentCategory: 6
         ),
         Subcategory(
             id: 4,
-            name: "Spar",
+            name: "Spar".localized(),
             color: Colors.shared.sparColor ?? .clear,
             image: UIImage(systemName: "cart.badge.questionmark"),
             parentCategory: 6
         ),
         Subcategory(
             id: 5,
-            name: "Jacket pocket",
+            name: "Jacket pocket".localized(),
             color: Colors.shared.jacketPocketColor ?? .clear,
             image: UIImage(systemName: "banknote"),
             parentCategory: 3

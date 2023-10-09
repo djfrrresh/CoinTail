@@ -13,29 +13,35 @@ extension AddOperationVC: SendSubcategoryID, SendAccountID, SendCategoryID {
     func sendCategoryData(id: Int) {
         self.categoryID = id
         
-        let category = Categories.shared.getCategory(for: id)
+        guard let category = Categories.shared.getCategory(for: id) else { return }
         
-        categoryButton.setTitle(category?.name, for: .normal)
+        categoryButton.setTitle(category.name, for: .normal)
     }
     
     func sendSubcategoryData(id: Int) {
         self.subcategoryID = id
         
-        let subcategory = Categories.shared.getSubcategory(for: id)
+        guard let subcategory = Categories.shared.getSubcategory(for: id) else { return }
         
-        categoryButton.setTitle(subcategory?.name, for: .normal)
+        categoryButton.setTitle(subcategory.name, for: .normal)
     }
     
-    func sendAccountData(accountID: Int) {
-        self.accountID = accountID
+    func sendAccountData(id: Int) {
+        self.accountID = id
         
-        guard let account = Accounts.shared.getAccount(for: accountID) else { return }
+        guard let account = Accounts.shared.getAccount(for: id) else { return }
         
         accountButton.setTitle(account.name, for: .normal)
     }
     
     func setCurrency(currencyCode: String) {
         self.currency = Currencies.shared.getCurrency(for: currencyCode)
+    }
+    
+    // Установка наблюдателей. При выходе с контроллера, где имеется наблюдатель, наблюдатель уничтожается вместе с контроллером
+    func startObservingKeyboard() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     // Установка таргетов для кнопок
@@ -49,7 +55,7 @@ extension AddOperationVC: SendSubcategoryID, SendAccountID, SendCategoryID {
     }
     
     // Проверка поля Amount и текста из кнопки категории на наличие данных в них
-    func recordValidation(amount: Double, categoryText: String, accountText: String, completion: ((Double, Category) -> Void)? = nil) {
+    func recordValidation(amount: Double, categoryText: String, accountText: String, completion: ((Double, Int) -> Void)? = nil) {
         let missingAmount = abs(amount) == 0
         let missingCategory = categoryText == AddOperationVC.defaultCategory
         let missingAccount = accountText == AddOperationVC.defaultAccount
@@ -61,11 +67,10 @@ extension AddOperationVC: SendSubcategoryID, SendAccountID, SendCategoryID {
         } else if missingAccount && self.accountID != nil {
             errorAlert("No account selected".localized())
         } else {
-            //TODO: subcategory
-            guard let subcategoryID = self.subcategoryID,
-                  let category = Categories.shared.getCategory(for: subcategoryID) else { return }
+            //TODO: add subcategory
+            guard let categoryID = self.categoryID else { return }
             
-            completion?(amount, category)
+            completion?(amount, categoryID)
         }
     }
     

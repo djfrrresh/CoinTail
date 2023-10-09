@@ -8,7 +8,7 @@
 import UIKit
 
 
-extension AddBudgetVC: UITextFieldDelegate {
+extension AddBudgetVC {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         AmountValidationHelper.isValidInput(textField, shouldChangeCharactersIn: range, replacementString: string)

@@ -16,7 +16,6 @@ class AddBudgetVC: BasicVC {
     var currentIndex = 0
             
     let budgetAmountLabel = UILabel(text: "Amount".localized(), alignment: .left)
-    let budgetPeriodLabel = UILabel(text: "Select period".localized(), alignment: .left)
     
     let budgetAmountTF = UITextField(
         defaultText: "0",

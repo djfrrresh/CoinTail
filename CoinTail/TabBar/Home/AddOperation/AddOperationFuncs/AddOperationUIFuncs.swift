@@ -9,7 +9,7 @@ import UIKit
 import EasyPeasy
 
 
-extension AddOperationVC {
+extension AddOperationVC: UIScrollViewDelegate {
     
     func setupUI(with record: Record) {
         // Дата
@@ -39,7 +39,7 @@ extension AddOperationVC {
         }
         currencyButton.setTitle("\(record.currency)", for: .normal)
         
-        saveOperationButton.setTitle("Edit operation", for: .normal)
+        saveOperationButton.setTitle("Edit operation".localized(), for: .normal)
     }
     
     func addOperationNavBar() {
@@ -113,7 +113,6 @@ extension AddOperationVC {
             ]
         )
         
-        let finalStack = UIStackView()
         setStack(
             stack: finalStack,
             axis: .vertical,
@@ -122,7 +121,7 @@ extension AddOperationVC {
             distribution: .equalCentering,
             viewsArray: [preFinalStack, saveOperationButton]
         )
-        
+                
         self.view.addSubview(finalStack)
         finalStack.easy.layout([
             Left(16),

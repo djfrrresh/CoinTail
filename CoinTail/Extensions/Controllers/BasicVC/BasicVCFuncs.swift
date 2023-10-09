@@ -61,3 +61,14 @@ extension BasicVC {
     }
     
 }
+
+extension BasicVC: UITextFieldDelegate {
+    
+    // Обработка нажатия Return на клавиатуре
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder() // Закрыть клавиатуру
+        
+        return true
+    }
+    
+}

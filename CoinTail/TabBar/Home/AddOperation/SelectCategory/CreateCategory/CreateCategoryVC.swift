@@ -75,7 +75,7 @@ class CreateCategoryVC: BasicVC, UIGestureRecognizerDelegate {
         return label
     }()
 
-    let categoryTF = UITextField(
+    let categoryNameTF = UITextField(
         background: .white,
         keyboard: .default,
         placeholder: "Type a category name".localized()
@@ -89,7 +89,7 @@ class CreateCategoryVC: BasicVC, UIGestureRecognizerDelegate {
         background: .white,
         textColor: .black
     )
-    static let defaultParentalCategoryText = "Add parental category".localized()
+    static let defaultParentalCategoryText = "Select parental category".localized()
     let parentalCategoryButton = UIButton(
         name: defaultParentalCategoryText,
         background: .white,
@@ -116,6 +116,7 @@ class CreateCategoryVC: BasicVC, UIGestureRecognizerDelegate {
         self.view.backgroundColor = .clear
         self.view.isOpaque = false // Выключает прозрачность view
                         
+        categoryNameTF.delegate = self
         createCategoryCV.delegate = self
         
         createCategoryCV.dataSource = self

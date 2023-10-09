@@ -12,7 +12,6 @@
 		560AFBCB2A1394A30054B502 /* CoinTail.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBC92A1394A30054B502 /* CoinTail.xcdatamodeld */; };
 		560AFBCD2A1394A40054B502 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 560AFBCC2A1394A40054B502 /* Assets.xcassets */; };
 		560AFBD02A1394A40054B502 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 560AFBCE2A1394A40054B502 /* LaunchScreen.storyboard */; };
-		560AFBDB2A13B26A0054B502 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBDA2A13B26A0054B502 /* Array.swift */; };
 		560AFBE02A13B2E40054B502 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBDF2A13B2E40054B502 /* UIButton.swift */; };
 		560AFBE82A13B5520054B502 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBE72A13B5520054B502 /* UILabel.swift */; };
 		560AFBEA2A13B5EA0054B502 /* UISegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBE92A13B5EA0054B502 /* UISegmentedControl.swift */; };
@@ -100,7 +99,11 @@
 		568EF0892ABB439100EB042D /* SelectCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0882ABB439100EB042D /* SelectCategoryCell.swift */; };
 		568EF08B2ABC93B500EB042D /* Subcategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF08A2ABC93B500EB042D /* Subcategory.swift */; };
 		569E52282ACD887900A4FCA7 /* AmountValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E52272ACD887900A4FCA7 /* AmountValidationHelper.swift */; };
-		569E522A2ACDB59500A4FCA7 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E52292ACDB59500A4FCA7 /* KeyboardManager.swift */; };
+		569E522E2AD0713200A4FCA7 /* AboutAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E522D2AD0713200A4FCA7 /* AboutAppVC.swift */; };
+		569E52312AD083CB00A4FCA7 /* AboutAppUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E52302AD083CB00A4FCA7 /* AboutAppUIFuncs.swift */; };
+		569E52332AD0B1B000A4FCA7 /* AboutAppUXFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E52322AD0B1B000A4FCA7 /* AboutAppUXFuncs.swift */; };
+		569E52362AD0B47600A4FCA7 /* AboutAppActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E52352AD0B47600A4FCA7 /* AboutAppActions.swift */; };
+		569E52382AD4405F00A4FCA7 /* AboutAppMailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E52372AD4405F00A4FCA7 /* AboutAppMailDelegate.swift */; };
 		56DBB6CE2A3724BC0087271D /* HomeOperationCellCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */; };
 		56DBB6DD2A3728600087271D /* HomeOperationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6DC2A3728600087271D /* HomeOperationCell.swift */; };
 		56DBB6EA2A372E220087271D /* HomeDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6E92A372E220087271D /* HomeDateCell.swift */; };
@@ -150,7 +153,6 @@
 		560AFBCC2A1394A40054B502 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		560AFBCF2A1394A40054B502 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		560AFBD12A1394A40054B502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		560AFBDA2A13B26A0054B502 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		560AFBDF2A13B2E40054B502 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		560AFBE72A13B5520054B502 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		560AFBE92A13B5EA0054B502 /* UISegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISegmentedControl.swift; sourceTree = "<group>"; };
@@ -240,7 +242,11 @@
 		568EF0882ABB439100EB042D /* SelectCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryCell.swift; sourceTree = "<group>"; };
 		568EF08A2ABC93B500EB042D /* Subcategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subcategory.swift; sourceTree = "<group>"; };
 		569E52272ACD887900A4FCA7 /* AmountValidationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountValidationHelper.swift; sourceTree = "<group>"; };
-		569E52292ACDB59500A4FCA7 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
+		569E522D2AD0713200A4FCA7 /* AboutAppVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppVC.swift; sourceTree = "<group>"; };
+		569E52302AD083CB00A4FCA7 /* AboutAppUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppUIFuncs.swift; sourceTree = "<group>"; };
+		569E52322AD0B1B000A4FCA7 /* AboutAppUXFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppUXFuncs.swift; sourceTree = "<group>"; };
+		569E52352AD0B47600A4FCA7 /* AboutAppActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppActions.swift; sourceTree = "<group>"; };
+		569E52372AD4405F00A4FCA7 /* AboutAppMailDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppMailDelegate.swift; sourceTree = "<group>"; };
 		56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOperationCellCV.swift; sourceTree = "<group>"; };
 		56DBB6DC2A3728600087271D /* HomeOperationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOperationCell.swift; sourceTree = "<group>"; };
 		56DBB6E92A372E220087271D /* HomeDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDateCell.swift; sourceTree = "<group>"; };
@@ -344,7 +350,6 @@
 		560AFBD92A13B2550054B502 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				560AFBDA2A13B26A0054B502 /* Array.swift */,
 				5642DAEC2A40D2BE00ADF475 /* Int.swift */,
 				5656E9B82A97707400070045 /* String.swift */,
 				56191ECE2A9CBC6D00D47052 /* Date.swift */,
@@ -502,6 +507,7 @@
 		5642DB122A432AFB00ADF475 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				569E522C2AD0711C00A4FCA7 /* AboutApp */,
 				568EF0782AB3A2C200EB042D /* Notifications */,
 				568EF0652AB0D96A00EB042D /* Currencies */,
 				5665C13E2A9F6ADD00B11D34 /* SettingsFuncs */,
@@ -573,7 +579,7 @@
 		568EF01E2AA603AE00EB042D /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
-				568EF0502AAF5BB200EB042D /* TransfersHistoryVC */,
+				568EF0502AAF5BB200EB042D /* TransfersHistory */,
 				568EF03F2AA8CA3800EB042D /* AccountsTransfer */,
 				568EF0312AA6115600EB042D /* AddAccount */,
 				568EF0242AA608BC00EB042D /* AccountsCV */,
@@ -653,14 +659,14 @@
 			path = AccountsTransferCV;
 			sourceTree = "<group>";
 		};
-		568EF0502AAF5BB200EB042D /* TransfersHistoryVC */ = {
+		568EF0502AAF5BB200EB042D /* TransfersHistory */ = {
 			isa = PBXGroup;
 			children = (
 				568EF05A2AAFB05C00EB042D /* TransfersHistoryCV */,
 				568EF0552AAFAE6700EB042D /* TransfersHistoryFuncs */,
 				568EF0512AAF5BBC00EB042D /* TransfersHistoryVC.swift */,
 			);
-			path = TransfersHistoryVC;
+			path = TransfersHistory;
 			sourceTree = "<group>";
 		};
 		568EF0552AAFAE6700EB042D /* TransfersHistoryFuncs */ = {
@@ -741,12 +747,31 @@
 				56DBB7092A3B44090087271D /* Categories.swift */,
 				56DBB6F62A3893A80087271D /* Colors.swift */,
 				568EF0722AB1DA3E00EB042D /* Currencies.swift */,
-				569E52292ACDB59500A4FCA7 /* KeyboardManager.swift */,
 				568EF0612AAFB44300EB042D /* Transfers.swift */,
 				568EF0862AB4C09F00EB042D /* Notifications.swift */,
 				560AFC1B2A1BEE640054B502 /* Records.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		569E522C2AD0711C00A4FCA7 /* AboutApp */ = {
+			isa = PBXGroup;
+			children = (
+				569E522F2AD083BA00A4FCA7 /* AboutAppFuncs */,
+				569E522D2AD0713200A4FCA7 /* AboutAppVC.swift */,
+			);
+			path = AboutApp;
+			sourceTree = "<group>";
+		};
+		569E522F2AD083BA00A4FCA7 /* AboutAppFuncs */ = {
+			isa = PBXGroup;
+			children = (
+				569E52302AD083CB00A4FCA7 /* AboutAppUIFuncs.swift */,
+				569E52322AD0B1B000A4FCA7 /* AboutAppUXFuncs.swift */,
+				569E52352AD0B47600A4FCA7 /* AboutAppActions.swift */,
+				569E52372AD4405F00A4FCA7 /* AboutAppMailDelegate.swift */,
+			);
+			path = AboutAppFuncs;
 			sourceTree = "<group>";
 		};
 		56DBB6CB2A3358F10087271D /* Application */ = {
@@ -1055,12 +1080,14 @@
 				568EF0522AAF5BBC00EB042D /* TransfersHistoryVC.swift in Sources */,
 				5642DB172A432BA200ADF475 /* BudgetsVC.swift in Sources */,
 				568EF0542AAFA6C200EB042D /* TransferHistory.swift in Sources */,
+				569E52312AD083CB00A4FCA7 /* AboutAppUIFuncs.swift in Sources */,
 				5665C1372A9F5B2200B11D34 /* Currency.swift in Sources */,
 				56DBB6F42A37485A0087271D /* OperationCell.swift in Sources */,
 				56EFDFF02A5D9176003A6A45 /* DaySection.swift in Sources */,
 				5642DB252A4DDAC400ADF475 /* BudgetUIFuncs.swift in Sources */,
 				5642DAEB2A4080BF00ADF475 /* DatePeriods.swift in Sources */,
 				568EF0332AA6116900EB042D /* AddAccountVC.swift in Sources */,
+				569E522E2AD0713200A4FCA7 /* AboutAppVC.swift in Sources */,
 				56DBB71F2A3B641E0087271D /* CreateCategoryUIFuncs.swift in Sources */,
 				56DBB7012A3B36D30087271D /* AddOperationUIFuncs.swift in Sources */,
 				569E52282ACD887900A4FCA7 /* AmountValidationHelper.swift in Sources */,
@@ -1075,6 +1102,7 @@
 				568EF0832AB4B5C800EB042D /* NotificationsUXFuncs.swift in Sources */,
 				5642DB2E2A4F34CC00ADF475 /* BudgetCVDataSource.swift in Sources */,
 				568EF03E2AA61FB900EB042D /* AddAccountActions.swift in Sources */,
+				569E52362AD0B47600A4FCA7 /* AboutAppActions.swift in Sources */,
 				560AFC272A1BF5A30054B502 /* HomeCategoryCellCV.swift in Sources */,
 				560AFC392A1C0FC30054B502 /* PieChartFuncs.swift in Sources */,
 				564F08FE2A531AEE004C89C7 /* AddBudgetVC.swift in Sources */,
@@ -1101,6 +1129,7 @@
 				56DBB7212A3B64A00087271D /* CreateCategoryActions.swift in Sources */,
 				568EF06C2AB0FC1800EB042D /* CurrencyCVDataSource.swift in Sources */,
 				568EF06E2AB0FC4F00EB042D /* CurrencyCVDelegate.swift in Sources */,
+				569E52332AD0B1B000A4FCA7 /* AboutAppUXFuncs.swift in Sources */,
 				568EF0262AA608D000EB042D /* AccountCell.swift in Sources */,
 				568EF0462AA8E43100EB042D /* AccountsTransferUXFuncs.swift in Sources */,
 				56EFDFE82A54502E003A6A45 /* Budgets.swift in Sources */,
@@ -1116,13 +1145,13 @@
 				560AFC052A16B06D0054B502 /* HomeUXFuncs.swift in Sources */,
 				560AFC192A1BAC810054B502 /* HomeActions.swift in Sources */,
 				56EFDFEC2A574771003A6A45 /* BudgetCVHeader.swift in Sources */,
-				560AFBDB2A13B26A0054B502 /* Array.swift in Sources */,
 				568EF0892ABB439100EB042D /* SelectCategoryCell.swift in Sources */,
 				568EF03C2AA61F8E00EB042D /* AddAccountUXFuncs.swift in Sources */,
 				56DBB7292A3B68B00087271D /* ColorPickerFuncs.swift in Sources */,
 				568EF0852AB4BE3800EB042D /* NotificationsActions.swift in Sources */,
 				568EF0592AAFAF9C00EB042D /* TransfersHistoryUXFuncs.swift in Sources */,
 				56DBB6FF2A3B36190087271D /* AddOperationTFDelegate.swift in Sources */,
+				569E52382AD4405F00A4FCA7 /* AboutAppMailDelegate.swift in Sources */,
 				568EF07C2AB3AE0F00EB042D /* NotificationPeriods.swift in Sources */,
 				56DBB6CE2A3724BC0087271D /* HomeOperationCellCV.swift in Sources */,
 				568EF0772AB3816A00EB042D /* CurrenciesSearching.swift in Sources */,
@@ -1169,7 +1198,6 @@
 				568EF0732AB1DA3E00EB042D /* Currencies.swift in Sources */,
 				5642DB2B2A4F313A00ADF475 /* Budget.swift in Sources */,
 				568EF0302AA60CCA00EB042D /* AccountsUXFuncs.swift in Sources */,
-				569E522A2ACDB59500A4FCA7 /* KeyboardManager.swift in Sources */,
 				56DBB6DD2A3728600087271D /* HomeOperationCell.swift in Sources */,
 				560AFBF02A13C1DF0054B502 /* BasicVC.swift in Sources */,
 				568EF07F2AB3BAD000EB042D /* NotificationsUIFuncs.swift in Sources */,
@@ -1361,7 +1389,7 @@
 					"\"RxSwift\"",
 					"-Wno-quoted-include-in-framework-header",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = eugene.CoinTail;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eugene.CoinTail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1409,7 +1437,7 @@
 					"\"RxSwift\"",
 					"-Wno-quoted-include-in-framework-header",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = eugene.CoinTail;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eugene.CoinTail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

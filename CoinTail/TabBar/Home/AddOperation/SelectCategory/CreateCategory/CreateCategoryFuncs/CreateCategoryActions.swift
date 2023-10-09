@@ -20,10 +20,10 @@ extension CreateCategoryVC {
     
     // Проверка на наличие текста и выбранной иконки, вывод ошибки или закрытие PopVC
     @objc func addNewItemAction(_ sender: UIButton) {
-        if (categoryTF.text?.isEmpty == true) {
+        if (categoryNameTF.text?.isEmpty == true) {
             errorAnimate()
         } else {
-            guard let categoryText = categoryTF.text else { return }
+            guard let categoryText = categoryNameTF.text else { return }
 
             let isSubcategory = parentalCategoryButton.titleLabel?.text == CreateCategoryVC.defaultParentalCategoryText ? false : true
             

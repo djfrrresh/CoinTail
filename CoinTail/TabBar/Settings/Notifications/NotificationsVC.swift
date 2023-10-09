@@ -38,8 +38,8 @@ class NotificationsVC: BasicVC {
         return uiSwitch
     }()
     
-    let onOffLabel = UILabel(text: "Enable / disable reminder")
-    let periodLabel = UILabel(text: "Select period")
+    let onOffLabel = UILabel(text: "Enable / disable reminder".localized())
+    let periodLabel = UILabel(text: "Select period".localized())
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -63,7 +63,7 @@ class NotificationsVC: BasicVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Notifications"
+        self.title = "Notifications".localized()
                 
         notificationsSubviews()
         notificationTargets()

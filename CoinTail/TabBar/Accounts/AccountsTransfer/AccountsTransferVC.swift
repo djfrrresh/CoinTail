@@ -40,8 +40,8 @@ final class AccountsTransferVC: BasicVC {
     
     var selectedButton = UIButton()
     
-    static let firstAccountText = "First Account"
-    static let secondAccountText = "Second Account"
+    static let firstAccountText = "First Account".localized()
+    static let secondAccountText = "Second Account".localized()
 
     let selectFirstAccountButton: UIButton = {
         let button = UIButton()

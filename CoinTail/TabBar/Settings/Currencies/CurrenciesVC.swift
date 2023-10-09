@@ -23,7 +23,7 @@ final class CurrenciesVC: BasicVC, GetCurrencyIndex {
     
     let currencySearchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.placeholder = "Type USD or Dollar for search"
+        searchBar.placeholder = "Type USD or Dollar for search".localized()
         searchBar.barTintColor = UIColor.clear
         searchBar.backgroundColor = UIColor.clear
         searchBar.isTranslucent = true
@@ -57,7 +57,7 @@ final class CurrenciesVC: BasicVC, GetCurrencyIndex {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Select currency"
+        self.title = "Currencies".localized()
         
         currenciesCV.delegate = self
         currencySearchBar.delegate = self

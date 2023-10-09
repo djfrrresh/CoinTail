@@ -30,7 +30,6 @@ enum Currency: String, CaseIterable {
     case BOB = "Bolivian Boliviano"
     case BRL = "Brazilian Real"
     case BSD = "Bahamian Dollar"
-    case BTC = "Bitcoin"
     case BTN = "Bhutanese Ngultrum"
     case BWP = "Botswanan Pula"
     case BYN = "Belarusian Ruble"

@@ -15,8 +15,19 @@ class AddOperationVC: BasicVC {
     var categoryID: Int?
     var subcategoryID: Int?
     var accountID: Int?
+    
     var currency: Currency = Currencies.shared.selectedCurrency
     var currentIndex = 0
+    
+    let finalStack = UIStackView()
+    
+    let scrollView: UIScrollView = {
+        let scroll = UIScrollView(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        scroll.isScrollEnabled = true
+        scroll.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 1000)
+        
+        return scroll
+    }()
     
     let addOperationTypeSwitcher: UISegmentedControl = {
         let switcher = UISegmentedControl(items: [
@@ -38,7 +49,7 @@ class AddOperationVC: BasicVC {
         defaultText: "0.00",
         background: .lightGray.withAlphaComponent(0.2),
         keyboard: .decimalPad,
-        placeholder: "Enter your value".localized()
+        placeholder: "Enter amount".localized()
     )
     let descriptionTF = UITextField(
         background: .clear,
@@ -47,13 +58,12 @@ class AddOperationVC: BasicVC {
     )
     let dateTF: UITextField = {
         let todayString = operationDF.string(from: Date())
-
         let textField  = UITextField(
             defaultText: "\(todayText) \(todayString)",
             background: .clear,
-            keyboard: .numberPad,
-            placeholder: "Select date".localized()
+            keyboard: .numberPad
         )
+        
         textField.inputView = operationDatePicker
         textField.inputAccessoryView = createToolbar()
         textField.tintColor = .clear
@@ -141,9 +151,13 @@ class AddOperationVC: BasicVC {
         super.viewDidLoad()
         
         amountTF.delegate = self
+        descriptionTF.delegate = self
         dateTF.delegate = self
+        scrollView.delegate = self
         
         setAddOpStack() // Stack'и для view на экране
+                
+        startObservingKeyboard()
     }
     
     override func viewWillAppear(_ animated: Bool) {

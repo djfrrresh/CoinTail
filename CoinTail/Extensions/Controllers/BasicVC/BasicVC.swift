@@ -7,10 +7,9 @@
 
 import UIKit
 
-// TODO: сделать скролл до текстфилда при заполнении информации в нем. Сделать убирание текст филда по кнопке return на клавиатуре
 
 class BasicVC: UIViewController {
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
