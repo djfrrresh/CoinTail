@@ -44,13 +44,12 @@ extension AccountsTransferVC {
                 to: targetAccount,
                 amount: amount
             )
-            
-            let transferHistory = TransferHistory(
-                sourceAccount: sourceAccount,
-                targetAccount: targetAccount,
-                amount: amount,
-                date: Date()
-            )
+
+            let transferHistory = TransferHistoryClass()
+            transferHistory.sourceAccount = sourceAccount
+            transferHistory.targetAccount = targetAccount
+            transferHistory.amount = amount
+            transferHistory.date = Date()
             
             // Добавляем в историю перевод между счетами
             Transfers.shared.addNewTransfer(transferHistory)

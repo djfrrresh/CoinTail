@@ -26,7 +26,7 @@ extension TransfersHistoryVC: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        let transferData: TransferHistory = transfers[indexPath.row]
+        let transferData: TransferHistoryClass = transfers[indexPath.row]
 
         cell.amountLabel.text = "\(transferData.amount)"
         cell.sourceAccountLabel.text = transferData.sourceAccount

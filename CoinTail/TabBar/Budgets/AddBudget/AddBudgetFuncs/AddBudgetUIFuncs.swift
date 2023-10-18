@@ -11,7 +11,7 @@ import EasyPeasy
 
 extension AddBudgetVC {
     
-    func setupUI(with budget: Budget) {
+    func setupUI(with budget: BudgetClass) {
         periodSwitcher.isHidden = true
 
         // Сумма

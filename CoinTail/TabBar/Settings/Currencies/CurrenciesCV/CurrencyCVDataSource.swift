@@ -42,6 +42,7 @@ extension CurrenciesVC: UICollectionViewDataSource {
         
         let currency: Currency
         
+        //TODO: corner radius, divider
         switch indexPath.section {
         case 0:
             currencyCode = "\(favouriteCurrencies[indexPath.row])"

@@ -6,9 +6,17 @@
 //
 
 import UIKit
+import EasyPeasy
 
 
 class TabBar: UITabBarController {
+    
+    let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.red
+        
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,14 +34,15 @@ class TabBar: UITabBarController {
         accountsVC.title = "Accounts".localized()
         settingsVC.title = "Settings".localized()
         
-        UITabBar.appearance().backgroundColor = .systemGray6 // Цвет фона TabBar'а
-        UITabBar.appearance().tintColor = .black // Цвет иконок и текста
+        UITabBar.appearance().backgroundColor = UIColor(named: "tabBarBackground") // Цвет фона TabBar'а
+        UITabBar.appearance().tintColor = UIColor(named: "selectedScreen") // Цвет выбранной иконки и текста
+        UITabBar.appearance().unselectedItemTintColor = UIColor(named: "unselectedScreen") // Цвет невыбранных иконок
         
         // Установка контроллеров на TabBar
         self.setViewControllers([homeVC, budgetsVC, accountsVC, settingsVC], animated: false)
                         
         guard let items = self.tabBar.items else { return }
-        let images = ["house", "target", "creditcard", "gear"]
+        let images = ["house.fill", "chart.bar.xaxis", "creditcard.fill", "gearshape.fill"]
         
         // Установка иконок
         for i in 0..<items.count {

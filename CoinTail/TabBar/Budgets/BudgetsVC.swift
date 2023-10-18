@@ -56,50 +56,6 @@ class BudgetsVC: BasicVC {
         budgetCV.delegate = self
         
         budgetSubviews()
-        
-        let dateFormatter: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "dd/MM/yyyy"
-            
-            return formatter
-        }()
-        let string = "12/08/2021"
-        let stringUntil = "12/09/2021"
-        let string1 = "27/05/2023"
-        let stringUntil1 = "27/06/2023"
-        
-        let categoryColor = Colors.shared
-        
-        Budgets.shared.addNewBudget(
-            Budget(
-                categoryID: Categories.shared.categories[.expense]![4].id,
-                amount: 500,
-                startDate: dateFormatter.date(from: string)!,
-                untilDate: dateFormatter.date(from: stringUntil)!,
-                id: 0,
-                currency: Currency.USD
-            )
-        )
-        Budgets.shared.addNewBudget(
-            Budget(
-                categoryID: Categories.shared.categories[.expense]![2].id,
-                amount: 1000,
-                startDate: dateFormatter.date(from: string)!,
-                untilDate: dateFormatter.date(from: stringUntil)!,
-                id: 1,
-                currency: Currency.RUB
-            )
-        )
-        Budgets.shared.addNewBudget(
-            Budget(
-                categoryID: Categories.shared.categories[.expense]![0].id,
-                amount: 200,
-                startDate: dateFormatter.date(from: string1)!,
-                untilDate: dateFormatter.date(from: stringUntil1)!,
-                id: 2,
-                currency: Currency.AED
-            )
-        )
     }
     
 }

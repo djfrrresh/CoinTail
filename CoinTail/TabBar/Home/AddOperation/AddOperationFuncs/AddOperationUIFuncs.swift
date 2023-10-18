@@ -31,13 +31,14 @@ extension AddOperationVC: UIScrollViewDelegate {
         }
         categoryID = record.categoryID
         
+        //TODO: account
         // Счет
-        if let accountID = record.accountID, let account = Accounts.shared.getAccount(for: accountID) {
-            accountButton.setTitle(account.name, for: .normal)
-        } else {
-            accountButton.setTitle(AddOperationVC.defaultAccount, for: .normal)
-        }
-        currencyButton.setTitle("\(record.currency)", for: .normal)
+//        if let accountID = record.accountID, let account = Accounts.shared.getAccount(for: accountID) {
+//            accountButton.setTitle(account.name, for: .normal)
+//        } else {
+//            accountButton.setTitle(AddOperationVC.defaultAccount, for: .normal)
+//        }
+//        currencyButton.setTitle("\(record.currency)", for: .normal)
         
         saveOperationButton.setTitle("Edit operation".localized(), for: .normal)
     }

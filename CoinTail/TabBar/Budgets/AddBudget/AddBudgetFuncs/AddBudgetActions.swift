@@ -34,17 +34,15 @@ extension AddBudgetVC {
             strongSelf.setCurrency(currencyCode: currencyText)
             let currency = strongSelf.currency
             
-            let budget = Budget(
-                categoryID: categoryID,
-                amount: amount,
-                startDate: startDate,
-                untilDate: untilDate,
-                id: isEditing ? strongSelf.budgetID! : Budgets.shared.budgetID,
-                currency: currency
-            )
+            let budget = BudgetClass()
+            budget.categoryID = categoryID
+            budget.amount = amount
+            budget.startDate = startDate
+            budget.untilDate = untilDate
+            budget.currency = "\(currency)"
             
-            if !isEditing {
-                Budgets.shared.budgetID += 1
+            if let budgetID = strongSelf.budgetID {
+                budget.id = budgetID
             }
             
             strongSelf.saveBudgetButton.removeTarget(nil, action: nil, for: .allEvents)

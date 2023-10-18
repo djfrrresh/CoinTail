@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 
 final class AddAccountVC: BasicVC {
     
-    var accountID: Int?
+    var accountID: ObjectId?
     
-    let accountAmountLabel = UILabel(text: "Amount".localized(), alignment: .left)
+    let accountAmountLabel = UILabel(text: "Initial amount".localized(), alignment: .left)
     let accountNameLabel = UILabel(text: "Account name".localized(), alignment: .left)
     var currency: Currency = Currencies.shared.selectedCurrency
     var currentIndex = 0
@@ -41,7 +42,7 @@ final class AddAccountVC: BasicVC {
         textColor: .white
     )
     
-    init(accountID: Int) {
+    init(accountID: ObjectId) {
         self.accountID = accountID
         
         super.init(nibName: nil, bundle: nil)

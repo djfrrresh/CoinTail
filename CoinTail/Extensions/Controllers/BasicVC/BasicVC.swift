@@ -16,7 +16,7 @@ class BasicVC: UIViewController {
         // Убрать клавиатуру при нажатии на экран
         setupHideKeyboardOnTap()
         
-        self.view.backgroundColor = UIColor(red: 0.975, green: 0.975, blue: 0.975, alpha: 1)
+        self.view.backgroundColor = UIColor(named: "AccentColor")
         self.navigationController?.navigationBar.tintColor = .black
     }
     

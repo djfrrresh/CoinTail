@@ -11,11 +11,11 @@ import UIKit
 extension AccountsVC {
     
     func sortAccounts() {
-        accounts = Accounts.shared.accounts
-                    
+        accounts = RealmService.shared.accountsArr
+        
         // Отсортировать массив счетов по деньгам (убывание)
         accounts.sort { l, r in
-            return l.startBalance > r.startBalance
+            return l.amountBalance > r.amountBalance
         }
     }
     

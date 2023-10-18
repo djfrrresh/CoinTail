@@ -25,15 +25,12 @@ extension AddAccountVC {
             strongSelf.setCurrency(currencyCode: currencyText)
             let currency = strongSelf.currency
             
-            let account = Account(
-                id: isEditing ? strongSelf.accountID! : Accounts.shared.accountID,
-                name: nameText,
-                startBalance: amount,
-                currency: currency
-            )
-            
-            if !isEditing {
-                Accounts.shared.accountID += 1
+            let account = AccountClass()
+            account.name = nameText
+            account.startBalance = amount
+            account.currency = "\(currency)"
+            if let accountID = strongSelf.accountID {
+                account.id = accountID
             }
             
             strongSelf.saveAccountButton.removeTarget(nil, action: nil, for: .allEvents)
@@ -41,6 +38,7 @@ extension AddAccountVC {
             if let accountID = strongSelf.accountID {
                 Accounts.shared.editAccount(for: accountID, replacingAccount: account)
             } else {
+                RealmService.shared.write(account, AccountClass.self)
                 Accounts.shared.addNewAccount(account)
             }
             

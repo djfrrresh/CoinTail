@@ -9,54 +9,54 @@
 // TODO: исправить баг, если написать переводом RecordType в свитчерах, то не будет обновляться таблица. Посмотреть перевод для дат в хедерах коллекций. Добавить перевод для day / week в уведомлениях
 
 // General
-"Amount"               = "Сумма";
-"Error"                = "Ошибка";
-"Confirm"              = "Подтвердить";
-"Cancel"               = "Отмена";
-"Are you sure?"        = "Вы уверены?";
-"Select category"      = "Выбрать категорию";
+"Amount" = "Сумма";
+"Error" = "Ошибка";
+"Confirm" = "Подтвердить";
+"Cancel" = "Отмена";
+"Are you sure?" = "Вы уверены?";
+"Select category" = "Выбрать категорию";
 "No category selected" = "Не выбрана категория";
-"Enter amount"         = "Введите сумму";
+"Enter amount" = "Введите сумму";
 
 // RecordType
 "Expense" = "Expense";
-"Income"  = "Income";
-"Total"   = "Total";
+"Income" = "Income";
+"Total" = "Total";
 
 // Categories
 /// income
-"Salary"         = "Зарплата";
+"Salary" = "Зарплата";
 "Debt repayment" = "Возврат долга";
-"Side job"       = "Подработка";
+"Side job" = "Подработка";
 "Pleasant finds" = "Приятные находки";
 /// expense
-"Transport"      = "Транспорт";
-"Groceries"      = "Продукты";
-"Cloths"         = "Одежда";
-"Gym"            = "Спортивный зал";
-"Service"        = "Сервисное обслуживание";
-"Subscription"   = "Онлайн-подписка";
-"Health"         = "Здоровье";
-"Cafe"           = "Кафе";
+"Transport" = "Транспорт";
+"Groceries" = "Продукты";
+"Cloths" = "Одежда";
+"Gym" = "Спортивный зал";
+"Service" = "Сервисное обслуживание";
+"Subscription" = "Онлайн-подписка";
+"Health" = "Здоровье";
+"Cafe" = "Кафе";
 
 // Subcategories
 /// income
-"First Job"     = "Первая работа";
-"Second Job"    = "Вторая работа";
+"First Job" = "Первая работа";
+"Second Job" = "Вторая работа";
 "Jacket pocket" = "Карман куртки";
 /// expense
-"Bus"           = "Автобус";
-"Walmart"       = "Волмарт";
-"Spar"          = "Спар";
+"Bus" = "Автобус";
+"Walmart" = "Волмарт";
+"Spar" = "Спар";
 
 // Accounts
 "Card 1" = "Карта 1";
 "Card 2" = "Карта 2";
-"Cash"   = "Наличные";
+"Cash" = "Наличные";
 
 // TabBar
-"Home"     = "Главная";
-"Budgets"  = "Бюджеты";
+"Home" = "Главная";
+"Budgets" = "Бюджеты";
 "Accounts" = "Счета";
 "Settings" = "Настройки";
 
@@ -64,76 +64,79 @@
 /// NavBar
 "Total balance:" = "Общий баланс:";
 /// Periods CV
-"All the time"   = "Всё время";
-"Year"           = "Год";
-"Quarter"        = "Квартал";
-"3 months"       = "3 месяца";
-"Month"          = "Месяц";
+"All the time" = "Всё время";
+"Year" = "Год";
+"Quarter" = "Квартал";
+"3 months" = "3 месяца";
+"Month" = "Месяц";
 
 // BudgetsVC
-"Active"     = "Активно";
+"Active" = "Активно";
 "Non active" = "Неактивно";
 
 // AddBudgetVC
-"Save Budget"                                 = "Сохранить бюджет";
-"Edit Budget"                                 = "Редактировать бюджет";
-"Week"                                        = "Неделя";
+"Save Budget" = "Сохранить бюджет";
+"Edit Budget" = "Редактировать бюджет";
+"Week" = "Неделя";
 /// NavBar
-"Editing budget"                              = "Редактирование бюджета";
-"Add new Budget"                              = "Добавить новый бюджет";
+"Editing budget" = "Редактирование бюджета";
+"Add new Budget" = "Добавить новый бюджет";
 /// Alert
-"Missing value in amount field"               = "Отсутствует значение в поле с суммой";
-"There is already a budget for this category" = "Уже существует бюджет с такой категорией";
-"Delete бюджет"                               = "Удалить бюджет";
+"Missing value in amount field" = "Отсутствует значение в поле с суммой";
+"There is already a budget for this category and currency" = "Уже существует бюджет с такой категорией и валютой";
+"Delete бюджет" = "Удалить бюджет";
 
 // AddOperationVC
-"Description"                               = "Описание";
-"Date"                                      = "Дата";
-"For example: Bought in the store"          = "Например: Покупка в магазине";
-"Today"                                     = "Сегодня";
-"Save operation"                            = "Сохранить операцию";
-"Edit operation"                            = "Редактировать операцию";
-"Select account"                            = "Выбрать счёт";
+"Description" = "Описание";
+"Date" = "Дата";
+"For example: Bought in the store" = "Например: Покупка в магазине";
+"Today" = "Сегодня";
+"Save operation" = "Сохранить операцию";
+"Edit operation" = "Редактировать операцию";
+"Select account" = "Выбрать счёт";
 /// NavBar
-"Add new operation"                         = "Добавить новую операцию";
-"Editing operation"                         = "Редактирование операции";
+"Add new operation" = "Добавить новую операцию";
+"Editing operation" = "Редактирование операции";
 /// Alert
-"Missing value in amount field"             = "Отсутствует значение в поле суммы";
-"Repeat last operation"                     = "Повторить последнюю операцию";
+"Missing value in amount field" = "Отсутствует значение в поле суммы";
+"Repeat last operation" = "Повторить последнюю операцию";
 "Do you want to repeat the last operation?" = "Вы хотите повторить последнюю операцию?";
-"Delete operation"                          = "Удалить операцию";
+"Delete operation" = "Удалить операцию";
+"You cannot specify an account for this transaction with another currency!" = "Вы не можете указать счет для этой операции в другой валюте!";
 
 // CreateCategoryVC
 "Missing category name or no icon selected!" = "Отсутствует имя категории или не выбрана иконка!";
-"Type a category name"                       = "Введите название категории";
-"Add category"                               = "Добавить категорию";
-"Select color"                               = "Выбрать цвет";
-"New category"                               = "Новая категория";
-"Category"                                   = "Категория";
-"Select parental category"                   = "Выбрать родительскую категорию";
+"Type a category name" = "Введите название категории";
+"Add category" = "Добавить категорию";
+"Select color" = "Выбрать цвет";
+"New category" = "Новая категория";
+"Category" = "Категория";
+"Select parental category" = "Выбрать родительскую категорию";
 /// Title
-"Add new category"                           = "Добавить новую категорию";
+"Add new category" = "Добавить новую категорию";
 
 // SettingsVC
-"Currency"      = "Валюта";
+"Currency" = "Валюта";
 "Notifications" = "Уведомления";
-"Rate app"      = "Оценить приложение";
-"About app"     = "О приложении";
+"Rate on App Store" = "Оценить в App Store";
+"About" = "О приложении";
 "Delete data"   = "Удалить данные";
 
 // AddAccountVC
-"Account name"      = "Название счёта";
+"Account name" = "Название счёта";
+"Initial amount" = "Начальная сумма";
 "For example: Cash" = "Например: Наличные";
-"Save Account"      = "Сохранить счёт";
-"Edit Account"      = "Редактировать счёт";
+"Save Account" = "Сохранить счёт";
+"Edit Account" = "Редактировать счёт";
 /// Title
-"Add new Account"   = "Добавить новый счёт";
-"Editing Account"   = "Редактирование счёта";
+"Add new Account" = "Добавить новый счёт";
+"Editing Account" = "Редактирование счёта";
 
 // AccountsTransferVC
-"First Account"             = "Первый счёт";
-"Second Account"            = "Второй счёт";
-"Save Transfer"             = "Сохранить перевод";
+"First Account" = "Первый счёт";
+"Second Account" = "Второй счёт";
+"Save Transfer" = "Сохранить перевод";
+"You cannot transfer money to an account with a different currency!" = "Вы не можете перевести деньги на счет в другой валюте!";
 /// Title
 "Transfer between accounts" = "Перевод между счетами";
 
@@ -143,17 +146,15 @@
 
 // CurrenciesVC
 "Type USD or Dollar for search" = "Наберите USD или Dollar для поиска";
-"Favourites"                    = "Избранные";
-"All currencies"                = "Все валюты";
+"Favourites" = "Избранные";
+"All currencies" = "Все валюты";
 /// Title
-"Currencies"                    = "Валюты";
+"Currencies" = "Валюты";
 
 // NotificationsVC
 "Enable / disable reminder" = "Вкл / Выкл напоминание";
-"Select period"             = "Выберите период";
-"Day"                       = "День";
-/// Title
-"Notifications"             = "Уведомления";
+"Select period" = "Выберите период";
+"Day" = "День";
 
 // AboutAppVC
 "CoinTail is a reliable assistant in accounting for income and expenses, managing accounts and budgets. Convenient charts will help you control your finances" = "CoinTail - надежный помощник в учете доходов и расходов, управлении счетами и бюджетами. Удобные графики помогут контролировать ваши финансы";

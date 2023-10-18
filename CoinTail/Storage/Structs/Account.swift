@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import RealmSwift
 
 
-struct Account: Equatable {
-    var id: Int
-    var name: String
-    var startBalance: Double
-    var amountBalance: Double = 0
-    var currency: Currency
+class AccountClass: Object, ObjectKeyIdentifiable {
+    @Persisted(primaryKey: true) var id: ObjectId
+    
+    @Persisted var name: String = ""
+    @Persisted var startBalance: Double = 0
+    @Persisted var amountBalance: Double = 0
+    @Persisted var currency: String = ""
 }

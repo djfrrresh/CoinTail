@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 
 class AddBudgetVC: BasicVC {
     
     var budgetCategoryID: Int?
-    var budgetID: Int?
+    var budgetID: ObjectId?
     var currency: Currency = Currencies.shared.selectedCurrency
     var currentIndex = 0
             
@@ -51,7 +52,7 @@ class AddBudgetVC: BasicVC {
         return switcher
     }()
     
-    init(budgetID: Int) {
+    init(budgetID: ObjectId) {
         self.budgetID = budgetID
         super.init(nibName: nil, bundle: nil)
 

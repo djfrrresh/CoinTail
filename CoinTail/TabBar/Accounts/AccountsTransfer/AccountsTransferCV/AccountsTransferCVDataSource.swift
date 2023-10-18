@@ -26,7 +26,7 @@ extension AccountsTransferVC: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        let accountData: Account = accountsArr[indexPath.row]
+        let accountData: AccountClass = accountsArr[indexPath.row]
         
         cell.amountLabel.text = "\(accountData.startBalance)"
         cell.nameLabel.text = accountData.name

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 
 struct Subcategory: CategoryProtocol, Equatable {
@@ -14,4 +15,13 @@ struct Subcategory: CategoryProtocol, Equatable {
     var color: UIColor
     var image: UIImage?
     var parentCategory: Int
+}
+
+class SubcategoryClass: Object {
+    @Persisted(primaryKey: true) var id: ObjectId
+    
+    @Persisted var name: String = ""
+    @Persisted var color: String = ""
+    @Persisted var image: String?
+    @Persisted var parentCategory: ObjectId
 }

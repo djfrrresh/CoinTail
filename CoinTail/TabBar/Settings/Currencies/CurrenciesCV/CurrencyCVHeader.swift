@@ -15,6 +15,9 @@ final class CurrencyCVHeader: UICollectionReusableView {
 
     let favouretesLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont(name: "SFProText-Regular", size: 12)
+        label.textColor = UIColor(named: "secondaryTextColor")
+        
         return label
     }()
     

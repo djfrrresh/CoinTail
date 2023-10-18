@@ -69,7 +69,9 @@ extension HomeVC: SelectedDate {
         // Вычисление общего баланса
         let totalBalance = "Total balance:".localized()
         let allTimeAmount = Records.shared.getAmount(for: .allTheTime, type: .allOperations)
-        balanceLabel.text = "\(totalBalance) $\(allTimeAmount)"
+        let currency = Currencies.shared.selectedCurrency
+        
+        balanceLabel.text = "\(totalBalance) \(allTimeAmount) \(currency)"
         
         // Отсортировать операции по месяцам (убывание)
         monthSections.sort { l, r in

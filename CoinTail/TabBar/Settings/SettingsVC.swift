@@ -13,23 +13,32 @@ class SettingsVC: BasicVC {
     let settingsMenu = [
         "Currency".localized(),
         "Notifications".localized(),
-        "Rate app".localized(),
-        "About app".localized(),
+        "Rate on App Store".localized(),
+        "About".localized(),
         "Delete data".localized()
     ]
     let settingsMenuImages = [
-        "dollarsign",
-        "bell",
-        "star",
-        "iphone.gen1",
-        "xmark.icloud"
+        "dollarsign.circle.fill",
+        "bell.fill",
+        "star.fill",
+        "globe",
+        "xmark.icloud.fill"
     ]
+    let settingsMenuColors = [
+        "currency",
+        "notifications",
+        "rateApp",
+        "about",
+        "deleteData"
+    ]
+    
+    var selectedCurrency: String?
     
     let settingsCV: UICollectionView = {
         let settingsLayout: UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()
             layout.minimumInteritemSpacing = 0
-            layout.minimumLineSpacing = 8
+            layout.minimumLineSpacing = 0
             
             return layout
         }()
@@ -45,6 +54,26 @@ class SettingsVC: BasicVC {
         
         return cv
     }()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        selectedCurrency = "\(Currencies.shared.selectedCurrency)"
+        settingsCV.reloadData()
+        
+        //TODO: пофиксить переход с large title 
+        if let navigationController = self.navigationController {
+            navigationController.navigationBar.prefersLargeTitles = true
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if let navigationController = self.navigationController {
+            navigationController.navigationBar.prefersLargeTitles = false
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

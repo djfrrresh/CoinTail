@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = TabBar() // Корневой контроллер
         window?.makeKeyAndVisible() // Отображение окна
         
+        RealmService.shared.readAllClasses()
+        
         return true
     }
 

@@ -29,13 +29,16 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
         }
         
         let section = daySections[indexPath.section]
-        let budgetData: Budget = section.budgets[indexPath.row]
+        let budgetData: BudgetClass = section.budgets[indexPath.row]
         let categoryID = budgetData.categoryID
+        
         guard let category = Categories.shared.getCategory(for: categoryID) else { return cell }
-        let sumByCategory = abs(Records.shared.getAmount(
+        
+        let sumByCategory = abs(Records.shared.getBudgetAmount(
             date: budgetData.startDate,
             untilDate: budgetData.untilDate,
-            categoryID: categoryID
+            categoryID: categoryID,
+            currency: Currencies.shared.getCurrency(for: budgetData.currency)
         ) ?? 0)
         let percentText = cell.calculatePercent(sum: sumByCategory, total: budgetData.amount)
         

@@ -43,6 +43,7 @@ extension AddOperationVC {
             
             Records.shared.recordID += 1
 
+            //TODO: при редактировании операции в первый раз отображается счет, во второй раз счета нет в кнопке
             let record = Record(
                 amount: amount,
                 descriptionText: desctiption,
@@ -50,7 +51,7 @@ extension AddOperationVC {
                 id: Records.shared.recordID,
                 type: strongSelf.addOperationSegment,
                 categoryID: categoryID,
-                accountID: accountID,
+//                accountID: accountID,
                 currency: currency
             )
                         
@@ -151,9 +152,10 @@ extension AddOperationVC {
         }
         
         // Счет
-        if let accountID = record.accountID, let account = Accounts.shared.getAccount(for: accountID) {
-            accountButton.setTitle(account.name, for: .normal)
-        }
+        //TODO: account
+//        if let accountID = record.accountID, let account = Accounts.shared.getAccount(for: accountID) {
+//            accountButton.setTitle(account.name, for: .normal)
+//        }
     }
     
     // Переход на экран с выбором категории

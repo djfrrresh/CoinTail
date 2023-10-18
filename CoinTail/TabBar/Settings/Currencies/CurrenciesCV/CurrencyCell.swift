@@ -23,7 +23,7 @@ final class CurrencyCell: UICollectionViewCell {
     
     let backView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = .white
         view.layer.cornerRadius = 8
         
         return view
@@ -32,7 +32,8 @@ final class CurrencyCell: UICollectionViewCell {
     let currencyNameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.textColor = .darkGray
+        label.textColor = .black
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
         
         return label
     }()
@@ -40,21 +41,22 @@ final class CurrencyCell: UICollectionViewCell {
     let currencyCodeLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.textColor = .darkGray
+        label.textColor = .black
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
         
         return label
     }()
     
     let favouriteButton: UIButton = {
         let button = UIButton()
-        button.tintColor = .gray
+        button.tintColor = UIColor(named: "checkMark")
         
         return button
     }()
     
     let checkmarkImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.tintColor = .gray
+        imageView.tintColor = UIColor(named: "checkMark")
         imageView.contentMode = .scaleAspectFill
         imageView.image = UIImage(systemName: "checkmark")
         imageView.isHidden = true
@@ -89,7 +91,7 @@ final class CurrencyCell: UICollectionViewCell {
         favouriteButton.easy.layout([
             Height(20),
             Width(20),
-            Left(8),
+            Left(16),
             CenterY()
         ])
         
@@ -102,7 +104,7 @@ final class CurrencyCell: UICollectionViewCell {
         
         currencyNameLabel.easy.layout([
             Right(8).to(checkmarkImageView, .left),
-            Left(6).to(currencyCodeLabel, .right),
+            Left(8).to(currencyCodeLabel, .right),
             CenterY()
         ])
         

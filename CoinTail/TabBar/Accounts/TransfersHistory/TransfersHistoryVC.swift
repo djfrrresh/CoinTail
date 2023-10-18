@@ -10,7 +10,7 @@ import UIKit
 
 final class TransfersHistoryVC: BasicVC {
     
-    var transfers = [TransferHistory]() {
+    var transfers = [TransferHistoryClass]() {
         didSet {
             transfersCV.reloadData()
         }

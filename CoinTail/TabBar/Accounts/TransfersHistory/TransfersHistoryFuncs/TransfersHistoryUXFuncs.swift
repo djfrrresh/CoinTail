@@ -11,7 +11,7 @@ import UIKit
 extension TransfersHistoryVC {
     
     func sortTransfers() {
-        transfers = Transfers.shared.transfersHistory
+        transfers = RealmService.shared.transfersHistoryArr
         
         transfers.sort { l, r in
             return l.date > r.date

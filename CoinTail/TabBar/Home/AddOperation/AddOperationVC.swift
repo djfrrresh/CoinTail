@@ -7,6 +7,7 @@
 
 import UIKit
 import EasyPeasy
+import RealmSwift
 
 
 class AddOperationVC: BasicVC {
@@ -14,7 +15,7 @@ class AddOperationVC: BasicVC {
     var operationID: Int?
     var categoryID: Int?
     var subcategoryID: Int?
-    var accountID: Int?
+    var accountID: ObjectId?
     
     var currency: Currency = Currencies.shared.selectedCurrency
     var currentIndex = 0

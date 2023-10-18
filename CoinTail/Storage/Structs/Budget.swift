@@ -6,22 +6,26 @@
 //
 
 import Foundation
+import RealmSwift
 
 
-struct Budget: Equatable {
-    var categoryID: Int
-    var amount: Double
-    var startDate: Date
-    var untilDate: Date
-    var id: Int
-    var currency: Currency
-    var isActive: Bool? { // Проверка бюджета на активность по дате
+class BudgetClass: Object {
+    @Persisted(primaryKey: true) var id: ObjectId
+    
+    @Persisted var categoryID: Int = 0
+    @Persisted var amount: Double = 0
+    @Persisted var startDate: Date = Date()
+    @Persisted var untilDate: Date = Date()
+    @Persisted var currency: String = ""
+    var isActive: Bool {
         let calendar = Calendar.current
         
-        // Сверяется текущая дата с датой начала бюджета
         guard let budgetDate = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: untilDate)),
-              let nowDate = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: Date())) else { return nil }
-
+              let nowDate = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: Date())) else {
+            return false
+        }
+        
         return nowDate < budgetDate
     }
+
 }

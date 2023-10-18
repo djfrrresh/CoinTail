@@ -19,6 +19,8 @@ extension AccountsTransferVC {
     func transferValidation(amount: Double, completion: ((String, String) -> Void)? = nil) {
         guard let firstAccountButtonText = selectFirstAccountButton.titleLabel?.text,
               let secondAccountButtonText = selectSecondAccountButton.titleLabel?.text else { return }
+        guard let firstAccountCurrency = Accounts.shared.getAccount(for: firstAccountButtonText)?.currency,
+              let secondAccountCurrency = Accounts.shared.getAccount(for: secondAccountButtonText)?.currency else { return }
         
         let missingAmount = abs(amount) == 0
         let missingFirstAccount = firstAccountButtonText == AccountsTransferVC.firstAccountText
@@ -30,6 +32,8 @@ extension AccountsTransferVC {
             errorAlert("No accounts selected".localized())
         } else if firstAccountButtonText == secondAccountButtonText {
             errorAlert("You cannot select the same account for transfer".localized())
+        } else if firstAccountCurrency != secondAccountCurrency {
+            errorAlert("You cannot transfer money to an account with a different currency!".localized())
         } else {
             completion?(firstAccountButtonText, secondAccountButtonText)
         }

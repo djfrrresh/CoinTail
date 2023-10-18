@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 
 extension AddOperationVC: SendSubcategoryID, SendAccountID, SendCategoryID {
@@ -26,7 +27,7 @@ extension AddOperationVC: SendSubcategoryID, SendAccountID, SendCategoryID {
         categoryButton.setTitle(subcategory.name, for: .normal)
     }
     
-    func sendAccountData(id: Int) {
+    func sendAccountData(id: ObjectId) {
         self.accountID = id
         
         guard let account = Accounts.shared.getAccount(for: id) else { return }
@@ -56,16 +57,26 @@ extension AddOperationVC: SendSubcategoryID, SendAccountID, SendCategoryID {
     
     // Проверка поля Amount и текста из кнопки категории на наличие данных в них
     func recordValidation(amount: Double, categoryText: String, accountText: String, completion: ((Double, Int) -> Void)? = nil) {
+        guard let currencyText = currencyButton.titleLabel?.text else { return }
+        
+        let selectedCurrency: Currency = Currencies.shared.getCurrency(for: currencyText)
         let missingAmount = abs(amount) == 0
         let missingCategory = categoryText == AddOperationVC.defaultCategory
         let missingAccount = accountText == AddOperationVC.defaultAccount
-
+        
+        var account: AccountClass?
+        if let accountID = self.accountID {
+            account = Accounts.shared.getAccount(for: accountID)
+        }
+        
         if missingAmount {
             errorAlert("Missing value in amount field".localized())
         } else if missingCategory {
             errorAlert("No category selected".localized())
         } else if missingAccount && self.accountID != nil {
             errorAlert("No account selected".localized())
+        } else if account != nil && account?.currency != "\(selectedCurrency)" {
+            errorAlert("You cannot specify an account for this transaction with another currency!".localized())
         } else {
             //TODO: add subcategory
             guard let categoryID = self.categoryID else { return }

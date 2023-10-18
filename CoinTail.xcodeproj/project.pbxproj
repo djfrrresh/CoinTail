@@ -51,6 +51,7 @@
 		5665C13A2A9F5F6900B11D34 /* SettingsCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665C1392A9F5F6900B11D34 /* SettingsCVDataSource.swift */; };
 		5665C13D2A9F614A00B11D34 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665C13C2A9F614A00B11D34 /* SettingsCell.swift */; };
 		5665C1402A9F6B0800B11D34 /* SettingsUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665C13F2A9F6B0800B11D34 /* SettingsUIFuncs.swift */; };
+		567E13982ADFE60100F3C244 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E13972ADFE60100F3C244 /* UIView.swift */; };
 		568EF0202AA603BF00EB042D /* AccountsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF01F2AA603BF00EB042D /* AccountsVC.swift */; };
 		568EF0232AA607E000EB042D /* AccountsUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0222AA607E000EB042D /* AccountsUIFuncs.swift */; };
 		568EF0262AA608D000EB042D /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0252AA608D000EB042D /* AccountCell.swift */; };
@@ -104,6 +105,7 @@
 		569E52332AD0B1B000A4FCA7 /* AboutAppUXFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E52322AD0B1B000A4FCA7 /* AboutAppUXFuncs.swift */; };
 		569E52362AD0B47600A4FCA7 /* AboutAppActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E52352AD0B47600A4FCA7 /* AboutAppActions.swift */; };
 		569E52382AD4405F00A4FCA7 /* AboutAppMailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E52372AD4405F00A4FCA7 /* AboutAppMailDelegate.swift */; };
+		569E523A2AD861DD00A4FCA7 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E52392AD861DD00A4FCA7 /* RealmService.swift */; };
 		56DBB6CE2A3724BC0087271D /* HomeOperationCellCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */; };
 		56DBB6DD2A3728600087271D /* HomeOperationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6DC2A3728600087271D /* HomeOperationCell.swift */; };
 		56DBB6EA2A372E220087271D /* HomeDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6E92A372E220087271D /* HomeDateCell.swift */; };
@@ -194,6 +196,7 @@
 		5665C1392A9F5F6900B11D34 /* SettingsCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCVDataSource.swift; sourceTree = "<group>"; };
 		5665C13C2A9F614A00B11D34 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		5665C13F2A9F6B0800B11D34 /* SettingsUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUIFuncs.swift; sourceTree = "<group>"; };
+		567E13972ADFE60100F3C244 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		568EF01F2AA603BF00EB042D /* AccountsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsVC.swift; sourceTree = "<group>"; };
 		568EF0222AA607E000EB042D /* AccountsUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsUIFuncs.swift; sourceTree = "<group>"; };
 		568EF0252AA608D000EB042D /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
@@ -247,6 +250,7 @@
 		569E52322AD0B1B000A4FCA7 /* AboutAppUXFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppUXFuncs.swift; sourceTree = "<group>"; };
 		569E52352AD0B47600A4FCA7 /* AboutAppActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppActions.swift; sourceTree = "<group>"; };
 		569E52372AD4405F00A4FCA7 /* AboutAppMailDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppMailDelegate.swift; sourceTree = "<group>"; };
+		569E52392AD861DD00A4FCA7 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOperationCellCV.swift; sourceTree = "<group>"; };
 		56DBB6DC2A3728600087271D /* HomeOperationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOperationCell.swift; sourceTree = "<group>"; };
 		56DBB6E92A372E220087271D /* HomeDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDateCell.swift; sourceTree = "<group>"; };
@@ -364,6 +368,7 @@
 				560AFBE72A13B5520054B502 /* UILabel.swift */,
 				560AFBE92A13B5EA0054B502 /* UISegmentedControl.swift */,
 				560AFBEB2A13BF110054B502 /* UITextField.swift */,
+				567E13972ADFE60100F3C244 /* UIView.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -409,6 +414,7 @@
 		560AFC1A2A1BEE4E0054B502 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				569E523B2AD86F9D00A4FCA7 /* Realm */,
 				569E522B2ACDB87000A4FCA7 /* Services */,
 				560AFC412A1D09030054B502 /* Structs */,
 			);
@@ -772,6 +778,14 @@
 				569E52372AD4405F00A4FCA7 /* AboutAppMailDelegate.swift */,
 			);
 			path = AboutAppFuncs;
+			sourceTree = "<group>";
+		};
+		569E523B2AD86F9D00A4FCA7 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				569E52392AD861DD00A4FCA7 /* RealmService.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		56DBB6CB2A3358F10087271D /* Application */ = {
@@ -1151,6 +1165,7 @@
 				568EF0852AB4BE3800EB042D /* NotificationsActions.swift in Sources */,
 				568EF0592AAFAF9C00EB042D /* TransfersHistoryUXFuncs.swift in Sources */,
 				56DBB6FF2A3B36190087271D /* AddOperationTFDelegate.swift in Sources */,
+				569E523A2AD861DD00A4FCA7 /* RealmService.swift in Sources */,
 				569E52382AD4405F00A4FCA7 /* AboutAppMailDelegate.swift in Sources */,
 				568EF07C2AB3AE0F00EB042D /* NotificationPeriods.swift in Sources */,
 				56DBB6CE2A3724BC0087271D /* HomeOperationCellCV.swift in Sources */,
@@ -1183,6 +1198,7 @@
 				560AFBE02A13B2E40054B502 /* UIButton.swift in Sources */,
 				568EF05E2AAFB10100EB042D /* TransfersHistoryCVDelegate.swift in Sources */,
 				568EF05C2AAFB0A200EB042D /* TransfersHistoryCVDataSource.swift in Sources */,
+				567E13982ADFE60100F3C244 /* UIView.swift in Sources */,
 				560AFC3E2A1C10680054B502 /* ChartsSetEntries.swift in Sources */,
 				568EF0382AA61C7200EB042D /* AddAccountUIFuncs.swift in Sources */,
 				568EF0412AA8CA5100EB042D /* AccountsTransferVC.swift in Sources */,
@@ -1280,7 +1296,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_QUOTE_LINKER_ARGUMENTS_FOR_COMPILER_DRIVER = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1337,7 +1353,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_QUOTE_LINKER_ARGUMENTS_FOR_COMPILER_DRIVER = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1366,6 +1382,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1414,6 +1431,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

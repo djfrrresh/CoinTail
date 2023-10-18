@@ -18,16 +18,16 @@ extension CurrenciesVC {
         currencySearchBar.easy.layout([
             Left(16),
             Right(16),
-            Height(48),
+            Height(36),
             CenterX(),
-            Top().to(self.view.safeAreaLayoutGuide, .top)
+            Top(16).to(self.view.safeAreaLayoutGuide, .top)
         ])
         
         currenciesCV.easy.layout([
             Left(16),
             Right(16),
             CenterX(),
-            Top(8).to(currencySearchBar, .bottom),
+            Top(24).to(currencySearchBar, .bottom),
             Bottom()
         ])
     }

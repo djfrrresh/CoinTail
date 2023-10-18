@@ -25,15 +25,15 @@ extension AccountsVC: UICollectionViewDataSource {
         ) as? AccountCell else {
             return UICollectionViewCell()
         }
-        
-        let accountData: Account = accounts[indexPath.row]
+                
+        let accountData: AccountClass = accounts[indexPath.row]
         var totalAmountForCash: Double = accountData.startBalance
 
-        if let cashAccount = Accounts.shared.getAccount(for: accountData.id) {
-            totalAmountForCash += Records.shared.calculateTotalBalance(for: cashAccount.id)
+        if let account = Accounts.shared.getAccount(for: accountData.id) {
+            totalAmountForCash += Records.shared.calculateTotalBalance(for: account.id)
             
             // Обновить баланс для счета
-            Accounts.shared.editBalance(for: cashAccount.id, replacingBalance: totalAmountForCash)
+            Accounts.shared.editBalance(for: account.id, replacingBalance: totalAmountForCash)
         }
         
         cell.amountLabel.text = "\(totalAmountForCash)"

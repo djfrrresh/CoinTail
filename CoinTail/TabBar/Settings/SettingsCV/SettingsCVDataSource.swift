@@ -28,7 +28,23 @@ extension SettingsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLa
         }
         
         cell.menuLabel.text = settingsMenu[indexPath.row]
-        cell.menuImage.image = UIImage(systemName: settingsMenuImages[indexPath.row])
+        cell.menuImageView.image = UIImage(systemName: settingsMenuImages[indexPath.row])
+        cell.menuImageView.tintColor = UIColor(named: settingsMenuColors[indexPath.row])
+        
+        // Для небольших коллекций, которые не скроллятся, можно задавать закругление через такой способ. Иначе нельзя из-за переиспользования ячеек
+        switch indexPath.row {
+        case 0:
+            cell.cornerRadiusTop(radius: 16)
+            cell.currencyLabel.isHidden = false
+            cell.separatorView.isHidden = false
+            cell.currencyLabel.text = selectedCurrency
+        case 4:
+            cell.cornerRadiusBottom(radius: 16)
+            cell.currencyLabel.isHidden = true
+            cell.separatorView.isHidden = true
+        default:
+            return cell
+        }
                     
         return cell
     }

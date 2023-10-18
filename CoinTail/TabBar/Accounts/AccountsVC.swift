@@ -14,7 +14,7 @@ class AccountsVC: BasicVC {
     
     var isSelected: Bool = false
     
-    var accounts = [Account]() {
+    var accounts = [AccountClass]() {
         didSet {
             accountsCV.reloadData()
         }

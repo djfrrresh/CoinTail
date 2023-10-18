@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 
 protocol CategoryProtocol {
@@ -23,4 +24,14 @@ struct Category: CategoryProtocol, Equatable {
     var type: RecordType?
     var subcategories: [Int]?
     var isEditable: Bool = true
+}
+
+class CategoryClass: Object {
+    @Persisted(primaryKey: true) var id: ObjectId
+    
+    @Persisted var name: String = ""
+    @Persisted var color: String? // HEX-код цвета
+    @Persisted var image: String? // Путь к изображению
+    @Persisted var type: String?
+    @Persisted var subcategories = List<ObjectId>()
 }

@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import RealmSwift
 
 
 protocol SendAccountID: AnyObject {
-    func sendAccountData(id: Int)
+    func sendAccountData(id: ObjectId)
 }
 
 extension AccountsVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {

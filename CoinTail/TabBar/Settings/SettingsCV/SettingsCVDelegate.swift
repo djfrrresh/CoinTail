@@ -29,15 +29,9 @@ extension SettingsVC: UICollectionViewDelegate {
         }
         
         if let vc = vc {
-            if vc == AboutAppVC() {
-                vc.modalPresentationStyle = .overCurrentContext
-
-                self.present(vc, animated: true, completion: nil)
-            } else {
-                vc.hidesBottomBarWhenPushed = true
-                
-                navigationController?.pushViewController(vc, animated: true)
-            }
+            vc.hidesBottomBarWhenPushed = true
+            
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
     

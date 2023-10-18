@@ -36,7 +36,7 @@ final class CurrenciesVC: BasicVC, GetCurrencyIndex {
         let currenciesLayout: UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()
             layout.minimumInteritemSpacing = 0
-            layout.minimumLineSpacing = 8
+            layout.minimumLineSpacing = 0
             
             return layout
         }()
@@ -58,7 +58,7 @@ final class CurrenciesVC: BasicVC, GetCurrencyIndex {
         super.viewDidLoad()
         
         self.title = "Currencies".localized()
-        
+                
         currenciesCV.delegate = self
         currencySearchBar.delegate = self
         
