@@ -94,15 +94,33 @@
 		568EF07C2AB3AE0F00EB042D /* NotificationPeriods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF07B2AB3AE0F00EB042D /* NotificationPeriods.swift */; };
 		568EF07F2AB3BAD000EB042D /* NotificationsUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF07E2AB3BAD000EB042D /* NotificationsUIFuncs.swift */; };
 		568EF0812AB4B44E00EB042D /* NotificationsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0802AB4B44E00EB042D /* NotificationsDelegate.swift */; };
-		568EF0832AB4B5C800EB042D /* NotificationsUXFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0822AB4B5C800EB042D /* NotificationsUXFuncs.swift */; };
 		568EF0852AB4BE3800EB042D /* NotificationsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0842AB4BE3800EB042D /* NotificationsActions.swift */; };
 		568EF0872AB4C09F00EB042D /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0862AB4C09F00EB042D /* Notifications.swift */; };
 		568EF0892ABB439100EB042D /* SelectCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0882ABB439100EB042D /* SelectCategoryCell.swift */; };
 		568EF08B2ABC93B500EB042D /* Subcategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF08A2ABC93B500EB042D /* Subcategory.swift */; };
+		569B60D62AE09B3400CBFF33 /* SettingsItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B60D52AE09B3400CBFF33 /* SettingsItems.swift */; };
+		569B60D92AE14F1F00CBFF33 /* NotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B60D82AE14F1F00CBFF33 /* NotificationsCell.swift */; };
+		569B60DB2AE153C100CBFF33 /* NotificationsCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B60DA2AE153C100CBFF33 /* NotificationsCVDataSource.swift */; };
+		569B60DD2AE1590300CBFF33 /* NotificationsUXFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B60DC2AE1590300CBFF33 /* NotificationsUXFuncs.swift */; };
+		569B60DF2AE15AB300CBFF33 /* NotificationsCVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B60DE2AE15AB300CBFF33 /* NotificationsCVDelegate.swift */; };
+		569B60E12AE1752D00CBFF33 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B60E02AE1752D00CBFF33 /* UIColor.swift */; };
+		569B60EF2AE1F4DD00CBFF33 /* RegularityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B60EE2AE1F4DD00CBFF33 /* RegularityVC.swift */; };
+		569B60F22AE1F55700CBFF33 /* RegularityUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B60F12AE1F55700CBFF33 /* RegularityUIFuncs.swift */; };
+		569B60F52AE1F5DA00CBFF33 /* RegularityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B60F42AE1F5DA00CBFF33 /* RegularityCell.swift */; };
+		569B60F72AE1F78000CBFF33 /* RegularityCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B60F62AE1F78000CBFF33 /* RegularityCVDataSource.swift */; };
+		569B60F92AE1F8C700CBFF33 /* RegularityCVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B60F82AE1F8C700CBFF33 /* RegularityCVDelegate.swift */; };
+		569B61072AE2B0AF00CBFF33 /* ContactsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B61062AE2B0AF00CBFF33 /* ContactsCell.swift */; };
+		569B61092AE2B20C00CBFF33 /* ContactsCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B61082AE2B20C00CBFF33 /* ContactsCVDataSource.swift */; };
+		569B610B2AE2B9A500CBFF33 /* ContactsCVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B610A2AE2B9A500CBFF33 /* ContactsCVDelegate.swift */; };
+		569B610D2AE2BC1800CBFF33 /* ContactsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B610C2AE2BC1800CBFF33 /* ContactsHeader.swift */; };
+		569B610F2AE2C62800CBFF33 /* AboutAppUXFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B610E2AE2C62800CBFF33 /* AboutAppUXFuncs.swift */; };
+		569B61152AE2D3AE00CBFF33 /* SFProText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 569B61112AE2D3AE00CBFF33 /* SFProText-Regular.ttf */; };
+		569B61162AE2D3AE00CBFF33 /* SFProDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 569B61122AE2D3AE00CBFF33 /* SFProDisplay-Bold.ttf */; };
+		569B61172AE2D3AE00CBFF33 /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 569B61132AE2D3AE00CBFF33 /* SFProDisplay-Semibold.ttf */; };
+		569B61182AE2D3AE00CBFF33 /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 569B61142AE2D3AE00CBFF33 /* SFProDisplay-Regular.ttf */; };
 		569E52282ACD887900A4FCA7 /* AmountValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E52272ACD887900A4FCA7 /* AmountValidationHelper.swift */; };
 		569E522E2AD0713200A4FCA7 /* AboutAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E522D2AD0713200A4FCA7 /* AboutAppVC.swift */; };
 		569E52312AD083CB00A4FCA7 /* AboutAppUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E52302AD083CB00A4FCA7 /* AboutAppUIFuncs.swift */; };
-		569E52332AD0B1B000A4FCA7 /* AboutAppUXFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E52322AD0B1B000A4FCA7 /* AboutAppUXFuncs.swift */; };
 		569E52362AD0B47600A4FCA7 /* AboutAppActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E52352AD0B47600A4FCA7 /* AboutAppActions.swift */; };
 		569E52382AD4405F00A4FCA7 /* AboutAppMailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E52372AD4405F00A4FCA7 /* AboutAppMailDelegate.swift */; };
 		569E523A2AD861DD00A4FCA7 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E52392AD861DD00A4FCA7 /* RealmService.swift */; };
@@ -239,15 +257,33 @@
 		568EF07B2AB3AE0F00EB042D /* NotificationPeriods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPeriods.swift; sourceTree = "<group>"; };
 		568EF07E2AB3BAD000EB042D /* NotificationsUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsUIFuncs.swift; sourceTree = "<group>"; };
 		568EF0802AB4B44E00EB042D /* NotificationsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsDelegate.swift; sourceTree = "<group>"; };
-		568EF0822AB4B5C800EB042D /* NotificationsUXFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsUXFuncs.swift; sourceTree = "<group>"; };
 		568EF0842AB4BE3800EB042D /* NotificationsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsActions.swift; sourceTree = "<group>"; };
 		568EF0862AB4C09F00EB042D /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		568EF0882ABB439100EB042D /* SelectCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryCell.swift; sourceTree = "<group>"; };
 		568EF08A2ABC93B500EB042D /* Subcategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subcategory.swift; sourceTree = "<group>"; };
+		569B60D52AE09B3400CBFF33 /* SettingsItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItems.swift; sourceTree = "<group>"; };
+		569B60D82AE14F1F00CBFF33 /* NotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCell.swift; sourceTree = "<group>"; };
+		569B60DA2AE153C100CBFF33 /* NotificationsCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCVDataSource.swift; sourceTree = "<group>"; };
+		569B60DC2AE1590300CBFF33 /* NotificationsUXFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsUXFuncs.swift; sourceTree = "<group>"; };
+		569B60DE2AE15AB300CBFF33 /* NotificationsCVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCVDelegate.swift; sourceTree = "<group>"; };
+		569B60E02AE1752D00CBFF33 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		569B60EE2AE1F4DD00CBFF33 /* RegularityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularityVC.swift; sourceTree = "<group>"; };
+		569B60F12AE1F55700CBFF33 /* RegularityUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularityUIFuncs.swift; sourceTree = "<group>"; };
+		569B60F42AE1F5DA00CBFF33 /* RegularityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularityCell.swift; sourceTree = "<group>"; };
+		569B60F62AE1F78000CBFF33 /* RegularityCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularityCVDataSource.swift; sourceTree = "<group>"; };
+		569B60F82AE1F8C700CBFF33 /* RegularityCVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularityCVDelegate.swift; sourceTree = "<group>"; };
+		569B61062AE2B0AF00CBFF33 /* ContactsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCell.swift; sourceTree = "<group>"; };
+		569B61082AE2B20C00CBFF33 /* ContactsCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCVDataSource.swift; sourceTree = "<group>"; };
+		569B610A2AE2B9A500CBFF33 /* ContactsCVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCVDelegate.swift; sourceTree = "<group>"; };
+		569B610C2AE2BC1800CBFF33 /* ContactsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsHeader.swift; sourceTree = "<group>"; };
+		569B610E2AE2C62800CBFF33 /* AboutAppUXFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppUXFuncs.swift; sourceTree = "<group>"; };
+		569B61112AE2D3AE00CBFF33 /* SFProText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.ttf"; sourceTree = "<group>"; };
+		569B61122AE2D3AE00CBFF33 /* SFProDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.ttf"; sourceTree = "<group>"; };
+		569B61132AE2D3AE00CBFF33 /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
+		569B61142AE2D3AE00CBFF33 /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		569E52272ACD887900A4FCA7 /* AmountValidationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountValidationHelper.swift; sourceTree = "<group>"; };
 		569E522D2AD0713200A4FCA7 /* AboutAppVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppVC.swift; sourceTree = "<group>"; };
 		569E52302AD083CB00A4FCA7 /* AboutAppUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppUIFuncs.swift; sourceTree = "<group>"; };
-		569E52322AD0B1B000A4FCA7 /* AboutAppUXFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppUXFuncs.swift; sourceTree = "<group>"; };
 		569E52352AD0B47600A4FCA7 /* AboutAppActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppActions.swift; sourceTree = "<group>"; };
 		569E52372AD4405F00A4FCA7 /* AboutAppMailDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppMailDelegate.swift; sourceTree = "<group>"; };
 		569E52392AD861DD00A4FCA7 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
@@ -335,6 +371,7 @@
 		560AFBD72A1394EC0054B502 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				569B61102AE2D36E00CBFF33 /* Fonts */,
 				560AFBCC2A1394A40054B502 /* Assets.xcassets */,
 				5656E9BC2A97732000070045 /* Localizable.strings */,
 			);
@@ -369,6 +406,7 @@
 				560AFBE92A13B5EA0054B502 /* UISegmentedControl.swift */,
 				560AFBEB2A13BF110054B502 /* UITextField.swift */,
 				567E13972ADFE60100F3C244 /* UIView.swift */,
+				569B60E02AE1752D00CBFF33 /* UIColor.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -484,16 +522,11 @@
 			children = (
 				560AFC1E2A1BF4970054B502 /* MonthSection.swift */,
 				56EFDFEF2A5D9176003A6A45 /* DaySection.swift */,
-				560AFC3F2A1D08D10054B502 /* Category.swift */,
-				560AFC422A1D091F0054B502 /* Record.swift */,
 				5642DAEA2A4080BF00ADF475 /* DatePeriods.swift */,
-				5642DB2A2A4F313A00ADF475 /* Budget.swift */,
 				5656E9BE2A9777FA00070045 /* RecordType.swift */,
 				5665C1362A9F5B2200B11D34 /* Currency.swift */,
-				568EF02B2AA609F400EB042D /* Account.swift */,
-				568EF0532AAFA6C200EB042D /* TransferHistory.swift */,
 				568EF07B2AB3AE0F00EB042D /* NotificationPeriods.swift */,
-				568EF08A2ABC93B500EB042D /* Subcategory.swift */,
+				569B60D52AE09B3400CBFF33 /* SettingsItems.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -727,6 +760,8 @@
 		568EF0782AB3A2C200EB042D /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				569B60ED2AE1F43F00CBFF33 /* Regularity */,
+				569B60D72AE14D1E00CBFF33 /* NotificitaionsCV */,
 				568EF07D2AB3BAC000EB042D /* NotificationsFuncs */,
 				568EF0792AB3A2D100EB042D /* NotificationsVC.swift */,
 			);
@@ -738,10 +773,83 @@
 			children = (
 				568EF07E2AB3BAD000EB042D /* NotificationsUIFuncs.swift */,
 				568EF0802AB4B44E00EB042D /* NotificationsDelegate.swift */,
-				568EF0822AB4B5C800EB042D /* NotificationsUXFuncs.swift */,
 				568EF0842AB4BE3800EB042D /* NotificationsActions.swift */,
+				569B60DC2AE1590300CBFF33 /* NotificationsUXFuncs.swift */,
 			);
 			path = NotificationsFuncs;
+			sourceTree = "<group>";
+		};
+		569B60D72AE14D1E00CBFF33 /* NotificitaionsCV */ = {
+			isa = PBXGroup;
+			children = (
+				569B60D82AE14F1F00CBFF33 /* NotificationsCell.swift */,
+				569B60DA2AE153C100CBFF33 /* NotificationsCVDataSource.swift */,
+				569B60DE2AE15AB300CBFF33 /* NotificationsCVDelegate.swift */,
+			);
+			path = NotificitaionsCV;
+			sourceTree = "<group>";
+		};
+		569B60ED2AE1F43F00CBFF33 /* Regularity */ = {
+			isa = PBXGroup;
+			children = (
+				569B60F32AE1F5CA00CBFF33 /* RegularityCV */,
+				569B60F02AE1F53500CBFF33 /* RegularityFuncs */,
+				569B60EE2AE1F4DD00CBFF33 /* RegularityVC.swift */,
+			);
+			path = Regularity;
+			sourceTree = "<group>";
+		};
+		569B60F02AE1F53500CBFF33 /* RegularityFuncs */ = {
+			isa = PBXGroup;
+			children = (
+				569B60F12AE1F55700CBFF33 /* RegularityUIFuncs.swift */,
+			);
+			path = RegularityFuncs;
+			sourceTree = "<group>";
+		};
+		569B60F32AE1F5CA00CBFF33 /* RegularityCV */ = {
+			isa = PBXGroup;
+			children = (
+				569B60F42AE1F5DA00CBFF33 /* RegularityCell.swift */,
+				569B60F62AE1F78000CBFF33 /* RegularityCVDataSource.swift */,
+				569B60F82AE1F8C700CBFF33 /* RegularityCVDelegate.swift */,
+			);
+			path = RegularityCV;
+			sourceTree = "<group>";
+		};
+		569B61052AE2B09E00CBFF33 /* AboutAppCV */ = {
+			isa = PBXGroup;
+			children = (
+				569B61062AE2B0AF00CBFF33 /* ContactsCell.swift */,
+				569B61082AE2B20C00CBFF33 /* ContactsCVDataSource.swift */,
+				569B610A2AE2B9A500CBFF33 /* ContactsCVDelegate.swift */,
+				569B610C2AE2BC1800CBFF33 /* ContactsHeader.swift */,
+			);
+			path = AboutAppCV;
+			sourceTree = "<group>";
+		};
+		569B61102AE2D36E00CBFF33 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				569B61122AE2D3AE00CBFF33 /* SFProDisplay-Bold.ttf */,
+				569B61142AE2D3AE00CBFF33 /* SFProDisplay-Regular.ttf */,
+				569B61132AE2D3AE00CBFF33 /* SFProDisplay-Semibold.ttf */,
+				569B61112AE2D3AE00CBFF33 /* SFProText-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		569B61192AE5860C00CBFF33 /* RealmModels */ = {
+			isa = PBXGroup;
+			children = (
+				568EF02B2AA609F400EB042D /* Account.swift */,
+				5642DB2A2A4F313A00ADF475 /* Budget.swift */,
+				560AFC3F2A1D08D10054B502 /* Category.swift */,
+				568EF08A2ABC93B500EB042D /* Subcategory.swift */,
+				560AFC422A1D091F0054B502 /* Record.swift */,
+				568EF0532AAFA6C200EB042D /* TransferHistory.swift */,
+			);
+			path = RealmModels;
 			sourceTree = "<group>";
 		};
 		569E522B2ACDB87000A4FCA7 /* Services */ = {
@@ -763,6 +871,7 @@
 		569E522C2AD0711C00A4FCA7 /* AboutApp */ = {
 			isa = PBXGroup;
 			children = (
+				569B61052AE2B09E00CBFF33 /* AboutAppCV */,
 				569E522F2AD083BA00A4FCA7 /* AboutAppFuncs */,
 				569E522D2AD0713200A4FCA7 /* AboutAppVC.swift */,
 			);
@@ -773,9 +882,9 @@
 			isa = PBXGroup;
 			children = (
 				569E52302AD083CB00A4FCA7 /* AboutAppUIFuncs.swift */,
-				569E52322AD0B1B000A4FCA7 /* AboutAppUXFuncs.swift */,
 				569E52352AD0B47600A4FCA7 /* AboutAppActions.swift */,
 				569E52372AD4405F00A4FCA7 /* AboutAppMailDelegate.swift */,
+				569B610E2AE2C62800CBFF33 /* AboutAppUXFuncs.swift */,
 			);
 			path = AboutAppFuncs;
 			sourceTree = "<group>";
@@ -783,6 +892,7 @@
 		569E523B2AD86F9D00A4FCA7 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
+				569B61192AE5860C00CBFF33 /* RealmModels */,
 				569E52392AD861DD00A4FCA7 /* RealmService.swift */,
 			);
 			path = Realm;
@@ -1015,8 +1125,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				560AFBD02A1394A40054B502 /* LaunchScreen.storyboard in Resources */,
+				569B61172AE2D3AE00CBFF33 /* SFProDisplay-Semibold.ttf in Resources */,
 				5656E9BA2A97732000070045 /* Localizable.strings in Resources */,
+				569B61182AE2D3AE00CBFF33 /* SFProDisplay-Regular.ttf in Resources */,
+				569B61162AE2D3AE00CBFF33 /* SFProDisplay-Bold.ttf in Resources */,
 				560AFBCD2A1394A40054B502 /* Assets.xcassets in Resources */,
+				569B61152AE2D3AE00CBFF33 /* SFProText-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1113,10 +1227,12 @@
 				568EF0202AA603BF00EB042D /* AccountsVC.swift in Sources */,
 				568EF06A2AB0E74200EB042D /* CurrencyCell.swift in Sources */,
 				568EF0602AAFB17100EB042D /* TransfersHistoryCell.swift in Sources */,
-				568EF0832AB4B5C800EB042D /* NotificationsUXFuncs.swift in Sources */,
 				5642DB2E2A4F34CC00ADF475 /* BudgetCVDataSource.swift in Sources */,
 				568EF03E2AA61FB900EB042D /* AddAccountActions.swift in Sources */,
 				569E52362AD0B47600A4FCA7 /* AboutAppActions.swift in Sources */,
+				569B60D62AE09B3400CBFF33 /* SettingsItems.swift in Sources */,
+				569B60DD2AE1590300CBFF33 /* NotificationsUXFuncs.swift in Sources */,
+				569B60EF2AE1F4DD00CBFF33 /* RegularityVC.swift in Sources */,
 				560AFC272A1BF5A30054B502 /* HomeCategoryCellCV.swift in Sources */,
 				560AFC392A1C0FC30054B502 /* PieChartFuncs.swift in Sources */,
 				564F08FE2A531AEE004C89C7 /* AddBudgetVC.swift in Sources */,
@@ -1143,7 +1259,6 @@
 				56DBB7212A3B64A00087271D /* CreateCategoryActions.swift in Sources */,
 				568EF06C2AB0FC1800EB042D /* CurrencyCVDataSource.swift in Sources */,
 				568EF06E2AB0FC4F00EB042D /* CurrencyCVDelegate.swift in Sources */,
-				569E52332AD0B1B000A4FCA7 /* AboutAppUXFuncs.swift in Sources */,
 				568EF0262AA608D000EB042D /* AccountCell.swift in Sources */,
 				568EF0462AA8E43100EB042D /* AccountsTransferUXFuncs.swift in Sources */,
 				56EFDFE82A54502E003A6A45 /* Budgets.swift in Sources */,
@@ -1155,14 +1270,17 @@
 				5642DB302A4F34F900ADF475 /* BudgetCell.swift in Sources */,
 				568EF0572AAFAEF000EB042D /* TransfersHistoryUIFuncs.swift in Sources */,
 				560AFC292A1BF62D0054B502 /* DateCell.swift in Sources */,
+				569B610F2AE2C62800CBFF33 /* AboutAppUXFuncs.swift in Sources */,
 				56DBB70A2A3B44090087271D /* Categories.swift in Sources */,
 				560AFC052A16B06D0054B502 /* HomeUXFuncs.swift in Sources */,
 				560AFC192A1BAC810054B502 /* HomeActions.swift in Sources */,
+				569B60F72AE1F78000CBFF33 /* RegularityCVDataSource.swift in Sources */,
 				56EFDFEC2A574771003A6A45 /* BudgetCVHeader.swift in Sources */,
 				568EF0892ABB439100EB042D /* SelectCategoryCell.swift in Sources */,
 				568EF03C2AA61F8E00EB042D /* AddAccountUXFuncs.swift in Sources */,
 				56DBB7292A3B68B00087271D /* ColorPickerFuncs.swift in Sources */,
 				568EF0852AB4BE3800EB042D /* NotificationsActions.swift in Sources */,
+				569B60D92AE14F1F00CBFF33 /* NotificationsCell.swift in Sources */,
 				568EF0592AAFAF9C00EB042D /* TransfersHistoryUXFuncs.swift in Sources */,
 				56DBB6FF2A3B36190087271D /* AddOperationTFDelegate.swift in Sources */,
 				569E523A2AD861DD00A4FCA7 /* RealmService.swift in Sources */,
@@ -1170,6 +1288,7 @@
 				568EF07C2AB3AE0F00EB042D /* NotificationPeriods.swift in Sources */,
 				56DBB6CE2A3724BC0087271D /* HomeOperationCellCV.swift in Sources */,
 				568EF0772AB3816A00EB042D /* CurrenciesSearching.swift in Sources */,
+				569B61092AE2B20C00CBFF33 /* ContactsCVDataSource.swift in Sources */,
 				560AFBC52A1394A30054B502 /* HomeVC.swift in Sources */,
 				56DBB7172A3B50140087271D /* SelectCategoryCVDelegate.swift in Sources */,
 				560AFC1C2A1BEE640054B502 /* Records.swift in Sources */,
@@ -1178,18 +1297,22 @@
 				568EF04D2AA927D900EB042D /* AccountsTransferCVDelegate.swift in Sources */,
 				568EF04F2AA93C5E00EB042D /* AccountsTransferTFDelegate.swift in Sources */,
 				5656E9BF2A9777FA00070045 /* RecordType.swift in Sources */,
+				569B60DF2AE15AB300CBFF33 /* NotificationsCVDelegate.swift in Sources */,
 				56DBB71A2A3B609E0087271D /* CreateCategoryVC.swift in Sources */,
 				560AFBC12A1394A30054B502 /* AppDelegate.swift in Sources */,
+				569B60DB2AE153C100CBFF33 /* NotificationsCVDataSource.swift in Sources */,
 				56DBB7262A3B672C0087271D /* CreateCategoryCVDelegate.swift in Sources */,
 				568EF0752AB1F76000EB042D /* CurrencyCVHeader.swift in Sources */,
 				568EF0352AA611F000EB042D /* AccountsActions.swift in Sources */,
 				568EF0672AB0D99700EB042D /* CurrenciesVC.swift in Sources */,
 				56DBB6EE2A37337F0087271D /* HomeDateCellCV.swift in Sources */,
+				569B60F22AE1F55700CBFF33 /* RegularityUIFuncs.swift in Sources */,
 				5642DB272A4DE36300ADF475 /* BudgetUXFuncs.swift in Sources */,
 				56DBB7032A3B38470087271D /* AddOperationActions.swift in Sources */,
 				56EFDFE42A5352EE003A6A45 /* AddBudgetActions.swift in Sources */,
 				568EF08B2ABC93B500EB042D /* Subcategory.swift in Sources */,
 				560AFBF22A13C28E0054B502 /* BasicVCFuncs.swift in Sources */,
+				569B60F92AE1F8C700CBFF33 /* RegularityCVDelegate.swift in Sources */,
 				56DBB6F22A3738240087271D /* CategoryCell.swift in Sources */,
 				568EF0712AB0FFAA00EB042D /* CurrenciesUIFuncs.swift in Sources */,
 				560AFBE82A13B5520054B502 /* UILabel.swift in Sources */,
@@ -1197,12 +1320,16 @@
 				56EFDFEE2A5751EC003A6A45 /* BudgetCVDelegate.swift in Sources */,
 				560AFBE02A13B2E40054B502 /* UIButton.swift in Sources */,
 				568EF05E2AAFB10100EB042D /* TransfersHistoryCVDelegate.swift in Sources */,
+				569B61072AE2B0AF00CBFF33 /* ContactsCell.swift in Sources */,
 				568EF05C2AAFB0A200EB042D /* TransfersHistoryCVDataSource.swift in Sources */,
 				567E13982ADFE60100F3C244 /* UIView.swift in Sources */,
 				560AFC3E2A1C10680054B502 /* ChartsSetEntries.swift in Sources */,
 				568EF0382AA61C7200EB042D /* AddAccountUIFuncs.swift in Sources */,
 				568EF0412AA8CA5100EB042D /* AccountsTransferVC.swift in Sources */,
+				569B610D2AE2BC1800CBFF33 /* ContactsHeader.swift in Sources */,
 				568EF03A2AA61EC200EB042D /* AddAccountTFDelegate.swift in Sources */,
+				569B610B2AE2B9A500CBFF33 /* ContactsCVDelegate.swift in Sources */,
+				569B60E12AE1752D00CBFF33 /* UIColor.swift in Sources */,
 				5665C13A2A9F5F6900B11D34 /* SettingsCVDataSource.swift in Sources */,
 				56DBB6EA2A372E220087271D /* HomeDateCell.swift in Sources */,
 				568EF0812AB4B44E00EB042D /* NotificationsDelegate.swift in Sources */,
@@ -1218,6 +1345,7 @@
 				560AFBF02A13C1DF0054B502 /* BasicVC.swift in Sources */,
 				568EF07F2AB3BAD000EB042D /* NotificationsUIFuncs.swift in Sources */,
 				560AFC3C2A1C10170054B502 /* ChartsAnimation.swift in Sources */,
+				569B60F52AE1F5DA00CBFF33 /* RegularityCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 
 extension AddBudgetVC: SendCategoryID {
     
     // Присылает категорию с SelectCategoryVC
-    func sendCategoryData(id: Int) {
+    func sendCategoryData(id: ObjectId) {
         self.budgetCategoryID = id
         
         let category = Categories.shared.getCategory(for: id)
@@ -31,7 +32,7 @@ extension AddBudgetVC: SendCategoryID {
     }
     
     // Проверка поля Amount и текста из кнопки категории на наличие данных в них
-    func budgetValidation(amount: Double, categoryText: String, isEditingBudget: Bool, completion: ((Double, Int) -> Void)? = nil) {
+    func budgetValidation(amount: Double, categoryText: String, isEditingBudget: Bool, completion: ((Double, ObjectId) -> Void)? = nil) {
         guard let currencyText = currencyButton.titleLabel?.text else { return }
         
         let selectedCurrency = Currencies.shared.getCurrency(for: currencyText)

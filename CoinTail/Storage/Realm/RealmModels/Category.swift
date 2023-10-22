@@ -10,20 +10,9 @@ import RealmSwift
 
 
 protocol CategoryProtocol {
-    var id: Int { get set }
     var name: String { get set }
-    var color: UIColor { get set }
-    var image: UIImage? { get set }
-}
-
-struct Category: CategoryProtocol, Equatable {
-    var id: Int
-    var name: String
-    var color: UIColor
-    var image: UIImage?
-    var type: RecordType?
-    var subcategories: [Int]?
-    var isEditable: Bool = true
+    var color: String { get set }
+    var image: String? { get set }
 }
 
 class CategoryClass: Object {
@@ -33,5 +22,5 @@ class CategoryClass: Object {
     @Persisted var color: String? // HEX-код цвета
     @Persisted var image: String? // Путь к изображению
     @Persisted var type: String?
-    @Persisted var subcategories = List<ObjectId>()
+    @Persisted var subcategories: List<ObjectId>
 }

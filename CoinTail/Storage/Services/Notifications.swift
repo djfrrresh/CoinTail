@@ -16,6 +16,6 @@ class Notifications {
     var toggleStatus: Bool = false
     
     // Выбранный период
-    var periodSwitcher: NotificationPeriods = .day
+    var regularity: NotificationPeriods = .daily
     
 }

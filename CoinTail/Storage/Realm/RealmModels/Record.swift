@@ -9,17 +9,6 @@ import Foundation
 import RealmSwift
 
 
-struct Record: Equatable {
-    var amount: Double
-    var descriptionText: String = ""
-    var date: Date
-    var id: Int
-    var type: RecordType
-    var categoryID: Int
-    var accountID: Int?
-    var currency: Currency
-}
-
 class RecordClass: Object {
     @Persisted(primaryKey: true) var id: ObjectId
     
@@ -28,6 +17,6 @@ class RecordClass: Object {
     @Persisted var date: Date = Date()
     @Persisted var type: String = ""
     @Persisted var categoryID: ObjectId
-    @Persisted var accountID: ObjectId
+    @Persisted var accountID: ObjectId?
     @Persisted var currency: String = ""
 }

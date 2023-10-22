@@ -9,6 +9,6 @@ import Foundation
 
 
 enum NotificationPeriods: String {
-    case week = "Week"
-    case day = "Day"
+    case weekly = "Weekly"
+    case daily = "Daily"
 }

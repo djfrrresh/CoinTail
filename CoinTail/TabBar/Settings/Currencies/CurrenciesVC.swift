@@ -54,6 +54,7 @@ final class CurrenciesVC: BasicVC, GetCurrencyIndex {
         return cv
     }()
     
+    //TODO: скроллить экран вместе с searchbar
     override func viewDidLoad() {
         super.viewDidLoad()
         

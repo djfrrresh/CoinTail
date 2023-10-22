@@ -15,9 +15,9 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
     
     static let id = "HomeCategoryCell"
     
-    var category: Category?
+    var category: CategoryClass?
     
-    var categoriesArrCellData: [Category] = [Category]() {
+    var categoriesArrCellData: [CategoryClass] = [CategoryClass]() {
         didSet {
             categoriesCV.reloadData()
         }
@@ -182,7 +182,7 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
         arrowImageRight.isHidden = right
     }
     
-    func chartsUpdate(_ segment: RecordType, records: [Record]) {
+    func chartsUpdate(_ segment: RecordType, records: [RecordClass]) {
         // Добавление записей в диаграммы
         setEntries(segment, records: records)
         // Добавление данных в диаграммы
@@ -209,9 +209,9 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
         arrowImageRight.isUserInteractionEnabled = true
     }
     
-    static func packBins(data: [Category]) -> (Int, [Category]) {
-        var bins = [[(CGFloat, Category)]]()
-        var categoriesWidth = [(CGFloat, Category)]()
+    static func packBins(data: [CategoryClass]) -> (Int, [CategoryClass]) {
+        var bins = [[(CGFloat, CategoryClass)]]()
+        var categoriesWidth = [(CGFloat, CategoryClass)]()
         
         for category in data {
             categoriesWidth.append((CategoryCVCell.size(data: category.name, isXmark: false).width, category))
@@ -235,7 +235,7 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
                 bins.append([(width, category)])
             }
         }
-        var categories = [Category]()
+        var categories = [CategoryClass]()
         for bin in bins {
             for (_, cat) in bin {
                 categories.append(cat)

@@ -11,46 +11,87 @@ import EasyPeasy
 
 extension AboutAppVC {
     
-    func setPopupElements() {
-        self.view.addSubview(popUpView)
-        popUpView.addSubview(aboutLabel)
-        popUpView.addSubview(connectionLabel)
-        popUpView.addSubview(telegramButton)
-        popUpView.addSubview(gmailButton)
+    func aboutSubviews() {
+        self.view.addSubview(moneyImageView)
+        self.view.addSubview(coinTailTitleLabel)
+        self.view.addSubview(aboutLabel)
+        self.view.addSubview(appVersionView)
+        self.view.addSubview(userAgreementButton)
+        self.view.addSubview(contactsCV)
 
-        popUpView.easy.layout([
-            Center(),
-            Left(20),
-            Right(20),
-            Height(220)
+        appVersionView.addSubview(appVersionTextLabel)
+        appVersionView.addSubview(appVersionLabel)
+        
+        userAgreementButton.addSubview(userAgreementLabel)
+        userAgreementButton.addSubview(chevronImageView)
+
+        moneyImageView.easy.layout([
+            Height(100),
+            Width(100),
+            Top(32).to(self.view.safeAreaLayoutGuide, .top),
+            CenterX()
+        ])
+        
+        coinTailTitleLabel.easy.layout([
+            Top(24).to(moneyImageView, .bottom),
+            CenterX(),
+            Left(32),
+            Right(32)
         ])
         
         aboutLabel.easy.layout([
+            Top(16).to(coinTailTitleLabel, .bottom),
             CenterX(),
-            Top(16),
-            Left(16),
-            Right(16)
+            Left(32),
+            Right(32)
         ])
         
-        connectionLabel.easy.layout([
+        appVersionView.easy.layout([
+            Height(72),
+            Left(16),
+            Right(16),
+            Top(32).to(aboutLabel, .bottom),
+            CenterX()
+        ])
+        
+        appVersionTextLabel.easy.layout([
+            Left(16),
+            Right(16),
+            Top(12)
+        ])
+        
+        appVersionLabel.easy.layout([
+            Left(16),
+            Right(16),
+            Bottom(12)
+        ])
+        
+        userAgreementButton.easy.layout([
+            Left(16),
+            Right(16),
             CenterX(),
-            Bottom(16),
+            Top(24).to(appVersionView, .bottom),
+            Height(44)
+        ])
+        
+        contactsCV.easy.layout([
+            Top(24).to(userAgreementButton, .bottom),
+            Bottom().to(self.view.safeAreaLayoutGuide, .bottom),
             Left(16),
-            Right(16)
+            Right(16),
+            CenterX()
         ])
         
-        telegramButton.easy.layout([
-            Height(60),
-            Width(60),
-            CenterX(80),
-            Bottom(12).to(connectionLabel, .top)
+        userAgreementLabel.easy.layout([
+            Left(16),
+            CenterY()
         ])
         
-        gmailButton.easy.layout([
-            Height(60),
-            Width(60),
-            CenterX(-80),
-            Bottom(12).to(connectionLabel, .top)
+        chevronImageView.easy.layout([
+            Right(16),
+            CenterY(),
+            Height(20),
+            Width(20)
         ])
     }
     

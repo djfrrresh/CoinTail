@@ -39,7 +39,6 @@ class Currencies {
         return array.contains(currency)
     }
     
-    // TODO: при редактировании операции / бюджета / счета и нажатии на кнопку с валютой происходит рандомный скроллинг. Нужно сделать проверку на индекс в массиве и с него пролистывать
     // Возвращаем массив с валютами из избранных + выбранную валюту
     func currenciesToChoose() -> [Currency] {
         var combinedCurrencies: [Currency] = [selectedCurrency] + favouriteCurrencies

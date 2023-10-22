@@ -6,17 +6,18 @@
 //
 
 import UIKit
+import RealmSwift
 
 
 protocol SendCategoryID: AnyObject {
-    func sendCategoryData(id: Int)
+    func sendCategoryData(id: ObjectId)
 }
 
 extension SelectCategoryVC: UICollectionViewDataSource {
     
     // Количество категорий
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return categories[operationSegmentType]?.count ?? 0
+        return categories.count
     }
 
     // Количество подкатегорий
@@ -24,8 +25,8 @@ extension SelectCategoryVC: UICollectionViewDataSource {
         if isParental {
             return 0
         } else {
-            let subcategoriesCount = categories[operationSegmentType]?[section].subcategories?.count
-            return subcategoriesCount ?? 0
+            let subcategoriesCount = categories[section].subcategories.count
+            return subcategoriesCount
         }
     }
     
@@ -38,13 +39,14 @@ extension SelectCategoryVC: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
                 
-        guard let subcategoryID = categories[operationSegmentType]?[indexPath.section].subcategories?[indexPath.row] else { return cell }
-        
+        let subcategoryID = categories[indexPath.section].subcategories[indexPath.row]
         let subcategoryData = Categories.shared.getSubcategory(for: subcategoryID)
         
+        guard let image = subcategoryData?.image else { return UICollectionViewCell() }
+
         let subcategoryLabel = subcategoryData?.name
-        let subcategoryImage = subcategoryData?.image
-        let subcategoryColor = subcategoryData?.color
+        let subcategoryImage = UIImage(systemName: image)
+        let subcategoryColor = UIColor(hex: subcategoryData?.color ?? "FFFFFF")
 
         cell.categoryLabel.text = subcategoryLabel
         cell.categoryImage.image = subcategoryImage
@@ -65,13 +67,14 @@ extension SelectCategoryVC: UICollectionViewDataSource {
         headerView.tag = indexPath.section
         headerView.headerSettings()
         
-        guard let categoryLabel = categories[operationSegmentType]?[indexPath.section].name,
-              let categoryImage = categories[operationSegmentType]?[indexPath.section].image,
-              let categoryColor = categories[operationSegmentType]?[indexPath.section].color else { return headerView }
+        let categoryLabel = categories[indexPath.section].name
+        let categoryColor = categories[indexPath.section].color
+        
+        guard let image = categories[indexPath.section].image else { return UICollectionViewCell() }
         
         headerView.categoryLabel.text = categoryLabel
-        headerView.categoryImage.image = categoryImage
-        headerView.backImageView.backgroundColor = categoryColor
+        headerView.categoryImage.image = UIImage(systemName: image)
+        headerView.backImageView.backgroundColor = UIColor(hex: categoryColor ?? "FFFFFF")
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapDetected))
         headerView.addGestureRecognizer(tapGestureRecognizer)
@@ -80,8 +83,8 @@ extension SelectCategoryVC: UICollectionViewDataSource {
     }
     
     @objc func tapDetected(_ sender: UITapGestureRecognizer) {
-        guard let headerViewID = sender.view?.tag,
-              let categoryID = categories[operationSegmentType]?[headerViewID].id else { return }
+        guard let headerViewID = sender.view?.tag else { return }
+        let categoryID = categories[headerViewID].id
         
         categoryDelegate?.sendCategoryData(id: categoryID)
                 

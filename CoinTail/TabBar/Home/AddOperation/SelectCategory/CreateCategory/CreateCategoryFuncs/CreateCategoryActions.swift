@@ -6,14 +6,15 @@
 //
 
 import UIKit
+import RealmSwift
 
 
 protocol AddNewCategory: AnyObject {
-    func sendNewCategoryData(category: Category)
+    func sendNewCategoryData(category: CategoryClass)
 }
 
 protocol AddNewSubcategory: AnyObject {
-    func sendNewSubcategoryData(subcategory: Subcategory)
+    func sendNewSubcategoryData(subcategory: SubcategoryClass)
 }
 
 extension CreateCategoryVC {
@@ -30,31 +31,28 @@ extension CreateCategoryVC {
             if isSubcategory {
                 guard let parentalCategoryText = parentalCategoryButton.titleLabel?.text else { return }
                 
-                let subcategoryID = Categories.shared.lastSubcategoryID + 1
-                let parentalCategoryID = Categories.shared.getCategoryID(for: parentalCategoryText, type: addOperationVCSegment)
-                
-                Categories.shared.addSubcategoryToCategory(for: parentalCategoryID, to: addOperationVCSegment, subcategoryID: subcategoryID)
-                
-                addNewSubcategoryDelegate?.sendNewSubcategoryData(
-                    subcategory: Subcategory(
-                        id: subcategoryID,
-                        name: categoryText,
-                        color: selectedColor ?? .white,
-                        image: selectedCategoryImage,
-                        parentCategory: parentalCategoryID
-                    )
+                guard let parentalCategoryID = Categories.shared.getCategoryID(for: parentalCategoryText, type: addOperationVCSegment) else { return }
+
+                let subcategory = SubcategoryClass()
+                subcategory.name = categoryText
+                subcategory.color = selectedColor?.toHex() ?? UIColor.white.toHex()
+                subcategory.image = selectedCategoryImage
+                subcategory.parentCategory = parentalCategoryID
+                                
+                Categories.shared.addSubcategoryToCategory(
+                    for: parentalCategoryID,
+                    to: addOperationVCSegment,
+                    subcategoryID: subcategory.id
                 )
+                
+                addNewSubcategoryDelegate?.sendNewSubcategoryData(subcategory: subcategory)
             } else {
-                let categoryID = Categories.shared.lastCategoryID + 1
+                let category = CategoryClass()
+                category.name = categoryText
+                category.color = selectedColor?.toHex() ?? UIColor.white.toHex()
+                category.image = selectedCategoryImage
                 
-                addNewCategoryDelegate?.sendNewCategoryData(
-                    category: Category(
-                        id: categoryID,
-                        name: categoryText,
-                        color: selectedColor ?? .white,
-                        image: selectedCategoryImage
-                    )
-                )
+                addNewCategoryDelegate?.sendNewCategoryData(category: category)
             }
             
             dismiss(animated: true, completion: nil)

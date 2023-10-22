@@ -29,7 +29,7 @@ final class SettingsCell: UICollectionViewCell {
     let menuLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.font = UIFont(name: "SFPro-Semibold", size: 17)
+        label.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
 
         return label
     }()
@@ -111,6 +111,10 @@ final class SettingsCell: UICollectionViewCell {
             CenterY(),
             Right(4).to(chevronImageView, .left)
         ])
+    }
+    
+    func isSeparatorLineHidden(_ isHidden: Bool) {
+        separatorView.isHidden = isHidden
     }
     
     static func size() -> CGSize {

@@ -9,7 +9,7 @@ import UIKit
 
 
 protocol PushVC: AnyObject {
-    func pushVC(record: Record)
+    func pushVC(record: RecordClass)
 }
 
 extension HomeOperationCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -32,14 +32,14 @@ extension HomeOperationCell: UICollectionViewDataSource, UICollectionViewDelegat
             return UICollectionViewCell()
         }
         
-        let recordData: Record
+        let recordData: RecordClass
         let section = monthSectionsCellData[indexPath.section]
         
         recordData = section.records[indexPath.row]
         
-        guard let categoryData = Categories.shared.getCategory(for: recordData.categoryID) else { return cell }
+        guard let categoryData = Categories.shared.getCategory(for: recordData.categoryID),
+              let image = categoryData.image else { return cell }
         
-        let image = categoryData.image
         let amount = "\(recordData.amount)"
         let category = categoryData.name
         let currency = "\(recordData.currency)"
@@ -47,13 +47,13 @@ extension HomeOperationCell: UICollectionViewDataSource, UICollectionViewDelegat
                 
         cell.amountLabel.text = amount
         cell.categoryLabel.text = category
-        cell.categoryImage.image = image
+        cell.categoryImage.image = UIImage(systemName: image)
         cell.currencyLabel.text = currency
-        cell.backImage.backgroundColor = backView
+        cell.backImage.backgroundColor = UIColor(hex: backView ?? "FFFFFF")
         
         // Ставит цвет в зависимости от типа операции
         cell.setAmountColor(
-            recordType: RecordType(rawValue: (recordData.type).rawValue ) ?? .allOperations,
+            recordType: RecordType(rawValue: recordData.type) ?? .allOperations,
             amountLabel: cell.amountLabel,
             currencyLabel: cell.currencyLabel
         )
@@ -62,7 +62,7 @@ extension HomeOperationCell: UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let recordData: Record
+        let recordData: RecordClass
         let section = monthSectionsCellData[indexPath.section]
         
         recordData = section.records[indexPath.row]
@@ -72,7 +72,7 @@ extension HomeOperationCell: UICollectionViewDataSource, UICollectionViewDelegat
     
     // Определение размера ячейки
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let recordData: Record?
+        let recordData: RecordClass?
         let section = monthSectionsCellData[indexPath.section]
         
         recordData = section.records[indexPath.row]

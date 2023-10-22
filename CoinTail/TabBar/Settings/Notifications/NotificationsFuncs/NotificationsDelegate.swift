@@ -13,9 +13,7 @@ extension NotificationsVC: UNUserNotificationCenterDelegate {
     
     // Получение уведомления при открытом приложении
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.list, .banner, .sound])
-        
-        print(#function)
+        completionHandler([.list, .banner, .sound])        
     }
     
     // Срабатывает при нажатии на уведомление

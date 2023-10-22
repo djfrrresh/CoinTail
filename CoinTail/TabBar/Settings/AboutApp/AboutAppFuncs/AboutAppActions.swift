@@ -11,13 +11,13 @@ import MessageUI
 
 extension AboutAppVC {
     
-    @objc func telegramAction(_ sender: UIButton) {
+    func telegramAction() {
         if let url = URL(string: "https://t.me/just_eugeny") {
             UIApplication.shared.open(url, options: [:])
         }
     }
     
-    @objc func gmailAction(_ sender: UIButton) {
+    func gmailAction() {
         let subject = "CoinTail"
         let body = "Hello, I have a question / suggestion regarding the CoinTail app..."
         let recipientEmail = "kunavinjenya55@gmail.com"
@@ -46,6 +46,10 @@ extension AboutAppVC {
         let defaultUrl = URL(string: "mailto:\(recipient)?subject=\(subjectEncoded)&body=\(bodyEncoded)")
         
         return defaultUrl
+    }
+    
+    @objc func userAgreementAction(_ sender: UIButton) {
+        print("Test")
     }
     
 }

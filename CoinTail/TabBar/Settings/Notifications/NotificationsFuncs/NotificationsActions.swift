@@ -10,51 +10,44 @@ import UIKit
 
 extension NotificationsVC {
     
-    @objc func toggleChanged(toggle: UISwitch) {
-        if onOffToggle.isOn {
+    @objc func switchToggled(toggle: UISwitch) {
+        if toggle.isOn {
             // Запрос на подключение уведомлений
             notificationCenter.requestAuthorization(options: [.alert, .badge ,.sound]) { [weak self] granted, _ in
-                
+
                 guard let strongSelf = self else { return }
-                
+
                 guard granted else {
                     DispatchQueue.main.async {
                         strongSelf.notificationsPermission()
-                        
-                        strongSelf.onOffToggle.isOn = false
+
+                        toggle.isOn = false
                     }
                     return
                 }
-                
+
                 // Проверка доступа к уведомлениям у пользователя
                 strongSelf.notificationCenter.getNotificationSettings { settings in
                     guard settings.authorizationStatus == .authorized else { return }
                 }
-                
+
                 DispatchQueue.main.async {
                     // Сохранить в настройки приложения вкл/выкл
-                    Notifications.shared.toggleStatus = strongSelf.onOffToggle.isOn
+                    Notifications.shared.toggleStatus = toggle.isOn
                 }
             }
             notificationCenter.delegate = self
 
-            let segment = NotificationPeriods(rawValue: notificationsSwitcher.titleForSegment(at: notificationsSwitcher.selectedSegmentIndex)!) ?? .day
-            
+            let segment = notificationRegularity
+
             sendNotifications(segment: segment)
         } else {
             // Отключение уведомлений по идентификатору
             notificationCenter.removePendingNotificationRequests(withIdentifiers: ["operationNotifications"])
-            
+
             // Сохранить в настройки приложения положение выключателя
-            Notifications.shared.toggleStatus = onOffToggle.isOn
+            Notifications.shared.toggleStatus = toggle.isOn
         }
-    }
-    
-    @objc func savePeriod() {
-        notificationSegment = NotificationPeriods(rawValue: notificationsSwitcher.titleForSegment(at: notificationsSwitcher.selectedSegmentIndex) ?? "Day") ?? .day
-        
-        // Сохранить в настройки приложения период
-        Notifications.shared.periodSwitcher = notificationSegment
     }
     
     // Проверка на то, включены ли уведомления в настройках

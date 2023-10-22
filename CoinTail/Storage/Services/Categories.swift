@@ -6,178 +6,25 @@
 //
 
 import UIKit
+import RealmSwift
 
 
 final class Categories {
     
     static let shared = Categories()
     
-    var totalCategories = [Category]()
+    var totalCategories = [CategoryClass]()
     
-    var lastCategoryID = 11
-    var lastSubcategoryID = 5
-    
-    // Стандартные категории
-    var categories: [RecordType: [Category]] = [
-        .income: [
-            Category(
-                id: 0,
-                name: "Salary".localized(),
-                color: Colors.shared.salaryColor ?? .clear,
-                image: UIImage(systemName: "dollarsign"),
-                type: .income,
-                subcategories: [
-                    0, 1
-                ],
-                isEditable: false
-            ),
-            Category(
-                id: 1,
-                name: "Debt repayment".localized(),
-                color: Colors.shared.debtRepaymentColor ?? .clear,
-                image: UIImage(systemName: "creditcard"),
-                type: .income,
-                isEditable: false
-            ),
-            Category(
-                id: 2,
-                name: "Side job".localized(),
-                color: Colors.shared.sideJobColor ?? .clear,
-                image: UIImage(systemName: "briefcase"),
-                type: .income,
-                isEditable: false
-            ),
-            Category(
-                id: 3,
-                name: "Pleasant finds".localized(),
-                color: Colors.shared.pleasantFindsColor ?? .clear,
-                image: UIImage(systemName: "heart"),
-                type: .income,
-                subcategories: [
-                    5
-                ],
-                isEditable: false
-            )
-        ],
-        
-        .expense: [
-            Category(
-                id: 4,
-                name: "Transport".localized(),
-                color: Colors.shared.transportColor ?? .clear,
-                image: UIImage(systemName: "car"),
-                type: .expense,
-                subcategories: [
-                    2
-                ],
-                isEditable: false
-            ),
-            Category(
-                id: 5,
-                name: "Cloths".localized(),
-                color: Colors.shared.clothsColor ?? .clear,
-                image: UIImage(systemName: "tshirt"),
-                type: .expense,
-                isEditable: false
-            ),
-            Category(
-                id: 6,
-                name: "Groceries".localized(),
-                color: Colors.shared.gloceryColor ?? .clear,
-                image: UIImage(systemName: "cart"),
-                type: .expense,
-                subcategories: [
-                    3, 4
-                ],
-                isEditable: false
-            ),
-            Category(
-                id: 7,
-                name: "Gym".localized(),
-                color: Colors.shared.gymColor ?? .clear,
-                image: UIImage(systemName: "figure.walk"),
-                type: .expense,
-                isEditable: false
-            ),
-            Category(
-                id: 8,
-                name: "Service".localized(),
-                color: Colors.shared.serviceColor ?? .clear,
-                image: UIImage(systemName: "gearshape"),
-                type: .expense,
-                isEditable: false
-            ),
-            Category(
-                id: 9,
-                name: "Subscription".localized(),
-                color: Colors.shared.subscriptionColor ?? .clear,
-                image: UIImage(systemName: "gamecontroller"),
-                type: .expense,
-                isEditable: false
-            ),
-            Category(
-                id: 10,
-                name: "Health".localized(),
-                color: Colors.shared.healthColor ?? .clear,
-                image: UIImage(systemName: "cross.case"),
-                type: .expense,
-                isEditable: false
-            ),
-            Category(
-                id: 11,
-                name: "Cafe".localized(),
-                color: Colors.shared.cafeColor ?? .clear,
-                image: UIImage(systemName: "fork.knife"),
-                type: .expense,
-                isEditable: false
-            )
-        ]
-    ]
-    
-    var subcategories: [Subcategory] = [
-        Subcategory(
-            id: 0,
-            name: "First Job".localized(),
-            color: Colors.shared.firstJobColor ?? .clear,
-            image: UIImage(systemName: "bag.badge.plus"),
-            parentCategory: 0
-        ),
-        Subcategory(
-            id: 1,
-            name: "Second Job".localized(),
-            color: Colors.shared.secondJobColor ?? .clear,
-            image: UIImage(systemName: "eurosign"),
-            parentCategory: 0
-        ),
-        Subcategory(
-            id: 2,
-            name: "Bus".localized(),
-            color: Colors.shared.busColor ?? .clear,
-            image: UIImage(systemName: "bus.fill"),
-            parentCategory: 4
-        ),
-        Subcategory(
-            id: 3,
-            name: "Walmart".localized(),
-            color: Colors.shared.walmartColor ?? .clear,
-            image: UIImage(systemName: "basket"),
-            parentCategory: 6
-        ),
-        Subcategory(
-            id: 4,
-            name: "Spar".localized(),
-            color: Colors.shared.sparColor ?? .clear,
-            image: UIImage(systemName: "cart.badge.questionmark"),
-            parentCategory: 6
-        ),
-        Subcategory(
-            id: 5,
-            name: "Jacket pocket".localized(),
-            color: Colors.shared.jacketPocketColor ?? .clear,
-            image: UIImage(systemName: "banknote"),
-            parentCategory: 3
-        )
-    ]
+    var categories: [CategoryClass] {
+        get {
+            return RealmService.shared.categoriesArr
+        }
+    }
+    var subcategories: [SubcategoryClass] {
+        get {
+            return RealmService.shared.subcategoriesArr
+        }
+    }
     
     // Иконки для создаваемых категорий
     var createCategoryImages = [
@@ -194,47 +41,39 @@ final class Categories {
     ]
     
     // Получить категории по типам на главном меню
-    func getCategories(for sectionType: RecordType) -> [Category] {
+    func getCategories(for sectionType: RecordType) -> [CategoryClass] {
         switch sectionType {
         case .expense:
-            return totalCategories.filter { $0.type == .expense }
+            return totalCategories.filter { $0.type == "Expense" }
         case .income:
-            return totalCategories.filter { $0.type == .income }
+            return totalCategories.filter { $0.type == "Income" }
         case .allOperations:
             return totalCategories
         }
     }
         
     //  Добавление новой категории
-    func addNewCategory(_ category: Category, type: RecordType) {
-        categories[type]?.append(category)
+    func addNewCategory(_ category: CategoryClass, type: RecordType) {
+        RealmService.shared.write(category, CategoryClass.self)
     }
     
     //  Добавление новой подкатегории
-    func addNewSubcategory(_ subcategory: Subcategory) {
-        subcategories.append(subcategory)
+    func addNewSubcategory(_ subcategory: SubcategoryClass) {
+        RealmService.shared.write(subcategory, SubcategoryClass.self)
     }
     
-    func addSubcategoryToCategory(for categoryID: Int, to type: RecordType, subcategoryID: Int) {
-        guard var category = categories[type]?.first(where: { $0.id == categoryID }) else {
-            return
-        }
+    func addSubcategoryToCategory(for categoryID: ObjectId, to type: RecordType, subcategoryID: ObjectId) {
+        guard var category = categories.first(where: { $0.id == categoryID }) else { return }
         
-        if category.subcategories == nil {
-            category.subcategories = [subcategoryID]
-        } else {
-            category.subcategories?.append(subcategoryID)
-        }
-        
-        // Обновите категорию в массиве
-        if let index = categories[type]?.firstIndex(where: { $0.id == categoryID }) {
-            categories[type]?[index] = category
-        }
+        //TODO: realm!!!
+        category.subcategories.append(subcategoryID)
+
+        RealmService.shared.update(category, CategoryClass.self)
     }
     
     // Обновить категории в коллекции
-    func categoriesUpdate(records: [Record]) {
-        var newCategories = [Category]()
+    func categoriesUpdate(records: [RecordClass]) {
+        var newCategories = [CategoryClass]()
                 
         for record in records where !newCategories.contains(where: { $0.id == record.categoryID }) {
             guard let category = getCategory(for: record.categoryID) else { return }
@@ -245,20 +84,57 @@ final class Categories {
         totalCategories = newCategories
     }
     
-    func getCategoryID(for name: String, type: RecordType) -> Int {
-        return categories[type]?.filter { $0.name == name }.first?.id ?? 0
+    // Получить ID категории по ее названию
+    func getCategoryID(for name: String, type: RecordType) -> ObjectId? {
+        return categories.filter { $0.name == name }.first?.id
+    }
+    
+    // Получить категорию по ID
+    func getCategory(for id: ObjectId) -> CategoryClass? {
+        return categories.filter { $0.id == id }.first
     }
     
     // Получить подкатегорию по ID
-    func getCategory(for id: Int) -> Category? {
-        let allCategories = categories.values.flatMap { $0 }
-
-        return allCategories.filter { $0.id == id }.first
-    }
-    
-    // Получить подкатегорию по ID
-    func getSubcategory(for id: Int) -> Subcategory? {
+    func getSubcategory(for id: ObjectId) -> SubcategoryClass? {
         return subcategories.filter { $0.id == id }.first
+    }
+    
+    // Отредактировать категорию по его ID
+    func editCategory(for id: ObjectId, replacingCategory: CategoryClass, completion: ((Bool) -> Void)? = nil) {
+        RealmService.shared.update(replacingCategory, CategoryClass.self)
+        
+        completion?(true)
+    }
+    
+    // Отредактировать подкатегорию по его ID
+    func editSubcategory(for id: ObjectId, replacingSubcategory: SubcategoryClass, completion: ((Bool) -> Void)? = nil) {
+        RealmService.shared.update(replacingSubcategory, SubcategoryClass.self)
+        
+        completion?(true)
+    }
+    
+    // Удаляет категорию по его ID
+    func deleteCategory(for id: ObjectId, completion: ((Bool) -> Void)? = nil) {
+        guard let category: CategoryClass = getCategory(for: id) else {
+            completion?(false)
+            return
+        }
+
+        RealmService.shared.delete(category, CategoryClass.self)
+
+        completion?(true)
+    }
+    
+    // Удаляет подкатегорию по его ID
+    func deleteSubcategory(for id: ObjectId, completion: ((Bool) -> Void)? = nil) {
+        guard let subcategory: SubcategoryClass = getSubcategory(for: id) else {
+            completion?(false)
+            return
+        }
+        
+        RealmService.shared.delete(subcategory, SubcategoryClass.self)
+
+        completion?(true)
     }
     
 }

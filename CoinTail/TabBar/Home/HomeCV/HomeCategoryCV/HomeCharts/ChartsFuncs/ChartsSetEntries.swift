@@ -13,7 +13,7 @@ import MultipleProgressBar
 extension HomeCategoryCell {
     
     // Добавляет запись в круговую и плоскую диаграммы
-    func setEntries(_ segment: RecordType, records: [Record]) {
+    func setEntries(_ segment: RecordType, records: [RecordClass]) {
         // Стирает прошлые записи
         pieChartEntries.removeAll()
         progressChartEntries.removeAll()
@@ -31,10 +31,10 @@ extension HomeCategoryCell {
                 guard let categoryID = chartSectionsEntry.first?.categoryID else { return }
                 let category = Categories.shared.getCategory(for: categoryID)
 
-                color = category?.color
+                color = UIColor(hex: category?.color ?? "FFFFFF")
             } else {
                 // Цвет берется по типу операции
-                color = chartSectionsEntry.first?.type == .expense ? UIColor(named: "expense") : UIColor(named: "income")
+                color = chartSectionsEntry.first?.type == "Expense" ? UIColor(named: "expense") : UIColor(named: "income")
             }
 
             // Смена итерации, если цвет не найден
@@ -59,11 +59,11 @@ extension HomeCategoryCell {
     }
     
     // Устанавливаем словарь, который будем перебирать для получения цветов и суммы операций
-    private func setDictionary(_ segment: RecordType, records: [Record]) -> [String: [Record]] {
+    private func setDictionary(_ segment: RecordType, records: [RecordClass]) -> [String: [RecordClass]] {
         Dictionary(grouping: records, by: {
             guard let category = Categories.shared.getCategory(for: $0.categoryID) else { return "" }
             
-            return segment == .allOperations ? category.type?.rawValue ?? "Total" : category.name
+            return segment.rawValue == "Total" ? category.type ?? "Total" : category.name
         })
     }
     

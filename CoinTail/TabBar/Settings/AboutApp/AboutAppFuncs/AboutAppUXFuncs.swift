@@ -2,7 +2,7 @@
 //  AboutAppUXFuncs.swift
 //  CoinTail
 //
-//  Created by Eugene on 07.10.23.
+//  Created by Eugene on 20.10.23.
 //
 
 import UIKit
@@ -10,9 +10,8 @@ import UIKit
 
 extension AboutAppVC {
     
-    func aboutAppTargets() {
-        telegramButton.addTarget(self, action: #selector(telegramAction), for: .touchUpInside)
-        gmailButton.addTarget(self, action: #selector(gmailAction), for: .touchUpInside)
+    func aboutTargets() {
+        userAgreementButton.addTarget(self, action: #selector(userAgreementAction), for: .touchUpInside)
     }
     
 }

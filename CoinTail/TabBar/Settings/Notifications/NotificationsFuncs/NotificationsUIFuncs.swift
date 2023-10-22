@@ -12,50 +12,39 @@ import EasyPeasy
 extension NotificationsVC {
     
     func notificationsSubviews() {
-        self.view.addSubview(backView)
+        self.view.addSubview(bellImageView)
+        self.view.addSubview(largeTitleLabel)
+        self.view.addSubview(descriptionLabel)
+        self.view.addSubview(notificationsCV)
 
-        backView.addSubview(onOffToggle)
-        backView.addSubview(onOffLabel)
-        backView.addSubview(notificationsSwitcher)
-        backView.addSubview(periodLabel)
-        
-        backView.easy.layout([
+        bellImageView.easy.layout([
+            Height(100),
+            Width(100),
             Top(32).to(self.view.safeAreaLayoutGuide, .top),
+            CenterX()
+        ])
+        
+        largeTitleLabel.easy.layout([
+            Top(24).to(bellImageView, .bottom),
+            CenterX(),
+            Left(32),
+            Right(32)
+        ])
+        
+        descriptionLabel.easy.layout([
+            Top(16).to(largeTitleLabel, .bottom),
+            CenterX(),
+            Left(32),
+            Right(32)
+        ])
+        
+        notificationsCV.easy.layout([
+            Top(32).to(descriptionLabel, .bottom),
+            Bottom().to(self.view.safeAreaLayoutGuide, .bottom),
+            CenterX(),
             Left(16),
-            Right(16),
-            Height(120)
-        ])
-        
-        onOffToggle.easy.layout([
-            Right(16),
-            Top(16)
-        ])
-        
-        onOffLabel.easy.layout([
-            Left(16),
-            CenterY().to(onOffToggle)
-        ])
-        
-        notificationsSwitcher.easy.layout([
-            Bottom(16),
-            Height(32),
             Right(16)
         ])
-        
-        periodLabel.easy.layout([
-            Left(16),
-            CenterY().to(notificationsSwitcher)
-        ])
-    }
-    
-    func currentNotificationSegment() {
-        if notificationSegment == .day {
-            Notifications.shared.periodSwitcher = .day
-            notificationsSwitcher.selectedSegmentIndex = 0
-        } else {
-            Notifications.shared.periodSwitcher = .week
-            notificationsSwitcher.selectedSegmentIndex = 1
-        }
     }
     
 }

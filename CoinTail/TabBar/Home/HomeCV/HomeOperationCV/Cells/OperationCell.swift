@@ -137,7 +137,7 @@ final class OperationCVCell: UICollectionViewCell {
         return label
     }
     
-    static func size(data: Record) -> CGSize {
+    static func size(data: RecordClass) -> CGSize {
         let imageHeight: CGFloat = 56
         let amount = getAmountLabel()
         let currency = getCurrencyLabel()

@@ -152,9 +152,7 @@
 "Currencies" = "Валюты";
 
 // NotificationsVC
-"Enable / disable reminder" = "Вкл / Выкл напоминание";
-"Select period" = "Выберите период";
-"Day" = "День";
+
 
 // AboutAppVC
 "CoinTail is a reliable assistant in accounting for income and expenses, managing accounts and budgets. Convenient charts will help you control your finances" = "CoinTail - надежный помощник в учете доходов и расходов, управлении счетами и бюджетами. Удобные графики помогут контролировать ваши финансы";

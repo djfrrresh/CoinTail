@@ -11,7 +11,7 @@ import RealmSwift
 
 class AddBudgetVC: BasicVC {
     
-    var budgetCategoryID: Int?
+    var budgetCategoryID: ObjectId?
     var budgetID: ObjectId?
     var currency: Currency = Currencies.shared.selectedCurrency
     var currentIndex = 0

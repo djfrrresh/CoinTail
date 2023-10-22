@@ -37,30 +37,27 @@ extension AddOperationVC {
             let dateString = strongSelf.deleteTodayFromDateTF(dateTFText)
             let date = AddOperationVC.operationDF.date(from: dateString) ?? Date()
             let desctiption = strongSelf.descriptionTF.text ?? ""
-            let accountID = strongSelf.accountID ?? nil
             strongSelf.setCurrency(currencyCode: currencyText)
             let currency = strongSelf.currency
             
-            Records.shared.recordID += 1
-
             //TODO: при редактировании операции в первый раз отображается счет, во второй раз счета нет в кнопке
-            let record = Record(
-                amount: amount,
-                descriptionText: desctiption,
-                date: date,
-                id: Records.shared.recordID,
-                type: strongSelf.addOperationSegment,
-                categoryID: categoryID,
-//                accountID: accountID,
-                currency: currency
-            )
+            let record = RecordClass()
+            record.amount = amount
+            record.descriptionText = desctiption
+            record.date = date
+            record.type = strongSelf.addOperationSegment.rawValue
+            record.categoryID = categoryID
+            record.currency = "\(currency)"
+            if let accountID = strongSelf.accountID {
+                record.accountID = accountID
+            }
                         
             strongSelf.saveOperationButton.removeTarget(nil, action: nil, for: .allEvents)
             strongSelf.categoryButton.removeTarget(nil, action: nil, for: .allEvents)
             strongSelf.accountButton.removeTarget(nil, action: nil, for: .allEvents)
                         
             if let operationID = strongSelf.operationID {
-                Records.shared.editRecord(for: operationID, replacingRecord: record)
+                Records.shared.editRecord(replacingRecord: record)
             } else {
                 Records.shared.addRecord(record: record)
             }
@@ -129,7 +126,7 @@ extension AddOperationVC {
         }
     }
     
-    private func setFormWithRecord(_ record: Record) {
+    private func setFormWithRecord(_ record: RecordClass) {
         // Сумма
         amountTF.text = "\(record.amount)"
         
@@ -139,8 +136,9 @@ extension AddOperationVC {
         // Дата
         dateTF.text = Self.operationDF.string(from: record.date)
         
+        guard let recordType = RecordType(rawValue: record.type) else { return }
         // Тип операции
-        addOperationSegment = record.type
+        addOperationSegment = recordType
         addOperationTypeSwitcher.selectedSegmentIndex = addOperationSegment == .income ? 0 : 1
         
         // Валюта
@@ -152,10 +150,9 @@ extension AddOperationVC {
         }
         
         // Счет
-        //TODO: account
-//        if let accountID = record.accountID, let account = Accounts.shared.getAccount(for: accountID) {
-//            accountButton.setTitle(account.name, for: .normal)
-//        }
+        if let accountID = record.accountID, let account = Accounts.shared.getAccount(for: accountID) {
+            accountButton.setTitle(account.name, for: .normal)
+        }
     }
     
     // Переход на экран с выбором категории

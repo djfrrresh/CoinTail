@@ -26,10 +26,10 @@ class HomeVC: BasicVC {
     }
     
     // Категории по типам операций
-    var categoriesByType: [Category] = []
+    var categoriesByType: [CategoryClass] = []
     
     // Выбранная категория
-    var categorySort: Category? {
+    var categorySort: CategoryClass? {
         didSet {
             homeGlobalCV.reloadData()
         }

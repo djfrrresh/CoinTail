@@ -32,7 +32,8 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
         let budgetData: BudgetClass = section.budgets[indexPath.row]
         let categoryID = budgetData.categoryID
         
-        guard let category = Categories.shared.getCategory(for: categoryID) else { return cell }
+        guard let category = Categories.shared.getCategory(for: categoryID),
+              let image = category.image else { return cell }
         
         let sumByCategory = abs(Records.shared.getBudgetAmount(
             date: budgetData.startDate,
@@ -45,8 +46,8 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
         cell.calculateProgressView(sum: sumByCategory, total: budgetData.amount)
         cell.categoryLabel.text = category.name
         cell.amountLabel.text = "\(sumByCategory) / \(budgetData.amount)"
-        cell.categoryImage.image = category.image
-        cell.backImage.backgroundColor = category.color
+        cell.categoryImage.image = UIImage(systemName: image)
+        cell.backImage.backgroundColor = UIColor(hex: category.color ?? "FFFFFF")
         cell.currencyLabel.text = "\(budgetData.currency) (\(percentText)%)"
         
         return cell

@@ -6,17 +6,18 @@
 //
 
 import UIKit
+import RealmSwift
 
 
 protocol SendSubcategoryID: AnyObject {
-    func sendSubcategoryData(id: Int)
+    func sendSubcategoryData(id: ObjectId)
 }
 
 extension SelectCategoryVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     // При нажатии на категорию закрывается контроллер и она передается в кнопку
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let subcategoryID = Categories.shared.categories[operationSegmentType]?[indexPath.section].subcategories?[indexPath.row] else { return }
+        let subcategoryID = Categories.shared.categories[indexPath.section].subcategories[indexPath.row]
         
         subcategoryDelegate?.sendSubcategoryData(id: subcategoryID)
                         

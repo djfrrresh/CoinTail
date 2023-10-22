@@ -9,7 +9,7 @@ import UIKit
 import EasyPeasy
 
 
-class TransfersHistoryCell: UICollectionViewCell {
+final class TransfersHistoryCell: UICollectionViewCell {
     
     static let id = "TransfersHistoryCell"
     

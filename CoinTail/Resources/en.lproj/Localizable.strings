@@ -150,9 +150,7 @@
 "Currencies" = "Currencies";
 
 // NotificationsVC
-"Enable / disable reminder" = "Enable / disable reminder";
-"Select period" = "Select period";
-"Day" = "Day";
+
 
 // AboutAppVC
 "CoinTail is a reliable assistant in accounting for income and expenses, managing accounts and budgets. Convenient charts will help you control your finances" = "CoinTail is a reliable assistant in accounting for income and expenses, managing accounts and budgets. Convenient charts will help you control your finances";

@@ -9,64 +9,82 @@ import UIKit
 import UserNotifications
 
 
-class NotificationsVC: BasicVC {
+final class NotificationsVC: BasicVC {
     
     let notificationCenter = UNUserNotificationCenter.current()
     
-    let backView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .lightGray.withAlphaComponent(0.5)
-        view.layer.cornerRadius = 10
+    var notificationRegularity = Notifications.shared.regularity
+    
+    let notificationsMenu = [
+        "Push notifications".localized(),
+        "Regularity".localized()
+    ]
+    
+    let largeTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Set a reminder".localized()
+        label.font = UIFont(name: "SFProDisplay-Bold", size: 28)
+        label.numberOfLines = 1
+        label.textAlignment = .center
         
-        return view
+        return label
+    }()
+    let descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Never miss a transaction! Enable push notifications to stay on top of your finances".localized()
+        label.font = UIFont(name: "SFProDisplay-Regular", size: 17)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.textColor = UIColor(named: "secondaryTextColor")
+        
+        return label
     }()
     
-    let notificationsSwitcher: UISegmentedControl = {
-        let segmentedControl = UISegmentedControl(items: [
-            NotificationPeriods.day.rawValue,
-            NotificationPeriods.week.rawValue
-        ])
+    let bellImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "bellEmoji")
+        imageView.contentMode = .scaleAspectFit
         
-        return segmentedControl
-    }()
-    var notificationSegment: NotificationPeriods = Notifications.shared.periodSwitcher
-    
-    let onOffToggle: UISwitch = {
-        let uiSwitch = UISwitch()
-        uiSwitch.isOn = Notifications.shared.toggleStatus
-        
-        return uiSwitch
+        return imageView
     }()
     
-    let onOffLabel = UILabel(text: "Enable / disable reminder".localized())
-    let periodLabel = UILabel(text: "Select period".localized())
+    let notificationsCV: UICollectionView = {
+        let notificationsLayout: UICollectionViewFlowLayout = {
+            let layout = UICollectionViewFlowLayout()
+            layout.minimumInteritemSpacing = 0
+            layout.minimumLineSpacing = 0
+            
+            return layout
+        }()
+        
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: notificationsLayout)
+        cv.backgroundColor = .clear
+        cv.register(NotificationsCell.self, forCellWithReuseIdentifier: NotificationsCell.id)
+        
+        cv.showsVerticalScrollIndicator = false
+        cv.showsHorizontalScrollIndicator = false
+        cv.alwaysBounceVertical = false
+        cv.delaysContentTouches = true
+        
+        return cv
+    }()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Проверка доступа к уведомлениям на случай, если юзер выключит их в настройках при включенных уведомлениях на экране
-        notificationCenter.requestAuthorization(options: [.alert, .badge ,.sound]) { [weak self] granted, _ in
-            guard let strongSelf = self else { return }
-
-            if !granted {
-                DispatchQueue.main.async {
-                    strongSelf.onOffToggle.isOn = false
-                    
-                    Notifications.shared.toggleStatus = strongSelf.onOffToggle.isOn
-                }
-            }
-        }
-        
-        currentNotificationSegment()
+        notificationsCV.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Notifications".localized()
+        
+        notificationsCV.delegate = self
+
+        notificationsCV.dataSource = self
                 
         notificationsSubviews()
-        notificationTargets()
     }
     
 }

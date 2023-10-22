@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 
 extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CategoryIsHiddenDelegate, ArrowTapDelegate, SendCategoryCellDelegate, PushVC {
@@ -25,14 +26,14 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
     }
     
     // При нажатии на категорию помечает ее выбранной в коллекции
-    func sendCategory(category: Category) {
+    func sendCategory(category: CategoryClass) {
         categorySort = categorySort == category ? nil : category
         
         sortRecords()
     }
     
     // Переход на контроллер для редактирования операции
-    func pushVC(record: Record) {
+    func pushVC(record: RecordClass) {
         self.navigationItem.rightBarButtonItem?.target = nil
                 
         let vc = AddOperationVC(operationID: record.id)
@@ -169,7 +170,7 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
         }
     }
     
-    private func lastStep(for records: [Record], categoryID: Int? = nil) -> Int {
+    private func lastStep(for records: [RecordClass], categoryID: ObjectId? = nil) -> Int {
         var records = records
         
         if let category = categoryID {

@@ -11,9 +11,9 @@ import Foundation
 // Секции по месяцам для операций
 struct MonthSection {
     var month: Date
-    var records: [Record]
+    var records: [RecordClass]
     
-    static func groupRecords(section: RecordType, groupRecords: [Record]) -> [MonthSection] {
+    static func groupRecords(section: RecordType, groupRecords: [RecordClass]) -> [MonthSection] {
         let dictionary = Dictionary.init(grouping: groupRecords) { record in
             record.date.firstDayOfPeriod(components: [.year, .month])
         }.map { values in

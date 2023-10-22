@@ -12,9 +12,9 @@ import RealmSwift
 
 class AddOperationVC: BasicVC {
     
-    var operationID: Int?
-    var categoryID: Int?
-    var subcategoryID: Int?
+    var operationID: ObjectId?
+    var categoryID: ObjectId?
+    var subcategoryID: ObjectId?
     var accountID: ObjectId?
     
     var currency: Currency = Currencies.shared.selectedCurrency
@@ -129,7 +129,7 @@ class AddOperationVC: BasicVC {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(operationID: Int) {
+    init(operationID: ObjectId) {
         self.operationID = operationID
         
         super.init(nibName: nil, bundle: nil)

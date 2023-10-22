@@ -11,12 +11,14 @@ import EasyPeasy
 
 extension AddOperationVC: UIScrollViewDelegate {
     
-    func setupUI(with record: Record) {
+    func setupUI(with record: RecordClass) {
         // Дата
         dateTF.text = Self.operationDF.string(from: record.date)
         
+        guard let recordType = RecordType(rawValue: record.type) else { return }
+        
         // Тип операции
-        addOperationSegment = record.type
+        addOperationSegment = recordType
         addOperationTypeSwitcher.selectedSegmentIndex = addOperationSegment == .income ? 0 : 1
         addOperationTypeSwitcher.isHidden = true
         
@@ -31,14 +33,13 @@ extension AddOperationVC: UIScrollViewDelegate {
         }
         categoryID = record.categoryID
         
-        //TODO: account
         // Счет
-//        if let accountID = record.accountID, let account = Accounts.shared.getAccount(for: accountID) {
-//            accountButton.setTitle(account.name, for: .normal)
-//        } else {
-//            accountButton.setTitle(AddOperationVC.defaultAccount, for: .normal)
-//        }
-//        currencyButton.setTitle("\(record.currency)", for: .normal)
+        if let accountID = record.accountID, let account = Accounts.shared.getAccount(for: accountID) {
+            accountButton.setTitle(account.name, for: .normal)
+        } else {
+            accountButton.setTitle(AddOperationVC.defaultAccount, for: .normal)
+        }
+        currencyButton.setTitle("\(record.currency)", for: .normal)
         
         saveOperationButton.setTitle("Edit operation".localized(), for: .normal)
     }

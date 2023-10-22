@@ -2,7 +2,7 @@
 //  NotificationsUXFuncs.swift
 //  CoinTail
 //
-//  Created by Eugene on 15.09.23.
+//  Created by Eugene on 19.10.23.
 //
 
 import UIKit
@@ -10,9 +10,17 @@ import UIKit
 
 extension NotificationsVC {
     
-    func notificationTargets() {
-        onOffToggle.addTarget(self, action: #selector(toggleChanged), for: UIControl.Event.valueChanged)
-        notificationsSwitcher.addTarget(self, action: #selector(savePeriod), for: .valueChanged)
+    // Проверка доступа к уведомлениям на случай, если юзер выключит их в настройках при включенных уведомлениях на экране
+    func notificationsValidate(toggle: UISwitch) {
+        notificationCenter.requestAuthorization(options: [.alert, .badge ,.sound]) { [weak self] granted, _ in
+            if !granted {
+                DispatchQueue.main.async {
+                    toggle.isOn = false
+
+                    Notifications.shared.toggleStatus = false
+                }
+            }
+        }
     }
     
     // Отправка уведомления
@@ -28,8 +36,8 @@ extension NotificationsVC {
         
         var components = DateComponents()
         
-        switch notificationSegment {
-        case .day:
+        switch notificationRegularity {
+        case .daily:
             let dayDateComponents: DateComponents = {
                 var dateComponents = DateComponents()
                 dateComponents.hour = 20
@@ -38,7 +46,7 @@ extension NotificationsVC {
                 return dateComponents
             }()
             components = dayDateComponents
-        case .week:
+        case .weekly:
             let weekDateComponents: DateComponents = {
                 var dateComponents = DateComponents()
                 dateComponents.hour = 20

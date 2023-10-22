@@ -24,7 +24,12 @@ final class CurrencyCell: UICollectionViewCell {
     let backView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
-        view.layer.cornerRadius = 8
+        
+        return view
+    }()
+    let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(named: "arrowColor")
         
         return view
     }()
@@ -75,6 +80,7 @@ final class CurrencyCell: UICollectionViewCell {
         backView.addSubview(favouriteButton)
         backView.addSubview(currencyCodeLabel)
         backView.addSubview(currencyNameLabel)
+        backView.addSubview(separatorView)
         
         favouriteButton.addTarget(self, action: #selector(favouriteButtonPressed), for: .touchUpInside)
     }
@@ -108,6 +114,13 @@ final class CurrencyCell: UICollectionViewCell {
             CenterY()
         ])
         
+        separatorView.easy.layout([
+            Bottom(),
+            Right(),
+            Left().to(currencyCodeLabel, .left),
+            Height(0.5)
+        ])
+        
         checkmarkImageView.easy.layout([
             Height(20),
             Width(20),
@@ -124,10 +137,14 @@ final class CurrencyCell: UICollectionViewCell {
         }
     }
     
+    func isSeparatorLineHidden(_ isHidden: Bool) {
+        separatorView.isHidden = isHidden
+    }
+    
     static func size() -> CGSize {
         return .init(
             width: UIScreen.main.bounds.width - 16 - 16,
-            height: 40
+            height: 44
         )
     }
     

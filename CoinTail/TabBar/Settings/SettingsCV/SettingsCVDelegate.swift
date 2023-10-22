@@ -8,7 +8,7 @@
 import UIKit
 
 
-extension SettingsVC: UICollectionViewDelegate {
+extension SettingsVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var vc: UIViewController?
@@ -33,6 +33,11 @@ extension SettingsVC: UICollectionViewDelegate {
             
             navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    // Динамические размеры ячеек
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return SettingsCell.size()
     }
     
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 
-class SettingsVC: BasicVC {
+final class SettingsVC: BasicVC {
     
     let settingsMenu = [
         "Currency".localized(),
@@ -59,9 +59,9 @@ class SettingsVC: BasicVC {
         super.viewWillAppear(animated)
         
         selectedCurrency = "\(Currencies.shared.selectedCurrency)"
-        settingsCV.reloadData()
+        settingsCV.reloadData() 
         
-        //TODO: пофиксить переход с large title 
+        //TODO: пофиксить переход с large title, При переходе с экрана на таббаре текст не увеличивается
         if let navigationController = self.navigationController {
             navigationController.navigationBar.prefersLargeTitles = true
         }

@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible() // Отображение окна
         
         RealmService.shared.readAllClasses()
+        //TODO: проверить, чтобы под каждый extension был только 1 протокол во всех классах
         
         return true
     }

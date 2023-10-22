@@ -9,12 +9,13 @@ import Foundation
 import RealmSwift
 
 
-class RealmService {
+final class RealmService {
     
     static let shared = RealmService()
     
     private(set) var realm: Realm?
     
+    // Здесь хранятся все объекты классов из базы данных
     var transfersHistoryArr: [TransferHistoryClass] = []
     var accountsArr: [AccountClass] = []
     var budgetsArr: [BudgetClass] = []

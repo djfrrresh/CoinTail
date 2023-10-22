@@ -9,7 +9,7 @@ import UIKit
 
 
 protocol SendCategoryCellDelegate: AnyObject {
-    func sendCategory(category: Category)
+    func sendCategory(category: CategoryClass)
 }
 
 extension HomeCategoryCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -34,7 +34,7 @@ extension HomeCategoryCell: UICollectionViewDataSource, UICollectionViewDelegate
         let categoryColor: UIColor?
         
         categoryLabel = categoriesArrCellData[indexPath.row].name
-        categoryColor = categoriesArrCellData[indexPath.row].color
+        categoryColor = UIColor(hex: categoriesArrCellData[indexPath.row].color ?? "FFFFFF")
         
         cell.categoryName.text = categoryLabel
         cell.backView.backgroundColor = categoryColor
@@ -44,7 +44,7 @@ extension HomeCategoryCell: UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let category: Category = categoriesArrCellData[indexPath.row]
+        let category: CategoryClass = categoriesArrCellData[indexPath.row]
         
         sendCategoryDelegate?.sendCategory(category: category)
     }

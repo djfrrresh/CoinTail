@@ -12,7 +12,7 @@ import RealmSwift
 class BudgetClass: Object {
     @Persisted(primaryKey: true) var id: ObjectId
     
-    @Persisted var categoryID: Int = 0
+    @Persisted var categoryID: ObjectId
     @Persisted var amount: Double = 0
     @Persisted var startDate: Date = Date()
     @Persisted var untilDate: Date = Date()

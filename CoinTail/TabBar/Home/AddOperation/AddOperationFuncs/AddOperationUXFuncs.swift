@@ -11,7 +11,7 @@ import RealmSwift
 
 extension AddOperationVC: SendSubcategoryID, SendAccountID, SendCategoryID {
     
-    func sendCategoryData(id: Int) {
+    func sendCategoryData(id: ObjectId) {
         self.categoryID = id
         
         guard let category = Categories.shared.getCategory(for: id) else { return }
@@ -19,7 +19,7 @@ extension AddOperationVC: SendSubcategoryID, SendAccountID, SendCategoryID {
         categoryButton.setTitle(category.name, for: .normal)
     }
     
-    func sendSubcategoryData(id: Int) {
+    func sendSubcategoryData(id: ObjectId) {
         self.subcategoryID = id
         
         guard let subcategory = Categories.shared.getSubcategory(for: id) else { return }
@@ -56,7 +56,7 @@ extension AddOperationVC: SendSubcategoryID, SendAccountID, SendCategoryID {
     }
     
     // Проверка поля Amount и текста из кнопки категории на наличие данных в них
-    func recordValidation(amount: Double, categoryText: String, accountText: String, completion: ((Double, Int) -> Void)? = nil) {
+    func recordValidation(amount: Double, categoryText: String, accountText: String, completion: ((Double, ObjectId) -> Void)? = nil) {
         guard let currencyText = currencyButton.titleLabel?.text else { return }
         
         let selectedCurrency: Currency = Currencies.shared.getCurrency(for: currencyText)

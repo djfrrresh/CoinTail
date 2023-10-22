@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import RealmSwift
 
 
 extension CreateCategoryVC: SendCategoryID {
 
-    func sendCategoryData(id: Int) {
+    func sendCategoryData(id: ObjectId) {
         let category = Categories.shared.getCategory(for: id)
         
         parentalCategoryButton.setTitle(category?.name, for: .normal)
