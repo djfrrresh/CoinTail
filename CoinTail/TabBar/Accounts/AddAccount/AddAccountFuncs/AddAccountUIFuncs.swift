@@ -11,62 +11,74 @@ import EasyPeasy
 
 extension AddAccountVC {
     
-    func setAddAccountStack() {
-        let amountStack = UIStackView()
-        setStack(
-            stack: amountStack,
-            axis: .vertical,
-            spacing: 6,
-            alignment: .fill,
-            distribution: .fill,
-            viewsArray: [accountAmountLabel, accountAmountTF]
-        )
+    func setupUI(with account: AccountClass) {
+        accountAmount = "\(account.startBalance)"
+        accountName = account.name
+        selectedCurrency = account.currency
+//        isAccountMain =
         
-        let nameStack = UIStackView()
-        setStack(
-            stack: nameStack,
-            axis: .vertical,
-            spacing: 6,
-            alignment: .fill,
-            distribution: .fill,
-            viewsArray: [accountNameLabel, accountNameTF]
-        )
+        deleteAccountButton.isHidden = false
+    }
+    
+    func addAccountSubviews() {
+        self.view.addSubview(addAccountCV)
+        self.view.addSubview(deleteAccountButton)
+        self.view.addSubview(currenciesPickerView)
+        self.view.addSubview(toolBar)
         
-        let amountNameStack = UIStackView()
-        setStack(
-            stack: amountNameStack,
-            axis: .vertical,
-            spacing: 16,
-            alignment: .fill,
-            distribution: .fill,
-            viewsArray: [amountStack, nameStack]
-        )
-        
-        let finalStack = UIStackView()
-        setStack(
-            stack: finalStack,
-            axis: .vertical,
-            spacing: 70,
-            alignment: .fill,
-            distribution: .equalCentering,
-            viewsArray: [amountNameStack, saveAccountButton]
-        )
-        
-        self.view.addSubview(finalStack)
-        finalStack.easy.layout([
+        addAccountCV.easy.layout([
             Left(16),
             Right(16),
-            Top(10).to(self.view.safeAreaLayoutGuide, .top),
-            Bottom(10).to(self.view.safeAreaLayoutGuide, .bottom)
+            Top(32).to(self.view.safeAreaLayoutGuide, .top),
+            Height(48 * 4)
         ])
         
-        self.view.addSubview(currencyButton)
-        currencyButton.easy.layout([
-            Right(8).to(accountAmountTF, .right),
-            Height(32),
-            Width(48),
-            CenterY().to(accountAmountTF)
+        deleteAccountButton.easy.layout([
+            Left(16),
+            Right(16),
+            Top(24).to(addAccountCV, .bottom),
+            Height(52)
         ])
+        
+        currenciesPickerView.easy.layout([
+            Left(),
+            Right(),
+            Height(200),
+            Bottom().to(self.view.safeAreaLayoutGuide, .bottom)
+        ])
+        
+        toolBar.easy.layout([
+            Left(),
+            Right(),
+            Height(44),
+            Bottom().to(currenciesPickerView, .top)
+        ])
+    }    
+    
+    func addAccountNavBar() {
+        let title = accountID != nil ? "Edit".localized() : "Save".localized()
+
+        let saveButton = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(saveAccountAction))
+            
+        self.navigationItem.rightBarButtonItem = saveButton
+        self.navigationItem.rightBarButtonItem?.isEnabled = accountID != nil ? true : false
+    }
+    
+    //TODO: вынести эту функцию в basicVC
+    func setupToolBar() {
+        let doneButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(doneButtonAction)
+        )
+
+        toolBar.setItems([doneButton], animated: true)
+    }
+    
+    func updateCell(at indexPath: IndexPath) {
+        if let cell = addAccountCV.cellForItem(at: indexPath) as? AddAccountCell {
+            cell.updateCurrencyLabel(selectedCurrency)
+        }
     }
     
 }

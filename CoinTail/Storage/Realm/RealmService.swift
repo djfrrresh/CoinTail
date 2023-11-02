@@ -22,6 +22,7 @@ final class RealmService {
     var recordsArr: [RecordClass] = []
     var categoriesArr: [CategoryClass] = []
     var subcategoriesArr: [SubcategoryClass] = []
+    var favouriteCurrenciesArr: [FavouriteCurrencyClass] = []
 
     private init() {
         realmInit()
@@ -36,10 +37,14 @@ final class RealmService {
             print(error)
         }
         
-        RealmService.shared.read(type)
+        RealmService.shared.readAll(type)
     }
     
-    func read<T: Object>(_ object: T.Type) {
+    func read<T: Object>(_ object: T.Type) -> [T] {
+        return realm?.objects(object).map { $0 } ?? []
+    }
+    
+    func readAll<T: Object>(_ object: T.Type) {
         switch "\(object)" {
         case "TransferHistoryClass":
             transfersHistoryArr.removeAll()
@@ -53,6 +58,10 @@ final class RealmService {
             categoriesArr.removeAll()
         case "SubcategoryClass":
             subcategoriesArr.removeAll()
+        case "NotificationSettingsClass":
+            return
+        case "FavouriteCurrencyClass":
+            favouriteCurrenciesArr.removeAll()
         default:
             fatalError()
         }
@@ -72,6 +81,8 @@ final class RealmService {
                     categoriesArr.append(category)
                 case let subcategory as SubcategoryClass:
                     subcategoriesArr.append(subcategory)
+                case let favouriteCurrency as FavouriteCurrencyClass:
+                    favouriteCurrenciesArr.append(favouriteCurrency)
                 default:
                     fatalError()
                 }
@@ -88,7 +99,9 @@ final class RealmService {
             print(error)
         }
         
-        RealmService.shared.read(type)
+        if type != NotificationSettingsClass.self {
+            RealmService.shared.readAll(type)
+        }
     }
     
     func delete<T: Object>(_ object: T, _ type: T.Type) {
@@ -100,16 +113,44 @@ final class RealmService {
             print(error)
         }
         
-        RealmService.shared.read(type)
+        RealmService.shared.readAll(type)
+    }
+    
+    func deleteAllObjects<T: Object>(_ type: T.Type) {
+        guard let objects = realm?.objects(type) else { return }
+                
+        do {
+            try realm?.write {
+                realm?.delete(objects)
+            }
+        } catch let error {
+            print(error)
+        }
+        
+        if type != NotificationSettingsClass.self {
+            RealmService.shared.readAll(type)
+        }
     }
     
     func readAllClasses() {
-        RealmService.shared.read(AccountClass.self)
-        RealmService.shared.read(TransferHistoryClass.self)
-        RealmService.shared.read(BudgetClass.self)
-        RealmService.shared.read(RecordClass.self)
-        RealmService.shared.read(CategoryClass.self)
-        RealmService.shared.read(SubcategoryClass.self)
+        RealmService.shared.readAll(AccountClass.self)
+        RealmService.shared.readAll(TransferHistoryClass.self)
+        RealmService.shared.readAll(BudgetClass.self)
+        RealmService.shared.readAll(RecordClass.self)
+        RealmService.shared.readAll(CategoryClass.self)
+        RealmService.shared.readAll(SubcategoryClass.self)
+        RealmService.shared.readAll(FavouriteCurrencyClass.self)
+    }
+    
+    func deleteAllData() {
+        deleteAllObjects(AccountClass.self)
+        deleteAllObjects(TransferHistoryClass.self)
+        deleteAllObjects(BudgetClass.self)
+        deleteAllObjects(RecordClass.self)
+        deleteAllObjects(CategoryClass.self)
+        deleteAllObjects(SubcategoryClass.self)
+        deleteAllObjects(NotificationSettingsClass.self)
+        deleteAllObjects(FavouriteCurrencyClass.self)
     }
     
     private func realmInit() {

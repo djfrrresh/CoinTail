@@ -10,6 +10,12 @@ import UIKit
 
 final class SettingsVC: BasicVC {
     
+    var selectedCurrency: String = Currencies.shared.selectedCurrency.currency {
+        didSet {
+            settingsCV.reloadData()
+        }
+    }
+    
     let settingsMenu = [
         "Currency".localized(),
         "Notifications".localized(),
@@ -31,8 +37,6 @@ final class SettingsVC: BasicVC {
         "about",
         "deleteData"
     ]
-    
-    var selectedCurrency: String?
     
     let settingsCV: UICollectionView = {
         let settingsLayout: UICollectionViewFlowLayout = {
@@ -57,28 +61,15 @@ final class SettingsVC: BasicVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        selectedCurrency = "\(Currencies.shared.selectedCurrency)"
-        settingsCV.reloadData() 
-        
-        //TODO: пофиксить переход с large title, При переходе с экрана на таббаре текст не увеличивается
-        if let navigationController = self.navigationController {
-            navigationController.navigationBar.prefersLargeTitles = true
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        if let navigationController = self.navigationController {
-            navigationController.navigationBar.prefersLargeTitles = false
-        }
+                
+        selectedCurrency = Currencies.shared.selectedCurrency.currency
+        settingsCV.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Settings".localized()
+        setupNavigationTitle(title: "Settings".localized(), large: true)
         
         settingsCV.delegate = self
 

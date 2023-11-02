@@ -20,7 +20,7 @@ final class Budgets {
     }
     
     // Добавить бюджет
-    func addNewBudget(_ budget: BudgetClass) {
+    func addBudget(_ budget: BudgetClass) {
         RealmService.shared.write(budget, BudgetClass.self)
     }
     
@@ -41,7 +41,7 @@ final class Budgets {
     }
     
     // Отредактировать бюджет по его ID
-    func editBudget(for id: ObjectId, replacingBudget: BudgetClass, completion: ((Bool) -> Void)? = nil) {
+    func editBudget(replacingBudget: BudgetClass, completion: ((Bool) -> Void)? = nil) {
         RealmService.shared.update(replacingBudget, BudgetClass.self)
         
         completion?(true)

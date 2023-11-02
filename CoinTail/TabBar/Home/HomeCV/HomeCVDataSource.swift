@@ -115,7 +115,7 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
             
             let rightArrowIsHidden = currentStep == 0 || period == .allTheTime
             let leftArrowIsHidden = lastStep(
-                for: Records.shared.total,
+                for: Records.shared.records,
                 categoryID: categorySort?.id
             ) == currentStep || period == .allTheTime
             

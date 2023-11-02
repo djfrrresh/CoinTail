@@ -11,11 +11,11 @@ import UIKit
 extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return daySections.count
+        return budgetsDaySections.count
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let dayItems = daySections[section].budgets
+        let dayItems = budgetsDaySections[section].budgets
         
         return dayItems.count
     }
@@ -28,18 +28,20 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
             return UICollectionViewCell()
         }
         
-        let section = daySections[indexPath.section]
+        let section = budgetsDaySections[indexPath.section]
         let budgetData: BudgetClass = section.budgets[indexPath.row]
         let categoryID = budgetData.categoryID
         
         guard let category = Categories.shared.getCategory(for: categoryID),
-              let image = category.image else { return cell }
+              let image = category.image,
+              let currency = Currency(rawValue: budgetData.currency) else { return cell }
         
+        // TODO: проверить приходит ли в currency код валюты или название
         let sumByCategory = abs(Records.shared.getBudgetAmount(
             date: budgetData.startDate,
             untilDate: budgetData.untilDate,
             categoryID: categoryID,
-            currency: Currencies.shared.getCurrency(for: budgetData.currency)
+            currency: currency
         ) ?? 0)
         let percentText = cell.calculatePercent(sum: sumByCategory, total: budgetData.amount)
         
@@ -68,10 +70,10 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
             return UICollectionViewCell()
         }
         
-        let section = daySections[indexPath.section]
+        let section = budgetsDaySections[indexPath.section]
         let day = section.day
-        let activeSectionIndex = daySections.firstIndex { $0.budgets[0].isActive ?? false }
-        let nonActiveSectionIndex = daySections.firstIndex { !($0.budgets[0].isActive ?? false) }
+        let activeSectionIndex = budgetsDaySections.firstIndex { $0.budgets[0].isActive ?? false }
+        let nonActiveSectionIndex = budgetsDaySections.firstIndex { !($0.budgets[0].isActive ?? false) }
         
         headerView.separatorLabel.text = indexPath.section == activeSectionIndex ? "Active".localized() : "Non active".localized()
         

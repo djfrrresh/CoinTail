@@ -32,4 +32,22 @@ extension CurrenciesVC {
         ])
     }
     
+    // Скрытие currencySearchBar при прокрутке коллекции
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let y = scrollView.contentOffset.y
+        let swipingDown = y <= 0
+        
+        UIView.animate(withDuration: 0.3) { [self] in
+            currencySearchBar.alpha = swipingDown ? 1.0 : 0.0
+            
+            if currencySearchBar.alpha == 0.0 {
+                currenciesCV.easy.layout([Top(16).to(view.safeAreaLayoutGuide, .top)])
+            } else {
+                currenciesCV.easy.layout([Top(24).to(currencySearchBar, .bottom)])
+            }
+            
+            view.layoutIfNeeded()
+        }
+    }
+    
 }

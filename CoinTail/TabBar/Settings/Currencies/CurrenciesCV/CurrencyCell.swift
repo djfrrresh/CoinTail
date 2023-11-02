@@ -9,17 +9,11 @@ import UIKit
 import EasyPeasy
 
 
-protocol GetCurrencyIndex: AnyObject {
-    func sendCurrency(_ currency: Currency)
-}
-
 final class CurrencyCell: UICollectionViewCell {
     
     static let id = "CurrencyCell"
-    
-    weak var currencyDelegate: GetCurrencyIndex?
-    
-    var currency: Currency?
+        
+    var currency: String?
     
     let backView: UIView = {
         let view = UIView()
@@ -129,7 +123,7 @@ final class CurrencyCell: UICollectionViewCell {
         ])
     }
     
-    func isFavourite(currency: Currency, array: [Currency]) {
+    func isFavourite(currency: String, array: [String]) {
         if Currencies.shared.hasCurrency(currency, array: array) {
             favouriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
         } else {
@@ -151,7 +145,9 @@ final class CurrencyCell: UICollectionViewCell {
     @objc func favouriteButtonPressed(_ sender: UIButton) {
         guard let currency = currency else { return }
         
-        currencyDelegate?.sendCurrency(currency)
+        let favouriteCurrency = Currencies.shared.getCurrencyClass(for: currency)
+        
+        Currencies.shared.toggleFavouriteCurrency(favouriteCurrency)
     }
     
 }

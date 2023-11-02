@@ -11,11 +11,18 @@ import UIKit
 extension TransfersHistoryVC {
     
     func sortTransfers() {
-        transfers = RealmService.shared.transfersHistoryArr
-        
-        transfers.sort { l, r in
-            return l.date > r.date
+        let transfersArr = Transfers.shared.transfers
+
+        transfersDaySections = DaySectionTransferHistory.groupTransfers(groupTransfers: transfersArr)
+            
+        // Отсортировать массив переводов по дням (убывание)
+        transfersDaySections.sort { l, r in
+            return l.day > r.day
         }
+    }
+    
+    func transferButtonTargets() {
+        addAccountButton.addTarget(self, action: #selector(goToAccountsTransferVC), for: .touchUpInside)
     }
     
 }

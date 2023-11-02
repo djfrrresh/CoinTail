@@ -13,6 +13,8 @@ class TransferHistoryClass: Object {
     
     @Persisted var sourceAccount: String = ""
     @Persisted var targetAccount: String = ""
+    @Persisted var sourceCurrency: String = ""
+    @Persisted var targetCurrency: String = ""
     @Persisted var amount: Double = 0
     @Persisted var date: Date = Date()
 }

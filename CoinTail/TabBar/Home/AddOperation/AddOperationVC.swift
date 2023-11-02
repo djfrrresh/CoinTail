@@ -12,23 +12,15 @@ import RealmSwift
 
 class AddOperationVC: BasicVC {
     
-    var operationID: ObjectId?
+    var recordID: ObjectId?
     var categoryID: ObjectId?
     var subcategoryID: ObjectId?
     var accountID: ObjectId?
     
-    var currency: Currency = Currencies.shared.selectedCurrency
+    var currency: FavouriteCurrencyClass = Currencies.shared.selectedCurrency
     var currentIndex = 0
     
     let finalStack = UIStackView()
-    
-    let scrollView: UIScrollView = {
-        let scroll = UIScrollView(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-        scroll.isScrollEnabled = true
-        scroll.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 1000)
-        
-        return scroll
-    }()
     
     let addOperationTypeSwitcher: UISegmentedControl = {
         let switcher = UISegmentedControl(items: [
@@ -130,7 +122,7 @@ class AddOperationVC: BasicVC {
     }
     
     init(operationID: ObjectId) {
-        self.operationID = operationID
+        self.recordID = operationID
         
         super.init(nibName: nil, bundle: nil)
         
@@ -154,11 +146,8 @@ class AddOperationVC: BasicVC {
         amountTF.delegate = self
         descriptionTF.delegate = self
         dateTF.delegate = self
-        scrollView.delegate = self
         
         setAddOpStack() // Stack'и для view на экране
-                
-        startObservingKeyboard()
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -15,16 +15,31 @@ final class AccountCell: UICollectionViewCell {
     
     let backView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray6
-        view.layer.cornerRadius = 10
+        view.backgroundColor = .white
         
         return view
+    }()
+    let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(named: "arrowColor")
+        
+        return view
+    }()
+    
+    let chevronImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "chevron.right")
+        imageView.tintColor = UIColor(named: "arrowColor")
+        imageView.contentMode = .scaleAspectFit
+        
+        return imageView
     }()
     
     let nameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.textColor = .darkGray
+        label.textAlignment = .left
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
         
         return label
     }()
@@ -32,15 +47,9 @@ final class AccountCell: UICollectionViewCell {
     let amountLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.textColor = .darkGray
-        
-        return label
-    }()
-    
-    let currencyLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 1
-        label.textColor = .darkGray
+        label.textAlignment = .left
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
+        label.textColor = UIColor(named: "secondaryTextColor")
         
         return label
     }()
@@ -52,9 +61,10 @@ final class AccountCell: UICollectionViewCell {
                 
         addSubview(backView)
         
-        backView.addSubview(amountLabel)
         backView.addSubview(nameLabel)
-        backView.addSubview(currencyLabel)
+        backView.addSubview(amountLabel)
+        backView.addSubview(separatorView)
+        backView.addSubview(chevronImageView)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -67,25 +77,38 @@ final class AccountCell: UICollectionViewCell {
         backView.easy.layout(Edges())
         
         nameLabel.easy.layout([
-            Left(8),
-            CenterY()
-        ])
-        
-        currencyLabel.easy.layout([
-            Right(8),
-            CenterY()
+            Left(16),
+            Top(12)
         ])
         
         amountLabel.easy.layout([
-            Right(4).to(currencyLabel, .left),
-            CenterY()
+            Left(16),
+            Bottom(12)
         ])
+        
+        separatorView.easy.layout([
+            Bottom(),
+            Right(),
+            Left(16),
+            Height(0.5)
+        ])
+        
+        chevronImageView.easy.layout([
+            Right(16),
+            CenterY(),
+            Height(20),
+            Width(20)
+        ])
+    }
+    
+    func isSeparatorLineHidden(_ isHidden: Bool) {
+        separatorView.isHidden = isHidden
     }
     
     static func size() -> CGSize {
         return .init(
             width: UIScreen.main.bounds.width - 16 - 16,
-            height: 60
+            height: 72
         )
     }
     

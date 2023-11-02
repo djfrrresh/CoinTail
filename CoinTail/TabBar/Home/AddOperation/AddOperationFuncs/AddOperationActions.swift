@@ -37,7 +37,6 @@ extension AddOperationVC {
             let dateString = strongSelf.deleteTodayFromDateTF(dateTFText)
             let date = AddOperationVC.operationDF.date(from: dateString) ?? Date()
             let desctiption = strongSelf.descriptionTF.text ?? ""
-            strongSelf.setCurrency(currencyCode: currencyText)
             let currency = strongSelf.currency
             
             //TODO: при редактировании операции в первый раз отображается счет, во второй раз счета нет в кнопке
@@ -48,6 +47,7 @@ extension AddOperationVC {
             record.type = strongSelf.addOperationSegment.rawValue
             record.categoryID = categoryID
             record.currency = "\(currency)"
+            
             if let accountID = strongSelf.accountID {
                 record.accountID = accountID
             }
@@ -56,7 +56,8 @@ extension AddOperationVC {
             strongSelf.categoryButton.removeTarget(nil, action: nil, for: .allEvents)
             strongSelf.accountButton.removeTarget(nil, action: nil, for: .allEvents)
                         
-            if let operationID = strongSelf.operationID {
+            if let recordID = strongSelf.recordID {
+                record.id = recordID
                 Records.shared.editRecord(replacingRecord: record)
             } else {
                 Records.shared.addRecord(record: record)
@@ -118,7 +119,7 @@ extension AddOperationVC {
         ) { [weak self] in
             guard let strongSelf = self else { return }
             
-            if let lastRecord = Records.shared.total.last {
+            if let lastRecord = Records.shared.records.last {
                 strongSelf.addOperationTypeSwitcher.isHidden = true
     
                 strongSelf.setFormWithRecord(lastRecord)
@@ -173,7 +174,7 @@ extension AddOperationVC {
     
     // Удаление выбранной операции по ее ID
     @objc func removeOperation() {
-        guard let id = operationID else { return }
+        guard let id = recordID else { return }
         
         confirmationAlert(
             title: "Delete operation".localized(),
@@ -187,68 +188,19 @@ extension AddOperationVC {
     }
     
     @objc func goToAccountsVC() {
-        saveOperationButton.removeTarget(nil, action: nil, for: .allEvents)
-        categoryButton.removeTarget(nil, action: nil, for: .allEvents)
-        accountButton.removeTarget(nil, action: nil, for: .allEvents)
-        
-        let vc = AccountsVC(isSelected: true)
-        vc.accountDelegate = self
-        vc.hidesBottomBarWhenPushed = true
-        
-        navigationController?.pushViewController(vc, animated: true)
+//        saveOperationButton.removeTarget(nil, action: nil, for: .allEvents)
+//        categoryButton.removeTarget(nil, action: nil, for: .allEvents)
+//        accountButton.removeTarget(nil, action: nil, for: .allEvents)
+//        
+//        let vc = AccountsVC()
+//        vc.hidesBottomBarWhenPushed = true
+//        
+//        navigationController?.pushViewController(vc, animated: true)
     }
     
     // Изменение валюты
     @objc func changeCurrency() {
-        currentIndex = Currencies.shared.getNextIndex(currentIndex: currentIndex)
-
-        currencyButton.setTitle("\(Currencies.shared.currenciesToChoose()[currentIndex])", for: .normal)
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-//        guard let userInfo = notification.userInfo else { return }
-//
-//        let animationDuration = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
-//        let keyboardHeight = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
-        
-//        print(keyboardHeight)
-//
-//        print(descriptionTF.superview?.frame.origin.y)
-        
-//        let viewTop = dateTF.frame.origin.y
-//        let viewBottom = viewTop + dateTF.frame.size.height
-//
-//        // Определяем, насколько UIView перекрыт клавиатурой
-//        let overlap = viewBottom - (UIScreen.main.bounds.height - keyboardHeight)
-        
-//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.view.frame.origin.y == 0 {
-//                self.view.frame.origin.y -= keyboardSize.height
-//            }
-//        }
-        
-//        finalStack.easy.layout([
-//            Bottom(keyboardHeight),
-//            Top(-keyboardHeight)
-//        ])
-//
-//        self.view.needsUpdateConstraints()
-//
-//        UIView.animate(withDuration: animationDuration) {
-//            self.view.layoutIfNeeded()
-//        }
-    }
-
-    @objc func keyboardWillHide(notification: NSNotification) {
-//        finalStack.easy.layout([Bottom(10).to(self.view.safeAreaLayoutGuide, .bottom)])
-        
-//        if self.view.frame.origin.y != 0 {
-//            self.view.frame.origin.y = 0
-//        }
-//
-//        UIView.animate(withDuration: 0.2) {
-//            self.view.layoutIfNeeded()
-//        }
+//        currencyButton.setTitle("\(Currencies.shared.currenciesToChoose()[currentIndex])", for: .normal)
     }
     
 }

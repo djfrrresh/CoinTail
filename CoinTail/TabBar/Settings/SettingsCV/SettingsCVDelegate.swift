@@ -23,7 +23,7 @@ extension SettingsVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayo
         case 3:
             vc = AboutAppVC()
         case 4:
-            return
+            deleteData()
         default:
             return
         }

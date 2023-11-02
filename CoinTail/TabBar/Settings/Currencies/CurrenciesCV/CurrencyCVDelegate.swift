@@ -16,24 +16,23 @@ extension CurrenciesVC: UICollectionViewDelegateFlowLayout, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var currency: Currency
+        var currency: FavouriteCurrencyClass
         
         switch indexPath.section {
         case 0:
             currency = favouriteCurrencies[indexPath.row]
         case 1:
             if isSearching {
-                currency = filteredData[indexPath.row]
+                currency = currenciesClass.createFavouriteCurrencyFromCurrency("\(filteredData[indexPath.row])")
             } else {
-                currency = Currencies.shared.currencyNames[indexPath.row]
+                currency =  currenciesClass.createFavouriteCurrencyFromCurrency("\(Currencies.shared.currencyNames[indexPath.row])")
             }
         default:
             return
         }
-        
-        Currencies.shared.selectedCurrency = currency
-        
+
+        currenciesClass.selectedCurrency = currency
         currenciesCV.reloadData()
     }
-
+    
 }

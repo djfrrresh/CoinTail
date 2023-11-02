@@ -8,16 +8,18 @@
 import UIKit
 
 
-final class CurrenciesVC: BasicVC, GetCurrencyIndex {
+final class CurrenciesVC: BasicVC {
     
-    func sendCurrency(_ currency: Currency) {
-        Currencies.shared.toggleFavouriteCurrency(currency)
-        
-        currenciesCV.reloadData()
+    let currenciesClass = Currencies.shared
+
+    var favouriteCurrencies: [FavouriteCurrencyClass] {
+        RealmService.shared.favouriteCurrenciesArr
     }
-    
-    var favouriteCurrencies: [Currency] { Currencies.shared.favouriteCurrencies }
-    var selectedCurrency: Currency { Currencies.shared.selectedCurrency }
+    var selectedCurrency: FavouriteCurrencyClass = Currencies.shared.selectedCurrency {
+        didSet {
+            currenciesCV.reloadData()
+        }
+    }
     var filteredData = [Currency]()
     var isSearching: Bool = false
     
@@ -54,7 +56,6 @@ final class CurrenciesVC: BasicVC, GetCurrencyIndex {
         return cv
     }()
     
-    //TODO: скроллить экран вместе с searchbar
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -9,32 +9,72 @@ import UIKit
 
 
 class AccountsVC: BasicVC {
-    
-    weak var accountDelegate: SendAccountID? // Передает счет
-    
-    var isSelected: Bool = false
-    
+            
     var accounts = [AccountClass]() {
         didSet {
             accountsCV.reloadData()
         }
     }
     
+    let emptyAccountsView = UIView()
+
+    let monocleImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "monocleEmoji")
+        
+        return imageView
+    }()
+    
+    let noAccountsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "You have no accounts added".localized()
+        label.font = UIFont(name: "SFProDisplay-Bold", size: 28)
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
+        
+        return label
+    }()
+    let accountsDescriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Here you can add different money storage methods, such as cards, cash or a bank deposit".localized()
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
+        label.textColor = UIColor(named: "secondaryTextColor")
+        
+        return label
+    }()
+    
+    let addAccountButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(named: "primaryAction")
+        button.layer.cornerRadius = 16
+        button.setTitle("Add account".localized(), for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
+        
+        return button
+    }()
     let transferButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "arrow.up.right.and.arrow.down.left.rectangle"), for: .normal)
-        button.backgroundColor = .lightGray.withAlphaComponent(0.5)
-        button.tintColor = .darkGray
-        button.layer.cornerRadius = 8
+        button.backgroundColor = UIColor(named: "primaryAction")
+        button.layer.cornerRadius = 16
+        button.setTitle("Transfer money".localized(), for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
         
         return button
     }()
     let historyButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "arrowshape.turn.up.backward.badge.clock"), for: .normal)
-        button.backgroundColor = .lightGray.withAlphaComponent(0.5)
-        button.tintColor = .darkGray
-        button.layer.cornerRadius = 8
+        button.backgroundColor = UIColor(named: "secondaryAction")
+        button.layer.cornerRadius = 16
+        button.setTitle("Transfer history".localized(), for: .normal)
+        button.setTitleColor(UIColor(named: "primaryAction"), for: .normal)
+        button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
         
         return button
     }()
@@ -43,7 +83,7 @@ class AccountsVC: BasicVC {
         let accountsLayout: UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()
             layout.minimumInteritemSpacing = 0
-            layout.minimumLineSpacing = 8
+            layout.minimumLineSpacing = 0
             
             return layout
         }()
@@ -62,39 +102,36 @@ class AccountsVC: BasicVC {
     
     public required init() {
         super.init(nibName: nil, bundle: nil)
-        
-        self.title = "Accounts".localized()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(isSelected: Bool) {
-        super.init(nibName: nil, bundle: nil)
-        
-        self.isSelected = isSelected
-        transferButton.isHidden = true
-        historyButton.isHidden = true
-        
-        self.title = "Account selection".localized()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         sortAccounts()
-        accountsNavBar()
-        accountButtonTargets()
+        
+        //TODO: сделать в функции setupNavigationTitle большой +
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector (goToAddAccountVC)
+        )
+        
+        setupNavigationTitle(title: "Accounts".localized(), large: true)
+        isAccountEmpty()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         accountsCV.dataSource = self
         
         accountsCV.delegate = self
         
         accountsSubviews()
+        emptyAccountsSubviews()
+        accountButtonTargets()
     }
     
 }

@@ -12,31 +12,38 @@ final class Transfers {
     
     static let shared = Transfers()
     
+    var transfers: [TransferHistoryClass] {
+        get {
+            return RealmService.shared.transfersHistoryArr
+        }
+    }
+    
     // Добавить новый перевод
     func addNewTransfer(_ transfer: TransferHistoryClass) {
         RealmService.shared.write(transfer, TransferHistoryClass.self)
     }
     
     // Перевод средств между счетами
-    func transferBetweenAccounts(from sourceAccountName: String, to targetAccountName: String, amount: Double) {
-        var firstAccount: AccountClass
-        var secondAccount: AccountClass
-
-        guard let sourceAccount = Accounts.shared.getAccount(for: sourceAccountName),
-              let targetAccount = Accounts.shared.getAccount(for: targetAccountName) else { return }
+    func transferBetweenAccounts(from sourceAccount: AccountClass, to targetAccount: AccountClass, amount: Double) {
+        let firstAccount = AccountClass()
+        let secondAccount = AccountClass()
         
-        firstAccount = AccountClass(value: sourceAccount)
-        secondAccount = AccountClass(value: targetAccount)
-                
         // Снимаем деньги с исходного счета и добавляем их на целевой счет
-        firstAccount.startBalance -= amount
-        secondAccount.startBalance += amount
+        let firstAccountBalance = sourceAccount.startBalance - amount
+        let secondAccountBalance = targetAccount.startBalance + amount
         
-        print(firstAccount)
-        print(secondAccount)
+        firstAccount.id = sourceAccount.id
+        firstAccount.currency = sourceAccount.currency
+        firstAccount.name = sourceAccount.name
+        firstAccount.startBalance = firstAccountBalance
         
-        Accounts.shared.editAccount(for: sourceAccount.id, replacingAccount: firstAccount)
-        Accounts.shared.editAccount(for: targetAccount.id, replacingAccount: secondAccount)
+        secondAccount.id = targetAccount.id
+        secondAccount.currency = targetAccount.currency
+        secondAccount.name = targetAccount.name
+        secondAccount.startBalance = secondAccountBalance
+        
+        Accounts.shared.editAccount(replacingAccount: firstAccount)
+        Accounts.shared.editAccount(replacingAccount: secondAccount)
     }
     
 }

@@ -13,61 +13,76 @@ final class AddAccountVC: BasicVC {
     
     var accountID: ObjectId?
     
-    let accountAmountLabel = UILabel(text: "Initial amount".localized(), alignment: .left)
-    let accountNameLabel = UILabel(text: "Account name".localized(), alignment: .left)
-    var currency: Currency = Currencies.shared.selectedCurrency
-    var currentIndex = 0
+    var selectedCurrency: String = Currencies.shared.selectedCurrency.currency
     
-    let accountAmountTF = UITextField(
-        defaultText: "0",
-        background: .lightGray.withAlphaComponent(0.2),
-        keyboard: .numberPad,
-        placeholder: "Enter amount".localized()
-    )
-    let accountNameTF = UITextField(
-        defaultText: "",
-        background: .lightGray.withAlphaComponent(0.2),
-        keyboard: .default,
-        placeholder: "For example: Cash".localized()
-    )
+    var accountName: String?
+    var accountAmount: String?
+    var isAccountMain: Bool = true
     
-    let currencyButton = UIButton(
-        name: "\(Currencies.shared.selectedCurrency)",
-        background: .clear,
-        textColor: .black
-    )
-    let saveAccountButton = UIButton(
-        name: "Save Account".localized(),
-        background: .black,
-        textColor: .white
-    )
+    static let favouriteCurrencies: [FavouriteCurrencyClass] = Currencies.shared.currenciesToChoose()
+    let favouriteStringCurrencies: [String] = Currencies.shared.extractCurrencyStrings(from: favouriteCurrencies)
+
+    let deleteAccountButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(named: "cancelAction")
+        button.layer.cornerRadius = 16
+        button.setTitle("Delete account".localized(), for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
+        button.isHidden = true
+        
+        return button
+    }()
+    
+    let currenciesPickerView: UIPickerView = {
+        let picker = UIPickerView()
+        picker.isHidden = true
+        
+        return picker
+    }()
+    
+    let toolBar: UIToolbar = {
+        let toolbar = UIToolbar()
+        toolbar.isHidden = true
+        toolbar.sizeToFit()
+        toolbar.tintColor = .systemBlue
+
+        return toolbar
+    }()
+    
+    let addAccountCV: UICollectionView = {
+        let addAccountLayout: UICollectionViewFlowLayout = {
+            let layout = UICollectionViewFlowLayout()
+            layout.minimumInteritemSpacing = 0
+            layout.minimumLineSpacing = 0
+
+            return layout
+        }()
+
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: addAccountLayout)
+        cv.backgroundColor = .clear
+        cv.register(AddAccountCell.self, forCellWithReuseIdentifier: AddAccountCell.id)
+
+        cv.showsVerticalScrollIndicator = false
+        cv.showsHorizontalScrollIndicator = false
+        cv.alwaysBounceVertical = false
+        cv.delaysContentTouches = true
+
+        return cv
+    }()
     
     init(accountID: ObjectId) {
         self.accountID = accountID
-        
         super.init(nibName: nil, bundle: nil)
 
-        // Передаем значения бюджета из редактируемой ячейки
-        guard let account = Accounts.shared.getAccount(for: accountID) else { return }
+        self.title = "Edit account".localized()
         
-        accountAmountTF.text = "\(account.startBalance)"
-        accountNameTF.text = account.name
-        saveAccountButton.setTitle("Edit Account".localized(), for: .normal)
-        currencyButton.setTitle("\(account.currency)", for: .normal)
-
-        self.title = "Editing Account".localized()
-
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .trash,
-            target: self,
-            action: #selector (removeAccount)
-        )
+        guard let account = Accounts.shared.getAccount(for: accountID) else { return }
+        setupUI(with: account)
     }
     
     public required init() {
         super.init(nibName: nil, bundle: nil)
-        
-        self.title = "Add new Account".localized()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -81,11 +96,18 @@ final class AddAccountVC: BasicVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        accountAmountTF.delegate = self
-        accountNameTF.delegate = self
         
-        setAddAccountStack()
+        self.title = "Add new account".localized()
+        
+        currenciesPickerView.dataSource = self
+        addAccountCV.dataSource = self
+
+        currenciesPickerView.delegate = self
+        addAccountCV.delegate = self
+        
+        addAccountNavBar()
+        addAccountSubviews()
+        setupToolBar()
     }
-    
+
 }

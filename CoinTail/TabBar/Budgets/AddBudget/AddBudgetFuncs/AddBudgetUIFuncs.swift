@@ -12,79 +12,75 @@ import EasyPeasy
 extension AddBudgetVC {
     
     func setupUI(with budget: BudgetClass) {
-        periodSwitcher.isHidden = true
-
-        // Сумма
-        budgetAmountTF.text = "\(budget.amount)"
-        
-        // Категория
         if let categoryName = Categories.shared.getCategory(for: budget.categoryID)?.name {
-            categoryButton.setTitle(categoryName, for: .normal)
+            budgetCategory = categoryName
         }
         budgetCategoryID = budget.categoryID
+        selectedCurrency = budget.currency
+        budgetAmount = "\(budget.amount)"
         
-        // Счет
-        currencyButton.setTitle("\(budget.currency)", for: .normal)
-                        
-        saveBudgetButton.setTitle("Edit Budget".localized(), for: .normal)
+        deleteBudgetButton.isHidden = false
     }
     
-    func setAddBudgetStack() {
-        let amountStack = UIStackView()
-        setStack(
-            stack: amountStack,
-            axis: .vertical,
-            spacing: 6,
-            alignment: .fill,
-            distribution: .fill,
-            viewsArray: [budgetAmountLabel, budgetAmountTF]
-        )
+    func addBudgetSubviews() {
+        self.view.addSubview(addBudgetCV)
+        self.view.addSubview(deleteBudgetButton)
+        self.view.addSubview(currenciesPickerView)
+        self.view.addSubview(toolBar)
         
-        let categoryAmountStack = UIStackView()
-        setStack(
-            stack: categoryAmountStack,
-            axis: .vertical,
-            spacing: 16,
-            alignment: .fill,
-            distribution: .fill,
-            viewsArray: [amountStack, categoryButton]
-        )
-        
-        let preFinalStack = UIStackView()
-        setStack(
-            stack: preFinalStack,
-            axis: .vertical,
-            spacing: 32,
-            alignment: .fill,
-            distribution: .fill,
-            viewsArray: [periodSwitcher, categoryAmountStack]
-        )
-        
-        let finalStack = UIStackView()
-        setStack(
-            stack: finalStack,
-            axis: .vertical,
-            spacing: 70,
-            alignment: .fill,
-            distribution: .equalCentering,
-            viewsArray: [preFinalStack, saveBudgetButton]
-        )
-        
-        self.view.addSubview(finalStack)
-        finalStack.easy.layout([
+        addBudgetCV.easy.layout([
             Left(16),
             Right(16),
-            Top(10).to(self.view.safeAreaLayoutGuide, .top),
-            Bottom(10).to(self.view.safeAreaLayoutGuide, .bottom)
+            Top(32).to(self.view.safeAreaLayoutGuide, .top),
+            Height(48 * 4)
         ])
         
-        self.view.addSubview(currencyButton)
-        currencyButton.easy.layout([
-            Right(8).to(budgetAmountTF, .right),
-            Height(32),
-            Width(48),
-            CenterY().to(budgetAmountTF)
+        deleteBudgetButton.easy.layout([
+            Left(16),
+            Right(16),
+            Top(24).to(addBudgetCV, .bottom),
+            Height(52)
         ])
+        
+        currenciesPickerView.easy.layout([
+            Left(),
+            Right(),
+            Height(200),
+            Bottom().to(self.view.safeAreaLayoutGuide, .bottom)
+        ])
+        
+        toolBar.easy.layout([
+            Left(),
+            Right(),
+            Height(44),
+            Bottom().to(currenciesPickerView, .top)
+        ])
+    }
+    
+    func addBudgetNavBar() {
+        let title = budgetID != nil ? "Edit".localized() : "Save".localized()
+
+        let saveButton = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(saveBudgetAction))
+            
+        self.navigationItem.rightBarButtonItem = saveButton
+//        self.navigationItem.rightBarButtonItem?.isEnabled = budgetID != nil ? true : false
+    }
+    
+    //TODO: вынести эту функцию в basicVC
+    func setupToolBar() {
+        let doneButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(doneButtonAction)
+        )
+
+        toolBar.setItems([doneButton], animated: true)
+    }
+    
+    func updateCell(at indexPath: IndexPath) {
+        if let cell = addBudgetCV.cellForItem(at: indexPath) as? AddBudgetCell {
+            cell.updateCurrencyLabel(selectedCurrency)
+        }
     }
     
 }

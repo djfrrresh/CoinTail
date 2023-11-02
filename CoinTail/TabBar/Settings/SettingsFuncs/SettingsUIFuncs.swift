@@ -7,7 +7,6 @@
 
 import UIKit
 import EasyPeasy
-import StoreKit
 
 
 extension SettingsVC {
@@ -21,13 +20,6 @@ extension SettingsVC {
             Bottom(),
             Top(32).to(view.safeAreaLayoutGuide, .top)
         ])
-    }
-    
-    // Оценка приложения в AppStore
-    func rateApp() {
-        if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
-            SKStoreReviewController.requestReview(in: scene)
-        }
     }
     
 }

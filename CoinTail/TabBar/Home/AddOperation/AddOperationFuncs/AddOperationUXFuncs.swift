@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 
 
-extension AddOperationVC: SendSubcategoryID, SendAccountID, SendCategoryID {
+extension AddOperationVC: SendSubcategoryID, SendCategoryID {
     
     func sendCategoryData(id: ObjectId) {
         self.categoryID = id
@@ -27,22 +27,8 @@ extension AddOperationVC: SendSubcategoryID, SendAccountID, SendCategoryID {
         categoryButton.setTitle(subcategory.name, for: .normal)
     }
     
-    func sendAccountData(id: ObjectId) {
-        self.accountID = id
-        
-        guard let account = Accounts.shared.getAccount(for: id) else { return }
-        
-        accountButton.setTitle(account.name, for: .normal)
-    }
-    
     func setCurrency(currencyCode: String) {
-        self.currency = Currencies.shared.getCurrency(for: currencyCode)
-    }
-    
-    // Установка наблюдателей. При выходе с контроллера, где имеется наблюдатель, наблюдатель уничтожается вместе с контроллером
-    func startObservingKeyboard() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        self.currency = Currencies.shared.getCurrencyClass(for: currencyCode)
     }
     
     // Установка таргетов для кнопок
@@ -59,7 +45,7 @@ extension AddOperationVC: SendSubcategoryID, SendAccountID, SendCategoryID {
     func recordValidation(amount: Double, categoryText: String, accountText: String, completion: ((Double, ObjectId) -> Void)? = nil) {
         guard let currencyText = currencyButton.titleLabel?.text else { return }
         
-        let selectedCurrency: Currency = Currencies.shared.getCurrency(for: currencyText)
+        let selectedCurrency = currencyText
         let missingAmount = abs(amount) == 0
         let missingCategory = categoryText == AddOperationVC.defaultCategory
         let missingAccount = accountText == AddOperationVC.defaultAccount
@@ -75,13 +61,20 @@ extension AddOperationVC: SendSubcategoryID, SendAccountID, SendCategoryID {
             errorAlert("No category selected".localized())
         } else if missingAccount && self.accountID != nil {
             errorAlert("No account selected".localized())
-        } else if account != nil && account?.currency != "\(selectedCurrency)" {
+        }
+        else if account != nil && account?.currency != "\(selectedCurrency)" {
             errorAlert("You cannot specify an account for this transaction with another currency!".localized())
-        } else {
-            //TODO: add subcategory
-            guard let categoryID = self.categoryID else { return }
+        }
+        else {
+            //TODO: проверить работу
+            var category: ObjectId = ObjectId()
+            if let subcategoryID = self.subcategoryID {
+                category = subcategoryID
+            } else if let categoryID = self.categoryID {
+                category = categoryID
+            }
             
-            completion?(amount, categoryID)
+            completion?(amount, category)
         }
     }
     

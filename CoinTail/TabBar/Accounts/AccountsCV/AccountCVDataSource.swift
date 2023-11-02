@@ -36,9 +36,22 @@ extension AccountsVC: UICollectionViewDataSource {
             Accounts.shared.editBalance(for: account.id, replacingBalance: totalAmountForCash)
         }
         
-        cell.amountLabel.text = "\(totalAmountForCash)"
-        cell.nameLabel.text = accountData.name
-        cell.currencyLabel.text = "\(accountData.currency)"
+        cell.amountLabel.text = "\(totalAmountForCash) \(accountData.currency)"
+        cell.nameLabel.text = "\(accountData.name)"
+        
+        let isLastRow = self.collectionView(collectionView, numberOfItemsInSection: indexPath.section) - 1 == indexPath.row
+        cell.isSeparatorLineHidden(isLastRow)
+        
+        // Динамическое округление ячеек
+        if indexPath.item == 0 && isLastRow {
+            cell.roundCorners(.allCorners, radius: 12)
+        } else if isLastRow {
+            cell.roundCorners(bottomLeft: 12, bottomRight: 12)
+        } else if indexPath.row == 0 {
+            cell.roundCorners(topLeft: 12, topRight: 12)
+        } else {
+            cell.roundCorners(.allCorners, radius: 0)
+        }
         
         return cell
     }

@@ -12,84 +12,144 @@ import EasyPeasy
 extension AccountsTransferVC {
     
     func transferSubviews() {
-        self.view.addSubview(selectFirstAccountButton)
-        self.view.addSubview(transferAmountLabel)
-        self.view.addSubview(transferAmountTF)
-        self.view.addSubview(arrowImage)
-        self.view.addSubview(selectSecondAccountButton)
+        self.view.addSubview(transferFromBackView)
+        self.view.addSubview(transferToBackView)
+        
+        self.view.addSubview(transferCV)
         self.view.addSubview(saveTransferButton)
         
-        selectFirstAccountButton.easy.layout([
+        self.view.addSubview(accountsPickerView)
+        self.view.addSubview(toolBar)
+        
+        transferFromBackView.easy.layout([
+            Height(64),
+            Top(24).to(self.view.safeAreaLayoutGuide, .top),
             Left(16),
+            Right(UIScreen.main.bounds.width / 2)
+        ])
+        transferToBackView.easy.layout([
+            Height(64),
+            Top(24).to(self.view.safeAreaLayoutGuide, .top),
             Right(16),
-            Height(40),
-            Top(40).to(self.view.safeAreaLayoutGuide, .top)
-        ])
-        
-        transferAmountLabel.easy.layout([
-            CenterX(),
-            Top(16).to(selectFirstAccountButton, .bottom)
-        ])
-        
-        transferAmountTF.easy.layout([
-            CenterX(),
-            Left(16),
-            Right(16),
-            Top(8).to(transferAmountLabel, .bottom)
-        ])
-        
-        arrowImage.easy.layout([
-            Height(28),
-            Width(28),
-            CenterX(),
-            Top(20).to(transferAmountTF, .bottom)
-        ])
-        
-        selectSecondAccountButton.easy.layout([
-            Left(16),
-            Right(16),
-            Height(40),
-            Top(16).to(arrowImage, .bottom)
+            Left(UIScreen.main.bounds.width / 2)
         ])
         
         saveTransferButton.easy.layout([
             Left(16),
             Right(16),
-            Bottom(20).to(self.view.safeAreaLayoutGuide, .bottom)
+            Bottom(24).to(self.view.safeAreaLayoutGuide, .bottom),
+            Height(52)
+        ])
+        transferCV.easy.layout([
+            Top(24).to(transferFromBackView, .bottom),
+            Bottom(24).to(saveTransferButton, .top),
+            Left(),
+            Right()
+        ])
+        
+        accountsPickerView.easy.layout([
+            Left(),
+            Right(),
+            Height(200),
+            Bottom().to(self.view.safeAreaLayoutGuide, .bottom)
+        ])
+        toolBar.easy.layout([
+            Left(),
+            Right(),
+            Height(44),
+            Bottom().to(accountsPickerView, .top)
+        ])
+        
+        transferFromBackView.addSubview(transferFromBackViewFill)
+        transferToBackView.addSubview(transferToBackViewFill)
+        
+        transferFromBackViewFill.easy.layout([
+            Edges()
+        ])
+        transferToBackViewFill.easy.layout([
+            Edges()
+        ])
+        
+        transferFromBackViewFill.addSubview(transferFromLabel)
+        transferToBackViewFill.addSubview(transferToLabel)
+        
+        transferFromBackViewFill.addSubview(transferFromAccountNameLabel)
+        transferToBackViewFill.addSubview(transferToAccountNameLabel)
+        
+        transferFromBackViewFill.addSubview(transferFromAccountBalanceLabel)
+        transferToBackViewFill.addSubview(transferToAccountBalanceLabel)
+        
+        transferFromLabel.easy.layout([
+            Left(16),
+            CenterY()
+        ])
+        transferToLabel.easy.layout([
+            Left(24),
+            CenterY()
+        ])
+        
+        transferFromAccountNameLabel.easy.layout([
+            Top(8),
+            Left(16),
+            Right(24)
+        ])
+        transferToAccountNameLabel.easy.layout([
+            Top(8),
+            Left(24),
+            Right(16)
+        ])
+        
+        transferFromAccountBalanceLabel.easy.layout([
+            Bottom(8),
+            Left(16),
+            Right(24)
+        ])
+        transferToAccountBalanceLabel.easy.layout([
+            Bottom(8),
+            Left(24),
+            Right(16)
         ])
     }
     
-    func addTransparentView(button: UIButton) {
-        self.view.addSubview(transparentView)
-        transparentView.easy.layout(Edges())
-        
-        self.view.addSubview(accountsCV)
-        accountsCV.easy.layout([
-            Left(16),
-            Right(16),
-            Height(60),
-            Top().to(button, .bottom)
-        ])
+    func setupToolBar() {
+        let doneButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(doneButtonAction)
+        )
 
-        accountsCV.reloadData()
-        selectedButton = button
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(removeTransparentView))
-        transparentView.addGestureRecognizer(tapGesture)
-        
-        UIView.animate(
-            withDuration: 0.4,
-            delay: 0.0,
-            usingSpringWithDamping: 1.0,
-            initialSpringVelocity: 1.0,
-            options: .curveEaseInOut,
-            animations: { [self] in
-                transparentView.alpha = 0.5
-            
-                accountsCV.easy.layout([
-                    Height(CGFloat(60 * accountsArr.count + (8 * accountsArr.count - 1)))
-                ])
-        },  completion: nil)
+        toolBar.setItems([doneButton], animated: true)
     }
+    
+    func showTransferFrom() {
+        guard let account = Accounts.shared.getAccount(for: accountNameFrom) else { return }
+
+        transferFromBackView.image = transferFromBackView.image?.withRenderingMode(.alwaysTemplate)
+        transferFromBackView.tintColor = .white
+        transferFromBackViewFill.tintColor = UIColor.white
+        
+        transferFromLabel.isHidden = true
+        transferFromAccountNameLabel.isHidden = false
+        transferFromAccountBalanceLabel.isHidden = false
+                
+        transferFromAccountNameLabel.text = accountNameFrom
+        transferFromAccountBalanceLabel.text = "\(account.amountBalance) \(account.currency)"
+    }
+    
+    func showTransferTo() {
+        guard let account = Accounts.shared.getAccount(for: accountNameTo) else { return }
+
+        transferToBackView.image = transferToBackView.image?.withRenderingMode(.alwaysTemplate)
+        transferToBackView.tintColor = UIColor.white
+        transferToBackViewFill.tintColor = UIColor.white
+
+        transferToLabel.isHidden = true
+        transferToAccountNameLabel.isHidden = false
+        transferToAccountBalanceLabel.isHidden = false
+                
+        transferToAccountNameLabel.text = accountNameTo
+        transferToAccountBalanceLabel.text = "\(account.amountBalance) \(account.currency)"
+    }
+
     
 }

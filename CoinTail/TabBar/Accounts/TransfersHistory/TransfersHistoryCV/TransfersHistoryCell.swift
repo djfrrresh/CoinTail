@@ -15,50 +15,66 @@ final class TransfersHistoryCell: UICollectionViewCell {
     
     let backView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray6
-        view.layer.cornerRadius = 10
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 16
+        
+        return view
+    }()
+    let sourceSeparatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(named: "arrowColor")
+        
+        return view
+    }()
+    let targetSeparatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(named: "arrowColor")
         
         return view
     }()
     
-    let arrowImage: UIImageView = {
+    let arrowImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+        imageView.tintColor = .black
         imageView.image = UIImage(systemName: "arrow.right")
         
         return imageView
     }()
-    
-    let headerDF: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d, yyyy"
-        
-        return formatter
-    }()
-    
-    let dateLabel: UILabel = {
-        let label = UILabel()
-        return label
-    }()
+
     let sourceAccountLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 1
-        label.textColor = .darkGray
+        label.numberOfLines = 0
+        label.textColor = .black
+        label.textAlignment = .center
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
         
         return label
     }()
     let targetAccountLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
+        label.textColor = .black
+        label.textAlignment = .center
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
+
+        return label
+    }()
+    let sourceAmountLabel: UILabel = {
+        let label = UILabel()
         label.numberOfLines = 1
-        label.textColor = .darkGray
+        label.textColor = UIColor(named: "sourceAccount")
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
+        label.textAlignment = .center
         
         return label
     }()
-    let amountLabel: UILabel = {
+    let targetAmountLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.textColor = .darkGray
+        label.textColor = UIColor(named: "targetAccount")
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
+        label.textAlignment = .center
         
         return label
     }()
@@ -69,12 +85,14 @@ final class TransfersHistoryCell: UICollectionViewCell {
         backgroundColor = .clear
                 
         addSubview(backView)
-        addSubview(dateLabel)
         
-        backView.addSubview(amountLabel)
-        backView.addSubview(arrowImage)
+        backView.addSubview(arrowImageView)
+        backView.addSubview(sourceSeparatorView)
+        backView.addSubview(targetSeparatorView)
         backView.addSubview(sourceAccountLabel)
         backView.addSubview(targetAccountLabel)
+        backView.addSubview(sourceAmountLabel)
+        backView.addSubview(targetAmountLabel)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -85,42 +103,107 @@ final class TransfersHistoryCell: UICollectionViewCell {
         super.layoutSubviews()
         
         backView.easy.layout([
-            Left(),
-            Right(),
-            Bottom(),
-            Height(60)
+            Edges()
+        ])
+        
+        arrowImageView.easy.layout([
+            Center(),
+            Height(20),
+            Width(20)
+        ])
+        
+        sourceSeparatorView.easy.layout([
+            CenterY(),
+            Left(16),
+            Right(16).to(arrowImageView, .left),
+            Height(0.5)
+        ])
+        
+        targetSeparatorView.easy.layout([
+            CenterY(),
+            Right(16),
+            Left(16).to(arrowImageView, .right),
+            Height(0.5)
         ])
         
         sourceAccountLabel.easy.layout([
-            CenterY(),
-            Left(16)
+            Left(16),
+            Bottom(8).to(sourceSeparatorView, .top),
+            Right(16).to(arrowImageView, .left)
         ])
         
         targetAccountLabel.easy.layout([
-            CenterY(),
-            Right(16)
+            Right(16),
+            Bottom(8).to(targetSeparatorView, .top),
+            Left(16).to(arrowImageView, .right)
         ])
         
-        amountLabel.easy.layout([
-            CenterX(),
-            CenterY(-10)
+        sourceAmountLabel.easy.layout([
+            Left(16),
+            Top(8).to(sourceSeparatorView, .top),
+            Right(16).to(arrowImageView, .left)
         ])
         
-        dateLabel.easy.layout([
-            Top(),
-            Left()
-        ])
-        
-        arrowImage.easy.layout([
-            CenterX(),
-            CenterY(10)
+        targetAmountLabel.easy.layout([
+            Right(16),
+            Top(8).to(targetSeparatorView, .top),
+            Left(16).to(arrowImageView, .right)
         ])
     }
     
-    static func size() -> CGSize {
+    static func getSourceAccountNameLabel() -> UILabel {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
+        
+        return label
+    }
+    
+    static func getTargetAccountNameLabel() -> UILabel {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
+        
+        return label
+    }
+    
+    static func getAccountAmountLabel() -> UILabel {
+        let label = UILabel()
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
+        
+        return label
+    }
+    
+    static func size(data: TransferHistoryClass) -> CGSize {
+        let amountLabel = getAccountAmountLabel()
+        let sourceNameLabel = getSourceAccountNameLabel()
+        let targetNameLabel = getTargetAccountNameLabel()
+        
+        amountLabel.text = "\(data.amount)"
+        sourceNameLabel.text = data.sourceAccount
+        targetNameLabel.text = data.targetAccount
+        
+        let amountWidth = amountLabel.sizeThatFits(CGSize.zero).width
+        let sourceNameWidth = sourceNameLabel.sizeThatFits(CGSize.zero).width
+        let targetNameWidth = targetNameLabel.sizeThatFits(CGSize.zero).width
+        
+        let padding: CGFloat = 16.0
+        let middlePadding: CGFloat = 8.0
+        
+        let textWidth = UIScreen.main.bounds.width - (2 * padding) - sourceNameWidth - targetNameWidth - 20 - (2 * padding)
+    
+        //TODO: посчитать правильно
+        let sourceHeight: CGFloat = sourceNameLabel.sizeThatFits(.init(width: textWidth, height: 0)).height
+        let targetHeight: CGFloat = targetNameLabel.sizeThatFits(.init(width: textWidth, height: 0)).height
+        let amountHeight: CGFloat = amountLabel.sizeThatFits(.init(width: textWidth, height: 0)).height
+        
+        let cellHeight = (sourceHeight > targetHeight ? sourceHeight : targetHeight) + (2 * padding) + (2 * middlePadding) + amountHeight
+        
+        print(cellHeight)
+                
         return .init(
             width: UIScreen.main.bounds.width - 16 - 16,
-            height: 80
+            height: cellHeight
         )
     }
     

@@ -13,7 +13,7 @@ final class Records {
     
     static let shared = Records()
     
-    var total: [RecordClass] {
+    var records: [RecordClass] {
         get {
             return RealmService.shared.recordsArr
         }
@@ -32,30 +32,31 @@ final class Records {
         let currentYear = calendar.component(.year, from: Date())
         let currentMonth = calendar.component(.month, from: Date())
         
-        var array = [RecordClass]()
+        var filteredRecords = [RecordClass]()
         // Фильтрация операций по типу
-        var records = total.filter { $0.type == type.rawValue }
+        var totalRecords = records.filter { $0.type == type.rawValue }
         
         if type == .allOperations {
-            records = total
+            totalRecords = records
         }
         
         // Если выбрана категория, фильтруем по категории
         if let categoryID = categoryID {
-            records = records.filter { $0.categoryID == categoryID }
+            totalRecords = totalRecords.filter { $0.categoryID == categoryID }
         }
         
         switch period {
         case .allTheTime:
-            array = records
+            filteredRecords = totalRecords
         case .year:
-            array = records.filter { calendar.component(.year, from: $0.date) == currentYear - step }
+            filteredRecords = totalRecords.filter { calendar.component(.year, from: $0.date) == currentYear - step }
         case .quarter:
+            // TODO: есть баг с прокруткой влево 4 раза когда там нет операций
             let year = Int.norm(hi: currentYear, lo: currentMonth - 1 - step * 3, base: 12).nhi
             let desiredMonth = Int.norm(hi: currentYear, lo: currentMonth - 1 - step * 3, base: 12).nlo + 1
             let desiredQuarter = (desiredMonth - 1) / 3 + 1
 
-            array = records.filter {
+            filteredRecords = totalRecords.filter {
                 let recordQuarter = (calendar.component(.month, from: $0.date) - 1) / 3 + 1
                 let recordYear = calendar.component(.year, from: $0.date)
                 
@@ -65,10 +66,10 @@ final class Records {
             let year = Int.norm(hi: currentYear, lo: currentMonth - 1 - step, base: 12).nhi
             let desiredMonth = Int.norm(hi: currentYear, lo: currentMonth - 1 - step, base: 12).nlo + 1
             
-            array = records.filter { calendar.component(.month, from: $0.date) == desiredMonth && calendar.component(.year, from: $0.date) == year }
+            filteredRecords = totalRecords.filter { calendar.component(.month, from: $0.date) == desiredMonth && calendar.component(.year, from: $0.date) == year }
         }
         
-        return array
+        return filteredRecords
     }
         
     // Добавление новой операции
@@ -78,7 +79,14 @@ final class Records {
     
     // Получить операцию по ее ID
     func getRecord(for id: ObjectId) -> RecordClass? {
-        return total.filter { $0.id == id }.first
+        return records.filter { $0.id == id }.first
+    }
+    
+    // Отредактировать операцию по ее ID
+    func editRecord(replacingRecord: RecordClass, completion: ((Bool) -> Void)? = nil) {
+        RealmService.shared.update(replacingRecord, RecordClass.self)
+        
+        completion?(true)
     }
     
     // Удаляет операцию по ее ID
@@ -93,20 +101,13 @@ final class Records {
         completion?(true)
     }
     
-    // Отредактировать операцию по ее ID
-    func editRecord(replacingRecord: RecordClass, completion: ((Bool) -> Void)? = nil) {
-        RealmService.shared.update(replacingRecord, RecordClass.self)
-        
-        completion?(true)
-    }
-    
     // Получает сумму из категории с начальной даты до конечной с указанным периодом (неделя / месяц)
     func getBudgetAmount(date: Date, untilDate: Date, categoryID: ObjectId, currency: Currency) -> Double? {
         let calendar = Calendar.current
         guard let startDate = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: date)),
               let endDate = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: untilDate)) else { return nil }
         
-        var records = total.filter { $0.type == "Expense" }
+        var records = records.filter { $0.type == "Expense" }
         records = records.filter { $0.categoryID == categoryID && $0.currency == "\(currency)" }
         
         return records.filter { $0.date >= startDate && $0.date <= endDate }.reduce(0.0) { $0 + $1.amount }
@@ -114,7 +115,7 @@ final class Records {
     
     // Посчитать конечный баланс для счёта
     func calculateTotalBalance(for accountID: ObjectId) -> Double {
-        let totalAmount = total.reduce(0) { (result, record) -> Double in
+        let totalAmount = records.reduce(0) { (result, record) -> Double in
             let account = Accounts.shared.getAccount(for: accountID)
             
             if let recordAccountID = record.accountID,

@@ -149,7 +149,7 @@ final class OperationCVCell: UICollectionViewCell {
         let currencyWidth = currency.sizeThatFits(.init(width: 0, height: 0)).width
 
         let textWidth: CGFloat = UIScreen.main.bounds.width - 16 - 8 * 2 - amountWidth - currencyWidth - 4 - 16 - 16 - 24
-        let label = getCategoryLabel()
+        let categoryLabel = getCategoryLabel()
         
         guard let category = Categories.shared.getCategory(for: data.categoryID) else {
             return .init(
@@ -157,8 +157,8 @@ final class OperationCVCell: UICollectionViewCell {
                         height: 0
                     )
         }
-        label.text = category.name
-        let labelHeight = label.sizeThatFits(.init(width: textWidth, height: 0)).height
+        categoryLabel.text = category.name
+        let labelHeight = categoryLabel.sizeThatFits(.init(width: textWidth, height: 0)).height
         
         // Конечный размер ячейки определяется по высоте backImage или высоте текста категории
         let cellHeight = imageHeight > labelHeight ? imageHeight + 7 * 2 : labelHeight + 7 * 2
@@ -179,8 +179,8 @@ final class OperationCVCell: UICollectionViewCell {
             amountLabel.textColor = .systemGreen
             currencyLabel.textColor = .systemGreen
         default:
-            amountLabel.textColor = .black
-            currencyLabel.textColor = .black
+            amountLabel.textColor = .white
+            currencyLabel.textColor = .white
         }
     }
 

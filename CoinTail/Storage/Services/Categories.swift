@@ -13,6 +13,8 @@ final class Categories {
     
     static let shared = Categories()
     
+    private let realmService = RealmService.shared
+    
     var totalCategories = [CategoryClass]()
     
     var categories: [CategoryClass] {
@@ -62,13 +64,16 @@ final class Categories {
         RealmService.shared.write(subcategory, SubcategoryClass.self)
     }
     
+    // Добавление ID подкатегории к категории
     func addSubcategoryToCategory(for categoryID: ObjectId, to type: RecordType, subcategoryID: ObjectId) {
-        guard var category = categories.first(where: { $0.id == categoryID }) else { return }
-        
-        //TODO: realm!!!
-        category.subcategories.append(subcategoryID)
-
-        RealmService.shared.update(category, CategoryClass.self)
+        do {
+            try realmService.realm?.write {
+                guard let category = realmService.realm?.object(ofType: CategoryClass.self, forPrimaryKey: categoryID) else { return }
+                category.subcategories.append(subcategoryID)
+            }
+        } catch let error {
+            print("Error adding subcategory to category: \(error)")
+        }
     }
     
     // Обновить категории в коллекции

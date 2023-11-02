@@ -38,39 +38,42 @@ extension CurrenciesVC: UICollectionViewDataSource {
         }
         
         var currencyCode, currencyName: String
-        var array: [Currency]
+        var currenciesArray: [String]
         
-        let currency: Currency
-        
-        //TODO: corner radius, divider
+        let currency: String
+        let favouriteCurrenciesString = extractCurrencyStrings(from: favouriteCurrencies)
+
         switch indexPath.section {
         case 0:
-            currencyCode = "\(favouriteCurrencies[indexPath.row])"
-            currencyName = favouriteCurrencies[indexPath.row].name
-            currency = favouriteCurrencies[indexPath.row]
-            array = favouriteCurrencies
+            currency = favouriteCurrenciesString[indexPath.row]
+            currencyCode = currency
+            currencyName = currenciesClass.getCurrencyName(for: currency)
+            currenciesArray = favouriteCurrenciesString
         case 1:
             if isSearching {
-                currency = filteredData[indexPath.row]
-                currencyCode = "\(filteredData[indexPath.row])"
-                currencyName = currency.name
-                array = filteredData
+                let filteredCurrenciesString = extractCurrencyStrings(from: filteredData)
+
+                currency = "\(filteredData[indexPath.row])"
+                currencyCode = currency
+                currencyName = filteredData[indexPath.row].name
+                currenciesArray = filteredCurrenciesString
             } else {
-                currency = Currencies.shared.currencyNames[indexPath.row]
-                currencyCode = Currencies.shared.currencyCodes[indexPath.row]
-                currencyName = currency.name
-                array = Currencies.shared.currencyNames
+                let currenciesString = extractCurrencyStrings(from: currenciesClass.currencyNames)
+
+                currency = currenciesClass.currencyCodes[indexPath.row]
+                currencyCode = currency
+                currencyName = currenciesClass.currencyNames[indexPath.row].name
+                currenciesArray = currenciesString
             }
         default:
             return cell
         }
         
-        cell.currencyDelegate = self
-        cell.checkmarkImageView.isHidden = array[indexPath.row] != selectedCurrency
+        cell.checkmarkImageView.isHidden = currenciesArray[indexPath.row] != selectedCurrency.currency
         cell.currencyCodeLabel.text = currencyCode
         cell.currencyNameLabel.text = currencyName
         cell.currency = currency
-        cell.isFavourite(currency: currency, array: favouriteCurrencies)
+        cell.isFavourite(currency: currency, array: favouriteCurrenciesString)
         
         let isLastRow = self.collectionView(collectionView, numberOfItemsInSection: indexPath.section) - 1 == indexPath.row
         cell.isSeparatorLineHidden(isLastRow)
@@ -117,6 +120,13 @@ extension CurrenciesVC: UICollectionViewDataSource {
         
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         CGSize(width: UIScreen.main.bounds.width, height: 32)
+    }
+    
+    private func extractCurrencyStrings(from currencies: [FavouriteCurrencyClass]) -> [String] {
+        return currencies.map { $0.currency }
+    }
+    private func extractCurrencyStrings(from currencies: [Currency]) -> [String] {
+        return currencies.map { "\($0)" }
     }
     
 }

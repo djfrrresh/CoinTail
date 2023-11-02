@@ -9,34 +9,28 @@ import UIKit
 import EasyPeasy
 
 
-extension AccountsTransferVC {
+extension AccountsTransferVC: TransferCellDelegate {
     
-    @objc func removeTransparentView() {
-        UIView.animate(
-            withDuration: 0.4,
-            delay: 0.0,
-            usingSpringWithDamping: 1.0,
-            initialSpringVelocity: 1.0,
-            options: .curveEaseInOut,
-            animations: { [self] in
-                transparentView.alpha = 0
-                accountsCV.removeFromSuperview()
-        }, completion: nil)
+    func cell(didUpdateTransferAmount amount: String?) {
+        transferAmount = amount
     }
     
-    @objc func selectFirstAccount(_ sender: UIButton) {
-        addTransparentView(button: selectFirstAccountButton)
-    }
-    
-    @objc func selectSecondAccount(_ sender: UIButton) {
-        addTransparentView(button: selectSecondAccountButton)
+    @objc func doneButtonAction() {
+        toolBar.isHidden = true
+        accountsPickerView.isHidden = true
+        saveTransferButton.isHidden = false
     }
     
     @objc func saveTransferAction(_ sender: UIButton) {
-        let amount = Double(transferAmountTF.text ?? "") ?? 0
-
-        transferValidation(amount: amount) { [weak self] sourceAccount, targetAccount in
-            guard let strongSelf = self else { return }
+        guard let amountText = transferAmount,
+              let amount = Double(amountText) else {
+            return
+        }
+        
+        transferValidation(amount: amount) { [weak self] sourceAccountName, targetAccountName in
+            guard let strongSelf = self,
+                  let sourceAccount = Accounts.shared.getAccount(for: sourceAccountName),
+                  let targetAccount = Accounts.shared.getAccount(for: targetAccountName) else { return }
             
             // Формируем перевод
             Transfers.shared.transferBetweenAccounts(
@@ -46,15 +40,17 @@ extension AccountsTransferVC {
             )
 
             let transferHistory = TransferHistoryClass()
-            transferHistory.sourceAccount = sourceAccount
-            transferHistory.targetAccount = targetAccount
+            transferHistory.sourceAccount = sourceAccountName
+            transferHistory.targetAccount = targetAccountName
+            transferHistory.sourceCurrency = sourceAccount.currency
+            transferHistory.targetCurrency = targetAccount.currency
             transferHistory.amount = amount
             transferHistory.date = Date()
             
             // Добавляем в историю перевод между счетами
             Transfers.shared.addNewTransfer(transferHistory)
             
-            strongSelf.navigationController?.popToRootViewController(animated: true)
+            strongSelf.navigationController?.popViewController(animated: true)
         }
     }
     

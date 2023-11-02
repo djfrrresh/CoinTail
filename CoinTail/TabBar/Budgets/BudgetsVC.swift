@@ -11,11 +11,54 @@ import UIKit
 class BudgetsVC: BasicVC {
         
     // Массив бюджетов с сортировкой по дням
-    var daySections = [DaySection]() {
+    var budgetsDaySections = [DaySection]() {
         didSet {
             budgetCV.reloadData()
         }
     }
+    
+    let emptyBudgetsView = UIView()
+
+    let targetImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "targetEmoji")
+        
+        return imageView
+    }()
+    
+    let noBudgetsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "You have no budgets set up".localized()
+        label.font = UIFont(name: "SFProDisplay-Bold", size: 28)
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
+        
+        return label
+    }()
+    let budgetsDescriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Here you can set up a budgets for different categories and time periods".localized()
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
+        label.textColor = UIColor(named: "secondaryTextColor")
+        
+        return label
+    }()
+    
+    let addBudgetButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(named: "primaryAction")
+        button.layer.cornerRadius = 16
+        button.setTitle("Add a budget".localized(), for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
+        
+        return button
+    }()
     
     let budgetCV: UICollectionView = {
         let budgetLayout: UICollectionViewFlowLayout = {
@@ -38,12 +81,21 @@ class BudgetsVC: BasicVC {
         
         return cv
     }()
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        budgetNavBar()
         sortBudgets() // Сортировка бюджетов по убыванию по дате
+        
+        //TODO: сделать в функции setupNavigationTitle большой +
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector (goToAddBudgetVC)
+        )
+        
+        setupNavigationTitle(title: "Budgets".localized(), large: true)
+        
+        isBudgetEmpty()
     }
         
     override func viewDidLoad() {
@@ -56,6 +108,8 @@ class BudgetsVC: BasicVC {
         budgetCV.delegate = self
         
         budgetSubviews()
+        emptyBudgetsSubviews()
+        budgetButtonTargets()
     }
     
 }

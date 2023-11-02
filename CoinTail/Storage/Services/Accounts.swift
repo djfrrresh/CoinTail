@@ -35,7 +35,7 @@ final class Accounts {
     }
     
     // Отредактировать счет по его ID
-    func editAccount(for id: ObjectId, replacingAccount: AccountClass, completion: ((Bool) -> Void)? = nil) {
+    func editAccount(replacingAccount: AccountClass, completion: ((Bool) -> Void)? = nil) {
         RealmService.shared.update(replacingAccount, AccountClass.self)
         
         completion?(true)
@@ -65,6 +65,10 @@ final class Accounts {
         RealmService.shared.update(account, AccountClass.self)
         
         completion?(true)
+    }
+    
+    func getAccountNames(from accounts: [AccountClass]) -> [String] {
+        return accounts.map { $0.name }
     }
     
 }

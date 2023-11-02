@@ -13,67 +13,75 @@ class AddBudgetVC: BasicVC {
     
     var budgetCategoryID: ObjectId?
     var budgetID: ObjectId?
-    var currency: Currency = Currencies.shared.selectedCurrency
-    var currentIndex = 0
-            
-    let budgetAmountLabel = UILabel(text: "Amount".localized(), alignment: .left)
+    var selectedCurrency: String = Currencies.shared.selectedCurrency.currency
+    var budgetAmount: String?
+    var budgetCategory: String?
+    var budgetTimePeriod: String = "Month"
     
-    let budgetAmountTF = UITextField(
-        defaultText: "0",
-        background: .lightGray.withAlphaComponent(0.2),
-        keyboard: .numberPad,
-        placeholder: "Enter your amount".localized()
-    )
+    static let favouriteCurrencies: [FavouriteCurrencyClass] = Currencies.shared.currenciesToChoose()
+    let favouriteStringCurrencies: [String] = Currencies.shared.extractCurrencyStrings(from: favouriteCurrencies)
     
-    static let defaultCategory = "Select category".localized()
-    let categoryButton = UIButton(
-        name: defaultCategory,
-        background: .clear,
-        textColor: .black
-    )
-    let currencyButton = UIButton(
-        name: "\(Currencies.shared.selectedCurrency)",
-        background: .clear,
-        textColor: .black
-    )
-    let saveBudgetButton = UIButton(
-        name: "Save Budget".localized(),
-        background: .black,
-        textColor: .white
-    )
-    
-    let periodSwitcher: UISegmentedControl = {
-        let switcher = UISegmentedControl(items: [
-            "Week".localized(),
-            "Month".localized()
-        ])
-        switcher.selectedSegmentIndex = 1
+    let deleteBudgetButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(named: "cancelAction")
+        button.layer.cornerRadius = 16
+        button.setTitle("Delete budget".localized(), for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
+        button.isHidden = true
         
-        return switcher
+        return button
+    }()
+    
+    let currenciesPickerView: UIPickerView = {
+        let picker = UIPickerView()
+        picker.isHidden = true
+        
+        return picker
+    }()
+    
+    let toolBar: UIToolbar = {
+        let toolbar = UIToolbar()
+        toolbar.isHidden = true
+        toolbar.sizeToFit()
+        toolbar.tintColor = .systemBlue
+
+        return toolbar
+    }()
+    
+    let addBudgetCV: UICollectionView = {
+        let addAccountLayout: UICollectionViewFlowLayout = {
+            let layout = UICollectionViewFlowLayout()
+            layout.minimumInteritemSpacing = 0
+            layout.minimumLineSpacing = 0
+
+            return layout
+        }()
+
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: addAccountLayout)
+        cv.backgroundColor = .clear
+        cv.register(AddBudgetCell.self, forCellWithReuseIdentifier: AddBudgetCell.id)
+
+        cv.showsVerticalScrollIndicator = false
+        cv.showsHorizontalScrollIndicator = false
+        cv.alwaysBounceVertical = false
+        cv.delaysContentTouches = true
+
+        return cv
     }()
     
     init(budgetID: ObjectId) {
         self.budgetID = budgetID
         super.init(nibName: nil, bundle: nil)
-
+        
+        self.title = "Edit budget".localized()
+        
         guard let budget = Budgets.shared.getBudget(for: budgetID) else { return }
-        
-        self.title = "Editing budget".localized()
-        
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .trash,
-            target: self,
-            action: #selector(removeBudget)
-        )
-        
-        // Установка значений для View
         setupUI(with: budget)
     }
     
     public required init() {
         super.init(nibName: nil, bundle: nil)
-        
-        self.title = "Add new Budget".localized()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -82,15 +90,23 @@ class AddBudgetVC: BasicVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        addBudgetTargets() // Таргеты для кнопок
+        addBudgetTargets()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        budgetAmountTF.delegate = self
         
-        setAddBudgetStack()
+        self.title = "Add a new budget".localized()
+
+        currenciesPickerView.dataSource = self
+        addBudgetCV.dataSource = self
+        
+        currenciesPickerView.delegate = self
+        addBudgetCV.delegate = self
+        
+        addBudgetSubviews()
+        addBudgetNavBar()
+        setupToolBar()
     }
     
 }

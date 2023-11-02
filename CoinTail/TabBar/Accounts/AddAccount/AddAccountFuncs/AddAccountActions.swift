@@ -11,39 +11,37 @@ import UIKit
 extension AddAccountVC {
     
     @objc func saveAccountAction() {
-        guard let amountText = accountAmountTF.text,
+        guard let amountText = accountAmount,
               let amount = Double(amountText),
-              let nameText = accountNameTF.text,
-              let currencyText = currencyButton.titleLabel?.text else {
+              let nameText = accountName else {
             return
         }
-        let isEditing = accountID != nil
-        
-        accountValidation(amount: amount, name: nameText, isEditingAccount: isEditing) { [weak self] amount, nameText in
+
+        accountValidation(amount: amount, name: nameText) { [weak self] amount, nameText in
             guard let strongSelf = self else { return }
-            
-            strongSelf.setCurrency(currencyCode: currencyText)
-            let currency = strongSelf.currency
-            
+
+            let currency = strongSelf.selectedCurrency
+
             let account = AccountClass()
             account.name = nameText
             account.startBalance = amount
             account.currency = "\(currency)"
-            if let accountID = strongSelf.accountID {
-                account.id = accountID
-            }
-            
-            strongSelf.saveAccountButton.removeTarget(nil, action: nil, for: .allEvents)
 
             if let accountID = strongSelf.accountID {
-                Accounts.shared.editAccount(for: accountID, replacingAccount: account)
+                account.id = accountID
+                Accounts.shared.editAccount(replacingAccount: account)
             } else {
                 RealmService.shared.write(account, AccountClass.self)
                 Accounts.shared.addNewAccount(account)
             }
-            
+
             strongSelf.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    @objc func doneButtonAction() {
+        toolBar.isHidden = true
+        currenciesPickerView.isHidden = true
     }
     
     @objc func removeAccount() {
@@ -58,12 +56,6 @@ extension AddAccountVC {
             
             self?.navigationController?.popToRootViewController(animated: true)
         }
-    }
-    
-    @objc func changeCurrency() {
-        currentIndex = Currencies.shared.getNextIndex(currentIndex: currentIndex)
-
-        currencyButton.setTitle("\(Currencies.shared.currenciesToChoose()[currentIndex])", for: .normal)
     }
     
 }
