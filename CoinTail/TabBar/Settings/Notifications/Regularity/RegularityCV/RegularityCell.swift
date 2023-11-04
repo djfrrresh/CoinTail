@@ -12,7 +12,7 @@ import EasyPeasy
 final class RegularityCell: UICollectionViewCell {
     
     static let id = "RegularityCell"
-            
+                
     let backView: UIView = {
         let view = UIView()
         view.backgroundColor = .white

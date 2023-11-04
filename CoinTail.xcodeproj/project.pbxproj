@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		560996722AE97D7100EAEE1C /* TransfersHistoryCVHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560996712AE97D7100EAEE1C /* TransfersHistoryCVHeader.swift */; };
+		560996742AE9D8F100EAEE1C /* TransfersHistoryActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560996732AE9D8F100EAEE1C /* TransfersHistoryActions.swift */; };
 		560AFBC12A1394A30054B502 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBC02A1394A30054B502 /* AppDelegate.swift */; };
 		560AFBC52A1394A30054B502 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBC42A1394A30054B502 /* HomeVC.swift */; };
 		560AFBCB2A1394A30054B502 /* CoinTail.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBC92A1394A30054B502 /* CoinTail.xcdatamodeld */; };
@@ -52,6 +54,23 @@
 		5665C13D2A9F614A00B11D34 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665C13C2A9F614A00B11D34 /* SettingsCell.swift */; };
 		5665C1402A9F6B0800B11D34 /* SettingsUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665C13F2A9F6B0800B11D34 /* SettingsUIFuncs.swift */; };
 		567E13982ADFE60100F3C244 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E13972ADFE60100F3C244 /* UIView.swift */; };
+		567E93722AEB1E3F0045C01B /* AccountsTransferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93712AEB1E3F0045C01B /* AccountsTransferCell.swift */; };
+		567E93762AEFFBA80045C01B /* AccountsTransferPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93752AEFFBA80045C01B /* AccountsTransferPicker.swift */; };
+		567E93782AF038180045C01B /* AddAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93772AF038180045C01B /* AddAccountCell.swift */; };
+		567E937A2AF048890045C01B /* AddAccountCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93792AF048890045C01B /* AddAccountCVDataSource.swift */; };
+		567E937C2AF053B50045C01B /* AddAccountCVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E937B2AF053B50045C01B /* AddAccountCVDelegate.swift */; };
+		567E937F2AF110950045C01B /* AddAccountPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E937E2AF110950045C01B /* AddAccountPicker.swift */; };
+		567E93822AF448B80045C01B /* AddBudgetCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93812AF448B80045C01B /* AddBudgetCVDataSource.swift */; };
+		567E93842AF449220045C01B /* AddBudgetCVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93832AF449220045C01B /* AddBudgetCVDelegate.swift */; };
+		567E93862AF449AD0045C01B /* AddBudgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93852AF449AD0045C01B /* AddBudgetCell.swift */; };
+		567E93892AF44B350045C01B /* AddAccountCellTFDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93882AF44B350045C01B /* AddAccountCellTFDelegate.swift */; };
+		567E938B2AF44B4D0045C01B /* AddBudgetCellTFDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E938A2AF44B4D0045C01B /* AddBudgetCellTFDelegate.swift */; };
+		567E938E2AF453B40045C01B /* AddBudgetPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E938D2AF453B40045C01B /* AddBudgetPicker.swift */; };
+		567E93912AF4616B0045C01B /* BudgetPeriodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93902AF4616B0045C01B /* BudgetPeriodVC.swift */; };
+		567E93942AF463260045C01B /* BudgetPeriodUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93932AF463260045C01B /* BudgetPeriodUIFuncs.swift */; };
+		567E93972AF4636B0045C01B /* BudgetPeriodCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93962AF4636B0045C01B /* BudgetPeriodCVDataSource.swift */; };
+		567E93992AF464880045C01B /* BudgetPeriodCVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93982AF464880045C01B /* BudgetPeriodCVDelegate.swift */; };
+		567E939B2AF5B69B0045C01B /* SelectCategoryUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E939A2AF5B69B0045C01B /* SelectCategoryUIFuncs.swift */; };
 		568EF0202AA603BF00EB042D /* AccountsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF01F2AA603BF00EB042D /* AccountsVC.swift */; };
 		568EF0232AA607E000EB042D /* AccountsUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0222AA607E000EB042D /* AccountsUIFuncs.swift */; };
 		568EF0262AA608D000EB042D /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0252AA608D000EB042D /* AccountCell.swift */; };
@@ -63,7 +82,6 @@
 		568EF0332AA6116900EB042D /* AddAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0322AA6116900EB042D /* AddAccountVC.swift */; };
 		568EF0352AA611F000EB042D /* AccountsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0342AA611F000EB042D /* AccountsActions.swift */; };
 		568EF0382AA61C7200EB042D /* AddAccountUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0372AA61C7200EB042D /* AddAccountUIFuncs.swift */; };
-		568EF03A2AA61EC200EB042D /* AddAccountTFDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0392AA61EC200EB042D /* AddAccountTFDelegate.swift */; };
 		568EF03C2AA61F8E00EB042D /* AddAccountUXFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF03B2AA61F8E00EB042D /* AddAccountUXFuncs.swift */; };
 		568EF03E2AA61FB900EB042D /* AddAccountActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF03D2AA61FB900EB042D /* AddAccountActions.swift */; };
 		568EF0412AA8CA5100EB042D /* AccountsTransferVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0402AA8CA5100EB042D /* AccountsTransferVC.swift */; };
@@ -72,7 +90,6 @@
 		568EF0482AA8F7C100EB042D /* AccountsTransferActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0472AA8F7C100EB042D /* AccountsTransferActions.swift */; };
 		568EF04B2AA9277200EB042D /* AccountsTransferCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF04A2AA9277200EB042D /* AccountsTransferCVDataSource.swift */; };
 		568EF04D2AA927D900EB042D /* AccountsTransferCVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF04C2AA927D900EB042D /* AccountsTransferCVDelegate.swift */; };
-		568EF04F2AA93C5E00EB042D /* AccountsTransferTFDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF04E2AA93C5E00EB042D /* AccountsTransferTFDelegate.swift */; };
 		568EF0522AAF5BBC00EB042D /* TransfersHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0512AAF5BBC00EB042D /* TransfersHistoryVC.swift */; };
 		568EF0542AAFA6C200EB042D /* TransferHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0532AAFA6C200EB042D /* TransferHistory.swift */; };
 		568EF0572AAFAEF000EB042D /* TransfersHistoryUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0562AAFAEF000EB042D /* TransfersHistoryUIFuncs.swift */; };
@@ -118,6 +135,9 @@
 		569B61162AE2D3AE00CBFF33 /* SFProDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 569B61122AE2D3AE00CBFF33 /* SFProDisplay-Bold.ttf */; };
 		569B61172AE2D3AE00CBFF33 /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 569B61132AE2D3AE00CBFF33 /* SFProDisplay-Semibold.ttf */; };
 		569B61182AE2D3AE00CBFF33 /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 569B61142AE2D3AE00CBFF33 /* SFProDisplay-Regular.ttf */; };
+		569B611B2AE6B73300CBFF33 /* SettingsUXFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B611A2AE6B73300CBFF33 /* SettingsUXFuncs.swift */; };
+		569B611D2AE6C24C00CBFF33 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B611C2AE6C24C00CBFF33 /* NotificationSettings.swift */; };
+		569B611F2AE6E5CA00CBFF33 /* FavouriteCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B611E2AE6E5CA00CBFF33 /* FavouriteCurrency.swift */; };
 		569E52282ACD887900A4FCA7 /* AmountValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E52272ACD887900A4FCA7 /* AmountValidationHelper.swift */; };
 		569E522E2AD0713200A4FCA7 /* AboutAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E522D2AD0713200A4FCA7 /* AboutAppVC.swift */; };
 		569E52312AD083CB00A4FCA7 /* AboutAppUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E52302AD083CB00A4FCA7 /* AboutAppUIFuncs.swift */; };
@@ -166,6 +186,8 @@
 /* Begin PBXFileReference section */
 		0D0E1BEF680C3CC318929DA7 /* Pods-CoinTail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinTail.release.xcconfig"; path = "Target Support Files/Pods-CoinTail/Pods-CoinTail.release.xcconfig"; sourceTree = "<group>"; };
 		337406C96CB14EDA9269499E /* Pods-CoinTail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinTail.debug.xcconfig"; path = "Target Support Files/Pods-CoinTail/Pods-CoinTail.debug.xcconfig"; sourceTree = "<group>"; };
+		560996712AE97D7100EAEE1C /* TransfersHistoryCVHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersHistoryCVHeader.swift; sourceTree = "<group>"; };
+		560996732AE9D8F100EAEE1C /* TransfersHistoryActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersHistoryActions.swift; sourceTree = "<group>"; };
 		560AFBBD2A1394A30054B502 /* CoinTail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinTail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		560AFBC02A1394A30054B502 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		560AFBC42A1394A30054B502 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -215,6 +237,23 @@
 		5665C13C2A9F614A00B11D34 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		5665C13F2A9F6B0800B11D34 /* SettingsUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUIFuncs.swift; sourceTree = "<group>"; };
 		567E13972ADFE60100F3C244 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		567E93712AEB1E3F0045C01B /* AccountsTransferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsTransferCell.swift; sourceTree = "<group>"; };
+		567E93752AEFFBA80045C01B /* AccountsTransferPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsTransferPicker.swift; sourceTree = "<group>"; };
+		567E93772AF038180045C01B /* AddAccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountCell.swift; sourceTree = "<group>"; };
+		567E93792AF048890045C01B /* AddAccountCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountCVDataSource.swift; sourceTree = "<group>"; };
+		567E937B2AF053B50045C01B /* AddAccountCVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountCVDelegate.swift; sourceTree = "<group>"; };
+		567E937E2AF110950045C01B /* AddAccountPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountPicker.swift; sourceTree = "<group>"; };
+		567E93812AF448B80045C01B /* AddBudgetCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetCVDataSource.swift; sourceTree = "<group>"; };
+		567E93832AF449220045C01B /* AddBudgetCVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetCVDelegate.swift; sourceTree = "<group>"; };
+		567E93852AF449AD0045C01B /* AddBudgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetCell.swift; sourceTree = "<group>"; };
+		567E93882AF44B350045C01B /* AddAccountCellTFDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountCellTFDelegate.swift; sourceTree = "<group>"; };
+		567E938A2AF44B4D0045C01B /* AddBudgetCellTFDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetCellTFDelegate.swift; sourceTree = "<group>"; };
+		567E938D2AF453B40045C01B /* AddBudgetPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetPicker.swift; sourceTree = "<group>"; };
+		567E93902AF4616B0045C01B /* BudgetPeriodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPeriodVC.swift; sourceTree = "<group>"; };
+		567E93932AF463260045C01B /* BudgetPeriodUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPeriodUIFuncs.swift; sourceTree = "<group>"; };
+		567E93962AF4636B0045C01B /* BudgetPeriodCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPeriodCVDataSource.swift; sourceTree = "<group>"; };
+		567E93982AF464880045C01B /* BudgetPeriodCVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPeriodCVDelegate.swift; sourceTree = "<group>"; };
+		567E939A2AF5B69B0045C01B /* SelectCategoryUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryUIFuncs.swift; sourceTree = "<group>"; };
 		568EF01F2AA603BF00EB042D /* AccountsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsVC.swift; sourceTree = "<group>"; };
 		568EF0222AA607E000EB042D /* AccountsUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsUIFuncs.swift; sourceTree = "<group>"; };
 		568EF0252AA608D000EB042D /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
@@ -226,7 +265,6 @@
 		568EF0322AA6116900EB042D /* AddAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountVC.swift; sourceTree = "<group>"; };
 		568EF0342AA611F000EB042D /* AccountsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsActions.swift; sourceTree = "<group>"; };
 		568EF0372AA61C7200EB042D /* AddAccountUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountUIFuncs.swift; sourceTree = "<group>"; };
-		568EF0392AA61EC200EB042D /* AddAccountTFDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountTFDelegate.swift; sourceTree = "<group>"; };
 		568EF03B2AA61F8E00EB042D /* AddAccountUXFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountUXFuncs.swift; sourceTree = "<group>"; };
 		568EF03D2AA61FB900EB042D /* AddAccountActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountActions.swift; sourceTree = "<group>"; };
 		568EF0402AA8CA5100EB042D /* AccountsTransferVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsTransferVC.swift; sourceTree = "<group>"; };
@@ -235,7 +273,6 @@
 		568EF0472AA8F7C100EB042D /* AccountsTransferActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsTransferActions.swift; sourceTree = "<group>"; };
 		568EF04A2AA9277200EB042D /* AccountsTransferCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsTransferCVDataSource.swift; sourceTree = "<group>"; };
 		568EF04C2AA927D900EB042D /* AccountsTransferCVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsTransferCVDelegate.swift; sourceTree = "<group>"; };
-		568EF04E2AA93C5E00EB042D /* AccountsTransferTFDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsTransferTFDelegate.swift; sourceTree = "<group>"; };
 		568EF0512AAF5BBC00EB042D /* TransfersHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersHistoryVC.swift; sourceTree = "<group>"; };
 		568EF0532AAFA6C200EB042D /* TransferHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferHistory.swift; sourceTree = "<group>"; };
 		568EF0562AAFAEF000EB042D /* TransfersHistoryUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersHistoryUIFuncs.swift; sourceTree = "<group>"; };
@@ -281,6 +318,9 @@
 		569B61122AE2D3AE00CBFF33 /* SFProDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		569B61132AE2D3AE00CBFF33 /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
 		569B61142AE2D3AE00CBFF33 /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
+		569B611A2AE6B73300CBFF33 /* SettingsUXFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUXFuncs.swift; sourceTree = "<group>"; };
+		569B611C2AE6C24C00CBFF33 /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
+		569B611E2AE6E5CA00CBFF33 /* FavouriteCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCurrency.swift; sourceTree = "<group>"; };
 		569E52272ACD887900A4FCA7 /* AmountValidationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountValidationHelper.swift; sourceTree = "<group>"; };
 		569E522D2AD0713200A4FCA7 /* AboutAppVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppVC.swift; sourceTree = "<group>"; };
 		569E52302AD083CB00A4FCA7 /* AboutAppUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppUIFuncs.swift; sourceTree = "<group>"; };
@@ -591,6 +631,9 @@
 		564F08FC2A531ABC004C89C7 /* AddBudget */ = {
 			isa = PBXGroup;
 			children = (
+				567E938F2AF457DE0045C01B /* BudgetPeriod */,
+				567E938C2AF453A40045C01B /* AddBudgetPicker */,
+				567E93802AF4489A0045C01B /* AddBudgetCV */,
 				56EFDFE02A535283003A6A45 /* AddBudgetFuncs */,
 				564F08FD2A531AEE004C89C7 /* AddBudgetVC.swift */,
 			);
@@ -611,8 +654,82 @@
 			isa = PBXGroup;
 			children = (
 				5665C13F2A9F6B0800B11D34 /* SettingsUIFuncs.swift */,
+				569B611A2AE6B73300CBFF33 /* SettingsUXFuncs.swift */,
 			);
 			path = SettingsFuncs;
+			sourceTree = "<group>";
+		};
+		567E93732AEFE1880045C01B /* AddAccountCV */ = {
+			isa = PBXGroup;
+			children = (
+				567E93772AF038180045C01B /* AddAccountCell.swift */,
+				567E93792AF048890045C01B /* AddAccountCVDataSource.swift */,
+				567E937B2AF053B50045C01B /* AddAccountCVDelegate.swift */,
+				567E93882AF44B350045C01B /* AddAccountCellTFDelegate.swift */,
+			);
+			path = AddAccountCV;
+			sourceTree = "<group>";
+		};
+		567E93742AEFFB890045C01B /* AccountsTransferPicker */ = {
+			isa = PBXGroup;
+			children = (
+				567E93752AEFFBA80045C01B /* AccountsTransferPicker.swift */,
+			);
+			path = AccountsTransferPicker;
+			sourceTree = "<group>";
+		};
+		567E937D2AF1107F0045C01B /* AddAccountPicker */ = {
+			isa = PBXGroup;
+			children = (
+				567E937E2AF110950045C01B /* AddAccountPicker.swift */,
+			);
+			path = AddAccountPicker;
+			sourceTree = "<group>";
+		};
+		567E93802AF4489A0045C01B /* AddBudgetCV */ = {
+			isa = PBXGroup;
+			children = (
+				567E93812AF448B80045C01B /* AddBudgetCVDataSource.swift */,
+				567E93832AF449220045C01B /* AddBudgetCVDelegate.swift */,
+				567E93852AF449AD0045C01B /* AddBudgetCell.swift */,
+				567E938A2AF44B4D0045C01B /* AddBudgetCellTFDelegate.swift */,
+			);
+			path = AddBudgetCV;
+			sourceTree = "<group>";
+		};
+		567E938C2AF453A40045C01B /* AddBudgetPicker */ = {
+			isa = PBXGroup;
+			children = (
+				567E938D2AF453B40045C01B /* AddBudgetPicker.swift */,
+			);
+			path = AddBudgetPicker;
+			sourceTree = "<group>";
+		};
+		567E938F2AF457DE0045C01B /* BudgetPeriod */ = {
+			isa = PBXGroup;
+			children = (
+				567E93952AF4635E0045C01B /* BudgetPeriodCV */,
+				567E93922AF463010045C01B /* BudgetPeriodFuncs */,
+				567E93902AF4616B0045C01B /* BudgetPeriodVC.swift */,
+			);
+			path = BudgetPeriod;
+			sourceTree = "<group>";
+		};
+		567E93922AF463010045C01B /* BudgetPeriodFuncs */ = {
+			isa = PBXGroup;
+			children = (
+				567E93932AF463260045C01B /* BudgetPeriodUIFuncs.swift */,
+			);
+			path = BudgetPeriodFuncs;
+			sourceTree = "<group>";
+		};
+		567E93952AF4635E0045C01B /* BudgetPeriodCV */ = {
+			isa = PBXGroup;
+			children = (
+				567E93962AF4636B0045C01B /* BudgetPeriodCVDataSource.swift */,
+				567E93982AF464880045C01B /* BudgetPeriodCVDelegate.swift */,
+			);
+			path = BudgetPeriodCV;
 			sourceTree = "<group>";
 		};
 		568EF01E2AA603AE00EB042D /* Accounts */ = {
@@ -651,6 +768,8 @@
 		568EF0312AA6115600EB042D /* AddAccount */ = {
 			isa = PBXGroup;
 			children = (
+				567E937D2AF1107F0045C01B /* AddAccountPicker */,
+				567E93732AEFE1880045C01B /* AddAccountCV */,
 				568EF0362AA61C6200EB042D /* AddAccountFuncs */,
 				568EF0322AA6116900EB042D /* AddAccountVC.swift */,
 			);
@@ -661,7 +780,6 @@
 			isa = PBXGroup;
 			children = (
 				568EF0372AA61C7200EB042D /* AddAccountUIFuncs.swift */,
-				568EF0392AA61EC200EB042D /* AddAccountTFDelegate.swift */,
 				568EF03B2AA61F8E00EB042D /* AddAccountUXFuncs.swift */,
 				568EF03D2AA61FB900EB042D /* AddAccountActions.swift */,
 			);
@@ -671,6 +789,7 @@
 		568EF03F2AA8CA3800EB042D /* AccountsTransfer */ = {
 			isa = PBXGroup;
 			children = (
+				567E93742AEFFB890045C01B /* AccountsTransferPicker */,
 				568EF0492AA9275D00EB042D /* AccountsTransferCV */,
 				568EF0422AA8E3E100EB042D /* AccountsTransferFuncs */,
 				568EF0402AA8CA5100EB042D /* AccountsTransferVC.swift */,
@@ -684,7 +803,6 @@
 				568EF0432AA8E3FA00EB042D /* AccountsTransferUIFuncs.swift */,
 				568EF0452AA8E43100EB042D /* AccountsTransferUXFuncs.swift */,
 				568EF0472AA8F7C100EB042D /* AccountsTransferActions.swift */,
-				568EF04E2AA93C5E00EB042D /* AccountsTransferTFDelegate.swift */,
 			);
 			path = AccountsTransferFuncs;
 			sourceTree = "<group>";
@@ -692,6 +810,7 @@
 		568EF0492AA9275D00EB042D /* AccountsTransferCV */ = {
 			isa = PBXGroup;
 			children = (
+				567E93712AEB1E3F0045C01B /* AccountsTransferCell.swift */,
 				568EF04A2AA9277200EB042D /* AccountsTransferCVDataSource.swift */,
 				568EF04C2AA927D900EB042D /* AccountsTransferCVDelegate.swift */,
 			);
@@ -713,6 +832,7 @@
 			children = (
 				568EF0562AAFAEF000EB042D /* TransfersHistoryUIFuncs.swift */,
 				568EF0582AAFAF9C00EB042D /* TransfersHistoryUXFuncs.swift */,
+				560996732AE9D8F100EAEE1C /* TransfersHistoryActions.swift */,
 			);
 			path = TransfersHistoryFuncs;
 			sourceTree = "<group>";
@@ -723,6 +843,7 @@
 				568EF05B2AAFB0A200EB042D /* TransfersHistoryCVDataSource.swift */,
 				568EF05D2AAFB10100EB042D /* TransfersHistoryCVDelegate.swift */,
 				568EF05F2AAFB17100EB042D /* TransfersHistoryCell.swift */,
+				560996712AE97D7100EAEE1C /* TransfersHistoryCVHeader.swift */,
 			);
 			path = TransfersHistoryCV;
 			sourceTree = "<group>";
@@ -848,6 +969,8 @@
 				568EF08A2ABC93B500EB042D /* Subcategory.swift */,
 				560AFC422A1D091F0054B502 /* Record.swift */,
 				568EF0532AAFA6C200EB042D /* TransferHistory.swift */,
+				569B611C2AE6C24C00CBFF33 /* NotificationSettings.swift */,
+				569B611E2AE6E5CA00CBFF33 /* FavouriteCurrency.swift */,
 			);
 			path = RealmModels;
 			sourceTree = "<group>";
@@ -981,6 +1104,7 @@
 			children = (
 				56DBB70E2A3B4BA90087271D /* SelectCategoryActions.swift */,
 				56DBB72A2A3B873B0087271D /* SelectCategoryUXFuncs.swift */,
+				567E939A2AF5B69B0045C01B /* SelectCategoryUIFuncs.swift */,
 			);
 			path = SelectCategoryFuncs;
 			sourceTree = "<group>";
@@ -1211,17 +1335,22 @@
 				569E52312AD083CB00A4FCA7 /* AboutAppUIFuncs.swift in Sources */,
 				5665C1372A9F5B2200B11D34 /* Currency.swift in Sources */,
 				56DBB6F42A37485A0087271D /* OperationCell.swift in Sources */,
+				567E937C2AF053B50045C01B /* AddAccountCVDelegate.swift in Sources */,
 				56EFDFF02A5D9176003A6A45 /* DaySection.swift in Sources */,
 				5642DB252A4DDAC400ADF475 /* BudgetUIFuncs.swift in Sources */,
 				5642DAEB2A4080BF00ADF475 /* DatePeriods.swift in Sources */,
+				567E93892AF44B350045C01B /* AddAccountCellTFDelegate.swift in Sources */,
 				568EF0332AA6116900EB042D /* AddAccountVC.swift in Sources */,
+				567E937A2AF048890045C01B /* AddAccountCVDataSource.swift in Sources */,
 				569E522E2AD0713200A4FCA7 /* AboutAppVC.swift in Sources */,
 				56DBB71F2A3B641E0087271D /* CreateCategoryUIFuncs.swift in Sources */,
+				560996742AE9D8F100EAEE1C /* TransfersHistoryActions.swift in Sources */,
 				56DBB7012A3B36D30087271D /* AddOperationUIFuncs.swift in Sources */,
 				569E52282ACD887900A4FCA7 /* AmountValidationHelper.swift in Sources */,
 				568EF0232AA607E000EB042D /* AccountsUIFuncs.swift in Sources */,
 				56EFDFE62A535346003A6A45 /* AddBudgetUXFuncs.swift in Sources */,
 				56DBB7052A3B3A370087271D /* AddOperationUXFuncs.swift in Sources */,
+				567E938E2AF453B40045C01B /* AddBudgetPicker.swift in Sources */,
 				56DBB72B2A3B873B0087271D /* SelectCategoryUXFuncs.swift in Sources */,
 				568EF0282AA6094D00EB042D /* AccountCVDelegate.swift in Sources */,
 				568EF0202AA603BF00EB042D /* AccountsVC.swift in Sources */,
@@ -1237,13 +1366,16 @@
 				560AFC392A1C0FC30054B502 /* PieChartFuncs.swift in Sources */,
 				564F08FE2A531AEE004C89C7 /* AddBudgetVC.swift in Sources */,
 				568EF0642AB0D81200EB042D /* SettingsCVDelegate.swift in Sources */,
+				567E93912AF4616B0045C01B /* BudgetPeriodVC.swift in Sources */,
 				56DBB6F92A39D69A0087271D /* OperationHeader.swift in Sources */,
 				5642DB142A432B0800ADF475 /* SettingsVC.swift in Sources */,
 				5665C1402A9F6B0800B11D34 /* SettingsUIFuncs.swift in Sources */,
 				560AFBEC2A13BF110054B502 /* UITextField.swift in Sources */,
 				5665C13D2A9F614A00B11D34 /* SettingsCell.swift in Sources */,
+				567E93782AF038180045C01B /* AddAccountCell.swift in Sources */,
 				560AFC032A16AF5A0054B502 /* HomeUIFuncs.swift in Sources */,
 				560AFC2B2A1BF8EB0054B502 /* HomeCVDataSource.swift in Sources */,
+				569B611F2AE6E5CA00CBFF33 /* FavouriteCurrency.swift in Sources */,
 				5642DB292A4DE3B700ADF475 /* BudgetActions.swift in Sources */,
 				56DBB6FC2A3B31DB0087271D /* AddOperationVC.swift in Sources */,
 				56EFDFEA2A54B631003A6A45 /* AddBudgetTFDelegate.swift in Sources */,
@@ -1261,6 +1393,7 @@
 				568EF06E2AB0FC4F00EB042D /* CurrencyCVDelegate.swift in Sources */,
 				568EF0262AA608D000EB042D /* AccountCell.swift in Sources */,
 				568EF0462AA8E43100EB042D /* AccountsTransferUXFuncs.swift in Sources */,
+				567E93822AF448B80045C01B /* AddBudgetCVDataSource.swift in Sources */,
 				56EFDFE82A54502E003A6A45 /* Budgets.swift in Sources */,
 				568EF02C2AA609F400EB042D /* Account.swift in Sources */,
 				568EF0482AA8F7C100EB042D /* AccountsTransferActions.swift in Sources */,
@@ -1271,11 +1404,15 @@
 				568EF0572AAFAEF000EB042D /* TransfersHistoryUIFuncs.swift in Sources */,
 				560AFC292A1BF62D0054B502 /* DateCell.swift in Sources */,
 				569B610F2AE2C62800CBFF33 /* AboutAppUXFuncs.swift in Sources */,
+				567E93992AF464880045C01B /* BudgetPeriodCVDelegate.swift in Sources */,
 				56DBB70A2A3B44090087271D /* Categories.swift in Sources */,
 				560AFC052A16B06D0054B502 /* HomeUXFuncs.swift in Sources */,
 				560AFC192A1BAC810054B502 /* HomeActions.swift in Sources */,
+				567E938B2AF44B4D0045C01B /* AddBudgetCellTFDelegate.swift in Sources */,
+				567E939B2AF5B69B0045C01B /* SelectCategoryUIFuncs.swift in Sources */,
 				569B60F72AE1F78000CBFF33 /* RegularityCVDataSource.swift in Sources */,
 				56EFDFEC2A574771003A6A45 /* BudgetCVHeader.swift in Sources */,
+				567E93862AF449AD0045C01B /* AddBudgetCell.swift in Sources */,
 				568EF0892ABB439100EB042D /* SelectCategoryCell.swift in Sources */,
 				568EF03C2AA61F8E00EB042D /* AddAccountUXFuncs.swift in Sources */,
 				56DBB7292A3B68B00087271D /* ColorPickerFuncs.swift in Sources */,
@@ -1285,6 +1422,8 @@
 				56DBB6FF2A3B36190087271D /* AddOperationTFDelegate.swift in Sources */,
 				569E523A2AD861DD00A4FCA7 /* RealmService.swift in Sources */,
 				569E52382AD4405F00A4FCA7 /* AboutAppMailDelegate.swift in Sources */,
+				567E93942AF463260045C01B /* BudgetPeriodUIFuncs.swift in Sources */,
+				569B611D2AE6C24C00CBFF33 /* NotificationSettings.swift in Sources */,
 				568EF07C2AB3AE0F00EB042D /* NotificationPeriods.swift in Sources */,
 				56DBB6CE2A3724BC0087271D /* HomeOperationCellCV.swift in Sources */,
 				568EF0772AB3816A00EB042D /* CurrenciesSearching.swift in Sources */,
@@ -1295,7 +1434,6 @@
 				5642DAED2A40D2BE00ADF475 /* Int.swift in Sources */,
 				56DBB70F2A3B4BA90087271D /* SelectCategoryActions.swift in Sources */,
 				568EF04D2AA927D900EB042D /* AccountsTransferCVDelegate.swift in Sources */,
-				568EF04F2AA93C5E00EB042D /* AccountsTransferTFDelegate.swift in Sources */,
 				5656E9BF2A9777FA00070045 /* RecordType.swift in Sources */,
 				569B60DF2AE15AB300CBFF33 /* NotificationsCVDelegate.swift in Sources */,
 				56DBB71A2A3B609E0087271D /* CreateCategoryVC.swift in Sources */,
@@ -1319,15 +1457,17 @@
 				560AFC432A1D091F0054B502 /* Record.swift in Sources */,
 				56EFDFEE2A5751EC003A6A45 /* BudgetCVDelegate.swift in Sources */,
 				560AFBE02A13B2E40054B502 /* UIButton.swift in Sources */,
+				567E937F2AF110950045C01B /* AddAccountPicker.swift in Sources */,
 				568EF05E2AAFB10100EB042D /* TransfersHistoryCVDelegate.swift in Sources */,
 				569B61072AE2B0AF00CBFF33 /* ContactsCell.swift in Sources */,
 				568EF05C2AAFB0A200EB042D /* TransfersHistoryCVDataSource.swift in Sources */,
 				567E13982ADFE60100F3C244 /* UIView.swift in Sources */,
 				560AFC3E2A1C10680054B502 /* ChartsSetEntries.swift in Sources */,
 				568EF0382AA61C7200EB042D /* AddAccountUIFuncs.swift in Sources */,
+				567E93842AF449220045C01B /* AddBudgetCVDelegate.swift in Sources */,
+				560996722AE97D7100EAEE1C /* TransfersHistoryCVHeader.swift in Sources */,
 				568EF0412AA8CA5100EB042D /* AccountsTransferVC.swift in Sources */,
 				569B610D2AE2BC1800CBFF33 /* ContactsHeader.swift in Sources */,
-				568EF03A2AA61EC200EB042D /* AddAccountTFDelegate.swift in Sources */,
 				569B610B2AE2B9A500CBFF33 /* ContactsCVDelegate.swift in Sources */,
 				569B60E12AE1752D00CBFF33 /* UIColor.swift in Sources */,
 				5665C13A2A9F5F6900B11D34 /* SettingsCVDataSource.swift in Sources */,
@@ -1337,15 +1477,19 @@
 				56DBB7122A3B4C570087271D /* CreateCategoryCell.swift in Sources */,
 				56DBB6F72A3893A80087271D /* Colors.swift in Sources */,
 				56DBB7242A3B667F0087271D /* CreateCategoryCVDataSource.swift in Sources */,
+				567E93762AEFFBA80045C01B /* AccountsTransferPicker.swift in Sources */,
 				568EF0442AA8E3FA00EB042D /* AccountsTransferUIFuncs.swift in Sources */,
 				568EF0732AB1DA3E00EB042D /* Currencies.swift in Sources */,
 				5642DB2B2A4F313A00ADF475 /* Budget.swift in Sources */,
 				568EF0302AA60CCA00EB042D /* AccountsUXFuncs.swift in Sources */,
 				56DBB6DD2A3728600087271D /* HomeOperationCell.swift in Sources */,
+				567E93972AF4636B0045C01B /* BudgetPeriodCVDataSource.swift in Sources */,
+				567E93722AEB1E3F0045C01B /* AccountsTransferCell.swift in Sources */,
 				560AFBF02A13C1DF0054B502 /* BasicVC.swift in Sources */,
 				568EF07F2AB3BAD000EB042D /* NotificationsUIFuncs.swift in Sources */,
 				560AFC3C2A1C10170054B502 /* ChartsAnimation.swift in Sources */,
 				569B60F52AE1F5DA00CBFF33 /* RegularityCell.swift in Sources */,
+				569B611B2AE6B73300CBFF33 /* SettingsUXFuncs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

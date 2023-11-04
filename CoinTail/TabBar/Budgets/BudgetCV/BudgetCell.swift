@@ -15,46 +15,29 @@ final class BudgetCell: UICollectionViewCell {
     
     let backView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray6
-        view.layer.cornerRadius = 10
+        view.backgroundColor = .white
         
         return view
     }()
-    let backImage: UIView = {
+    let separatorView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 8
+        view.backgroundColor = UIColor(named: "arrowColor")
         
         return view
-    }()
-    
-    let budgetProgress: UIProgressView = {
-        let progress = UIProgressView()
-        progress.setProgress(0, animated: true)
-        progress.trackTintColor = .systemGray2
-        
-        return progress
     }()
     
     let categoryLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.textColor = .darkGray
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
         
         return label
     }()
-    
     let amountLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.textColor = .darkGray
-        
-        return label
-    }()
-    
-    let currencyLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 1
-        label.textColor = .darkGray
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
+        label.textColor = UIColor(named: "secondaryTextColor")
         
         return label
     }()
@@ -66,6 +49,14 @@ final class BudgetCell: UICollectionViewCell {
         
         return imageView
     }()
+    let chevronImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "chevron.right")
+        imageView.tintColor = UIColor(named: "arrowColor")
+        imageView.contentMode = .scaleAspectFit
+        
+        return imageView
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -74,13 +65,11 @@ final class BudgetCell: UICollectionViewCell {
                 
         addSubview(backView)
         
-        backView.addSubview(backImage)
-        backView.addSubview(budgetProgress)
+        backView.addSubview(chevronImageView)
+        backView.addSubview(separatorView)
+        backView.addSubview(categoryImage)
         backView.addSubview(amountLabel)
         backView.addSubview(categoryLabel)
-        backView.addSubview(currencyLabel)
-        
-        backImage.addSubview(categoryImage)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -91,55 +80,39 @@ final class BudgetCell: UICollectionViewCell {
         super.layoutSubviews()
         
         backView.easy.layout(Edges())
+
+        separatorView.easy.layout([
+            Bottom(),
+            Right(),
+            Left(16),
+            Height(0.5)
+        ])
         
-        backImage.easy.layout([
+        chevronImageView.easy.layout([
+            Right(16),
             CenterY(),
-            Left(8),
-            Height(50),
-            Width(50)
+            Height(20),
+            Width(20)
         ])
         
         categoryImage.easy.layout([
-            Center(),
-            Height(40),
-            Width(40)
+            CenterY(),
+            Left(16),
+            Height(32),
+            Width(32)
         ])
         
         categoryLabel.easy.layout([
-            Left(8).to(backImage, .right),
-            Top(8)
-        ])
-        
-        currencyLabel.easy.layout([
-            Right(8),
-            Top(8)
+            Left(16).to(categoryImage, .right),
+            Right(16).to(chevronImageView, .left),
+            Top(12)
         ])
         
         amountLabel.easy.layout([
-            Right(4).to(currencyLabel, .left),
-            Top(8)
+            Left(16).to(categoryImage, .right),
+            Right(16).to(chevronImageView, .left),
+            Bottom(12)
         ])
-        
-        budgetProgress.easy.layout([
-            Height(12),
-            Left(8).to(backImage, .right),
-            Right(8),
-            Bottom(8)
-        ])
-    }
-    
-    func calculateProgressView(sum: Double, total: Double) {
-        let value = sum / total
-        
-        if value >= 0.75 {
-            budgetProgress.tintColor = UIColor(named: "expense")
-        } else if value >= 0.5 && value < 0.75 {
-            budgetProgress.tintColor = UIColor(named: "budget")
-        } else {
-            budgetProgress.tintColor = UIColor(named: "income")
-        }
-        
-        budgetProgress.setProgress(Float(value), animated: true)
     }
     
     func calculatePercent(sum: Double, total: Double) -> String {
@@ -148,10 +121,14 @@ final class BudgetCell: UICollectionViewCell {
         return String(format: "%.0f", stringPercent)
     }
     
+    func isSeparatorLineHidden(_ isHidden: Bool) {
+        separatorView.isHidden = isHidden
+    }
+    
     static func size() -> CGSize {
         return .init(
             width: UIScreen.main.bounds.width - 16 - 16,
-            height: 60
+            height: 72
         )
     }
     

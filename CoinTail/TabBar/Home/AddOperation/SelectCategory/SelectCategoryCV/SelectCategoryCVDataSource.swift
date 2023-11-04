@@ -9,25 +9,16 @@ import UIKit
 import RealmSwift
 
 
-protocol SendCategoryID: AnyObject {
-    func sendCategoryData(id: ObjectId)
-}
-
 extension SelectCategoryVC: UICollectionViewDataSource {
     
     // Количество категорий
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return categories.count
+        return 1
     }
 
     // Количество подкатегорий
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if isParental {
-            return 0
-        } else {
-            let subcategoriesCount = categories[section].subcategories.count
-            return subcategoriesCount
-        }
+        categories.count
     }
     
     // Ячейки заполняются
@@ -39,61 +30,33 @@ extension SelectCategoryVC: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
                 
-        let subcategoryID = categories[indexPath.section].subcategories[indexPath.row]
-        let subcategoryData = Categories.shared.getSubcategory(for: subcategoryID)
+        let categoryID = categories[indexPath.row].id
+        let categoryData = Categories.shared.getCategory(for: categoryID)
         
-        guard let image = subcategoryData?.image else { return UICollectionViewCell() }
+        guard let image = categoryData?.image else { return cell }
 
-        let subcategoryLabel = subcategoryData?.name
-        let subcategoryImage = UIImage(systemName: image)
-        let subcategoryColor = UIColor(hex: subcategoryData?.color ?? "FFFFFF")
+        let categoryLabel = categoryData?.name
+        let categoryImage = UIImage(systemName: image)
+        let categoryColor = UIColor(hex: categoryData?.color ?? "FFFFFF")
 
-        cell.categoryLabel.text = subcategoryLabel
-        cell.categoryImage.image = subcategoryImage
-        cell.backImageView.backgroundColor = subcategoryColor
+        cell.categoryLabel.text = categoryLabel
+        cell.categoryImage.image = categoryImage
+        
+        let isLastRow = self.collectionView(collectionView, numberOfItemsInSection: indexPath.section) - 1 == indexPath.row
+        cell.isSeparatorLineHidden(isLastRow)
+        
+        // Динамическое округление ячеек
+        if indexPath.item == 0 && isLastRow {
+            cell.roundCorners(.allCorners, radius: 12)
+        } else if isLastRow {
+            cell.roundCorners(bottomLeft: 12, bottomRight: 12)
+        } else if indexPath.row == 0 {
+            cell.roundCorners(topLeft: 12, topRight: 12)
+        } else {
+            cell.roundCorners(.allCorners, radius: 0)
+        }
         
         return cell
     }
-      
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(
-            ofKind: kind,
-            withReuseIdentifier: SelectCategoryCell.id,
-            for: indexPath
-        ) as? SelectCategoryCell else {
-            return UICollectionViewCell()
-        }
         
-        headerView.tag = indexPath.section
-        headerView.headerSettings()
-        
-        let categoryLabel = categories[indexPath.section].name
-        let categoryColor = categories[indexPath.section].color
-        
-        guard let image = categories[indexPath.section].image else { return UICollectionViewCell() }
-        
-        headerView.categoryLabel.text = categoryLabel
-        headerView.categoryImage.image = UIImage(systemName: image)
-        headerView.backImageView.backgroundColor = UIColor(hex: categoryColor ?? "FFFFFF")
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapDetected))
-        headerView.addGestureRecognizer(tapGestureRecognizer)
-
-        return headerView
-    }
-    
-    @objc func tapDetected(_ sender: UITapGestureRecognizer) {
-        guard let headerViewID = sender.view?.tag else { return }
-        let categoryID = categories[headerViewID].id
-        
-        categoryDelegate?.sendCategoryData(id: categoryID)
-                
-        // TODO: переделать закрытие поп-ап и навигационного контроллера после редизайна
-        navigationController?.popViewController(animated: true)
-        self.dismiss(animated: true, completion: nil)
-    }
-        
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        CGSize(width: UIScreen.main.bounds.width, height: 60)
-    }
 }

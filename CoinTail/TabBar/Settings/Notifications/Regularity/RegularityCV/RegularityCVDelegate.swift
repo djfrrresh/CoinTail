@@ -18,6 +18,8 @@ extension RegularityVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
         Notifications.shared.regularity = notificationPeriod
         
         regularityCV.reloadData()
+        
+        navigationController?.popViewController(animated: true)
     }
     
     // Динамические размеры ячеек

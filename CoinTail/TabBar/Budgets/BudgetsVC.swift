@@ -64,27 +64,27 @@ class BudgetsVC: BasicVC {
         let budgetLayout: UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()
             layout.minimumInteritemSpacing = 0
-            layout.minimumLineSpacing = 8
-            
+            layout.minimumLineSpacing = 0
+
             return layout
         }()
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: budgetLayout)
-        cv.contentInset = .init(top: 16, left: 0, bottom: 0, right: 0) // Отступ сверху
         cv.backgroundColor = .clear
         cv.register(BudgetCell.self, forCellWithReuseIdentifier: BudgetCell.id)
         cv.register(BudgetCVHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: BudgetCVHeader.id)
         
         cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
-        cv.alwaysBounceVertical = true // Подпрыгивание коллекции
+        cv.delaysContentTouches = false
+        cv.alwaysBounceVertical = true
         
         return cv
     }()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        sortBudgets() // Сортировка бюджетов по убыванию по дате
+        sortBudgets()
         
         //TODO: сделать в функции setupNavigationTitle большой +
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
@@ -94,7 +94,6 @@ class BudgetsVC: BasicVC {
         )
         
         setupNavigationTitle(title: "Budgets".localized(), large: true)
-        
         isBudgetEmpty()
     }
         

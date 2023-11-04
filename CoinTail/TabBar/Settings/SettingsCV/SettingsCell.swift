@@ -36,7 +36,7 @@ final class SettingsCell: UICollectionViewCell {
     let currencyLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = UIFont(name: "SFProText-Regular", size: 16)
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
         label.isHidden = true
         label.textColor = UIColor(named: "secondaryTextColor")
 

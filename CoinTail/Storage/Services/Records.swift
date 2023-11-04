@@ -102,13 +102,14 @@ final class Records {
     }
     
     // Получает сумму из категории с начальной даты до конечной с указанным периодом (неделя / месяц)
-    func getBudgetAmount(date: Date, untilDate: Date, categoryID: ObjectId, currency: Currency) -> Double? {
+    func getBudgetAmount(date: Date, untilDate: Date, categoryID: ObjectId, currency: String) -> Double? {
         let calendar = Calendar.current
         guard let startDate = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: date)),
               let endDate = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: untilDate)) else { return nil }
         
         var records = records.filter { $0.type == "Expense" }
-        records = records.filter { $0.categoryID == categoryID && $0.currency == "\(currency)" }
+        //TODO: исправил currency с Currency на String
+        records = records.filter { $0.categoryID == categoryID && $0.currency == currency }
         
         return records.filter { $0.date >= startDate && $0.date <= endDate }.reduce(0.0) { $0 + $1.amount }
     }

@@ -9,11 +9,15 @@ import UIKit
 import EasyPeasy
 
 
+protocol AddBudgetCellDelegate: AnyObject {
+    func cell(didUpdateBudgetAmount amount: String?)
+}
+
 final class AddBudgetCell: UICollectionViewCell {
     
     static let id = "AddBudgetCell"
     
-//    weak var addAccountCellDelegate: AddAccountCellDelegate?
+    weak var addBudgetCellDelegate: AddBudgetCellDelegate?
             
     let backView: UIView = {
         let view = UIView()
@@ -38,7 +42,7 @@ final class AddBudgetCell: UICollectionViewCell {
     let subMenuLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = UIFont(name: "SFProText-Regular", size: 16)
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
         label.textColor = UIColor(named: "secondaryTextColor")
 
         return label
@@ -120,7 +124,7 @@ final class AddBudgetCell: UICollectionViewCell {
         separatorView.isHidden = isHidden
     }
     
-    func updateCurrencyLabel(_ labelText: String) {
+    func updateSubMenuLabel(_ labelText: String) {
         subMenuLabel.text = labelText
     }
     

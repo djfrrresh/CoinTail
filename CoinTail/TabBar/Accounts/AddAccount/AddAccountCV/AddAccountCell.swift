@@ -49,7 +49,7 @@ final class AddAccountCell: UICollectionViewCell {
     let currencyLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = UIFont(name: "SFProText-Regular", size: 16)
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
         label.textColor = UIColor(named: "secondaryTextColor")
 
         return label

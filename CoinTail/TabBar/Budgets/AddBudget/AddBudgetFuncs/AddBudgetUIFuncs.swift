@@ -19,6 +19,21 @@ extension AddBudgetVC {
         selectedCurrency = budget.currency
         budgetAmount = "\(budget.amount)"
         
+        let calendar = Calendar.current
+        let startDate = budget.startDate
+        let untilDate = budget.untilDate
+        let components = calendar.dateComponents([.day], from: startDate, to: untilDate)
+        
+        if let days = components.day {
+            if days == 7 {
+                budgetTimePeriod = "Week".localized()
+            } else if days == 30 {
+                budgetTimePeriod = "Month".localized()
+            } else {
+                return
+            }
+        }
+        
         deleteBudgetButton.isHidden = false
     }
     
@@ -28,11 +43,12 @@ extension AddBudgetVC {
         self.view.addSubview(currenciesPickerView)
         self.view.addSubview(toolBar)
         
+        let height: CGFloat = (budgetID != nil ? 3 : 4) * 48
         addBudgetCV.easy.layout([
             Left(16),
             Right(16),
             Top(32).to(self.view.safeAreaLayoutGuide, .top),
-            Height(48 * 4)
+            Height(height)
         ])
         
         deleteBudgetButton.easy.layout([
@@ -77,9 +93,9 @@ extension AddBudgetVC {
         toolBar.setItems([doneButton], animated: true)
     }
     
-    func updateCell(at indexPath: IndexPath) {
+    func updateCell(at indexPath: IndexPath, text: String) {
         if let cell = addBudgetCV.cellForItem(at: indexPath) as? AddBudgetCell {
-            cell.updateCurrencyLabel(selectedCurrency)
+            cell.updateSubMenuLabel(text)
         }
     }
     

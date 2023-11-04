@@ -13,10 +13,26 @@ class AddBudgetVC: BasicVC {
     
     var budgetCategoryID: ObjectId?
     var budgetID: ObjectId?
-    var selectedCurrency: String = Currencies.shared.selectedCurrency.currency
+    var selectedCurrency: String = Currencies.shared.selectedCurrency.currency {
+        didSet {
+            let indexPathToUpdate = IndexPath(item: 1, section: 0)
+            updateCell(at: indexPathToUpdate, text: selectedCurrency)
+        }
+    }
+    var budgetTimePeriod: String = "Month" {
+        didSet {
+            let indexPathToUpdate = IndexPath(item: 3, section: 0)
+            updateCell(at: indexPathToUpdate, text: budgetTimePeriod)
+        }
+    }
+    var budgetCategory: String? {
+        didSet {
+            guard let budgetCategory = budgetCategory else { return }
+            let indexPathToUpdate = IndexPath(item: 2, section: 0)
+            updateCell(at: indexPathToUpdate, text: budgetCategory)
+        }
+    }
     var budgetAmount: String?
-    var budgetCategory: String?
-    var budgetTimePeriod: String = "Month"
     
     static let favouriteCurrencies: [FavouriteCurrencyClass] = Currencies.shared.currenciesToChoose()
     let favouriteStringCurrencies: [String] = Currencies.shared.extractCurrencyStrings(from: favouriteCurrencies)

@@ -15,7 +15,7 @@ extension AddBudgetVC: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return budgetID != nil ? 3 : 4
     }
 
     // Заполнение ячеек по их id.
@@ -27,7 +27,7 @@ extension AddBudgetVC: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-//        cell.addBudgetCellDelegate = self
+        cell.addBudgetCellDelegate = self
                         
         switch indexPath.row {
         case 0:
@@ -59,7 +59,12 @@ extension AddBudgetVC: UICollectionViewDataSource {
             cell.menuLabel.isHidden = false
             cell.subMenuLabel.isHidden = false
             cell.chevronImageView.isHidden = false
-            cell.isSeparatorLineHidden(false)
+            if budgetID != nil {
+                cell.isSeparatorLineHidden(true)
+                cell.cornerRadiusBottom(radius: 12)
+            } else {
+                cell.isSeparatorLineHidden(false)
+            }
         case 3:
             cell.cornerRadiusBottom(radius: 12)
             cell.menuLabel.text = "Time period".localized()

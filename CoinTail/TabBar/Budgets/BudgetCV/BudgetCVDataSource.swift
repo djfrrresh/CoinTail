@@ -30,12 +30,11 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
         
         let section = budgetsDaySections[indexPath.section]
         let budgetData: BudgetClass = section.budgets[indexPath.row]
+        let currency = budgetData.currency
         let categoryID = budgetData.categoryID
-        
         guard let category = Categories.shared.getCategory(for: categoryID),
-              let image = category.image,
-              let currency = Currency(rawValue: budgetData.currency) else { return cell }
-        
+              let image = category.image else { return cell }
+                
         // TODO: проверить приходит ли в currency код валюты или название
         let sumByCategory = abs(Records.shared.getBudgetAmount(
             date: budgetData.startDate,
@@ -44,13 +43,24 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
             currency: currency
         ) ?? 0)
         let percentText = cell.calculatePercent(sum: sumByCategory, total: budgetData.amount)
-        
-        cell.calculateProgressView(sum: sumByCategory, total: budgetData.amount)
+
         cell.categoryLabel.text = category.name
-        cell.amountLabel.text = "\(sumByCategory) / \(budgetData.amount)"
+        cell.amountLabel.text = "\(sumByCategory) / \(budgetData.amount) \(budgetData.currency) (\(percentText)%)"
         cell.categoryImage.image = UIImage(systemName: image)
-        cell.backImage.backgroundColor = UIColor(hex: category.color ?? "FFFFFF")
-        cell.currencyLabel.text = "\(budgetData.currency) (\(percentText)%)"
+        
+        let isLastRow = self.collectionView(collectionView, numberOfItemsInSection: indexPath.section) - 1 == indexPath.row
+        cell.isSeparatorLineHidden(isLastRow)
+        
+        // Динамическое округление ячеек
+        if indexPath.item == 0 && isLastRow {
+            cell.roundCorners(.allCorners, radius: 12)
+        } else if isLastRow {
+            cell.roundCorners(bottomLeft: 12, bottomRight: 12)
+        } else if indexPath.row == 0 {
+            cell.roundCorners(topLeft: 12, topRight: 12)
+        } else {
+            cell.roundCorners(.allCorners, radius: 0)
+        }
         
         return cell
     }
@@ -70,21 +80,18 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
             return UICollectionViewCell()
         }
         
-        let section = budgetsDaySections[indexPath.section]
-        let day = section.day
-        let activeSectionIndex = budgetsDaySections.firstIndex { $0.budgets[0].isActive ?? false }
-        let nonActiveSectionIndex = budgetsDaySections.firstIndex { !($0.budgets[0].isActive ?? false) }
+        let activeSectionIndex = budgetsDaySections.firstIndex { $0.budgets[0].isActive }
+        let nonActiveSectionIndex = budgetsDaySections.firstIndex { !($0.budgets[0].isActive) }
         
-        headerView.separatorLabel.text = indexPath.section == activeSectionIndex ? "Active".localized() : "Non active".localized()
+        headerView.separatorLabel.text = indexPath.section == activeSectionIndex ? "Active budgets".localized() : "Non active budgets".localized()
         
-        headerView.dateLabel.text = headerView.headerDF.string(from: day)
         headerView.separator(isVisible: indexPath.section == activeSectionIndex || indexPath.section == nonActiveSectionIndex)
 
         return headerView
     }
         
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        CGSize(width: UIScreen.main.bounds.width, height: 32)
+        CGSize(width: UIScreen.main.bounds.width, height: 20)
     }
     
 }

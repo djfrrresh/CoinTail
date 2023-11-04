@@ -17,7 +17,7 @@ extension AddBudgetCell: UITextFieldDelegate {
         let allString = textFieldString.replacingCharacters(in: textFieldRange, with: string)
         
         if textField == budgetAmountTF {
-//            addAccountCellDelegate?.cell(didUpdateAccountAmount: allString)
+            addBudgetCellDelegate?.cell(didUpdateBudgetAmount: allString)
 
             return AmountValidationHelper.isValidInput(textField, shouldChangeCharactersIn: range, replacementString: string)
         } else {

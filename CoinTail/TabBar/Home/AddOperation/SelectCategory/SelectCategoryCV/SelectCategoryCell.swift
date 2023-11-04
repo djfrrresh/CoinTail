@@ -7,7 +7,15 @@
 
 import UIKit
 import EasyPeasy
+import RealmSwift
 
+
+protocol SendSubcategoryID: AnyObject {
+    func sendSubcategoryData(id: ObjectId)
+}
+protocol SendCategoryID: AnyObject {
+    func sendCategoryData(id: ObjectId)
+}
 
 final class SelectCategoryCell: UICollectionViewCell {
     
@@ -15,20 +23,13 @@ final class SelectCategoryCell: UICollectionViewCell {
         
     let backView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white.withAlphaComponent(0.9)
-        view.layer.cornerRadius = 8
-        view.layer.borderWidth = 0
-        view.layer.borderColor = UIColor.black.cgColor
-        view.clipsToBounds = true
+        view.backgroundColor = .white
         
         return view
     }()
-    
-    let backImageView: UIView = {
+    let separatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = .black
-        view.layer.cornerRadius = 8
-        view.clipsToBounds = true
+        view.backgroundColor = UIColor(named: "arrowColor")
         
         return view
     }()
@@ -36,22 +37,22 @@ final class SelectCategoryCell: UICollectionViewCell {
     let categoryImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         
         return imageView
     }()
-    
-    let categoryColor: UIColor = {
-        var color = UIColor()
-        color = .clear
+    let chevronImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "chevron.right")
+        imageView.tintColor = UIColor(named: "arrowColor")
+        imageView.contentMode = .scaleAspectFit
         
-        return color
+        return imageView
     }()
     
     let categoryLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.textColor = .darkGray
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
         
         return label
     }()
@@ -61,10 +62,10 @@ final class SelectCategoryCell: UICollectionViewCell {
         
         contentView.addSubview(backView)
         
-        backView.addSubview(backImageView)
+        backView.addSubview(chevronImageView)
+        backView.addSubview(separatorView)
         backView.addSubview(categoryLabel)
-        
-        backImageView.addSubview(categoryImage)
+        backView.addSubview(categoryImage)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -77,33 +78,42 @@ final class SelectCategoryCell: UICollectionViewCell {
             Edges()
         ])
         
-        backImageView.easy.layout([
+        chevronImageView.easy.layout([
+            Right(16),
             CenterY(),
-            Height(40),
-            Width(40),
-            Left(8)
+            Height(20),
+            Width(20)
         ])
         
         categoryImage.easy.layout([
-            Center(),
-            Height(32),
-            Width(32)
+            CenterY(),
+            Height(24),
+            Width(24),
+            Left(16)
         ])
         
         categoryLabel.easy.layout([
             CenterY(),
-            Left(8).to(backImageView, .right)
+            Left(16).to(categoryImage, .right),
+            Right(16).to(chevronImageView, .left)
+        ])
+        
+        separatorView.easy.layout([
+            Bottom(),
+            Right(),
+            Left().to(categoryLabel, .left),
+            Height(0.5)
         ])
     }
     
-    func headerSettings() {
-        backView.layer.borderWidth = 0.5
+    func isSeparatorLineHidden(_ isHidden: Bool) {
+        separatorView.isHidden = isHidden
     }
     
     static func size() -> CGSize {
         return .init(
             width: UIScreen.main.bounds.width - 16 - 16,
-            height: 60
+            height: 52
         )
     }
     
