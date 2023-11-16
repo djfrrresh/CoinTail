@@ -11,11 +11,8 @@ import UIKit
 extension AddAccountVC {
     
     @objc func saveAccountAction() {
-        guard let amountText = accountAmount,
-              let amount = Double(amountText),
-              let nameText = accountName else {
-            return
-        }
+        let amount = Double(accountAmount ?? "0") ?? 0
+        let nameText = accountName ?? ""
 
         accountValidation(amount: amount, name: nameText) { [weak self] amount, nameText in
             guard let strongSelf = self else { return }

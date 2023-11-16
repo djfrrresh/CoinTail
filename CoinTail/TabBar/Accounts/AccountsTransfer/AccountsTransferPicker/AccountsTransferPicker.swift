@@ -27,10 +27,8 @@ extension AccountsTransferVC: UIPickerViewDataSource, UIPickerViewDelegate {
         switch selectedRowIndex {
         case 0:
             accountNameFrom = accountNames[row]
-            showTransferFrom()
         case 1:
             accountNameTo = accountNames[row]
-            showTransferTo()
         default:
             return
         }

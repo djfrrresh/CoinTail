@@ -11,15 +11,13 @@ import UIKit
 extension AddBudgetVC {
     
     @objc func saveBudgetAction() {
-        guard let amountText = budgetAmount,
-              let amount = Double(amountText),
-              let categoryText = budgetCategory else { return }
+        let amount = Double(budgetAmount ?? "0") ?? 0
+        let categoryText = budgetCategory ?? ""
                 
         budgetValidation(amount: amount, categoryText: categoryText) { [weak self] amount, categoryID in
             guard let strongSelf = self else { return }
             
             var startDate, untilDate: Date
-            
             if let budgetID = strongSelf.budgetID, let budget = Budgets.shared.getBudget(for: budgetID) {
                 startDate = budget.startDate
                 untilDate = budget.untilDate

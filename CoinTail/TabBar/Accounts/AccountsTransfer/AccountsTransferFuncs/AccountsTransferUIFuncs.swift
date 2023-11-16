@@ -122,7 +122,8 @@ extension AccountsTransferVC {
     }
     
     func showTransferFrom() {
-        guard let account = Accounts.shared.getAccount(for: accountNameFrom) else { return }
+        guard let accountNameFrom = accountNameFrom,
+              let account = Accounts.shared.getAccount(for: accountNameFrom) else { return }
 
         transferFromBackView.image = transferFromBackView.image?.withRenderingMode(.alwaysTemplate)
         transferFromBackView.tintColor = .white
@@ -137,7 +138,8 @@ extension AccountsTransferVC {
     }
     
     func showTransferTo() {
-        guard let account = Accounts.shared.getAccount(for: accountNameTo) else { return }
+        guard let accountNameTo = accountNameTo,
+              let account = Accounts.shared.getAccount(for: accountNameTo) else { return }
 
         transferToBackView.image = transferToBackView.image?.withRenderingMode(.alwaysTemplate)
         transferToBackView.tintColor = UIColor.white
@@ -151,5 +153,10 @@ extension AccountsTransferVC {
         transferToAccountBalanceLabel.text = "\(account.amountBalance) \(account.currency)"
     }
 
+    func updateCell(at indexPath: IndexPath, text: String) {
+        if let cell = transferCV.cellForItem(at: indexPath) as? TransferCell {
+            cell.updateAccountNameLabel(text)
+        }
+    }
     
 }

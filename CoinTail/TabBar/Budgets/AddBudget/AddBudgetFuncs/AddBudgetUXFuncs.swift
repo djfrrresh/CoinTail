@@ -33,14 +33,15 @@ extension AddBudgetVC: SendCategoryID, SendRegularity, AddBudgetCellDelegate {
     }
     
     func budgetValidation(amount: Double, categoryText: String, completion: ((Double, ObjectId) -> Void)? = nil) {
-        let missingAmount = "\(amount)" == ""
-        let missingCategory = budgetCategory == ""
+        let missingAmount = "\(amount)" == "" || amount == 0
+        let missingCategory = categoryText == ""
+        let sameBudget = Budgets.shared.getBudget(for: categoryText, withCurrency: selectedCurrency) ?? false
 
-        if missingAmount || amount == 0 {
+        if missingAmount {
             errorAlert("Missing value in amount field".localized())
         } else if missingCategory {
             errorAlert("No category selected".localized())
-        } else if Budgets.shared.getBudget(for: categoryText, withCurrency: selectedCurrency) ?? false && budgetID == nil {
+        } else if sameBudget && budgetID == nil {
             errorAlert("There is already a budget for this category and currency".localized())
         } else {
             guard let categoryID = budgetCategoryID else { return }

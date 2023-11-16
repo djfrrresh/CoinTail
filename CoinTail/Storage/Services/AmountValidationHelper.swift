@@ -15,7 +15,7 @@ struct AmountValidationHelper {
         guard !string.isEmpty else { return true }
         
         // Принимаемые значения для текстового поля Amount
-        let allowedCharactersSet = CharacterSet(charactersIn: "1234567890")
+        let allowedCharactersSet = CharacterSet(charactersIn: "1234567890.")
         let typedCharacterSet = CharacterSet(charactersIn: string)
         let allowedCharacters = allowedCharactersSet.isSuperset(of: typedCharacterSet)
         
@@ -37,8 +37,42 @@ struct AmountValidationHelper {
         // Количество цифр в строке
         let charactersCount = String(textFieldString).count
         
-        // Возвращает допустимые значения для строки
-        // Длину общей строки не более 8 символов
-        return allowedCharacters && charactersCount <= 8
+        return maxNumAfterComma(textFieldString: textFieldString)
+        && maxDots(textFieldString: textFieldString, string: string)
+        && allowedCharacters
+        && charactersCount < 8
+    }
+    
+    // Позволяет ставить не более 1 точки
+    private static func maxDots(textFieldString: String, string: String) -> Bool {
+        if string == "." {
+            let countDots = textFieldString.components(separatedBy:".").count - 1
+
+            if countDots == 0 {
+                return true
+            } else if countDots > 0 && string == "." {
+                return false
+            }
+        }
+
+        return true
+    }
+
+    // Позволяет ввести не более 2 цифр после точки
+    private static func maxNumAfterComma(textFieldString: String) -> Bool {
+        let amountFormatter = NumberFormatter()
+        amountFormatter.maximumFractionDigits = 2
+        amountFormatter.roundingMode = .up
+
+        let floatSplit = textFieldString.split(separator: ".")
+
+        if floatSplit.count > 1 {
+            let numAfterComma = floatSplit[1]
+            if numAfterComma.count > 1 {
+                return false
+            }
+        }
+
+        return true
     }
 }

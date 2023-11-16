@@ -9,10 +9,6 @@ import UIKit
 import EasyPeasy
 
 
-protocol AddAccountCellValidate: AnyObject {
-    func textFieldIsEmpty(amountIsEmpty: Bool, nameIsEmpty: Bool)
-}
-
 protocol AddAccountCellDelegate: AnyObject {
     func cell(didUpdateAccountName name: String?)
     func cell(didUpdateAccountAmount amount: String?)
@@ -23,7 +19,6 @@ final class AddAccountCell: UICollectionViewCell {
     
     static let id = "AddAccountCell"
     
-    weak var addAccountDelegate: AddAccountCellValidate?
     weak var addAccountCellDelegate: AddAccountCellDelegate?
             
     let backView: UIView = {

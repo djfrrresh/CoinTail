@@ -28,20 +28,6 @@ final class Categories {
         }
     }
     
-    // Иконки для создаваемых категорий
-    var createCategoryImages = [
-        "trash",
-        "text.book.closed",
-        "graduationcap",
-        "mustache",
-        "die.face.3",
-        "stethoscope",
-        "theatermasks",
-        "airplane",
-        "bicycle",
-        "fuelpump"
-    ]
-    
     // Получить категории по типам на главном меню
     func getCategories(for sectionType: RecordType) -> [CategoryClass] {
         switch sectionType {

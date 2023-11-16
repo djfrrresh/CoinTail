@@ -9,6 +9,19 @@ import UIKit
 import EasyPeasy
 
 
+class EmojiTextField: UITextField {
+
+    override var textInputContextIdentifier: String? { "" }
+
+    override var textInputMode: UITextInputMode? {
+        if let emojiMode = UITextInputMode.activeInputModes.first(where: { $0.primaryLanguage == "emoji" }) {
+            return emojiMode
+        }
+        return nil
+    }
+    
+}
+
 extension UITextField {
     
     convenience init(defaultText: String = "", background: UIColor, keyboard: UIKeyboardType, placeholder: String = "") {

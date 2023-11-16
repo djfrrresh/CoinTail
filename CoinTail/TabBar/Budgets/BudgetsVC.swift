@@ -71,6 +71,7 @@ class BudgetsVC: BasicVC {
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: budgetLayout)
         cv.backgroundColor = .clear
+        cv.contentInset = .init(top: 32, left: 0, bottom: 0, right: 0) // Отступ сверху
         cv.register(BudgetCell.self, forCellWithReuseIdentifier: BudgetCell.id)
         cv.register(BudgetCVHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: BudgetCVHeader.id)
         

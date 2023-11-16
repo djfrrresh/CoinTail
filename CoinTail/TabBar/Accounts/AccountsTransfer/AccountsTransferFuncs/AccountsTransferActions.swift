@@ -22,12 +22,11 @@ extension AccountsTransferVC: TransferCellDelegate {
     }
     
     @objc func saveTransferAction(_ sender: UIButton) {
-        guard let amountText = transferAmount,
-              let amount = Double(amountText) else {
-            return
-        }
+        let amount = Double(transferAmount ?? "0") ?? 0
+        let firstAccount = accountNameFrom ?? ""
+        let secondAccount = accountNameTo ?? ""
         
-        transferValidation(amount: amount) { [weak self] sourceAccountName, targetAccountName in
+        transferValidation(amount: amount, firstAccount: firstAccount, secondAccount: secondAccount) { [weak self] sourceAccountName, targetAccountName in
             guard let strongSelf = self,
                   let sourceAccount = Accounts.shared.getAccount(for: sourceAccountName),
                   let targetAccount = Accounts.shared.getAccount(for: targetAccountName) else { return }

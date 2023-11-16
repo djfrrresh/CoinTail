@@ -27,7 +27,6 @@ extension AddAccountVC: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.addAccountDelegate = self
         cell.addAccountCellDelegate = self
                         
         switch indexPath.row {

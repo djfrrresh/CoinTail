@@ -69,7 +69,7 @@ final class TransfersHistoryVC: BasicVC {
         }()
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: transfersLayout)
-        cv.contentInset = .init(top: 16, left: 0, bottom: 0, right: 0) // Отступ сверху
+        cv.contentInset = .init(top: 32, left: 0, bottom: 0, right: 0) // Отступ сверху
         cv.backgroundColor = .clear
         cv.register(TransfersHistoryCell.self, forCellWithReuseIdentifier: TransfersHistoryCell.id)
         cv.register(TransfersHistoryCVHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TransfersHistoryCVHeader.id)

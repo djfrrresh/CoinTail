@@ -38,3 +38,21 @@ extension UIColor {
     }
     
 }
+
+extension UIColor {
+    
+    static func randomColor() -> UIColor {
+        var red: CGFloat = 0.0
+        var green: CGFloat = 0.0
+        var blue: CGFloat = 0.0
+
+        repeat {
+            red = CGFloat.random(in: 0...1)
+            green = CGFloat.random(in: 0...1)
+            blue = CGFloat.random(in: 0...1)
+        } while red + green + blue > 2.7 || red + green + blue < 0.3
+
+        return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+    }
+    
+}

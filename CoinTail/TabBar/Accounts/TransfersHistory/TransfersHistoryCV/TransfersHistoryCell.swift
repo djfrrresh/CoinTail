@@ -112,30 +112,28 @@ final class TransfersHistoryCell: UICollectionViewCell {
             Width(20)
         ])
         
+        sourceAccountLabel.easy.layout([
+            Left(16),
+            Top(16),
+            Right(16).to(arrowImageView, .left)
+        ])
+        targetAccountLabel.easy.layout([
+            Right(16),
+            Top(16),
+            Left(16).to(arrowImageView, .right)
+        ])
+        
         sourceSeparatorView.easy.layout([
-            CenterY(),
+            Top(8).to(sourceAccountLabel, .bottom),
             Left(16),
             Right(16).to(arrowImageView, .left),
             Height(0.5)
         ])
-        
         targetSeparatorView.easy.layout([
-            CenterY(),
+            Top(8).to(sourceAccountLabel, .bottom),
             Right(16),
             Left(16).to(arrowImageView, .right),
             Height(0.5)
-        ])
-        
-        sourceAccountLabel.easy.layout([
-            Left(16),
-            Bottom(8).to(sourceSeparatorView, .top),
-            Right(16).to(arrowImageView, .left)
-        ])
-        
-        targetAccountLabel.easy.layout([
-            Right(16),
-            Bottom(8).to(targetSeparatorView, .top),
-            Left(16).to(arrowImageView, .right)
         ])
         
         sourceAmountLabel.easy.layout([
@@ -143,7 +141,6 @@ final class TransfersHistoryCell: UICollectionViewCell {
             Top(8).to(sourceSeparatorView, .top),
             Right(16).to(arrowImageView, .left)
         ])
-        
         targetAmountLabel.easy.layout([
             Right(16),
             Top(8).to(targetSeparatorView, .top),
@@ -190,17 +187,14 @@ final class TransfersHistoryCell: UICollectionViewCell {
         let padding: CGFloat = 16.0
         let middlePadding: CGFloat = 8.0
         
-        let textWidth = UIScreen.main.bounds.width - (2 * padding) - sourceNameWidth - targetNameWidth - 20 - (2 * padding)
+        let textWidth = (UIScreen.main.bounds.width - (2 * padding) - 20 - (2 * padding)) / 2
     
-        //TODO: посчитать правильно
         let sourceHeight: CGFloat = sourceNameLabel.sizeThatFits(.init(width: textWidth, height: 0)).height
         let targetHeight: CGFloat = targetNameLabel.sizeThatFits(.init(width: textWidth, height: 0)).height
         let amountHeight: CGFloat = amountLabel.sizeThatFits(.init(width: textWidth, height: 0)).height
         
         let cellHeight = (sourceHeight > targetHeight ? sourceHeight : targetHeight) + (2 * padding) + (2 * middlePadding) + amountHeight
-        
-        print(cellHeight)
-                
+                        
         return .init(
             width: UIScreen.main.bounds.width - 16 - 16,
             height: cellHeight

@@ -71,6 +71,12 @@
 		567E93972AF4636B0045C01B /* BudgetPeriodCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93962AF4636B0045C01B /* BudgetPeriodCVDataSource.swift */; };
 		567E93992AF464880045C01B /* BudgetPeriodCVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93982AF464880045C01B /* BudgetPeriodCVDelegate.swift */; };
 		567E939B2AF5B69B0045C01B /* SelectCategoryUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E939A2AF5B69B0045C01B /* SelectCategoryUIFuncs.swift */; };
+		567E939D2B039BDE0045C01B /* CreateCategoryCellTFDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E939C2B039BDE0045C01B /* CreateCategoryCellTFDelegate.swift */; };
+		567E93A02B051C970045C01B /* AddOperationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E939F2B051C970045C01B /* AddOperationCell.swift */; };
+		567E93A22B0526FB0045C01B /* AddOperationCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93A12B0526FB0045C01B /* AddOperationCVDataSource.swift */; };
+		567E93A42B052DFB0045C01B /* AddOperationCVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93A32B052DFA0045C01B /* AddOperationCVDelegate.swift */; };
+		567E93A62B0531C70045C01B /* AddOperationCellTFDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93A52B0531C70045C01B /* AddOperationCellTFDelegate.swift */; };
+		567E93A92B06373B0045C01B /* AddOperationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93A82B06373B0045C01B /* AddOperationPicker.swift */; };
 		568EF0202AA603BF00EB042D /* AccountsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF01F2AA603BF00EB042D /* AccountsVC.swift */; };
 		568EF0232AA607E000EB042D /* AccountsUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0222AA607E000EB042D /* AccountsUIFuncs.swift */; };
 		568EF0262AA608D000EB042D /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0252AA608D000EB042D /* AccountCell.swift */; };
@@ -154,7 +160,6 @@
 		56DBB6F72A3893A80087271D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6F62A3893A80087271D /* Colors.swift */; };
 		56DBB6F92A39D69A0087271D /* OperationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6F82A39D69A0087271D /* OperationHeader.swift */; };
 		56DBB6FC2A3B31DB0087271D /* AddOperationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6FB2A3B31DB0087271D /* AddOperationVC.swift */; };
-		56DBB6FF2A3B36190087271D /* AddOperationTFDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6FE2A3B36190087271D /* AddOperationTFDelegate.swift */; };
 		56DBB7012A3B36D30087271D /* AddOperationUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB7002A3B36D30087271D /* AddOperationUIFuncs.swift */; };
 		56DBB7032A3B38470087271D /* AddOperationActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB7022A3B38470087271D /* AddOperationActions.swift */; };
 		56DBB7052A3B3A370087271D /* AddOperationUXFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB7042A3B3A370087271D /* AddOperationUXFuncs.swift */; };
@@ -170,7 +175,6 @@
 		56DBB7212A3B64A00087271D /* CreateCategoryActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB7202A3B64A00087271D /* CreateCategoryActions.swift */; };
 		56DBB7242A3B667F0087271D /* CreateCategoryCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB7232A3B667F0087271D /* CreateCategoryCVDataSource.swift */; };
 		56DBB7262A3B672C0087271D /* CreateCategoryCVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB7252A3B672C0087271D /* CreateCategoryCVDelegate.swift */; };
-		56DBB7292A3B68B00087271D /* ColorPickerFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB7282A3B68B00087271D /* ColorPickerFuncs.swift */; };
 		56DBB72B2A3B873B0087271D /* SelectCategoryUXFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB72A2A3B873B0087271D /* SelectCategoryUXFuncs.swift */; };
 		56EFDFE22A535294003A6A45 /* AddBudgetUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EFDFE12A535294003A6A45 /* AddBudgetUIFuncs.swift */; };
 		56EFDFE42A5352EE003A6A45 /* AddBudgetActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EFDFE32A5352EE003A6A45 /* AddBudgetActions.swift */; };
@@ -254,6 +258,12 @@
 		567E93962AF4636B0045C01B /* BudgetPeriodCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPeriodCVDataSource.swift; sourceTree = "<group>"; };
 		567E93982AF464880045C01B /* BudgetPeriodCVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPeriodCVDelegate.swift; sourceTree = "<group>"; };
 		567E939A2AF5B69B0045C01B /* SelectCategoryUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryUIFuncs.swift; sourceTree = "<group>"; };
+		567E939C2B039BDE0045C01B /* CreateCategoryCellTFDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryCellTFDelegate.swift; sourceTree = "<group>"; };
+		567E939F2B051C970045C01B /* AddOperationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOperationCell.swift; sourceTree = "<group>"; };
+		567E93A12B0526FB0045C01B /* AddOperationCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOperationCVDataSource.swift; sourceTree = "<group>"; };
+		567E93A32B052DFA0045C01B /* AddOperationCVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOperationCVDelegate.swift; sourceTree = "<group>"; };
+		567E93A52B0531C70045C01B /* AddOperationCellTFDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOperationCellTFDelegate.swift; sourceTree = "<group>"; };
+		567E93A82B06373B0045C01B /* AddOperationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOperationPicker.swift; sourceTree = "<group>"; };
 		568EF01F2AA603BF00EB042D /* AccountsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsVC.swift; sourceTree = "<group>"; };
 		568EF0222AA607E000EB042D /* AccountsUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsUIFuncs.swift; sourceTree = "<group>"; };
 		568EF0252AA608D000EB042D /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
@@ -337,7 +347,6 @@
 		56DBB6F62A3893A80087271D /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		56DBB6F82A39D69A0087271D /* OperationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationHeader.swift; sourceTree = "<group>"; };
 		56DBB6FB2A3B31DB0087271D /* AddOperationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOperationVC.swift; sourceTree = "<group>"; };
-		56DBB6FE2A3B36190087271D /* AddOperationTFDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOperationTFDelegate.swift; sourceTree = "<group>"; };
 		56DBB7002A3B36D30087271D /* AddOperationUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOperationUIFuncs.swift; sourceTree = "<group>"; };
 		56DBB7022A3B38470087271D /* AddOperationActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOperationActions.swift; sourceTree = "<group>"; };
 		56DBB7042A3B3A370087271D /* AddOperationUXFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOperationUXFuncs.swift; sourceTree = "<group>"; };
@@ -353,7 +362,6 @@
 		56DBB7202A3B64A00087271D /* CreateCategoryActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryActions.swift; sourceTree = "<group>"; };
 		56DBB7232A3B667F0087271D /* CreateCategoryCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryCVDataSource.swift; sourceTree = "<group>"; };
 		56DBB7252A3B672C0087271D /* CreateCategoryCVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryCVDelegate.swift; sourceTree = "<group>"; };
-		56DBB7282A3B68B00087271D /* ColorPickerFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerFuncs.swift; sourceTree = "<group>"; };
 		56DBB72A2A3B873B0087271D /* SelectCategoryUXFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryUXFuncs.swift; sourceTree = "<group>"; };
 		56EFDFE12A535294003A6A45 /* AddBudgetUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetUIFuncs.swift; sourceTree = "<group>"; };
 		56EFDFE32A5352EE003A6A45 /* AddBudgetActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetActions.swift; sourceTree = "<group>"; };
@@ -732,6 +740,25 @@
 			path = BudgetPeriodCV;
 			sourceTree = "<group>";
 		};
+		567E939E2B051C8A0045C01B /* AddOperationCV */ = {
+			isa = PBXGroup;
+			children = (
+				567E939F2B051C970045C01B /* AddOperationCell.swift */,
+				567E93A12B0526FB0045C01B /* AddOperationCVDataSource.swift */,
+				567E93A32B052DFA0045C01B /* AddOperationCVDelegate.swift */,
+				567E93A52B0531C70045C01B /* AddOperationCellTFDelegate.swift */,
+			);
+			path = AddOperationCV;
+			sourceTree = "<group>";
+		};
+		567E93A72B0637260045C01B /* AddOperationPicker */ = {
+			isa = PBXGroup;
+			children = (
+				567E93A82B06373B0045C01B /* AddOperationPicker.swift */,
+			);
+			path = AddOperationPicker;
+			sourceTree = "<group>";
+		};
 		568EF01E2AA603AE00EB042D /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
@@ -1070,7 +1097,9 @@
 		56DBB6FA2A3B2AF60087271D /* AddOperation */ = {
 			isa = PBXGroup;
 			children = (
+				567E93A72B0637260045C01B /* AddOperationPicker */,
 				56DBB7062A3B43350087271D /* SelectCategory */,
+				567E939E2B051C8A0045C01B /* AddOperationCV */,
 				56DBB6FD2A3B35FF0087271D /* AddOperationFuncs */,
 				56DBB6FB2A3B31DB0087271D /* AddOperationVC.swift */,
 			);
@@ -1080,7 +1109,6 @@
 		56DBB6FD2A3B35FF0087271D /* AddOperationFuncs */ = {
 			isa = PBXGroup;
 			children = (
-				56DBB6FE2A3B36190087271D /* AddOperationTFDelegate.swift */,
 				56DBB7002A3B36D30087271D /* AddOperationUIFuncs.swift */,
 				56DBB7022A3B38470087271D /* AddOperationActions.swift */,
 				56DBB7042A3B3A370087271D /* AddOperationUXFuncs.swift */,
@@ -1122,7 +1150,6 @@
 		56DBB7182A3B60790087271D /* CreateCategory */ = {
 			isa = PBXGroup;
 			children = (
-				56DBB7272A3B68800087271D /* ColorPicker */,
 				56DBB7222A3B666E0087271D /* CreateCategoryCV */,
 				56DBB71B2A3B63150087271D /* CreateCategoryFuncs */,
 				56DBB7192A3B609E0087271D /* CreateCategoryVC.swift */,
@@ -1146,16 +1173,9 @@
 				56DBB7112A3B4C570087271D /* CreateCategoryCell.swift */,
 				56DBB7232A3B667F0087271D /* CreateCategoryCVDataSource.swift */,
 				56DBB7252A3B672C0087271D /* CreateCategoryCVDelegate.swift */,
+				567E939C2B039BDE0045C01B /* CreateCategoryCellTFDelegate.swift */,
 			);
 			path = CreateCategoryCV;
-			sourceTree = "<group>";
-		};
-		56DBB7272A3B68800087271D /* ColorPicker */ = {
-			isa = PBXGroup;
-			children = (
-				56DBB7282A3B68B00087271D /* ColorPickerFuncs.swift */,
-			);
-			path = ColorPicker;
 			sourceTree = "<group>";
 		};
 		56EFDFE02A535283003A6A45 /* AddBudgetFuncs */ = {
@@ -1355,6 +1375,7 @@
 				568EF0282AA6094D00EB042D /* AccountCVDelegate.swift in Sources */,
 				568EF0202AA603BF00EB042D /* AccountsVC.swift in Sources */,
 				568EF06A2AB0E74200EB042D /* CurrencyCell.swift in Sources */,
+				567E93A22B0526FB0045C01B /* AddOperationCVDataSource.swift in Sources */,
 				568EF0602AAFB17100EB042D /* TransfersHistoryCell.swift in Sources */,
 				5642DB2E2A4F34CC00ADF475 /* BudgetCVDataSource.swift in Sources */,
 				568EF03E2AA61FB900EB042D /* AddAccountActions.swift in Sources */,
@@ -1415,11 +1436,9 @@
 				567E93862AF449AD0045C01B /* AddBudgetCell.swift in Sources */,
 				568EF0892ABB439100EB042D /* SelectCategoryCell.swift in Sources */,
 				568EF03C2AA61F8E00EB042D /* AddAccountUXFuncs.swift in Sources */,
-				56DBB7292A3B68B00087271D /* ColorPickerFuncs.swift in Sources */,
 				568EF0852AB4BE3800EB042D /* NotificationsActions.swift in Sources */,
 				569B60D92AE14F1F00CBFF33 /* NotificationsCell.swift in Sources */,
 				568EF0592AAFAF9C00EB042D /* TransfersHistoryUXFuncs.swift in Sources */,
-				56DBB6FF2A3B36190087271D /* AddOperationTFDelegate.swift in Sources */,
 				569E523A2AD861DD00A4FCA7 /* RealmService.swift in Sources */,
 				569E52382AD4405F00A4FCA7 /* AboutAppMailDelegate.swift in Sources */,
 				567E93942AF463260045C01B /* BudgetPeriodUIFuncs.swift in Sources */,
@@ -1439,6 +1458,8 @@
 				56DBB71A2A3B609E0087271D /* CreateCategoryVC.swift in Sources */,
 				560AFBC12A1394A30054B502 /* AppDelegate.swift in Sources */,
 				569B60DB2AE153C100CBFF33 /* NotificationsCVDataSource.swift in Sources */,
+				567E93A42B052DFB0045C01B /* AddOperationCVDelegate.swift in Sources */,
+				567E93A92B06373B0045C01B /* AddOperationPicker.swift in Sources */,
 				56DBB7262A3B672C0087271D /* CreateCategoryCVDelegate.swift in Sources */,
 				568EF0752AB1F76000EB042D /* CurrencyCVHeader.swift in Sources */,
 				568EF0352AA611F000EB042D /* AccountsActions.swift in Sources */,
@@ -1459,10 +1480,13 @@
 				560AFBE02A13B2E40054B502 /* UIButton.swift in Sources */,
 				567E937F2AF110950045C01B /* AddAccountPicker.swift in Sources */,
 				568EF05E2AAFB10100EB042D /* TransfersHistoryCVDelegate.swift in Sources */,
+				567E93A62B0531C70045C01B /* AddOperationCellTFDelegate.swift in Sources */,
 				569B61072AE2B0AF00CBFF33 /* ContactsCell.swift in Sources */,
 				568EF05C2AAFB0A200EB042D /* TransfersHistoryCVDataSource.swift in Sources */,
 				567E13982ADFE60100F3C244 /* UIView.swift in Sources */,
+				567E93A02B051C970045C01B /* AddOperationCell.swift in Sources */,
 				560AFC3E2A1C10680054B502 /* ChartsSetEntries.swift in Sources */,
+				567E939D2B039BDE0045C01B /* CreateCategoryCellTFDelegate.swift in Sources */,
 				568EF0382AA61C7200EB042D /* AddAccountUIFuncs.swift in Sources */,
 				567E93842AF449220045C01B /* AddBudgetCVDelegate.swift in Sources */,
 				560996722AE97D7100EAEE1C /* TransfersHistoryCVHeader.swift in Sources */,

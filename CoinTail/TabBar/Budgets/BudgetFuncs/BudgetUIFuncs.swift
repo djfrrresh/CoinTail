@@ -80,7 +80,7 @@ extension BudgetsVC {
         self.view.addSubview(budgetCV)
         
         budgetCV.easy.layout([
-            Top(24).to(self.view.safeAreaLayoutGuide, .top),
+            Top().to(self.view.safeAreaLayoutGuide, .top),
             CenterX(),
             Left(16),
             Right(16),

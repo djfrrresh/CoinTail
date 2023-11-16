@@ -8,7 +8,7 @@
 import UIKit
 
 
-extension AddAccountVC: AddAccountCellValidate, AddAccountCellDelegate {
+extension AddAccountVC: AddAccountCellDelegate {
     
     func cell(didUpdateAccountName name: String?) {
         accountName = name
@@ -22,22 +22,18 @@ extension AddAccountVC: AddAccountCellValidate, AddAccountCellDelegate {
         isAccountMain = isOn
     }
     
-    func textFieldIsEmpty(amountIsEmpty: Bool, nameIsEmpty: Bool) {
-        self.navigationItem.rightBarButtonItem?.isEnabled = !(amountIsEmpty && nameIsEmpty)
-    }
-    
     func addAccountTargets() {
         deleteAccountButton.addTarget(self, action: #selector(removeAccount), for: .touchUpInside)
     }
     
     func accountValidation(amount: Double, name: String, completion: ((Double, String) -> Void)? = nil) {
         let missingName = name == ""
-        let missingAmount = "\(amount)" == ""
+        let missingAmount = "\(amount)" == "" || amount == 0
         let accountName = Accounts.shared.getAccount(for: name)?.name
 
         if missingName {
-            errorAlert("No name selected".localized())
-        } else if missingAmount || amount == 0 {
+            errorAlert("Account name not entered".localized())
+        } else if missingAmount {
             errorAlert("Amount not entered".localized())
         } else if accountName != nil && accountID == nil {
             errorAlert("There is already an account with this name".localized())

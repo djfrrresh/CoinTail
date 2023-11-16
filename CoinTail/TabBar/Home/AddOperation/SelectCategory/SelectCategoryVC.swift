@@ -8,6 +8,7 @@
 import UIKit
 
 
+//TODO: категории не разбиваются по типам операции
 class SelectCategoryVC: BasicVC {
     
     let categories: [CategoryClass] = Categories.shared.categories
@@ -52,11 +53,16 @@ class SelectCategoryVC: BasicVC {
         return searchBar
     }()
         
-    let newCategoryButton = UIButton(
-        name: "+",
-        background: .white,
-        textColor: .black
-    )
+    let newCategoryButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(named: "primaryAction")
+        button.layer.cornerRadius = 16
+        button.setTitle("Create a category".localized(), for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
+        
+        return button
+    }()
             
     var rawSegmentType: String?
     var operationSegmentType: RecordType {
@@ -74,11 +80,26 @@ class SelectCategoryVC: BasicVC {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+                
+        selectCategoryCV.reloadData()
+    }
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Select category".localized()
+        var title: String = ""
+        switch operationSegmentType {
+        case .expense:
+            title = "Expense categories".localized()
+        case .income:
+            title = "Income categories".localized()
+        case .allOperations:
+            return
+        }
+        self.title = title
         
         selectCategoryCV.delegate = self
         

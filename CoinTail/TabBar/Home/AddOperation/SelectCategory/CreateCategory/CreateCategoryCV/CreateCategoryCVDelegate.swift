@@ -8,14 +8,22 @@
 import UIKit
 
 
-extension CreateCategoryVC: UICollectionViewDelegate {
+extension CreateCategoryVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    // Действия при нажатии на ячейку
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let image = CreateCategoryVC.newImages[indexPath.row]
-        selectedCategoryImage = image
-        
-        createCategoryCV.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+        switch indexPath.row {
+        case 1:
+            if let cell = createCategoryCV.cellForItem(at: IndexPath(row: 1, section: 0)) as? CreateCategoryCell {
+                cell.categoryIconTF.becomeFirstResponder()
+            }
+        default:
+            return
+        }
+    }
+    
+    // Динамические размеры ячеек
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CreateCategoryCell.size()
     }
     
 }

@@ -9,26 +9,44 @@ import UIKit
 import RealmSwift
 
 
-extension CreateCategoryVC: SendCategoryID {
-
-    func sendCategoryData(id: ObjectId) {
-        let category = Categories.shared.getCategory(for: id)
-        
-        parentalCategoryButton.setTitle(category?.name, for: .normal)
+extension CreateCategoryVC: SendCategoryID, CreateCategoryCellDelegate {
+    
+    func cell(didUpdateCategoryName name: String?) {
+        categoryName = name
     }
     
-    // Закрывает всплывающее окно при нажатии за его пределы
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-           let touch = touches.first
-           if touch?.view != popUpView {
-               self.dismiss(animated: true, completion: nil)
-           }
-       }
+    func cell(didUpdateCategoryIcon icon: String?) {
+        categoryIcon = icon
+    }
     
-    func createTargets() {
-        addButton.addTarget(self, action: #selector(addNewItemAction), for: .touchUpInside)
-        selectColorButton.addTarget(self, action: #selector(didTapSelectColor), for: .touchUpInside)
-        parentalCategoryButton.addTarget(self, action: #selector(goToSelectCategoryVC), for: .touchUpInside)
+    func cell(didUpdateOnOffToggle isOn: Bool) {
+        isToggleOn = isOn
+        
+        if let cell = createCategoryCV.cellForItem(at: IndexPath(row: 3, section: 0)) as? CreateCategoryCell {
+            cell.menuLabel.textColor = isToggleOn ? .black : UIColor(named: "secondaryTextColor")
+        }
+    }
+
+    func sendCategoryData(id: ObjectId) {
+        categoryID = id
+    }
+    
+    func categoryValidation(name: String, icon: String, mainCategory: String, isSubcategory: Bool, completion: ((String, String) -> Void)? = nil) {
+        let missingName = name == ""
+        let missingIcon = icon == ""
+        let missingMainCategory = mainCategory == ""
+
+        if missingName {
+            errorAlert("Category name is missing".localized())
+        } else if missingIcon {
+            errorAlert("Category icon not selected".localized())
+        } else if isSubcategory && missingMainCategory {
+            errorAlert("No parent category selected".localized())
+        } else {
+//            guard let categoryID = self.categoryID else { return }
+            
+            completion?(name, icon)
+        }
     }
     
 }

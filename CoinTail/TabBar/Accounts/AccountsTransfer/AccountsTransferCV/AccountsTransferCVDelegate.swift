@@ -11,15 +11,25 @@ import UIKit
 extension AccountsTransferVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0, 1:
-            saveTransferButton.isHidden = true
-            accountsPickerView.isHidden = false
-            toolBar.isHidden = false
-            
-            selectedRowIndex = indexPath.row
-        default:
-            return
+        if !accountNames.isEmpty {
+            switch indexPath.row {
+            case 0:
+                saveTransferButton.isHidden = true
+                accountsPickerView.isHidden = false
+                toolBar.isHidden = false
+                
+                selectedRowIndex = indexPath.row
+                accountNameFrom = accountNames[0]
+            case 1:
+                saveTransferButton.isHidden = true
+                accountsPickerView.isHidden = false
+                toolBar.isHidden = false
+                
+                selectedRowIndex = indexPath.row
+                accountNameTo = accountNames[0]
+            default:
+                return
+            }
         }
     }
     

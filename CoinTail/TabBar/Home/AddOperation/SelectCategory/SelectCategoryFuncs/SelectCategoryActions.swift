@@ -13,11 +13,10 @@ extension SelectCategoryVC {
     // Открывается окно с созданием новой категории
     @objc func goToCreateCategoryVC() {
         let vc = CreateCategoryVC(segmentTitle: rawSegmentType ?? "Expense")
-        vc.addNewCategoryDelegate = self
-        vc.addNewSubcategoryDelegate = self
-        vc.modalPresentationStyle = .overCurrentContext
 
-        self.present(vc, animated: true, completion: nil)
+        self.navigationItem.rightBarButtonItem?.target = nil
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

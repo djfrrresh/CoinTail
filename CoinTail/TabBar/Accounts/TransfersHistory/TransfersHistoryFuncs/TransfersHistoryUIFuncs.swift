@@ -83,7 +83,7 @@ extension TransfersHistoryVC {
             Left(16),
             Right(16),
             CenterX(),
-            Top(24).to(self.view.safeAreaLayoutGuide, .top),
+            Top().to(self.view.safeAreaLayoutGuide, .top),
             Bottom()
         ])
     }

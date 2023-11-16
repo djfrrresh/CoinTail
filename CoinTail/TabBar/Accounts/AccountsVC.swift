@@ -89,13 +89,14 @@ class AccountsVC: BasicVC {
         }()
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: accountsLayout)
-        cv.contentInset = .init(top: 16, left: 0, bottom: 0, right: 0) // Отступ сверху
+        cv.contentInset = .init(top: 32, left: 0, bottom: 0, right: 0) // Отступ сверху
         cv.backgroundColor = .clear
         cv.register(AccountCell.self, forCellWithReuseIdentifier: AccountCell.id)
+        cv.layer.cornerRadius = 12
         
         cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
-        cv.alwaysBounceVertical = true
+        cv.alwaysBounceVertical = false
         
         return cv
     }()
@@ -118,6 +119,7 @@ class AccountsVC: BasicVC {
             action: #selector (goToAddAccountVC)
         )
         
+//        navigationController?.navigationBar.prefersLargeTitles = true
         setupNavigationTitle(title: "Accounts".localized(), large: true)
         isAccountEmpty()
     }

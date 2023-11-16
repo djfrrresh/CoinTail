@@ -16,12 +16,14 @@ class AddBudgetVC: BasicVC {
     var selectedCurrency: String = Currencies.shared.selectedCurrency.currency {
         didSet {
             let indexPathToUpdate = IndexPath(item: 1, section: 0)
+            
             updateCell(at: indexPathToUpdate, text: selectedCurrency)
         }
     }
     var budgetTimePeriod: String = "Month" {
         didSet {
             let indexPathToUpdate = IndexPath(item: 3, section: 0)
+            
             updateCell(at: indexPathToUpdate, text: budgetTimePeriod)
         }
     }
@@ -29,6 +31,7 @@ class AddBudgetVC: BasicVC {
         didSet {
             guard let budgetCategory = budgetCategory else { return }
             let indexPathToUpdate = IndexPath(item: 2, section: 0)
+            
             updateCell(at: indexPathToUpdate, text: budgetCategory)
         }
     }

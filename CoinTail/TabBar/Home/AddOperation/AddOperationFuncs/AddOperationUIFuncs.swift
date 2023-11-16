@@ -12,153 +12,112 @@ import EasyPeasy
 extension AddOperationVC: UIScrollViewDelegate {
     
     func setupUI(with record: RecordClass) {
+        addOperationCV.easy.layout([
+            Top(32).to(self.view.safeAreaLayoutGuide, .top)
+        ])
+        
+        deleteOperationButton.isHidden = false
+        
         // Дата
-        dateTF.text = Self.operationDF.string(from: record.date)
-        
+        operationDate = record.date
+
         guard let recordType = RecordType(rawValue: record.type) else { return }
-        
+
         // Тип операции
         addOperationSegment = recordType
         addOperationTypeSwitcher.selectedSegmentIndex = addOperationSegment == .income ? 0 : 1
         addOperationTypeSwitcher.isHidden = true
-        
+
         // Сумма
-        amountTF.text = "\(record.amount)"
-        // Описание
-        descriptionTF.text = record.descriptionText
+        operationAmount = "\(record.amount)"
         
+        // Описание
+        operationDescription = record.descriptionText
+
         // Категория
         if let categoryName = Categories.shared.getCategory(for: record.categoryID)?.name {
-            categoryButton.setTitle(categoryName, for: .normal)
+            operationCategory = categoryName
         }
         categoryID = record.categoryID
-        
+
         // Счет
         if let accountID = record.accountID, let account = Accounts.shared.getAccount(for: accountID) {
-            accountButton.setTitle(account.name, for: .normal)
-        } else {
-            accountButton.setTitle(AddOperationVC.defaultAccount, for: .normal)
+            selectedAccount = account.name
         }
-        currencyButton.setTitle("\(record.currency)", for: .normal)
         
-        saveOperationButton.setTitle("Edit operation".localized(), for: .normal)
+        selectedCurrency = record.currency
     }
     
     func addOperationNavBar() {
-        let barButton = UIBarButtonItem(
-            image: UIImage(systemName: "dollarsign.arrow.circlepath"),
-            style: .done,
-            target: self,
-            action: #selector(repeatOperationAction)
-        )
-        
-        self.navigationItem.rightBarButtonItem = barButton
+        let title = recordID != nil ? "Edit".localized() : "Save".localized()
+
+        let saveButton = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(saveButtonAction))
+            
+        self.navigationItem.rightBarButtonItem = saveButton
     }
     
-    func setAddOpStack() {
-        // AMOUNT
-        let amountStack = UIStackView()
-        setStack(
-            stack: amountStack,
-            axis: .vertical,
-            spacing: 6,
-            alignment: .fill,
-            distribution: .fill,
-            viewsArray: [amountLabel, amountTF]
-        )
+    func addOperationSubviews() {
+        self.view.addSubview(addOperationTypeSwitcher)
+        self.view.addSubview(addOperationCV)
+        self.view.addSubview(deleteOperationButton)
+        self.view.addSubview(addOperationPickerView)
+        self.view.addSubview(toolBar)
         
-        // CATEGORY BUTTON && AMOUNT
-        let amountCategoryAccountStack = UIStackView()
-        setStack(
-            stack: amountCategoryAccountStack,
-            axis: .vertical,
-            spacing: 16,
-            alignment: .fill,
-            distribution: .fill,
-            viewsArray: [amountStack, categoryButton, accountButton]
-        )
-        
-        // DESCRIPTION
-        let descriptionStack = UIStackView()
-        setStack(
-            stack: descriptionStack,
-            axis: .vertical,
-            spacing: 6,
-            alignment: .fill,
-            distribution: .fill,
-            viewsArray: [descriptionLabel, descriptionTF]
-        )
-        
-        // DATE
-        let dateStack = UIStackView()
-        setStack(
-            stack: dateStack,
-            axis: .vertical,
-            spacing: 6,
-            alignment: .fill,
-            distribution: .fill,
-            viewsArray: [dateLabel, dateTF]
-        )
-                
-        let preFinalStack = UIStackView()
-        setStack(
-            stack: preFinalStack,
-            axis: .vertical,
-            spacing: 32,
-            alignment: .fill,
-            distribution: .fill,
-            viewsArray: [
-                addOperationTypeSwitcher,
-                amountCategoryAccountStack,
-                descriptionStack,
-                dateStack
-            ]
-        )
-        
-        setStack(
-            stack: finalStack,
-            axis: .vertical,
-            spacing: 70,
-            alignment: .fill,
-            distribution: .equalCentering,
-            viewsArray: [preFinalStack, saveOperationButton]
-        )
-                
-        self.view.addSubview(finalStack)
-        finalStack.easy.layout([
+        addOperationTypeSwitcher.easy.layout([
             Left(16),
             Right(16),
-            Top(10).to(self.view.safeAreaLayoutGuide, .top),
-            Bottom(10).to(self.view.safeAreaLayoutGuide, .bottom)
+            Height(28),
+            Top(24).to(self.view.safeAreaLayoutGuide, .top)
         ])
         
-        self.view.addSubview(currencyButton)
-        currencyButton.easy.layout([
-            Right(8).to(amountTF, .right),
-            Height(32),
-            Width(48),
-            CenterY().to(amountTF)
+        addOperationCV.easy.layout([
+            Left(16),
+            Right(16),
+            Top(24).to(addOperationTypeSwitcher, .bottom),
+            Height(44 * 5 + 24 + 80)
+        ])
+        
+        deleteOperationButton.easy.layout([
+            Left(16),
+            Right(16),
+            Top(24).to(addOperationCV, .bottom),
+            Height(52)
+        ])
+        
+        addOperationPickerView.easy.layout([
+            Left(),
+            Right(),
+            Height(200),
+            Bottom().to(self.view.safeAreaLayoutGuide, .bottom)
+        ])
+        
+        toolBar.easy.layout([
+            Left(),
+            Right(),
+            Height(44),
+            Bottom().to(addOperationPickerView, .top)
         ])
     }
     
-    // Создание меню выше пикера времени с кнопками действия
-    static func createToolbar() -> UIToolbar { // Всплывающий снизу DatePicker
-        let toolbar: UIToolbar = {
-            let toolBar = UIToolbar()
-            toolBar.sizeToFit()
-            toolBar.tintColor = .systemBlue
-            
-            let doneButton = UIBarButtonItem(
-                barButtonSystemItem: .done,
-                target: nil,
-                action: #selector(doneButtonAction)
-            )
-            toolBar.setItems([doneButton], animated: true)
-            
-            return toolBar
-        }()
-
-        return toolbar
+    func updateCell(at indexPath: IndexPath, text: String) {
+        if let cell = addOperationCV.cellForItem(at: indexPath) as? AddOperationCell {
+            cell.updateSubMenuLabel(text)
+        }
+    }
+    func updateDescription(at indexPath: IndexPath, text: String) {
+        if let cell = addOperationCV.cellForItem(at: indexPath) as? AddOperationCell {
+            cell.operationDescriptionTF.text = text
+        }
     }
     
+    func setupToolBar() {
+        let doneButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(doneButtonAction)
+        )
+
+        toolBar.setItems([doneButton], animated: true)
+    }
+
 }

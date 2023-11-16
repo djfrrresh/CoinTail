@@ -16,12 +16,60 @@ class AddOperationVC: BasicVC {
     var categoryID: ObjectId?
     var subcategoryID: ObjectId?
     var accountID: ObjectId?
+    var operationAmount: String?
+    var isUsingCurrenciesPicker: Bool = true
+    var operationDate: Date?
+    var operationDescription: String?
     
-    var currency: FavouriteCurrencyClass = Currencies.shared.selectedCurrency
-    var currentIndex = 0
+    var operationCategory: String? {
+        didSet {
+            guard let operationCategory = operationCategory else { return }
+            let indexPathToUpdate = IndexPath(item: 1, section: 0)
+            
+            updateCell(at: indexPathToUpdate, text: operationCategory)
+        }
+    }
+    var selectedAccount: String? {
+        didSet {
+            guard let selectedAccount = selectedAccount else { return }
+            let indexPathToUpdate = IndexPath(item: 2, section: 0)
+            
+            updateCell(at: indexPathToUpdate, text: selectedAccount)
+        }
+    }
+    var selectedCurrency: String = Currencies.shared.selectedCurrency.currency {
+        didSet {
+            let indexPathToUpdate = IndexPath(item: 3, section: 0)
+            
+            updateCell(at: indexPathToUpdate, text: selectedCurrency)
+        }
+    }
     
-    let finalStack = UIStackView()
+    static let favouriteCurrencies: [FavouriteCurrencyClass] = Currencies.shared.currenciesToChoose()
+    let favouriteStringCurrencies: [String] = Currencies.shared.extractCurrencyStrings(from: favouriteCurrencies)
+    static let accounts = RealmService.shared.accountsArr
+    let accountNames = Accounts.shared.getAccountNames(from: accounts)
     
+    let addOperationCV: UICollectionView = {
+        let addOperationLayout: UICollectionViewFlowLayout = {
+            let layout = UICollectionViewFlowLayout()
+            layout.minimumInteritemSpacing = 0
+            layout.minimumLineSpacing = 0
+
+            return layout
+        }()
+        
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: addOperationLayout)
+        cv.backgroundColor = .clear
+        cv.register(AddOperationCell.self, forCellWithReuseIdentifier: AddOperationCell.id)
+        
+        cv.showsVerticalScrollIndicator = false
+        cv.showsHorizontalScrollIndicator = false
+        cv.alwaysBounceVertical = false
+        
+        return cv
+    }()
+        
     let addOperationTypeSwitcher: UISegmentedControl = {
         let switcher = UISegmentedControl(items: [
             RecordType.income.rawValue,
@@ -32,89 +80,40 @@ class AddOperationVC: BasicVC {
     }()
     var addOperationSegment: RecordType = .income
     
-    let amountLabel = UILabel(text: "Amount".localized(), alignment: .left)
-    let descriptionLabel = UILabel(text: "Description".localized(), alignment: .left)
-    let dateLabel = UILabel(text: "Date".localized(), alignment: .left)
-    
-    static let todayText = "Today".localized()
-    
-    let amountTF = UITextField(
-        defaultText: "0.00",
-        background: .lightGray.withAlphaComponent(0.2),
-        keyboard: .decimalPad,
-        placeholder: "Enter amount".localized()
-    )
-    let descriptionTF = UITextField(
-        background: .clear,
-        keyboard: .default,
-        placeholder: "For example: Bought in the store".localized()
-    )
-    let dateTF: UITextField = {
-        let todayString = operationDF.string(from: Date())
-        let textField  = UITextField(
-            defaultText: "\(todayText) \(todayString)",
-            background: .clear,
-            keyboard: .numberPad
-        )
+    let deleteOperationButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(named: "cancelAction")
+        button.layer.cornerRadius = 16
+        button.setTitle("Delete operation".localized(), for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
+        button.isHidden = true
         
-        textField.inputView = operationDatePicker
-        textField.inputAccessoryView = createToolbar()
-        textField.tintColor = .clear
-        
-        return textField
+        return button
     }()
     
-    static let operationDF: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        formatter.dateFormat = "dd/MM/yyyy"
-        
-        return formatter
-    }()
-    
-    static let operationDatePicker: UIDatePicker = {
-        let picker = UIDatePicker()
-        picker.timeZone = NSTimeZone.local
-        picker.datePickerMode = .date
-        picker.preferredDatePickerStyle = .wheels
+    let addOperationPickerView: UIPickerView = {
+        let picker = UIPickerView()
+        picker.isHidden = true
         
         return picker
     }()
     
-    static let defaultCategory = "Select category".localized()
-    static let defaultAccount = "Select account".localized()
-    
-    let categoryButton = UIButton(
-        name: defaultCategory,
-        background: .clear,
-        textColor: .black
-    )
-    let accountButton = UIButton(
-        name: defaultAccount,
-        background: .clear,
-        textColor: .black
-    )
-    let currencyButton = UIButton(
-        name: "\(Currencies.shared.selectedCurrency)",
-        background: .clear,
-        textColor: .black
-    )
-    let saveOperationButton = UIButton(
-        name: "Save operation".localized(),
-        background: .black,
-        textColor: .white
-    )
+    let toolBar: UIToolbar = {
+        let toolbar = UIToolbar()
+        toolbar.isHidden = true
+        toolbar.sizeToFit()
+        toolbar.tintColor = .systemBlue
+
+        return toolbar
+    }()
     
     public required init(segmentIndex: Int) {
         addOperationTypeSwitcher.selectedSegmentIndex = segmentIndex
         addOperationSegment = segmentIndex == 0 ? .income : .expense
-        amountTF.text = segmentIndex == 0 ? "0.00" : "-0.00"
         
         super.init(nibName: nil, bundle: nil)
-        
-        addOperationNavBar()
-        
+
         self.title = "Add new operation".localized()
     }
     required init?(coder: NSCoder) {
@@ -135,25 +134,22 @@ class AddOperationVC: BasicVC {
             target: self,
             action: #selector(removeOperation)
         )
-        
-        // Установка значений для View
         setupUI(with: record)
     }
             
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        amountTF.delegate = self
-        descriptionTF.delegate = self
-        dateTF.delegate = self
+        addOperationCV.delegate = self
+        addOperationPickerView.delegate = self
         
-        setAddOpStack() // Stack'и для view на экране
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        setTargets() // Таргеты для кнопок
+        addOperationCV.dataSource = self
+        addOperationPickerView.dataSource = self
+                
+        addOperationNavBar()
+        addOperationSubviews()
+        setTargets()
+        setupToolBar()
     }
     
 }

@@ -15,18 +15,25 @@ final class AccountsTransferVC: BasicVC {
     let accountNames = Accounts.shared.getAccountNames(from: accounts)
     
     var selectedRowIndex: Int?
-    var accountNameFrom: String = "" {
-        didSet {
-            transferCV.reloadData()
-        }
-    }
-    var accountNameTo: String = "" {
-        didSet {
-            transferCV.reloadData()
-        }
-    }
-    
     var transferAmount: String?
+    var accountNameFrom: String? {
+        didSet {
+            guard let accountNameFrom = accountNameFrom else { return }
+            let indexPathToUpdate = IndexPath(item: 0, section: 0)
+            
+            updateCell(at: indexPathToUpdate, text: accountNameFrom)
+            showTransferFrom()
+        }
+    }
+    var accountNameTo: String? {
+        didSet {
+            guard let accountNameTo = accountNameTo else { return }
+            let indexPathToUpdate = IndexPath(item: 1, section: 0)
+            
+            updateCell(at: indexPathToUpdate, text: accountNameTo)
+            showTransferTo()
+        }
+    }
         
     let transferMenu: [String] = [
         "From".localized(),

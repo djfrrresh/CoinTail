@@ -1,14 +1,14 @@
 //
-//  AddAccountCellTFDelegate.swift
+//  CreateCategoryCellTFDelegate.swift
 //  CoinTail
 //
-//  Created by Eugene on 03.11.23.
+//  Created by Eugene on 14.11.23.
 //
 
 import UIKit
 
 
-extension AddAccountCell: UITextFieldDelegate {
+extension CreateCategoryCell: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard !string.isEmpty else { return true }
@@ -19,14 +19,14 @@ extension AddAccountCell: UITextFieldDelegate {
         let allString = textFieldString.replacingCharacters(in: textFieldRange, with: string)
         let charactersCount = String(textFieldString).count
         
-        if textField == accountAmountTF {
-            addAccountCellDelegate?.cell(didUpdateAccountAmount: allString)
-
-            return AmountValidationHelper.isValidInput(textField, shouldChangeCharactersIn: range, replacementString: string)
-        } else {
-            addAccountCellDelegate?.cell(didUpdateAccountName: allString)
-
+        if textField == categoryNameTF {
+            createCategoryCellDelegate?.cell(didUpdateCategoryName: allString)
+            
             return charactersCount < 24
+        } else {
+            createCategoryCellDelegate?.cell(didUpdateCategoryIcon: allString)
+            
+            return charactersCount < 1 && allString.containsEmoji
         }
     }
     

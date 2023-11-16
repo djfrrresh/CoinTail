@@ -114,6 +114,10 @@ final class TransferCell: UICollectionViewCell {
         separatorView.isHidden = isHidden
     }
     
+    func updateAccountNameLabel(_ labelText: String) {
+        accountNameLabel.text = labelText
+    }
+    
     static func size() -> CGSize {
         return .init(
             width: UIScreen.main.bounds.width,

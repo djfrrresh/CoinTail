@@ -15,7 +15,6 @@ extension AddAccountVC {
         accountAmount = "\(account.startBalance)"
         accountName = account.name
         selectedCurrency = account.currency
-//        isAccountMain =
         
         deleteAccountButton.isHidden = false
     }
@@ -61,7 +60,7 @@ extension AddAccountVC {
         let saveButton = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(saveAccountAction))
             
         self.navigationItem.rightBarButtonItem = saveButton
-        self.navigationItem.rightBarButtonItem?.isEnabled = accountID != nil ? true : false
+//        self.navigationItem.rightBarButtonItem?.isEnabled = accountID != nil ? true : false
     }
     
     //TODO: вынести эту функцию в basicVC

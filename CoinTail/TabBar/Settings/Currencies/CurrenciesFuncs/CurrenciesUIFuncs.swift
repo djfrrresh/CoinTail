@@ -20,7 +20,7 @@ extension CurrenciesVC {
             Right(16),
             Height(36),
             CenterX(),
-            Top(16).to(self.view.safeAreaLayoutGuide, .top)
+            Top(24).to(self.view.safeAreaLayoutGuide, .top)
         ])
         
         currenciesCV.easy.layout([

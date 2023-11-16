@@ -9,62 +9,46 @@ import UIKit
 import RealmSwift
 
 
-protocol AddNewCategory: AnyObject {
-    func sendNewCategoryData(category: CategoryClass)
-}
-
-protocol AddNewSubcategory: AnyObject {
-    func sendNewSubcategoryData(subcategory: SubcategoryClass)
-}
-
 extension CreateCategoryVC {
     
     // Проверка на наличие текста и выбранной иконки, вывод ошибки или закрытие PopVC
-    @objc func addNewItemAction(_ sender: UIButton) {
-        if (categoryNameTF.text?.isEmpty == true) {
-            errorAnimate()
-        } else {
-            guard let categoryText = categoryNameTF.text else { return }
+    @objc func createCategoryAction() {
+        let categoryName = categoryName ?? ""
+        let categoryIcon = categoryIcon ?? ""
+        let mainCategoryName = mainCategoryName ?? ""
 
-            let isSubcategory = parentalCategoryButton.titleLabel?.text == CreateCategoryVC.defaultParentalCategoryText ? false : true
+        let isSubcategory = isToggleOn
+        let randomColor = UIColor.randomColor()
+        
+        categoryValidation(name: categoryName, icon: categoryIcon, mainCategory: mainCategoryName, isSubcategory: isSubcategory) { [weak self] categoryName, categoryIcon in
+            guard let strongSelf = self else { return }
             
+            //TODO: subcategory
             if isSubcategory {
-                guard let parentalCategoryText = parentalCategoryButton.titleLabel?.text else { return }
-                
-                guard let parentalCategoryID = Categories.shared.getCategoryID(for: parentalCategoryText, type: addOperationVCSegment) else { return }
-
-                let subcategory = SubcategoryClass()
-                subcategory.name = categoryText
-                subcategory.color = selectedColor?.toHex() ?? UIColor.white.toHex()
-                subcategory.image = selectedCategoryImage
-                subcategory.parentCategory = parentalCategoryID
-                                
-                Categories.shared.addSubcategoryToCategory(
-                    for: parentalCategoryID,
-                    to: addOperationVCSegment,
-                    subcategoryID: subcategory.id
-                )
-                
-                addNewSubcategoryDelegate?.sendNewSubcategoryData(subcategory: subcategory)
+//                let subcategory = SubcategoryClass()
+//                subcategory.name = categoryName
+//                subcategory.color = randomColor.toHex()
+//                subcategory.image = categoryIcon
+//                subcategory.parentCategory = categoryID
+//
+//                Categories.shared.addSubcategoryToCategory(
+//                    for: categoryID,
+//                    to: strongSelf.addOperationVCSegment,
+//                    subcategoryID: subcategory.id
+//                )
+//
+//                Categories.shared.addNewSubcategory(subcategory)
             } else {
                 let category = CategoryClass()
-                category.name = categoryText
-                category.color = selectedColor?.toHex() ?? UIColor.white.toHex()
-                category.image = selectedCategoryImage
-                
-                addNewCategoryDelegate?.sendNewCategoryData(category: category)
+                category.name = categoryName
+                category.color = randomColor.toHex()
+                category.image = categoryIcon
+
+                Categories.shared.addNewCategory(category, type: strongSelf.addOperationVCSegment)
             }
-            
-            dismiss(animated: true, completion: nil)
+
+            strongSelf.navigationController?.popViewController(animated: true)
         }
-    }
-    
-    // Переход в VC с выбором цвета
-    @objc func didTapSelectColor() {
-        let colorPickerVC = UIColorPickerViewController()
-        colorPickerVC.delegate = self
-        
-        present(colorPickerVC, animated: true)
     }
     
     @objc func goToSelectCategoryVC() {

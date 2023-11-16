@@ -11,82 +11,25 @@ import EasyPeasy
 
 extension CreateCategoryVC {
 
-    func setPopupElements() {
-        self.view.addSubview(popUpView)
-        popUpView.addSubview(titleLabel)
-        popUpView.addSubview(categoryNameTF)
-        popUpView.addSubview(errorLabel)
-        popUpView.addSubview(addButton)
-        popUpView.addSubview(createCategoryCV)
-        popUpView.addSubview(selectColorButton)
-        popUpView.addSubview(parentalCategoryButton)
-        
-        popUpView.easy.layout([
-            Center(),
-            Left(20),
-            Right(20),
-            Height(380)
-        ])
-        
-        titleLabel.easy.layout([
-            CenterX(),
-            Top(10)
-        ])
-        
-        categoryNameTF.easy.layout([
-            Top(10).to(titleLabel, .bottom),
-            Height(40),
-            Left(20),
-            Right(20)
-        ])
-        
-        createCategoryCV.easy.layout([
-            Height(50),
-            Left(),
-            Right(),
-            Top(10).to(categoryNameTF, .bottom)
-        ])
-        
-        selectColorButton.easy.layout([
-            Top(16).to(createCategoryCV, .bottom),
-            CenterX(),
-            Left(16),
-            Right(16)
-        ])
-        
-        errorLabel.easy.layout([
-            Top(20).to(addButton, .bottom),
-            CenterX()
-        ])
-        
-        parentalCategoryButton.easy.layout([
-            Top(16).to(selectColorButton, .bottom),
-            CenterX(),
-            Left(16),
-            Right(16)
-        ])
-
-        addButton.easy.layout([
-            Top(16).to(parentalCategoryButton, .bottom),
-            CenterX(),
-            Left(16),
-            Right(16)
-        ])
+    func createCategorySubviews() {
+        self.view.addSubview(createCategoryCV)
             
+        createCategoryCV.easy.layout([
+            Left(16),
+            Right(16),
+            Top(32).to(self.view.safeAreaLayoutGuide, .top),
+            Bottom()
+        ])
     }
     
-    // Анимация вывода ошибки
-    func errorAnimate() {
-        if categoryNameTF.text?.isEmpty == true {
-            UIView.animate(withDuration: 0.1) { [self] in
-                errorLabel.isHidden = false
-                errorLabel.alpha = 1
+    func createCategoryNavBar() {
+        let title = (categoryID != nil || subcategoryID != nil) ? "Edit".localized() : "Save".localized()
 
-                popUpView.easy.layout([Height(420)])
-                
-                view.layoutIfNeeded()
-            }
-        }
+        let saveButton = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(createCategoryAction))
+            
+        self.navigationItem.rightBarButtonItem = saveButton
+        //TODO: расскоментить тут и в AddAccountVC
+//        self.navigationItem.rightBarButtonItem?.isEnabled = (categoryID != nil || subcategoryID != nil) ? true : false
     }
     
 }

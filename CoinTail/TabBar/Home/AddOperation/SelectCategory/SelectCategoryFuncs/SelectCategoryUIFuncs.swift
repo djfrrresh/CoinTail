@@ -25,10 +25,10 @@ extension SelectCategoryVC {
         ])
         
         newCategoryButton.easy.layout([
-            Bottom(20).to(self.view.safeAreaLayoutGuide, .bottom),
-            Right(20).to(self.view.safeAreaLayoutGuide, .right),
-            Height(64),
-            Width(64)
+            Bottom(16).to(self.view.safeAreaLayoutGuide, .bottom),
+            Left(16),
+            Right(16),
+            Height(52)
         ])
         
         selectCategoryCV.easy.layout([
@@ -36,7 +36,7 @@ extension SelectCategoryVC {
             Right(16),
             CenterX(),
             Top(24).to(categorySearchBar, .bottom),
-            Bottom(16).to(newCategoryButton, .top)
+            Bottom(24).to(newCategoryButton, .top)
         ])
     }
     

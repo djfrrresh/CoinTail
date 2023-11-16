@@ -14,6 +14,8 @@ extension AddAccountVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
         if indexPath.row == 2 {
             toolBar.isHidden = false
             currenciesPickerView.isHidden = false
+            
+            selectedCurrency = favouriteStringCurrencies[0]
         }
     }
     

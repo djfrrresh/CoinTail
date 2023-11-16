@@ -10,6 +10,7 @@ import UIKit
 
 extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    //TODO: сделать разбитие секций по активным / неактивным
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return budgetsDaySections.count
     }
@@ -82,9 +83,9 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
         
         let activeSectionIndex = budgetsDaySections.firstIndex { $0.budgets[0].isActive }
         let nonActiveSectionIndex = budgetsDaySections.firstIndex { !($0.budgets[0].isActive) }
-        
+
         headerView.separatorLabel.text = indexPath.section == activeSectionIndex ? "Active budgets".localized() : "Non active budgets".localized()
-        
+
         headerView.separator(isVisible: indexPath.section == activeSectionIndex || indexPath.section == nonActiveSectionIndex)
 
         return headerView
@@ -92,6 +93,10 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
         
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         CGSize(width: UIScreen.main.bounds.width, height: 20)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        .init(top: 0, left: 0, bottom: 16, right: 0)
     }
     
 }
