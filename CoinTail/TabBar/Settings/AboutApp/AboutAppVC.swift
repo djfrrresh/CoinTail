@@ -12,22 +12,14 @@ import EasyPeasy
 final class AboutAppVC: BasicVC {
     
     let contactsMenu = [
-        "E-Mail".localized(),
-        "Telegram".localized()
+        "E-Mail",
+        "Telegram"
     ]
     
     let contactsImages = [
         "envelope.fill",
         "paperplane.fill"
     ]
-
-    var appVersionView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 12
-        
-        return view
-    }()
     
     let chevronImageView: UIImageView = {
         let imageView = UIImageView()
@@ -54,47 +46,9 @@ final class AboutAppVC: BasicVC {
         label.font = UIFont(name: "SFProDisplay-Bold", size: 28)
         label.numberOfLines = 1
         label.textAlignment = .center
+        label.textColor = UIColor(named: "black")
         
         return label
-    }()
-    let appVersionTextLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Application version".localized()
-        label.font = UIFont(name: "SFProText-Regular", size: 17)
-        label.numberOfLines = 1
-        label.textAlignment = .left
-        
-        return label
-    }()
-    let appVersionLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "SFProText-Regular", size: 17)
-        label.numberOfLines = 1
-        label.textAlignment = .left
-        label.textColor = UIColor(named: "secondaryTextColor")
-        if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-            label.text = appVersion
-        } else {
-            label.text = "1.0"
-        }
-        
-        return label
-    }()
-    let userAgreementLabel: UILabel = {
-        let label = UILabel()
-        label.text = "User agreement".localized()
-        label.textColor = .black
-        label.font = UIFont(name: "SFProText-Regular", size: 17)
-        
-        return label
-    }()
-    
-    let userAgreementButton: UIButton = {
-        let button = UIButton()
-        button.layer.cornerRadius = 12
-        button.backgroundColor = .white
-        
-        return button
     }()
     
     let moneyImageView: UIImageView = {
@@ -137,7 +91,6 @@ final class AboutAppVC: BasicVC {
         contactsCV.dataSource = self
 
         aboutSubviews()
-        aboutTargets()
     }
  
 }

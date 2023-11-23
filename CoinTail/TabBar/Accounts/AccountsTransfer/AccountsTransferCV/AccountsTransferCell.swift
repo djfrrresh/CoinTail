@@ -46,6 +46,7 @@ final class TransferCell: UICollectionViewCell {
         label.numberOfLines = 1
         label.textAlignment = .left
         label.font = UIFont(name: "SFProText-Regular", size: 17)
+        label.textColor = UIColor(named: "black")
         
         return label
     }()
@@ -54,7 +55,9 @@ final class TransferCell: UICollectionViewCell {
         let textField = UITextField()
         
         textField.tintColor = .clear
+        textField.textColor = UIColor(named: "black")
         textField.font = UIFont(name: "SFProText-Regular", size: 17)
+        textField.keyboardType = .numberPad
         
         return textField
     }()

@@ -19,7 +19,7 @@ extension UIButton {
         self.layer.borderWidth = 1
         
         // Цвета
-        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.borderColor = UIColor(named: "black")?.cgColor
         self.backgroundColor = background
         self.setTitleColor(textColor, for: .normal)
         

@@ -29,6 +29,7 @@ final class NotificationsCell: UICollectionViewCell {
     let menuLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
+        label.textColor = UIColor(named: "black")
         label.font = UIFont(name: "SFProText-Regular", size: 17)
 
         return label

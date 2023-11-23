@@ -24,7 +24,7 @@
 		560AFC052A16B06D0054B502 /* HomeUXFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC042A16B06D0054B502 /* HomeUXFuncs.swift */; };
 		560AFC192A1BAC810054B502 /* HomeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC182A1BAC810054B502 /* HomeActions.swift */; };
 		560AFC1C2A1BEE640054B502 /* Records.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC1B2A1BEE640054B502 /* Records.swift */; };
-		560AFC1F2A1BF4970054B502 /* MonthSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC1E2A1BF4970054B502 /* MonthSection.swift */; };
+		560AFC1F2A1BF4970054B502 /* OperationsDaySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC1E2A1BF4970054B502 /* OperationsDaySection.swift */; };
 		560AFC272A1BF5A30054B502 /* HomeCategoryCellCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC262A1BF5A30054B502 /* HomeCategoryCellCV.swift */; };
 		560AFC292A1BF62D0054B502 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC282A1BF62D0054B502 /* DateCell.swift */; };
 		560AFC2B2A1BF8EB0054B502 /* HomeCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFC2A2A1BF8EB0054B502 /* HomeCVDataSource.swift */; };
@@ -121,7 +121,6 @@
 		568EF0872AB4C09F00EB042D /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0862AB4C09F00EB042D /* Notifications.swift */; };
 		568EF0892ABB439100EB042D /* SelectCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0882ABB439100EB042D /* SelectCategoryCell.swift */; };
 		568EF08B2ABC93B500EB042D /* Subcategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF08A2ABC93B500EB042D /* Subcategory.swift */; };
-		569B60D62AE09B3400CBFF33 /* SettingsItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B60D52AE09B3400CBFF33 /* SettingsItems.swift */; };
 		569B60D92AE14F1F00CBFF33 /* NotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B60D82AE14F1F00CBFF33 /* NotificationsCell.swift */; };
 		569B60DB2AE153C100CBFF33 /* NotificationsCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B60DA2AE153C100CBFF33 /* NotificationsCVDataSource.swift */; };
 		569B60DD2AE1590300CBFF33 /* NotificationsUXFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B60DC2AE1590300CBFF33 /* NotificationsUXFuncs.swift */; };
@@ -209,7 +208,7 @@
 		560AFC042A16B06D0054B502 /* HomeUXFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUXFuncs.swift; sourceTree = "<group>"; };
 		560AFC182A1BAC810054B502 /* HomeActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeActions.swift; sourceTree = "<group>"; };
 		560AFC1B2A1BEE640054B502 /* Records.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Records.swift; sourceTree = "<group>"; };
-		560AFC1E2A1BF4970054B502 /* MonthSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSection.swift; sourceTree = "<group>"; };
+		560AFC1E2A1BF4970054B502 /* OperationsDaySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsDaySection.swift; sourceTree = "<group>"; };
 		560AFC262A1BF5A30054B502 /* HomeCategoryCellCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCategoryCellCV.swift; sourceTree = "<group>"; };
 		560AFC282A1BF62D0054B502 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
 		560AFC2A2A1BF8EB0054B502 /* HomeCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCVDataSource.swift; sourceTree = "<group>"; };
@@ -308,7 +307,6 @@
 		568EF0862AB4C09F00EB042D /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		568EF0882ABB439100EB042D /* SelectCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryCell.swift; sourceTree = "<group>"; };
 		568EF08A2ABC93B500EB042D /* Subcategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subcategory.swift; sourceTree = "<group>"; };
-		569B60D52AE09B3400CBFF33 /* SettingsItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItems.swift; sourceTree = "<group>"; };
 		569B60D82AE14F1F00CBFF33 /* NotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCell.swift; sourceTree = "<group>"; };
 		569B60DA2AE153C100CBFF33 /* NotificationsCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCVDataSource.swift; sourceTree = "<group>"; };
 		569B60DC2AE1590300CBFF33 /* NotificationsUXFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsUXFuncs.swift; sourceTree = "<group>"; };
@@ -568,13 +566,12 @@
 		560AFC412A1D09030054B502 /* Structs */ = {
 			isa = PBXGroup;
 			children = (
-				560AFC1E2A1BF4970054B502 /* MonthSection.swift */,
+				560AFC1E2A1BF4970054B502 /* OperationsDaySection.swift */,
 				56EFDFEF2A5D9176003A6A45 /* DaySection.swift */,
 				5642DAEA2A4080BF00ADF475 /* DatePeriods.swift */,
 				5656E9BE2A9777FA00070045 /* RecordType.swift */,
 				5665C1362A9F5B2200B11D34 /* Currency.swift */,
 				568EF07B2AB3AE0F00EB042D /* NotificationPeriods.swift */,
-				569B60D52AE09B3400CBFF33 /* SettingsItems.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -1380,7 +1377,6 @@
 				5642DB2E2A4F34CC00ADF475 /* BudgetCVDataSource.swift in Sources */,
 				568EF03E2AA61FB900EB042D /* AddAccountActions.swift in Sources */,
 				569E52362AD0B47600A4FCA7 /* AboutAppActions.swift in Sources */,
-				569B60D62AE09B3400CBFF33 /* SettingsItems.swift in Sources */,
 				569B60DD2AE1590300CBFF33 /* NotificationsUXFuncs.swift in Sources */,
 				569B60EF2AE1F4DD00CBFF33 /* RegularityVC.swift in Sources */,
 				560AFC272A1BF5A30054B502 /* HomeCategoryCellCV.swift in Sources */,
@@ -1400,7 +1396,7 @@
 				5642DB292A4DE3B700ADF475 /* BudgetActions.swift in Sources */,
 				56DBB6FC2A3B31DB0087271D /* AddOperationVC.swift in Sources */,
 				56EFDFEA2A54B631003A6A45 /* AddBudgetTFDelegate.swift in Sources */,
-				560AFC1F2A1BF4970054B502 /* MonthSection.swift in Sources */,
+				560AFC1F2A1BF4970054B502 /* OperationsDaySection.swift in Sources */,
 				56EFDFE22A535294003A6A45 /* AddBudgetUIFuncs.swift in Sources */,
 				5642DB112A4329AB00ADF475 /* TabBar.swift in Sources */,
 				56DBB71D2A3B63310087271D /* CreateCategoryUXFuncs.swift in Sources */,

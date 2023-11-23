@@ -37,8 +37,7 @@ class AddBudgetVC: BasicVC {
     }
     var budgetAmount: String?
     
-    static let favouriteCurrencies: [FavouriteCurrencyClass] = Currencies.shared.currenciesToChoose()
-    let favouriteStringCurrencies: [String] = Currencies.shared.extractCurrencyStrings(from: favouriteCurrencies)
+    static let favouriteStringCurrencies: [String] = Currencies.shared.currenciesToChoose()
     
     let deleteBudgetButton: UIButton = {
         let button = UIButton()
@@ -84,7 +83,7 @@ class AddBudgetVC: BasicVC {
         cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
         cv.alwaysBounceVertical = false
-        cv.delaysContentTouches = true
+        cv.isScrollEnabled = false
 
         return cv
     }()

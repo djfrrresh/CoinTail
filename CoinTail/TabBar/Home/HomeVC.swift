@@ -19,7 +19,7 @@ class HomeVC: BasicVC {
     }
     
     // Операции, записанные в массив по месяцам
-    var monthSections = [MonthSection]() {
+    var monthSections = [OperationsDaySection]() {
         didSet {
             homeGlobalCV.reloadData()
         }
@@ -42,6 +42,49 @@ class HomeVC: BasicVC {
     }
              
     var categoryIsHidden: Bool = true
+    
+    let emptyOperationsView = UIView()
+
+    let graphicsImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "graphicsEmoji")
+        
+        return imageView
+    }()
+    
+    let noOperationsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Start adding your expenses and income".localized()
+        label.font = UIFont(name: "SFProDisplay-Bold", size: 28)
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
+        
+        return label
+    }()
+    let operationsDescriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Manage your finances by tracking your expenses and income via different categories".localized()
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
+        label.textColor = UIColor(named: "secondaryTextColor")
+        
+        return label
+    }()
+    
+    let addOperationButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(named: "primaryAction")
+        button.layer.cornerRadius = 16
+        button.setTitle("Add a transaction".localized(), for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
+        
+        return button
+    }()
 
     // Переключатель типов операций
     let homeTypeSwitcher: UISegmentedControl = {
@@ -87,18 +130,19 @@ class HomeVC: BasicVC {
                 
         period = .allTheTime
         sortRecords() // Сортировка операций по убыванию по дате
-        homeNavBar() // Кнопки в навбаре
-        homeButtonTargets() // Таргеты для кнопок
+        homeButtonTargets()
+        isOperationsEmpty()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        homeGlobalCV.delegate = self // Реагирование на события
+        homeGlobalCV.delegate = self
 
-        homeGlobalCV.dataSource = self // Подача данных
-                                        
-        homeSubviews() // Отображение и размеры вьюшек
+        homeGlobalCV.dataSource = self
+                        
+        emptyOperationsSubviews()
+        homeSubviews()
     }
 
 }

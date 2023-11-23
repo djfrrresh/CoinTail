@@ -23,13 +23,19 @@ extension CreateCategoryVC {
     }
     
     func createCategoryNavBar() {
-        let title = (categoryID != nil || subcategoryID != nil) ? "Edit".localized() : "Save".localized()
+        let title = (categoryID != nil) ? "Edit".localized() : "Save".localized()
 
         let saveButton = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(createCategoryAction))
             
         self.navigationItem.rightBarButtonItem = saveButton
         //TODO: расскоментить тут и в AddAccountVC
 //        self.navigationItem.rightBarButtonItem?.isEnabled = (categoryID != nil || subcategoryID != nil) ? true : false
+    }
+    
+    func updateCell(at indexPath: IndexPath, text: String) {
+        if let cell = createCategoryCV.cellForItem(at: indexPath) as? CreateCategoryCell {
+            cell.updateSubMenuLabel(text)
+        }
     }
     
 }

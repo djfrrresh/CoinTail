@@ -13,9 +13,9 @@ final class CurrenciesVC: BasicVC {
     let currenciesClass = Currencies.shared
 
     var favouriteCurrencies: [FavouriteCurrencyClass] {
-        RealmService.shared.favouriteCurrenciesArr
+        return RealmService.shared.favouriteCurrenciesArr
     }
-    var selectedCurrency: FavouriteCurrencyClass = Currencies.shared.selectedCurrency {
+    var selectedCurrency: SelectedCurrencyClass = Currencies.shared.selectedCurrency {
         didSet {
             currenciesCV.reloadData()
         }
@@ -26,7 +26,6 @@ final class CurrenciesVC: BasicVC {
     let currencySearchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.placeholder = "Type USD or Dollar for search".localized()
-        searchBar.barTintColor = UIColor.clear
         searchBar.backgroundColor = UIColor.clear
         searchBar.isTranslucent = true
         searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)

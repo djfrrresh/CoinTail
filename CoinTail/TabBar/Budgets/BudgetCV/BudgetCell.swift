@@ -37,18 +37,18 @@ final class BudgetCell: UICollectionViewCell {
         let label = UILabel()
         label.numberOfLines = 1
         label.font = UIFont(name: "SFProText-Regular", size: 17)
-        label.textColor = UIColor(named: "secondaryTextColor")
+        
+        return label
+    }()
+    let categoryIcon: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 1
+        label.font = UIFont(name: "SFProText-Regular", size: 32)
+        label.backgroundColor = .clear
         
         return label
     }()
     
-    let categoryImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-        
-        return imageView
-    }()
     let chevronImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "chevron.right")
@@ -67,7 +67,7 @@ final class BudgetCell: UICollectionViewCell {
         
         backView.addSubview(chevronImageView)
         backView.addSubview(separatorView)
-        backView.addSubview(categoryImage)
+        backView.addSubview(categoryIcon)
         backView.addSubview(amountLabel)
         backView.addSubview(categoryLabel)
     }
@@ -95,7 +95,7 @@ final class BudgetCell: UICollectionViewCell {
             Width(20)
         ])
         
-        categoryImage.easy.layout([
+        categoryIcon.easy.layout([
             CenterY(),
             Left(16),
             Height(32),
@@ -103,13 +103,13 @@ final class BudgetCell: UICollectionViewCell {
         ])
         
         categoryLabel.easy.layout([
-            Left(16).to(categoryImage, .right),
+            Left(16).to(categoryIcon, .right),
             Right(16).to(chevronImageView, .left),
             Top(12)
         ])
         
         amountLabel.easy.layout([
-            Left(16).to(categoryImage, .right),
+            Left(16).to(categoryIcon, .right),
             Right(16).to(chevronImageView, .left),
             Bottom(12)
         ])
@@ -123,6 +123,10 @@ final class BudgetCell: UICollectionViewCell {
     
     func isSeparatorLineHidden(_ isHidden: Bool) {
         separatorView.isHidden = isHidden
+    }
+    
+    func isSumExceedsBudget(sumByCategory: Double, budgetSum: Double) {
+        amountLabel.textColor = sumByCategory >= budgetSum ? .systemRed : UIColor(named: "secondaryTextColor")
     }
     
     static func size() -> CGSize {

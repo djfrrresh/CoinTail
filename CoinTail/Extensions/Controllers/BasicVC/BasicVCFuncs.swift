@@ -17,6 +17,7 @@ extension BasicVC {
         let alertView = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         
         alertView.addAction(alertAction)
+        
         self.present(alertView, animated: true)
     }
     
@@ -35,18 +36,6 @@ extension BasicVC {
         self.present(alertView, animated: true)
     }
     
-    // Создание стака между элементами
-    func setStack(stack: UIStackView, axis: NSLayoutConstraint.Axis, spacing: CGFloat, alignment: UIStackView.Alignment, distribution: UIStackView.Distribution, viewsArray: [UIView]) {
-        stack.axis = axis
-        stack.spacing = spacing
-        stack.alignment = alignment // Выравнивание
-        stack.distribution = distribution // Заполнение
-        
-        for view in viewsArray {
-            stack.addArrangedSubview(view)
-        }
-    }
-    
     // Настройка title для контроллера
     func setupNavigationTitle(title: String, large: Bool = false) {
         prefersLargeTitle = large
@@ -62,7 +51,7 @@ extension BasicVC {
                 label.text = title
                 label.textAlignment = .center
                 label.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
-                label.textColor = .black
+                label.textColor = UIColor(named: "black")
                 
                 return label
             }()
@@ -101,7 +90,7 @@ extension BasicVC {
                 label.text = title
                 label.textAlignment = .center
                 label.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
-                label.textColor = .black
+                label.textColor = UIColor(named: "black")
                 
                 return label
             }()
@@ -114,26 +103,6 @@ extension BasicVC {
             
             navigationItem.titleView = titleLabel
         }
-    }
-    
-    // Эмодзи из строки в картинку
-    func emojiToImage(emoji: String) -> UIImage? {
-        // Строка из эмодзи
-        let text = NSAttributedString(string: emoji, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 72)])
-        
-        // Контекст для рендеринга изображения
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 100, height: 100), false, 0)
-        
-        // Рисунок эмодзи на контексте
-        text.draw(in: CGRect(x: 0, y: 0, width: 100, height: 100))
-        
-        // Получение изображение из контекста
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        
-        // Завершение контекста
-        UIGraphicsEndImageContext()
-        
-        return image
     }
     
     // Убрать клавиатуру при нажатии на экран за пределы клавиатуры
@@ -150,9 +119,6 @@ extension BasicVC {
     }
     
     static func noDataViewSize(noDataLabel: UILabel, descriptionLabel: UILabel) -> CGFloat {
-        let noDataLabelWidth = noDataLabel.sizeThatFits(CGSize.zero).width
-        let descriptionWidth = descriptionLabel.sizeThatFits(CGSize.zero).width
-        
         let padding: CGFloat = 16.0
         let imagePadding: CGFloat = 32.0
         

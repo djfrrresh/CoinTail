@@ -15,7 +15,7 @@ final class CategoryCVCell: UICollectionViewCell {
     
     let backView: UIView = {
         let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = UIColor(named: "black")
         view.layer.cornerRadius = 15
         
         return view

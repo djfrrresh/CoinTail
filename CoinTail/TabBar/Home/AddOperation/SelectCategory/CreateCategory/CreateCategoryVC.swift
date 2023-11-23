@@ -12,9 +12,15 @@ import RealmSwift
 class CreateCategoryVC: BasicVC {
     
     var categoryID: ObjectId?
-    var subcategoryID: ObjectId?
     var categoryName: String?
-    var mainCategoryName: String?
+    var mainCategoryName: String? {
+        didSet {
+            guard let mainCategoryName = mainCategoryName else { return }
+            let indexPathToUpdate = IndexPath(item: 3, section: 0)
+            
+            updateCell(at: indexPathToUpdate, text: mainCategoryName)
+        }
+    }
     var categoryIcon: String?
     var isToggleOn: Bool = false
     

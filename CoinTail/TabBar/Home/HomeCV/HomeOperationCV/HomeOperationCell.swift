@@ -15,7 +15,7 @@ final class HomeOperationCell: UICollectionViewCell {
     
     weak var pushVCDelegate: PushVC?
     
-    var monthSectionsCellData = [MonthSection]() {
+    var monthSectionsCellData = [OperationsDaySection]() {
         didSet {
             operationsCV.reloadData()
         }
@@ -84,13 +84,13 @@ final class HomeOperationCell: UICollectionViewCell {
         operationsCV.easy.layout(Edges())
     }
     
-    static func size(data: [MonthSection]) -> CGSize {
+    static func size(data: [OperationsDaySection]) -> CGSize {
         var height: CGFloat = 0
         
         // Размер общей коллекции вычисляется по размеру каждой ячейки
         for monthSection in data {
-            for record in monthSection.records {
-                height += OperationCVCell.size(data: record).height
+            for _ in monthSection.records {
+                height += OperationCVCell.size().height
             }
             height += 32
         }

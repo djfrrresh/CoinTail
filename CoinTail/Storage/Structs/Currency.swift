@@ -175,9 +175,4 @@ enum Currency: String, CaseIterable {
     case ZAR = "South African Rand"
     case ZMW = "Zambian Kwacha"
     case ZWL = "Zimbabwean Dollar"
-
-    // Получение названия валюты
-    var name: String {
-        return self.rawValue
-    }
 }

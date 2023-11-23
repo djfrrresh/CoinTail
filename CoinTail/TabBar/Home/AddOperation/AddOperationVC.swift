@@ -14,7 +14,6 @@ class AddOperationVC: BasicVC {
     
     var recordID: ObjectId?
     var categoryID: ObjectId?
-    var subcategoryID: ObjectId?
     var accountID: ObjectId?
     var operationAmount: String?
     var isUsingCurrenciesPicker: Bool = true
@@ -31,10 +30,11 @@ class AddOperationVC: BasicVC {
     }
     var selectedAccount: String? {
         didSet {
-            guard let selectedAccount = selectedAccount else { return }
+            guard let selectedAccount = selectedAccount, let account = Accounts.shared.getAccount(for: selectedAccount) else { return }
             let indexPathToUpdate = IndexPath(item: 2, section: 0)
             
             updateCell(at: indexPathToUpdate, text: selectedAccount)
+            accountID = account.id
         }
     }
     var selectedCurrency: String = Currencies.shared.selectedCurrency.currency {
@@ -45,8 +45,7 @@ class AddOperationVC: BasicVC {
         }
     }
     
-    static let favouriteCurrencies: [FavouriteCurrencyClass] = Currencies.shared.currenciesToChoose()
-    let favouriteStringCurrencies: [String] = Currencies.shared.extractCurrencyStrings(from: favouriteCurrencies)
+    static let favouriteStringCurrencies: [String] = Currencies.shared.currenciesToChoose()
     static let accounts = RealmService.shared.accountsArr
     let accountNames = Accounts.shared.getAccountNames(from: accounts)
     
@@ -66,6 +65,7 @@ class AddOperationVC: BasicVC {
         cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
         cv.alwaysBounceVertical = false
+        cv.isScrollEnabled = false
         
         return cv
     }()

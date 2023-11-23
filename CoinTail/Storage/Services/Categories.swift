@@ -28,20 +28,20 @@ final class Categories {
         }
     }
     
-    // Получить категории по типам на главном меню
+    // Получить категории по типам 
     func getCategories(for sectionType: RecordType) -> [CategoryClass] {
         switch sectionType {
         case .expense:
-            return totalCategories.filter { $0.type == "Expense" }
+            return totalCategories.filter { $0.type == RecordType.expense.rawValue }
         case .income:
-            return totalCategories.filter { $0.type == "Income" }
+            return totalCategories.filter { $0.type == RecordType.income.rawValue }
         case .allOperations:
             return totalCategories
         }
     }
         
     //  Добавление новой категории
-    func addNewCategory(_ category: CategoryClass, type: RecordType) {
+    func addNewCategory(_ category: CategoryClass) {
         RealmService.shared.write(category, CategoryClass.self)
     }
     
@@ -51,7 +51,7 @@ final class Categories {
     }
     
     // Добавление ID подкатегории к категории
-    func addSubcategoryToCategory(for categoryID: ObjectId, to type: RecordType, subcategoryID: ObjectId) {
+    func addSubcategoryToCategory(for categoryID: ObjectId, subcategoryID: ObjectId) {
         do {
             try realmService.realm?.write {
                 guard let category = realmService.realm?.object(ofType: CategoryClass.self, forPrimaryKey: categoryID) else { return }

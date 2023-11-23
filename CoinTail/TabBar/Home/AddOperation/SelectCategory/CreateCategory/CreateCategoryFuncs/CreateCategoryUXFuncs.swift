@@ -11,6 +11,14 @@ import RealmSwift
 
 extension CreateCategoryVC: SendCategoryID, CreateCategoryCellDelegate {
     
+    func sendCategoryData(id: ObjectId) {
+        categoryID = id
+        
+        guard let category = Categories.shared.getCategory(for: id) else { return }
+                
+        mainCategoryName = category.name
+    }
+    
     func cell(didUpdateCategoryName name: String?) {
         categoryName = name
     }
@@ -22,13 +30,13 @@ extension CreateCategoryVC: SendCategoryID, CreateCategoryCellDelegate {
     func cell(didUpdateOnOffToggle isOn: Bool) {
         isToggleOn = isOn
         
-        if let cell = createCategoryCV.cellForItem(at: IndexPath(row: 3, section: 0)) as? CreateCategoryCell {
-            cell.menuLabel.textColor = isToggleOn ? .black : UIColor(named: "secondaryTextColor")
+        if !isOn {
+            mainCategoryName = ""
         }
-    }
-
-    func sendCategoryData(id: ObjectId) {
-        categoryID = id
+        
+        if let cell = createCategoryCV.cellForItem(at: IndexPath(row: 3, section: 0)) as? CreateCategoryCell {
+            cell.menuLabel.textColor = isToggleOn ? UIColor(named: "black") : UIColor(named: "secondaryTextColor")
+        }
     }
     
     func categoryValidation(name: String, icon: String, mainCategory: String, isSubcategory: Bool, completion: ((String, String) -> Void)? = nil) {
@@ -42,9 +50,7 @@ extension CreateCategoryVC: SendCategoryID, CreateCategoryCellDelegate {
             errorAlert("Category icon not selected".localized())
         } else if isSubcategory && missingMainCategory {
             errorAlert("No parent category selected".localized())
-        } else {
-//            guard let categoryID = self.categoryID else { return }
-            
+        } else {            
             completion?(name, icon)
         }
     }

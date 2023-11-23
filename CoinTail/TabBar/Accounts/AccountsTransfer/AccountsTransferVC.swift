@@ -11,7 +11,11 @@ import UIKit
 
 final class AccountsTransferVC: BasicVC {
     
-    static let accounts = RealmService.shared.accountsArr
+    static var accounts: [AccountClass] {
+        get {
+            return RealmService.shared.accountsArr
+        }
+    }
     let accountNames = Accounts.shared.getAccountNames(from: accounts)
     
     var selectedRowIndex: Int?
@@ -44,7 +48,7 @@ final class AccountsTransferVC: BasicVC {
     let transferFromBackView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .black
+        imageView.tintColor = UIColor(named: "black")
         imageView.image = UIImage(named: "vectorFrom")
         
         return imageView
@@ -52,7 +56,7 @@ final class AccountsTransferVC: BasicVC {
     let transferToBackView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .black
+        imageView.tintColor = UIColor(named: "black")
         imageView.image = UIImage(named: "vectorTo")
         
         return imageView
@@ -79,7 +83,7 @@ final class AccountsTransferVC: BasicVC {
     let transferFromLabel: UILabel = {
         let label = UILabel()
         label.text = "From".localized()
-        label.textColor = .black
+        label.textColor = UIColor(named: "black")
         label.textAlignment = .left
         label.numberOfLines = 1
         label.font = UIFont(name: "SFProText-Regular", size: 17)
@@ -89,7 +93,7 @@ final class AccountsTransferVC: BasicVC {
     let transferToLabel: UILabel = {
         let label = UILabel()
         label.text = "To".localized()
-        label.textColor = .black
+        label.textColor = UIColor(named: "black")
         label.textAlignment = .left
         label.numberOfLines = 1
         label.font = UIFont(name: "SFProText-Regular", size: 17)
@@ -98,7 +102,7 @@ final class AccountsTransferVC: BasicVC {
     }()
     let transferFromAccountNameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = UIColor(named: "black")
         label.textAlignment = .left
         label.numberOfLines = 1
         label.font = UIFont(name: "SFProText-Regular", size: 17)
@@ -108,7 +112,7 @@ final class AccountsTransferVC: BasicVC {
     }()
     let transferToAccountNameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = UIColor(named: "black")
         label.textAlignment = .left
         label.numberOfLines = 1
         label.font = UIFont(name: "SFProText-Regular", size: 17)
@@ -118,7 +122,7 @@ final class AccountsTransferVC: BasicVC {
     }()
     let transferFromAccountBalanceLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = UIColor(named: "black")
         label.textAlignment = .left
         label.numberOfLines = 1
         label.font = UIFont(name: "SFProText-Regular", size: 17)
@@ -129,7 +133,7 @@ final class AccountsTransferVC: BasicVC {
     }()
     let transferToAccountBalanceLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = UIColor(named: "black")
         label.textAlignment = .left
         label.numberOfLines = 1
         label.font = UIFont(name: "SFProText-Regular", size: 17)
@@ -183,6 +187,7 @@ final class AccountsTransferVC: BasicVC {
         cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
         cv.alwaysBounceVertical = false
+        cv.isScrollEnabled = false
         
         return cv
     }()
@@ -191,9 +196,7 @@ final class AccountsTransferVC: BasicVC {
         super.viewDidLoad()
         
         self.title = "Transfers".localized()
-        
-        print(accountNames)
-        
+                
         accountsPickerView.delegate = self
         transferCV.delegate = self
         

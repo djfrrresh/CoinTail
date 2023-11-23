@@ -16,7 +16,7 @@ extension AddBudgetVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLay
             toolBar.isHidden = false
             currenciesPickerView.isHidden = false
             
-            selectedCurrency = favouriteStringCurrencies[0]
+            selectedCurrency = AddBudgetVC.favouriteStringCurrencies[0]
         case 2:
             goToSelectCategoryVC()
         case 3:

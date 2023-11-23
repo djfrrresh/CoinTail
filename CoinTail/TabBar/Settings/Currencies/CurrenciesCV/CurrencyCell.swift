@@ -15,6 +15,8 @@ final class CurrencyCell: UICollectionViewCell {
         
     var currency: String?
     
+    var currenciesCV: UICollectionView?
+    
     let backView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -31,7 +33,7 @@ final class CurrencyCell: UICollectionViewCell {
     let currencyNameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.textColor = .black
+        label.textColor = UIColor(named: "black")
         label.font = UIFont(name: "SFProText-Regular", size: 17)
         
         return label
@@ -40,7 +42,7 @@ final class CurrencyCell: UICollectionViewCell {
     let currencyCodeLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.textColor = .black
+        label.textColor = UIColor(named: "black")
         label.font = UIFont(name: "SFProText-Regular", size: 17)
         
         return label
@@ -135,19 +137,21 @@ final class CurrencyCell: UICollectionViewCell {
         separatorView.isHidden = isHidden
     }
     
+    @objc func favouriteButtonPressed(_ sender: UIButton) {
+        guard let currency = currency else { return }
+        
+        let favouriteCurrency = Currencies.shared.getCurrencyClass(for: currency)
+
+        Currencies.shared.toggleFavouriteCurrency(favouriteCurrency)
+        
+        currenciesCV?.reloadData()
+    }
+    
     static func size() -> CGSize {
         return .init(
             width: UIScreen.main.bounds.width - 16 - 16,
             height: 44
         )
-    }
-    
-    @objc func favouriteButtonPressed(_ sender: UIButton) {
-        guard let currency = currency else { return }
-        
-        let favouriteCurrency = Currencies.shared.getCurrencyClass(for: currency)
-        
-        Currencies.shared.toggleFavouriteCurrency(favouriteCurrency)
     }
     
 }

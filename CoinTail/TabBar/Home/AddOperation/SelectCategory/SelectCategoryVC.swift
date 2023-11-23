@@ -6,15 +6,50 @@
 //
 
 import UIKit
+import RealmSwift
 
 
-//TODO: категории не разбиваются по типам операции
+protocol SendCategoryID: AnyObject {
+    func sendCategoryData(id: ObjectId)
+}
+
 class SelectCategoryVC: BasicVC {
     
-    let categories: [CategoryClass] = Categories.shared.categories
+    var categories: [CategoryProtocol] {
+        get {
+            var categories = [CategoryProtocol]()
+
+            if categoryID == nil {
+                switch operationSegmentType {
+                case .expense:
+                    categories = RealmService.shared.categoriesArr.filter { $0.type == RecordType.expense.rawValue }
+                case .income:
+                    categories = RealmService.shared.categoriesArr.filter { $0.type == RecordType.income.rawValue }
+                case .allOperations:
+                    return categories
+                }
+            } else {
+                guard let categoryID = categoryID,
+                      let parentalCategory = Categories.shared.getCategory(for: categoryID) else { return categories }
+                
+                // Родительская категория
+                categories.append(parentalCategory)
+                
+                // Подкатегории
+                for subcategoryID in parentalCategory.subcategories {
+                    if let subcategory = Categories.shared.getSubcategory(for: subcategoryID) {
+                        categories.append(subcategory)
+                    }
+                }
+            }
+            
+            return categories
+        }
+    }
     
-    weak var subcategoryDelegate: SendSubcategoryID? // Передает подкатегорию
-    weak var categoryDelegate: SendCategoryID? // Передает подкатегорию
+    weak var categoryDelegate: SendCategoryID?
+    
+    var categoryID: ObjectId?
     
     var filteredData = [CategoryClass]()
     var isSearching: Bool = false
@@ -32,6 +67,7 @@ class SelectCategoryVC: BasicVC {
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .clear
+        cv.layer.cornerRadius = 12
         cv.register(SelectCategoryCell.self, forCellWithReuseIdentifier: SelectCategoryCell.id)
         
         cv.allowsMultipleSelection = false
@@ -69,12 +105,11 @@ class SelectCategoryVC: BasicVC {
         RecordType(rawValue: rawSegmentType ?? "Expense") ?? .expense
     }
     
-    public required init(segmentTitle: String, isParental: Bool) {
+    public required init(segmentTitle: String, isParental: Bool, categoryID: ObjectId?) {
         self.rawSegmentType = segmentTitle
         self.isParental = isParental
-        
-        newCategoryButton.isHidden = isParental
-        
+        self.categoryID = categoryID
+                
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder: NSCoder) {
@@ -83,24 +118,15 @@ class SelectCategoryVC: BasicVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-                
+        
         selectCategoryCV.reloadData()
     }
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        var title: String = ""
-        switch operationSegmentType {
-        case .expense:
-            title = "Expense categories".localized()
-        case .income:
-            title = "Income categories".localized()
-        case .allOperations:
-            return
-        }
-        self.title = title
-        
+                
+        self.navigationItem.backButtonTitle = "Back".localized()
+
         selectCategoryCV.delegate = self
         
         selectCategoryCV.dataSource = self
@@ -108,6 +134,7 @@ class SelectCategoryVC: BasicVC {
         newCategoryButton.addTarget(self, action: #selector(goToCreateCategoryVC), for: .touchUpInside)
         
         selectCategorySubviews()
+        setTitle()
     }
     
 }

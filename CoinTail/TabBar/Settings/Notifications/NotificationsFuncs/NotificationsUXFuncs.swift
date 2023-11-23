@@ -12,7 +12,7 @@ extension NotificationsVC {
     
     // Проверка доступа к уведомлениям на случай, если юзер выключит их в настройках при включенных уведомлениях на экране
     func notificationsValidate(toggle: UISwitch) {
-        notificationCenter.requestAuthorization(options: [.alert, .badge ,.sound]) { [weak self] granted, _ in
+        notificationCenter.requestAuthorization(options: [.alert, .badge ,.sound]) { granted, _ in
             if !granted {
                 DispatchQueue.main.async {
                     toggle.isOn = false

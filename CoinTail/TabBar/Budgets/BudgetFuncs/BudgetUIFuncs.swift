@@ -89,7 +89,7 @@ extension BudgetsVC {
     }
     
     func isBudgetEmpty() {
-        let isEmpty = budgetsDaySections.isEmpty
+        let isEmpty = budgets.isEmpty
         
         targetImageView.isHidden = !isEmpty
         noBudgetsLabel.isHidden = !isEmpty
@@ -98,5 +98,16 @@ extension BudgetsVC {
         emptyBudgetsView.isHidden = !isEmpty
         
         budgetCV.isHidden = isEmpty
+        
+        if isEmpty {
+            self.navigationItem.rightBarButtonItem = nil
+        } else {
+            //TODO: сделать в функции setupNavigationTitle большой +
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+                barButtonSystemItem: .add,
+                target: self,
+                action: #selector (goToAddBudgetVC)
+            )
+        }
     }
 }

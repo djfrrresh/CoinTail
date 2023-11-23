@@ -12,11 +12,18 @@ import UIKit
 extension AboutAppVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            gmailAction()
+        switch indexPath.section {
         case 1:
-            telegramAction()
+            userAgreementAction()
+        case 2:
+            switch indexPath.row {
+            case 0:
+                gmailAction()
+            case 1:
+                telegramAction()
+            default:
+                return
+            }
         default:
             return
         }
@@ -24,7 +31,12 @@ extension AboutAppVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayo
     
     // Динамические размеры ячеек
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return ContactsCell.size()
+        switch indexPath.section {
+        case 0:
+            return ContactsCell.appVersionSize()
+        default:
+            return ContactsCell.size()
+        }
     }
     
 }

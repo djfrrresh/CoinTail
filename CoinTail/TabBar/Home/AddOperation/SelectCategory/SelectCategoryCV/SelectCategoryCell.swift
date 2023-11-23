@@ -10,13 +10,6 @@ import EasyPeasy
 import RealmSwift
 
 
-protocol SendSubcategoryID: AnyObject {
-    func sendSubcategoryData(id: ObjectId)
-}
-protocol SendCategoryID: AnyObject {
-    func sendCategoryData(id: ObjectId)
-}
-
 final class SelectCategoryCell: UICollectionViewCell {
     
     static let id = "SelectCategoryCell"
@@ -34,12 +27,6 @@ final class SelectCategoryCell: UICollectionViewCell {
         return view
     }()
     
-    let categoryImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        
-        return imageView
-    }()
     let chevronImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "chevron.right")
@@ -56,6 +43,14 @@ final class SelectCategoryCell: UICollectionViewCell {
         
         return label
     }()
+    let categoryIcon: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 1
+        label.font = UIFont(name: "SFProText-Regular", size: 24)
+        label.backgroundColor = .clear
+        
+        return label
+    }()
     
     override init (frame: CGRect) {
         super.init(frame: frame)
@@ -65,7 +60,7 @@ final class SelectCategoryCell: UICollectionViewCell {
         backView.addSubview(chevronImageView)
         backView.addSubview(separatorView)
         backView.addSubview(categoryLabel)
-        backView.addSubview(categoryImage)
+        backView.addSubview(categoryIcon)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -85,7 +80,7 @@ final class SelectCategoryCell: UICollectionViewCell {
             Width(20)
         ])
         
-        categoryImage.easy.layout([
+        categoryIcon.easy.layout([
             CenterY(),
             Height(24),
             Width(24),
@@ -94,7 +89,7 @@ final class SelectCategoryCell: UICollectionViewCell {
         
         categoryLabel.easy.layout([
             CenterY(),
-            Left(16).to(categoryImage, .right),
+            Left(16).to(categoryIcon, .right),
             Right(16).to(chevronImageView, .left)
         ])
         

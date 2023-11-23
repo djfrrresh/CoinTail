@@ -30,6 +30,7 @@ final class SettingsCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .left
         label.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
+        label.textColor = UIColor(named: "black")
 
         return label
     }()

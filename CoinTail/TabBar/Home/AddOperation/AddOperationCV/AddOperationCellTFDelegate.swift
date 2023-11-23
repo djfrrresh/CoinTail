@@ -10,21 +10,18 @@ import UIKit
 
 extension AddOperationCell: UITextFieldDelegate, UITextViewDelegate {
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard !string.isEmpty else { return true }
-
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {        
         guard let textFieldString = textField.text, let textFieldRange = Range(range, in: textFieldString) else {
             return false
         }
         let allString = textFieldString.replacingCharacters(in: textFieldRange, with: string)
-        let charactersCount = String(textFieldString).count
         
         if textField == operationAmountTF {
             addOperationCellDelegate?.cell(didUpdateOperationAmount: allString)
 
             return AmountValidationHelper.isValidInput(textField, shouldChangeCharactersIn: range, replacementString: string)
         } else {
-            return false
+            return true
         }
     }
     
@@ -39,7 +36,7 @@ extension AddOperationCell: UITextFieldDelegate, UITextViewDelegate {
         
         if textView.text == "Add a comment to your transaction".localized() {
             textView.text = ""
-            textView.textColor = .black
+            textView.textColor = UIColor(named: "black")
         }
         
         addOperationCellDelegate?.cell(didUpdateOperationDescription: allString)

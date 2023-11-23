@@ -28,7 +28,7 @@ final class DateCVCell: UICollectionViewCell {
     static func getPeriodLabel() -> UILabel {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = .black
+        label.textColor = UIColor(named: "black")
         
         return label
     }
@@ -78,11 +78,11 @@ final class DateCVCell: UICollectionViewCell {
     
     private func currentCell(_ isSelected: Bool) {
         if isSelected {
-            backView.backgroundColor = .black
+            backView.backgroundColor = UIColor(named: "black")
             periodLabel.textColor = .white
         } else {
             backView.backgroundColor = .white
-            periodLabel.textColor = .black
+            periodLabel.textColor = UIColor(named: "black")
         }
     }
 

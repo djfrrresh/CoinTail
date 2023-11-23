@@ -55,14 +55,14 @@ extension CurrenciesVC: UICollectionViewDataSource {
 
                 currency = "\(filteredData[indexPath.row])"
                 currencyCode = currency
-                currencyName = filteredData[indexPath.row].name
+                currencyName = filteredData[indexPath.row].rawValue
                 currenciesArray = filteredCurrenciesString
             } else {
                 let currenciesString = extractCurrencyStrings(from: currenciesClass.currencyNames)
 
                 currency = currenciesClass.currencyCodes[indexPath.row]
                 currencyCode = currency
-                currencyName = currenciesClass.currencyNames[indexPath.row].name
+                currencyName = currenciesClass.currencyNames[indexPath.row].rawValue
                 currenciesArray = currenciesString
             }
         default:
@@ -74,6 +74,7 @@ extension CurrenciesVC: UICollectionViewDataSource {
         cell.currencyNameLabel.text = currencyName
         cell.currency = currency
         cell.isFavourite(currency: currency, array: favouriteCurrenciesString)
+        cell.currenciesCV = currenciesCV
         
         let isLastRow = self.collectionView(collectionView, numberOfItemsInSection: indexPath.section) - 1 == indexPath.row
         cell.isSeparatorLineHidden(isLastRow)

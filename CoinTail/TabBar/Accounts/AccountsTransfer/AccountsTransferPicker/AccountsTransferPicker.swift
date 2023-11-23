@@ -10,7 +10,6 @@ import UIKit
 
 extension AccountsTransferVC: UIPickerViewDataSource, UIPickerViewDelegate {
     
-    //TODO: первый элемент не выбирается из пикера если его сохранить
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

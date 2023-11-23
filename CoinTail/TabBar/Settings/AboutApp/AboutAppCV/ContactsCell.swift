@@ -30,14 +30,47 @@ final class ContactsCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .left
         label.font = UIFont(name: "SFProText-Regular", size: 17)
+        label.textColor = UIColor(named: "black")
 
+        return label
+    }()
+    let appVersionTextLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Application version".localized()
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
+        label.numberOfLines = 1
+        label.textAlignment = .left
+        label.textColor = UIColor(named: "black")
+        
+        return label
+    }()
+    let appVersionLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
+        label.numberOfLines = 1
+        label.textAlignment = .left
+        label.textColor = UIColor(named: "secondaryTextColor")
+        if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            label.text = appVersion
+        } else {
+            label.text = "1.0"
+        }
+        
+        return label
+    }()
+    let userAgreementLabel: UILabel = {
+        let label = UILabel()
+        label.text = "User agreement".localized()
+        label.textColor = UIColor(named: "black")
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
+        
         return label
     }()
 
     let contactsImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .black
+        imageView.tintColor = UIColor(named: "black")
         
         return imageView
     }()
@@ -59,6 +92,9 @@ final class ContactsCell: UICollectionViewCell {
         backView.addSubview(chevronImageView)
         backView.addSubview(separatorView)
         backView.addSubview(contactsImageView)
+        backView.addSubview(userAgreementLabel)
+        backView.addSubview(appVersionLabel)
+        backView.addSubview(appVersionTextLabel)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -79,6 +115,23 @@ final class ContactsCell: UICollectionViewCell {
         contactsLabel.easy.layout([
             Left(12).to(contactsImageView, .right),
             CenterY()
+        ])
+        
+        userAgreementLabel.easy.layout([
+            Left(16),
+            CenterY()
+        ])
+        
+        appVersionTextLabel.easy.layout([
+            Left(16),
+            Right(16),
+            Top(12)
+        ])
+        
+        appVersionLabel.easy.layout([
+            Left(16),
+            Right(16),
+            Bottom(12)
         ])
         
         separatorView.easy.layout([
@@ -104,6 +157,12 @@ final class ContactsCell: UICollectionViewCell {
         return .init(
             width: UIScreen.main.bounds.width - 16 - 16,
             height: 44
+        )
+    }
+    static func appVersionSize() -> CGSize {
+        return .init(
+            width: UIScreen.main.bounds.width - 16 - 16,
+            height: 72
         )
     }
     

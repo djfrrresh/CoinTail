@@ -48,8 +48,4 @@ extension AboutAppVC {
         return defaultUrl
     }
     
-    @objc func userAgreementAction(_ sender: UIButton) {
-        print("Test")
-    }
-    
 }

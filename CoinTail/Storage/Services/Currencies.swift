@@ -25,12 +25,12 @@ class Currencies {
         }
     }
     // Выбранная валюта
-    var selectedCurrency: FavouriteCurrencyClass {
+    var selectedCurrency: SelectedCurrencyClass {
         get {
-            return realmService.read(FavouriteCurrencyClass.self).first ?? createDefaultCurrency()
+            return realmService.read(SelectedCurrencyClass.self).first ?? createDefaultCurrency()
         }
         set {
-            if let currency = realmService.read(FavouriteCurrencyClass.self).first {
+            if let currency = realmService.read(SelectedCurrencyClass.self).first {
                 realmService.realm?.beginWrite()
                 currency.currency = newValue.currency
                 
@@ -42,13 +42,14 @@ class Currencies {
             } else {
                 let defaultCurrency = createDefaultCurrency()
                 
-                realmService.write(defaultCurrency, FavouriteCurrencyClass.self)
+                realmService.write(defaultCurrency, SelectedCurrencyClass.self)
             }
         }
     }
     
     // Добавить / удалить валюту из избранных
     func toggleFavouriteCurrency(_ currency: FavouriteCurrencyClass) {
+        //TODO: не работает удаление
         if hasCurrency(currency.currency, array: extractCurrencyStrings(from: favouriteCurrencies)) {
             RealmService.shared.delete(currency, FavouriteCurrencyClass.self)
         } else {
@@ -62,42 +63,36 @@ class Currencies {
     }
     
     // Возвращаем массив с валютами из избранных + выбранную валюту
-    func currenciesToChoose() -> [FavouriteCurrencyClass] {
-        var combinedCurrencies = [selectedCurrency] + favouriteCurrencies
+    func currenciesToChoose() -> [String] {
+        var uniqueCurrencies = extractCurrencyStrings(from: favouriteCurrencies)
         
-        if let index = combinedCurrencies.firstIndex(of: selectedCurrency) {
-            combinedCurrencies.remove(at: index)
+        if !uniqueCurrencies.contains(selectedCurrency.currency) {
+            uniqueCurrencies.append(selectedCurrency.currency)
         }
-                
-        return combinedCurrencies
+
+        return uniqueCurrencies
     }
     
     // Получить Realm-объект валюты по ее коду
     func getCurrencyClass(for currencyCode: String) -> FavouriteCurrencyClass {
-        return currenciesToChoose().filter { "\($0)" == currencyCode }.last ?? selectedCurrency
-    }
-    // Получить имя валюты по ее коду
-    func getCurrencyName(for currencyCode: String) -> String {
-        return currencyNames.filter { "\($0)" == currencyCode }.last?.name ?? selectedCurrency.currency
+        let defaultCurrency = FavouriteCurrencyClass()
+        defaultCurrency.currency = currencyCode
+        
+        return favouriteCurrencies.filter { $0.currency == currencyCode }.last ?? defaultCurrency
     }
     
-    // Конвертировать строковый код валюты в Realm объект
-    func createFavouriteCurrencyFromCurrency(_ currency: String) -> FavouriteCurrencyClass {
-        let favouriteCurrency = FavouriteCurrencyClass()
-        favouriteCurrency.currency = currency
-        
-        RealmService.shared.write(favouriteCurrency, FavouriteCurrencyClass.self)
-        
-        return favouriteCurrency
+    // Получить имя валюты по ее коду
+    func getCurrencyName(for currencyCode: String) -> String {
+        return currencyNames.filter { "\($0)" == currencyCode }.last?.rawValue ?? selectedCurrency.currency
     }
     
     func extractCurrencyStrings(from currencies: [FavouriteCurrencyClass]) -> [String] {
         return currencies.map { $0.currency }
     }
     
-    // При первом запуске приложения создать валюту по умолчанию
-    private func createDefaultCurrency() -> FavouriteCurrencyClass {
-        let defaultCurrency = FavouriteCurrencyClass()
+    // При первом запуске приложения или очистке данных создать валюту по умолчанию
+    private func createDefaultCurrency() -> SelectedCurrencyClass {
+        let defaultCurrency = SelectedCurrencyClass()
         defaultCurrency.currency = "USD"
         
         return defaultCurrency

@@ -10,10 +10,9 @@ import UIKit
 
 class BudgetsVC: BasicVC {
         
-    // Массив бюджетов с сортировкой по дням
-    var budgetsDaySections = [DaySection]() {
-        didSet {
-            budgetCV.reloadData()
+    var budgets: [BudgetClass] {
+        get {
+            return RealmService.shared.budgetsArr
         }
     }
     
@@ -85,24 +84,17 @@ class BudgetsVC: BasicVC {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        sortBudgets()
         
-        //TODO: сделать в функции setupNavigationTitle большой +
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector (goToAddBudgetVC)
-        )
+        budgetCV.reloadData()
         
-        setupNavigationTitle(title: "Budgets".localized(), large: true)
         isBudgetEmpty()
     }
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Budgets".localized()
-                
+        setupNavigationTitle(title: "Budgets".localized(), large: true)
+
         budgetCV.dataSource = self
         
         budgetCV.delegate = self

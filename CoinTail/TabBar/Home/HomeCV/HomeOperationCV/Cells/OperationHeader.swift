@@ -15,22 +15,24 @@ final class OperationCVHeader: UICollectionReusableView {
 
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMMM yyyy"
+        formatter.dateFormat = "MMM d, yyyy"
         
         return formatter
     }()
     
     let dateLabel: UILabel = {
         let label = UILabel()
+        label.textAlignment = .left
+        label.font = UIFont(name: "SFProText-Regular", size: 12)
+        label.textColor = UIColor(named: "secondaryTextColor")
+        label.numberOfLines = 1
         
         return label
     }()
     
     override init (frame: CGRect) {
         super.init(frame: frame)
-        
-        backgroundColor = .clear
-        
+                
         addSubview(dateLabel)
     }
     required init?(coder: NSCoder) {
@@ -41,8 +43,8 @@ final class OperationCVHeader: UICollectionReusableView {
         super.layoutSubviews()
         
         dateLabel.easy.layout([
-            CenterY(),
-            Left()
+            Bottom(8),
+            Left(16)
         ])
     }
     

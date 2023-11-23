@@ -10,21 +10,20 @@ import UIKit
 
 extension AddBudgetVC: UIPickerViewDataSource, UIPickerViewDelegate {
     
-    //TODO: первый элемент не выбирается из пикера если его сохранить
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return favouriteStringCurrencies.count
+        return AddBudgetVC.favouriteStringCurrencies.count
     }
         
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return favouriteStringCurrencies[row]
+        return AddBudgetVC.favouriteStringCurrencies[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedCurrency = favouriteStringCurrencies[row]
+        selectedCurrency = AddBudgetVC.favouriteStringCurrencies[row]
     }
     
 }

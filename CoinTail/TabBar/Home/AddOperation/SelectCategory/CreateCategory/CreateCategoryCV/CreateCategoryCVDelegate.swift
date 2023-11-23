@@ -16,6 +16,10 @@ extension CreateCategoryVC: UICollectionViewDelegate, UICollectionViewDelegateFl
             if let cell = createCategoryCV.cellForItem(at: IndexPath(row: 1, section: 0)) as? CreateCategoryCell {
                 cell.categoryIconTF.becomeFirstResponder()
             }
+        case 3:
+            if isToggleOn {
+                goToSelectCategoryVC()
+            }
         default:
             return
         }

@@ -10,15 +10,16 @@ import UIKit
 
 extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    //TODO: сделать разбитие секций по активным / неактивным
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return budgetsDaySections.count
+        return 2
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let dayItems = budgetsDaySections[section].budgets
-        
-        return dayItems.count
+        if section == 0 {
+            return budgets.filter { $0.isActive }.count
+        } else {
+            return budgets.filter { !$0.isActive }.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -29,14 +30,19 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
             return UICollectionViewCell()
         }
         
-        let section = budgetsDaySections[indexPath.section]
-        let budgetData: BudgetClass = section.budgets[indexPath.row]
+        var filteredBudgets: [BudgetClass] = []
+
+        if indexPath.section == 0 {
+            filteredBudgets = budgets.filter { $0.isActive }
+        } else {
+            filteredBudgets = budgets.filter { !$0.isActive }
+        }
+
+        let budgetData: BudgetClass = filteredBudgets[indexPath.row]
         let currency = budgetData.currency
         let categoryID = budgetData.categoryID
-        guard let category = Categories.shared.getCategory(for: categoryID),
-              let image = category.image else { return cell }
-                
-        // TODO: проверить приходит ли в currency код валюты или название
+        guard let category = Categories.shared.getCategory(for: categoryID) else { return cell }
+
         let sumByCategory = abs(Records.shared.getBudgetAmount(
             date: budgetData.startDate,
             untilDate: budgetData.untilDate,
@@ -47,7 +53,9 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
 
         cell.categoryLabel.text = category.name
         cell.amountLabel.text = "\(sumByCategory) / \(budgetData.amount) \(budgetData.currency) (\(percentText)%)"
-        cell.categoryImage.image = UIImage(systemName: image)
+        cell.categoryIcon.text = category.image
+        
+        cell.isSumExceedsBudget(sumByCategory: sumByCategory, budgetSum: budgetData.amount)
         
         let isLastRow = self.collectionView(collectionView, numberOfItemsInSection: indexPath.section) - 1 == indexPath.row
         cell.isSeparatorLineHidden(isLastRow)
@@ -80,13 +88,20 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
         ) as? BudgetCVHeader else {
             return UICollectionViewCell()
         }
-        
-        let activeSectionIndex = budgetsDaySections.firstIndex { $0.budgets[0].isActive }
-        let nonActiveSectionIndex = budgetsDaySections.firstIndex { !($0.budgets[0].isActive) }
 
-        headerView.separatorLabel.text = indexPath.section == activeSectionIndex ? "Active budgets".localized() : "Non active budgets".localized()
+        let isSectionEmpty: Bool
+        if indexPath.section == 0 {
+            isSectionEmpty = budgets.filter { $0.isActive }.isEmpty
+        } else {
+            isSectionEmpty = budgets.filter { !$0.isActive }.isEmpty
+        }
 
-        headerView.separator(isVisible: indexPath.section == activeSectionIndex || indexPath.section == nonActiveSectionIndex)
+        if !isSectionEmpty {
+            headerView.separatorLabel.text = indexPath.section == 0 ? "Active budgets".localized() : "Non active budgets".localized()
+            headerView.isHidden = false
+        } else {
+            headerView.isHidden = true
+        }
 
         return headerView
     }

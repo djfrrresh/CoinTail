@@ -20,16 +20,17 @@ final class NotificationsVC: BasicVC {
         "Regularity".localized()
     ]
     
-    let largeTitleLabel: UILabel = {
+    let notificationsTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Set a reminder".localized()
         label.font = UIFont(name: "SFProDisplay-Bold", size: 28)
+        label.textColor = UIColor(named: "black")
         label.numberOfLines = 1
         label.textAlignment = .center
         
         return label
     }()
-    let descriptionLabel: UILabel = {
+    let notificationsDescriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "Never miss a transaction! Enable push notifications to stay on top of your finances".localized()
         label.font = UIFont(name: "SFProDisplay-Regular", size: 17)

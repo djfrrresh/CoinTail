@@ -54,8 +54,8 @@ final class SettingsVC: BasicVC {
         cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
         cv.alwaysBounceVertical = false
-        cv.delaysContentTouches = true
-        
+        cv.isScrollEnabled = false
+
         return cv
     }()
     

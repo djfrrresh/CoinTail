@@ -37,26 +37,28 @@ extension HomeOperationCell: UICollectionViewDataSource, UICollectionViewDelegat
         
         recordData = section.records[indexPath.row]
         
-        guard let categoryData = Categories.shared.getCategory(for: recordData.categoryID),
-              let image = categoryData.image else { return cell }
-        
-        let amount = "\(recordData.amount)"
-        let category = categoryData.name
-        let currency = "\(recordData.currency)"
-        let backView = categoryData.color
-                
-        cell.amountLabel.text = amount
-        cell.categoryLabel.text = category
-        cell.categoryImage.image = UIImage(systemName: image)
-        cell.currencyLabel.text = currency
-        cell.backImage.backgroundColor = UIColor(hex: backView ?? "FFFFFF")
-        
+        guard let categoryData = Categories.shared.getCategory(for: recordData.categoryID) else { return cell }
+
         // Ставит цвет в зависимости от типа операции
-        cell.setAmountColor(
-            recordType: RecordType(rawValue: recordData.type) ?? .allOperations,
-            amountLabel: cell.amountLabel,
-            currencyLabel: cell.currencyLabel
-        )
+        cell.setAmountColor(recordType: RecordType(rawValue: recordData.type) ?? .allOperations)
+        
+        cell.categoryLabel.text = categoryData.name
+        cell.amountLabel.text = "\(recordData.amount) \(recordData.currency)"
+        cell.categoryIcon.text = categoryData.image
+        
+        let isLastRow = self.collectionView(collectionView, numberOfItemsInSection: indexPath.section) - 1 == indexPath.row
+        cell.isSeparatorLineHidden(isLastRow)
+        
+        // Динамическое округление ячеек
+        if indexPath.item == 0 && isLastRow {
+            cell.roundCorners(.allCorners, radius: 12)
+        } else if isLastRow {
+            cell.roundCorners(bottomLeft: 12, bottomRight: 12)
+        } else if indexPath.row == 0 {
+            cell.roundCorners(topLeft: 12, topRight: 12)
+        } else {
+            cell.roundCorners(.allCorners, radius: 0)
+        }
                 
         return cell
     }
@@ -72,14 +74,7 @@ extension HomeOperationCell: UICollectionViewDataSource, UICollectionViewDelegat
     
     // Определение размера ячейки
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let recordData: RecordClass?
-        let section = monthSectionsCellData[indexPath.section]
-        
-        recordData = section.records[indexPath.row]
-        
-        guard let record = recordData else { return .init(width: 0, height: 0) }
-
-        return OperationCVCell.size(data: record)
+        return OperationCVCell.size()
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -100,7 +95,11 @@ extension HomeOperationCell: UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        CGSize(width: UIScreen.main.bounds.width, height: 32)
+        CGSize(width: UIScreen.main.bounds.width, height: 20)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        .init(top: 0, left: 0, bottom: 16, right: 0)
     }
     
 }

@@ -118,6 +118,16 @@ extension AccountsVC {
         transferButton.isHidden = isEmpty
         historyButton.isHidden = isEmpty
         accountsCV.isHidden = isEmpty
+        
+        if isEmpty {
+            self.navigationItem.rightBarButtonItem = nil
+        } else {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+                barButtonSystemItem: .add,
+                target: self,
+                action: #selector (goToAddAccountVC)
+            )
+        }
     }
     
 }

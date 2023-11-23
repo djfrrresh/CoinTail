@@ -40,4 +40,19 @@ extension SelectCategoryVC {
         ])
     }
     
+    func setTitle() {
+        if let categoryID = categoryID,
+           let category = Categories.shared.getCategory(for: categoryID) {
+            self.title = category.name
+        } else {
+            switch operationSegmentType {
+            case .expense:
+                title = "Expense categories".localized()
+            case .income:
+                title = "Income categories".localized()
+            case .allOperations:
+                return
+            }
+        }
+    }
 }

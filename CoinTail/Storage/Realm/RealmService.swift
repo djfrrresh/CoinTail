@@ -60,6 +60,8 @@ final class RealmService {
             subcategoriesArr.removeAll()
         case "NotificationSettingsClass":
             return
+        case "SelectedCurrencyClass":
+            return
         case "FavouriteCurrencyClass":
             favouriteCurrenciesArr.removeAll()
         default:
@@ -99,7 +101,7 @@ final class RealmService {
             print(error)
         }
         
-        if type != NotificationSettingsClass.self {
+        if type != NotificationSettingsClass.self && type != SelectedCurrencyClass.self {
             RealmService.shared.readAll(type)
         }
     }
@@ -127,7 +129,7 @@ final class RealmService {
             print(error)
         }
         
-        if type != NotificationSettingsClass.self {
+        if type != NotificationSettingsClass.self && type != SelectedCurrencyClass.self {
             RealmService.shared.readAll(type)
         }
     }
@@ -150,6 +152,7 @@ final class RealmService {
         deleteAllObjects(CategoryClass.self)
         deleteAllObjects(SubcategoryClass.self)
         deleteAllObjects(NotificationSettingsClass.self)
+        deleteAllObjects(SelectedCurrencyClass.self)
         deleteAllObjects(FavouriteCurrencyClass.self)
     }
     

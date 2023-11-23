@@ -27,7 +27,7 @@ extension AddOperationVC: UICollectionViewDelegate, UICollectionViewDelegateFlow
             toolBar.isHidden = false
             addOperationPickerView.isHidden = false
             
-            selectedCurrency = favouriteStringCurrencies[0]
+            selectedCurrency = AddOperationVC.favouriteStringCurrencies[0]
         default:
             return
         }

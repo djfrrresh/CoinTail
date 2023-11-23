@@ -27,5 +27,4 @@ class BudgetClass: Object {
         
         return nowDate < budgetDate
     }
-
 }

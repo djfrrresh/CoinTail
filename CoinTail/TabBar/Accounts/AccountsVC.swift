@@ -29,6 +29,7 @@ class AccountsVC: BasicVC {
     let noAccountsLabel: UILabel = {
         let label = UILabel()
         label.text = "You have no accounts added".localized()
+        label.textColor = UIColor(named: "black")
         label.font = UIFont(name: "SFProDisplay-Bold", size: 28)
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
@@ -112,14 +113,6 @@ class AccountsVC: BasicVC {
         super.viewWillAppear(animated)
         sortAccounts()
         
-        //TODO: сделать в функции setupNavigationTitle большой +
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector (goToAddAccountVC)
-        )
-        
-//        navigationController?.navigationBar.prefersLargeTitles = true
         setupNavigationTitle(title: "Accounts".localized(), large: true)
         isAccountEmpty()
     }

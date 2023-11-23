@@ -10,8 +10,8 @@ import UIKit
 
 extension AboutAppVC {
     
-    func aboutTargets() {
-        userAgreementButton.addTarget(self, action: #selector(userAgreementAction), for: .touchUpInside)
+    func userAgreementAction() {
+        print("Test")
     }
     
 }

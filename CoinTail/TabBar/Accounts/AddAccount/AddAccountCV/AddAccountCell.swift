@@ -38,6 +38,7 @@ final class AddAccountCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .left
         label.font = UIFont(name: "SFProText-Regular", size: 17)
+        label.textColor = UIColor(named: "black")
 
         return label
     }()
@@ -65,16 +66,20 @@ final class AddAccountCell: UICollectionViewCell {
         
         return uiSwitch
     }()
-    
+
     let accountNameTF: UITextField = {
         let textField = UITextField()
         textField.font = UIFont(name: "SFProText-Regular", size: 17)
+        textField.textColor = UIColor(named: "black")
+        textField.placeholder = "Account name".localized()
         textField.autocorrectionType = .no
         
         return textField
     }()
     let accountAmountTF: UITextField = {
         let textField = UITextField()
+        textField.placeholder = "Amount".localized()
+        textField.textColor = UIColor(named: "black")
         textField.font = UIFont(name: "SFProText-Regular", size: 17)
         
         return textField

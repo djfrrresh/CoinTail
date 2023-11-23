@@ -13,7 +13,7 @@ class SubcategoryClass: Object, CategoryProtocol {
     @Persisted(primaryKey: true) var id: ObjectId
     
     @Persisted var name: String = ""
-    @Persisted var color: String = ""
+    @Persisted var color: String?
     @Persisted var image: String?
     @Persisted var parentCategory: ObjectId
 }

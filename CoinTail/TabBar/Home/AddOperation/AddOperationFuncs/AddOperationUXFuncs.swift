@@ -9,7 +9,15 @@ import UIKit
 import RealmSwift
 
 
-extension AddOperationVC: SendSubcategoryID, SendCategoryID, AddOperationCellDelegate {
+extension AddOperationVC: SendCategoryID, AddOperationCellDelegate {
+    
+    func sendCategoryData(id: ObjectId) {
+        print(id)
+        guard let category = Categories.shared.getCategory(for: id) else { return }
+
+        categoryID = id
+        operationCategory = category.name
+    }
     
     func cell(didUpdateOperationAmount amount: String?) {
         operationAmount = amount
@@ -23,33 +31,19 @@ extension AddOperationVC: SendSubcategoryID, SendCategoryID, AddOperationCellDel
         operationDate = date
     }
     
-    func sendCategoryData(id: ObjectId) {
-        guard let category = Categories.shared.getCategory(for: id) else { return }
-
-        categoryID = id
-        operationCategory = category.name
-    }
-    
-    func sendSubcategoryData(id: ObjectId) {
-        guard let subcategory = Categories.shared.getSubcategory(for: id) else { return }
-
-        subcategoryID = id
-        operationCategory = subcategory.name
-    }
-    
     // Установка таргетов для кнопок
     func setTargets() {
         deleteOperationButton.addTarget(self, action: #selector(removeOperation), for: .touchUpInside)
+        addOperationTypeSwitcher.addTarget(self, action: #selector(switchButtonAction), for: .valueChanged)
     }
     
     // Проверка поля Amount и текста из кнопки категории на наличие данных в них
-    func recordValidation(amount: Double, categoryText: String, completion: ((Double, ObjectId) -> Void)? = nil) {
+    func recordValidation(amount: Double, categoryText: String, accountID: ObjectId?, completion: ((ObjectId) -> Void)? = nil) {
         let missingAmount = "\(amount)" == "" || amount == 0
         let missingCategory = categoryText == ""
-
         var account: AccountClass?
-        if let accountID = self.accountID {
-            account = Accounts.shared.getAccount(for: accountID)
+        if let accID = accountID {
+            account = Accounts.shared.getAccount(for: accID)
         }
 
         if missingAmount {
@@ -61,13 +55,11 @@ extension AddOperationVC: SendSubcategoryID, SendCategoryID, AddOperationCellDel
         } else {
             //TODO: subcategories
             var category: ObjectId = ObjectId()
-            if let subcategoryID = self.subcategoryID {
-                category = subcategoryID
-            } else if let categoryID = self.categoryID {
+            if let categoryID = self.categoryID {
                 category = categoryID
             }
 
-            completion?(amount, category)
+            completion?(category)
         }
     }
     

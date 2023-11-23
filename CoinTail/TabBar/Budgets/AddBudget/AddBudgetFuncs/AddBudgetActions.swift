@@ -49,7 +49,7 @@ extension AddBudgetVC {
     
     func goToSelectCategoryVC() {
         // Передаем название и иконки категорий по типу операций
-        let vc = SelectCategoryVC(segmentTitle: "Expense", isParental: true)
+        let vc = SelectCategoryVC(segmentTitle: "Expense", isParental: false, categoryID: nil)
         vc.categoryDelegate = self
         
         navigationController?.pushViewController(vc, animated: true)

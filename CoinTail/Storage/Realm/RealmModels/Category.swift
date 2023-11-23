@@ -10,17 +10,18 @@ import RealmSwift
 
 
 protocol CategoryProtocol {
+    var id: ObjectId { get set }
     var name: String { get set }
-    var color: String { get set }
+    var color: String? { get set }
     var image: String? { get set }
 }
 
-class CategoryClass: Object {
+class CategoryClass: Object, CategoryProtocol {
     @Persisted(primaryKey: true) var id: ObjectId
     
     @Persisted var name: String = ""
-    @Persisted var color: String? // HEX-код цвета
-    @Persisted var image: String? // Путь к изображению
+    @Persisted var color: String?
+    @Persisted var image: String?
     @Persisted var type: String?
     @Persisted var subcategories: List<ObjectId>
 }

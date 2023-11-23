@@ -13,8 +13,8 @@ extension NotificationsVC {
     
     func notificationsSubviews() {
         self.view.addSubview(bellImageView)
-        self.view.addSubview(largeTitleLabel)
-        self.view.addSubview(descriptionLabel)
+        self.view.addSubview(notificationsTitleLabel)
+        self.view.addSubview(notificationsDescriptionLabel)
         self.view.addSubview(notificationsCV)
 
         bellImageView.easy.layout([
@@ -24,22 +24,22 @@ extension NotificationsVC {
             CenterX()
         ])
         
-        largeTitleLabel.easy.layout([
+        notificationsTitleLabel.easy.layout([
             Top(24).to(bellImageView, .bottom),
             CenterX(),
             Left(32),
             Right(32)
         ])
         
-        descriptionLabel.easy.layout([
-            Top(16).to(largeTitleLabel, .bottom),
+        notificationsDescriptionLabel.easy.layout([
+            Top(16).to(notificationsTitleLabel, .bottom),
             CenterX(),
             Left(32),
             Right(32)
         ])
         
         notificationsCV.easy.layout([
-            Top(32).to(descriptionLabel, .bottom),
+            Top(32).to(notificationsDescriptionLabel, .bottom),
             Bottom().to(self.view.safeAreaLayoutGuide, .bottom),
             CenterX(),
             Left(16),

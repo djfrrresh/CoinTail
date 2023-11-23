@@ -32,7 +32,6 @@ extension AddAccountVC: UICollectionViewDataSource {
         switch indexPath.row {
         case 0:
             cell.cornerRadiusTop(radius: 12)
-            cell.accountNameTF.placeholder = "Account name".localized()
             if accountID != nil {
                 cell.accountNameTF.text = accountName
             }
@@ -45,7 +44,6 @@ extension AddAccountVC: UICollectionViewDataSource {
             cell.onOffToggle.isHidden = true
             cell.isSeparatorLineHidden(false)
         case 1:
-            cell.accountAmountTF.placeholder = "Amount".localized()
             if accountID != nil {
                 cell.accountAmountTF.text = accountAmount
             }

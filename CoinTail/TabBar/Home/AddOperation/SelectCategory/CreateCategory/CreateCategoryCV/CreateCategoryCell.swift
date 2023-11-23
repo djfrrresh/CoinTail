@@ -170,6 +170,10 @@ final class CreateCategoryCell: UICollectionViewCell {
         separatorView.isHidden = isHidden
     }
     
+    func updateSubMenuLabel(_ labelText: String) {
+        parentalCategoryLabel.text = labelText
+    }
+    
     @objc func switchValueChanged(_ sender: UISwitch) {
         createCategoryCellDelegate?.cell(didUpdateOnOffToggle: sender.isOn)
     }

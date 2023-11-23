@@ -19,8 +19,7 @@ final class AddAccountVC: BasicVC {
     var accountAmount: String?
     var isAccountMain: Bool = true
     
-    static let favouriteCurrencies: [FavouriteCurrencyClass] = Currencies.shared.currenciesToChoose()
-    let favouriteStringCurrencies: [String] = Currencies.shared.extractCurrencyStrings(from: favouriteCurrencies)
+    static let favouriteStringCurrencies: [String] = Currencies.shared.currenciesToChoose()
 
     let deleteAccountButton: UIButton = {
         let button = UIButton()
@@ -46,6 +45,7 @@ final class AddAccountVC: BasicVC {
         toolbar.isHidden = true
         toolbar.sizeToFit()
         toolbar.tintColor = .systemBlue
+        toolbar.backgroundColor = .white
 
         return toolbar
     }()
@@ -66,7 +66,7 @@ final class AddAccountVC: BasicVC {
         cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
         cv.alwaysBounceVertical = false
-        cv.delaysContentTouches = true
+        cv.isScrollEnabled = false
 
         return cv
     }()

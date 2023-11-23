@@ -36,7 +36,7 @@ final class TransfersHistoryCell: UICollectionViewCell {
     let arrowImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .black
+        imageView.tintColor = UIColor(named: "black")
         imageView.image = UIImage(systemName: "arrow.right")
         
         return imageView
@@ -45,7 +45,7 @@ final class TransfersHistoryCell: UICollectionViewCell {
     let sourceAccountLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor = UIColor(named: "black")
         label.textAlignment = .center
         label.font = UIFont(name: "SFProText-Regular", size: 17)
         
@@ -54,7 +54,7 @@ final class TransfersHistoryCell: UICollectionViewCell {
     let targetAccountLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor = UIColor(named: "black")
         label.textAlignment = .center
         label.font = UIFont(name: "SFProText-Regular", size: 17)
 

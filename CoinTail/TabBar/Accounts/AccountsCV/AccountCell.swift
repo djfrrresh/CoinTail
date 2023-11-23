@@ -40,6 +40,7 @@ final class AccountCell: UICollectionViewCell {
         label.numberOfLines = 1
         label.textAlignment = .left
         label.font = UIFont(name: "SFProText-Regular", size: 17)
+        label.textColor = UIColor(named: "black")
         
         return label
     }()

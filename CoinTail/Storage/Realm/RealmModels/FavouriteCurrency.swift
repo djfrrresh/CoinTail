@@ -14,3 +14,9 @@ class FavouriteCurrencyClass: Object {
 
     @Persisted var currency: String = ""
 }
+
+class SelectedCurrencyClass: Object {
+    @Persisted(primaryKey: true) var id: ObjectId
+
+    @Persisted var currency: String = ""
+}

@@ -108,7 +108,7 @@ final class Records {
               let endDate = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: untilDate)) else { return nil }
         
         var records = records.filter { $0.type == "Expense" }
-        //TODO: исправил currency с Currency на String
+
         records = records.filter { $0.categoryID == categoryID && $0.currency == currency }
         
         return records.filter { $0.date >= startDate && $0.date <= endDate }.reduce(0.0) { $0 + $1.amount }

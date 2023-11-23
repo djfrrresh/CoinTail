@@ -10,15 +10,10 @@ import RealmSwift
 
 
 extension SelectCategoryVC: UICollectionViewDataSource {
-    
-    // Количество категорий
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
 
-    // Количество подкатегорий
+    // Количество категорий
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        categories.count
+        return categories.count
     }
     
     // Ячейки заполняются
@@ -29,18 +24,12 @@ extension SelectCategoryVC: UICollectionViewDataSource {
         ) as? SelectCategoryCell else {
             return UICollectionViewCell()
         }
-                
-        let categoryID = categories[indexPath.row].id
-        let categoryData = Categories.shared.getCategory(for: categoryID)
         
-        guard let image = categoryData?.image else { return cell }
+        let categoryData = categories[indexPath.row]
 
-        let categoryLabel = categoryData?.name
-        let categoryImage = UIImage(systemName: image)
-        let categoryColor = UIColor(hex: categoryData?.color ?? "FFFFFF")
-
-        cell.categoryLabel.text = categoryLabel
-        cell.categoryImage.image = categoryImage
+        cell.categoryLabel.text = categoryData.name
+        cell.categoryIcon.text = categoryData.image
+        cell.chevronImageView.isHidden = !isParental
         
         let isLastRow = self.collectionView(collectionView, numberOfItemsInSection: indexPath.section) - 1 == indexPath.row
         cell.isSeparatorLineHidden(isLastRow)

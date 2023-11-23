@@ -7,6 +7,7 @@
 
 import UIKit
 import EasyPeasy
+import RealmSwift
 
 
 extension AddOperationVC {
@@ -16,11 +17,14 @@ extension AddOperationVC {
         let amount = Double(operationAmount ?? "0") ?? 0
         let categoryText = operationCategory ?? ""
         let desctiption = operationDescription
+        var accountID: ObjectId?
+        if self.accountID != nil {
+            accountID = self.accountID
+        }
 
-        recordValidation(amount: amount, categoryText: categoryText) { [weak self] amount, categoryID in
+        recordValidation(amount: amount, categoryText: categoryText, accountID: accountID) { [weak self] categoryID in
             guard let strongSelf = self else { return }
 
-            //TODO: при редактировании операции в первый раз отображается счет, во второй раз счета нет в кнопке
             let record = RecordClass()
             record.amount = amount
             record.descriptionText = desctiption ?? ""
@@ -28,10 +32,7 @@ extension AddOperationVC {
             record.type = strongSelf.addOperationSegment.rawValue
             record.categoryID = categoryID
             record.currency = "\(strongSelf.selectedCurrency)"
-            
-            if let accountID = strongSelf.accountID {
-                record.accountID = accountID
-            }
+            record.accountID = accountID
 
             if let recordID = strongSelf.recordID {
                 record.id = recordID
@@ -49,9 +50,9 @@ extension AddOperationVC {
         // Сбрасываем выбранную категорию
         operationCategory = ""
         
-        let segment = addOperationTypeSwitcher.titleForSegment(at: addOperationTypeSwitcher.selectedSegmentIndex)
+        guard let segment = addOperationTypeSwitcher.titleForSegment(at: addOperationTypeSwitcher.selectedSegmentIndex) else { return }
         
-        addOperationSegment = RecordType(rawValue: segment ?? "") ?? .income
+        addOperationSegment = RecordType(rawValue: segment) ?? .income
     }
     
     // Повтор последней операции
@@ -104,9 +105,8 @@ extension AddOperationVC {
     @objc func goToSelectCategoryVC() {
         let segmentTitle = addOperationTypeSwitcher.titleForSegment(at: addOperationTypeSwitcher.selectedSegmentIndex) ?? "Income"
         
-        let vc = SelectCategoryVC(segmentTitle: segmentTitle, isParental: false)
+        let vc = SelectCategoryVC(segmentTitle: segmentTitle, isParental: true, categoryID: nil)
         vc.categoryDelegate = self
-        vc.subcategoryDelegate = self
         vc.hidesBottomBarWhenPushed = true
         
         navigationController?.pushViewController(vc, animated: true)
