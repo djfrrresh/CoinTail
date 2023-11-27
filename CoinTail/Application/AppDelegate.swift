@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = TabBar() // Корневой контроллер
         window?.makeKeyAndVisible() // Отображение окна
         
+        KeychainManager.shared.saveAPIKeyToKeychain()
         RealmService.shared.readAllClasses()
         //TODO: прила вылетает после удаления всех данных и захода на экран добавления операции
         

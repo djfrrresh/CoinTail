@@ -38,7 +38,6 @@ extension NotificationsVC: UICollectionViewDataSource {
         switch indexPath.row {
         case 0:
             cell.cornerRadiusTop(radius: 12)
-            cell.regularityLabel.text = regularitySegment.rawValue
             
             cell.regularityLabel.isHidden = true
             cell.chevronImageView.isHidden = true
@@ -46,6 +45,7 @@ extension NotificationsVC: UICollectionViewDataSource {
             cell.isSeparatorLineHidden(false)
         case 1:
             cell.cornerRadiusBottom(radius: 12)
+            cell.regularityLabel.text = regularitySegment.rawValue.localized()
             
             cell.regularityLabel.isHidden = false
             cell.chevronImageView.isHidden = false

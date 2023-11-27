@@ -34,7 +34,7 @@ extension HomeCategoryCell {
                 color = UIColor(hex: category?.color ?? "FFFFFF")
             } else {
                 // Цвет берется по типу операции
-                color = chartSectionsEntry.first?.type == "Expense" ? UIColor(named: "expense") : UIColor(named: "income")
+                color = chartSectionsEntry.first?.type == RecordType.expense.rawValue ? UIColor(named: "expense") : UIColor(named: "income")
             }
 
             // Смена итерации, если цвет не найден

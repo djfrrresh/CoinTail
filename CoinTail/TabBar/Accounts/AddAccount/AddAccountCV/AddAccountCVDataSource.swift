@@ -68,7 +68,7 @@ extension AddAccountVC: UICollectionViewDataSource {
             cell.isSeparatorLineHidden(false)
         case 3:
             cell.cornerRadiusBottom(radius: 12)
-            cell.menuLabel.text = "Set as a main account".localized()
+            cell.menuLabel.text = "Set as main account".localized()
 
             cell.accountNameTF.isHidden = true
             cell.accountAmountTF.isHidden = true

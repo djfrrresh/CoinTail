@@ -27,8 +27,8 @@ extension RegularityVC: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.menuLabel.text = regularityMenu[indexPath.row]
-        cell.checkmarkImageView.isHidden = regularityMenu[indexPath.row] != selectedRegularity.rawValue
+        cell.menuLabel.text = regularityMenu[indexPath.row].localized()
+        cell.checkmarkImageView.isHidden = regularityMenu[indexPath.row].localized() != selectedRegularity.rawValue.localized()
         
         switch indexPath.row {
         case 0:

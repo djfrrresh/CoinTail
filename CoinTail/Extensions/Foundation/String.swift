@@ -15,10 +15,6 @@ extension String {
         return NSLocalizedString(self, comment: "")
     }
     
-}
-
-extension String {
-    
     var containsEmoji: Bool {
         for scalar in unicodeScalars {
             switch scalar.value {

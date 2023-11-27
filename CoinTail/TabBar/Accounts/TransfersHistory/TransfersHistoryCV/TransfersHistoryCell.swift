@@ -12,14 +12,7 @@ import EasyPeasy
 final class TransfersHistoryCell: UICollectionViewCell {
     
     static let id = "TransfersHistoryCell"
-    
-    let backView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 16
-        
-        return view
-    }()
+
     let sourceSeparatorView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(named: "arrowColor")
@@ -82,17 +75,16 @@ final class TransfersHistoryCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .clear
-                
-        addSubview(backView)
-        
-        backView.addSubview(arrowImageView)
-        backView.addSubview(sourceSeparatorView)
-        backView.addSubview(targetSeparatorView)
-        backView.addSubview(sourceAccountLabel)
-        backView.addSubview(targetAccountLabel)
-        backView.addSubview(sourceAmountLabel)
-        backView.addSubview(targetAmountLabel)
+        contentView.backgroundColor = .white
+        contentView.layer.cornerRadius = 16
+                        
+        contentView.addSubview(arrowImageView)
+        contentView.addSubview(sourceSeparatorView)
+        contentView.addSubview(targetSeparatorView)
+        contentView.addSubview(sourceAccountLabel)
+        contentView.addSubview(targetAccountLabel)
+        contentView.addSubview(sourceAmountLabel)
+        contentView.addSubview(targetAmountLabel)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -102,7 +94,7 @@ final class TransfersHistoryCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backView.easy.layout([
+        contentView.easy.layout([
             Edges()
         ])
         
@@ -179,10 +171,6 @@ final class TransfersHistoryCell: UICollectionViewCell {
         amountLabel.text = "\(data.amount)"
         sourceNameLabel.text = data.sourceAccount
         targetNameLabel.text = data.targetAccount
-        
-        let amountWidth = amountLabel.sizeThatFits(CGSize.zero).width
-        let sourceNameWidth = sourceNameLabel.sizeThatFits(CGSize.zero).width
-        let targetNameWidth = targetNameLabel.sizeThatFits(CGSize.zero).width
         
         let padding: CGFloat = 16.0
         let middlePadding: CGFloat = 8.0

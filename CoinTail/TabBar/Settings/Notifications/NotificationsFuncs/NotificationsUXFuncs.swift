@@ -27,8 +27,8 @@ extension NotificationsVC {
     func sendNotifications(segment: NotificationPeriods) {
         let notificationContent: UNMutableNotificationContent = {
             let notificationContent = UNMutableNotificationContent()
-            notificationContent.title = "Enter all expenses!"
-            notificationContent.body = "It's time to make all the transactions!"
+            notificationContent.title = "Enter all expenses!".localized()
+            notificationContent.body = "It's time to make all the transactions!".localized()
             notificationContent.badge = NSNumber(value: 1)
             
             return notificationContent

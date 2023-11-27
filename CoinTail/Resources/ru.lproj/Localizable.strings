@@ -6,53 +6,41 @@
   
 */
 
-// TODO: исправить баг, если написать переводом RecordType в свитчерах, то не будет обновляться таблица. Посмотреть перевод для дат в хедерах коллекций. Добавить перевод для day / week в уведомлениях
-
 // General
 "Amount" = "Сумма";
+"Category" = "Категория";
+"Currency" = "Валюта";
+"Week" = "Неделя";
+"Month" = "Месяц";
+"Save" = "Сохранить";
+"Edit" = "Ред.";
+/// Alert
 "Error" = "Ошибка";
 "Confirm" = "Подтвердить";
-"Cancel" = "Отмена";
+"Cancel" = "Отменить";
 "Are you sure?" = "Вы уверены?";
-"Select category" = "Выбрать категорию";
 "No category selected" = "Не выбрана категория";
-"Enter amount" = "Введите сумму";
+"Missing value in amount field" = "Отсутствует значение в поле суммы";
 
 // RecordType
-"Expense" = "Expense";
-"Income" = "Income";
-"Total" = "Total";
+"Expense" = "Траты";
+"Income" = "Начисления";
+"Total" = "Всего";
 
 // Categories
-/// income
+/// Income
 "Salary" = "Зарплата";
 "Debt repayment" = "Возврат долга";
 "Side job" = "Подработка";
 "Pleasant finds" = "Приятные находки";
-/// expense
+/// Expense
 "Transport" = "Транспорт";
 "Groceries" = "Продукты";
 "Cloths" = "Одежда";
 "Gym" = "Спортивный зал";
-"Service" = "Сервисное обслуживание";
-"Subscription" = "Онлайн-подписка";
+"Subscription" = "Подписка";
 "Health" = "Здоровье";
 "Cafe" = "Кафе";
-
-// Subcategories
-/// income
-"First Job" = "Первая работа";
-"Second Job" = "Вторая работа";
-"Jacket pocket" = "Карман куртки";
-/// expense
-"Bus" = "Автобус";
-"Walmart" = "Волмарт";
-"Spar" = "Спар";
-
-// Accounts
-"Card 1" = "Карта 1";
-"Card 2" = "Карта 2";
-"Cash" = "Наличные";
 
 // TabBar
 "Home" = "Главная";
@@ -61,99 +49,146 @@
 "Settings" = "Настройки";
 
 // HomeVC
-/// NavBar
-"Total balance:" = "Общий баланс:";
+/// Empty operations
+"Start adding your expenses and income" = "Начните добавлять свои расходы и доходы";
+"Manage your finances by tracking your expenses and income via different categories" = "Управляйте своими финансами, отслеживая расходы и доходы по различным категориям";
+"Add a transaction" = "Добавить операцию";
+/// Title
+"Balance:" = "Баланс:";
 /// Periods CV
 "All the time" = "Всё время";
 "Year" = "Год";
 "Quarter" = "Квартал";
 "3 months" = "3 месяца";
-"Month" = "Месяц";
-
-// BudgetsVC
-"Active" = "Активно";
-"Non active" = "Неактивно";
-
-// AddBudgetVC
-"Save Budget" = "Сохранить бюджет";
-"Edit Budget" = "Редактировать бюджет";
-"Week" = "Неделя";
-/// NavBar
-"Editing budget" = "Редактирование бюджета";
-"Add new Budget" = "Добавить новый бюджет";
-/// Alert
-"Missing value in amount field" = "Отсутствует значение в поле с суммой";
-"There is already a budget for this category and currency" = "Уже существует бюджет с такой категорией и валютой";
-"Delete бюджет" = "Удалить бюджет";
 
 // AddOperationVC
 "Description" = "Описание";
 "Date" = "Дата";
-"For example: Bought in the store" = "Например: Покупка в магазине";
+"Account" = "Счёт";
+"Add a comment to your transaction" = "Добавьте комментарий к вашей операции";
 "Today" = "Сегодня";
-"Save operation" = "Сохранить операцию";
-"Edit operation" = "Редактировать операцию";
-"Select account" = "Выбрать счёт";
-/// NavBar
-"Add new operation" = "Добавить новую операцию";
-"Editing operation" = "Редактирование операции";
+"Delete transaction" = "Удалить операцию";
+/// Title
+"Add a new transaction" = "Добавить операцию";
+"Edit transaction" = "Редактировать операцию";
 /// Alert
-"Missing value in amount field" = "Отсутствует значение в поле суммы";
-"Repeat last operation" = "Повторить последнюю операцию";
-"Do you want to repeat the last operation?" = "Вы хотите повторить последнюю операцию?";
-"Delete operation" = "Удалить операцию";
-"You cannot specify an account for this transaction with another currency!" = "Вы не можете указать счет для этой операции в другой валюте!";
+"Repeat last transaction" = "Повторить последнюю операцию";
+"Do you want to repeat the last transaction?" = "Вы хотите повторить последнюю операцию?";
+"You cannot specify an account for this transaction with another currency" = "Вы не можете указать счет для этой операции в другой валюте";
+
+// SelectCategoryVC
+"Search categories by name" = "Поиск категорий по имени";
+/// Title
+"Income categories" = "Категории дохода";
+"Expense categories" = "Категории расхода";
 
 // CreateCategoryVC
-"Missing category name or no icon selected!" = "Отсутствует имя категории или не выбрана иконка!";
-"Type a category name" = "Введите название категории";
-"Add category" = "Добавить категорию";
-"Select color" = "Выбрать цвет";
-"New category" = "Новая категория";
-"Category" = "Категория";
-"Select parental category" = "Выбрать родительскую категорию";
+"Category name" = "Название категории";
+"Icon" = "Значок";
+"Make as subcategory" = "Сделать подкатегорией";
+"Main category" = "Основная категория";
+"Delete category" = "Удалить категорию";
 /// Title
-"Add new category" = "Добавить новую категорию";
+"Create a category" = "Создать категорию";
+"Edit category" = "Редактировать категорию";
+/// Alert
+"Category name is missing" = "Название категории отсутствует";
+"Category icon not selected" = "Значок для категории не выбран";
+"No parent category selected" = "Не выбрана основная категория";
 
-// SettingsVC
-"Currency" = "Валюта";
-"Notifications" = "Уведомления";
-"Rate on App Store" = "Оценить в App Store";
-"About" = "О приложении";
-"Delete data"   = "Удалить данные";
+// BudgetsVC
+"Active budgets" = "Активные бюджеты";
+"Non active budgets" = "Неактивные бюджеты";
+/// Empty budgets
+"You have no budgets set up" = "У вас не настроены бюджеты";
+"Here you can set up a budgets for different categories and time periods. Control your expenses now" = "Здесь вы можете настроить бюджеты для разных категорий и периодов времени. Контролируйте свои расходы прямо сейчас";
+"Add a budget" = "Добавить бюджет";
+
+// AddBudgetVC
+"Delete budget" = "Удалить бюджет";
+"Time period" = "Период";
+"Repeat" = "Повторить";
+/// Title
+"Add a new budget" = "Добавить бюджет";
+"Edit budget" = "Редактировать бюджет";
+/// Alert
+"There is already an active budget for this category and currency" = "Уже есть активный бюджет с такой валютой и категорией";
+
+// AccountsVC
+"Transfer money" = "Перевести деньги";
+"Transfer history" = "История переводов";
+/// Empty accounts
+"You have no accounts added" = "У вас нет добавленных аккаунтов";
+"Here you can add different money storage methods, such as cards, cash or a bank deposit" = "Здесь вы можете добавить различные способы хранения денег, такие как карты, наличные или банковский депозит";
+"Add an account" = "Добавить счёт";
 
 // AddAccountVC
 "Account name" = "Название счёта";
-"Initial amount" = "Начальная сумма";
-"For example: Cash" = "Например: Наличные";
-"Save Account" = "Сохранить счёт";
-"Edit Account" = "Редактировать счёт";
+"Delete account" = "Удалить счёт";
+"Set as main account" = "Сделать счёт основным";
 /// Title
-"Add new Account" = "Добавить новый счёт";
-"Editing Account" = "Редактирование счёта";
+"Add a new account" = "Добавить счёт";
+"Edit account" = "Редактировать счёт";
+/// Alert
+"Account name not entered" = "Название счёта не введено";
 
 // AccountsTransferVC
-"First Account" = "Первый счёт";
-"Second Account" = "Второй счёт";
-"Save Transfer" = "Сохранить перевод";
-"You cannot transfer money to an account with a different currency!" = "Вы не можете перевести деньги на счет в другой валюте!";
+"From" = "Из счёта";
+"To" = "На счёт";
 /// Title
-"Transfer between accounts" = "Перевод между счетами";
+"Transfers" = "Переводы";
+/// Alert
+"No accounts selected" = "Не выбраны счета для перевода";
+"You cannot select the same account for transfer" = "Вы не можете перевести деньги на один и тот же счёт";
+"You cannot transfer money to an account with a different currency" = "Вы не можете перевести деньги на счет в другой валюте";
 
 // TransfersHistoryVC
 /// Title
-"Transfers history" = "История переводов";
+"Transfer history" = "История переводов";
+/// Empty transfers
+"You have no transfer transactions" = "У вас нет переводов между счетами";
+"Once you transfer money from one account to another - you can check transfer history here" = "Как только вы переведете деньги с одного счета на другой, вы можете проверить историю переводов здесь";
+
+// SettingsVC
+"Rate on App Store" = "Оценить в App Store";
+/// Banner
+"CoinTail Premium" = "CoinTail Премиум";
+"Get even more features with our Premium subscription" = "Получите еще больше возможностей с нашей Премиум-подпиской";
 
 // CurrenciesVC
-"Type USD or Dollar for search" = "Наберите USD или Dollar для поиска";
-"Favourites" = "Избранные";
+"Type USD or Dollar for search" = "Наберите USD или Доллар для поиска";
+"Featured currencies" = "Избранные валюты";
 "All currencies" = "Все валюты";
 /// Title
 "Currencies" = "Валюты";
 
 // NotificationsVC
+"Set a reminder" = "Установить напоминание";
+"Never miss a transaction! Enable push notifications to stay on top of your finances" = "Никогда не пропустите транзакцию! Включите пуш-уведомления, чтобы быть в курсе своих финансов";
+"Push notifications" = "Пуш-уведомления";
+/// Push notification
+"Enter all expenses!" = "Введите все траты!";
+"It's time to make all the transactions" = "Пришло время внести все транзакции";
+/// Title
+"Notifications" = "Уведомления";
+/// Alert
+"You need to enable notifications in settings" = "Вам нужно включить уведомления в настройках";
+"Go to Settings" = "Перейти в Настройки";
 
+// RegularityVC
+"Daily" = "Ежедневно";
+"Weekly" = "Еженедельно";
+/// Title
+"Regularity" = "Периодичность";
 
 // AboutAppVC
-"CoinTail is a reliable assistant in accounting for income and expenses, managing accounts and budgets. Convenient charts will help you control your finances" = "CoinTail - надежный помощник в учете доходов и расходов, управлении счетами и бюджетами. Удобные графики помогут контролировать ваши финансы";
-"Connect with Developer" = "Связь с разработчиком";
+"CoinTail is a reliable assistant in accounting for income and expenses, managing accounts and budgets" = "CoinTail — надежный помощник в учете доходов и расходов, ведении счетов и бюджетов.";
+"Contact us" = "Связаться с нами";
+"Application version" = "Версия приложения";
+"User agreement" = "Пользовательское Соглашение";
+/// Title
+"About" = "О приложении";
+
+// Delete data
+"Delete data" = "Удалить данные";
+"Are you sure you want to delete all data: transactions, budgets, accounts?" = "Вы уверены, что хотите удалить все данные: операции, бюджеты, счета?";

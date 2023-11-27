@@ -18,13 +18,7 @@ final class TransferCell: UICollectionViewCell {
     static let id = "TransferCell"
     
     weak var transferCellDelegate: TransferCellDelegate?
-        
-    let backView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        
-        return view
-    }()
+
     let separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(named: "arrowColor")
@@ -67,14 +61,12 @@ final class TransferCell: UICollectionViewCell {
         
         amountTextField.delegate = self
         
-        backgroundColor = .clear
-        
-        addSubview(backView)
-                
-        backView.addSubview(menuLabel)
-        backView.addSubview(separatorView)
-        backView.addSubview(amountTextField)
-        backView.addSubview(accountNameLabel)
+        contentView.backgroundColor = .white
+                        
+        contentView.addSubview(menuLabel)
+        contentView.addSubview(separatorView)
+        contentView.addSubview(amountTextField)
+        contentView.addSubview(accountNameLabel)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -84,7 +76,9 @@ final class TransferCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backView.easy.layout(Edges())
+        contentView.easy.layout([
+            Edges()
+        ])
         
         menuLabel.easy.layout([
             Left(16),

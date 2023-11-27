@@ -35,11 +35,10 @@ extension AddOperationVC: UIScrollViewDelegate {
         operationDescription = record.descriptionText
 
         // Категория
-        if let categoryName = Categories.shared.getCategory(for: record.categoryID)?.name {
-            operationCategory = categoryName
-        }
-        categoryID = record.categoryID
-
+        self.categoryID = record.categoryID
+        guard let category = Categories.shared.getGeneralCategory(for: record.categoryID) else { return }
+        operationCategory = category.name
+        
         // Счет
         if let accountID = record.accountID, let account = Accounts.shared.getAccount(for: accountID) {
             selectedAccount = account.name

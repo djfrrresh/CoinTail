@@ -114,7 +114,7 @@ class AddOperationVC: BasicVC {
         
         super.init(nibName: nil, bundle: nil)
 
-        self.title = "Add new operation".localized()
+        self.title = "Add a new transaction".localized()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -127,7 +127,7 @@ class AddOperationVC: BasicVC {
         
         guard let record = Records.shared.getRecord(for: operationID) else { return }
         
-        self.title = "Editing operation".localized()
+        self.title = "Edit transaction".localized()
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .trash,

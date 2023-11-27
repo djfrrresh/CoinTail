@@ -28,8 +28,16 @@ extension HomeVC {
     }
     
     @objc func switchAction() {
-        // Обновление сегмента
-        homeSegment = RecordType(rawValue: homeTypeSwitcher.titleForSegment(at: homeTypeSwitcher.selectedSegmentIndex) ?? "Total") ?? .allOperations
+        switch homeTypeSwitcher.selectedSegmentIndex {
+        case 0:
+            homeSegment = RecordType.allOperations
+        case 1:
+            homeSegment = RecordType.income
+        case 2:
+            homeSegment = RecordType.expense
+        default:
+            homeSegment = RecordType.allOperations
+        }
         
         categorySort = nil
         

@@ -38,7 +38,7 @@ class BudgetsVC: BasicVC {
     }()
     let budgetsDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Here you can set up a budgets for different categories and time periods".localized()
+        label.text = "Here you can set up a budgets for different categories and time periods. Control your expenses now".localized()
         label.font = UIFont(name: "SFProText-Regular", size: 17)
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping

@@ -26,8 +26,20 @@ class CreateCategoryVC: BasicVC {
     
     var segmentTitle: String?
     var addOperationVCSegment: RecordType {
-        RecordType(rawValue: segmentTitle ?? "Expense") ?? .expense
+        RecordType(rawValue: segmentTitle ?? RecordType.expense.rawValue) ?? .expense
     }
+    
+    let deleteCategoryButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(named: "cancelAction")
+        button.layer.cornerRadius = 16
+        button.setTitle("Delete category".localized(), for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
+        button.isHidden = true
+        
+        return button
+    }()
     
     let createCategoryCV: UICollectionView = {
         let createCategoryLayout: UICollectionViewFlowLayout = {
@@ -50,10 +62,23 @@ class CreateCategoryVC: BasicVC {
         return cv
     }()
     
+    init(categoryID: ObjectId) {
+        self.categoryID = categoryID
+        super.init(nibName: nil, bundle: nil)
+        
+        self.title = "Edit category".localized()
+        
+        guard let category = Categories.shared.getGeneralCategory(for: categoryID) else { return }
+        
+        setupUI(with: category)
+    }
+    
     public required init(segmentTitle: String) {
         self.segmentTitle = segmentTitle
         
         super.init(nibName: nil, bundle: nil)
+        
+        self.title = "Create a category".localized()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -62,7 +87,6 @@ class CreateCategoryVC: BasicVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Create category".localized()
         self.navigationItem.backButtonTitle = "Back".localized()
                         
         createCategoryCV.delegate = self
@@ -71,6 +95,7 @@ class CreateCategoryVC: BasicVC {
                         
         createCategorySubviews()
         createCategoryNavBar()
+        createCategoryTargets()
     }
  
 }

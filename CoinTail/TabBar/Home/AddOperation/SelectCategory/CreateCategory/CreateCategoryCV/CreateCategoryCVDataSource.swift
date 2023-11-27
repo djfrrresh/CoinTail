@@ -11,7 +11,7 @@ import UIKit
 extension CreateCategoryVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return categoryID != nil ? 2 : 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -28,9 +28,9 @@ extension CreateCategoryVC: UICollectionViewDataSource {
         case 0:
             cell.cornerRadiusTop(radius: 12)
             cell.categoryNameTF.placeholder = "Category name".localized()
-//            if accountID != nil {
-//                cell.accountNameTF.text = accountName
-//            }
+            if categoryID != nil {
+                cell.categoryNameTF.text = categoryName
+            }
             
             cell.categoryIconTF.isHidden = true
             cell.menuLabel.isHidden = true
@@ -42,6 +42,9 @@ extension CreateCategoryVC: UICollectionViewDataSource {
             cell.isSeparatorLineHidden(false)
         case 1:
             cell.menuLabel.text = "Icon".localized()
+            if categoryID != nil {
+                cell.categoryIconTF.text = categoryIcon
+            }
             
             cell.categoryIconTF.isHidden = false
             cell.menuLabel.isHidden = false
@@ -50,7 +53,12 @@ extension CreateCategoryVC: UICollectionViewDataSource {
             cell.chevronImageView.isHidden = false
             cell.onOffToggle.isHidden = true
             cell.parentalCategoryLabel.isHidden = true
-            cell.isSeparatorLineHidden(false)
+            if categoryID != nil {
+                cell.isSeparatorLineHidden(true)
+                cell.cornerRadiusBottom(radius: 12)
+            } else {
+                cell.isSeparatorLineHidden(false)
+            }
         case 2:
             cell.menuLabel.text = "Make as subcategory".localized()
             

@@ -147,7 +147,7 @@ extension HomeVC: SelectedDate {
         monthSections = OperationsDaySection.groupRecords(section: homeSegment, groupRecords: getRecord)
         
         // Вычисление общего баланса
-        let totalBalance = "Total balance:".localized()
+        let totalBalance = "Balance:".localized()
         let allTimeAmount = Records.shared.getAmount(for: .allTheTime, type: .allOperations)
         let currency = Currencies.shared.selectedCurrency.currency
         

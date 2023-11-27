@@ -17,7 +17,6 @@ final class TransfersHistoryCVHeader: UICollectionReusableView {
         let label = UILabel()
         label.font = UIFont(name: "SFProText-Regular", size: 12)
         label.textColor = UIColor(named: "secondaryTextColor")
-        label.text = "Contact us"
         label.numberOfLines = 1
         label.textAlignment = .left
         

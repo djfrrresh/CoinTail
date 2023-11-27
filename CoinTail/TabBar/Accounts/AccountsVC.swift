@@ -53,7 +53,7 @@ class AccountsVC: BasicVC {
         let button = UIButton()
         button.backgroundColor = UIColor(named: "primaryAction")
         button.layer.cornerRadius = 16
-        button.setTitle("Add account".localized(), for: .normal)
+        button.setTitle("Add an account".localized(), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
         

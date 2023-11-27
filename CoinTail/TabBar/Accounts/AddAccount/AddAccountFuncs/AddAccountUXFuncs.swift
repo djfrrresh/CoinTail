@@ -34,7 +34,7 @@ extension AddAccountVC: AddAccountCellDelegate {
         if missingName {
             errorAlert("Account name not entered".localized())
         } else if missingAmount {
-            errorAlert("Amount not entered".localized())
+            errorAlert("Missing value in amount field".localized())
         } else if accountName != nil && accountID == nil {
             errorAlert("There is already an account with this name".localized())
         } else {

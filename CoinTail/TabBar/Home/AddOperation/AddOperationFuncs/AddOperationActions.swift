@@ -24,9 +24,11 @@ extension AddOperationVC {
 
         recordValidation(amount: amount, categoryText: categoryText, accountID: accountID) { [weak self] categoryID in
             guard let strongSelf = self else { return }
-
+            
+            let operationAmount = strongSelf.addOperationSegment.rawValue == "Income" ? amount : -abs(amount)
+            
             let record = RecordClass()
-            record.amount = amount
+            record.amount = operationAmount
             record.descriptionText = desctiption ?? ""
             record.date = strongSelf.operationDate ?? Date()
             record.type = strongSelf.addOperationSegment.rawValue

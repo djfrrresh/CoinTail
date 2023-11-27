@@ -13,7 +13,11 @@ extension SelectCategoryVC: UICollectionViewDataSource {
 
     // Количество категорий
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categories.count
+        if isSearching {
+            return filteredData.count
+        } else {
+            return categories.count
+        }
     }
     
     // Ячейки заполняются
@@ -25,10 +29,17 @@ extension SelectCategoryVC: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        let categoryData = categories[indexPath.row]
+        var categoryData: CategoryProtocol
+        
+        if isSearching {
+            categoryData = filteredData[indexPath.row]
+        } else {
+            categoryData = categories[indexPath.row]
+        }
 
         cell.categoryLabel.text = categoryData.name
         cell.categoryIcon.text = categoryData.image
+        cell.isEditingCategory(isEditingCategory)
         cell.chevronImageView.isHidden = !isParental
         
         let isLastRow = self.collectionView(collectionView, numberOfItemsInSection: indexPath.section) - 1 == indexPath.row

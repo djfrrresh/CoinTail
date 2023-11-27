@@ -49,7 +49,7 @@ extension AddBudgetVC {
     
     func goToSelectCategoryVC() {
         // Передаем название и иконки категорий по типу операций
-        let vc = SelectCategoryVC(segmentTitle: "Expense", isParental: false, categoryID: nil)
+        let vc = SelectCategoryVC(segmentTitle: RecordType.expense.rawValue, isParental: false, categoryID: nil)
         vc.categoryDelegate = self
         
         navigationController?.pushViewController(vc, animated: true)
@@ -86,9 +86,9 @@ extension AddBudgetVC {
         var daysToAdd: Int
         
         switch budgetTimePeriod {
-        case "Week":
+        case "Week".localized():
             daysToAdd = 7
-        case "Month":
+        case "Month".localized():
             daysToAdd = 30
         default:
             daysToAdd = 30

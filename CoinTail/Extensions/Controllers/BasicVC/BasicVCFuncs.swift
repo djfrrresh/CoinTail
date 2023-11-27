@@ -14,7 +14,7 @@ extension BasicVC {
     func errorAlert(_ message: String) {
         let alertAction = UIAlertAction(title: "OK", style: .default)
         
-        let alertView = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let alertView = UIAlertController(title: "Error".localized(), message: message, preferredStyle: .alert)
         
         alertView.addAction(alertAction)
         
@@ -69,18 +69,7 @@ extension BasicVC {
             let titleView = UIView()
             let titleLabel = UILabel()
             titleLabel.text = title
-//            titleLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
-            
-//            let addButton = UIBarButtonItem(
-//                barButtonSystemItem: .add,
-//                target: self,
-//                action: selector
-//            )
-            
-//            guard let customView = addButton.customView else { return }
-            
             titleView.addSubview(titleLabel)
-//            titleView.addSubview(customView)
             
             navigationItem.titleView = titleView
             navigationItem.setValue(1, forKey: "__largeTitleTwoLineMode")

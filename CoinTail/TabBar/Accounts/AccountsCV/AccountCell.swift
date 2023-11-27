@@ -12,13 +12,7 @@ import EasyPeasy
 final class AccountCell: UICollectionViewCell {
     
     static let id = "AccountCell"
-    
-    let backView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        
-        return view
-    }()
+
     let separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(named: "arrowColor")
@@ -58,14 +52,12 @@ final class AccountCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .clear
-                
-        addSubview(backView)
-        
-        backView.addSubview(nameLabel)
-        backView.addSubview(amountLabel)
-        backView.addSubview(separatorView)
-        backView.addSubview(chevronImageView)
+        contentView.backgroundColor = .white
+                        
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(amountLabel)
+        contentView.addSubview(separatorView)
+        contentView.addSubview(chevronImageView)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -75,7 +67,9 @@ final class AccountCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backView.easy.layout(Edges())
+        contentView.easy.layout([
+            Edges()
+        ])
         
         nameLabel.easy.layout([
             Left(16),

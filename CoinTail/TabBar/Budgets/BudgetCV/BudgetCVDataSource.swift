@@ -41,8 +41,6 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
         let budgetData: BudgetClass = filteredBudgets[indexPath.row]
         let currency = budgetData.currency
         let categoryID = budgetData.categoryID
-        guard let category = Categories.shared.getCategory(for: categoryID) else { return cell }
-
         let sumByCategory = abs(Records.shared.getBudgetAmount(
             date: budgetData.startDate,
             untilDate: budgetData.untilDate,
@@ -50,6 +48,8 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
             currency: currency
         ) ?? 0)
         let percentText = cell.calculatePercent(sum: sumByCategory, total: budgetData.amount)
+        
+        guard let category = Categories.shared.getCategory(for: categoryID) else { return cell }
 
         cell.categoryLabel.text = category.name
         cell.amountLabel.text = "\(sumByCategory) / \(budgetData.amount) \(budgetData.currency) (\(percentText)%)"

@@ -25,7 +25,7 @@ final class NotificationsVC: BasicVC {
         label.text = "Set a reminder".localized()
         label.font = UIFont(name: "SFProDisplay-Bold", size: 28)
         label.textColor = UIColor(named: "black")
-        label.numberOfLines = 1
+        label.numberOfLines = 0
         label.textAlignment = .center
         
         return label

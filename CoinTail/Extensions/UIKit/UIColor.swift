@@ -37,10 +37,6 @@ extension UIColor {
         return "#000000"
     }
     
-}
-
-extension UIColor {
-    
     static func randomColor() -> UIColor {
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0

@@ -23,7 +23,7 @@ extension BudgetsVC {
     static func getBudgetsDescriptionLabel() -> UILabel {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "Here you can set up a budgets for different categories and time periods".localized()
+        label.text = "Here you can set up a budgets for different categories and time periods. Control your expenses now".localized()
         label.font = UIFont(name: "SFProText-Regular", size: 17)
         
         return label
@@ -102,7 +102,6 @@ extension BudgetsVC {
         if isEmpty {
             self.navigationItem.rightBarButtonItem = nil
         } else {
-            //TODO: сделать в функции setupNavigationTitle большой +
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(
                 barButtonSystemItem: .add,
                 target: self,

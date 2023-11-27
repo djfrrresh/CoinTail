@@ -17,12 +17,6 @@ final class CurrencyCell: UICollectionViewCell {
     
     var currenciesCV: UICollectionView?
     
-    let backView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        
-        return view
-    }()
     let separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(named: "arrowColor")
@@ -68,17 +62,15 @@ final class CurrencyCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .clear
-                
-        addSubview(backView)
-        
-        backView.addSubview(checkmarkImageView)
-        backView.addSubview(favouriteButton)
-        backView.addSubview(currencyCodeLabel)
-        backView.addSubview(currencyNameLabel)
-        backView.addSubview(separatorView)
-        
         favouriteButton.addTarget(self, action: #selector(favouriteButtonPressed), for: .touchUpInside)
+        
+        contentView.backgroundColor = .white
+                        
+        contentView.addSubview(checkmarkImageView)
+        contentView.addSubview(favouriteButton)
+        contentView.addSubview(currencyCodeLabel)
+        contentView.addSubview(currencyNameLabel)
+        contentView.addSubview(separatorView)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -88,7 +80,9 @@ final class CurrencyCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backView.easy.layout(Edges())
+        contentView.easy.layout([
+            Edges()
+        ])
         
         favouriteButton.easy.layout([
             Height(20),

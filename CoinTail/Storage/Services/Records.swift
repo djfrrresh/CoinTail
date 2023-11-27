@@ -104,14 +104,25 @@ final class Records {
     // Получает сумму из категории с начальной даты до конечной с указанным периодом (неделя / месяц)
     func getBudgetAmount(date: Date, untilDate: Date, categoryID: ObjectId, currency: String) -> Double? {
         let calendar = Calendar.current
-        guard let startDate = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: date)),
-              let endDate = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: untilDate)) else { return nil }
+        let category = Categories.shared.getCategory(for: categoryID)
+        let subcategories = category?.subcategories
         
-        var records = records.filter { $0.type == "Expense" }
-
-        records = records.filter { $0.categoryID == categoryID && $0.currency == currency }
+        var allSubcategoryIDs: [ObjectId] = [categoryID]
         
-        return records.filter { $0.date >= startDate && $0.date <= endDate }.reduce(0.0) { $0 + $1.amount }
+        if let subcategories = subcategories {
+            allSubcategoryIDs += subcategories
+        }
+        
+        // Получаем все записи для всех категорий и подкатегорий
+        var records = self.records.filter { $0.type == RecordType.expense.rawValue && allSubcategoryIDs.contains($0.categoryID) && $0.currency == currency }
+        
+        // Фильтруем записи по датам
+        records = records.filter { $0.date >= date && $0.date <= untilDate }
+        
+        // Считаем сумму
+        let totalAmount = records.reduce(0.0) { $0 + $1.amount }
+        
+        return totalAmount
     }
     
     // Посчитать конечный баланс для счёта

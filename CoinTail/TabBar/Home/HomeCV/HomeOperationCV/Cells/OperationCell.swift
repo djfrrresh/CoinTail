@@ -12,13 +12,7 @@ import EasyPeasy
 final class OperationCVCell: UICollectionViewCell {
     
     static let id = "OperationCVCell"
-    
-    let backView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        
-        return view
-    }()
+
     let separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(named: "arrowColor")
@@ -62,15 +56,13 @@ final class OperationCVCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .clear
-                
-        addSubview(backView)
-        
-        backView.addSubview(chevronImageView)
-        backView.addSubview(separatorView)
-        backView.addSubview(categoryIcon)
-        backView.addSubview(amountLabel)
-        backView.addSubview(categoryLabel)
+        contentView.backgroundColor = .white
+                        
+        contentView.addSubview(chevronImageView)
+        contentView.addSubview(separatorView)
+        contentView.addSubview(categoryIcon)
+        contentView.addSubview(amountLabel)
+        contentView.addSubview(categoryLabel)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -80,7 +72,9 @@ final class OperationCVCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backView.easy.layout(Edges())
+        contentView.easy.layout([
+            Edges()
+        ])
 
         separatorView.easy.layout([
             Bottom(),

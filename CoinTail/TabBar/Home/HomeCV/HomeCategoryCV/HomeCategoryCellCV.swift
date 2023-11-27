@@ -37,7 +37,7 @@ extension HomeCategoryCell: UICollectionViewDataSource, UICollectionViewDelegate
         categoryColor = UIColor(hex: categoriesArrCellData[indexPath.row].color ?? "FFFFFF")
         
         cell.categoryName.text = categoryLabel
-        cell.backView.backgroundColor = categoryColor
+        cell.contentView.backgroundColor = categoryColor
         cell.isXmark = self.category != nil
         
         return cell

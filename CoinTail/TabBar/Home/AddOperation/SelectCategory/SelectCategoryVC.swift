@@ -50,10 +50,15 @@ class SelectCategoryVC: BasicVC {
     weak var categoryDelegate: SendCategoryID?
     
     var categoryID: ObjectId?
-    
-    var filteredData = [CategoryClass]()
+    var filteredData = [CategoryProtocol]()
+    var categoryNavBarTitle = "Edit".localized()
     var isSearching: Bool = false
     var isParental: Bool = false
+    var isEditingCategory: Bool = false {
+        didSet {
+            selectCategoryCV.reloadData()
+        }
+    }
             
     let selectCategoryCV: UICollectionView = {
         let layout: UICollectionViewFlowLayout = {
@@ -80,7 +85,7 @@ class SelectCategoryVC: BasicVC {
     
     let categorySearchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.placeholder = "Type any category name".localized()
+        searchBar.placeholder = "Search categories by name".localized()
         searchBar.barTintColor = UIColor.clear
         searchBar.backgroundColor = UIColor.clear
         searchBar.isTranslucent = true
@@ -102,7 +107,7 @@ class SelectCategoryVC: BasicVC {
             
     var rawSegmentType: String?
     var operationSegmentType: RecordType {
-        RecordType(rawValue: rawSegmentType ?? "Expense") ?? .expense
+        RecordType(rawValue: rawSegmentType ?? RecordType.expense.rawValue) ?? .expense
     }
     
     public required init(segmentTitle: String, isParental: Bool, categoryID: ObjectId?) {
@@ -128,6 +133,7 @@ class SelectCategoryVC: BasicVC {
         self.navigationItem.backButtonTitle = "Back".localized()
 
         selectCategoryCV.delegate = self
+        categorySearchBar.delegate = self
         
         selectCategoryCV.dataSource = self
         
@@ -135,6 +141,7 @@ class SelectCategoryVC: BasicVC {
         
         selectCategorySubviews()
         setTitle()
+        selectCategoryNavBar()
     }
     
 }

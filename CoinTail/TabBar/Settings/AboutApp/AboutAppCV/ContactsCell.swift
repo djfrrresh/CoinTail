@@ -12,13 +12,7 @@ import EasyPeasy
 final class ContactsCell: UICollectionViewCell {
     
     static let id = "ContactsCell"
-            
-    let backView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
 
-        return view
-    }()
     let separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(named: "arrowColor")
@@ -86,15 +80,15 @@ final class ContactsCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
                 
-        contentView.addSubview(backView)
+        contentView.backgroundColor = .white
         
-        backView.addSubview(contactsLabel)
-        backView.addSubview(chevronImageView)
-        backView.addSubview(separatorView)
-        backView.addSubview(contactsImageView)
-        backView.addSubview(userAgreementLabel)
-        backView.addSubview(appVersionLabel)
-        backView.addSubview(appVersionTextLabel)
+        contentView.addSubview(contactsLabel)
+        contentView.addSubview(chevronImageView)
+        contentView.addSubview(separatorView)
+        contentView.addSubview(contactsImageView)
+        contentView.addSubview(userAgreementLabel)
+        contentView.addSubview(appVersionLabel)
+        contentView.addSubview(appVersionTextLabel)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -103,7 +97,7 @@ final class ContactsCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backView.easy.layout([
+        contentView.easy.layout([
             Edges()
         ])
         

@@ -20,13 +20,7 @@ final class AddAccountCell: UICollectionViewCell {
     static let id = "AddAccountCell"
     
     weak var addAccountCellDelegate: AddAccountCellDelegate?
-            
-    let backView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
 
-        return view
-    }()
     let separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(named: "arrowColor")
@@ -93,15 +87,15 @@ final class AddAccountCell: UICollectionViewCell {
         
         onOffToggle.addTarget(self, action: #selector(switchValueChanged), for: UIControl.Event.valueChanged)
                 
-        contentView.addSubview(backView)
+        contentView.backgroundColor = .white
         
-        backView.addSubview(menuLabel)
-        backView.addSubview(accountNameTF)
-        backView.addSubview(accountAmountTF)
-        backView.addSubview(chevronImageView)
-        backView.addSubview(currencyLabel)
-        backView.addSubview(separatorView)
-        backView.addSubview(onOffToggle)
+        contentView.addSubview(menuLabel)
+        contentView.addSubview(accountNameTF)
+        contentView.addSubview(accountAmountTF)
+        contentView.addSubview(chevronImageView)
+        contentView.addSubview(currencyLabel)
+        contentView.addSubview(separatorView)
+        contentView.addSubview(onOffToggle)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -110,7 +104,7 @@ final class AddAccountCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backView.easy.layout([
+        contentView.easy.layout([
             Edges()
         ])
 

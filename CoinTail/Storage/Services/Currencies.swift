@@ -49,7 +49,6 @@ class Currencies {
     
     // Добавить / удалить валюту из избранных
     func toggleFavouriteCurrency(_ currency: FavouriteCurrencyClass) {
-        //TODO: не работает удаление
         if hasCurrency(currency.currency, array: extractCurrencyStrings(from: favouriteCurrencies)) {
             RealmService.shared.delete(currency, FavouriteCurrencyClass.self)
         } else {

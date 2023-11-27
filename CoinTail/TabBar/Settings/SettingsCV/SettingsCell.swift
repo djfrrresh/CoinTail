@@ -12,13 +12,7 @@ import EasyPeasy
 final class SettingsCell: UICollectionViewCell {
     
     static let id = "SettingsCell"
-    
-    let backView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
 
-        return view
-    }()
     let separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(named: "arrowColor")
@@ -63,13 +57,13 @@ final class SettingsCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
                 
-        contentView.addSubview(backView)
+        contentView.backgroundColor = .white
         
-        backView.addSubview(menuImageView)
-        backView.addSubview(menuLabel)
-        backView.addSubview(chevronImageView)
-        backView.addSubview(currencyLabel)
-        backView.addSubview(separatorView)
+        contentView.addSubview(menuImageView)
+        contentView.addSubview(menuLabel)
+        contentView.addSubview(chevronImageView)
+        contentView.addSubview(currencyLabel)
+        contentView.addSubview(separatorView)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -78,7 +72,7 @@ final class SettingsCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backView.easy.layout([
+        contentView.easy.layout([
             Edges()
         ])
         

@@ -20,8 +20,8 @@ extension SettingsVC {
     
     func deleteData() {
         confirmationAlert(
-            title: "Delete data",
-            message: "Are you sure you want to delete all information: operations, budgets, accounts?".localized(),
+            title: "Delete data".localized(),
+            message: "Are you sure you want to delete all data: transactions, budgets, accounts?".localized(),
             confirmActionTitle: "Confirm".localized(),
             confirmActionHandler: {
                 RealmService.shared.deleteAllData()

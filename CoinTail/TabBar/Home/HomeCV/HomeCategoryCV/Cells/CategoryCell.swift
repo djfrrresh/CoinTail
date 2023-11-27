@@ -13,14 +13,6 @@ final class CategoryCVCell: UICollectionViewCell {
     
     static let id = "CategoryCVCell"
     
-    let backView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(named: "black")
-        view.layer.cornerRadius = 15
-        
-        return view
-    }()
-    
     let xmarkImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "xmark")
@@ -46,11 +38,11 @@ final class CategoryCVCell: UICollectionViewCell {
     override init (frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.backgroundColor = .clear
+        contentView.backgroundColor = .white
+        contentView.layer.cornerRadius = 15
         
-        contentView.addSubview(backView)
-        backView.addSubview(categoryName)
-        backView.addSubview(xmarkImage)
+        contentView.addSubview(categoryName)
+        contentView.addSubview(xmarkImage)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -59,7 +51,7 @@ final class CategoryCVCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backView.easy.layout([
+        contentView.easy.layout([
             Edges()
         ])
         

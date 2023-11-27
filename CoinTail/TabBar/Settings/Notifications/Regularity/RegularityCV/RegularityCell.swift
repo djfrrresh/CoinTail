@@ -12,13 +12,7 @@ import EasyPeasy
 final class RegularityCell: UICollectionViewCell {
     
     static let id = "RegularityCell"
-                
-    let backView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
 
-        return view
-    }()
     let separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(named: "arrowColor")
@@ -47,11 +41,11 @@ final class RegularityCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
                 
-        contentView.addSubview(backView)
+        contentView.backgroundColor = .white
         
-        backView.addSubview(menuLabel)
-        backView.addSubview(checkmarkImageView)
-        backView.addSubview(separatorView)
+        contentView.addSubview(menuLabel)
+        contentView.addSubview(checkmarkImageView)
+        contentView.addSubview(separatorView)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -60,7 +54,7 @@ final class RegularityCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backView.easy.layout([
+        contentView.easy.layout([
             Edges()
         ])
 

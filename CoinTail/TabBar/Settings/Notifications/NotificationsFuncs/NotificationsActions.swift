@@ -53,9 +53,9 @@ extension NotificationsVC {
     // Проверка на то, включены ли уведомления в настройках
     private func notificationsPermission() {
         confirmationAlert(
-            title: "Error",
-            message: "You need to enable notifications in settings",
-            confirmActionTitle: "Go to Settings"
+            title: "Error".localized(),
+            message: "You need to enable notifications in settings".localized(),
+            confirmActionTitle: "Go to Settings".localized()
         ) {
             let isRegisteredForRemoteNotifications = UIApplication.shared.isRegisteredForRemoteNotifications
             if !isRegisteredForRemoteNotifications {

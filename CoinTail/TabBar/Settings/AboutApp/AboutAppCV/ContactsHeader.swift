@@ -17,7 +17,7 @@ final class ContactsHeader: UICollectionReusableView {
         let label = UILabel()
         label.font = UIFont(name: "SFProText-Regular", size: 12)
         label.textColor = UIColor(named: "secondaryTextColor")
-        label.text = "Contact us"
+        label.text = "Contact us".localized()
         label.numberOfLines = 1
         label.textAlignment = .left
         

@@ -107,9 +107,9 @@ extension CurrenciesVC: UICollectionViewDataSource {
         
         switch indexPath.section {
         case 0:
-            text = !favouriteCurrencies.isEmpty ? "Favourites" : ""
+            text = !favouriteCurrencies.isEmpty ? "Featured currencies".localized() : ""
         case 1:
-            text = "All currencies"
+            text = "All currencies".localized()
         default:
             text = ""
         }

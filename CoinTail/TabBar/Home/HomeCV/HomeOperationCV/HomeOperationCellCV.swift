@@ -37,7 +37,7 @@ extension HomeOperationCell: UICollectionViewDataSource, UICollectionViewDelegat
         
         recordData = section.records[indexPath.row]
         
-        guard let categoryData = Categories.shared.getCategory(for: recordData.categoryID) else { return cell }
+        guard let categoryData = Categories.shared.getGeneralCategory(for: recordData.categoryID) else { return cell }
 
         // Ставит цвет в зависимости от типа операции
         cell.setAmountColor(recordType: RecordType(rawValue: recordData.type) ?? .allOperations)

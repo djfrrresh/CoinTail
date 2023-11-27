@@ -17,7 +17,7 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
     
     var category: CategoryClass?
     
-    var categoriesArrCellData: [CategoryClass] = [CategoryClass]() {
+    var categoriesArrCellData = [CategoryClass]() {
         didSet {
             categoriesCV.reloadData()
         }

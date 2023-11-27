@@ -84,7 +84,7 @@ final class AboutAppVC: BasicVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "About"
+        self.title = "About".localized()
         
         contactsCV.delegate = self
 

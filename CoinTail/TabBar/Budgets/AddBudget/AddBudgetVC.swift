@@ -20,7 +20,7 @@ class AddBudgetVC: BasicVC {
             updateCell(at: indexPathToUpdate, text: selectedCurrency)
         }
     }
-    var budgetTimePeriod: String = "Month" {
+    var budgetTimePeriod: String = "Month".localized() {
         didSet {
             let indexPathToUpdate = IndexPath(item: 3, section: 0)
             
@@ -100,6 +100,8 @@ class AddBudgetVC: BasicVC {
     
     public required init() {
         super.init(nibName: nil, bundle: nil)
+        
+        self.title = "Add a new budget".localized()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -114,8 +116,6 @@ class AddBudgetVC: BasicVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Add a new budget".localized()
-
         currenciesPickerView.dataSource = self
         addBudgetCV.dataSource = self
         

@@ -13,12 +13,6 @@ final class NotificationsCell: UICollectionViewCell {
     
     static let id = "NotificationsCell"
             
-    let backView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-
-        return view
-    }()
     let separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(named: "arrowColor")
@@ -62,13 +56,13 @@ final class NotificationsCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
                 
-        contentView.addSubview(backView)
+        contentView.backgroundColor = .white
         
-        backView.addSubview(menuLabel)
-        backView.addSubview(chevronImageView)
-        backView.addSubview(regularityLabel)
-        backView.addSubview(separatorView)
-        backView.addSubview(onOffToggle)
+        contentView.addSubview(menuLabel)
+        contentView.addSubview(chevronImageView)
+        contentView.addSubview(regularityLabel)
+        contentView.addSubview(separatorView)
+        contentView.addSubview(onOffToggle)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -77,7 +71,7 @@ final class NotificationsCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backView.easy.layout([
+        contentView.easy.layout([
             Edges()
         ])
 

@@ -46,8 +46,13 @@ final class Categories {
     }
     
     //  Добавление новой подкатегории
-    func addNewSubcategory(_ subcategory: SubcategoryClass) {
+    func addNewSubcategory(subcategory: SubcategoryClass, for categoryID: ObjectId) {
         RealmService.shared.write(subcategory, SubcategoryClass.self)
+        
+        addSubcategoryToCategory(
+            for: categoryID,
+            subcategoryID: subcategory.id
+        )
     }
     
     // Добавление ID подкатегории к категории
@@ -90,6 +95,19 @@ final class Categories {
         return subcategories.filter { $0.id == id }.first
     }
     
+    // Получить категорию или подкатегорию по ID
+    func getGeneralCategory(for id: ObjectId) -> CategoryProtocol? {
+        var category: CategoryProtocol?
+        if let nonOptionalCategory = getCategory(for: id) {
+            category = nonOptionalCategory
+        }
+        if let nonOptionalSubcategory = getSubcategory(for: id) {
+            category = nonOptionalSubcategory
+        }
+        
+        return category
+    }
+    
     // Отредактировать категорию по его ID
     func editCategory(for id: ObjectId, replacingCategory: CategoryClass, completion: ((Bool) -> Void)? = nil) {
         RealmService.shared.update(replacingCategory, CategoryClass.self)
@@ -104,6 +122,7 @@ final class Categories {
         completion?(true)
     }
     
+    //TODO: при удалении категорий пропадают ячейки в бюджетах и операциях
     // Удаляет категорию по его ID
     func deleteCategory(for id: ObjectId, completion: ((Bool) -> Void)? = nil) {
         guard let category: CategoryClass = getCategory(for: id) else {
@@ -111,11 +130,17 @@ final class Categories {
             return
         }
 
+        // Удаляем подкатегории
+        for subcategoryId in category.subcategories {
+            deleteSubcategory(for: subcategoryId)
+        }
+        
         RealmService.shared.delete(category, CategoryClass.self)
 
         completion?(true)
     }
     
+    //TODO: при удалении подкатегории удалить ее из массива в категории
     // Удаляет подкатегорию по его ID
     func deleteSubcategory(for id: ObjectId, completion: ((Bool) -> Void)? = nil) {
         guard let subcategory: SubcategoryClass = getSubcategory(for: id) else {

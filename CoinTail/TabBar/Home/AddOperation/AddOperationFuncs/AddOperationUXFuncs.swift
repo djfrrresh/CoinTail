@@ -12,9 +12,8 @@ import RealmSwift
 extension AddOperationVC: SendCategoryID, AddOperationCellDelegate {
     
     func sendCategoryData(id: ObjectId) {
-        print(id)
-        guard let category = Categories.shared.getCategory(for: id) else { return }
-
+        guard let category = Categories.shared.getGeneralCategory(for: id) else { return }
+        
         categoryID = id
         operationCategory = category.name
     }
@@ -51,15 +50,12 @@ extension AddOperationVC: SendCategoryID, AddOperationCellDelegate {
         } else if missingCategory {
             errorAlert("No category selected".localized())
         } else if account != nil && account?.currency != "\(selectedCurrency)" {
-            errorAlert("You cannot specify an account for this transaction with another currency!".localized())
+            errorAlert("You cannot specify an account for this transaction with another currency".localized())
         } else {
-            //TODO: subcategories
-            var category: ObjectId = ObjectId()
-            if let categoryID = self.categoryID {
-                category = categoryID
-            }
+            guard let categoryID = self.categoryID,
+                  let category = Categories.shared.getGeneralCategory(for: categoryID) else { return }
 
-            completion?(category)
+            completion?(category.id)
         }
     }
     

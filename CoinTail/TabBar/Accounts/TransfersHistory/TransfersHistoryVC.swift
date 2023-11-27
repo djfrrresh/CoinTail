@@ -38,7 +38,7 @@ final class TransfersHistoryVC: BasicVC {
     }()
     let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Once you transfer money from one account to another – you can check transfer history here".localized()
+        label.text = "Once you transfer money from one account to another - you can check transfer history here".localized()
         label.font = UIFont(name: "SFProText-Regular", size: 17)
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
@@ -91,7 +91,7 @@ final class TransfersHistoryVC: BasicVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Transfers history".localized()
+        self.title = "Transfer history".localized()
         
         transfersCV.delegate = self
         

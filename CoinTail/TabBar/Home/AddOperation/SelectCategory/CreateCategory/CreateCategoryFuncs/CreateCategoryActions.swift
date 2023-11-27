@@ -23,6 +23,7 @@ extension CreateCategoryVC {
         categoryValidation(name: categoryName, icon: categoryIcon, mainCategory: mainCategoryName, isSubcategory: isSubcategory) { [weak self] categoryName, categoryIcon in
             guard let strongSelf = self else { return }
             
+            //TODO: сделать редактирование
             if isSubcategory {
                 let subcategory = SubcategoryClass()
                 subcategory.name = categoryName
@@ -32,13 +33,7 @@ extension CreateCategoryVC {
                 guard let categoryID = strongSelf.categoryID else { return }
                 subcategory.parentCategory = categoryID
 
-                //TODO: объединить обе функции ниже
-                Categories.shared.addSubcategoryToCategory(
-                    for: categoryID,
-                    subcategoryID: subcategory.id
-                )
-
-                Categories.shared.addNewSubcategory(subcategory)
+                Categories.shared.addNewSubcategory(subcategory: subcategory, for: categoryID)
             } else {
                 let category = CategoryClass()
                 category.name = categoryName
@@ -60,6 +55,35 @@ extension CreateCategoryVC {
         vc.categoryDelegate = self
         
         present(vc, animated: true)
+    }
+    
+    @objc func removeCategory(_ sender: UIButton) {
+        guard let id = categoryID,
+              let categoryOrSubcategory = Categories.shared.getGeneralCategory(for: id) else { return }
+
+        confirmationAlert(
+            title: "Delete category".localized(),
+            message: "Are you sure?".localized(),
+            confirmActionTitle: "Confirm".localized()
+        ) { [weak self] in
+            if let category = categoryOrSubcategory as? CategoryClass {
+                Categories.shared.deleteCategory(for: category.id) { success in
+                    if success {
+                        self?.navigationController?.popToRootViewController(animated: true)
+                    } else {
+                        return
+                    }
+                }
+            } else if let subcategory = categoryOrSubcategory as? SubcategoryClass {
+                Categories.shared.deleteSubcategory(for: subcategory.id) { success in
+                    if success {
+                        self?.navigationController?.popToRootViewController(animated: true)
+                    } else {
+                        return
+                    }
+                }
+            }
+        }
     }
 
 }

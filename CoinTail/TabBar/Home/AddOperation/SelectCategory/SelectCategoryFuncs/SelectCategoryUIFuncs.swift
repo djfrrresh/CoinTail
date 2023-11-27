@@ -40,6 +40,12 @@ extension SelectCategoryVC {
         ])
     }
     
+    func selectCategoryNavBar() {
+        let actionButton = UIBarButtonItem(title: categoryNavBarTitle, style: .plain, target: self, action: #selector(editCategoryAction))
+            
+        self.navigationItem.rightBarButtonItem = actionButton
+    }
+    
     func setTitle() {
         if let categoryID = categoryID,
            let category = Categories.shared.getCategory(for: categoryID) {

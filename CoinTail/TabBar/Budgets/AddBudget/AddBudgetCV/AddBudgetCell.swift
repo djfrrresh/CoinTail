@@ -19,12 +19,6 @@ final class AddBudgetCell: UICollectionViewCell {
     
     weak var addBudgetCellDelegate: AddBudgetCellDelegate?
             
-    let backView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-
-        return view
-    }()
     let separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(named: "arrowColor")
@@ -67,15 +61,15 @@ final class AddBudgetCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        budgetAmountTF.delegate = self
-                        
-        contentView.addSubview(backView)
+        contentView.backgroundColor = .white
         
-        backView.addSubview(menuLabel)
-        backView.addSubview(budgetAmountTF)
-        backView.addSubview(chevronImageView)
-        backView.addSubview(subMenuLabel)
-        backView.addSubview(separatorView)
+        budgetAmountTF.delegate = self
+
+        contentView.addSubview(menuLabel)
+        contentView.addSubview(budgetAmountTF)
+        contentView.addSubview(chevronImageView)
+        contentView.addSubview(subMenuLabel)
+        contentView.addSubview(separatorView)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -84,7 +78,7 @@ final class AddBudgetCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backView.easy.layout([
+        contentView.easy.layout([
             Edges()
         ])
 

@@ -21,12 +21,6 @@ final class CreateCategoryCell: UICollectionViewCell {
     
     weak var createCategoryCellDelegate: CreateCategoryCellDelegate?
 
-    let backView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-
-        return view
-    }()
     let separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(named: "arrowColor")
@@ -91,21 +85,21 @@ final class CreateCategoryCell: UICollectionViewCell {
     override init (frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.addSubview(backView)
+        contentView.backgroundColor = .white
         
         categoryNameTF.delegate = self
         categoryIconTF.delegate = self
         
         onOffToggle.addTarget(self, action: #selector(switchValueChanged), for: UIControl.Event.valueChanged)
                         
-        backView.addSubview(menuLabel)
-        backView.addSubview(chevronImageView)
-        backView.addSubview(categoryNameTF)
-        backView.addSubview(emojiLabel)
-        backView.addSubview(separatorView)
-        backView.addSubview(onOffToggle)
-        backView.addSubview(parentalCategoryLabel)
-        backView.addSubview(categoryIconTF)
+        contentView.addSubview(menuLabel)
+        contentView.addSubview(chevronImageView)
+        contentView.addSubview(categoryNameTF)
+        contentView.addSubview(emojiLabel)
+        contentView.addSubview(separatorView)
+        contentView.addSubview(onOffToggle)
+        contentView.addSubview(parentalCategoryLabel)
+        contentView.addSubview(categoryIconTF)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -114,7 +108,7 @@ final class CreateCategoryCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backView.easy.layout([
+        contentView.easy.layout([
             Edges()
         ])
         

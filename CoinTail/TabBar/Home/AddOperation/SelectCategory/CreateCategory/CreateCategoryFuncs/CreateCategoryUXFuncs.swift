@@ -39,6 +39,10 @@ extension CreateCategoryVC: SendCategoryID, CreateCategoryCellDelegate {
         }
     }
     
+    func createCategoryTargets() {
+        deleteCategoryButton.addTarget(self, action: #selector(removeCategory), for: .touchUpInside)
+    }
+    
     func categoryValidation(name: String, icon: String, mainCategory: String, isSubcategory: Bool, completion: ((String, String) -> Void)? = nil) {
         let missingName = name == ""
         let missingIcon = icon == ""

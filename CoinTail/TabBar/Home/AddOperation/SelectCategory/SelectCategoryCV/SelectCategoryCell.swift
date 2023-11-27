@@ -13,13 +13,7 @@ import RealmSwift
 final class SelectCategoryCell: UICollectionViewCell {
     
     static let id = "SelectCategoryCell"
-        
-    let backView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        
-        return view
-    }()
+
     let separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(named: "arrowColor")
@@ -32,6 +26,15 @@ final class SelectCategoryCell: UICollectionViewCell {
         imageView.image = UIImage(systemName: "chevron.right")
         imageView.tintColor = UIColor(named: "arrowColor")
         imageView.contentMode = .scaleAspectFit
+        
+        return imageView
+    }()
+    let pencilImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "square.and.pencil")
+        imageView.tintColor = UIColor(named: "black")
+        imageView.contentMode = .scaleAspectFit
+        imageView.isHidden = true
         
         return imageView
     }()
@@ -55,12 +58,13 @@ final class SelectCategoryCell: UICollectionViewCell {
     override init (frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.addSubview(backView)
-        
-        backView.addSubview(chevronImageView)
-        backView.addSubview(separatorView)
-        backView.addSubview(categoryLabel)
-        backView.addSubview(categoryIcon)
+        contentView.backgroundColor = .white
+
+        contentView.addSubview(chevronImageView)
+        contentView.addSubview(separatorView)
+        contentView.addSubview(categoryLabel)
+        contentView.addSubview(categoryIcon)
+        contentView.addSubview(pencilImageView)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -69,11 +73,18 @@ final class SelectCategoryCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backView.easy.layout([
+        contentView.easy.layout([
             Edges()
         ])
         
         chevronImageView.easy.layout([
+            Right(16),
+            CenterY(),
+            Height(20),
+            Width(20)
+        ])
+        
+        pencilImageView.easy.layout([
             Right(16),
             CenterY(),
             Height(20),
@@ -103,6 +114,11 @@ final class SelectCategoryCell: UICollectionViewCell {
     
     func isSeparatorLineHidden(_ isHidden: Bool) {
         separatorView.isHidden = isHidden
+    }
+    
+    func isEditingCategory(_ isEditing: Bool) {
+        chevronImageView.isHidden = isEditing
+        pencilImageView.isHidden = !isEditing
     }
     
     static func size() -> CGSize {

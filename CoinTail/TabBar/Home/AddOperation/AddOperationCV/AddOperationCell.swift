@@ -20,13 +20,7 @@ final class AddOperationCell: UICollectionViewCell {
     static let id = "AddOperationCell"
     
     weak var addOperationCellDelegate: AddOperationCellDelegate?
-    
-    let backView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        
-        return view
-    }()
+
     let separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(named: "arrowColor")
@@ -114,21 +108,19 @@ final class AddOperationCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .clear
-        
+        contentView.backgroundColor = .white
+
         operationAmountTF.delegate = self
         operationDescriptionTF.delegate = self
         dateTF.delegate = self
-                
-        addSubview(backView)
-        
-        backView.addSubview(chevronImageView)
-        backView.addSubview(separatorView)
-        backView.addSubview(operationAmountTF)
-        backView.addSubview(menuLabel)
-        backView.addSubview(subMenuLabel)
-        backView.addSubview(operationDescriptionTF)
-        backView.addSubview(dateTF)
+                        
+        contentView.addSubview(chevronImageView)
+        contentView.addSubview(separatorView)
+        contentView.addSubview(operationAmountTF)
+        contentView.addSubview(menuLabel)
+        contentView.addSubview(subMenuLabel)
+        contentView.addSubview(operationDescriptionTF)
+        contentView.addSubview(dateTF)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -138,7 +130,9 @@ final class AddOperationCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backView.easy.layout(Edges())
+        contentView.easy.layout([
+            Edges()
+        ])
 
         separatorView.easy.layout([
             Bottom(),
