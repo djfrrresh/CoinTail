@@ -122,7 +122,6 @@ final class Categories {
         completion?(true)
     }
     
-    //TODO: при удалении категорий пропадают ячейки в бюджетах и операциях
     // Удаляет категорию по его ID
     func deleteCategory(for id: ObjectId, completion: ((Bool) -> Void)? = nil) {
         guard let category: CategoryClass = getCategory(for: id) else {
@@ -140,7 +139,6 @@ final class Categories {
         completion?(true)
     }
     
-    //TODO: при удалении подкатегории удалить ее из массива в категории
     // Удаляет подкатегорию по его ID
     func deleteSubcategory(for id: ObjectId, completion: ((Bool) -> Void)? = nil) {
         guard let subcategory: SubcategoryClass = getSubcategory(for: id) else {

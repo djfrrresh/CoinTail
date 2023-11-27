@@ -19,11 +19,11 @@ extension CurrenciesVC: UISearchBarDelegate {
             let lowercaseSearchText = searchText.lowercased()
             isSearching = true
             
-            //TODO: не работает поиск по кодам валют
             filteredData = Currency.allCases.filter { currency in
-                let currencyName = currency.rawValue.lowercased()
-                                
-                return currencyName.contains(lowercaseSearchText)
+                let currencyName = currency.rawValue.localized().lowercased()
+                let currencyCode = "\(currency)".lowercased()
+                
+                return currencyName.contains(lowercaseSearchText) || currencyCode.contains(lowercaseSearchText)
             }
         }
         

@@ -89,6 +89,10 @@ class Currencies {
         return currencies.map { $0.currency }
     }
     
+    func extractCurrencyStrings(from currencies: [Currency]) -> [String] {
+        return currencies.map { "\($0)" }
+    }
+    
     // При первом запуске приложения или очистке данных создать валюту по умолчанию
     private func createDefaultCurrency() -> SelectedCurrencyClass {
         let defaultCurrency = SelectedCurrencyClass()

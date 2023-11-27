@@ -472,10 +472,10 @@
 		560AFBFE2A16AF030054B502 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				560AFBC42A1394A30054B502 /* HomeVC.swift */,
 				56DBB6FA2A3B2AF60087271D /* AddOperation */,
 				560AFC232A1BF5510054B502 /* HomeCV */,
 				560AFBFF2A16AF200054B502 /* HomeFuncs */,
-				560AFBC42A1394A30054B502 /* HomeVC.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -574,12 +574,12 @@
 		5642DB0F2A43297500ADF475 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				5642DB102A4329AB00ADF475 /* TabBar.swift */,
+				568999D52B0FA84100075433 /* TabBarDelegate.swift */,
 				560AFBFE2A16AF030054B502 /* Home */,
 				5642DB152A432B9000ADF475 /* Budgets */,
 				568EF01E2AA603AE00EB042D /* Accounts */,
 				5642DB122A432AFB00ADF475 /* Settings */,
-				5642DB102A4329AB00ADF475 /* TabBar.swift */,
-				568999D52B0FA84100075433 /* TabBarDelegate.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -587,12 +587,12 @@
 		5642DB122A432AFB00ADF475 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				5642DB132A432B0800ADF475 /* SettingsVC.swift */,
 				569E522C2AD0711C00A4FCA7 /* AboutApp */,
 				568EF0782AB3A2C200EB042D /* Notifications */,
 				568EF0652AB0D96A00EB042D /* Currencies */,
 				5665C13E2A9F6ADD00B11D34 /* SettingsFuncs */,
 				5665C1382A9F5F5300B11D34 /* SettingsCV */,
-				5642DB132A432B0800ADF475 /* SettingsVC.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -600,10 +600,10 @@
 		5642DB152A432B9000ADF475 /* Budgets */ = {
 			isa = PBXGroup;
 			children = (
+				5642DB162A432BA200ADF475 /* BudgetsVC.swift */,
 				564F08FC2A531ABC004C89C7 /* AddBudget */,
 				5642DB2C2A4F34B900ADF475 /* BudgetCV */,
 				5642DB232A4DDAB000ADF475 /* BudgetFuncs */,
-				5642DB162A432BA200ADF475 /* BudgetsVC.swift */,
 			);
 			path = Budgets;
 			sourceTree = "<group>";
@@ -755,12 +755,12 @@
 		568EF01E2AA603AE00EB042D /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
+				568EF01F2AA603BF00EB042D /* AccountsVC.swift */,
 				568EF0502AAF5BB200EB042D /* TransfersHistory */,
 				568EF03F2AA8CA3800EB042D /* AccountsTransfer */,
 				568EF0312AA6115600EB042D /* AddAccount */,
 				568EF0242AA608BC00EB042D /* AccountsCV */,
 				568EF0212AA607C800EB042D /* AccountsFuncs */,
-				568EF01F2AA603BF00EB042D /* AccountsVC.swift */,
 			);
 			path = Accounts;
 			sourceTree = "<group>";
@@ -788,10 +788,10 @@
 		568EF0312AA6115600EB042D /* AddAccount */ = {
 			isa = PBXGroup;
 			children = (
+				568EF0322AA6116900EB042D /* AddAccountVC.swift */,
 				567E937D2AF1107F0045C01B /* AddAccountPicker */,
 				567E93732AEFE1880045C01B /* AddAccountCV */,
 				568EF0362AA61C6200EB042D /* AddAccountFuncs */,
-				568EF0322AA6116900EB042D /* AddAccountVC.swift */,
 			);
 			path = AddAccount;
 			sourceTree = "<group>";
@@ -809,10 +809,10 @@
 		568EF03F2AA8CA3800EB042D /* AccountsTransfer */ = {
 			isa = PBXGroup;
 			children = (
+				568EF0402AA8CA5100EB042D /* AccountsTransferVC.swift */,
 				567E93742AEFFB890045C01B /* AccountsTransferPicker */,
 				568EF0492AA9275D00EB042D /* AccountsTransferCV */,
 				568EF0422AA8E3E100EB042D /* AccountsTransferFuncs */,
-				568EF0402AA8CA5100EB042D /* AccountsTransferVC.swift */,
 			);
 			path = AccountsTransfer;
 			sourceTree = "<group>";
@@ -840,9 +840,9 @@
 		568EF0502AAF5BB200EB042D /* TransfersHistory */ = {
 			isa = PBXGroup;
 			children = (
+				568EF0512AAF5BBC00EB042D /* TransfersHistoryVC.swift */,
 				568EF05A2AAFB05C00EB042D /* TransfersHistoryCV */,
 				568EF0552AAFAE6700EB042D /* TransfersHistoryFuncs */,
-				568EF0512AAF5BBC00EB042D /* TransfersHistoryVC.swift */,
 			);
 			path = TransfersHistory;
 			sourceTree = "<group>";
@@ -871,9 +871,9 @@
 		568EF0652AB0D96A00EB042D /* Currencies */ = {
 			isa = PBXGroup;
 			children = (
+				568EF0662AB0D99700EB042D /* CurrenciesVC.swift */,
 				568EF06F2AB0FF6300EB042D /* CurrenciesFuncs */,
 				568EF0682AB0E73300EB042D /* CurrenciesCV */,
-				568EF0662AB0D99700EB042D /* CurrenciesVC.swift */,
 			);
 			path = Currencies;
 			sourceTree = "<group>";
@@ -901,10 +901,10 @@
 		568EF0782AB3A2C200EB042D /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				568EF0792AB3A2D100EB042D /* NotificationsVC.swift */,
 				569B60ED2AE1F43F00CBFF33 /* Regularity */,
 				569B60D72AE14D1E00CBFF33 /* NotificitaionsCV */,
 				568EF07D2AB3BAC000EB042D /* NotificationsFuncs */,
-				568EF0792AB3A2D100EB042D /* NotificationsVC.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -933,9 +933,9 @@
 		569B60ED2AE1F43F00CBFF33 /* Regularity */ = {
 			isa = PBXGroup;
 			children = (
+				569B60EE2AE1F4DD00CBFF33 /* RegularityVC.swift */,
 				569B60F32AE1F5CA00CBFF33 /* RegularityCV */,
 				569B60F02AE1F53500CBFF33 /* RegularityFuncs */,
-				569B60EE2AE1F4DD00CBFF33 /* RegularityVC.swift */,
 			);
 			path = Regularity;
 			sourceTree = "<group>";
@@ -1015,9 +1015,9 @@
 		569E522C2AD0711C00A4FCA7 /* AboutApp */ = {
 			isa = PBXGroup;
 			children = (
+				569E522D2AD0713200A4FCA7 /* AboutAppVC.swift */,
 				569B61052AE2B09E00CBFF33 /* AboutAppCV */,
 				569E522F2AD083BA00A4FCA7 /* AboutAppFuncs */,
-				569E522D2AD0713200A4FCA7 /* AboutAppVC.swift */,
 			);
 			path = AboutApp;
 			sourceTree = "<group>";
@@ -1091,11 +1091,11 @@
 		56DBB6FA2A3B2AF60087271D /* AddOperation */ = {
 			isa = PBXGroup;
 			children = (
-				567E93A72B0637260045C01B /* AddOperationPicker */,
+				56DBB6FB2A3B31DB0087271D /* AddOperationVC.swift */,
 				56DBB7062A3B43350087271D /* SelectCategory */,
+				567E93A72B0637260045C01B /* AddOperationPicker */,
 				567E939E2B051C8A0045C01B /* AddOperationCV */,
 				56DBB6FD2A3B35FF0087271D /* AddOperationFuncs */,
-				56DBB6FB2A3B31DB0087271D /* AddOperationVC.swift */,
 			);
 			path = AddOperation;
 			sourceTree = "<group>";
@@ -1113,10 +1113,10 @@
 		56DBB7062A3B43350087271D /* SelectCategory */ = {
 			isa = PBXGroup;
 			children = (
+				56DBB7072A3B434C0087271D /* SelectCategoryVC.swift */,
 				56DBB7182A3B60790087271D /* CreateCategory */,
 				56DBB7132A3B4E470087271D /* SelectCategoryCV */,
 				56DBB70B2A3B4A880087271D /* SelectCategoryFuncs */,
-				56DBB7072A3B434C0087271D /* SelectCategoryVC.swift */,
 			);
 			path = SelectCategory;
 			sourceTree = "<group>";
@@ -1144,9 +1144,9 @@
 		56DBB7182A3B60790087271D /* CreateCategory */ = {
 			isa = PBXGroup;
 			children = (
+				56DBB7192A3B609E0087271D /* CreateCategoryVC.swift */,
 				56DBB7222A3B666E0087271D /* CreateCategoryCV */,
 				56DBB71B2A3B63150087271D /* CreateCategoryFuncs */,
-				56DBB7192A3B609E0087271D /* CreateCategoryVC.swift */,
 			);
 			path = CreateCategory;
 			sourceTree = "<group>";

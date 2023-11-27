@@ -41,28 +41,28 @@ extension CurrenciesVC: UICollectionViewDataSource {
         var currenciesArray: [String]
         
         let currency: String
-        let favouriteCurrenciesString = extractCurrencyStrings(from: favouriteCurrencies)
+        let favouriteCurrenciesString = currenciesClass.extractCurrencyStrings(from: favouriteCurrencies)
 
         switch indexPath.section {
         case 0:
             currency = favouriteCurrenciesString[indexPath.row]
             currencyCode = currency
-            currencyName = currenciesClass.getCurrencyName(for: currency)
+            currencyName = currenciesClass.getCurrencyName(for: currency).localized()
             currenciesArray = favouriteCurrenciesString
         case 1:
             if isSearching {
-                let filteredCurrenciesString = extractCurrencyStrings(from: filteredData)
+                let filteredCurrenciesString = currenciesClass.extractCurrencyStrings(from: filteredData)
 
                 currency = "\(filteredData[indexPath.row])"
                 currencyCode = currency
-                currencyName = filteredData[indexPath.row].rawValue
+                currencyName = filteredData[indexPath.row].rawValue.localized()
                 currenciesArray = filteredCurrenciesString
             } else {
-                let currenciesString = extractCurrencyStrings(from: currenciesClass.currencyNames)
+                let currenciesString = currenciesClass.extractCurrencyStrings(from: currenciesClass.currencyNames)
 
                 currency = currenciesClass.currencyCodes[indexPath.row]
                 currencyCode = currency
-                currencyName = currenciesClass.currencyNames[indexPath.row].rawValue
+                currencyName = currenciesClass.currencyNames[indexPath.row].rawValue.localized()
                 currenciesArray = currenciesString
             }
         default:
@@ -121,13 +121,6 @@ extension CurrenciesVC: UICollectionViewDataSource {
         
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         CGSize(width: UIScreen.main.bounds.width, height: 32)
-    }
-    
-    private func extractCurrencyStrings(from currencies: [FavouriteCurrencyClass]) -> [String] {
-        return currencies.map { $0.currency }
-    }
-    private func extractCurrencyStrings(from currencies: [Currency]) -> [String] {
-        return currencies.map { "\($0)" }
     }
     
 }
