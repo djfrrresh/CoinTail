@@ -14,16 +14,12 @@ extension AccountsTransferVC: UICollectionViewDelegateFlowLayout, UICollectionVi
         if !accountNames.isEmpty {
             switch indexPath.row {
             case 0:
-                saveTransferButton.isHidden = true
-                accountsPickerView.isHidden = false
-                toolBar.isHidden = false
+                showPickerView()
                 
                 selectedRowIndex = indexPath.row
                 accountNameFrom = accountNames[0]
             case 1:
-                saveTransferButton.isHidden = true
-                accountsPickerView.isHidden = false
-                toolBar.isHidden = false
+                showPickerView()
                 
                 selectedRowIndex = indexPath.row
                 accountNameTo = accountNames[0]

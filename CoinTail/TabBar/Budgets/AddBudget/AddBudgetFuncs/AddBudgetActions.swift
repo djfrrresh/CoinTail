@@ -54,8 +54,7 @@ extension AddBudgetVC {
         
         navigationController?.pushViewController(vc, animated: true)
         
-        toolBar.isHidden = true
-        currenciesPickerView.isHidden = true
+        hidePickerView()
     }
     
     func goToBudgetPeriodVC() {
@@ -64,8 +63,7 @@ extension AddBudgetVC {
         
         navigationController?.pushViewController(vc, animated: true)
         
-        toolBar.isHidden = true
-        currenciesPickerView.isHidden = true
+        hidePickerView()
     }
     
     @objc func removeBudget(_ sender: UIButton) {
@@ -104,11 +102,6 @@ extension AddBudgetVC {
         let futureDate = Calendar.current.date(byAdding: dateComponents, to: currentDate) ?? currentDate
         
         return futureDate
-    }
-    
-    @objc func doneButtonAction() {
-        toolBar.isHidden = true
-        currenciesPickerView.isHidden = true
     }
     
 }

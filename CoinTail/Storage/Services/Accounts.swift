@@ -59,6 +59,7 @@ final class Accounts {
             completion?(false)
             return
         }
+        
         account = AccountClass(value: account)
         account.amountBalance = replacingBalance
         

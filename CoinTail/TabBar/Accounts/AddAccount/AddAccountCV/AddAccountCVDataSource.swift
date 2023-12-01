@@ -15,7 +15,7 @@ extension AddAccountVC: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
 
     // Заполнение ячеек по их id.
@@ -56,6 +56,7 @@ extension AddAccountVC: UICollectionViewDataSource {
             cell.onOffToggle.isHidden = true
             cell.isSeparatorLineHidden(false)
         case 2:
+            cell.cornerRadiusBottom(radius: 12)
             cell.menuLabel.text = "Currency".localized()
             cell.currencyLabel.text = selectedCurrency
             
@@ -65,17 +66,6 @@ extension AddAccountVC: UICollectionViewDataSource {
             cell.currencyLabel.isHidden = false
             cell.chevronImageView.isHidden = false
             cell.onOffToggle.isHidden = true
-            cell.isSeparatorLineHidden(false)
-        case 3:
-            cell.cornerRadiusBottom(radius: 12)
-            cell.menuLabel.text = "Set as main account".localized()
-
-            cell.accountNameTF.isHidden = true
-            cell.accountAmountTF.isHidden = true
-            cell.menuLabel.isHidden = false
-            cell.currencyLabel.isHidden = true
-            cell.chevronImageView.isHidden = true
-            cell.onOffToggle.isHidden = false
             cell.isSeparatorLineHidden(true)
         default:
             return cell

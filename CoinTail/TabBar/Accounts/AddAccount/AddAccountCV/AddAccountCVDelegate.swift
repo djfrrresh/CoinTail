@@ -11,11 +11,13 @@ import UIKit
 extension AddAccountVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row == 2 {
-            toolBar.isHidden = false
-            currenciesPickerView.isHidden = false
+        switch indexPath.row {
+        case 2:
+            showPickerView()
             
             selectedCurrency = AddAccountVC.favouriteStringCurrencies[0]
+        default:
+            return
         }
     }
     

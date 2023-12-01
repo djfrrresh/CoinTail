@@ -146,13 +146,22 @@ extension HomeVC: SelectedDate {
         // Группировка записей
         monthSections = OperationsDaySection.groupRecords(section: homeSegment, groupRecords: getRecord)
         
-        // Вычисление общего баланса
-        let totalBalance = "Balance:".localized()
-        let allTimeAmount = Records.shared.getAmount(for: .allTheTime, type: .allOperations)
+        let totalBalanceText = "Balance:".localized()
         let currency = Currencies.shared.selectedCurrency.currency
-        
-        balanceLabel.text = "\(totalBalance) \(allTimeAmount) \(currency)"
-        
+
+        //TODO: api
+//        Records.shared.getAmount(for: .allTheTime, type: .allOperations) { amounts in
+//            DispatchQueue.main.async { [self] in
+//                if let amounts = amounts {
+//                    // Отображаем сумму с ограничением до 2 знаков после запятой
+//                    let formattedAmount = String(format: "%.2f", amounts)
+//                    balanceLabel.text = "\(totalBalanceText) \(formattedAmount) \(currency)"
+//                } else {
+//                    balanceLabel.text = "\(totalBalanceText) 0 \(currency)"
+//                }
+//            }
+//        }
+                
         // Отсортировать операции по месяцам (убывание)
         monthSections.sort { l, r in
             return l.month > r.month

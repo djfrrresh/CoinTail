@@ -103,13 +103,24 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
             
             cell.categoriesArrCellData = HomeCategoryCell.packBins(data: categoriesByType).1
             
-            let amountText = Records.shared.getAmount(
-                for: period,
-                type: homeSegment,
-                step: currentStep,
-                category: categorySort?.id
-            )
-            cell.amountForPeriodLabel.text = "\(amountText)"
+            //TODO: api
+            let selectedCurrency = Currencies.shared.selectedCurrency.currency
+//            Records.shared.getAmount(
+//                for: period,
+//                type: homeSegment,
+//                step: currentStep,
+//                categoryID: categorySort?.id
+//            ) { amounts in
+//                DispatchQueue.main.async {
+//                    if let amounts = amounts {
+//                        // Отображаем сумму с ограничением до 2 знаков после запятой
+//                        let formattedAmount = String(format: "%.2f", amounts)
+//                        cell.amountForPeriodLabel.text = "\(formattedAmount) \(selectedCurrency)"
+//                    } else {
+//                        cell.amountForPeriodLabel.text = "0.00"
+//                    }
+//                }
+//            }
             cell.periodLabel.text = getPeriodLabel(step: currentStep)
             cell.category = categorySort
             

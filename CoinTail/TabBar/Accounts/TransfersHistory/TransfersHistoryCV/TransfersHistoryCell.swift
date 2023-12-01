@@ -156,7 +156,14 @@ final class TransfersHistoryCell: UICollectionViewCell {
         return label
     }
     
-    static func getAccountAmountLabel() -> UILabel {
+    static func getSourceAccountAmountLabel() -> UILabel {
+        let label = UILabel()
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
+        
+        return label
+    }
+    
+    static func getTargetAccountAmountLabel() -> UILabel {
         let label = UILabel()
         label.font = UIFont(name: "SFProText-Regular", size: 17)
         
@@ -164,11 +171,13 @@ final class TransfersHistoryCell: UICollectionViewCell {
     }
     
     static func size(data: TransferHistoryClass) -> CGSize {
-        let amountLabel = getAccountAmountLabel()
+        let sourceAmountLabel = getSourceAccountAmountLabel()
+        let targetAmountLabel = getTargetAccountAmountLabel()
         let sourceNameLabel = getSourceAccountNameLabel()
         let targetNameLabel = getTargetAccountNameLabel()
         
-        amountLabel.text = "\(data.amount)"
+        sourceAmountLabel.text = "\(data.sourceAmount)"
+        targetAmountLabel.text = "\(data.targetAmount)"
         sourceNameLabel.text = data.sourceAccount
         targetNameLabel.text = data.targetAccount
         
@@ -177,11 +186,12 @@ final class TransfersHistoryCell: UICollectionViewCell {
         
         let textWidth = (UIScreen.main.bounds.width - (2 * padding) - 20 - (2 * padding)) / 2
     
-        let sourceHeight: CGFloat = sourceNameLabel.sizeThatFits(.init(width: textWidth, height: 0)).height
-        let targetHeight: CGFloat = targetNameLabel.sizeThatFits(.init(width: textWidth, height: 0)).height
-        let amountHeight: CGFloat = amountLabel.sizeThatFits(.init(width: textWidth, height: 0)).height
+        let sourceNameHeight: CGFloat = sourceNameLabel.sizeThatFits(.init(width: textWidth, height: 0)).height
+        let targetNameHeight: CGFloat = targetNameLabel.sizeThatFits(.init(width: textWidth, height: 0)).height
+        let sourceAmountHeight: CGFloat = sourceNameLabel.sizeThatFits(.init(width: textWidth, height: 0)).height
+        let targetAmountHeight: CGFloat = targetNameLabel.sizeThatFits(.init(width: textWidth, height: 0)).height
         
-        let cellHeight = (sourceHeight > targetHeight ? sourceHeight : targetHeight) + (2 * padding) + (2 * middlePadding) + amountHeight
+        let cellHeight = (sourceNameHeight > targetNameHeight ? sourceNameHeight : targetNameHeight) + (2 * padding) + (2 * middlePadding) + (sourceAmountHeight > targetAmountHeight ? sourceAmountHeight : targetAmountHeight)
                         
         return .init(
             width: UIScreen.main.bounds.width - 16 - 16,

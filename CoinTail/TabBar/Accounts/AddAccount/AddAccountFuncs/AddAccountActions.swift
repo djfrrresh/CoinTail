@@ -36,11 +36,6 @@ extension AddAccountVC {
         }
     }
     
-    @objc func doneButtonAction() {
-        toolBar.isHidden = true
-        currenciesPickerView.isHidden = true
-    }
-    
     @objc func removeAccount() {
         guard let id = accountID else { return }
 

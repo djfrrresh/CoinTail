@@ -10,9 +10,9 @@ import UIKit
 
 class AccountsVC: BasicVC {
             
-    var accounts = [AccountClass]() {
-        didSet {
-            accountsCV.reloadData()
+    var accounts: [AccountClass] {
+        get {
+            return RealmService.shared.accountsArr
         }
     }
     
@@ -111,7 +111,6 @@ class AccountsVC: BasicVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        sortAccounts()
         
         setupNavigationTitle(title: "Accounts".localized(), large: true)
         isAccountEmpty()

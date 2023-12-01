@@ -39,24 +39,31 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
         }
 
         let budgetData: BudgetClass = filteredBudgets[indexPath.row]
-        let currency = budgetData.currency
-        let categoryID = budgetData.categoryID
-        let sumByCategory = abs(Records.shared.getBudgetAmount(
-            date: budgetData.startDate,
-            untilDate: budgetData.untilDate,
-            categoryID: categoryID,
-            currency: currency
-        ) ?? 0)
-        let percentText = cell.calculatePercent(sum: sumByCategory, total: budgetData.amount)
+        var sumByCategory: Double = 0
         
-        guard let category = Categories.shared.getCategory(for: categoryID) else { return cell }
+        //TODO: api 
+//        if let budget = Budgets.shared.getBudget(for: budgetData.id) {
+//            Records.shared.getBudgetAmount(budgetID: budget.id) { totalAmount in
+//                if let totalAmount = totalAmount {
+//                    sumByCategory += abs(totalAmount)
+//
+//                    let percentText = cell.calculatePercent(sum: sumByCategory, total: budgetData.amount)
+//
+//                    let formattedAmount = String(format: "%.2f", sumByCategory)
+//                    cell.amountLabel.text = "\(formattedAmount) / \(budgetData.amount) \(budgetData.currency) (\(percentText)%)"
+//                    cell.isSumExceedsBudget(sumByCategory: sumByCategory, budgetSum: budgetData.amount)
+//                } else {
+//                    print("Failed to calculate total amount.")
+//                    cell.amountLabel.text = "\(0.00) / \(budgetData.amount) \(budgetData.currency) (0%)"
+//                }
+//            }
+//        }
+        
+        guard let category = Categories.shared.getCategory(for: budgetData.categoryID) else { return cell }
 
         cell.categoryLabel.text = category.name
-        cell.amountLabel.text = "\(sumByCategory) / \(budgetData.amount) \(budgetData.currency) (\(percentText)%)"
         cell.categoryIcon.text = category.image
-        
-        cell.isSumExceedsBudget(sumByCategory: sumByCategory, budgetSum: budgetData.amount)
-        
+                
         let isLastRow = self.collectionView(collectionView, numberOfItemsInSection: indexPath.section) - 1 == indexPath.row
         cell.isSeparatorLineHidden(isLastRow)
         

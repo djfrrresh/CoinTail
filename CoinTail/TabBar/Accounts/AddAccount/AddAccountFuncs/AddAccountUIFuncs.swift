@@ -12,7 +12,8 @@ import EasyPeasy
 extension AddAccountVC {
     
     func setupUI(with account: AccountClass) {
-        accountAmount = "\(account.startBalance)"
+        let formattedAmount = String(format: "%.2f", account.startBalance)
+        accountAmount = "\(formattedAmount)"
         accountName = account.name
         selectedCurrency = account.currency
         
@@ -22,14 +23,12 @@ extension AddAccountVC {
     func addAccountSubviews() {
         self.view.addSubview(addAccountCV)
         self.view.addSubview(deleteAccountButton)
-        self.view.addSubview(currenciesPickerView)
-        self.view.addSubview(toolBar)
         
         addAccountCV.easy.layout([
             Left(16),
             Right(16),
             Top(32).to(self.view.safeAreaLayoutGuide, .top),
-            Height(48 * 4)
+            Height(48 * 3)
         ])
         
         deleteAccountButton.easy.layout([
@@ -37,20 +36,6 @@ extension AddAccountVC {
             Right(16),
             Top(24).to(addAccountCV, .bottom),
             Height(52)
-        ])
-        
-        currenciesPickerView.easy.layout([
-            Left(),
-            Right(),
-            Height(200),
-            Bottom().to(self.view.safeAreaLayoutGuide, .bottom)
-        ])
-        
-        toolBar.easy.layout([
-            Left(),
-            Right(),
-            Height(44),
-            Bottom().to(currenciesPickerView, .top)
         ])
     }    
     
@@ -60,23 +45,11 @@ extension AddAccountVC {
         let saveButton = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(saveAccountAction))
             
         self.navigationItem.rightBarButtonItem = saveButton
-//        self.navigationItem.rightBarButtonItem?.isEnabled = accountID != nil ? true : false
     }
     
-    //TODO: вынести эту функцию в basicVC
-    func setupToolBar() {
-        let doneButton = UIBarButtonItem(
-            barButtonSystemItem: .done,
-            target: self,
-            action: #selector(doneButtonAction)
-        )
-
-        toolBar.setItems([doneButton], animated: true)
-    }
-    
-    func updateCell(at indexPath: IndexPath) {
+    func updateCell(at indexPath: IndexPath, text: String) {
         if let cell = addAccountCV.cellForItem(at: indexPath) as? AddAccountCell {
-            cell.updateCurrencyLabel(selectedCurrency)
+            cell.updateCurrencyLabel(text)
         }
     }
     

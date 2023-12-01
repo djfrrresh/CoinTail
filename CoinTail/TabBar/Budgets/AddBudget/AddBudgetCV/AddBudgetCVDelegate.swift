@@ -13,8 +13,7 @@ extension AddBudgetVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLay
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.row {
         case 1:
-            toolBar.isHidden = false
-            currenciesPickerView.isHidden = false
+            showPickerView()
             
             selectedCurrency = AddBudgetVC.favouriteStringCurrencies[0]
         case 2:

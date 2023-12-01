@@ -51,22 +51,6 @@ class AddBudgetVC: BasicVC {
         return button
     }()
     
-    let currenciesPickerView: UIPickerView = {
-        let picker = UIPickerView()
-        picker.isHidden = true
-        
-        return picker
-    }()
-    
-    let toolBar: UIToolbar = {
-        let toolbar = UIToolbar()
-        toolbar.isHidden = true
-        toolbar.sizeToFit()
-        toolbar.tintColor = .systemBlue
-
-        return toolbar
-    }()
-    
     let addBudgetCV: UICollectionView = {
         let addAccountLayout: UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()
@@ -116,10 +100,10 @@ class AddBudgetVC: BasicVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        currenciesPickerView.dataSource = self
+        itemsPickerView.dataSource = self
         addBudgetCV.dataSource = self
         
-        currenciesPickerView.delegate = self
+        itemsPickerView.delegate = self
         addBudgetCV.delegate = self
         
         addBudgetSubviews()

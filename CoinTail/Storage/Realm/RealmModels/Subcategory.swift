@@ -15,5 +15,6 @@ class SubcategoryClass: Object, CategoryProtocol {
     @Persisted var name: String = ""
     @Persisted var color: String?
     @Persisted var image: String?
+    @Persisted var isDeleted: Bool = false
     @Persisted var parentCategory: ObjectId
 }

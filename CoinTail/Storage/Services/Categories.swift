@@ -122,32 +122,36 @@ final class Categories {
         completion?(true)
     }
     
-    // Удаляет категорию по его ID
+    // Помечает удаленной категорию по его ID
     func deleteCategory(for id: ObjectId, completion: ((Bool) -> Void)? = nil) {
         guard let category: CategoryClass = getCategory(for: id) else {
             completion?(false)
             return
         }
-
-        // Удаляем подкатегории
-        for subcategoryId in category.subcategories {
-            deleteSubcategory(for: subcategoryId)
+        
+        try? RealmService.shared.realm?.write {
+            category.isDeleted = true
+            
+            // Помечаем удаленными подкатегории
+            for subcategoryId in category.subcategories {
+                deleteSubcategory(for: subcategoryId)
+            }
         }
         
-        RealmService.shared.delete(category, CategoryClass.self)
-
         completion?(true)
     }
     
-    // Удаляет подкатегорию по его ID
+    // Помечает удаленной подкатегорию по его ID
     func deleteSubcategory(for id: ObjectId, completion: ((Bool) -> Void)? = nil) {
         guard let subcategory: SubcategoryClass = getSubcategory(for: id) else {
             completion?(false)
             return
         }
         
-        RealmService.shared.delete(subcategory, SubcategoryClass.self)
-
+        try? RealmService.shared.realm?.write {
+            subcategory.isDeleted = true
+        }
+        
         completion?(true)
     }
     

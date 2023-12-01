@@ -10,15 +10,6 @@ import UIKit
 
 extension AccountsVC {
     
-    func sortAccounts() {
-        accounts = RealmService.shared.accountsArr
-        
-        // Отсортировать массив счетов по деньгам (убывание)
-        accounts.sort { l, r in
-            return l.amountBalance > r.amountBalance
-        }
-    }
-    
     func accountButtonTargets() {
         historyButton.addTarget(self, action: #selector(goToAccountsHistoryVC), for: .touchUpInside)
         transferButton.addTarget(self, action: #selector(goToAccountsTransferVC), for: .touchUpInside)

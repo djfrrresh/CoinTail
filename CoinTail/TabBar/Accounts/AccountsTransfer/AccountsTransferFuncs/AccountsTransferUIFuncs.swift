@@ -18,9 +18,6 @@ extension AccountsTransferVC {
         self.view.addSubview(transferCV)
         self.view.addSubview(saveTransferButton)
         
-        self.view.addSubview(accountsPickerView)
-        self.view.addSubview(toolBar)
-        
         transferFromBackView.easy.layout([
             Height(64),
             Top(24).to(self.view.safeAreaLayoutGuide, .top),
@@ -40,24 +37,12 @@ extension AccountsTransferVC {
             Bottom(24).to(self.view.safeAreaLayoutGuide, .bottom),
             Height(52)
         ])
+        
         transferCV.easy.layout([
             Top(24).to(transferFromBackView, .bottom),
-            Bottom(24).to(saveTransferButton, .top),
+            Height(72 * 3),
             Left(),
             Right()
-        ])
-        
-        accountsPickerView.easy.layout([
-            Left(),
-            Right(),
-            Height(200),
-            Bottom().to(self.view.safeAreaLayoutGuide, .bottom)
-        ])
-        toolBar.easy.layout([
-            Left(),
-            Right(),
-            Height(44),
-            Bottom().to(accountsPickerView, .top)
         ])
         
         transferFromBackView.addSubview(transferFromBackViewFill)
@@ -111,16 +96,6 @@ extension AccountsTransferVC {
         ])
     }
     
-    func setupToolBar() {
-        let doneButton = UIBarButtonItem(
-            barButtonSystemItem: .done,
-            target: self,
-            action: #selector(doneButtonAction)
-        )
-
-        toolBar.setItems([doneButton], animated: true)
-    }
-    
     func showTransferFrom() {
         guard let accountNameFrom = accountNameFrom,
               let account = Accounts.shared.getAccount(for: accountNameFrom) else { return }
@@ -134,7 +109,8 @@ extension AccountsTransferVC {
         transferFromAccountBalanceLabel.isHidden = false
                 
         transferFromAccountNameLabel.text = accountNameFrom
-        transferFromAccountBalanceLabel.text = "\(account.amountBalance) \(account.currency)"
+        let formattedAmount = String(format: "%.2f", account.amountBalance)
+        transferFromAccountBalanceLabel.text = "\(formattedAmount) \(account.currency)"
     }
     
     func showTransferTo() {
@@ -150,7 +126,8 @@ extension AccountsTransferVC {
         transferToAccountBalanceLabel.isHidden = false
                 
         transferToAccountNameLabel.text = accountNameTo
-        transferToAccountBalanceLabel.text = "\(account.amountBalance) \(account.currency)"
+        let formattedAmount = String(format: "%.2f", account.amountBalance)
+        transferToAccountBalanceLabel.text = "\(formattedAmount) \(account.currency)"
     }
 
     func updateCell(at indexPath: IndexPath, text: String) {

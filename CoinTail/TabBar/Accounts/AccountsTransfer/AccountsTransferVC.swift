@@ -38,6 +38,16 @@ final class AccountsTransferVC: BasicVC {
             showTransferTo()
         }
     }
+    
+    override var isPickerHidden: Bool {
+        didSet {
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                guard let strongSelf = self else { return }
+                
+                strongSelf.saveTransferButton.layer.opacity = strongSelf.isPickerHidden ? 1 : 0
+            }
+        }
+    }
         
     let transferMenu: [String] = [
         "From".localized(),
@@ -154,22 +164,6 @@ final class AccountsTransferVC: BasicVC {
         return button
     }()
     
-    let accountsPickerView: UIPickerView = {
-        let picker = UIPickerView()
-        picker.isHidden = true
-        
-        return picker
-    }()
-    
-    let toolBar: UIToolbar = {
-        let toolbar = UIToolbar()
-        toolbar.isHidden = true
-        toolbar.sizeToFit()
-        toolbar.tintColor = .systemBlue
-
-        return toolbar
-    }()
-    
     let transferCV: UICollectionView = {
         let transferLayout: UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()
@@ -197,10 +191,10 @@ final class AccountsTransferVC: BasicVC {
         
         self.title = "Transfers".localized()
                 
-        accountsPickerView.delegate = self
+        itemsPickerView.delegate = self
         transferCV.delegate = self
         
-        accountsPickerView.dataSource = self
+        itemsPickerView.dataSource = self
         transferCV.dataSource = self
 
         transferSubviews()

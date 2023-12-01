@@ -11,7 +11,10 @@ import UIKit
 extension TransfersHistoryVC {
     
     func sortTransfers() {
-        let transfersArr = Transfers.shared.transfers
+        var transfersArr = Transfers.shared.transfers
+        transfersArr.sort { l, r in
+            return l.date > r.date
+        }
 
         transfersDaySections = DaySectionTransferHistory.groupTransfers(groupTransfers: transfersArr)
             

@@ -31,8 +31,11 @@ extension TransfersHistoryVC: UICollectionViewDataSource {
         let section = transfersDaySections[indexPath.section]
         let transferData: TransferHistoryClass = section.transfers[indexPath.row]
 
-        cell.sourceAmountLabel.text = "- \(transferData.amount) \(transferData.sourceCurrency)"
-        cell.targetAmountLabel.text = "+ \(transferData.amount) \(transferData.targetCurrency)"
+        let formattedSourceAmount = String(format: "%.2f", transferData.sourceAmount)
+        let formattedTargetAmount = String(format: "%.2f", transferData.targetAmount)
+
+        cell.sourceAmountLabel.text = "- \(formattedSourceAmount) \(transferData.sourceCurrency)"
+        cell.targetAmountLabel.text = "+ \(formattedTargetAmount) \(transferData.targetCurrency)"
         cell.sourceAccountLabel.text = transferData.sourceAccount
         cell.targetAccountLabel.text = transferData.targetAccount
         

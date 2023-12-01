@@ -59,8 +59,6 @@ extension AddOperationVC: UIScrollViewDelegate {
         self.view.addSubview(addOperationTypeSwitcher)
         self.view.addSubview(addOperationCV)
         self.view.addSubview(deleteOperationButton)
-        self.view.addSubview(addOperationPickerView)
-        self.view.addSubview(toolBar)
         
         addOperationTypeSwitcher.easy.layout([
             Left(16),
@@ -82,20 +80,6 @@ extension AddOperationVC: UIScrollViewDelegate {
             Top(24).to(addOperationCV, .bottom),
             Height(52)
         ])
-        
-        addOperationPickerView.easy.layout([
-            Left(),
-            Right(),
-            Height(200),
-            Bottom().to(self.view.safeAreaLayoutGuide, .bottom)
-        ])
-        
-        toolBar.easy.layout([
-            Left(),
-            Right(),
-            Height(44),
-            Bottom().to(addOperationPickerView, .top)
-        ])
     }
     
     func updateCell(at indexPath: IndexPath, text: String) {
@@ -107,16 +91,6 @@ extension AddOperationVC: UIScrollViewDelegate {
         if let cell = addOperationCV.cellForItem(at: indexPath) as? AddOperationCell {
             cell.operationDescriptionTF.text = text
         }
-    }
-    
-    func setupToolBar() {
-        let doneButton = UIBarButtonItem(
-            barButtonSystemItem: .done,
-            target: self,
-            action: #selector(doneButtonAction)
-        )
-
-        toolBar.setItems([doneButton], animated: true)
     }
 
 }

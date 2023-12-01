@@ -13,7 +13,13 @@ final class AddAccountVC: BasicVC {
     
     var accountID: ObjectId?
     
-    var selectedCurrency: String = Currencies.shared.selectedCurrency.currency
+    var selectedCurrency: String = Currencies.shared.selectedCurrency.currency {
+        didSet {
+            let indexPathToUpdate = IndexPath(item: 2, section: 0)
+            
+            updateCell(at: indexPathToUpdate, text: selectedCurrency)
+        }
+    }
     
     var accountName: String?
     var accountAmount: String?
@@ -31,23 +37,6 @@ final class AddAccountVC: BasicVC {
         button.isHidden = true
         
         return button
-    }()
-    
-    let currenciesPickerView: UIPickerView = {
-        let picker = UIPickerView()
-        picker.isHidden = true
-        
-        return picker
-    }()
-    
-    let toolBar: UIToolbar = {
-        let toolbar = UIToolbar()
-        toolbar.isHidden = true
-        toolbar.sizeToFit()
-        toolbar.tintColor = .systemBlue
-        toolbar.backgroundColor = .white
-
-        return toolbar
     }()
     
     let addAccountCV: UICollectionView = {
@@ -71,6 +60,7 @@ final class AddAccountVC: BasicVC {
         return cv
     }()
     
+    //TODO: переделать сохранение amount и name при удалении 1 символа
     init(accountID: ObjectId) {
         self.accountID = accountID
         super.init(nibName: nil, bundle: nil)
@@ -99,10 +89,10 @@ final class AddAccountVC: BasicVC {
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        currenciesPickerView.dataSource = self
+        itemsPickerView.dataSource = self
         addAccountCV.dataSource = self
 
-        currenciesPickerView.delegate = self
+        itemsPickerView.delegate = self
         addAccountCV.delegate = self
         
         addAccountNavBar()

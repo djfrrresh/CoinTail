@@ -25,7 +25,7 @@ extension AddOperationVC {
         recordValidation(amount: amount, categoryText: categoryText, accountID: accountID) { [weak self] categoryID in
             guard let strongSelf = self else { return }
             
-            let operationAmount = strongSelf.addOperationSegment.rawValue == "Income" ? amount : -abs(amount)
+            let operationAmount = strongSelf.addOperationSegment == .income ? amount : -abs(amount)
             
             let record = RecordClass()
             record.amount = operationAmount
@@ -52,9 +52,14 @@ extension AddOperationVC {
         // Сбрасываем выбранную категорию
         operationCategory = ""
         
-        guard let segment = addOperationTypeSwitcher.titleForSegment(at: addOperationTypeSwitcher.selectedSegmentIndex) else { return }
-        
-        addOperationSegment = RecordType(rawValue: segment) ?? .income
+        switch addOperationTypeSwitcher.selectedSegmentIndex {
+        case 0:
+            addOperationSegment = RecordType.income
+        case 1:
+            addOperationSegment = RecordType.expense
+        default:
+            addOperationSegment = RecordType.income
+        }
     }
     
     // Повтор последней операции
@@ -105,7 +110,15 @@ extension AddOperationVC {
     
     // Переход на экран с выбором категории
     @objc func goToSelectCategoryVC() {
-        let segmentTitle = addOperationTypeSwitcher.titleForSegment(at: addOperationTypeSwitcher.selectedSegmentIndex) ?? "Income"
+        var segmentTitle: String
+        switch addOperationTypeSwitcher.selectedSegmentIndex {
+        case 0:
+            segmentTitle = "Income"
+        case 1:
+            segmentTitle = "Expense"
+        default:
+            segmentTitle = "Income"
+        }
         
         let vc = SelectCategoryVC(segmentTitle: segmentTitle, isParental: true, categoryID: nil)
         vc.categoryDelegate = self
@@ -127,13 +140,6 @@ extension AddOperationVC {
             
             self?.navigationController?.popToRootViewController(animated: true)
         }
-    }
-    
-    // Закрытие пикера
-    @objc func doneButtonAction() {
-        toolBar.isHidden = true
-        addOperationPickerView.isHidden = true
-        addOperationPickerView.selectRow(0, inComponent: 0, animated: false)
     }
     
 }

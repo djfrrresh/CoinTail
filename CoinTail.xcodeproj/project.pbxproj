@@ -77,6 +77,7 @@
 		568999D62B0FA84100075433 /* TabBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568999D52B0FA84100075433 /* TabBarDelegate.swift */; };
 		568999D82B0FB94C00075433 /* SelectCategorySearching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568999D72B0FB94C00075433 /* SelectCategorySearching.swift */; };
 		568999DA2B14B4E600075433 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568999D92B14B4E600075433 /* KeychainManager.swift */; };
+		568999DC2B162EB100075433 /* ExchangeRateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568999DB2B162EB100075433 /* ExchangeRateManager.swift */; };
 		568EF0202AA603BF00EB042D /* AccountsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF01F2AA603BF00EB042D /* AccountsVC.swift */; };
 		568EF0232AA607E000EB042D /* AccountsUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0222AA607E000EB042D /* AccountsUIFuncs.swift */; };
 		568EF0262AA608D000EB042D /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0252AA608D000EB042D /* AccountCell.swift */; };
@@ -262,6 +263,7 @@
 		568999D52B0FA84100075433 /* TabBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarDelegate.swift; sourceTree = "<group>"; };
 		568999D72B0FB94C00075433 /* SelectCategorySearching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategorySearching.swift; sourceTree = "<group>"; };
 		568999D92B14B4E600075433 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		568999DB2B162EB100075433 /* ExchangeRateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateManager.swift; sourceTree = "<group>"; };
 		568EF01F2AA603BF00EB042D /* AccountsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsVC.swift; sourceTree = "<group>"; };
 		568EF0222AA607E000EB042D /* AccountsUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsUIFuncs.swift; sourceTree = "<group>"; };
 		568EF0252AA608D000EB042D /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
@@ -632,11 +634,11 @@
 		564F08FC2A531ABC004C89C7 /* AddBudget */ = {
 			isa = PBXGroup;
 			children = (
+				564F08FD2A531AEE004C89C7 /* AddBudgetVC.swift */,
 				567E938F2AF457DE0045C01B /* BudgetPeriod */,
 				567E938C2AF453A40045C01B /* AddBudgetPicker */,
 				567E93802AF4489A0045C01B /* AddBudgetCV */,
 				56EFDFE02A535283003A6A45 /* AddBudgetFuncs */,
-				564F08FD2A531AEE004C89C7 /* AddBudgetVC.swift */,
 			);
 			path = AddBudget;
 			sourceTree = "<group>";
@@ -1008,6 +1010,7 @@
 				568EF0862AB4C09F00EB042D /* Notifications.swift */,
 				560AFC1B2A1BEE640054B502 /* Records.swift */,
 				568999D92B14B4E600075433 /* KeychainManager.swift */,
+				568999DB2B162EB100075433 /* ExchangeRateManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1427,6 +1430,7 @@
 				56EFDFEC2A574771003A6A45 /* BudgetCVHeader.swift in Sources */,
 				567E93862AF449AD0045C01B /* AddBudgetCell.swift in Sources */,
 				568EF0892ABB439100EB042D /* SelectCategoryCell.swift in Sources */,
+				568999DC2B162EB100075433 /* ExchangeRateManager.swift in Sources */,
 				568EF03C2AA61F8E00EB042D /* AddAccountUXFuncs.swift in Sources */,
 				568EF0852AB4BE3800EB042D /* NotificationsActions.swift in Sources */,
 				569B60D92AE14F1F00CBFF33 /* NotificationsCell.swift in Sources */,

@@ -29,14 +29,23 @@ extension AccountsVC: UICollectionViewDataSource {
         let accountData: AccountClass = accounts[indexPath.row]
         var totalAmountForCash: Double = accountData.startBalance
 
-        if let account = Accounts.shared.getAccount(for: accountData.id) {
-            totalAmountForCash += Records.shared.calculateTotalBalance(for: account.id)
-            
-            // Обновить баланс для счета
-            Accounts.shared.editBalance(for: account.id, replacingBalance: totalAmountForCash)
-        }
+        //TODO: api
+//        if let account = Accounts.shared.getAccount(for: accountData.id) {
+//            Records.shared.calculateTotalBalance(for: account.id) { totalAmount in
+//                if let totalAmount = totalAmount {
+//                    totalAmountForCash += totalAmount
+//
+//                    Accounts.shared.editBalance(for: account.id, replacingBalance: totalAmountForCash)
+//
+//                    let formattedAmount = String(format: "%.2f", totalAmountForCash)
+//                    cell.amountLabel.text = "\(formattedAmount) \(accountData.currency)"
+//                } else {
+//                    print("Failed to calculate total amount.")
+//                    cell.amountLabel.text = "\(0.00) \(accountData.currency)"
+//                }
+//            }
+//        }
         
-        cell.amountLabel.text = "\(totalAmountForCash) \(accountData.currency)"
         cell.nameLabel.text = "\(accountData.name)"
         
         let isLastRow = self.collectionView(collectionView, numberOfItemsInSection: indexPath.section) - 1 == indexPath.row

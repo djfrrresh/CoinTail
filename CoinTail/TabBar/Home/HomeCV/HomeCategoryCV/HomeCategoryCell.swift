@@ -209,6 +209,7 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
         arrowImageRight.isUserInteractionEnabled = true
     }
     
+    // Просчитывает размеры ячеек для категорий и делает выравнивание
     static func packBins(data: [CategoryClass]) -> (Int, [CategoryClass]) {
         var bins = [[(CGFloat, CategoryClass)]]()
         var categoriesWidth = [(CGFloat, CategoryClass)]()
@@ -216,14 +217,17 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
         for category in data {
             categoriesWidth.append((CategoryCVCell.size(data: category.name, isXmark: false).width, category))
         }
+        
         let screenWidth: CGFloat = UIScreen.main.bounds.width - 16 * 2
         for (width, category) in categoriesWidth {
             var found = false
+            
             for bin in bins.indices {
                 let spacing: CGFloat = 12
                 let currentRowWidth: CGFloat = bins[bin].map({ (w, _) in
                     w
                 }).reduce(0, +)
+                
                 let spacingBetweenCurrentItems: CGFloat = CGFloat(bins[bin].count) * spacing
                 if currentRowWidth + width + spacingBetweenCurrentItems <= screenWidth {
                     bins[bin].append((width, category))
@@ -231,10 +235,12 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
                     break
                 }
             }
+            
             if !found {
                 bins.append([(width, category)])
             }
         }
+        
         var categories = [CategoryClass]()
         for bin in bins {
             for (_, cat) in bin {

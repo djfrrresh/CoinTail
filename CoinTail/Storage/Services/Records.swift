@@ -20,10 +20,37 @@ final class Records {
     }
     
     // Получает сумму из операций за указанный период времени
-    func getAmount(for period: DatePeriods, type: RecordType, step: Int = 0, category: ObjectId? = nil) -> Double {
-        let amount: Double = getRecords(for: period, type: type, step: step, categoryID: category).reduce(0.0) { $0 + $1.amount }
+    func getAmount(for period: DatePeriods, type: RecordType, step: Int = 0, categoryID: ObjectId? = nil, completion: @escaping (Double?) -> Void) {
+        // Получить уникальные валюты
+        let uniqueCurrencies = Set(records.map { $0.currency })
+        let selectedCurrency = Currencies.shared.selectedCurrency.currency
 
-        return amount
+        // Получить курсы обмена для каждой валюты
+        ExchangeRateManager.shared.getExchangeRates(forCurrencyCode: selectedCurrency) { [self] exchangeRates in
+            DispatchQueue.main.async { [self] in
+                guard let exchangeRates = exchangeRates else {
+                    print("Failed to get exchangeRates")
+                    completion(nil)
+                    return
+                }
+
+                var totalAmountInSelectedCurrency: Double = 0.0
+
+                for currency in uniqueCurrencies {
+                    let currencyRecords = getRecords(for: period, type: type, step: step, categoryID: categoryID).filter { $0.currency == currency }
+
+                    let totalAmountInCurrency = currencyRecords.reduce(0.0) { total, record in
+                        if let exchangeRate = exchangeRates[currency] {
+                            return total + (record.amount / exchangeRate)
+                        }
+                        return total
+                    }
+                    totalAmountInSelectedCurrency += totalAmountInCurrency
+                }
+
+                completion(totalAmountInSelectedCurrency)
+            }
+        }
     }
     
     // Получает операции за указанный период времени
@@ -102,44 +129,100 @@ final class Records {
     }
     
     // Получает сумму из категории с начальной даты до конечной с указанным периодом (неделя / месяц)
-    func getBudgetAmount(date: Date, untilDate: Date, categoryID: ObjectId, currency: String) -> Double? {
-        let calendar = Calendar.current
-        let category = Categories.shared.getCategory(for: categoryID)
-        let subcategories = category?.subcategories
+    func getBudgetAmount(budgetID: ObjectId, completion: @escaping (Double?) -> Void) {
+        guard let budget = Budgets.shared.getBudget(for: budgetID),
+              let category = Categories.shared.getCategory(for: budget.categoryID) else { return }
         
-        var allSubcategoryIDs: [ObjectId] = [categoryID]
+        let allSubcategoryIDs: [ObjectId] = [category.id] + category.subcategories
+        let currency = budget.currency
+        let date = budget.startDate
+        let untilDate = budget.untilDate
         
-        if let subcategories = subcategories {
-            allSubcategoryIDs += subcategories
-        }
+        var pendingOperations = 0
+        var totalAmount: Double = 0
         
         // Получаем все записи для всех категорий и подкатегорий
-        var records = self.records.filter { $0.type == RecordType.expense.rawValue && allSubcategoryIDs.contains($0.categoryID) && $0.currency == currency }
-        
         // Фильтруем записи по датам
-        records = records.filter { $0.date >= date && $0.date <= untilDate }
+        let records = self.records.filter {
+            $0.type == RecordType.expense.rawValue
+            && allSubcategoryIDs.contains($0.categoryID)
+            && $0.date >= date && $0.date <= untilDate
+        }
         
         // Считаем сумму
-        let totalAmount = records.reduce(0.0) { $0 + $1.amount }
-        
-        return totalAmount
-    }
-    
-    // Посчитать конечный баланс для счёта
-    func calculateTotalBalance(for accountID: ObjectId) -> Double {
-        let totalAmount = records.reduce(0) { (result, record) -> Double in
-            let account = Accounts.shared.getAccount(for: accountID)
-            
-            if let recordAccountID = record.accountID,
-               recordAccountID == accountID,
-               account?.currency == record.currency {
-                return result + record.amount
+        for record in records {
+            if record.currency == currency {
+                totalAmount += record.amount
             } else {
-                return result
+                pendingOperations += 1
+
+                ExchangeRateManager.shared.getExchangeRates(forCurrencyCode: currency) { exchangeRates in
+                    DispatchQueue.main.async {
+                        guard let exchangeRates = exchangeRates,
+                              let exchangeRate = exchangeRates[record.currency] else {
+                            print("Failed to get exchangeRates")
+                            completion(nil)
+                            return
+                        }
+                        
+                        let convertedAmount = record.amount / exchangeRate
+                        totalAmount += convertedAmount
+                                                    
+                        pendingOperations -= 1
+                        if pendingOperations == 0 {
+                            completion(totalAmount)
+                        }
+                    }
+                }
             }
         }
         
-        return totalAmount
+        if pendingOperations == 0 {
+            completion(totalAmount)
+        }
+    }
+    
+    // Считает конечный баланс для счёта
+    func calculateTotalBalance(for accountID: ObjectId, completion: @escaping (Double?) -> Void) {
+        var totalAmount: Double = 0
+        var pendingOperations = 0
+
+        for record in records {
+            if let recordAccountID = record.accountID,
+               recordAccountID == accountID,
+               let account = Accounts.shared.getAccount(for: accountID) {
+                
+                if account.currency == record.currency {
+                    totalAmount += record.amount
+                } else {
+                    pendingOperations += 1
+
+                    ExchangeRateManager.shared.getExchangeRates(forCurrencyCode: account.currency) { exchangeRates in
+                        DispatchQueue.main.async {
+                            guard let exchangeRates = exchangeRates,
+                                  let exchangeRate = exchangeRates[record.currency] else {
+                                print("Failed to get exchangeRates")
+                                completion(nil)
+                                return
+                            }
+                            
+                            let convertedAmount = record.amount / exchangeRate
+                            totalAmount += convertedAmount
+                                                        
+                            pendingOperations -= 1
+                            if pendingOperations == 0 {
+                                completion(totalAmount)
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+
+        if pendingOperations == 0 {
+            completion(totalAmount)
+        }
     }
 
 }

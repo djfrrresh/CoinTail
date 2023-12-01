@@ -72,8 +72,8 @@ class AddOperationVC: BasicVC {
         
     let addOperationTypeSwitcher: UISegmentedControl = {
         let switcher = UISegmentedControl(items: [
-            RecordType.income.rawValue,
-            RecordType.expense.rawValue
+            RecordType.income.rawValue.localized(),
+            RecordType.expense.rawValue.localized()
         ])
         
         return switcher
@@ -84,28 +84,12 @@ class AddOperationVC: BasicVC {
         let button = UIButton()
         button.backgroundColor = UIColor(named: "cancelAction")
         button.layer.cornerRadius = 16
-        button.setTitle("Delete operation".localized(), for: .normal)
+        button.setTitle("Delete transaction".localized(), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
         button.isHidden = true
         
         return button
-    }()
-    
-    let addOperationPickerView: UIPickerView = {
-        let picker = UIPickerView()
-        picker.isHidden = true
-        
-        return picker
-    }()
-    
-    let toolBar: UIToolbar = {
-        let toolbar = UIToolbar()
-        toolbar.isHidden = true
-        toolbar.sizeToFit()
-        toolbar.tintColor = .systemBlue
-
-        return toolbar
     }()
     
     public required init(segmentIndex: Int) {
@@ -141,10 +125,10 @@ class AddOperationVC: BasicVC {
         super.viewDidLoad()
         
         addOperationCV.delegate = self
-        addOperationPickerView.delegate = self
+        itemsPickerView.delegate = self
         
         addOperationCV.dataSource = self
-        addOperationPickerView.dataSource = self
+        itemsPickerView.dataSource = self
                 
         addOperationNavBar()
         addOperationSubviews()

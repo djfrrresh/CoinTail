@@ -15,12 +15,6 @@ extension AccountsTransferVC: TransferCellDelegate {
         transferAmount = amount
     }
     
-    @objc func doneButtonAction() {
-        toolBar.isHidden = true
-        accountsPickerView.isHidden = true
-        saveTransferButton.isHidden = false
-    }
-    
     @objc func saveTransferAction(_ sender: UIButton) {
         let amount = Double(transferAmount ?? "0") ?? 0
         let firstAccount = accountNameFrom ?? ""
@@ -37,17 +31,6 @@ extension AccountsTransferVC: TransferCellDelegate {
                 to: targetAccount,
                 amount: amount
             )
-
-            let transferHistory = TransferHistoryClass()
-            transferHistory.sourceAccount = sourceAccountName
-            transferHistory.targetAccount = targetAccountName
-            transferHistory.sourceCurrency = sourceAccount.currency
-            transferHistory.targetCurrency = targetAccount.currency
-            transferHistory.amount = amount
-            transferHistory.date = Date()
-            
-            // Добавляем в историю перевод между счетами
-            Transfers.shared.addNewTransfer(transferHistory)
             
             strongSelf.navigationController?.popViewController(animated: true)
         }

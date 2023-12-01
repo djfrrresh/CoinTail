@@ -24,9 +24,6 @@ extension AddAccountVC: UIPickerViewDataSource, UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedCurrency = AddAccountVC.favouriteStringCurrencies[row]
-        
-        let indexPathToUpdate = IndexPath(item: 2, section: 0)
-        updateCell(at: indexPathToUpdate)
     }
     
 }

@@ -29,15 +29,17 @@ final class RealmService {
     }
     
     func write<T: Object>(_ object: T, _ type: T.Type) {
-        do {
-            try realm?.write({
-                realm?.add(object)
-            })
-        } catch let error {
-            print(error)
+        DispatchQueue.main.async { [self] in
+            do {
+                try realm?.write({
+                    realm?.add(object)
+                })
+            } catch let error {
+                print(error)
+            }
+            
+            RealmService.shared.readAll(type)
         }
-        
-        RealmService.shared.readAll(type)
     }
     
     func read<T: Object>(_ object: T.Type) -> [T] {
@@ -93,44 +95,50 @@ final class RealmService {
     }
     
     func update<T: Object>(_ object: T, _ type: T.Type) {
-        do {
-            try realm?.write {
-                realm?.add(object, update: .modified)
+        DispatchQueue.main.async { [self] in
+            do {
+                try realm?.write {
+                    realm?.add(object, update: .modified)
+                }
+            } catch let error {
+                print(error)
             }
-        } catch let error {
-            print(error)
-        }
-        
-        if type != NotificationSettingsClass.self && type != SelectedCurrencyClass.self {
-            RealmService.shared.readAll(type)
+            
+            if type != NotificationSettingsClass.self && type != SelectedCurrencyClass.self {
+                RealmService.shared.readAll(type)
+            }
         }
     }
     
     func delete<T: Object>(_ object: T, _ type: T.Type) {
-        do {
-            try realm?.write {
-                realm?.delete(object)
+        DispatchQueue.main.async { [self] in
+            do {
+                try realm?.write {
+                    realm?.delete(object)
+                }
+            } catch let error {
+                print(error)
             }
-        } catch let error {
-            print(error)
+            
+            RealmService.shared.readAll(type)
         }
-        
-        RealmService.shared.readAll(type)
     }
     
     func deleteAllObjects<T: Object>(_ type: T.Type) {
-        guard let objects = realm?.objects(type) else { return }
-                
-        do {
-            try realm?.write {
-                realm?.delete(objects)
+        DispatchQueue.main.async { [self] in
+            guard let objects = realm?.objects(type) else { return }
+            
+            do {
+                try realm?.write {
+                    realm?.delete(objects)
+                }
+            } catch let error {
+                print(error)
             }
-        } catch let error {
-            print(error)
-        }
-        
-        if type != NotificationSettingsClass.self && type != SelectedCurrencyClass.self {
-            RealmService.shared.readAll(type)
+            
+            if type != NotificationSettingsClass.self && type != SelectedCurrencyClass.self {
+                RealmService.shared.readAll(type)
+            }
         }
     }
     

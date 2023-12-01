@@ -17,8 +17,7 @@ extension AddOperationVC: UICollectionViewDelegate, UICollectionViewDelegateFlow
         case 2:
             if !accountNames.isEmpty {
                 isUsingCurrenciesPicker = false
-                toolBar.isHidden = false
-                addOperationPickerView.isHidden = false
+                showPickerView()
                 
                 selectedAccount = accountNames[0]
             } else {
@@ -26,15 +25,15 @@ extension AddOperationVC: UICollectionViewDelegate, UICollectionViewDelegateFlow
             }
         case 3:
             isUsingCurrenciesPicker = true
-            toolBar.isHidden = false
-            addOperationPickerView.isHidden = false
+            showPickerView()
             
             selectedCurrency = AddOperationVC.favouriteStringCurrencies[0]
         default:
             return
         }
-        addOperationPickerView.selectRow(0, inComponent: 0, animated: false)
-        addOperationPickerView.reloadAllComponents()
+        
+        itemsPickerView.selectRow(0, inComponent: 0, animated: false)
+        itemsPickerView.reloadAllComponents()
     }
     
     // Динамические размеры ячеек

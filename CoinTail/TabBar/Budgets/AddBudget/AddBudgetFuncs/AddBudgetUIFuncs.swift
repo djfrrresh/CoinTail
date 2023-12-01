@@ -40,8 +40,6 @@ extension AddBudgetVC {
     func addBudgetSubviews() {
         self.view.addSubview(addBudgetCV)
         self.view.addSubview(deleteBudgetButton)
-        self.view.addSubview(currenciesPickerView)
-        self.view.addSubview(toolBar)
         
         let height: CGFloat = (budgetID != nil ? 3 : 4) * 48
         addBudgetCV.easy.layout([
@@ -57,20 +55,6 @@ extension AddBudgetVC {
             Top(24).to(addBudgetCV, .bottom),
             Height(52)
         ])
-        
-        currenciesPickerView.easy.layout([
-            Left(),
-            Right(),
-            Height(200),
-            Bottom().to(self.view.safeAreaLayoutGuide, .bottom)
-        ])
-        
-        toolBar.easy.layout([
-            Left(),
-            Right(),
-            Height(44),
-            Bottom().to(currenciesPickerView, .top)
-        ])
     }
     
     func addBudgetNavBar() {
@@ -79,18 +63,6 @@ extension AddBudgetVC {
         let saveButton = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(saveBudgetAction))
             
         self.navigationItem.rightBarButtonItem = saveButton
-//        self.navigationItem.rightBarButtonItem?.isEnabled = budgetID != nil ? true : false
-    }
-    
-    //TODO: вынести эту функцию в basicVC
-    func setupToolBar() {
-        let doneButton = UIBarButtonItem(
-            barButtonSystemItem: .done,
-            target: self,
-            action: #selector(doneButtonAction)
-        )
-
-        toolBar.setItems([doneButton], animated: true)
     }
     
     func updateCell(at indexPath: IndexPath, text: String) {

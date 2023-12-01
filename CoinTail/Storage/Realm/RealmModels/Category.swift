@@ -14,6 +14,7 @@ protocol CategoryProtocol {
     var name: String { get set }
     var color: String? { get set }
     var image: String? { get set }
+    var isDeleted: Bool { get set }
 }
 
 class CategoryClass: Object, CategoryProtocol {
@@ -23,5 +24,6 @@ class CategoryClass: Object, CategoryProtocol {
     @Persisted var color: String?
     @Persisted var image: String?
     @Persisted var type: String?
+    @Persisted var isDeleted: Bool = false
     @Persisted var subcategories: List<ObjectId>
 }

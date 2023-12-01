@@ -43,6 +43,9 @@ class SelectCategoryVC: BasicVC {
                 }
             }
             
+            // Отображаем только те категории, которые не помечены удаленными
+            categories = categories.filter { $0.isDeleted == false }
+            
             return categories
         }
     }

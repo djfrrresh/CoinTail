@@ -79,9 +79,9 @@ final class CategoryCVCell: UICollectionViewCell {
         }
     }
     
-    static func size(data: String, isXmark: Bool = false) -> CGSize {
+    static func size(data: String?, isXmark: Bool = false) -> CGSize {
         let category = getCategoryLabel()
-        category.text = data
+        category.text = data ?? ""
         
         var xmarkWidth: CGFloat = 0
         

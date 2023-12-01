@@ -49,9 +49,12 @@ extension AddOperationVC: SendCategoryID, AddOperationCellDelegate {
             errorAlert("Missing value in amount field".localized())
         } else if missingCategory {
             errorAlert("No category selected".localized())
-        } else if account != nil && account?.currency != "\(selectedCurrency)" {
-            errorAlert("You cannot specify an account for this transaction with another currency".localized())
-        } else {
+        }
+        // TODO: premium
+//        else if account != nil && account?.currency != "\(selectedCurrency)" {
+//            errorAlert("You cannot specify an account for this transaction with another currency".localized())
+//        }
+        else {
             guard let categoryID = self.categoryID,
                   let category = Categories.shared.getGeneralCategory(for: categoryID) else { return }
 
