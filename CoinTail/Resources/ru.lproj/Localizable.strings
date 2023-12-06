@@ -60,6 +60,9 @@
 "Year" = "Год";
 "Quarter" = "Квартал";
 "3 months" = "3 месяца";
+/// Categories CV
+"Open pie chart" = "Открыть диаграмму";
+"Visualise your activities with chart" = "Просматривайте операции с помощью круговой диаграммы";
 
 // AddOperationVC
 "Description" = "Описание";
@@ -68,6 +71,7 @@
 "Add a comment to your transaction" = "Добавьте комментарий к вашей операции";
 "Today" = "Сегодня";
 "Delete transaction" = "Удалить операцию";
+"Repeat previous transaction" = "Повторить предыдущую операцию";
 /// Title
 "Add a new transaction" = "Добавить операцию";
 "Edit transaction" = "Редактировать операцию";
@@ -75,6 +79,7 @@
 "Repeat last transaction" = "Повторить последнюю операцию";
 "Do you want to repeat the last transaction?" = "Вы хотите повторить последнюю операцию?";
 "You cannot specify an account for this transaction with another currency" = "Вы не можете указать счет для этой операции в другой валюте";
+"You don't have any accounts to choose from" = "У вас нет счетов для выбора";
 
 // SelectCategoryVC
 "Search categories by name" = "Поиск категорий по имени";
@@ -152,7 +157,7 @@
 // SettingsVC
 "Rate on App Store" = "Оценить в App Store";
 /// Banner
-"CoinTail Premium" = "CoinTail Премиум";
+"Upgrade to premium" = "Перейти на премиум";
 "Get even more features with our Premium subscription" = "Получите еще больше возможностей с нашей Премиум-подпиской";
 
 // CurrenciesVC

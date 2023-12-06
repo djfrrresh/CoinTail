@@ -8,7 +8,6 @@
 import UIKit
 import EasyPeasy
 import Charts
-import MultipleProgressBar
 
 
 final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
@@ -22,8 +21,6 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
             categoriesCV.reloadData()
         }
     }
-    // Хранимые значения в линейной диаграмме
-    var progressChartEntries: [UsagesModel] = []
     // Массив записей в круговой диаграмме
     var pieChartEntries: [ChartDataEntry] = []
     // Цвета для круговой диаграммы
@@ -56,17 +53,9 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
         
         return cv
     }()
-        
-    // Линейная диаграмма
-    let progressView: MultiProgressView = {
-        let progressChart = MultiProgressView()
-        progressChart.layer.cornerRadius = 8
-        progressChart.layer.masksToBounds = true
-        progressChart.isHidden = false
-        
-        return progressChart
-    }()
-    
+
+    let openDiagramsView = UIView()
+
     // Круговая диаграмма
     let pieChart: PieChartView = {
         let pieChart = PieChartView()
@@ -74,26 +63,66 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
         
         return pieChart
     }()
-    
-    let periodLabel = UILabel()
+        
+    let periodLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.numberOfLines = 1
+        label.isHidden = true
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
+        
+        return label
+    }()
     let amountForPeriodLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
+        label.numberOfLines = 1
+        label.isHidden = true
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
+        
+        return label
+    }()
+    let openDiagramsLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.text = "Open pie chart".localized()
+        label.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
+        
+        return label
+    }()
+    let diagramsDescriptionLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.text = "Visualise your activities with chart".localized()
+        label.font = UIFont(name: "SFProText-Regular", size: 13)
         
         return label
     }()
     
+    let diargamsImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(systemName: "align.vertical.bottom.fill")
+        imageView.tintColor = UIColor(named: "checkMark")
+        
+        return imageView
+    }()
     let arrowImageLeft: UIImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: "chevron.left"))
-        imageView.tintColor = .gray
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(systemName: "chevron.left")
+        imageView.tintColor = .black
         imageView.isHidden = true
         
         return imageView
     }()
-    
     let arrowImageRight: UIImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: "chevron.right"))
-        imageView.tintColor = .gray
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(systemName: "chevron.right")
+        imageView.tintColor = .black
         imageView.isHidden = true
         
         return imageView
@@ -102,22 +131,26 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.backgroundColor = .clear
+        contentView.backgroundColor = .white
+        contentView.layer.cornerRadius = 16
         
         pieChart.delegate = self
         categoriesCV.delegate = self
         
         categoriesCV.dataSource = self
         
+        contentView.addSubview(openDiagramsView)
         contentView.addSubview(periodLabel)
         contentView.addSubview(amountForPeriodLabel)
-        contentView.addSubview(progressView)
         contentView.addSubview(pieChart)
         contentView.addSubview(arrowImageLeft)
         contentView.addSubview(arrowImageRight)
         contentView.addSubview(categoriesCV)
+        contentView.addSubview(diargamsImageView)
+        contentView.addSubview(openDiagramsLabel)
+        contentView.addSubview(diagramsDescriptionLabel)
         
-        chartsGestureRecognizer() // Свойства кнопки для диаграмм
+        chartsGestureRecognizer() // Обработка нажатий
         configureChart() // Настройки для круговой диаграммы
     }
 
@@ -128,28 +161,46 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        contentView.easy.layout([
+            Edges()
+        ])
+        
+        openDiagramsView.easy.layout([
+            Edges()
+        ])
+        
+        diargamsImageView.easy.layout([
+            Height(36),
+            Width(36),
+            CenterY(),
+            Left(16)
+        ])
+        
+        openDiagramsLabel.easy.layout([
+            Left(16).to(diargamsImageView, .right),
+            Right(16),
+            Top(16)
+        ])
+        
+        diagramsDescriptionLabel.easy.layout([
+            Left(16).to(diargamsImageView, .right),
+            Right(16),
+            Bottom(16)
+        ])
+        
         periodLabel.easy.layout([
-            Top(),
-            Left(),
-            Height(32)
+            Top(16),
+            Left(16)
         ])
-        
+
         amountForPeriodLabel.easy.layout([
-            Top(),
+            Top(16),
             Left(8).to(periodLabel, .right),
-            Right(),
-            Height(32)
-        ])
-        
-        progressView.easy.layout([
-            Left(),
-            Right(),
-            Top(16).to(periodLabel, .bottom),
-            Height(36)
+            Right(16)
         ])
         
         pieChart.easy.layout([
-            Top(16).to(periodLabel, .bottom),
+            Top(12).to(periodLabel, .bottom),
             Height(pieChart.isHidden ? 0 : 250),
             Width(pieChart.isHidden ? 0 : 250),
             CenterX()
@@ -158,22 +209,22 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
         arrowImageLeft.easy.layout([
             CenterY().to(pieChart),
             Height(pieChart.isHidden ? 0 : 24),
-            Width(pieChart.isHidden ? 0 : 14),
-            Left()
+            Width(pieChart.isHidden ? 0 : 24),
+            Left(16)
         ])
         
         arrowImageRight.easy.layout([
             CenterY().to(pieChart),
             Height(pieChart.isHidden ? 0 : 24),
-            Width(pieChart.isHidden ? 0 : 14),
-            Right()
+            Width(pieChart.isHidden ? 0 : 24),
+            Right(16)
         ])
         
         categoriesCV.easy.layout([
-            Left(),
-            Right(),
-            Top(16).to(pieChart, .bottom),
-            Bottom()
+            Left(16),
+            Right(16),
+            Top(12).to(pieChart, .bottom),
+            Bottom(16)
         ])
     }
     
@@ -187,14 +238,13 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
         setEntries(segment, records: records)
         // Добавление данных в диаграммы
         updatePieChartData()
-        progressView.updateViews(usageModels: progressChartEntries)
     }
     
     // Привязка функций кнопки к диаграммам
     private func chartsGestureRecognizer() {
-        let progressBarTap = UITapGestureRecognizer(target: self, action: #selector(pieChartAction))
-        progressView.addGestureRecognizer(progressBarTap)
-        progressView.isUserInteractionEnabled = true
+        let openDiagramsTap = UITapGestureRecognizer(target: self, action: #selector(pieChartAction))
+        openDiagramsView.addGestureRecognizer(openDiagramsTap)
+        openDiagramsView.isUserInteractionEnabled = true
 
         let pieChartTap = UITapGestureRecognizer(target: self, action: #selector(pieChartAction))
         pieChart.addGestureRecognizer(pieChartTap)
@@ -253,12 +303,13 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
     
     static func size(categoryIsHidden: Bool, data: Int) -> CGSize {
         var height: CGFloat = 0
-        let progressViewHeight: CGFloat = 36
+        
+        let openDiagramsViewHeight: CGFloat = 88
         let pieChartHeight: CGFloat = 250
         let categoryCVHeight: CGFloat = CGFloat((32 + 12) * data)
-        let periodLabelHeight: CGFloat = 32
+        let periodLabelHeight: CGFloat = 24
             
-        height = categoryIsHidden ? progressViewHeight + periodLabelHeight + 16 : pieChartHeight + 16 + categoryCVHeight + periodLabelHeight + 16
+        height = categoryIsHidden ? openDiagramsViewHeight : pieChartHeight + 16 + categoryCVHeight + periodLabelHeight + 16 + 12
         
         return .init(
             width: UIScreen.main.bounds.width - 16 * 2,

@@ -13,31 +13,22 @@ final class DateCVCell: UICollectionViewCell {
     
     static let id = "DateCVCell"
     
-    let backView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .clear
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.lightGray.cgColor
-        view.layer.cornerRadius = 8
-        
-        return view
-    }()
-    
     let periodLabel: UILabel = getPeriodLabel()
     
     static func getPeriodLabel() -> UILabel {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = UIColor(named: "black")
-        
+        label.font = UIFont(name: "SFProDisplay-Regular", size: 17)
+
         return label
     }
     
     override init (frame: CGRect) {
         super.init(frame: frame)
-        
-        contentView.addSubview(backView)
-        backView.addSubview(periodLabel)
+
+        contentView.layer.cornerRadius = 16
+        contentView.addSubview(periodLabel)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -46,16 +37,13 @@ final class DateCVCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backView.easy.layout([
-            Left(0),
-            Right(0),
-            Height(32),
-            CenterY()
+        contentView.easy.layout([
+            Edges()
         ])
         
         periodLabel.easy.layout([
-            Left(8),
-            Right(8),
+            Left(12),
+            Right(12),
             Center()
         ])
     }
@@ -73,15 +61,15 @@ final class DateCVCell: UICollectionViewCell {
         let textWidth = period.sizeThatFits(.init(width: 0, height: 0))
         
         // Динамический размер одной ячейки с отступами по 8 с краёв
-        return .init(width: textWidth.width + 8 * 2, height: 32)
+        return .init(width: textWidth.width + 12 * 2, height: 40)
     }
     
     private func currentCell(_ isSelected: Bool) {
         if isSelected {
-            backView.backgroundColor = UIColor(named: "black")
-            periodLabel.textColor = .white
+            contentView.backgroundColor = .white
+            periodLabel.textColor = UIColor(named: "checkMark")
         } else {
-            backView.backgroundColor = .white
+            contentView.backgroundColor = UIColor(named: "dateCellGray")
             periodLabel.textColor = UIColor(named: "black")
         }
     }

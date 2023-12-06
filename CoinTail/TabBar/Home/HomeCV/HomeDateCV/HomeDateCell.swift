@@ -72,11 +72,10 @@ final class HomeDateCell: UICollectionViewCell {
         dateCV.easy.layout(Edges())
     }
     
-    // Размер по всей ширине экрана
     static func size() -> CGSize {
         return .init(
             width: UIScreen.main.bounds.width,
-            height: 32
+            height: 40
         )
     }
     

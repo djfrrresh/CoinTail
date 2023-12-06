@@ -60,6 +60,9 @@
 "Year" = "Year";
 "Quarter" = "Quarter";
 "3 months" = "3 months";
+/// Categories CV
+"Open pie chart" = "Open pie chart";
+"Visualise your activities with chart" = "Visualise your activities with chart";
 
 // AddOperationVC
 "Description" = "Description";
@@ -68,6 +71,7 @@
 "Add a comment to your transaction" = "Add a comment to your transaction";
 "Today" = "Today";
 "Delete transaction" = "Delete transaction";
+"Repeat previous transaction" = "Repeat previous transaction";
 /// Title
 "Add a new transaction" = "Add a new transaction";
 "Edit transaction" = "Edit transaction";
@@ -75,9 +79,9 @@
 "Repeat last transaction" = "Repeat last transaction";
 "Do you want to repeat the last transaction?" = "Do you want to repeat the last transaction?";
 "You cannot specify an account for this transaction with another currency" = "You cannot specify an account for this transaction with another currency";
+"You don't have any accounts to choose from" = "You don't have any accounts to choose from";
 
 // SelectCategoryVC
-"Create a category" = "Create a category";
 "Search categories by name" = "Search categories by name";
 /// Title
 "Income categories" = "Income categories";
@@ -91,7 +95,7 @@
 "Delete category" = "Delete category";
 /// Title
 "Create a category" = "Create a category";
-"Edit category" = "Create a category";
+"Edit category" = "Edit category";
 /// Alert
 "Category name is missing" = "Category name is missing";
 "Category icon not selected" = "Category icon not selected";
@@ -154,9 +158,8 @@
 
 // SettingsVC
 "Rate on App Store" = "Rate on App Store";
-"Delete data" = "Delete data";
 /// Banner
-"CoinTail Premium" = "CoinTail Premium";
+"Upgrade to premium" = "Upgrade to premium";
 "Get even more features with our Premium subscription" = "Get even more features with our Premium subscription";
 
 // CurrenciesVC

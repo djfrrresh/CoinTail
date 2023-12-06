@@ -62,4 +62,64 @@ extension AddOperationVC: SendCategoryID, AddOperationCellDelegate {
         }
     }
     
+    // Повтор последней операции
+    func repeatOperationAction() {
+        confirmationAlert(
+            title: "Repeat last operation".localized(),
+            message: "Do you want to repeat the last operation?".localized(),
+            confirmActionTitle: "Confirm".localized()
+        ) { [weak self] in
+            guard let strongSelf = self else { return }
+
+            if let lastRecord = Records.shared.records.last {
+                strongSelf.setFormWithRecord(lastRecord)
+            }
+        }
+    }
+    
+    private func setFormWithRecord(_ record: RecordClass) {
+        // Сумма
+        operationAmount = "\(abs(record.amount))"
+        let amountIndexPath = IndexPath(item: 0, section: 0)
+        updateAmount(at: amountIndexPath, text: "\(abs(record.amount))")
+
+        // Описание
+        operationDescription = record.descriptionText
+        let descriptionIndexPath = IndexPath(item: 0, section: 1)
+        updateDescription(at: descriptionIndexPath, text: record.descriptionText)
+
+        // Дата
+        operationDate = record.date
+        let dateIndexPath = IndexPath(item: 4, section: 0)
+        let operationDF: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            formatter.timeStyle = .none
+            formatter.dateFormat = "dd/MM/yyyy"
+            
+            return formatter
+        }()
+        updateDate(at: dateIndexPath, text: operationDF.string(from: record.date))
+
+        guard let recordType = RecordType(rawValue: record.type) else { return }
+        // Тип операции
+        addOperationSegment = recordType
+        addOperationTypeSwitcher.selectedSegmentIndex = addOperationSegment == .income ? 0 : 1
+
+        // Валюта
+        selectedCurrency = record.currency
+
+        // Категория
+        if let category = Categories.shared.getCategory(for: record.categoryID) {
+            operationCategory = category.name
+            categoryID = record.categoryID
+        }
+
+        // Счет
+        if let accountID = record.accountID, let account = Accounts.shared.getAccount(for: accountID) {
+            selectedAccount = account.name
+            self.accountID = accountID
+        }        
+    }
+    
 }

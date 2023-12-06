@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         KeychainManager.shared.saveAPIKeyToKeychain()
         RealmService.shared.readAllClasses()
         //TODO: прила вылетает после удаления всех данных и захода на экран добавления операции
+        //TODO: переместить функции, используемые после выхода с экрана, на viewDidDisappear
+        //TODO: переписать код для ячеек коллекций, сделать отдельные ячейки везде
+        //TODO: переименовать синий цвет и сделать общим
         
         return true
     }

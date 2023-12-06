@@ -8,7 +8,7 @@
 import UIKit
 
 
-class AccountsVC: BasicVC {
+final class AccountsVC: BasicVC {
             
     var accounts: [AccountClass] {
         get {

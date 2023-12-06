@@ -7,10 +7,9 @@
 
 import UIKit
 import Charts
-import MultipleProgressBar
 
 
-class HomeVC: BasicVC {
+final class HomeVC: BasicVC {
     
     var period: DatePeriods = .allTheTime {
         didSet {
@@ -136,7 +135,7 @@ class HomeVC: BasicVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+                        
         homeGlobalCV.delegate = self
 
         homeGlobalCV.dataSource = self

@@ -40,7 +40,6 @@ extension HomeVC {
         }
         
         categorySort = nil
-        
         sortRecords() // Сортировка коллекции с операциями
     }
     

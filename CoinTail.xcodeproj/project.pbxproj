@@ -50,6 +50,9 @@
 		5665C13A2A9F5F6900B11D34 /* SettingsCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665C1392A9F5F6900B11D34 /* SettingsCVDataSource.swift */; };
 		5665C13D2A9F614A00B11D34 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665C13C2A9F614A00B11D34 /* SettingsCell.swift */; };
 		5665C1402A9F6B0800B11D34 /* SettingsUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665C13F2A9F6B0800B11D34 /* SettingsUIFuncs.swift */; };
+		5676C8A82B20C6AD008A6395 /* PremiumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5676C8A72B20C6AD008A6395 /* PremiumVC.swift */; };
+		5676C8AB2B20D893008A6395 /* PremiumCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5676C8AA2B20D893008A6395 /* PremiumCVDataSource.swift */; };
+		5676C8AE2B20DD9F008A6395 /* PremiumUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5676C8AD2B20DD9F008A6395 /* PremiumUIFuncs.swift */; };
 		567E13982ADFE60100F3C244 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E13972ADFE60100F3C244 /* UIView.swift */; };
 		567E93722AEB1E3F0045C01B /* AccountsTransferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93712AEB1E3F0045C01B /* AccountsTransferCell.swift */; };
 		567E93762AEFFBA80045C01B /* AccountsTransferPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93752AEFFBA80045C01B /* AccountsTransferPicker.swift */; };
@@ -74,10 +77,13 @@
 		567E93A42B052DFB0045C01B /* AddOperationCVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93A32B052DFA0045C01B /* AddOperationCVDelegate.swift */; };
 		567E93A62B0531C70045C01B /* AddOperationCellTFDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93A52B0531C70045C01B /* AddOperationCellTFDelegate.swift */; };
 		567E93A92B06373B0045C01B /* AddOperationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93A82B06373B0045C01B /* AddOperationPicker.swift */; };
+		568282DA2B1FD14B00A39314 /* SettingsPremiumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568282D92B1FD14B00A39314 /* SettingsPremiumCell.swift */; };
 		568999D62B0FA84100075433 /* TabBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568999D52B0FA84100075433 /* TabBarDelegate.swift */; };
 		568999D82B0FB94C00075433 /* SelectCategorySearching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568999D72B0FB94C00075433 /* SelectCategorySearching.swift */; };
 		568999DA2B14B4E600075433 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568999D92B14B4E600075433 /* KeychainManager.swift */; };
 		568999DC2B162EB100075433 /* ExchangeRateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568999DB2B162EB100075433 /* ExchangeRateManager.swift */; };
+		568999EA2B1A31E600075433 /* PickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568999E92B1A31E600075433 /* PickerVC.swift */; };
+		568999EC2B1A347F00075433 /* PickerFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568999EB2B1A347F00075433 /* PickerFuncs.swift */; };
 		568EF0202AA603BF00EB042D /* AccountsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF01F2AA603BF00EB042D /* AccountsVC.swift */; };
 		568EF0232AA607E000EB042D /* AccountsUIFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0222AA607E000EB042D /* AccountsUIFuncs.swift */; };
 		568EF0262AA608D000EB042D /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EF0252AA608D000EB042D /* AccountCell.swift */; };
@@ -236,6 +242,9 @@
 		5665C1392A9F5F6900B11D34 /* SettingsCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCVDataSource.swift; sourceTree = "<group>"; };
 		5665C13C2A9F614A00B11D34 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		5665C13F2A9F6B0800B11D34 /* SettingsUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUIFuncs.swift; sourceTree = "<group>"; };
+		5676C8A72B20C6AD008A6395 /* PremiumVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumVC.swift; sourceTree = "<group>"; };
+		5676C8AA2B20D893008A6395 /* PremiumCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumCVDataSource.swift; sourceTree = "<group>"; };
+		5676C8AD2B20DD9F008A6395 /* PremiumUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumUIFuncs.swift; sourceTree = "<group>"; };
 		567E13972ADFE60100F3C244 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		567E93712AEB1E3F0045C01B /* AccountsTransferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsTransferCell.swift; sourceTree = "<group>"; };
 		567E93752AEFFBA80045C01B /* AccountsTransferPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsTransferPicker.swift; sourceTree = "<group>"; };
@@ -260,10 +269,13 @@
 		567E93A32B052DFA0045C01B /* AddOperationCVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOperationCVDelegate.swift; sourceTree = "<group>"; };
 		567E93A52B0531C70045C01B /* AddOperationCellTFDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOperationCellTFDelegate.swift; sourceTree = "<group>"; };
 		567E93A82B06373B0045C01B /* AddOperationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOperationPicker.swift; sourceTree = "<group>"; };
+		568282D92B1FD14B00A39314 /* SettingsPremiumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPremiumCell.swift; sourceTree = "<group>"; };
 		568999D52B0FA84100075433 /* TabBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarDelegate.swift; sourceTree = "<group>"; };
 		568999D72B0FB94C00075433 /* SelectCategorySearching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategorySearching.swift; sourceTree = "<group>"; };
 		568999D92B14B4E600075433 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		568999DB2B162EB100075433 /* ExchangeRateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateManager.swift; sourceTree = "<group>"; };
+		568999E92B1A31E600075433 /* PickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerVC.swift; sourceTree = "<group>"; };
+		568999EB2B1A347F00075433 /* PickerFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerFuncs.swift; sourceTree = "<group>"; };
 		568EF01F2AA603BF00EB042D /* AccountsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsVC.swift; sourceTree = "<group>"; };
 		568EF0222AA607E000EB042D /* AccountsUIFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsUIFuncs.swift; sourceTree = "<group>"; };
 		568EF0252AA608D000EB042D /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
@@ -457,6 +469,7 @@
 		560AFBED2A13C1CA0054B502 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				568999E82B1A31D600075433 /* PickerVC */,
 				560AFBEE2A13C1D30054B502 /* BasicVC */,
 			);
 			path = Controllers;
@@ -589,6 +602,7 @@
 		5642DB122A432AFB00ADF475 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				5676C8A62B20C69B008A6395 /* Premium */,
 				5642DB132A432B0800ADF475 /* SettingsVC.swift */,
 				569E522C2AD0711C00A4FCA7 /* AboutApp */,
 				568EF0782AB3A2C200EB042D /* Notifications */,
@@ -646,7 +660,7 @@
 		5665C1382A9F5F5300B11D34 /* SettingsCV */ = {
 			isa = PBXGroup;
 			children = (
-				5665C13C2A9F614A00B11D34 /* SettingsCell.swift */,
+				568282D82B1FD12800A39314 /* SettingsCVCells */,
 				5665C1392A9F5F6900B11D34 /* SettingsCVDataSource.swift */,
 				568EF0632AB0D81200EB042D /* SettingsCVDelegate.swift */,
 			);
@@ -660,6 +674,32 @@
 				569B611A2AE6B73300CBFF33 /* SettingsUXFuncs.swift */,
 			);
 			path = SettingsFuncs;
+			sourceTree = "<group>";
+		};
+		5676C8A62B20C69B008A6395 /* Premium */ = {
+			isa = PBXGroup;
+			children = (
+				5676C8AC2B20DD92008A6395 /* PremiumFuncs */,
+				5676C8A92B20D85F008A6395 /* PremiumCV */,
+				5676C8A72B20C6AD008A6395 /* PremiumVC.swift */,
+			);
+			path = Premium;
+			sourceTree = "<group>";
+		};
+		5676C8A92B20D85F008A6395 /* PremiumCV */ = {
+			isa = PBXGroup;
+			children = (
+				5676C8AA2B20D893008A6395 /* PremiumCVDataSource.swift */,
+			);
+			path = PremiumCV;
+			sourceTree = "<group>";
+		};
+		5676C8AC2B20DD92008A6395 /* PremiumFuncs */ = {
+			isa = PBXGroup;
+			children = (
+				5676C8AD2B20DD9F008A6395 /* PremiumUIFuncs.swift */,
+			);
+			path = PremiumFuncs;
 			sourceTree = "<group>";
 		};
 		567E93732AEFE1880045C01B /* AddAccountCV */ = {
@@ -752,6 +792,24 @@
 				567E93A82B06373B0045C01B /* AddOperationPicker.swift */,
 			);
 			path = AddOperationPicker;
+			sourceTree = "<group>";
+		};
+		568282D82B1FD12800A39314 /* SettingsCVCells */ = {
+			isa = PBXGroup;
+			children = (
+				5665C13C2A9F614A00B11D34 /* SettingsCell.swift */,
+				568282D92B1FD14B00A39314 /* SettingsPremiumCell.swift */,
+			);
+			path = SettingsCVCells;
+			sourceTree = "<group>";
+		};
+		568999E82B1A31D600075433 /* PickerVC */ = {
+			isa = PBXGroup;
+			children = (
+				568999E92B1A31E600075433 /* PickerVC.swift */,
+				568999EB2B1A347F00075433 /* PickerFuncs.swift */,
+			);
+			path = PickerVC;
 			sourceTree = "<group>";
 		};
 		568EF01E2AA603AE00EB042D /* Accounts */ = {
@@ -1351,6 +1409,7 @@
 				568EF0542AAFA6C200EB042D /* TransferHistory.swift in Sources */,
 				569E52312AD083CB00A4FCA7 /* AboutAppUIFuncs.swift in Sources */,
 				5665C1372A9F5B2200B11D34 /* Currency.swift in Sources */,
+				568999EA2B1A31E600075433 /* PickerVC.swift in Sources */,
 				56DBB6F42A37485A0087271D /* OperationCell.swift in Sources */,
 				567E937C2AF053B50045C01B /* AddAccountCVDelegate.swift in Sources */,
 				56EFDFF02A5D9176003A6A45 /* DaySection.swift in Sources */,
@@ -1373,6 +1432,7 @@
 				568EF06A2AB0E74200EB042D /* CurrencyCell.swift in Sources */,
 				567E93A22B0526FB0045C01B /* AddOperationCVDataSource.swift in Sources */,
 				568EF0602AAFB17100EB042D /* TransfersHistoryCell.swift in Sources */,
+				5676C8A82B20C6AD008A6395 /* PremiumVC.swift in Sources */,
 				5642DB2E2A4F34CC00ADF475 /* BudgetCVDataSource.swift in Sources */,
 				568EF03E2AA61FB900EB042D /* AddAccountActions.swift in Sources */,
 				569E52362AD0B47600A4FCA7 /* AboutAppActions.swift in Sources */,
@@ -1424,6 +1484,7 @@
 				56DBB70A2A3B44090087271D /* Categories.swift in Sources */,
 				560AFC052A16B06D0054B502 /* HomeUXFuncs.swift in Sources */,
 				560AFC192A1BAC810054B502 /* HomeActions.swift in Sources */,
+				568282DA2B1FD14B00A39314 /* SettingsPremiumCell.swift in Sources */,
 				567E938B2AF44B4D0045C01B /* AddBudgetCellTFDelegate.swift in Sources */,
 				567E939B2AF5B69B0045C01B /* SelectCategoryUIFuncs.swift in Sources */,
 				569B60F72AE1F78000CBFF33 /* RegularityCVDataSource.swift in Sources */,
@@ -1455,6 +1516,7 @@
 				560AFBC12A1394A30054B502 /* AppDelegate.swift in Sources */,
 				569B60DB2AE153C100CBFF33 /* NotificationsCVDataSource.swift in Sources */,
 				567E93A42B052DFB0045C01B /* AddOperationCVDelegate.swift in Sources */,
+				5676C8AB2B20D893008A6395 /* PremiumCVDataSource.swift in Sources */,
 				567E93A92B06373B0045C01B /* AddOperationPicker.swift in Sources */,
 				56DBB7262A3B672C0087271D /* CreateCategoryCVDelegate.swift in Sources */,
 				568EF0752AB1F76000EB042D /* CurrencyCVHeader.swift in Sources */,
@@ -1472,6 +1534,7 @@
 				569B60F92AE1F8C700CBFF33 /* RegularityCVDelegate.swift in Sources */,
 				56DBB6F22A3738240087271D /* CategoryCell.swift in Sources */,
 				568EF0712AB0FFAA00EB042D /* CurrenciesUIFuncs.swift in Sources */,
+				5676C8AE2B20DD9F008A6395 /* PremiumUIFuncs.swift in Sources */,
 				560AFC432A1D091F0054B502 /* Record.swift in Sources */,
 				56EFDFEE2A5751EC003A6A45 /* BudgetCVDelegate.swift in Sources */,
 				567E937F2AF110950045C01B /* AddAccountPicker.swift in Sources */,
@@ -1509,6 +1572,7 @@
 				568EF07F2AB3BAD000EB042D /* NotificationsUIFuncs.swift in Sources */,
 				560AFC3C2A1C10170054B502 /* ChartsAnimation.swift in Sources */,
 				569B60F52AE1F5DA00CBFF33 /* RegularityCell.swift in Sources */,
+				568999EC2B1A347F00075433 /* PickerFuncs.swift in Sources */,
 				569B611B2AE6B73300CBFF33 /* SettingsUXFuncs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

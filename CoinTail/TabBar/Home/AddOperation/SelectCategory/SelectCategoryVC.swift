@@ -13,7 +13,7 @@ protocol SendCategoryID: AnyObject {
     func sendCategoryData(id: ObjectId)
 }
 
-class SelectCategoryVC: BasicVC {
+final class SelectCategoryVC: BasicVC {
     
     var categories: [CategoryProtocol] {
         get {
@@ -127,6 +127,7 @@ class SelectCategoryVC: BasicVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        //TODO: не обновляется коллекция после создания категории
         selectCategoryCV.reloadData()
     }
         

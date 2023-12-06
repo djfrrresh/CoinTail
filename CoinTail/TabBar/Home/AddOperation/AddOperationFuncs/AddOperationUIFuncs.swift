@@ -67,11 +67,15 @@ extension AddOperationVC: UIScrollViewDelegate {
             Top(24).to(self.view.safeAreaLayoutGuide, .top)
         ])
         
+        let firstSectionHeight: CGFloat = 44 * 5
+        let secondSectionHeight: CGFloat = 24 + 80
+        let thirdSectionHeight: CGFloat = recordID != nil ? 0 : 24 + 52
+        let cvHeight = firstSectionHeight + secondSectionHeight + thirdSectionHeight
         addOperationCV.easy.layout([
             Left(16),
             Right(16),
             Top(24).to(addOperationTypeSwitcher, .bottom),
-            Height(44 * 5 + 24 + 80)
+            Height(cvHeight)
         ])
         
         deleteOperationButton.easy.layout([
@@ -87,9 +91,19 @@ extension AddOperationVC: UIScrollViewDelegate {
             cell.updateSubMenuLabel(text)
         }
     }
+    func updateDate(at indexPath: IndexPath, text: String) {
+        if let cell = addOperationCV.cellForItem(at: indexPath) as? AddOperationCell {
+            cell.dateTF.text = text
+        }
+    }
     func updateDescription(at indexPath: IndexPath, text: String) {
         if let cell = addOperationCV.cellForItem(at: indexPath) as? AddOperationCell {
             cell.operationDescriptionTF.text = text
+        }
+    }
+    func updateAmount(at indexPath: IndexPath, text: String) {
+        if let cell = addOperationCV.cellForItem(at: indexPath) as? AddOperationCell {
+            cell.operationAmountTF.text = text
         }
     }
 

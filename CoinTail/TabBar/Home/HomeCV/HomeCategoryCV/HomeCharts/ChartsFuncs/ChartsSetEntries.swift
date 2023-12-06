@@ -7,7 +7,6 @@
 
 import UIKit
 import Charts
-import MultipleProgressBar
 
 
 extension HomeCategoryCell {
@@ -16,7 +15,6 @@ extension HomeCategoryCell {
     func setEntries(_ segment: RecordType, records: [RecordClass]) {
         // Стирает прошлые записи
         pieChartEntries.removeAll()
-        progressChartEntries.removeAll()
         pieChartColors.removeAll()
         
         // Секции == категории, по которым идет сортировка
@@ -48,11 +46,7 @@ extension HomeCategoryCell {
                 // Сумма всех операций в данной категории
                 sum += amount
             }
-
-            // Добавление записи в диаграммы
-            let progressBarEntry = UsagesModel(color: chartColor, value: sum)
-            progressChartEntries.append(progressBarEntry)
-
+            
             let pieChartEntry = PieChartDataEntry(value: sum, label: "")
             pieChartEntries.append(pieChartEntry)
         }

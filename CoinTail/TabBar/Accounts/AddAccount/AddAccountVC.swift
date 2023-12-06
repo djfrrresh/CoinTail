@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 
 
-final class AddAccountVC: BasicVC {
+final class AddAccountVC: PickerVC {
     
     var accountID: ObjectId?
     

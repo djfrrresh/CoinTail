@@ -10,16 +10,16 @@ import EasyPeasy
 import RealmSwift
 
 
-class AddOperationVC: BasicVC {
+final class AddOperationVC: PickerVC {
     
     var recordID: ObjectId?
     var categoryID: ObjectId?
     var accountID: ObjectId?
-    var operationAmount: String?
     var isUsingCurrenciesPicker: Bool = true
-    var operationDate: Date?
-    var operationDescription: String?
     
+    var operationAmount: String?
+    var operationDescription: String?
+    var operationDate: Date?
     var operationCategory: String? {
         didSet {
             guard let operationCategory = operationCategory else { return }

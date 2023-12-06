@@ -8,7 +8,7 @@
 import UIKit
 
 
-class BudgetsVC: BasicVC {
+final class BudgetsVC: BasicVC {
         
     var budgets: [BudgetClass] {
         get {

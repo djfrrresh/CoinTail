@@ -56,7 +56,7 @@ final class Categories {
     }
     
     // Добавление ID подкатегории к категории
-    func addSubcategoryToCategory(for categoryID: ObjectId, subcategoryID: ObjectId) {
+    private func addSubcategoryToCategory(for categoryID: ObjectId, subcategoryID: ObjectId) {
         do {
             try realmService.realm?.write {
                 guard let category = realmService.realm?.object(ofType: CategoryClass.self, forPrimaryKey: categoryID) else { return }
@@ -67,12 +67,13 @@ final class Categories {
         }
     }
     
+    //TODO: отображать подкатегории через главную категорию
     // Обновить категории в коллекции
     func categoriesUpdate(records: [RecordClass]) {
         var newCategories = [CategoryClass]()
                 
         for record in records where !newCategories.contains(where: { $0.id == record.categoryID }) {
-            guard let category = getCategory(for: record.categoryID) else { return }
+            guard let category = getCategory(for: record.categoryID) else { continue }
 
             newCategories.append(category)
         }
@@ -109,14 +110,14 @@ final class Categories {
     }
     
     // Отредактировать категорию по его ID
-    func editCategory(for id: ObjectId, replacingCategory: CategoryClass, completion: ((Bool) -> Void)? = nil) {
+    func editCategory(replacingCategory: CategoryClass, completion: ((Bool) -> Void)? = nil) {
         RealmService.shared.update(replacingCategory, CategoryClass.self)
         
         completion?(true)
     }
     
     // Отредактировать подкатегорию по его ID
-    func editSubcategory(for id: ObjectId, replacingSubcategory: SubcategoryClass, completion: ((Bool) -> Void)? = nil) {
+    func editSubcategory(replacingSubcategory: SubcategoryClass, completion: ((Bool) -> Void)? = nil) {
         RealmService.shared.update(replacingSubcategory, SubcategoryClass.self)
         
         completion?(true)
@@ -132,7 +133,7 @@ final class Categories {
         try? RealmService.shared.realm?.write {
             category.isDeleted = true
             
-            // Помечаем удаленными подкатегории
+            // Помечает удаленными подкатегории
             for subcategoryId in category.subcategories {
                 deleteSubcategory(for: subcategoryId)
             }

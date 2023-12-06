@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 
 
-class AddBudgetVC: BasicVC {
+final class AddBudgetVC: PickerVC {
     
     var budgetCategoryID: ObjectId?
     var budgetID: ObjectId?

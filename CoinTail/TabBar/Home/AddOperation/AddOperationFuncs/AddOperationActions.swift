@@ -62,52 +62,6 @@ extension AddOperationVC {
         }
     }
     
-    // Повтор последней операции
-//    @objc func repeatOperationAction() {
-//        confirmationAlert(
-//            title: "Repeat last operation".localized(),
-//            message: "Do you want to repeat the last operation?".localized(),
-//            confirmActionTitle: "Confirm".localized()
-//        ) { [weak self] in
-//            guard let strongSelf = self else { return }
-//
-//            if let lastRecord = Records.shared.records.last {
-//                strongSelf.addOperationTypeSwitcher.isHidden = true
-//
-//                strongSelf.setFormWithRecord(lastRecord)
-//            }
-//        }
-//    }
-    
-//    private func setFormWithRecord(_ record: RecordClass) {
-        // Сумма
-//        amountTF.text = "\(record.amount)"
-//
-//        // Описание
-//        descriptionTF.text = record.descriptionText
-//
-//        // Дата
-//        dateTF.text = Self.operationDF.string(from: record.date)
-//
-//        guard let recordType = RecordType(rawValue: record.type) else { return }
-//        // Тип операции
-//        addOperationSegment = recordType
-//        addOperationTypeSwitcher.selectedSegmentIndex = addOperationSegment == .income ? 0 : 1
-//
-//        // Валюта
-//        currencyButton.setTitle("\(record.currency)", for: .normal)
-//
-//        // Категория
-//        if let category = Categories.shared.getCategory(for: record.categoryID) {
-//            categoryButton.setTitle(category.name, for: .normal)
-//        }
-//
-//        // Счет
-//        if let accountID = record.accountID, let account = Accounts.shared.getAccount(for: accountID) {
-//            accountButton.setTitle(account.name, for: .normal)
-//        }
-//    }
-    
     // Переход на экран с выбором категории
     @objc func goToSelectCategoryVC() {
         var segmentTitle: String

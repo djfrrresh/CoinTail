@@ -9,10 +9,14 @@ import UIKit
 import RealmSwift
 
 
-class CreateCategoryVC: BasicVC {
+final class CreateCategoryVC: BasicVC {
     
     var categoryID: ObjectId?
+    var isToggleOn: Bool = false
+    var isEditingSubcategory: Bool = false
     var categoryName: String?
+    var categoryIcon: String?
+    var segmentTitle: String?
     var mainCategoryName: String? {
         didSet {
             guard let mainCategoryName = mainCategoryName else { return }
@@ -20,13 +24,6 @@ class CreateCategoryVC: BasicVC {
             
             updateCell(at: indexPathToUpdate, text: mainCategoryName)
         }
-    }
-    var categoryIcon: String?
-    var isToggleOn: Bool = false
-    
-    var segmentTitle: String?
-    var addOperationVCSegment: RecordType {
-        RecordType(rawValue: segmentTitle ?? RecordType.expense.rawValue) ?? .expense
     }
     
     let deleteCategoryButton: UIButton = {
@@ -62,8 +59,11 @@ class CreateCategoryVC: BasicVC {
         return cv
     }()
     
-    init(categoryID: ObjectId) {
+    init(categoryID: ObjectId, segmentTitle: String) {
         self.categoryID = categoryID
+        self.segmentTitle = segmentTitle
+        self.isEditingSubcategory = true
+        
         super.init(nibName: nil, bundle: nil)
         
         self.title = "Edit category".localized()

@@ -44,12 +44,29 @@ final class AddOperationCell: UICollectionViewCell {
         
         return label
     }()
+    let repeatOperationLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 1
+        label.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
+        label.text = "Repeat previous transaction".localized()
+        label.textAlignment = .left
+        
+        return label
+    }()
 
     let chevronImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "chevron.right")
         imageView.tintColor = UIColor(named: "arrowColor")
         imageView.contentMode = .scaleAspectFit
+        
+        return imageView
+    }()
+    let repeatIconImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(systemName: "arrow.clockwise")
+        imageView.tintColor = UIColor(named: "checkMark")
         
         return imageView
     }()
@@ -121,6 +138,8 @@ final class AddOperationCell: UICollectionViewCell {
         contentView.addSubview(subMenuLabel)
         contentView.addSubview(operationDescriptionTF)
         contentView.addSubview(dateTF)
+        contentView.addSubview(repeatIconImageView)
+        contentView.addSubview(repeatOperationLabel)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -179,6 +198,19 @@ final class AddOperationCell: UICollectionViewCell {
             Top(),
             Bottom()
         ])
+        
+        repeatIconImageView.easy.layout([
+            Height(32),
+            Width(32),
+            Left(16),
+            CenterY()
+        ])
+        
+        repeatOperationLabel.easy.layout([
+            Left(8).to(repeatIconImageView, .right),
+            Right(16),
+            CenterY()
+        ])
     }
     
     func isSeparatorLineHidden(_ isHidden: Bool) {
@@ -231,6 +263,13 @@ final class AddOperationCell: UICollectionViewCell {
         return .init(
             width: UIScreen.main.bounds.width - 16 - 16,
             height: 80
+        )
+    }
+    
+    static func repeatOperationCellSize() -> CGSize {
+        return .init(
+            width: UIScreen.main.bounds.width - 16 - 16,
+            height: 52
         )
     }
     

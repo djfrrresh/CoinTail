@@ -146,10 +146,9 @@ extension HomeVC: SelectedDate {
         // Группировка записей
         monthSections = OperationsDaySection.groupRecords(section: homeSegment, groupRecords: getRecord)
         
-        let totalBalanceText = "Balance:".localized()
-        let currency = Currencies.shared.selectedCurrency.currency
-
         //TODO: api
+//        let totalBalanceText = "Balance:".localized()
+//        let currency = Currencies.shared.selectedCurrency.currency
 //        Records.shared.getAmount(for: .allTheTime, type: .allOperations) { amounts in
 //            DispatchQueue.main.async { [self] in
 //                if let amounts = amounts {

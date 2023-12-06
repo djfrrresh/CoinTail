@@ -11,23 +11,31 @@ import UIKit
 extension AddOperationVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 1:
-            goToSelectCategoryVC()
-        case 2:
-            if !accountNames.isEmpty {
-                isUsingCurrenciesPicker = false
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 1:
+                goToSelectCategoryVC()
+            case 2:
+                // TODO: сделать переход на экран с выбором счетов
+                if !accountNames.isEmpty {
+                    isUsingCurrenciesPicker = false
+                    showPickerView()
+                    
+                    selectedAccount = accountNames[0]
+                } else {
+                    errorAlert("You don't have any accounts to choose from".localized())
+                }
+            case 3:
+                isUsingCurrenciesPicker = true
                 showPickerView()
                 
-                selectedAccount = accountNames[0]
-            } else {
-                errorAlert("You don't have any accounts to choose from".localized())
+                selectedCurrency = AddOperationVC.favouriteStringCurrencies[0]
+            default:
+                return
             }
-        case 3:
-            isUsingCurrenciesPicker = true
-            showPickerView()
-            
-            selectedCurrency = AddOperationVC.favouriteStringCurrencies[0]
+        case 2:
+            repeatOperationAction()
         default:
             return
         }
@@ -43,6 +51,8 @@ extension AddOperationVC: UICollectionViewDelegate, UICollectionViewDelegateFlow
             return AddOperationCell.size()
         case 1:
             return AddOperationCell.descriptionCellSize()
+        case 2:
+            return AddOperationCell.repeatOperationCellSize()
         default:
             return CGSize()
         }

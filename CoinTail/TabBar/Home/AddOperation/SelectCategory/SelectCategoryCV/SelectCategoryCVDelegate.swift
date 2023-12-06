@@ -20,7 +20,7 @@ extension SelectCategoryVC: UICollectionViewDelegate, UICollectionViewDelegateFl
         }
         
         if isEditingCategory {
-            let vc = CreateCategoryVC(categoryID: categoryData.id)
+            let vc = CreateCategoryVC(categoryID: categoryData.id, segmentTitle: operationSegmentType.rawValue)
             
             navigationController?.pushViewController(vc, animated: true)
         } else {

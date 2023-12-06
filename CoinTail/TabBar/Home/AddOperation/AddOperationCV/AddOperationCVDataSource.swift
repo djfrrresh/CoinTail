@@ -11,7 +11,7 @@ import UIKit
 extension AddOperationVC: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return recordID != nil ? 2 : 3
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -19,6 +19,8 @@ extension AddOperationVC: UICollectionViewDataSource {
         case 0:
             return 5
         case 1:
+            return 1
+        case 2:
             return 1
         default:
             return 0
@@ -51,6 +53,8 @@ extension AddOperationVC: UICollectionViewDataSource {
                 cell.chevronImageView.isHidden = true
                 cell.operationDescriptionTF.isHidden = true
                 cell.dateTF.isHidden = true
+                cell.repeatIconImageView.isHidden = true
+                cell.repeatOperationLabel.isHidden = true
                 cell.isSeparatorLineHidden(false)
             case 1:
                 cell.menuLabel.text = "Category".localized()
@@ -64,6 +68,8 @@ extension AddOperationVC: UICollectionViewDataSource {
                 cell.chevronImageView.isHidden = false
                 cell.operationDescriptionTF.isHidden = true
                 cell.dateTF.isHidden = true
+                cell.repeatIconImageView.isHidden = true
+                cell.repeatOperationLabel.isHidden = true
                 cell.isSeparatorLineHidden(false)
             case 2:
                 cell.menuLabel.text = "Account".localized()
@@ -77,6 +83,8 @@ extension AddOperationVC: UICollectionViewDataSource {
                 cell.chevronImageView.isHidden = false
                 cell.operationDescriptionTF.isHidden = true
                 cell.dateTF.isHidden = true
+                cell.repeatIconImageView.isHidden = true
+                cell.repeatOperationLabel.isHidden = true
                 cell.isSeparatorLineHidden(false)
             case 3:
                 cell.menuLabel.text = "Currency".localized()
@@ -88,6 +96,8 @@ extension AddOperationVC: UICollectionViewDataSource {
                 cell.chevronImageView.isHidden = false
                 cell.operationDescriptionTF.isHidden = true
                 cell.dateTF.isHidden = true
+                cell.repeatIconImageView.isHidden = true
+                cell.repeatOperationLabel.isHidden = true
                 cell.isSeparatorLineHidden(false)
             case 4:
                 cell.cornerRadiusBottom(radius: 12)
@@ -105,6 +115,8 @@ extension AddOperationVC: UICollectionViewDataSource {
                 cell.chevronImageView.isHidden = false
                 cell.operationDescriptionTF.isHidden = true
                 cell.dateTF.isHidden = false
+                cell.repeatIconImageView.isHidden = true
+                cell.repeatOperationLabel.isHidden = true
                 cell.isSeparatorLineHidden(true)
             default:
                 return cell
@@ -122,6 +134,20 @@ extension AddOperationVC: UICollectionViewDataSource {
             cell.chevronImageView.isHidden = true
             cell.operationDescriptionTF.isHidden = false
             cell.dateTF.isHidden = true
+            cell.repeatIconImageView.isHidden = true
+            cell.repeatOperationLabel.isHidden = true
+            cell.isSeparatorLineHidden(true)
+        case 2:
+            cell.roundCorners(.allCorners, radius: 12)
+            
+            cell.operationAmountTF.isHidden = true
+            cell.menuLabel.isHidden = true
+            cell.subMenuLabel.isHidden = true
+            cell.chevronImageView.isHidden = true
+            cell.operationDescriptionTF.isHidden = true
+            cell.dateTF.isHidden = true
+            cell.repeatIconImageView.isHidden = false
+            cell.repeatOperationLabel.isHidden = false
             cell.isSeparatorLineHidden(true)
         default:
             return cell

@@ -9,7 +9,7 @@ import UIKit
 
 
 
-final class AccountsTransferVC: BasicVC {
+final class AccountsTransferVC: PickerVC {
     
     static var accounts: [AccountClass] {
         get {

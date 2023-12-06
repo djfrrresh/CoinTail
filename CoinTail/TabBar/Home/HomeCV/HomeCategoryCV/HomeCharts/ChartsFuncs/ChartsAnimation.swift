@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import MultipleProgressBar
 import Charts
 import EasyPeasy
 
@@ -25,7 +24,7 @@ extension HomeCategoryCell {
     @objc func pieChartAction() {
         let targetAlpha: CGFloat
         let targetVisibility: Bool
-        
+                
         if pieChart.isHidden {
             targetAlpha = 1
             targetVisibility = false
@@ -36,15 +35,22 @@ extension HomeCategoryCell {
         }
         
         UIView.animate(withDuration: 0.3) { [self] in
+            periodLabel.isHidden = targetVisibility
+            amountForPeriodLabel.isHidden = targetVisibility
             pieChart.isHidden = targetVisibility
             categoriesCV.isHidden = targetVisibility
-            progressView.isHidden = !targetVisibility
-            arrowImageLeft.isHidden = !targetVisibility
-            arrowImageRight.isHidden = !targetVisibility
+            arrowImageLeft.isHidden = targetVisibility
+            arrowImageRight.isHidden = targetVisibility
+            openDiagramsView.isHidden = !targetVisibility
+            openDiagramsLabel.isHidden = !targetVisibility
+            diagramsDescriptionLabel.isHidden = !targetVisibility
+            diargamsImageView.isHidden = !targetVisibility
 
             pieChart.alpha = targetAlpha
             categoriesCV.alpha = targetAlpha
-            progressView.alpha = 1 - targetAlpha
+            openDiagramsLabel.alpha = 1 - targetAlpha
+            diagramsDescriptionLabel.alpha = 1 - targetAlpha
+            diargamsImageView.alpha = 1 - targetAlpha
 
             self.contentView.layoutIfNeeded()
         }

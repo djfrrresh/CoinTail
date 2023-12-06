@@ -50,11 +50,12 @@ final class SettingsVC: BasicVC {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: settingsLayout)
         cv.backgroundColor = .clear
         cv.register(SettingsCell.self, forCellWithReuseIdentifier: SettingsCell.id)
+        cv.register(SettingsPremiumCell.self, forCellWithReuseIdentifier: SettingsPremiumCell.id)
         
         cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
-        cv.alwaysBounceVertical = false
-        cv.isScrollEnabled = false
+        cv.alwaysBounceVertical = true
+        cv.isScrollEnabled = true
 
         return cv
     }()
