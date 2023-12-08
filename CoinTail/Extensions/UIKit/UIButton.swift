@@ -2,30 +2,25 @@
 //  UIButton.swift
 //  CoinTail
 //
-//  Created by Eugene on 16.05.23.
+//  Created by Eugene on 08.12.23.
 //
 
 import UIKit
 import EasyPeasy
 
-
 extension UIButton {
     
-    convenience init(name: String, background: UIColor, textColor: UIColor) {
-        self.init()
+    func waitingState(_ isWaiting: Bool) {
+        self.loadingIndicator(isWaiting)
+        self.isEnabled = !isWaiting
         
-        // Радиус и граница кнопки
-        self.layer.cornerRadius = 8
-        self.layer.borderWidth = 1
-        
-        // Цвета
-        self.layer.borderColor = UIColor(named: "black")?.cgColor
-        self.backgroundColor = background
-        self.setTitleColor(textColor, for: .normal)
-        
-        self.setTitle(name, for: .normal)
-        
-        self.easy.layout([Height(56)])
+        if isWaiting == true {
+            self.setTitleColor(.clear, for: .disabled)
+            self.backgroundColor = self.backgroundColor?.withAlphaComponent(0.5)
+        } else {
+            self.backgroundColor = self.backgroundColor?.withAlphaComponent(1)
+            self.setTitleColor(currentTitleColor, for: .disabled)
+        }
     }
     
 }

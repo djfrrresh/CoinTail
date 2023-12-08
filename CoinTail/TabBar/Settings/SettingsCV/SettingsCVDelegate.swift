@@ -36,7 +36,10 @@ extension SettingsVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayo
                 navigationController?.pushViewController(vc, animated: true)
             }
         case 1:
-            return
+            let vc = PremiumVC(PremiumPlans.shared.plans)
+            vc.modalPresentationStyle = .fullScreen
+            
+            present(vc, animated: true)
         default:
             return
         }

@@ -95,11 +95,11 @@ extension HomeOperationCell: UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        CGSize(width: UIScreen.main.bounds.width, height: 20)
+        return CGSize(width: UIScreen.main.bounds.width, height: 20)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        .init(top: 0, left: 0, bottom: 16, right: 0)
+        return .init(top: 0, left: 0, bottom: 16, right: 0)
     }
     
 }

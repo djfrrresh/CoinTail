@@ -37,7 +37,6 @@ final class HomeOperationCell: UICollectionViewCell {
         cv.register(OperationCVCell.self, forCellWithReuseIdentifier: OperationCVCell.id)
         cv.register(OperationCVHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: OperationCVHeader.id)
         
-        cv.allowsMultipleSelection = false
         cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
         cv.isScrollEnabled = false

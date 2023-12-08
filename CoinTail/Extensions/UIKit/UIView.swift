@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import EasyPeasy
 
 
 extension UIView {
@@ -81,6 +82,36 @@ extension UIView {
             }
         }
         self.layer.maskedCorners = maskedCorners
+    }
+    
+    func loadingIndicator(_ show: Bool, centerYInset: CGFloat = 0, color: UIColor = .white) {
+        let tag = 9876
+        
+        if let indicator = self.viewWithTag(tag) as? UIActivityIndicatorView {
+            if show {
+                indicator.startAnimating()
+            } else {
+                indicator.stopAnimating()
+            }
+        } else if show {
+            let indicator = UIActivityIndicatorView(style: .medium)
+            indicator.color = color
+            
+            let buttonHeight = self.bounds.size.height
+            let buttonWidth = self.bounds.size.width
+            
+            indicator.center = CGPointMake(buttonWidth/2, buttonHeight/2)
+            indicator.tag = tag
+            
+            self.addSubview(indicator)
+            if centerYInset != 0 {
+                indicator.easy.layout([CenterX(), Top(centerYInset)])
+            } else {
+                indicator.easy.layout([Center()])
+            }
+            
+            indicator.startAnimating()
+        }
     }
     
 }

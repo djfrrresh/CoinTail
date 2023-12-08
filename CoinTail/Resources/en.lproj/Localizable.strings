@@ -200,6 +200,30 @@
 "Delete data" = "Delete data";
 "Are you sure you want to delete all data: transactions, budgets, accounts?" = "Are you sure you want to delete all data: operations, budgets, accounts?";
 
+// PremiumVC
+/// Title
+"Premium" = "Premium";
+/// PremiumDescription
+"Try it for free to get access to all the features" = "Try it for free to get access to all the features";
+/// PremiumPlans
+"Month" = "Month";
+"month" = "month";
+"year" = "year";
+"Available rates" = "Available rates";
+/// PremiumAdvantages
+"Access to all currencies" = "Access to all currencies";
+"Access to informative diagrams" = "Access to informative diagrams";
+"Unlimited accounts" = "Unlimited accounts";
+"Unlimited budgets" = "Unlimited budgets";
+"Ability to add sub-categories" = "Ability to add sub-categories";
+"A cup of coffee for the developer" = "A cup of coffee for the developer";
+/// PremiumPrivacy
+"Restore purchase" = "Restore purchase";
+"Start trial subscription" = "Start trial subscription";
+"Continue - total" = "Continue - total";
+"By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our Terms and Privacy Policy." = "By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our Terms and Privacy Policy.";
+"After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our Terms and Privacy Policy." = "After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our Terms and Privacy Policy.";
+
 // Currencies
 "United Arab Emirates Dirham" = "United Arab Emirates Dirham";
 "Afghan Afghani" = "Afghan Afghani";
