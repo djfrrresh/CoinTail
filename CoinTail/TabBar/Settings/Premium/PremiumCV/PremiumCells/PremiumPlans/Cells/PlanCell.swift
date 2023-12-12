@@ -41,7 +41,7 @@ final class PlanCell: UICollectionViewCell {
     
     private let trialIndicator:  UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "checkMark")
+        view.backgroundColor = UIColor(named: "primaryAction")
         view.layer.cornerRadius = 10.5
         view.clipsToBounds = true
         
@@ -63,7 +63,7 @@ final class PlanCell: UICollectionViewCell {
                 
         backgroundColor = .white
         contentView.layer.borderWidth = 0
-        contentView.layer.borderColor = UIColor(named: "checkMark")?.cgColor
+        contentView.layer.borderColor = UIColor(named: "primaryAction")?.cgColor
         contentView.layer.cornerRadius = 16
     }
     required init?(coder aDecoder: NSCoder) {

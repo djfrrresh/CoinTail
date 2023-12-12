@@ -41,23 +41,22 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
         let budgetData: BudgetClass = filteredBudgets[indexPath.row]
         var sumByCategory: Double = 0
         
-        //TODO: api 
-//        if let budget = Budgets.shared.getBudget(for: budgetData.id) {
-//            Records.shared.getBudgetAmount(budgetID: budget.id) { totalAmount in
-//                if let totalAmount = totalAmount {
-//                    sumByCategory += abs(totalAmount)
-//
-//                    let percentText = cell.calculatePercent(sum: sumByCategory, total: budgetData.amount)
-//
-//                    let formattedAmount = String(format: "%.2f", sumByCategory)
-//                    cell.amountLabel.text = "\(formattedAmount) / \(budgetData.amount) \(budgetData.currency) (\(percentText)%)"
-//                    cell.isSumExceedsBudget(sumByCategory: sumByCategory, budgetSum: budgetData.amount)
-//                } else {
-//                    print("Failed to calculate total amount.")
-//                    cell.amountLabel.text = "\(0.00) / \(budgetData.amount) \(budgetData.currency) (0%)"
-//                }
-//            }
-//        }
+        if let budget = Budgets.shared.getBudget(for: budgetData.id) {
+            Records.shared.getBudgetAmount(budgetID: budget.id) { totalAmount in
+                if let totalAmount = totalAmount {
+                    sumByCategory += abs(totalAmount)
+
+                    let percentText = cell.calculatePercent(sum: sumByCategory, total: budgetData.amount)
+
+                    let formattedAmount = String(format: "%.2f", sumByCategory)
+                    cell.amountLabel.text = "\(formattedAmount) / \(budgetData.amount) \(budgetData.currency) (\(percentText)%)"
+                    cell.isSumExceedsBudget(sumByCategory: sumByCategory, budgetSum: budgetData.amount)
+                } else {
+                    print("Failed to calculate total amount.")
+                    cell.amountLabel.text = "\(0.00) / \(budgetData.amount) \(budgetData.currency) (0%)"
+                }
+            }
+        }
         
         guard let category = Categories.shared.getCategory(for: budgetData.categoryID) else { return cell }
 

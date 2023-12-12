@@ -12,6 +12,8 @@ class BasicVC: UIViewController {
     
     var prefersLargeTitle: Bool = false
     
+    let emptyDataView = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,7 +21,7 @@ class BasicVC: UIViewController {
         setupHideKeyboardOnTap()
                 
         self.view.backgroundColor = UIColor(named: "AccentColor")
-        self.navigationController?.navigationBar.tintColor = UIColor(named: "black")
+        self.navigationController?.navigationBar.tintColor = .black
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -61,4 +61,25 @@ extension SelectCategoryVC {
             }
         }
     }
+    
+    func isCategoryEmpty() {
+        let isEmpty = categories.isEmpty
+        
+        categoriesImageView.isHidden = !isEmpty
+        noCategoriesLabel.isHidden = !isEmpty
+        categoriesDescriptionLabel.isHidden = !isEmpty
+        addCategoryButton.isHidden = !isEmpty
+        emptyDataView.isHidden = !isEmpty
+        
+        newCategoryButton.isHidden = isEmpty
+        categorySearchBar.isHidden = isEmpty
+        selectCategoryCV.isHidden = isEmpty
+        
+        if isEmpty {
+            self.navigationItem.rightBarButtonItem = nil
+        } else {
+            selectCategoryNavBar()
+        }
+    }
+    
 }

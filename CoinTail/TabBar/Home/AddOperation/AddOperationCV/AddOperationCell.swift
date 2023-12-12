@@ -66,7 +66,7 @@ final class AddOperationCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(systemName: "arrow.clockwise")
-        imageView.tintColor = UIColor(named: "checkMark")
+        imageView.tintColor = UIColor(named: "primaryAction")
         
         return imageView
     }()
@@ -130,7 +130,14 @@ final class AddOperationCell: UICollectionViewCell {
         operationAmountTF.delegate = self
         operationDescriptionTF.delegate = self
         dateTF.delegate = self
-                        
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
         contentView.addSubview(chevronImageView)
         contentView.addSubview(separatorView)
         contentView.addSubview(operationAmountTF)
@@ -140,14 +147,6 @@ final class AddOperationCell: UICollectionViewCell {
         contentView.addSubview(dateTF)
         contentView.addSubview(repeatIconImageView)
         contentView.addSubview(repeatOperationLabel)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
         
         contentView.easy.layout([
             Edges()

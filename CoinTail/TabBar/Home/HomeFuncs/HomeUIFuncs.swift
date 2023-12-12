@@ -16,72 +16,7 @@ extension HomeVC: SelectedDate {
         self.period = period
         currentStep = 0
         
-        sortRecords()
-    }
-    
-    static func getNoOperationsLabel() -> UILabel {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.text = "Start adding your expenses and income".localized()
-        label.font = UIFont(name: "SFProDisplay-Bold", size: 28)
-        
-        return label
-    }
-    
-    static func getOperationsDescriptionLabel() -> UILabel {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.text = "Manage your finances by tracking your expenses and income via different categories".localized()
-        label.font = UIFont(name: "SFProText-Regular", size: 17)
-        
-        return label
-    }
-    
-    func emptyOperationsSubviews() {
-        self.view.addSubview(emptyOperationsView)
-        
-        emptyOperationsView.easy.layout([
-            Left(16),
-            Right(16),
-            Center(),
-            Height(BudgetsVC.noDataViewSize(
-                noDataLabel: HomeVC.getNoOperationsLabel(),
-                descriptionLabel: HomeVC.getOperationsDescriptionLabel()
-            ))
-        ])
-
-        emptyOperationsView.addSubview(graphicsImageView)
-        emptyOperationsView.addSubview(noOperationsLabel)
-        emptyOperationsView.addSubview(operationsDescriptionLabel)
-        emptyOperationsView.addSubview(addOperationButton)
-        
-        graphicsImageView.easy.layout([
-            Height(100),
-            Width(100),
-            Top(),
-            CenterX()
-        ])
-        
-        noOperationsLabel.easy.layout([
-            Left(),
-            Right(),
-            Top(32).to(graphicsImageView, .bottom)
-        ])
-        
-        operationsDescriptionLabel.easy.layout([
-            Left(),
-            Right(),
-            Top(16).to(noOperationsLabel, .bottom)
-        ])
-
-        addOperationButton.easy.layout([
-            Height(52),
-            Left(),
-            Right(),
-            CenterX(),
-            Top(16).to(operationsDescriptionLabel, .bottom),
-            Bottom()
-        ])
+        sortOperations()
     }
     
     func homeSubviews() {
@@ -111,11 +46,11 @@ extension HomeVC: SelectedDate {
     func isOperationsEmpty() {
         let isEmpty = monthSections.isEmpty
         
-        graphicsImageView.isHidden = !isEmpty
+        operationsImageView.isHidden = !isEmpty
         noOperationsLabel.isHidden = !isEmpty
         operationsDescriptionLabel.isHidden = !isEmpty
         addOperationButton.isHidden = !isEmpty
-        emptyOperationsView.isHidden = !isEmpty
+        emptyDataView.isHidden = !isEmpty
         
         homeTypeSwitcher.isHidden = isEmpty
         homeGlobalCV.isHidden = isEmpty
@@ -132,7 +67,7 @@ extension HomeVC: SelectedDate {
         }
     }
     
-    func sortRecords() {
+    func sortOperations() {
         let getRecord = Records.shared.getRecords(
             for: period,
             type: homeSegment,
@@ -146,20 +81,20 @@ extension HomeVC: SelectedDate {
         // Группировка записей
         monthSections = OperationsDaySection.groupRecords(section: homeSegment, groupRecords: getRecord)
         
-        //TODO: api
-//        let totalBalanceText = "Balance:".localized()
-//        let currency = Currencies.shared.selectedCurrency.currency
-//        Records.shared.getAmount(for: .allTheTime, type: .allOperations) { amounts in
-//            DispatchQueue.main.async { [self] in
-//                if let amounts = amounts {
-//                    // Отображаем сумму с ограничением до 2 знаков после запятой
-//                    let formattedAmount = String(format: "%.2f", amounts)
-//                    balanceLabel.text = "\(totalBalanceText) \(formattedAmount) \(currency)"
-//                } else {
-//                    balanceLabel.text = "\(totalBalanceText) 0 \(currency)"
-//                }
-//            }
-//        }
+        let totalBalanceText = "Balance:".localized()
+        let currency = Currencies.shared.selectedCurrency.currency
+        
+        Records.shared.getAmount(for: .allTheTime, type: .allOperations) { amounts in
+            DispatchQueue.main.async { [self] in
+                if let amounts = amounts {
+                    // Отображаем сумму с ограничением до 2 знаков после запятой
+                    let formattedAmount = String(format: "%.2f", amounts)
+                    balanceLabel.text = "\(totalBalanceText) \(formattedAmount) \(currency)"
+                } else {
+                    balanceLabel.text = "\(totalBalanceText) 0 \(currency)"
+                }
+            }
+        }
                 
         // Отсортировать операции по месяцам (убывание)
         monthSections.sort { l, r in

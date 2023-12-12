@@ -81,7 +81,14 @@ extension SettingsVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        .init(top: 0, left: 0, bottom: 24, right: 0)
+        switch section {
+        case 0:
+            return .init(top: 24, left: 0, bottom: 24, right: 0)
+        case 1:
+            return .init(top: 0, left: 0, bottom: 0, right: 0)
+        default:
+            return .init(top: 0, left: 0, bottom: 0, right: 0)
+        }
     }
 
 }

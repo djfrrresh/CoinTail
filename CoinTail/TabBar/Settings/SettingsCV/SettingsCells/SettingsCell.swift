@@ -24,7 +24,7 @@ final class SettingsCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .left
         label.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
-        label.textColor = UIColor(named: "black")
+        label.textColor = .black
 
         return label
     }()
@@ -58,12 +58,6 @@ final class SettingsCell: UICollectionViewCell {
         super.init(frame: frame)
                 
         contentView.backgroundColor = .white
-        
-        contentView.addSubview(menuImageView)
-        contentView.addSubview(menuLabel)
-        contentView.addSubview(chevronImageView)
-        contentView.addSubview(currencyLabel)
-        contentView.addSubview(separatorView)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -71,6 +65,12 @@ final class SettingsCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        contentView.addSubview(menuImageView)
+        contentView.addSubview(menuLabel)
+        contentView.addSubview(chevronImageView)
+        contentView.addSubview(currencyLabel)
+        contentView.addSubview(separatorView)
         
         contentView.easy.layout([
             Edges()

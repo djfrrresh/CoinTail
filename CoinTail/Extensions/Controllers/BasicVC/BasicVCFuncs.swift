@@ -6,9 +6,96 @@
 //
 
 import UIKit
+import EasyPeasy
 
 
 extension BasicVC {
+    
+    static func getAddDataButton(text: String) -> UIButton {
+        let button = UIButton()
+        button.backgroundColor = UIColor(named: "primaryAction")
+        button.layer.cornerRadius = 16
+        button.setTitle(text.localized(), for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
+        
+        return button
+    }
+    static func getNoDataLabel(text: String) -> UILabel {
+        let label = UILabel()
+        label.text = text.localized()
+        label.font = UIFont(name: "SFProDisplay-Bold", size: 28)
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
+        
+        return label
+    }
+    static func getDataDescriptionLabel(text: String) -> UILabel {
+        let label = UILabel()
+        label.text = text.localized()
+        label.font = UIFont(name: "SFProText-Regular", size: 17)
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
+        label.textColor = UIColor(named: "secondaryTextColor")
+        
+        return label
+    }
+    static func getDataImageView(name: String) -> UIImageView {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: name)
+        
+        return imageView
+    }
+    
+    func emptyDataSubviews(dataImageView: UIImageView, noDataLabel: UILabel, dataDescriptionLabel: UILabel, addDataButton: UIButton) {
+        self.view.addSubview(emptyDataView)
+        
+        emptyDataView.easy.layout([
+            Left(16),
+            Right(16),
+            Center(),
+            Height(BasicVC.noDataViewSize(
+                noDataLabel: noDataLabel,
+                descriptionLabel: dataDescriptionLabel
+            ))
+        ])
+
+        emptyDataView.addSubview(dataImageView)
+        emptyDataView.addSubview(noDataLabel)
+        emptyDataView.addSubview(dataDescriptionLabel)
+        emptyDataView.addSubview(addDataButton)
+        
+        dataImageView.easy.layout([
+            Height(100),
+            Width(100),
+            Top(),
+            CenterX()
+        ])
+        
+        noDataLabel.easy.layout([
+            Left(),
+            Right(),
+            Top(32).to(dataImageView, .bottom)
+        ])
+        
+        dataDescriptionLabel.easy.layout([
+            Left(),
+            Right(),
+            Top(16).to(noDataLabel, .bottom)
+        ])
+
+        addDataButton.easy.layout([
+            Height(52),
+            Left(),
+            Right(),
+            CenterX(),
+            Top(16).to(dataDescriptionLabel, .bottom),
+            Bottom()
+        ])
+    }
     
     // Всплывающий алерт при ошибке
     func errorAlert(_ message: String) {
@@ -51,7 +138,7 @@ extension BasicVC {
                 label.text = title
                 label.textAlignment = .center
                 label.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
-                label.textColor = UIColor(named: "black")
+                label.textColor = .black
                 
                 return label
             }()
@@ -79,7 +166,7 @@ extension BasicVC {
                 label.text = title
                 label.textAlignment = .center
                 label.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
-                label.textColor = UIColor(named: "black")
+                label.textColor = .black
                 
                 return label
             }()

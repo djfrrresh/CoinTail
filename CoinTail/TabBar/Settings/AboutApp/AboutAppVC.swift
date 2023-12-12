@@ -30,34 +30,12 @@ final class AboutAppVC: BasicVC {
         return imageView
     }()
     
-    let aboutLabel: UILabel = {
-        let label = UILabel()
-        label.text = "CoinTail is a reliable assistant in accounting for income and expenses, managing accounts and budgets".localized()
-        label.font = UIFont(name: "SFProDisplay-Regular", size: 17)
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.textColor = UIColor(named: "secondaryTextColor")
-        
-        return label
-    }()
-    let coinTailTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "CoinTail".localized()
-        label.font = UIFont(name: "SFProDisplay-Bold", size: 28)
-        label.numberOfLines = 1
-        label.textAlignment = .center
-        label.textColor = UIColor(named: "black")
-        
-        return label
-    }()
+    static let aboutTitleText = "CoinTail"
+    static let aboutDescriptionText = "CoinTail is a reliable assistant in accounting for income and expenses, managing accounts and budgets"
     
-    let moneyImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "moneyEmoji")
-        imageView.contentMode = .scaleAspectFit
-        
-        return imageView
-    }()
+    let aboutTitleLabel: UILabel = getNoDataLabel(text: aboutTitleText)
+    let accountsDescriptionLabel: UILabel = getDataDescriptionLabel(text: aboutDescriptionText)
+    let aboutImageView: UIImageView = getDataImageView(name: "moneyEmoji")
     
     let contactsCV: UICollectionView = {
         let contactsLayout: UICollectionViewFlowLayout = {

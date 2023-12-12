@@ -14,7 +14,7 @@ extension HomeCategoryCell {
     // Настройки диаграммы
     func configureChart() {
         pieChart.rotationEnabled = false
-        pieChart.drawEntryLabelsEnabled = false
+        pieChart.drawEntryLabelsEnabled = true //
         pieChart.drawHoleEnabled = true
         pieChart.drawCenterTextEnabled = false
         pieChart.holeColor = .clear
@@ -32,8 +32,9 @@ extension HomeCategoryCell {
         let dataSet = PieChartDataSet(entries: pieChartEntries, label: "")
         let data = PieChartData(dataSets: [dataSet])
 
-        dataSet.valueTextColor = .clear
+        dataSet.valueTextColor = .black //
         dataSet.colors = pieChartColors
+        
         pieChart.data = data
         pieChart.notifyDataSetChanged()
     }

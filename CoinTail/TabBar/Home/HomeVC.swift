@@ -26,7 +26,6 @@ final class HomeVC: BasicVC {
     
     // Категории по типам операций
     var categoriesByType: [CategoryClass] = []
-    
     // Выбранная категория
     var categorySort: CategoryClass? {
         didSet {
@@ -42,48 +41,13 @@ final class HomeVC: BasicVC {
              
     var categoryIsHidden: Bool = true
     
-    let emptyOperationsView = UIView()
-
-    let graphicsImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "graphicsEmoji")
-        
-        return imageView
-    }()
+    static let noOperationsText = "Start adding your expenses and income"
+    static let operationsDescriptionText = "Manage your finances by tracking your expenses and income via different categories"
     
-    let noOperationsLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Start adding your expenses and income".localized()
-        label.font = UIFont(name: "SFProDisplay-Bold", size: 28)
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-        label.textAlignment = .center
-        
-        return label
-    }()
-    let operationsDescriptionLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Manage your finances by tracking your expenses and income via different categories".localized()
-        label.font = UIFont(name: "SFProText-Regular", size: 17)
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-        label.textAlignment = .center
-        label.textColor = UIColor(named: "secondaryTextColor")
-        
-        return label
-    }()
-    
-    let addOperationButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = UIColor(named: "primaryAction")
-        button.layer.cornerRadius = 16
-        button.setTitle("Add a transaction".localized(), for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
-        
-        return button
-    }()
+    let noOperationsLabel: UILabel = getNoDataLabel(text: noOperationsText)
+    let operationsDescriptionLabel: UILabel = getDataDescriptionLabel(text: operationsDescriptionText)
+    let operationsImageView: UIImageView = getDataImageView(name: "graphicsEmoji")
+    let addOperationButton: UIButton = getAddDataButton(text: "Add a transaction")
 
     // Переключатель типов операций
     let homeTypeSwitcher: UISegmentedControl = {
@@ -128,7 +92,7 @@ final class HomeVC: BasicVC {
         super.viewWillAppear(animated)
                 
         period = .allTheTime
-        sortRecords() // Сортировка операций по убыванию по дате
+        sortOperations() // Сортировка операций по убыванию по дате
         homeButtonTargets()
         isOperationsEmpty()
     }
@@ -140,8 +104,13 @@ final class HomeVC: BasicVC {
 
         homeGlobalCV.dataSource = self
                         
-        emptyOperationsSubviews()
         homeSubviews()
+        emptyDataSubviews(
+            dataImageView: operationsImageView,
+            noDataLabel: noOperationsLabel,
+            dataDescriptionLabel: operationsDescriptionLabel,
+            addDataButton: addOperationButton
+        )
     }
 
 }

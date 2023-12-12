@@ -32,7 +32,7 @@ final class SelectCategoryCell: UICollectionViewCell {
     let pencilImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "square.and.pencil")
-        imageView.tintColor = UIColor(named: "black")
+        imageView.tintColor = .black
         imageView.contentMode = .scaleAspectFit
         imageView.isHidden = true
         
@@ -59,12 +59,6 @@ final class SelectCategoryCell: UICollectionViewCell {
         super.init(frame: frame)
         
         contentView.backgroundColor = .white
-
-        contentView.addSubview(chevronImageView)
-        contentView.addSubview(separatorView)
-        contentView.addSubview(categoryLabel)
-        contentView.addSubview(categoryIcon)
-        contentView.addSubview(pencilImageView)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -72,6 +66,12 @@ final class SelectCategoryCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        contentView.addSubview(chevronImageView)
+        contentView.addSubview(separatorView)
+        contentView.addSubview(categoryLabel)
+        contentView.addSubview(categoryIcon)
+        contentView.addSubview(pencilImageView)
         
         contentView.easy.layout([
             Edges()

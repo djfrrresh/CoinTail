@@ -35,7 +35,7 @@ extension CreateCategoryVC: SendCategoryID, CreateCategoryCellDelegate {
         }
         
         if let cell = createCategoryCV.cellForItem(at: IndexPath(row: 3, section: 0)) as? CreateCategoryCell {
-            cell.menuLabel.textColor = isToggleOn ? UIColor(named: "black") : UIColor(named: "secondaryTextColor")
+            cell.menuLabel.textColor = isToggleOn ? .black : UIColor(named: "secondaryTextColor")
         }
     }
     

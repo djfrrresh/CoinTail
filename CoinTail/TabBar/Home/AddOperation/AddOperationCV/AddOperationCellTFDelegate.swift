@@ -36,7 +36,7 @@ extension AddOperationCell: UITextFieldDelegate, UITextViewDelegate {
         
         if textView.text == "Add a comment to your transaction".localized() {
             textView.text = ""
-            textView.textColor = UIColor(named: "black")
+            textView.textColor = .black
         }
         
         addOperationCellDelegate?.cell(didUpdateOperationDescription: allString)

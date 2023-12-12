@@ -15,49 +15,14 @@ final class BudgetsVC: BasicVC {
             return RealmService.shared.budgetsArr
         }
     }
+        
+    static let noBudgetsText = "You have no budgets set up"
+    static let budgetsDescriptionText = "Here you can set up a budgets for different categories and time periods. Control your expenses now"
     
-    let emptyBudgetsView = UIView()
-
-    let targetImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "targetEmoji")
-        
-        return imageView
-    }()
-    
-    let noBudgetsLabel: UILabel = {
-        let label = UILabel()
-        label.text = "You have no budgets set up".localized()
-        label.font = UIFont(name: "SFProDisplay-Bold", size: 28)
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-        label.textAlignment = .center
-        
-        return label
-    }()
-    let budgetsDescriptionLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Here you can set up a budgets for different categories and time periods. Control your expenses now".localized()
-        label.font = UIFont(name: "SFProText-Regular", size: 17)
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-        label.textAlignment = .center
-        label.textColor = UIColor(named: "secondaryTextColor")
-        
-        return label
-    }()
-    
-    let addBudgetButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = UIColor(named: "primaryAction")
-        button.layer.cornerRadius = 16
-        button.setTitle("Add a budget".localized(), for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
-        
-        return button
-    }()
+    let noBudgetsLabel: UILabel = getNoDataLabel(text: noBudgetsText)
+    let budgetsDescriptionLabel: UILabel = getDataDescriptionLabel(text: budgetsDescriptionText)
+    let budgetsImageView: UIImageView = getDataImageView(name: "targetEmoji")
+    let addBudgetButton: UIButton = getAddDataButton(text: "Add a budget")
     
     let budgetCV: UICollectionView = {
         let budgetLayout: UICollectionViewFlowLayout = {
@@ -100,8 +65,13 @@ final class BudgetsVC: BasicVC {
         budgetCV.delegate = self
         
         budgetSubviews()
-        emptyBudgetsSubviews()
         budgetButtonTargets()
+        emptyDataSubviews(
+            dataImageView: budgetsImageView,
+            noDataLabel: noBudgetsLabel,
+            dataDescriptionLabel: budgetsDescriptionLabel,
+            addDataButton: addBudgetButton
+        )
     }
     
 }

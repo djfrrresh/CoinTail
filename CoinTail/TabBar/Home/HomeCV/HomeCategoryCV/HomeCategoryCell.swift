@@ -105,7 +105,7 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(systemName: "align.vertical.bottom.fill")
-        imageView.tintColor = UIColor(named: "checkMark")
+        imageView.tintColor = UIColor(named: "primaryAction")
         
         return imageView
     }()
@@ -139,6 +139,16 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
         
         categoriesCV.dataSource = self
         
+        chartsGestureRecognizer() // Обработка нажатий
+        configureChart() // Настройки для круговой диаграммы
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
         contentView.addSubview(openDiagramsView)
         contentView.addSubview(periodLabel)
         contentView.addSubview(amountForPeriodLabel)
@@ -149,17 +159,6 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
         contentView.addSubview(diargamsImageView)
         contentView.addSubview(openDiagramsLabel)
         contentView.addSubview(diagramsDescriptionLabel)
-        
-        chartsGestureRecognizer() // Обработка нажатий
-        configureChart() // Настройки для круговой диаграммы
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
         
         contentView.easy.layout([
             Edges()
@@ -234,9 +233,9 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
     }
     
     func chartsUpdate(_ segment: RecordType, records: [RecordClass]) {
-        // Добавление записей в диаграммы
+        // Добавление записей в диаграмму
         setEntries(segment, records: records)
-        // Добавление данных в диаграммы
+        // Добавление данных в диаграмму
         updatePieChartData()
     }
     

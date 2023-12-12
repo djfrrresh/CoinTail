@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06CAC8321BB976DADF8FFA47 /* Pods_CoinTail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F85C00474EEA46A9A6B22389 /* Pods_CoinTail.framework */; };
 		560996722AE97D7100EAEE1C /* TransfersHistoryCVHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560996712AE97D7100EAEE1C /* TransfersHistoryCVHeader.swift */; };
 		560996742AE9D8F100EAEE1C /* TransfersHistoryActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560996732AE9D8F100EAEE1C /* TransfersHistoryActions.swift */; };
 		560AFBC12A1394A30054B502 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBC02A1394A30054B502 /* AppDelegate.swift */; };
@@ -175,6 +176,8 @@
 		56D0E91B2B225B190088C92F /* PremiumUXFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0E91A2B225B190088C92F /* PremiumUXFuncs.swift */; };
 		56D0E91D2B225BE00088C92F /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0E91C2B225BE00088C92F /* UIButton.swift */; };
 		56D0E91F2B22800E0088C92F /* PremiumActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0E91E2B22800E0088C92F /* PremiumActions.swift */; };
+		56D0E9212B238F870088C92F /* SelectCategoryUXFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0E9202B238F870088C92F /* SelectCategoryUXFuncs.swift */; };
+		56D0E9232B23EC920088C92F /* UIBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0E9222B23EC920088C92F /* UIBezierPath.swift */; };
 		56DBB6CE2A3724BC0087271D /* HomeOperationCellCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */; };
 		56DBB6DD2A3728600087271D /* HomeOperationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6DC2A3728600087271D /* HomeOperationCell.swift */; };
 		56DBB6EA2A372E220087271D /* HomeDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBB6E92A372E220087271D /* HomeDateCell.swift */; };
@@ -208,12 +211,9 @@
 		56EFDFEC2A574771003A6A45 /* BudgetCVHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EFDFEB2A574771003A6A45 /* BudgetCVHeader.swift */; };
 		56EFDFEE2A5751EC003A6A45 /* BudgetCVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EFDFED2A5751EC003A6A45 /* BudgetCVDelegate.swift */; };
 		56EFDFF02A5D9176003A6A45 /* DaySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EFDFEF2A5D9176003A6A45 /* DaySection.swift */; };
-		E5855FAACB0F5BAB10E0B540 /* Pods_CoinTail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACC031EA868D157367C8909 /* Pods_CoinTail.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0D0E1BEF680C3CC318929DA7 /* Pods-CoinTail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinTail.release.xcconfig"; path = "Target Support Files/Pods-CoinTail/Pods-CoinTail.release.xcconfig"; sourceTree = "<group>"; };
-		337406C96CB14EDA9269499E /* Pods-CoinTail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinTail.debug.xcconfig"; path = "Target Support Files/Pods-CoinTail/Pods-CoinTail.debug.xcconfig"; sourceTree = "<group>"; };
 		560996712AE97D7100EAEE1C /* TransfersHistoryCVHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersHistoryCVHeader.swift; sourceTree = "<group>"; };
 		560996732AE9D8F100EAEE1C /* TransfersHistoryActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersHistoryActions.swift; sourceTree = "<group>"; };
 		560AFBBD2A1394A30054B502 /* CoinTail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinTail.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -386,6 +386,8 @@
 		56D0E91A2B225B190088C92F /* PremiumUXFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumUXFuncs.swift; sourceTree = "<group>"; };
 		56D0E91C2B225BE00088C92F /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		56D0E91E2B22800E0088C92F /* PremiumActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumActions.swift; sourceTree = "<group>"; };
+		56D0E9202B238F870088C92F /* SelectCategoryUXFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryUXFuncs.swift; sourceTree = "<group>"; };
+		56D0E9222B23EC920088C92F /* UIBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPath.swift; sourceTree = "<group>"; };
 		56DBB6CD2A3724BC0087271D /* HomeOperationCellCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOperationCellCV.swift; sourceTree = "<group>"; };
 		56DBB6DC2A3728600087271D /* HomeOperationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOperationCell.swift; sourceTree = "<group>"; };
 		56DBB6E92A372E220087271D /* HomeDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDateCell.swift; sourceTree = "<group>"; };
@@ -419,7 +421,9 @@
 		56EFDFEB2A574771003A6A45 /* BudgetCVHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCVHeader.swift; sourceTree = "<group>"; };
 		56EFDFED2A5751EC003A6A45 /* BudgetCVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCVDelegate.swift; sourceTree = "<group>"; };
 		56EFDFEF2A5D9176003A6A45 /* DaySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySection.swift; sourceTree = "<group>"; };
-		6ACC031EA868D157367C8909 /* Pods_CoinTail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoinTail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F0464A9916DB62C21424CEF /* Pods-CoinTail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinTail.debug.xcconfig"; path = "Target Support Files/Pods-CoinTail/Pods-CoinTail.debug.xcconfig"; sourceTree = "<group>"; };
+		DAFE28ED067FD03A25DA930C /* Pods-CoinTail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinTail.release.xcconfig"; path = "Target Support Files/Pods-CoinTail/Pods-CoinTail.release.xcconfig"; sourceTree = "<group>"; };
+		F85C00474EEA46A9A6B22389 /* Pods_CoinTail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoinTail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -427,7 +431,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5855FAACB0F5BAB10E0B540 /* Pods_CoinTail.framework in Frameworks */,
+				06CAC8321BB976DADF8FFA47 /* Pods_CoinTail.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,7 +444,7 @@
 				560AFBBF2A1394A30054B502 /* CoinTail */,
 				560AFBBE2A1394A30054B502 /* Products */,
 				F53419FB73A201142E6555E8 /* Pods */,
-				B704041C96A7255F8F46EDC5 /* Frameworks */,
+				D6DC9931089CCE73BE4C91D7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -503,6 +507,7 @@
 				5676C8B42B20F606008A6395 /* UIDevice.swift */,
 				5676C8B62B20F670008A6395 /* UIWindow.swift */,
 				56D0E91C2B225BE00088C92F /* UIButton.swift */,
+				56D0E9222B23EC920088C92F /* UIBezierPath.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1301,6 +1306,7 @@
 				56DBB70E2A3B4BA90087271D /* SelectCategoryActions.swift */,
 				567E939A2AF5B69B0045C01B /* SelectCategoryUIFuncs.swift */,
 				568999D72B0FB94C00075433 /* SelectCategorySearching.swift */,
+				56D0E9202B238F870088C92F /* SelectCategoryUXFuncs.swift */,
 			);
 			path = SelectCategoryFuncs;
 			sourceTree = "<group>";
@@ -1357,10 +1363,10 @@
 			path = AddBudgetFuncs;
 			sourceTree = "<group>";
 		};
-		B704041C96A7255F8F46EDC5 /* Frameworks */ = {
+		D6DC9931089CCE73BE4C91D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6ACC031EA868D157367C8909 /* Pods_CoinTail.framework */,
+				F85C00474EEA46A9A6B22389 /* Pods_CoinTail.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1368,8 +1374,8 @@
 		F53419FB73A201142E6555E8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				337406C96CB14EDA9269499E /* Pods-CoinTail.debug.xcconfig */,
-				0D0E1BEF680C3CC318929DA7 /* Pods-CoinTail.release.xcconfig */,
+				5F0464A9916DB62C21424CEF /* Pods-CoinTail.debug.xcconfig */,
+				DAFE28ED067FD03A25DA930C /* Pods-CoinTail.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1381,12 +1387,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 560AFBD42A1394A40054B502 /* Build configuration list for PBXNativeTarget "CoinTail" */;
 			buildPhases = (
-				1816A0B241957AB025818C37 /* [CP] Check Pods Manifest.lock */,
+				671FC20F23ADA29E41DD48DD /* [CP] Check Pods Manifest.lock */,
 				560AFBB92A1394A30054B502 /* Sources */,
 				560AFBBA2A1394A30054B502 /* Frameworks */,
 				560AFBBB2A1394A30054B502 /* Resources */,
 				56FEDCE42A2F8189003E2E25 /* ShellScript */,
-				9C6F2CD8E883EA2DFB323AE9 /* [CP] Embed Pods Frameworks */,
+				25D386513FE8DA7E5F94579D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1449,26 +1455,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1816A0B241957AB025818C37 /* [CP] Check Pods Manifest.lock */ = {
+		25D386513FE8DA7E5F94579D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoinTail/Pods-CoinTail-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CoinTail-checkManifestLockResult.txt",
+				"${PODS_ROOT}/Target Support Files/Pods-CoinTail/Pods-CoinTail-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CoinTail/Pods-CoinTail-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		56FEDCE42A2F8189003E2E25 /* ShellScript */ = {
@@ -1488,21 +1489,26 @@
 			shellPath = /bin/sh;
 			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-		9C6F2CD8E883EA2DFB323AE9 /* [CP] Embed Pods Frameworks */ = {
+		671FC20F23ADA29E41DD48DD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CoinTail/Pods-CoinTail-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CoinTail/Pods-CoinTail-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CoinTail-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CoinTail/Pods-CoinTail-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1553,6 +1559,7 @@
 				569E52362AD0B47600A4FCA7 /* AboutAppActions.swift in Sources */,
 				569B60DD2AE1590300CBFF33 /* NotificationsUXFuncs.swift in Sources */,
 				569B60EF2AE1F4DD00CBFF33 /* RegularityVC.swift in Sources */,
+				56D0E9232B23EC920088C92F /* UIBezierPath.swift in Sources */,
 				560AFC272A1BF5A30054B502 /* HomeCategoryCellCV.swift in Sources */,
 				560AFC392A1C0FC30054B502 /* PieChartFuncs.swift in Sources */,
 				564F08FE2A531AEE004C89C7 /* AddBudgetVC.swift in Sources */,
@@ -1585,6 +1592,7 @@
 				568EF0622AAFB44300EB042D /* Transfers.swift in Sources */,
 				56191ECF2A9CBC6D00D47052 /* Date.swift in Sources */,
 				56DBB7212A3B64A00087271D /* CreateCategoryActions.swift in Sources */,
+				56D0E9212B238F870088C92F /* SelectCategoryUXFuncs.swift in Sources */,
 				568EF06C2AB0FC1800EB042D /* CurrencyCVDataSource.swift in Sources */,
 				568EF06E2AB0FC4F00EB042D /* CurrencyCVDelegate.swift in Sources */,
 				568EF0262AA608D000EB042D /* AccountCell.swift in Sources */,
@@ -1855,7 +1863,7 @@
 		};
 		560AFBD52A1394A40054B502 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 337406C96CB14EDA9269499E /* Pods-CoinTail.debug.xcconfig */;
+			baseConfigurationReference = 5F0464A9916DB62C21424CEF /* Pods-CoinTail.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1884,8 +1892,6 @@
 					"\"Charts\"",
 					"-framework",
 					"\"EasyPeasy\"",
-					"-framework",
-					"\"MultipleProgressBar\"",
 					"-framework",
 					"\"RxCocoa\"",
 					"-framework",
@@ -1904,7 +1910,7 @@
 		};
 		560AFBD62A1394A40054B502 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0D0E1BEF680C3CC318929DA7 /* Pods-CoinTail.release.xcconfig */;
+			baseConfigurationReference = DAFE28ED067FD03A25DA930C /* Pods-CoinTail.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1933,8 +1939,6 @@
 					"\"Charts\"",
 					"-framework",
 					"\"EasyPeasy\"",
-					"-framework",
-					"\"MultipleProgressBar\"",
 					"-framework",
 					"\"RxCocoa\"",
 					"-framework",

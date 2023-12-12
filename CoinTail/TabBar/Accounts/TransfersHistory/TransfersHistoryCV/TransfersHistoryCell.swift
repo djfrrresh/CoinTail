@@ -29,7 +29,7 @@ final class TransfersHistoryCell: UICollectionViewCell {
     let arrowImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = UIColor(named: "black")
+        imageView.tintColor = .black
         imageView.image = UIImage(systemName: "arrow.right")
         
         return imageView
@@ -38,7 +38,7 @@ final class TransfersHistoryCell: UICollectionViewCell {
     let sourceAccountLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = UIColor(named: "black")
+        label.textColor = .black
         label.textAlignment = .center
         label.font = UIFont(name: "SFProText-Regular", size: 17)
         
@@ -47,7 +47,7 @@ final class TransfersHistoryCell: UICollectionViewCell {
     let targetAccountLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = UIColor(named: "black")
+        label.textColor = .black
         label.textAlignment = .center
         label.font = UIFont(name: "SFProText-Regular", size: 17)
 
@@ -56,7 +56,7 @@ final class TransfersHistoryCell: UICollectionViewCell {
     let sourceAmountLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.textColor = UIColor(named: "sourceAccount")
+        label.textColor = UIColor(named: "expense")
         label.font = UIFont(name: "SFProText-Regular", size: 17)
         label.textAlignment = .center
         
@@ -65,7 +65,7 @@ final class TransfersHistoryCell: UICollectionViewCell {
     let targetAmountLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.textColor = UIColor(named: "targetAccount")
+        label.textColor = UIColor(named: "income")
         label.font = UIFont(name: "SFProText-Regular", size: 17)
         label.textAlignment = .center
         
@@ -77,7 +77,14 @@ final class TransfersHistoryCell: UICollectionViewCell {
         
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 16
-                        
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
         contentView.addSubview(arrowImageView)
         contentView.addSubview(sourceSeparatorView)
         contentView.addSubview(targetSeparatorView)
@@ -85,14 +92,6 @@ final class TransfersHistoryCell: UICollectionViewCell {
         contentView.addSubview(targetAccountLabel)
         contentView.addSubview(sourceAmountLabel)
         contentView.addSubview(targetAmountLabel)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
         
         contentView.easy.layout([
             Edges()

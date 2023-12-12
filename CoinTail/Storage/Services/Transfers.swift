@@ -31,26 +31,25 @@ final class Transfers {
         var secondAccountBalance: Double = targetAccount.startBalance
         
         if sourceAccount.currency != targetAccount.currency {
-            ExchangeRateManager.shared.getExchangeRates(forCurrencyCode: targetAccount.currency) { exchangeRates in
-                DispatchQueue.main.async {
-                    guard let exchangeRates = exchangeRates,
-                          let exchangeRate = exchangeRates[sourceAccount.currency] else {
-                        print("Failed to get exchangeRates")
-                        return
-                    }
-                    let convertedAmount = amount / exchangeRate
-                    secondAccountBalance += convertedAmount
+            let exchangeRates = ExchangeRateManager.shared.exchangeRates[sourceAccount.currency]
 
-                    self.editAccounts(
-                        sourceAccount: sourceAccount,
-                        targetAccount: targetAccount,
-                        firstAccountBalance: firstAccountBalance,
-                        secondAccountBalance: secondAccountBalance,
-                        sourceAccountAmount: amount,
-                        targetAccountAmount: convertedAmount
-                    )
-                }
+            guard let exchangeRates = exchangeRates,
+                  let exchangeRate = exchangeRates[targetAccount.currency] else {
+                print("Failed to get exchangeRates")
+                return
             }
+            
+            let convertedAmount = amount * exchangeRate
+            secondAccountBalance += convertedAmount
+
+            self.editAccounts(
+                sourceAccount: sourceAccount,
+                targetAccount: targetAccount,
+                firstAccountBalance: firstAccountBalance,
+                secondAccountBalance: secondAccountBalance,
+                sourceAccountAmount: amount,
+                targetAccountAmount: convertedAmount
+            )
         } else {
             secondAccountBalance += amount
             

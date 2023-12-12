@@ -125,7 +125,7 @@ extension AddOperationVC: UICollectionViewDataSource {
             cell.roundCorners(.allCorners, radius: 12)
             if recordID != nil {
                 cell.operationDescriptionTF.text = operationDescription
-                cell.operationDescriptionTF.textColor = UIColor(named: "black")
+                cell.operationDescriptionTF.textColor = .black
             }
             
             cell.operationAmountTF.isHidden = true

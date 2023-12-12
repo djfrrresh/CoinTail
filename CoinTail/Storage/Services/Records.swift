@@ -26,31 +26,30 @@ final class Records {
         let selectedCurrency = Currencies.shared.selectedCurrency.currency
 
         // Получить курсы обмена для каждой валюты
-        ExchangeRateManager.shared.getExchangeRates(forCurrencyCode: selectedCurrency) { [self] exchangeRates in
-            DispatchQueue.main.async { [self] in
-                guard let exchangeRates = exchangeRates else {
-                    print("Failed to get exchangeRates")
-                    completion(nil)
-                    return
-                }
+        let exchangeRates = ExchangeRateManager.shared.exchangeRates[selectedCurrency]
 
-                var totalAmountInSelectedCurrency: Double = 0.0
-
-                for currency in uniqueCurrencies {
-                    let currencyRecords = getRecords(for: period, type: type, step: step, categoryID: categoryID).filter { $0.currency == currency }
-
-                    let totalAmountInCurrency = currencyRecords.reduce(0.0) { total, record in
-                        if let exchangeRate = exchangeRates[currency] {
-                            return total + (record.amount / exchangeRate)
-                        }
-                        return total
-                    }
-                    totalAmountInSelectedCurrency += totalAmountInCurrency
-                }
-
-                completion(totalAmountInSelectedCurrency)
-            }
+        guard let exchangeRates = exchangeRates else {
+            print("Failed to get exchangeRates")
+            completion(nil)
+            return
         }
+
+        var totalAmountInSelectedCurrency: Double = 0.0
+
+        for currency in uniqueCurrencies {
+            let currencyRecords = getRecords(for: period, type: type, step: step, categoryID: categoryID).filter { $0.currency == currency }
+
+            let totalAmountInCurrency = currencyRecords.reduce(0.0) { total, record in
+                if let exchangeRate = exchangeRates[currency] {
+                    return total + (record.amount / exchangeRate)
+                }
+                return total
+            }
+            
+            totalAmountInSelectedCurrency += totalAmountInCurrency
+        }
+
+        completion(totalAmountInSelectedCurrency)
     }
     
     // Получает операции за указанный период времени
@@ -67,9 +66,18 @@ final class Records {
             totalRecords = records
         }
         
-        // Если выбрана категория, фильтруем по категории
+        // Если выбрана категория, фильтруем по ней и подкатегориям выбранной категории
         if let categoryID = categoryID {
-            totalRecords = totalRecords.filter { $0.categoryID == categoryID }
+            let filteredRecords = totalRecords.filter { record in
+                if record.categoryID == categoryID {
+                    return true
+                } else if let subcategory = Categories.shared.getSubcategory(for: record.categoryID), subcategory.parentCategory == categoryID {
+                    return true
+                }
+                return false
+            }
+            
+            totalRecords = filteredRecords
         }
         
         switch period {
@@ -138,7 +146,6 @@ final class Records {
         let date = budget.startDate
         let untilDate = budget.untilDate
         
-        var pendingOperations = 0
         var totalAmount: Double = 0
         
         // Получаем все записи для всех категорий и подкатегорий
@@ -154,38 +161,26 @@ final class Records {
             if record.currency == currency {
                 totalAmount += record.amount
             } else {
-                pendingOperations += 1
+                let exchangeRates = ExchangeRateManager.shared.exchangeRates[currency]
 
-                ExchangeRateManager.shared.getExchangeRates(forCurrencyCode: currency) { exchangeRates in
-                    DispatchQueue.main.async {
-                        guard let exchangeRates = exchangeRates,
-                              let exchangeRate = exchangeRates[record.currency] else {
-                            print("Failed to get exchangeRates")
-                            completion(nil)
-                            return
-                        }
-                        
-                        let convertedAmount = record.amount / exchangeRate
-                        totalAmount += convertedAmount
-                                                    
-                        pendingOperations -= 1
-                        if pendingOperations == 0 {
-                            completion(totalAmount)
-                        }
-                    }
+                guard let exchangeRates = exchangeRates,
+                      let exchangeRate = exchangeRates[record.currency] else {
+                    print("Failed to get exchangeRates")
+                    completion(nil)
+                    return
                 }
+
+                let convertedAmount = record.amount / exchangeRate
+                totalAmount += convertedAmount
             }
         }
         
-        if pendingOperations == 0 {
-            completion(totalAmount)
-        }
+        completion(totalAmount)
     }
     
     // Считает конечный баланс для счёта
     func calculateTotalBalance(for accountID: ObjectId, completion: @escaping (Double?) -> Void) {
         var totalAmount: Double = 0
-        var pendingOperations = 0
 
         for record in records {
             if let recordAccountID = record.accountID,
@@ -195,34 +190,22 @@ final class Records {
                 if account.currency == record.currency {
                     totalAmount += record.amount
                 } else {
-                    pendingOperations += 1
+                    let exchangeRates = ExchangeRateManager.shared.exchangeRates[account.currency]
 
-                    ExchangeRateManager.shared.getExchangeRates(forCurrencyCode: account.currency) { exchangeRates in
-                        DispatchQueue.main.async {
-                            guard let exchangeRates = exchangeRates,
-                                  let exchangeRate = exchangeRates[record.currency] else {
-                                print("Failed to get exchangeRates")
-                                completion(nil)
-                                return
-                            }
-                            
-                            let convertedAmount = record.amount / exchangeRate
-                            totalAmount += convertedAmount
-                                                        
-                            pendingOperations -= 1
-                            if pendingOperations == 0 {
-                                completion(totalAmount)
-                            }
-                        }
+                    guard let exchangeRates = exchangeRates,
+                          let exchangeRate = exchangeRates[record.currency] else {
+                        print("Failed to get exchangeRates")
+                        completion(nil)
+                        return
                     }
-                    
+
+                    let convertedAmount = record.amount / exchangeRate
+                    totalAmount += convertedAmount
                 }
             }
         }
-
-        if pendingOperations == 0 {
-            completion(totalAmount)
-        }
+        
+        completion(totalAmount)
     }
 
 }

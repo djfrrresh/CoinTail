@@ -16,49 +16,14 @@ final class AccountsVC: BasicVC {
         }
     }
     
-    let emptyAccountsView = UIView()
+    static let noAccountsText = "You have no accounts added"
+    static let accountsDescriptionText = "Here you can add different money storage methods, such as cards, cash or a bank deposit"
+    
+    let noAccountsLabel: UILabel = getNoDataLabel(text: noAccountsText)
+    let accountsDescriptionLabel: UILabel = getDataDescriptionLabel(text: accountsDescriptionText)
+    let accountsImageView: UIImageView = getDataImageView(name: "monocleEmoji")
+    let addAccountButton: UIButton = getAddDataButton(text: "Add an account")
 
-    let monocleImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "monocleEmoji")
-        
-        return imageView
-    }()
-    
-    let noAccountsLabel: UILabel = {
-        let label = UILabel()
-        label.text = "You have no accounts added".localized()
-        label.textColor = UIColor(named: "black")
-        label.font = UIFont(name: "SFProDisplay-Bold", size: 28)
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-        label.textAlignment = .center
-        
-        return label
-    }()
-    let accountsDescriptionLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Here you can add different money storage methods, such as cards, cash or a bank deposit".localized()
-        label.font = UIFont(name: "SFProText-Regular", size: 17)
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-        label.textAlignment = .center
-        label.textColor = UIColor(named: "secondaryTextColor")
-        
-        return label
-    }()
-    
-    let addAccountButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = UIColor(named: "primaryAction")
-        button.layer.cornerRadius = 16
-        button.setTitle("Add an account".localized(), for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
-        
-        return button
-    }()
     let transferButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(named: "primaryAction")
@@ -97,7 +62,7 @@ final class AccountsVC: BasicVC {
         
         cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
-        cv.alwaysBounceVertical = false
+        cv.alwaysBounceVertical = true
         
         return cv
     }()
@@ -112,6 +77,8 @@ final class AccountsVC: BasicVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        accountsCV.reloadData()
+        
         setupNavigationTitle(title: "Accounts".localized(), large: true)
         isAccountEmpty()
     }
@@ -124,8 +91,13 @@ final class AccountsVC: BasicVC {
         accountsCV.delegate = self
         
         accountsSubviews()
-        emptyAccountsSubviews()
         accountButtonTargets()
+        emptyDataSubviews(
+            dataImageView: accountsImageView,
+            noDataLabel: noAccountsLabel,
+            dataDescriptionLabel: accountsDescriptionLabel,
+            addDataButton: addAccountButton
+        )
     }
     
 }

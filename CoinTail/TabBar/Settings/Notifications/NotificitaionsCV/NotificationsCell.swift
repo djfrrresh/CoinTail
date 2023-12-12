@@ -23,7 +23,7 @@ final class NotificationsCell: UICollectionViewCell {
     let menuLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.textColor = UIColor(named: "black")
+        label.textColor = .black
         label.font = UIFont(name: "SFProText-Regular", size: 17)
 
         return label
@@ -57,12 +57,6 @@ final class NotificationsCell: UICollectionViewCell {
         super.init(frame: frame)
                 
         contentView.backgroundColor = .white
-        
-        contentView.addSubview(menuLabel)
-        contentView.addSubview(chevronImageView)
-        contentView.addSubview(regularityLabel)
-        contentView.addSubview(separatorView)
-        contentView.addSubview(onOffToggle)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -70,6 +64,12 @@ final class NotificationsCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        contentView.addSubview(menuLabel)
+        contentView.addSubview(chevronImageView)
+        contentView.addSubview(regularityLabel)
+        contentView.addSubview(separatorView)
+        contentView.addSubview(onOffToggle)
         
         contentView.easy.layout([
             Edges()

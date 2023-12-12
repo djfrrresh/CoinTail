@@ -24,7 +24,7 @@ final class ContactsCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .left
         label.font = UIFont(name: "SFProText-Regular", size: 17)
-        label.textColor = UIColor(named: "black")
+        label.textColor = .black
 
         return label
     }()
@@ -34,7 +34,7 @@ final class ContactsCell: UICollectionViewCell {
         label.font = UIFont(name: "SFProText-Regular", size: 17)
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.textColor = UIColor(named: "black")
+        label.textColor = .black
         
         return label
     }()
@@ -55,7 +55,7 @@ final class ContactsCell: UICollectionViewCell {
     let userAgreementLabel: UILabel = {
         let label = UILabel()
         label.text = "User agreement".localized()
-        label.textColor = UIColor(named: "black")
+        label.textColor = .black
         label.font = UIFont(name: "SFProText-Regular", size: 17)
         
         return label
@@ -64,7 +64,7 @@ final class ContactsCell: UICollectionViewCell {
     let contactsImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = UIColor(named: "black")
+        imageView.tintColor = .black
         
         return imageView
     }()
@@ -81,6 +81,13 @@ final class ContactsCell: UICollectionViewCell {
         super.init(frame: frame)
                 
         contentView.backgroundColor = .white
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
         
         contentView.addSubview(contactsLabel)
         contentView.addSubview(chevronImageView)
@@ -89,13 +96,6 @@ final class ContactsCell: UICollectionViewCell {
         contentView.addSubview(userAgreementLabel)
         contentView.addSubview(appVersionLabel)
         contentView.addSubview(appVersionTextLabel)
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
         
         contentView.easy.layout([
             Edges()

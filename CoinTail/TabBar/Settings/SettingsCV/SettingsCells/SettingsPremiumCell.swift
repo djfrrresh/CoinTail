@@ -36,7 +36,7 @@ final class SettingsPremiumCell: UICollectionViewCell {
     let boltImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = UIColor(named: "checkMark")
+        imageView.tintColor = UIColor(named: "primaryAction")
         imageView.image = UIImage(systemName: "bolt.fill")
         
         return imageView
@@ -54,14 +54,8 @@ final class SettingsPremiumCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
                 
-        contentView.backgroundColor = UIColor(named: "checkMark")
+        contentView.backgroundColor = UIColor(named: "primaryAction")
         contentView.layer.cornerRadius = 16
-        
-        contentView.addSubview(boltImageBackView)
-        contentView.addSubview(premiumLabel)
-        contentView.addSubview(premiumDescription)
-        
-        boltImageBackView.addSubview(boltImageView)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -70,6 +64,10 @@ final class SettingsPremiumCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        contentView.addSubview(boltImageBackView)
+        contentView.addSubview(premiumLabel)
+        contentView.addSubview(premiumDescription)
+                
         contentView.easy.layout([
             Edges()
         ])
@@ -81,6 +79,8 @@ final class SettingsPremiumCell: UICollectionViewCell {
             Left(16)
         ])
         
+        boltImageBackView.addSubview(boltImageView)
+
         boltImageView.easy.layout([
             Height(24),
             Width(24),

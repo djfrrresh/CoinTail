@@ -58,18 +58,19 @@ final class HomeDateCell: UICollectionViewCell {
         
         dateCV.delegate = self
         dateCV.dataSource = self
-        
-        contentView.addSubview(dateCV)
     }
-
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        contentView.addSubview(dateCV)
 
-        dateCV.easy.layout(Edges())
+        dateCV.easy.layout([
+            Edges()
+        ])
     }
     
     static func size() -> CGSize {

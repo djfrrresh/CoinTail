@@ -18,7 +18,7 @@ final class DateCVCell: UICollectionViewCell {
     static func getPeriodLabel() -> UILabel {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = UIColor(named: "black")
+        label.textColor = .black
         label.font = UIFont(name: "SFProDisplay-Regular", size: 17)
 
         return label
@@ -28,7 +28,6 @@ final class DateCVCell: UICollectionViewCell {
         super.init(frame: frame)
 
         contentView.layer.cornerRadius = 16
-        contentView.addSubview(periodLabel)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -36,6 +35,8 @@ final class DateCVCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        contentView.addSubview(periodLabel)
         
         contentView.easy.layout([
             Edges()
@@ -67,10 +68,10 @@ final class DateCVCell: UICollectionViewCell {
     private func currentCell(_ isSelected: Bool) {
         if isSelected {
             contentView.backgroundColor = .white
-            periodLabel.textColor = UIColor(named: "checkMark")
+            periodLabel.textColor = UIColor(named: "primaryAction")
         } else {
             contentView.backgroundColor = UIColor(named: "dateCellGray")
-            periodLabel.textColor = UIColor(named: "black")
+            periodLabel.textColor = .black
         }
     }
 

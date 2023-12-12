@@ -32,7 +32,7 @@ final class AddAccountCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .left
         label.font = UIFont(name: "SFProText-Regular", size: 17)
-        label.textColor = UIColor(named: "black")
+        label.textColor = .black
 
         return label
     }()
@@ -64,7 +64,7 @@ final class AddAccountCell: UICollectionViewCell {
     let accountNameTF: UITextField = {
         let textField = UITextField()
         textField.font = UIFont(name: "SFProText-Regular", size: 17)
-        textField.textColor = UIColor(named: "black")
+        textField.textColor = .black
         textField.placeholder = "Account name".localized()
         textField.autocorrectionType = .no
         
@@ -73,7 +73,7 @@ final class AddAccountCell: UICollectionViewCell {
     let accountAmountTF: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Amount".localized()
-        textField.textColor = UIColor(named: "black")
+        textField.textColor = .black
         textField.font = UIFont(name: "SFProText-Regular", size: 17)
         
         return textField
@@ -88,6 +88,13 @@ final class AddAccountCell: UICollectionViewCell {
         onOffToggle.addTarget(self, action: #selector(switchValueChanged), for: UIControl.Event.valueChanged)
                 
         contentView.backgroundColor = .white
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
         
         contentView.addSubview(menuLabel)
         contentView.addSubview(accountNameTF)
@@ -96,13 +103,6 @@ final class AddAccountCell: UICollectionViewCell {
         contentView.addSubview(currencyLabel)
         contentView.addSubview(separatorView)
         contentView.addSubview(onOffToggle)
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
         
         contentView.easy.layout([
             Edges()

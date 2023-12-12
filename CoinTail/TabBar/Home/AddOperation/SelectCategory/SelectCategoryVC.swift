@@ -113,6 +113,14 @@ final class SelectCategoryVC: BasicVC {
         RecordType(rawValue: rawSegmentType ?? RecordType.expense.rawValue) ?? .expense
     }
     
+    static let noCategoriesText = "You don't have any categories created"
+    static let categoriesDescriptionText = "Here you can create categories and subcategories for transactions and budgets"
+    
+    let noCategoriesLabel: UILabel = getNoDataLabel(text: noCategoriesText)
+    let categoriesDescriptionLabel: UILabel = getDataDescriptionLabel(text: categoriesDescriptionText)
+    let categoriesImageView: UIImageView = getDataImageView(name: "foldersEmoji")
+    let addCategoryButton: UIButton = getAddDataButton(text: "Add a category")
+    
     public required init(segmentTitle: String, isParental: Bool, categoryID: ObjectId?) {
         self.rawSegmentType = segmentTitle
         self.isParental = isParental
@@ -127,8 +135,9 @@ final class SelectCategoryVC: BasicVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //TODO: не обновляется коллекция после создания категории
         selectCategoryCV.reloadData()
+        
+        isCategoryEmpty()
     }
         
     override func viewDidLoad() {
@@ -141,11 +150,15 @@ final class SelectCategoryVC: BasicVC {
         
         selectCategoryCV.dataSource = self
         
-        newCategoryButton.addTarget(self, action: #selector(goToCreateCategoryVC), for: .touchUpInside)
-        
+        selectCategoryTargets()
         selectCategorySubviews()
         setTitle()
-        selectCategoryNavBar()
+        emptyDataSubviews(
+            dataImageView: categoriesImageView,
+            noDataLabel: noCategoriesLabel,
+            dataDescriptionLabel: categoriesDescriptionLabel,
+            addDataButton: addCategoryButton
+        )
     }
     
 }

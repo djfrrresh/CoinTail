@@ -10,7 +10,7 @@ import RealmSwift
 
 
 extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CategoryIsHiddenDelegate, ArrowTapDelegate, SendCategoryCellDelegate, PushVC {
-    
+
     // Скрытие / показ категорий при нажатии на диаграмму
     func categoryIsHidden(isHidden: Bool) {
         categoryIsHidden = isHidden
@@ -22,14 +22,14 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
     func arrowTap(isLeft: Bool) {
         currentStep += isLeft ? 1 : -1
         
-        sortRecords()
+        sortOperations()
     }
     
     // При нажатии на категорию помечает ее выбранной в коллекции
     func sendCategory(category: CategoryClass) {
         categorySort = categorySort == category ? nil : category
         
-        sortRecords()
+        sortOperations()
     }
     
     // Переход на контроллер для редактирования операции
@@ -93,34 +93,39 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
                 return UICollectionViewCell()
             }
             
-            let records = Records.shared.getRecords(for: period, type: homeSegment, step: currentStep, categoryID: categorySort?.id)
+            let records = Records.shared.getRecords(
+                for: period,
+                type: homeSegment,
+                step: currentStep,
+                categoryID: categorySort?.id
+            )
             
             cell.categoryisHiddenDelegate = self
             cell.arrowTapDelegate = self
             cell.sendCategoryDelegate = self
             
+            //TODO: сделать условие if userHasPremium
             cell.chartsUpdate(homeSegment, records: records)
             
             cell.categoriesArrCellData = HomeCategoryCell.packBins(data: categoriesByType).1
             
-            //TODO: api
             let selectedCurrency = Currencies.shared.selectedCurrency.currency
-//            Records.shared.getAmount(
-//                for: period,
-//                type: homeSegment,
-//                step: currentStep,
-//                categoryID: categorySort?.id
-//            ) { amounts in
-//                DispatchQueue.main.async {
-//                    if let amounts = amounts {
-//                        // Отображаем сумму с ограничением до 2 знаков после запятой
-//                        let formattedAmount = String(format: "%.2f", amounts)
-//                        cell.amountForPeriodLabel.text = "\(formattedAmount) \(selectedCurrency)"
-//                    } else {
-//                        cell.amountForPeriodLabel.text = "0.00"
-//                    }
-//                }
-//            }
+            Records.shared.getAmount(
+                for: period,
+                type: homeSegment,
+                step: currentStep,
+                categoryID: categorySort?.id
+            ) { amounts in
+                DispatchQueue.main.async {
+                    if let amounts = amounts {
+                        // Отображаем сумму с ограничением до 2 знаков после запятой
+                        let formattedAmount = String(format: "%.2f", amounts)
+                        cell.amountForPeriodLabel.text = "\(formattedAmount) \(selectedCurrency)"
+                    } else {
+                        cell.amountForPeriodLabel.text = "0.00"
+                    }
+                }
+            }
             cell.periodLabel.text = getPeriodLabel(step: currentStep)
             cell.category = categorySort
             

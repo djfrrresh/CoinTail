@@ -83,6 +83,9 @@
 
 // SelectCategoryVC
 "Search categories by name" = "Search categories by name";
+"Here you can create categories and subcategories for transactions and budgets" = "Here you can create categories and subcategories for transactions and budgets";
+"You don't have any categories created" = "You don't have any categories created";
+"Add a category" = "Add a category";
 /// Title
 "Income categories" = "Income categories";
 "Expense categories" = "Expense categories";

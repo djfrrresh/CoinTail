@@ -58,7 +58,7 @@ final class AccountsTransferVC: PickerVC {
     let transferFromBackView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = UIColor(named: "black")
+        imageView.tintColor = .black
         imageView.image = UIImage(named: "vectorFrom")
         
         return imageView
@@ -66,7 +66,7 @@ final class AccountsTransferVC: PickerVC {
     let transferToBackView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = UIColor(named: "black")
+        imageView.tintColor = .black
         imageView.image = UIImage(named: "vectorTo")
         
         return imageView
@@ -93,7 +93,7 @@ final class AccountsTransferVC: PickerVC {
     let transferFromLabel: UILabel = {
         let label = UILabel()
         label.text = "From".localized()
-        label.textColor = UIColor(named: "black")
+        label.textColor = .black
         label.textAlignment = .left
         label.numberOfLines = 1
         label.font = UIFont(name: "SFProText-Regular", size: 17)
@@ -103,7 +103,7 @@ final class AccountsTransferVC: PickerVC {
     let transferToLabel: UILabel = {
         let label = UILabel()
         label.text = "To".localized()
-        label.textColor = UIColor(named: "black")
+        label.textColor = .black
         label.textAlignment = .left
         label.numberOfLines = 1
         label.font = UIFont(name: "SFProText-Regular", size: 17)
@@ -112,7 +112,7 @@ final class AccountsTransferVC: PickerVC {
     }()
     let transferFromAccountNameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor(named: "black")
+        label.textColor = .black
         label.textAlignment = .left
         label.numberOfLines = 1
         label.font = UIFont(name: "SFProText-Regular", size: 17)
@@ -122,7 +122,7 @@ final class AccountsTransferVC: PickerVC {
     }()
     let transferToAccountNameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor(named: "black")
+        label.textColor = .black
         label.textAlignment = .left
         label.numberOfLines = 1
         label.font = UIFont(name: "SFProText-Regular", size: 17)
@@ -132,7 +132,7 @@ final class AccountsTransferVC: PickerVC {
     }()
     let transferFromAccountBalanceLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor(named: "black")
+        label.textColor = .black
         label.textAlignment = .left
         label.numberOfLines = 1
         label.font = UIFont(name: "SFProText-Regular", size: 17)
@@ -143,7 +143,7 @@ final class AccountsTransferVC: PickerVC {
     }()
     let transferToAccountBalanceLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor(named: "black")
+        label.textColor = .black
         label.textAlignment = .left
         label.numberOfLines = 1
         label.font = UIFont(name: "SFProText-Regular", size: 17)

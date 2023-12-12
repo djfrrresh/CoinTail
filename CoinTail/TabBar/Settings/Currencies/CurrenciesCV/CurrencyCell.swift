@@ -27,7 +27,7 @@ final class CurrencyCell: UICollectionViewCell {
     let currencyNameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.textColor = UIColor(named: "black")
+        label.textColor = .black
         label.font = UIFont(name: "SFProText-Regular", size: 17)
         
         return label
@@ -36,7 +36,7 @@ final class CurrencyCell: UICollectionViewCell {
     let currencyCodeLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.textColor = UIColor(named: "black")
+        label.textColor = .black
         label.font = UIFont(name: "SFProText-Regular", size: 17)
         
         return label
@@ -44,14 +44,14 @@ final class CurrencyCell: UICollectionViewCell {
     
     let favouriteButton: UIButton = {
         let button = UIButton()
-        button.tintColor = UIColor(named: "checkMark")
+        button.tintColor = UIColor(named: "primaryAction")
         
         return button
     }()
     
     let checkmarkImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.tintColor = UIColor(named: "checkMark")
+        imageView.tintColor = UIColor(named: "primaryAction")
         imageView.contentMode = .scaleAspectFill
         imageView.image = UIImage(systemName: "checkmark")
         imageView.isHidden = true
@@ -65,20 +65,19 @@ final class CurrencyCell: UICollectionViewCell {
         favouriteButton.addTarget(self, action: #selector(favouriteButtonPressed), for: .touchUpInside)
         
         contentView.backgroundColor = .white
-                        
-        contentView.addSubview(checkmarkImageView)
-        contentView.addSubview(favouriteButton)
-        contentView.addSubview(currencyCodeLabel)
-        contentView.addSubview(currencyNameLabel)
-        contentView.addSubview(separatorView)
     }
-
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        contentView.addSubview(checkmarkImageView)
+        contentView.addSubview(favouriteButton)
+        contentView.addSubview(currencyCodeLabel)
+        contentView.addSubview(currencyNameLabel)
+        contentView.addSubview(separatorView)
         
         contentView.easy.layout([
             Edges()

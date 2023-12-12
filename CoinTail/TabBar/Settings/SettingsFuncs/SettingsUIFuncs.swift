@@ -18,7 +18,7 @@ extension SettingsVC {
             Left(),
             Right(),
             Bottom(),
-            Top(32).to(view.safeAreaLayoutGuide, .top)
+            Top().to(self.view.safeAreaLayoutGuide, .top)
         ])
     }
     

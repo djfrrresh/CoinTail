@@ -2,12 +2,17 @@
 //  SelectCategoryUXFuncs.swift
 //  CoinTail
 //
-//  Created by Eugene on 15.06.23.
+//  Created by Eugene on 08.12.23.
 //
 
 import UIKit
 
 
 extension SelectCategoryVC {
+    
+    func selectCategoryTargets() {
+        newCategoryButton.addTarget(self, action: #selector(goToCreateCategoryVC), for: .touchUpInside)
+        addCategoryButton.addTarget(self, action: #selector(goToCreateCategoryVC), for: .touchUpInside)
+    }
     
 }

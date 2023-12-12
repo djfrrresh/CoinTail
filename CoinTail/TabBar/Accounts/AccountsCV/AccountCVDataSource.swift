@@ -27,24 +27,24 @@ extension AccountsVC: UICollectionViewDataSource {
         }
                 
         let accountData: AccountClass = accounts[indexPath.row]
+        
         var totalAmountForCash: Double = accountData.startBalance
 
-        //TODO: api
-//        if let account = Accounts.shared.getAccount(for: accountData.id) {
-//            Records.shared.calculateTotalBalance(for: account.id) { totalAmount in
-//                if let totalAmount = totalAmount {
-//                    totalAmountForCash += totalAmount
-//
-//                    Accounts.shared.editBalance(for: account.id, replacingBalance: totalAmountForCash)
-//
-//                    let formattedAmount = String(format: "%.2f", totalAmountForCash)
-//                    cell.amountLabel.text = "\(formattedAmount) \(accountData.currency)"
-//                } else {
-//                    print("Failed to calculate total amount.")
-//                    cell.amountLabel.text = "\(0.00) \(accountData.currency)"
-//                }
-//            }
-//        }
+        if let account = Accounts.shared.getAccount(for: accountData.id) {
+            Records.shared.calculateTotalBalance(for: account.id) { totalAmount in
+                if let totalAmount = totalAmount {
+                    totalAmountForCash += totalAmount
+
+                    Accounts.shared.editBalance(for: account.id, replacingBalance: totalAmountForCash)
+
+                    let formattedAmount = String(format: "%.2f", totalAmountForCash)
+                    cell.amountLabel.text = "\(formattedAmount) \(accountData.currency)"
+                } else {
+                    print("Failed to calculate total amount.")
+                    cell.amountLabel.text = "\(0.00) \(accountData.currency)"
+                }
+            }
+        }
         
         cell.nameLabel.text = "\(accountData.name)"
         

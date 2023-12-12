@@ -34,7 +34,7 @@ class TabBar: UITabBarController {
         settingsVC.title = "Settings".localized()
         
         UITabBar.appearance().backgroundColor = UIColor(named: "tabBarBackground") // Цвет фона TabBar'а
-        UITabBar.appearance().tintColor = UIColor(named: "selectedScreen") // Цвет выбранной иконки и текста
+        UITabBar.appearance().tintColor = UIColor(named: "primaryAction") // Цвет выбранной иконки и текста
         UITabBar.appearance().unselectedItemTintColor = UIColor(named: "unselectedScreen") // Цвет невыбранных иконок
         
         // Установка контроллеров на TabBar

@@ -91,7 +91,14 @@ final class CreateCategoryCell: UICollectionViewCell {
         categoryIconTF.delegate = self
         
         onOffToggle.addTarget(self, action: #selector(switchValueChanged), for: UIControl.Event.valueChanged)
-                        
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
         contentView.addSubview(menuLabel)
         contentView.addSubview(chevronImageView)
         contentView.addSubview(categoryNameTF)
@@ -100,13 +107,6 @@ final class CreateCategoryCell: UICollectionViewCell {
         contentView.addSubview(onOffToggle)
         contentView.addSubview(parentalCategoryLabel)
         contentView.addSubview(categoryIconTF)
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
         
         contentView.easy.layout([
             Edges()

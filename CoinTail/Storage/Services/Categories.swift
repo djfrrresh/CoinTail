@@ -67,15 +67,30 @@ final class Categories {
         }
     }
     
-    //TODO: отображать подкатегории через главную категорию
     // Обновить категории в коллекции
     func categoriesUpdate(records: [RecordClass]) {
+        var uniqueCategoryIDs = Set<ObjectId>()
         var newCategories = [CategoryClass]()
+        
+        for record in records {
+            let categoryID: ObjectId
+            if let subcategory = getSubcategory(for: record.categoryID) {
+                // Если это подкатегория, берем идентификатор родительской категории
+                categoryID = subcategory.parentCategory
+            } else {
+                categoryID = record.categoryID
+            }
+            
+            // Проверяем, был ли уже добавлен id категории
+            if !uniqueCategoryIDs.contains(categoryID) {
+                if let category = getCategory(for: categoryID) {
+                    newCategories.append(category)
+                } else {
+                    continue
+                }
                 
-        for record in records where !newCategories.contains(where: { $0.id == record.categoryID }) {
-            guard let category = getCategory(for: record.categoryID) else { continue }
-
-            newCategories.append(category)
+                uniqueCategoryIDs.insert(categoryID)
+            }
         }
         
         totalCategories = newCategories

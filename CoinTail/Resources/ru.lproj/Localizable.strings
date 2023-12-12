@@ -83,6 +83,9 @@
 
 // SelectCategoryVC
 "Search categories by name" = "Поиск категорий по имени";
+"Here you can create categories and subcategories for transactions and budgets" = "Здесь вы можете создавать категории и подкатегории для операций и бюджетов";
+"You don't have any categories created" = "У вас нет созданных категорий";
+"Add a category" = "Добавить категорию";
 /// Title
 "Income categories" = "Категории дохода";
 "Expense categories" = "Категории расхода";

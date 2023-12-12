@@ -12,34 +12,34 @@ import EasyPeasy
 extension AboutAppVC {
     
     func aboutSubviews() {
-        self.view.addSubview(moneyImageView)
-        self.view.addSubview(coinTailTitleLabel)
-        self.view.addSubview(aboutLabel)
+        self.view.addSubview(aboutImageView)
+        self.view.addSubview(aboutTitleLabel)
+        self.view.addSubview(accountsDescriptionLabel)
         self.view.addSubview(contactsCV)
 
-        moneyImageView.easy.layout([
+        aboutImageView.easy.layout([
             Height(100),
             Width(100),
             Top(32).to(self.view.safeAreaLayoutGuide, .top),
             CenterX()
         ])
         
-        coinTailTitleLabel.easy.layout([
-            Top(24).to(moneyImageView, .bottom),
+        aboutTitleLabel.easy.layout([
+            Top(24).to(aboutImageView, .bottom),
             CenterX(),
             Left(32),
             Right(32)
         ])
         
-        aboutLabel.easy.layout([
-            Top(16).to(coinTailTitleLabel, .bottom),
+        accountsDescriptionLabel.easy.layout([
+            Top(16).to(aboutTitleLabel, .bottom),
             CenterX(),
             Left(32),
             Right(32)
         ])
         
         contactsCV.easy.layout([
-            Top(24).to(aboutLabel, .bottom),
+            Top(24).to(accountsDescriptionLabel, .bottom),
             Bottom().to(self.view.safeAreaLayoutGuide, .bottom),
             Left(16),
             Right(16),

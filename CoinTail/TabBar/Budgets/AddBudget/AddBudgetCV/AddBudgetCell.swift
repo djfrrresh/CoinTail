@@ -64,12 +64,6 @@ final class AddBudgetCell: UICollectionViewCell {
         contentView.backgroundColor = .white
         
         budgetAmountTF.delegate = self
-
-        contentView.addSubview(menuLabel)
-        contentView.addSubview(budgetAmountTF)
-        contentView.addSubview(chevronImageView)
-        contentView.addSubview(subMenuLabel)
-        contentView.addSubview(separatorView)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -77,6 +71,12 @@ final class AddBudgetCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        contentView.addSubview(menuLabel)
+        contentView.addSubview(budgetAmountTF)
+        contentView.addSubview(chevronImageView)
+        contentView.addSubview(subMenuLabel)
+        contentView.addSubview(separatorView)
         
         contentView.easy.layout([
             Edges()

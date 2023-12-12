@@ -139,7 +139,6 @@ final class PremiumPrivacyCell: UICollectionViewCell {
         return label
     }
     
-    //TODO: с локализацией не работает динамическая высота
     static func size(_ plans: [PlanData]) -> CGSize {
         let textWidth =  UIScreen.main.bounds.width - 16 * 2
         let description = getDescriptionLabel()
@@ -154,7 +153,12 @@ final class PremiumPrivacyCell: UICollectionViewCell {
                 return dateFormatter
             }()
             
-            description.text = "After \(dateFormatter.string(from: Date().advanced(by: TimeInterval(86400 * trialDays)))), you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our Terms and Privacy Policy.".localized()
+            let expirationDate = Date().advanced(by: 86400 * Double(trialDays))
+            let dateString = dateFormatter.string(from: expirationDate)
+            
+            let descriptionFormat = NSLocalizedString("After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our Terms and Privacy Policy.".localized(), comment: "")
+
+            description.text = String.localizedStringWithFormat(descriptionFormat, dateString)
         } else {
             description.text = "By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our Terms and Privacy Policy.".localized()
         }

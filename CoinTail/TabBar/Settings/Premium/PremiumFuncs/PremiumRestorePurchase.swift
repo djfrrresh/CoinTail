@@ -13,7 +13,7 @@ extension PremiumVC: PremiumPrivacyDelegate {
     func showLegalDocuments(link: String) {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
         
-        let webView = WKWebView()
+//        let webView = WKWebView()
         
 //        if let url = URL(string: link) {
 //            let request = URLRequest(url: url)

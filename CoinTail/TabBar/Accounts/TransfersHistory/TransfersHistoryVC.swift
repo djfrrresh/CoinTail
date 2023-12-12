@@ -15,49 +15,14 @@ final class TransfersHistoryVC: BasicVC {
             transfersCV.reloadData()
         }
     }
-    
-    let emptyAccountsView = UIView()
-    
-    let monocleImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "monocleEmoji")
         
-        return imageView
-    }()
+    static let noTransfersText = "You have no transfer transactions"
+    static let transfersDescriptionText = "Once you transfer money from one account to another - you can check transfer history here"
     
-    let noAccountsLabel: UILabel = {
-        let label = UILabel()
-        label.text = "You have no transfer transactions".localized()
-        label.font = UIFont(name: "SFProDisplay-Bold", size: 28)
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-        label.textAlignment = .center
-        
-        return label
-    }()
-    let descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Once you transfer money from one account to another - you can check transfer history here".localized()
-        label.font = UIFont(name: "SFProText-Regular", size: 17)
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-        label.textAlignment = .center
-        label.textColor = UIColor(named: "secondaryTextColor")
-        
-        return label
-    }()
-    
-    let addAccountButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = UIColor(named: "primaryAction")
-        button.layer.cornerRadius = 16
-        button.setTitle("Transfer money".localized(), for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
-        
-        return button
-    }()
+    let noTransfersLabel: UILabel = getNoDataLabel(text: noTransfersText)
+    let transfersDescriptionLabel: UILabel = getDataDescriptionLabel(text: transfersDescriptionText)
+    let transfersImageView: UIImageView = getDataImageView(name: "monocleEmoji")
+    let addTransferButton: UIButton = getAddDataButton(text: "Transfer money")
     
     let transfersCV: UICollectionView = {
         let transfersLayout: UICollectionViewFlowLayout = {
@@ -98,8 +63,13 @@ final class TransfersHistoryVC: BasicVC {
         transfersCV.dataSource = self
         
         transfersSubviews()
-        emptyTransfersSubviews()
         transferButtonTargets()
+        emptyDataSubviews(
+            dataImageView: transfersImageView,
+            noDataLabel: noTransfersLabel,
+            dataDescriptionLabel: transfersDescriptionLabel,
+            addDataButton: addTransferButton
+        )
     }
     
 }

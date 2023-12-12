@@ -15,13 +15,10 @@ final class PremiumDescriptionCell: UICollectionViewCell {
     
     let descriptionLabel: UILabel = getDescriptionLabel()
     
-    //TODO: перенести все addSubview для ячеек в layoutSubviews
     override init(frame: CGRect) {
         super.init(frame: frame)
                 
         contentView.backgroundColor = .clear
-
-        contentView.addSubview(descriptionLabel)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -29,6 +26,8 @@ final class PremiumDescriptionCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        contentView.addSubview(descriptionLabel)
         
         contentView.easy.layout([
             Edges()

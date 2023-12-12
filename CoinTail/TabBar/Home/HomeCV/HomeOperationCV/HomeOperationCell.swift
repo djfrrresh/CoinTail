@@ -51,8 +51,19 @@ final class HomeOperationCell: UICollectionViewCell {
         
         operationsCV.delegate = self
         operationsCV.dataSource = self
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
         
         contentView.addSubview(operationsCV)
+        
+        operationsCV.easy.layout([
+            Edges()
+        ])
     }
     
     // Проверка на сегодняшнюю дату
@@ -71,16 +82,6 @@ final class HomeOperationCell: UICollectionViewCell {
         } else {
             textField.text = headerDF.string(from: date)
         }
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        operationsCV.easy.layout(Edges())
     }
     
     static func size(data: [OperationsDaySection]) -> CGSize {

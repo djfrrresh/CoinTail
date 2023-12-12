@@ -40,9 +40,6 @@ final class CategoryCVCell: UICollectionViewCell {
         
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 15
-        
-        contentView.addSubview(categoryName)
-        contentView.addSubview(xmarkImage)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -50,6 +47,9 @@ final class CategoryCVCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        contentView.addSubview(categoryName)
+        contentView.addSubview(xmarkImage)
         
         contentView.easy.layout([
             Edges()
