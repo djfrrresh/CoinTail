@@ -4,3 +4,4 @@
 /Pods
 /CoinTail.xcworkspace
 /CoinTail/Storage/Services/KeychainManager.swift
+/CoinTail/Storage/Keychain
