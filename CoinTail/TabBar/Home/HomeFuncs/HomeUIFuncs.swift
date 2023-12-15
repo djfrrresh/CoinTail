@@ -20,30 +20,32 @@ extension HomeVC: SelectedDate {
     }
     
     func homeSubviews() {
+        self.view.addSubview(customNavBar)
         self.view.addSubview(homeTypeSwitcher)
-        self.view.addSubview(balanceLabel)
         self.view.addSubview(homeGlobalCV)
+        
+        customNavBar.easy.layout([
+            Height(96),
+            Top().to(self.view.safeAreaLayoutGuide, .top),
+            Left(),
+            Right()
+        ])
         
         homeTypeSwitcher.easy.layout([
             Left(16),
             Right(16),
-            Top(24).to(self.view.safeAreaLayoutGuide, .top)
-        ])
-        
-        balanceLabel.easy.layout([
-            CenterX(),
-            Top(-30).to(self.view.safeAreaLayoutGuide, .top)
+            Top(24).to(customNavBar, .bottom)
         ])
         
         homeGlobalCV.easy.layout([
             Left(),
             Right(),
             Bottom(),
-            Top(16).to(homeTypeSwitcher, .bottom)
+            Top().to(homeTypeSwitcher, .bottom)
         ])
     }
     
-    func isOperationsEmpty() {
+    func areOperationsEmpty() {
         let isEmpty = monthSections.isEmpty
         
         operationsImageView.isHidden = !isEmpty
@@ -54,16 +56,23 @@ extension HomeVC: SelectedDate {
         
         homeTypeSwitcher.isHidden = isEmpty
         homeGlobalCV.isHidden = isEmpty
-        balanceLabel.isHidden = isEmpty
-        
-        if isEmpty {
-            self.navigationItem.rightBarButtonItem = nil
-        } else {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-                barButtonSystemItem: .add,
-                target: self,
-                action: #selector(goToAddOperationVC)
-            )
+    }
+    
+    func updateBalanceLabel() {
+        DispatchQueue.main.async {
+            let currency = Currencies.shared.selectedCurrency.currency
+            
+            Records.shared.getAmount(for: .allTheTime, type: .allOperations) { amounts in
+                DispatchQueue.main.async { [self] in
+                    if let amounts = amounts {
+                        // Отображаем сумму с ограничением до 2 знаков после запятой
+                        let formattedAmount = String(format: "%.2f", amounts)
+                        customNavBar.titleLabel.text = "\(formattedAmount) \(currency)"
+                    } else {
+                        customNavBar.titleLabel.text = "0.00 \(currency)"
+                    }
+                }
+            }
         }
     }
     
@@ -81,20 +90,7 @@ extension HomeVC: SelectedDate {
         // Группировка записей
         monthSections = OperationsDaySection.groupRecords(section: homeSegment, groupRecords: getRecord)
         
-        let totalBalanceText = "Balance:".localized()
-        let currency = Currencies.shared.selectedCurrency.currency
-        
-        Records.shared.getAmount(for: .allTheTime, type: .allOperations) { amounts in
-            DispatchQueue.main.async { [self] in
-                if let amounts = amounts {
-                    // Отображаем сумму с ограничением до 2 знаков после запятой
-                    let formattedAmount = String(format: "%.2f", amounts)
-                    balanceLabel.text = "\(totalBalanceText) \(formattedAmount) \(currency)"
-                } else {
-                    balanceLabel.text = "\(totalBalanceText) 0 \(currency)"
-                }
-            }
-        }
+        updateBalanceLabel()
                 
         // Отсортировать операции по месяцам (убывание)
         monthSections.sort { l, r in

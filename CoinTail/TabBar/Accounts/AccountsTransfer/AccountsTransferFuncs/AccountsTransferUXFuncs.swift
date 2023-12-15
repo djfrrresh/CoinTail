@@ -29,15 +29,15 @@ extension AccountsTransferVC {
         }
         
         if missingAmount {
-            errorAlert("Missing value in amount field".localized())
+            infoAlert("Missing value in amount field".localized())
         } else if missingFirstAccount || missingSecondAccount {
-            errorAlert("No accounts selected".localized())
+            infoAlert("No accounts selected".localized())
         } else if firstAccount == secondAccount {
-            errorAlert("You cannot select the same account for transfer".localized())
+            infoAlert("You cannot select the same account for transfer".localized())
         }
         // TODO: premium
 //        else if firstAccountCurrency != secondAccountCurrency {
-//            errorAlert("You cannot transfer money to an account with a different currency!".localized())
+//            infoAlert("You cannot transfer money to an account with a different currency!".localized())
 //        }
         else {
             completion?(firstAccount, secondAccount)

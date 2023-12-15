@@ -24,7 +24,7 @@ extension AddOperationVC: UICollectionViewDelegate, UICollectionViewDelegateFlow
                     
                     selectedAccount = accountNames[0]
                 } else {
-                    errorAlert("You don't have any accounts to choose from".localized())
+                    infoAlert("You don't have any accounts to choose from".localized())
                 }
             case 3:
                 isUsingCurrenciesPicker = true

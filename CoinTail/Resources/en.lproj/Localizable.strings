@@ -202,6 +202,11 @@
 // Delete data
 "Delete data" = "Delete data";
 "Are you sure you want to delete all data: transactions, budgets, accounts?" = "Are you sure you want to delete all data: operations, budgets, accounts?";
+"Type 'Delete all data' to confirm the action" = "Type 'Delete all data' to confirm the action";
+"Delete all data" = "Delete all data";
+"Delete" = "Delete";
+"All data has been deleted!" = "All data has been deleted!";
+"Failed to delete data - you entered an invalid line" = "Failed to delete data - you entered an invalid line";
 
 // PremiumVC
 /// Title

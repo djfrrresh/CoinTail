@@ -46,13 +46,13 @@ extension AddOperationVC: SendCategoryID, AddOperationCellDelegate {
 //        }
 
         if missingAmount {
-            errorAlert("Missing value in amount field".localized())
+            infoAlert("Missing value in amount field".localized())
         } else if missingCategory {
-            errorAlert("No category selected".localized())
+            infoAlert("No category selected".localized())
         }
         // TODO: premium
 //        else if account != nil && account?.currency != "\(selectedCurrency)" {
-//            errorAlert("You cannot specify an account for this transaction with another currency".localized())
+//            infoAlert("You cannot specify an account for this transaction with another currency".localized())
 //        }
         else {
             guard let categoryID = self.categoryID,

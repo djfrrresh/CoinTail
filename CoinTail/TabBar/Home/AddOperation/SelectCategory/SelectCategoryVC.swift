@@ -62,29 +62,6 @@ final class SelectCategoryVC: BasicVC {
             selectCategoryCV.reloadData()
         }
     }
-            
-    let selectCategoryCV: UICollectionView = {
-        let layout: UICollectionViewFlowLayout = {
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .vertical
-            layout.minimumLineSpacing = 0
-            layout.minimumInteritemSpacing = 0
-            
-            return layout
-        }()
-        
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .clear
-        cv.layer.cornerRadius = 12
-        cv.register(SelectCategoryCell.self, forCellWithReuseIdentifier: SelectCategoryCell.id)
-        
-        cv.allowsMultipleSelection = false
-        cv.showsVerticalScrollIndicator = false
-        cv.showsHorizontalScrollIndicator = false
-        cv.alwaysBounceVertical = true
-        
-        return cv
-    }()
     
     let categorySearchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -97,7 +74,7 @@ final class SelectCategoryVC: BasicVC {
         return searchBar
     }()
         
-    let newCategoryButton: UIButton = {
+    let createCategoryButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(named: "primaryAction")
         button.layer.cornerRadius = 16
@@ -121,11 +98,34 @@ final class SelectCategoryVC: BasicVC {
     let categoriesImageView: UIImageView = getDataImageView(name: "foldersEmoji")
     let addCategoryButton: UIButton = getAddDataButton(text: "Add a category")
     
+    let selectCategoryCV: UICollectionView = {
+        let layout: UICollectionViewFlowLayout = {
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .vertical
+            layout.minimumLineSpacing = 0
+            layout.minimumInteritemSpacing = 0
+            
+            return layout
+        }()
+
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = .clear
+        cv.layer.cornerRadius = 12
+        cv.register(SelectCategoryCell.self, forCellWithReuseIdentifier: SelectCategoryCell.id)
+
+        cv.allowsMultipleSelection = false
+        cv.showsVerticalScrollIndicator = false
+        cv.showsHorizontalScrollIndicator = false
+        cv.alwaysBounceVertical = true
+
+        return cv
+    }()
+    
     public required init(segmentTitle: String, isParental: Bool, categoryID: ObjectId?) {
         self.rawSegmentType = segmentTitle
         self.isParental = isParental
         self.categoryID = categoryID
-                
+                        
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder: NSCoder) {

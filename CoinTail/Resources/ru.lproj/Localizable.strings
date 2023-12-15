@@ -200,6 +200,11 @@
 // Delete data
 "Delete data" = "Удалить данные";
 "Are you sure you want to delete all data: transactions, budgets, accounts?" = "Вы уверены, что хотите удалить все данные: операции, бюджеты, счета?";
+"Type 'Delete all data' to confirm the action" = "Наберите 'Удалить все данные' для подтверждения действия";
+"Delete all data" = "Удалить все данные";
+"Delete" = "Удалить";
+"All data has been deleted!" = "Все данные были удалены!";
+"Failed to delete data - you entered an invalid line" = "Не получилось удалить данные — вы ввели неправильную строку";
 
 // PremiumVC
 /// Title

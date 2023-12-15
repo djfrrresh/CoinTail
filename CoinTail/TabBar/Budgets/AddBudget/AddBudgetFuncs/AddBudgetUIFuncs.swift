@@ -65,6 +65,7 @@ extension AddBudgetVC {
         self.navigationItem.rightBarButtonItem = saveButton
     }
     
+    //TODO: вынести в basicvc
     func updateCell(at indexPath: IndexPath, text: String) {
         if let cell = addBudgetCV.cellForItem(at: indexPath) as? AddBudgetCell {
             cell.updateSubMenuLabel(text)

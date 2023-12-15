@@ -43,4 +43,8 @@ extension HomeVC {
         sortOperations() // Сортировка коллекции с операциями
     }
     
+    @objc func handleExchangeRatesUpdated() {
+        updateBalanceLabel()
+    }
+    
 }

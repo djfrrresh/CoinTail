@@ -86,24 +86,32 @@ final class HomeVC: BasicVC {
         return cv
     }()
     
-    let balanceLabel = UILabel()
-    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("ExchangeRatesUpdated"), object: nil)
+    }
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-                
+        
+        navigationController?.navigationBar.isHidden = true
         period = .allTheTime
+        
         sortOperations() // Сортировка операций по убыванию по дате
         homeButtonTargets()
-        isOperationsEmpty()
+        areOperationsEmpty()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleExchangeRatesUpdated), name: Notification.Name("ExchangeRatesUpdated"), object: nil)
+        
+        customNavBar.subTitleLabel.text = "Balance".localized()
+                                
         homeGlobalCV.delegate = self
 
         homeGlobalCV.dataSource = self
-                        
+        
         homeSubviews()
         emptyDataSubviews(
             dataImageView: operationsImageView,

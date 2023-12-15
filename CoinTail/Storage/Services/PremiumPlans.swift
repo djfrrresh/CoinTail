@@ -17,8 +17,7 @@ class PremiumPlans {
             title: "Month".localized(),
             price: 149,
             buyButtonTitle: "Continue - total".localized(),
-            period: "month".localized(),
-            isTrial: false
+            period: "month".localized()
         ),
         PlanData(
             title: "Year".localized(),

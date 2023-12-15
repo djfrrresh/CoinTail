@@ -11,7 +11,7 @@ import UIKit
 extension SelectCategoryVC {
     
     func selectCategoryTargets() {
-        newCategoryButton.addTarget(self, action: #selector(goToCreateCategoryVC), for: .touchUpInside)
+        createCategoryButton.addTarget(self, action: #selector(goToCreateCategoryVC), for: .touchUpInside)
         addCategoryButton.addTarget(self, action: #selector(goToCreateCategoryVC), for: .touchUpInside)
     }
     

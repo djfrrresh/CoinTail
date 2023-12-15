@@ -12,7 +12,7 @@ import EasyPeasy
 extension SelectCategoryVC {
     
     func selectCategorySubviews() {
-        self.view.addSubview(newCategoryButton)
+        self.view.addSubview(createCategoryButton)
         self.view.addSubview(selectCategoryCV)
         self.view.addSubview(categorySearchBar)
         
@@ -24,7 +24,7 @@ extension SelectCategoryVC {
             Top(16).to(self.view.safeAreaLayoutGuide, .top)
         ])
         
-        newCategoryButton.easy.layout([
+        createCategoryButton.easy.layout([
             Bottom(16).to(self.view.safeAreaLayoutGuide, .bottom),
             Left(16),
             Right(16),
@@ -36,7 +36,7 @@ extension SelectCategoryVC {
             Right(16),
             CenterX(),
             Top(24).to(categorySearchBar, .bottom),
-            Bottom(24).to(newCategoryButton, .top)
+            Bottom(24).to(createCategoryButton, .top)
         ])
     }
     
@@ -71,7 +71,7 @@ extension SelectCategoryVC {
         addCategoryButton.isHidden = !isEmpty
         emptyDataView.isHidden = !isEmpty
         
-        newCategoryButton.isHidden = isEmpty
+        createCategoryButton.isHidden = isEmpty || !isParental
         categorySearchBar.isHidden = isEmpty
         selectCategoryCV.isHidden = isEmpty
         

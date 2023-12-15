@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import EasyPeasy
 
 
 final class BudgetsVC: BasicVC {
@@ -47,19 +48,21 @@ final class BudgetsVC: BasicVC {
         return cv
     }()
 
+    //TODO: не выполняется подсчет суммы при смене валюты 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        navigationController?.navigationBar.isHidden = true
         budgetCV.reloadData()
         
-        isBudgetEmpty()
+        areBudgetsEmpty()
     }
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupNavigationTitle(title: "Budgets".localized(), large: true)
-
+                
+        customNavBar.titleLabel.text = "Budgets".localized()
+                
         budgetCV.dataSource = self
         
         budgetCV.delegate = self

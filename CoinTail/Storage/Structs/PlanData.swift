@@ -5,7 +5,7 @@
 //  Created by Eugene on 07.12.23.
 //
 
-//import RevenueCat
+import RevenueCat
 
 
 struct PlanData: Equatable {
@@ -13,7 +13,8 @@ struct PlanData: Equatable {
     var price: Int
     var buyButtonTitle = ""
     var period = ""
-    var isTrial: Bool
+    var description = ""
+    var isTrial: Bool = false
 //    {
 //        get {
 //            if AppSettings.shared.premiumDisplay == .tcs {
@@ -25,5 +26,13 @@ struct PlanData: Equatable {
 //    }
     var trialDaysInt: Int?
     var promoText: String?
-//    var package: Package?
+    var package: Package?
+    
+    static func == (lhs: PlanData, rhs: PlanData) -> Bool {
+        return lhs.package == rhs.package
+        && lhs.title == rhs.title
+        && lhs.description == rhs.description
+        && lhs.buyButtonTitle == rhs.buyButtonTitle
+        && lhs.promoText == rhs.promoText
+    }
 }

@@ -38,11 +38,11 @@ extension AddBudgetVC: SendCategoryID, SendRegularity, AddBudgetCellDelegate {
         let sameBudget = Budgets.shared.getBudget(for: categoryText, withCurrency: selectedCurrency) ?? false
 
         if missingAmount {
-            errorAlert("Missing value in amount field".localized())
+            infoAlert("Missing value in amount field".localized())
         } else if missingCategory {
-            errorAlert("No category selected".localized())
+            infoAlert("No category selected".localized())
         } else if sameBudget && budgetID == nil {
-            errorAlert("There is already a budget for this category and currency".localized())
+            infoAlert("There is already a budget for this category and currency".localized())
         } else {
             guard let categoryID = budgetCategoryID else { return }
             

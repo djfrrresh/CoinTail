@@ -11,11 +11,7 @@ import EasyPeasy
 
 extension AddOperationVC: UIScrollViewDelegate {
     
-    func setupUI(with record: RecordClass) {
-        addOperationCV.easy.layout([
-            Top(32).to(self.view.safeAreaLayoutGuide, .top)
-        ])
-        
+    func setupUI(with record: RecordClass) {    
         deleteOperationButton.isHidden = false
         
         // Дата
@@ -74,7 +70,7 @@ extension AddOperationVC: UIScrollViewDelegate {
         addOperationCV.easy.layout([
             Left(16),
             Right(16),
-            Top(24).to(addOperationTypeSwitcher, .bottom),
+            recordID == nil ? Top(24).to(addOperationTypeSwitcher, .bottom) : Top(24).to(self.view.safeAreaLayoutGuide, .top),
             Height(cvHeight)
         ])
         

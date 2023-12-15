@@ -35,7 +35,7 @@ extension AboutAppVC {
             // Если "Почты" нет, приложение попросит его скачать
             UIApplication.shared.open(emailUrl)
         } else {
-            errorAlert("We can't open the Mail app on your device")
+            infoAlert("We can't open the Mail app on your device")
         }
     }
     

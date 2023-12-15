@@ -74,6 +74,7 @@ final class AddBudgetVC: PickerVC {
     
     init(budgetID: ObjectId) {
         self.budgetID = budgetID
+        
         super.init(nibName: nil, bundle: nil)
         
         self.title = "Edit budget".localized()
@@ -93,13 +94,15 @@ final class AddBudgetVC: PickerVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         addBudgetTargets()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.isHidden = false
+            
         itemsPickerView.dataSource = self
         addBudgetCV.dataSource = self
         

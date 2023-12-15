@@ -14,7 +14,11 @@ final class ExchangeRateManager {
     
     private let exchangeAPIEndpoint = "https://v6.exchangerate-api.com/v6/"
     
-    var exchangeRates: [String: [String: Double]] = [:]
+    var exchangeRates: [String: [String: Double]] = [:] {
+        didSet {
+            NotificationCenter.default.post(name: Notification.Name("ExchangeRatesUpdated"), object: nil)
+        }
+    }
 
     func getExchangeRates(completion: @escaping () -> Void) {
         let currencyCode = Currencies.shared.selectedCurrency.currency

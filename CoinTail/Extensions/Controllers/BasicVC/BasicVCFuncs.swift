@@ -97,11 +97,11 @@ extension BasicVC {
         ])
     }
     
-    // Всплывающий алерт при ошибке
-    func errorAlert(_ message: String) {
+    // Всплывающий алерт с информацией
+    func infoAlert(_ message: String, _ title: String = "Error") {
         let alertAction = UIAlertAction(title: "OK", style: .default)
         
-        let alertView = UIAlertController(title: "Error".localized(), message: message, preferredStyle: .alert)
+        let alertView = UIAlertController(title: title.localized(), message: message, preferredStyle: .alert)
         
         alertView.addAction(alertAction)
         
@@ -132,50 +132,17 @@ extension BasicVC {
         if large {
             navigationItem.title = title
             navigationItem.setValue(1, forKey: "__largeTitleTwoLineMode")
+            
+            
         } else {
             let titleLabel: UILabel = {
                 let label = UILabel()
                 label.text = title
                 label.textAlignment = .center
                 label.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
-                label.textColor = .black
                 
                 return label
             }()
-            
-            navigationItem.titleView = titleLabel
-        }
-    }
-    
-    func setupNavigationTitle(title: String, large: Bool = false, selector: Selector) {
-        prefersLargeTitle = large
-        navigationController?.navigationBar.prefersLargeTitles = large
-        navigationItem.largeTitleDisplayMode = large ? .always : .never
-        
-        if large {
-            let titleView = UIView()
-            let titleLabel = UILabel()
-            titleLabel.text = title
-            titleView.addSubview(titleLabel)
-            
-            navigationItem.titleView = titleView
-            navigationItem.setValue(1, forKey: "__largeTitleTwoLineMode")
-        } else {
-            let titleLabel: UILabel = {
-                let label = UILabel()
-                label.text = title
-                label.textAlignment = .center
-                label.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
-                label.textColor = .black
-                
-                return label
-            }()
-            
-            navigationItem.rightBarButtonItem = UIBarButtonItem(
-                barButtonSystemItem: .add,
-                target: self,
-                action: selector
-            )
             
             navigationItem.titleView = titleLabel
         }
@@ -194,6 +161,7 @@ extension BasicVC {
         return tap
     }
     
+    // Отображает динамически высоту для View
     static func noDataViewSize(noDataLabel: UILabel, descriptionLabel: UILabel) -> CGFloat {
         let padding: CGFloat = 16.0
         let imagePadding: CGFloat = 32.0

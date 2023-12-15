@@ -12,6 +12,7 @@ extension BudgetsVC {
     
     func budgetButtonTargets() {
         addBudgetButton.addTarget(self, action: #selector(goToAddBudgetVC), for: .touchUpInside)
+        customNavBar.customButton.addTarget(self, action: #selector(goToAddBudgetVC), for: .touchUpInside)
     }
     
 }

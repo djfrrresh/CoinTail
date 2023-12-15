@@ -189,6 +189,8 @@ final class AccountsTransferVC: PickerVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.isHidden = false
+        
         self.title = "Transfers".localized()
                 
         itemsPickerView.delegate = self

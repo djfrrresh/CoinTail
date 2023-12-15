@@ -36,10 +36,6 @@ class Currencies {
                 
                 do {
                     try realmService.realm?.commitWrite()
-                    //TODO: сделать сменяемость валюты
-//                    ExchangeRateManager.shared.getExchangeRates {
-//                        dump(ExchangeRateManager.shared.exchangeRates)
-//                    }
                 } catch {
                     print("Error updating: \(error)")
                 }
@@ -48,6 +44,9 @@ class Currencies {
                 
                 realmService.write(defaultCurrency, SelectedCurrencyClass.self)
             }
+            
+            // Меняет курсы валют относительно выбранной валюты
+            ExchangeRateManager.shared.getExchangeRates {}
         }
     }
     

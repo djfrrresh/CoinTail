@@ -14,6 +14,8 @@ class BasicVC: UIViewController {
     
     let emptyDataView = UIView()
     
+    let customNavBar = CustomNavigationBar()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -28,39 +28,41 @@ extension PremiumVC: PremiumPrivacyDelegate {
     
     func restorePurchaseButtonTap() {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
-//        buyPremiumButton.waitingState(true)
+        buyPremiumButton.waitingState(true)
         self.view.isUserInteractionEnabled = false
         
-//        PaymentFacade.shared.restorePurchases { [weak self] resp in
-//            guard let strongSelf = self else { return }
-//
-//            switch resp {
-//            case .success(let expirationDate):
-//                strongSelf.dismiss(animated: false) {
+        PaymentFacade.shared.restorePurchases { [weak self] resp in
+            guard let strongSelf = self else { return }
+
+            switch resp {
+            case .success(let expirationDate):
+                strongSelf.dismiss(animated: false) {
 //                    let vc = YouSubscribedVC(AdvantagesData.advantages, expirationDate: expirationDate)
 //                    vc.modalPresentationStyle = .fullScreen
 //
 //                    present(vc, animated: true)
-//                }
-//            case .noSubs:
-//                //TODO: error alert
+                }
+            case .noSubs:
+                print("noSubs")
+                //TODO: error alert
 //                let alert = UIAlertController(title: .localized("restore_purchase_no_subs_title"), message: nil, preferredStyle: .alert)
 //                let alertAction = UIAlertAction(title: .localized("okay_button_title"), style: .cancel)
 //
 //                alert.addAction(alertAction)
 //                self?.present(alert, animated: true)
-//            case .noData:
-//                //TODO: error alert
+            case .noData:
+                print("noData")
+                //TODO: error alert
 //                let alert = UIAlertController(title: .localized("restore_purchase_no_data_title"), message: nil, preferredStyle: .alert)
 //                let alertAction = UIAlertAction(title: .localized("okay_button_title"), style: .cancel)
 //
 //                alert.addAction(alertAction)
 //                self?.present(alert, animated: true)
-//            }
-//
-//            strongSelf.buyPremiumButton.waitingState(false)
-//            strongSelf.view.isUserInteractionEnabled = true
-//        }
+            }
+
+            strongSelf.buyPremiumButton.waitingState(false)
+            strongSelf.view.isUserInteractionEnabled = true
+        }
     }
     
 }

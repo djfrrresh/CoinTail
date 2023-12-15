@@ -49,11 +49,11 @@ extension CreateCategoryVC: SendCategoryID, CreateCategoryCellDelegate {
         let missingMainCategory = mainCategory == ""
 
         if missingName {
-            errorAlert("Category name is missing".localized())
+            infoAlert("Category name is missing".localized())
         } else if missingIcon {
-            errorAlert("Category icon not selected".localized())
+            infoAlert("Category icon not selected".localized())
         } else if isSubcategory && missingMainCategory {
-            errorAlert("No parent category selected".localized())
+            infoAlert("No parent category selected".localized())
         } else {            
             completion?(name, icon)
         }

@@ -88,6 +88,8 @@ final class AddAccountVC: PickerVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.isHidden = false
                 
         itemsPickerView.dataSource = self
         addAccountCV.dataSource = self

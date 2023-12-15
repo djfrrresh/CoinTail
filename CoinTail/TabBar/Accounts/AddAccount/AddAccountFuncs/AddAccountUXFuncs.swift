@@ -32,11 +32,11 @@ extension AddAccountVC: AddAccountCellDelegate {
         let accountName = Accounts.shared.getAccount(for: name)?.name
 
         if missingName {
-            errorAlert("Account name not entered".localized())
+            infoAlert("Account name not entered".localized())
         } else if missingAmount {
-            errorAlert("Missing value in amount field".localized())
+            infoAlert("Missing value in amount field".localized())
         } else if accountName != nil && accountID == nil {
-            errorAlert("There is already an account with this name".localized())
+            infoAlert("There is already an account with this name".localized())
         } else {
             completion?(amount, name)
         }

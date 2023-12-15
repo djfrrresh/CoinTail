@@ -159,11 +159,11 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         switch cellIdentifier(for: IndexPath(row: 0, section: section)) {
         case HomeDateCell.id:
-            return .init(top: 0, left: 0, bottom: 16, right: 0)
+            return .init(top: 16, left: 0, bottom: 16, right: 0)
         case HomeCategoryCell.id:
             return .init(top: 0, left: 0, bottom: 16, right: 0)
         case HomeOperationCell.id:
-            return .init(top: 0, left: 0, bottom: 0, right: 0)
+            return .init(top: 0, left: 0, bottom: 16, right: 0)
         default:
             return .init(top: 0, left: 0, bottom: 0, right: 0)
         }

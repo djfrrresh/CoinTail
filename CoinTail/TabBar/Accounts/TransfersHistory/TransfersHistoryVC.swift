@@ -56,6 +56,8 @@ final class TransfersHistoryVC: BasicVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.isHidden = false
+
         self.title = "Transfer history".localized()
         
         transfersCV.delegate = self

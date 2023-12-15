@@ -58,7 +58,7 @@ final class AccountsVC: BasicVC {
         cv.contentInset = .init(top: 32, left: 0, bottom: 0, right: 0) // Отступ сверху
         cv.backgroundColor = .clear
         cv.register(AccountCell.self, forCellWithReuseIdentifier: AccountCell.id)
-        cv.layer.cornerRadius = 12
+        cv.cornerRadiusBottom(radius: 12)
         
         cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
@@ -77,14 +77,17 @@ final class AccountsVC: BasicVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        navigationController?.navigationBar.isHidden = true
         accountsCV.reloadData()
         
-        setupNavigationTitle(title: "Accounts".localized(), large: true)
         isAccountEmpty()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        customNavBar.customButton.addTarget(self, action: #selector(goToAddAccountVC), for: .touchUpInside)
+        customNavBar.titleLabel.text = "Accounts".localized()
                 
         accountsCV.dataSource = self
         

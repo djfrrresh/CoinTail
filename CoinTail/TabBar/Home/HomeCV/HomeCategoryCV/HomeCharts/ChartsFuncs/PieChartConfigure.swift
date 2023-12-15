@@ -1,5 +1,5 @@
 //
-//  PieChartFuncs.swift
+//  PieChartConfigure.swift
 //  CoinTail
 //
 //  Created by Eugene on 23.05.23.
@@ -14,7 +14,7 @@ extension HomeCategoryCell {
     // Настройки диаграммы
     func configureChart() {
         pieChart.rotationEnabled = false
-        pieChart.drawEntryLabelsEnabled = true //
+        pieChart.drawEntryLabelsEnabled = false
         pieChart.drawHoleEnabled = true
         pieChart.drawCenterTextEnabled = false
         pieChart.holeColor = .clear
@@ -32,7 +32,7 @@ extension HomeCategoryCell {
         let dataSet = PieChartDataSet(entries: pieChartEntries, label: "")
         let data = PieChartData(dataSets: [dataSet])
 
-        dataSet.valueTextColor = .black //
+        dataSet.valueTextColor = .clear
         dataSet.colors = pieChartColors
         
         pieChart.data = data

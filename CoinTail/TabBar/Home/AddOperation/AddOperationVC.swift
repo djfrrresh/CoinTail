@@ -92,6 +92,17 @@ final class AddOperationVC: PickerVC {
         return button
     }()
     
+    init(operationID: ObjectId) {
+        self.recordID = operationID
+        
+        super.init(nibName: nil, bundle: nil)
+        
+        self.title = "Edit transaction".localized()
+
+        guard let record = Records.shared.getRecord(for: operationID) else { return }
+        setupUI(with: record)
+    }
+    
     public required init(segmentIndex: Int) {
         addOperationTypeSwitcher.selectedSegmentIndex = segmentIndex
         addOperationSegment = segmentIndex == 0 ? .income : .expense
@@ -103,26 +114,11 @@ final class AddOperationVC: PickerVC {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    init(operationID: ObjectId) {
-        self.recordID = operationID
-        
-        super.init(nibName: nil, bundle: nil)
-        
-        guard let record = Records.shared.getRecord(for: operationID) else { return }
-        
-        self.title = "Edit transaction".localized()
-        
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .trash,
-            target: self,
-            action: #selector(removeOperation)
-        )
-        setupUI(with: record)
-    }
             
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.isHidden = false
         
         addOperationCV.delegate = self
         itemsPickerView.delegate = self

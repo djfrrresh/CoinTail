@@ -13,6 +13,7 @@ extension HomeVC {
     func homeButtonTargets() {
         homeTypeSwitcher.addTarget(self, action: #selector(switchAction), for: .valueChanged)
         addOperationButton.addTarget(self, action: #selector(goToAddOperationVC), for: .touchUpInside)
+        customNavBar.customButton.addTarget(self, action: #selector(goToAddOperationVC), for: .touchUpInside)
     }
         
 }
