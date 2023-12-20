@@ -15,11 +15,13 @@ struct PremiumSettings: Decodable {
     
     var expirationDate: Date? {
         guard let expirationDateUnix = premiumActiveUntil else { return nil }
+        
         return Date(timeIntervalSince1970: TimeInterval(expirationDateUnix))
     }
     
     var stillActive: Bool {
         guard let expirationDate = expirationDate else { return false }
+        
         return expirationDate > Date()
     }
     

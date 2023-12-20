@@ -9,19 +9,12 @@ import UIKit
 
 
 extension PremiumVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch indexPath.section {
-        default:
-            return
-        }
-    }
-    
+
     // Динамические размеры ячеек
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch cellIdentifier(for: indexPath) {
         case PremiumDescriptionCell.id:
-            return PremiumDescriptionCell.size()
+            return PremiumDescriptionCell.size(description: "Try it for free to get access to all the features".localized())
         case PremiumPlansCell.id:
             return .init(
                 width: UIScreen.main.bounds.width,

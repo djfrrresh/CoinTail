@@ -14,16 +14,8 @@ struct PlanData: Equatable {
     var buyButtonTitle = ""
     var period = ""
     var description = ""
+    var privacyText = ""
     var isTrial: Bool = false
-//    {
-//        get {
-//            if AppSettings.shared.premiumDisplay == .tcs {
-//                return false
-//            } else {
-//                return promoText != nil
-//            }
-//        }
-//    }
     var trialDaysInt: Int?
     var promoText: String?
     var package: Package?

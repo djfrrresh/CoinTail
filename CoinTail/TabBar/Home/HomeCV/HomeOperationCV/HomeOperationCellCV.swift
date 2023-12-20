@@ -80,9 +80,9 @@ extension HomeOperationCell: UICollectionViewDataSource, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let headerView = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind,
-            withReuseIdentifier: OperationCVHeader.id,
+            withReuseIdentifier: HomeOperationHeader.id,
             for: indexPath
-        ) as? OperationCVHeader else {
+        ) as? HomeOperationHeader else {
             return UICollectionViewCell()
         }
         

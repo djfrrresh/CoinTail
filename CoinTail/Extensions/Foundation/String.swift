@@ -15,6 +15,32 @@ extension String {
         return NSLocalizedString(self, comment: "")
     }
     
+    //TODO: переделать функцию, сделать учитывание дополнительной подстроки, убрать кучу if
+    func indexString(of substring: String) -> Int? {
+        var index: Int?
+        var indexOf: Int = 0
+        let substring = substring.map { $0 }
+        
+        for (i, character) in self.enumerated() {
+            if character == substring[indexOf] {
+                if index == nil {
+                    index = i
+                }
+                indexOf += 1
+                
+                if indexOf == substring.count - 1 {
+                    return index
+                }
+            } else {
+                index = nil
+                indexOf = 0
+            }
+        }
+        
+        return index
+    }
+    
+    // Проверяет текст на наличие эмодзи
     var containsEmoji: Bool {
         for scalar in unicodeScalars {
             switch scalar.value {

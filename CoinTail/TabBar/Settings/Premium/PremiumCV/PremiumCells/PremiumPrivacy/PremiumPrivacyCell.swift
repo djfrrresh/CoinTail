@@ -19,7 +19,7 @@ final class PremiumPrivacyCell: UICollectionViewCell {
     static let id = "PremiumPrivacyCell"
 
     weak var privacyDelegate: PremiumPrivacyDelegate?
-//    private var ranges = [PrivacyLink: NSRange]()
+    private var ranges = [PrivacyLink: NSRange]()
     
     let descriptionLabel: UILabel = getDescriptionLabel()
     
@@ -59,71 +59,76 @@ final class PremiumPrivacyCell: UICollectionViewCell {
     }
     
     func setupDescriptionLabelText(_ data: PlanData) {
-//        ranges.removeAll()
+        ranges.removeAll()
         
         var description: String!
+        let privacyText = data.privacyText
+        description = privacyText
         
         if let trialDays = data.trialDaysInt {
             let dateFormatter: DateFormatter = {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "dd.MM.yyyy"
-                
+
                 return dateFormatter
             }()
-            
             let expirationDate = Date().advanced(by: 86400 * Double(trialDays))
             let dateString = dateFormatter.string(from: expirationDate)
             
-            let descriptionFormat = NSLocalizedString("After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our Terms and Privacy Policy.".localized(), comment: "")
-
-            description = String.localizedStringWithFormat(descriptionFormat, dateString)
+            description = String.localizedStringWithFormat(description, dateString)
         } else {
-            description = "By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our Terms and Privacy Policy.".localized()
+            description = data.privacyText
         }
-                
-//        let attributedString = NSMutableAttributedString(
-//            string: description,
-//            attributes: [
-//                NSAttributedString.Key.font: descriptionLabel.font!,
-//                NSAttributedString.Key.kern: -0.17]
-//        )
         
-//        for privacy in privacys.payWallLinks {
-//            let localizedText: String = .localized(privacy.localizationKey)
-//            if description.contains(localizedText) {
-//                let range = NSRange(location: description.index(of: localizedText)!.utf16Offset(in: description), length: localizedText.contains(".") ? localizedText.count - 1 :  localizedText.count)
-//
-//                attributedString.addAttribute(NSAttributedString.Key.underlineStyle,
-//                                              value: NSUnderlineStyle.single.rawValue,
-//                                              range: range)
-//                descriptionLabel.attributedText = attributedString
-//                ranges[privacy] = range
-//            } else {
+        let privacys = Privacy.privacy
+        
+        let attributedString = NSMutableAttributedString(
+            string: description,
+            attributes: [
+                NSAttributedString.Key.font: descriptionLabel.font!,
+                NSAttributedString.Key.kern: -0.17]
+        )
+        
+        for privacy in privacys.premiumLinks {
+            let localizedText: String = privacy.localizationKey.localized()
+            
+            if description.contains(localizedText) {
+                let range = NSRange(
+                    location: description.indexString(of: localizedText)!,
+                    length: localizedText.contains(".") ? localizedText.count - 1 :  localizedText.count
+                )
+                
+                attributedString.addAttribute(NSAttributedString.Key.underlineStyle,
+                                              value: NSUnderlineStyle.single.rawValue,
+                                              range: range)
+                descriptionLabel.attributedText = attributedString
+                ranges[privacy] = range
+            } else {
                 descriptionLabel.text = description
-//            }
-//        }
+            }
+        }
         
         self.descriptionLabel.isUserInteractionEnabled = true
         
-        let descriptionTap = UITapGestureRecognizer(target: self, action: #selector(tappedOnLabel(_ :)))
-        descriptionTap.numberOfTapsRequired = 1
-        
-        self.descriptionLabel.addGestureRecognizer(descriptionTap)
+        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(tappedOnLabel(_ :)))
+        tapgesture.numberOfTapsRequired = 1
+        self.descriptionLabel.addGestureRecognizer(tapgesture)
     }
     
     @objc func tapped() {
-//        delegate?.restorePurchaseButtonTap()
+        privacyDelegate?.restorePurchaseButtonTap()
     }
     
     @objc func tappedOnLabel(_ gesture: UITapGestureRecognizer) {
-//        guard let privacys = AppSettings.shared.privacy else { return }
-//
-//        for privacy in privacys.payWallLinks {
-//            guard let range = ranges[privacy] else { return }
-//            if gesture.didTapAttributedTextInLabel(label: self.descriptionLabel, inRange: range) {
-//                delegate?.showLegalDocuments(link: privacy.url)
-//            }
-//        }
+        let privacys = Privacy.privacy
+
+        for privacy in privacys.premiumLinks {
+            guard let range = ranges[privacy] else { return }
+            
+            if gesture.didTapAttributedTextInLabel(label: self.descriptionLabel, inRange: range) {
+                privacyDelegate?.showLegalDocuments(link: privacy.url)
+            }
+        }
     }
     
     static func getDescriptionLabel() -> UILabel {
@@ -156,11 +161,11 @@ final class PremiumPrivacyCell: UICollectionViewCell {
             let expirationDate = Date().advanced(by: 86400 * Double(trialDays))
             let dateString = dateFormatter.string(from: expirationDate)
             
-            let descriptionFormat = NSLocalizedString("After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our Terms and Privacy Policy.".localized(), comment: "")
+            let descriptionFormat = NSLocalizedString("After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our Terms, User Agreement and Privacy Policy.".localized(), comment: "")
 
             description.text = String.localizedStringWithFormat(descriptionFormat, dateString)
         } else {
-            description.text = "By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our Terms and Privacy Policy.".localized()
+            description.text = "By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our Terms, User Agreement and Privacy Policy.".localized()
         }
         
         let descriptionSize = description.sizeThatFits(.init(width: textWidth, height: 0))

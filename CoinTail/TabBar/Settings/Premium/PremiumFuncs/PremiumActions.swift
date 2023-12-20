@@ -14,4 +14,12 @@ extension PremiumVC {
         dismiss(animated: true, completion: nil)
     }
     
+    @objc func buyButtonAction() {
+        buyPremiumButton.waitingState(true)
+        self.view.isUserInteractionEnabled = false
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+
+        revenueCatPayment()
+    }
+    
 }

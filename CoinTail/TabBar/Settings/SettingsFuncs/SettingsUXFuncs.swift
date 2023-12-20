@@ -29,8 +29,10 @@ extension SettingsVC {
         )
     }
     
-    private func deleteConfirmationAlert() {
-        let alertController = UIAlertController(title: "Type 'Delete all data' to confirm the action".localized(), message: nil, preferredStyle: .alert)
+    private func deleteConfirmationAlert(isFail: Bool = false) {
+        let message = isFail ? "Failed to delete data - you entered an invalid line" : ""
+
+        let alertController = UIAlertController(title: "Type 'Delete all data' to confirm the action".localized(), message: message, preferredStyle: .alert)
 
         alertController.addTextField { textField in
             textField.placeholder = "Delete all data".localized()
@@ -57,7 +59,7 @@ extension SettingsVC {
             
             infoAlert("All data has been deleted!".localized(), "")
         } else {
-            infoAlert("Failed to delete data - you entered an invalid line".localized())
+            deleteConfirmationAlert(isFail: true)
         }
     }
     

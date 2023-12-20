@@ -40,21 +40,23 @@ extension AddOperationVC: SendCategoryID, AddOperationCellDelegate {
     func recordValidation(amount: Double, categoryText: String, accountID: ObjectId?, completion: ((ObjectId) -> Void)? = nil) {
         let missingAmount = "\(amount)" == "" || amount == 0
         let missingCategory = categoryText == ""
-//        var account: AccountClass?
-//        if let accID = accountID {
-//            account = Accounts.shared.getAccount(for: accID)
-//        }
+        var account: AccountClass?
+        if let accID = accountID {
+            account = Accounts.shared.getAccount(for: accID)
+        }
 
         if missingAmount {
             infoAlert("Missing value in amount field".localized())
         } else if missingCategory {
             infoAlert("No category selected".localized())
-        }
-        // TODO: premium
-//        else if account != nil && account?.currency != "\(selectedCurrency)" {
-//            infoAlert("You cannot specify an account for this transaction with another currency".localized())
-//        }
-        else {
+        } else if account != nil && account?.currency != "\(selectedCurrency)" {
+            //TODO: premium
+//            if AppSettings.shared.premium?.isPremiumActive ?? false {
+                infoAlert("You cannot specify an account for this transaction with another currency".localized())
+                
+                return
+//            }
+        } else {
             guard let categoryID = self.categoryID,
                   let category = Categories.shared.getGeneralCategory(for: categoryID) else { return }
 

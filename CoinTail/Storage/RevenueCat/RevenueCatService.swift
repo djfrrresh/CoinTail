@@ -17,7 +17,7 @@ final class RevenueCatService {
     
     static let shared = RevenueCatService()
     
-    func getOfferings(completion: @escaping ([PlanData]?)->()) {
+    func getOfferings(completion: @escaping ([PlanData]?) -> ()) {
         Purchases.shared.getOfferings { (offerings, error) in
             var plan = [PlanData]()
             
@@ -28,7 +28,6 @@ final class RevenueCatService {
             
             for package in packages {
                 guard let period = package.storeProduct.subscriptionPeriod else { return }
-//               guard let dateValue = package.storeProduct.subscriptionPeriod?.value else { return }
                 
                 let price = package.storeProduct.localizedPriceString
                 
@@ -88,7 +87,7 @@ final class RevenueCatService {
     }
     
     // Восстановить покупки
-    func restorePurchases(completion: @escaping (RestoreResponse)->()) {
+    func restorePurchases(completion: @escaping (RestoreResponse) -> ()) {
         Purchases.shared.restorePurchases { customerInfo, error in
             if let customerInfo = customerInfo {
                 if customerInfo.activeSubscriptions.count > 0 {
@@ -107,7 +106,7 @@ final class RevenueCatService {
         }
     }
     
-    func getCustomerInfo(completion: @escaping (CustomerInfo?, Date?)->()) {
+    func getCustomerInfo(completion: @escaping (CustomerInfo?, Date?) -> ()) {
         Purchases.shared.getCustomerInfo { (customerInfo, error) in
             guard let customerInfo = customerInfo else {
                 completion(nil, nil)
@@ -120,10 +119,12 @@ final class RevenueCatService {
                let expirationDate = customerInfo.expirationDate(forProductIdentifier: entitlement.productIdentifier),
                expirationDate.timeIntervalSince1970 > Date().timeIntervalSince1970 {
                 expDate = expirationDate
-            } else if let expirationDateUnix = AppSettings.shared.premium?.premiumActiveUntil,
-                      Date(timeIntervalSince1970: TimeInterval(expirationDateUnix)) > Date() {
-                expDate = Date(timeIntervalSince1970: TimeInterval(expirationDateUnix))
             }
+            //TODO: premium
+//            else if let expirationDateUnix = AppSettings.shared.premium?.premiumActiveUntil,
+//                      Date(timeIntervalSince1970: TimeInterval(expirationDateUnix)) > Date() {
+//                expDate = Date(timeIntervalSince1970: TimeInterval(expirationDateUnix))
+//            }
             
             guard let expDate = expDate else {
                 completion(customerInfo, nil)
@@ -134,7 +135,7 @@ final class RevenueCatService {
         }
     }
     
-    func purchase(package: Package, completion: @escaping (CustomerInfo?, Date?)->()) {
+    func purchase(package: Package, completion: @escaping (CustomerInfo?, Date?) -> ()) {
         Purchases.shared.purchase(package: package) { (transaction, customerInfo, error, userCancelled) in
             guard let customerInfo = customerInfo else {
                 completion(nil, nil)
@@ -148,10 +149,12 @@ final class RevenueCatService {
                expirationDate.timeIntervalSince1970 > Date().timeIntervalSince1970 {
                 expDate = expirationDate
 //                NetworkManager.shared.premiumReport(customerInfo)
-            } else if let expirationDateUnix = AppSettings.shared.premium?.premiumActiveUntil,
-                      Date(timeIntervalSince1970: TimeInterval(expirationDateUnix)) > Date() {
-                expDate = Date(timeIntervalSince1970: TimeInterval(expirationDateUnix))
             }
+            //TODO: premium
+//            else if let expirationDateUnix = AppSettings.shared.premium?.premiumActiveUntil,
+//                      Date(timeIntervalSince1970: TimeInterval(expirationDateUnix)) > Date() {
+//                expDate = Date(timeIntervalSince1970: TimeInterval(expirationDateUnix))
+//            }
             
             guard let expDate = expDate else {
                 completion(customerInfo, nil)

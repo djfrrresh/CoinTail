@@ -12,7 +12,7 @@ final class PremiumVC: BasicVC, PremiumPlansDelegate {
         
     func selectedPlanCell(_ index: Int, isSelectedBefore: Bool) {
         if isSelectedBefore {
-            tapped()
+            buyButtonAction()
         }
         
         plan = plans[index]
@@ -38,6 +38,15 @@ final class PremiumVC: BasicVC, PremiumPlansDelegate {
     let buttonBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
+        
+        let subLayer = CALayer()
+        subLayer.borderColor = UIColor.gray.withAlphaComponent(0.2).cgColor
+        subLayer.borderWidth = 0.5
+        
+        let size = CGSize(width: UIScreen.main.bounds.width, height: 0.5)
+        subLayer.frame = CGRect(origin: .zero, size: size)
+        
+        view.layer.addSublayer(subLayer)
         
         return view
     }()
@@ -139,6 +148,8 @@ final class PremiumVC: BasicVC, PremiumPlansDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        buyPremiumButton.addTarget(self, action: #selector(buyButtonAction), for: .touchUpInside)
                 
         premiumCV.delegate = self
 

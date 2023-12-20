@@ -35,7 +35,7 @@ final class HomeOperationCell: UICollectionViewCell {
         cv.scrollIndicatorInsets = .zero
         cv.backgroundColor = .clear
         cv.register(OperationCVCell.self, forCellWithReuseIdentifier: OperationCVCell.id)
-        cv.register(OperationCVHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: OperationCVHeader.id)
+        cv.register(HomeOperationHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeOperationHeader.id)
         
         cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false

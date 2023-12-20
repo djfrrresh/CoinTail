@@ -54,7 +54,7 @@
 "Manage your finances by tracking your expenses and income via different categories" = "Manage your finances by tracking your expenses and income via different categories";
 "Add a transaction" = "Add a transaction";
 /// Title
-"Balance:" = "Balance:";
+"Balance" = "Balance";
 /// Periods CV
 "All the time" = "All the time";
 "Year" = "Year";
@@ -103,6 +103,7 @@
 "Category name is missing" = "Category name is missing";
 "Category icon not selected" = "Category icon not selected";
 "No parent category selected" = "No parent category selected";
+"Creating subcategories is only available with a Premium subscription" = "Creating subcategories is only available with a Premium subscription";
 
 // BudgetsVC
 "Active budgets" = "Active budgets";
@@ -229,8 +230,20 @@
 "Restore purchase" = "Restore purchase";
 "Start trial subscription" = "Start trial subscription";
 "Continue - total" = "Continue - total";
-"By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our Terms and Privacy Policy." = "By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our Terms and Privacy Policy.";
-"After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our Terms and Privacy Policy." = "After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our Terms and Privacy Policy.";
+"By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our Terms, User Agreement and Privacy Policy." = "By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our Terms, User Agreement and Privacy Policy.";
+"After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our Terms, User Agreement and Privacy Policy." = "After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our Terms, User Agreement and Privacy Policy.";
+/// Alert
+"No valid premium subscription found on this account" = "No valid premium subscription found on this account";
+"Failed to restore subscription" = "Failed to restore subscription";
+
+// HavePremiumVC
+"You have bought a premium subscription" = "You have bought a premium subscription";
+"Great" = "Great";
+"Now you have access to" = "Now you have access to";
+"The current period will end" = "The current period will end";
+
+// WebViewVC
+"Read" = "Read";
 
 // Currencies
 "United Arab Emirates Dirham" = "United Arab Emirates Dirham";

@@ -19,39 +19,6 @@ final class Records {
         }
     }
     
-    // Получает сумму из операций за указанный период времени
-    func getAmount(for period: DatePeriods, type: RecordType, step: Int = 0, categoryID: ObjectId? = nil, completion: @escaping (Double?) -> Void) {
-        // Получить уникальные валюты
-        let uniqueCurrencies = Set(records.map { $0.currency })
-        let selectedCurrency = Currencies.shared.selectedCurrency.currency
-
-        // Получить курсы обмена для каждой валюты
-        let exchangeRates = ExchangeRateManager.shared.exchangeRates[selectedCurrency]
-
-        guard let exchangeRates = exchangeRates else {
-            print("Failed to get exchangeRates")
-            completion(nil)
-            return
-        }
-
-        var totalAmountInSelectedCurrency: Double = 0.0
-
-        for currency in uniqueCurrencies {
-            let currencyRecords = getRecords(for: period, type: type, step: step, categoryID: categoryID).filter { $0.currency == currency }
-
-            let totalAmountInCurrency = currencyRecords.reduce(0.0) { total, record in
-                if let exchangeRate = exchangeRates[currency] {
-                    return total + (record.amount / exchangeRate)
-                }
-                return total
-            }
-            
-            totalAmountInSelectedCurrency += totalAmountInCurrency
-        }
-
-        completion(totalAmountInSelectedCurrency)
-    }
-    
     // Получает операции за указанный период времени
     func getRecords(for period: DatePeriods, type: RecordType, step: Int = 0, categoryID: ObjectId? = nil) -> [RecordClass] {
         let calendar = Calendar.current
@@ -136,8 +103,53 @@ final class Records {
         completion?(true)
     }
     
+    // Получает сумму из операций за указанный период времени
+    func getAmount(for period: DatePeriods, type: RecordType, step: Int = 0, categoryID: ObjectId? = nil, completion: (Double?) -> Void) {
+        let selectedCurrency = Currencies.shared.selectedCurrency.currency
+        var records = getRecords(for: period, type: type, step: step, categoryID: categoryID)
+
+        // Проверка премиум-статуса
+        //TODO: premium
+//        if AppSettings.shared.premium?.isPremiumActive ?? false {
+            // Получить уникальные валюты
+            let uniqueCurrencies = Set(records.map { $0.currency })
+
+            // Получить курсы обмена для каждой валюты
+            let exchangeRates = ExchangeRateManager.shared.exchangeRates[selectedCurrency]
+
+            guard let exchangeRates = exchangeRates else {
+                print("Failed to get exchangeRates")
+                completion(nil)
+                return
+            }
+
+            var totalAmountInSelectedCurrency: Double = 0.0
+
+            for currency in uniqueCurrencies {
+                records = records.filter { $0.currency == currency }
+
+                let totalAmountInCurrency = records.reduce(0.0) { total, record in
+                    if let exchangeRate = exchangeRates[currency] {
+                        return total + (record.amount / exchangeRate)
+                    }
+                    return total
+                }
+
+                totalAmountInSelectedCurrency += totalAmountInCurrency
+            }
+
+            completion(totalAmountInSelectedCurrency)
+//        } else {
+//            records = records.filter { $0.currency == selectedCurrency }
+//
+//            let totalAmount = records.reduce(0.0) { $0 + $1.amount }
+//
+//            completion(totalAmount)
+//        }
+    }
+    
     // Получает сумму из категории с начальной даты до конечной с указанным периодом (неделя / месяц)
-    func getBudgetAmount(budgetID: ObjectId, completion: @escaping (Double?) -> Void) {
+    func getBudgetAmount(budgetID: ObjectId, completion: (Double?) -> Void) {
         guard let budget = Budgets.shared.getBudget(for: budgetID),
               let category = Categories.shared.getCategory(for: budget.categoryID) else { return }
         
@@ -150,58 +162,70 @@ final class Records {
         
         // Получаем все записи для всех категорий и подкатегорий
         // Фильтруем записи по датам
-        let records = self.records.filter {
+        var records = self.records.filter {
             $0.type == RecordType.expense.rawValue
             && allSubcategoryIDs.contains($0.categoryID)
             && $0.date >= date && $0.date <= untilDate
         }
         
-        // Считаем сумму
-        for record in records {
-            if record.currency == currency {
-                totalAmount += record.amount
-            } else {
-                let exchangeRates = ExchangeRateManager.shared.exchangeRates[currency]
-
-                guard let exchangeRates = exchangeRates,
-                      let exchangeRate = exchangeRates[record.currency] else {
-                    print("Failed to get exchangeRates")
-                    completion(nil)
-                    return
-                }
-
-                let convertedAmount = record.amount / exchangeRate
-                totalAmount += convertedAmount
-            }
-        }
-        
-        completion(totalAmount)
-    }
-    
-    // Считает конечный баланс для счёта
-    func calculateTotalBalance(for accountID: ObjectId, completion: @escaping (Double?) -> Void) {
-        var totalAmount: Double = 0
-
-        for record in records {
-            if let recordAccountID = record.accountID,
-               recordAccountID == accountID,
-               let account = Accounts.shared.getAccount(for: accountID) {
-                
-                if account.currency == record.currency {
+        //TODO: premium
+//        if AppSettings.shared.premium?.isPremiumActive ?? false {
+            // Считаем сумму
+            for record in records {
+                if record.currency == currency {
                     totalAmount += record.amount
                 } else {
-                    let exchangeRates = ExchangeRateManager.shared.exchangeRates[account.currency]
-
+                    let exchangeRates = ExchangeRateManager.shared.exchangeRates[currency]
+                    
                     guard let exchangeRates = exchangeRates,
                           let exchangeRate = exchangeRates[record.currency] else {
                         print("Failed to get exchangeRates")
                         completion(nil)
                         return
                     }
-
+                    
                     let convertedAmount = record.amount / exchangeRate
                     totalAmount += convertedAmount
                 }
+            }
+//        } else {
+//            records = records.filter { $0.currency == budget.currency }
+//            totalAmount = records.reduce(0.0) { $0 + $1.amount }
+//        }
+        
+        completion(totalAmount)
+    }
+    
+    // Считает конечный баланс для счёта
+    func calculateTotalBalance(for accountID: ObjectId, completion: (Double?) -> Void) {
+        var totalAmount: Double = 0
+
+        for record in records {
+            if let recordAccountID = record.accountID,
+               recordAccountID == accountID,
+               let account = Accounts.shared.getAccount(for: accountID) {
+                //TODO: premium
+//                if AppSettings.shared.premium?.isPremiumActive ?? false {
+                    if account.currency == record.currency {
+                        totalAmount += record.amount
+                    } else {
+                        let exchangeRates = ExchangeRateManager.shared.exchangeRates[account.currency]
+                        
+                        guard let exchangeRates = exchangeRates,
+                              let exchangeRate = exchangeRates[record.currency] else {
+                            print("Failed to get exchangeRates")
+                            completion(nil)
+                            return
+                        }
+                        
+                        let convertedAmount = record.amount / exchangeRate
+                        totalAmount += convertedAmount
+                    }
+//                } else {
+//                    let records = records.filter { $0.currency == account.currency }
+//                    
+//                    totalAmount = records.reduce(0.0) { $0 + $1.amount }
+//                }
             }
         }
         
