@@ -25,31 +25,42 @@ extension PremiumVC {
     }
     
     func revenueCatPayment() {
-        PaymentFacade.shared.payPremium(plan: plan.package) { [weak self] (_, date) in
-            guard let strongSelf = self else {
-                DispatchQueue.main.async {
-                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                }
-                self?.buyPremiumButton.waitingState(false)
-                self?.view.isUserInteractionEnabled = true
-                
-                return
-            }
-
-            if let date = date {
-                self?.dismiss(animated: false) {
-                    let vc = HavePremiumVC(AdvantagesData.advantages, expirationDate: date)
-                    vc.modalPresentationStyle = .fullScreen
-                    
-                    strongSelf.present(vc, animated: true)
-                }
-            } else {
-                UIImpactFeedbackGenerator(style: .light).impactOccurred()
-            }
-
-            strongSelf.buyPremiumButton.waitingState(false)
-            strongSelf.view.isUserInteractionEnabled = true
-        }
+//        PaymentFacade.shared.payPremium(plan: plan.package) { [weak self] (_, date) in
+//            guard let strongSelf = self else {
+//                DispatchQueue.main.async {
+//                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+//                }
+//                self?.buyPremiumButton.waitingState(false)
+//                self?.view.isUserInteractionEnabled = true
+//
+//                return
+//            }
+//
+//            //TODO: не приходит date из за plan.package
+//            if let date = date {
+        // возможно будет работать без dismiss
+//                self?.dismiss(animated: false) {
+//                    guard var topController = UIApplication.shared.windows.first?.rootViewController?.presentedViewController else { return }
+//
+//                    let vc = HavePremiumVC(AdvantagesData.advantages, expirationDate: date)
+//                    vc.modalPresentationStyle = .fullScreen
+//
+//                    topController.present(vc, animated: true)
+//                }
+//            } else {
+//                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+//            }
+        // удалить dismiss
+        let date = Date()
+        let vc = HavePremiumVC(AdvantagesData.advantages, expirationDate: date)
+        vc.modalPresentationStyle = .fullScreen
+        guard var topController = UIApplication.shared.windows.first?.rootViewController?.presentedViewController else { return }
+        
+        topController.present(vc, animated: true)
+            
+//            strongSelf.buyPremiumButton.waitingState(false)
+//            strongSelf.view.isUserInteractionEnabled = true
+//        }
     }
     
 }

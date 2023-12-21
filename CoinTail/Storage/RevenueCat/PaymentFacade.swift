@@ -12,18 +12,13 @@ final class PaymentFacade {
     
     static let shared = PaymentFacade()
 
-    func getPlanCellData(completion: @escaping ([PlanData]?) -> ()) {
-//        switch AppSettings.shared.premiumDisplay {
-//        case .revenueCat:
-            RevenueCatService.shared.getOfferings { data in
-                completion(data)
-            }
-//        default:
-//            completion(nil)
-//        }
+    func getPlanCellData(completion: @escaping ([PlanData]?) -> Void) {
+        RevenueCatService.shared.getOfferings { data in
+            completion(data)
+        }
     }
 
-    func payPremium(plan: Package?, completion: @escaping (CustomerInfo?, Date?) -> ()) {
+    func payPremium(plan: Package?, completion: @escaping (CustomerInfo?, Date?) -> Void) {
         guard let package = plan else {
             completion(nil,nil)
             return
@@ -34,14 +29,14 @@ final class PaymentFacade {
         }
     }
     
-    func getCustomerInfo(completion: @escaping (CustomerInfo?, Date?) -> ()) {
+    func getCustomerInfo(completion: @escaping (CustomerInfo?, Date?) -> Void) {
         RevenueCatService.shared.getCustomerInfo(completion: { customerInfo, date in
             completion(customerInfo, date)
         })
     }
     
     
-    func restorePurchases(completion: @escaping (RestoreResponse)->()) {
+    func restorePurchases(completion: @escaping (RestoreResponse) -> Void) {
         RevenueCatService.shared.restorePurchases { resp in
             completion(resp)
         }

@@ -116,14 +116,12 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
                 step: currentStep,
                 categoryID: categorySort?.id
             ) { amounts in
-                DispatchQueue.main.async {
-                    if let amounts = amounts {
-                        // Отображаем сумму с ограничением до 2 знаков после запятой
-                        let formattedAmount = String(format: "%.2f", amounts)
-                        cell.amountForPeriodLabel.text = "\(formattedAmount) \(selectedCurrency)"
-                    } else {
-                        cell.amountForPeriodLabel.text = "0.00"
-                    }
+                if let amounts = amounts {
+                    // Отображаем сумму с ограничением до 2 знаков после запятой
+                    let formattedAmount = String(format: "%.2f", amounts)
+                    cell.amountForPeriodLabel.text = "\(formattedAmount) \(selectedCurrency)"
+                } else {
+                    cell.amountForPeriodLabel.text = "0.00"
                 }
             }
             cell.periodLabel.text = getPeriodLabel(step: currentStep)

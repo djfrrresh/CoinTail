@@ -42,6 +42,7 @@ final class Accounts {
     }
     
     // Удаляет счет по его ID
+    //TODO: сломалось удаление
     func deleteAccount(for id: ObjectId, completion: ((Bool) -> Void)? = nil) {
         guard let account = getAccount(for: id) else {
             completion?(false)

@@ -63,6 +63,7 @@ final class AddAccountVC: PickerVC {
     //TODO: переделать сохранение amount и name при удалении 1 символа
     init(accountID: ObjectId) {
         self.accountID = accountID
+
         super.init(nibName: nil, bundle: nil)
 
         self.title = "Edit account".localized()

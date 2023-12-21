@@ -35,7 +35,6 @@ final class Transfers {
 
             guard let exchangeRates = exchangeRates,
                   let exchangeRate = exchangeRates[targetAccount.currency] else {
-                print("Failed to get exchangeRates")
                 return
             }
             

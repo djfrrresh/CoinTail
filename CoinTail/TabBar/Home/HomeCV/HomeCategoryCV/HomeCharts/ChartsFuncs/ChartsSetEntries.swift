@@ -50,7 +50,6 @@ extension HomeCategoryCell {
 
         guard let exchangeRates = exchangeRates,
               let exchangeRate = exchangeRates[recordCurrency] else {
-            print("Failed to get exchangeRates")
             completion(nil)
             return
         }

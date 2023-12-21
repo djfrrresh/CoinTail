@@ -152,7 +152,8 @@
 		5691E0462B323B660077B13C /* WebViewVCFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5691E0452B323B660077B13C /* WebViewVCFuncs.swift */; };
 		5691E0482B32438D0077B13C /* PrivacyLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5691E0472B32438D0077B13C /* PrivacyLink.swift */; };
 		5691E04A2B32533D0077B13C /* UITapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5691E0492B32533D0077B13C /* UITapGestureRecognizer.swift */; };
-		5691E04C2B3331FF0077B13C /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5691E04B2B3331FF0077B13C /* Alert.swift */; };
+		5691E04C2B3331FF0077B13C /* PremiumAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5691E04B2B3331FF0077B13C /* PremiumAlert.swift */; };
+		5691E04F2B33911E0077B13C /* PremiumAlertFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5691E04E2B33911E0077B13C /* PremiumAlertFuncs.swift */; };
 		569B60D92AE14F1F00CBFF33 /* NotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B60D82AE14F1F00CBFF33 /* NotificationsCell.swift */; };
 		569B60DB2AE153C100CBFF33 /* NotificationsCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B60DA2AE153C100CBFF33 /* NotificationsCVDataSource.swift */; };
 		569B60DD2AE1590300CBFF33 /* NotificationsUXFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B60DC2AE1590300CBFF33 /* NotificationsUXFuncs.swift */; };
@@ -382,7 +383,8 @@
 		5691E0452B323B660077B13C /* WebViewVCFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewVCFuncs.swift; sourceTree = "<group>"; };
 		5691E0472B32438D0077B13C /* PrivacyLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyLink.swift; sourceTree = "<group>"; };
 		5691E0492B32533D0077B13C /* UITapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITapGestureRecognizer.swift; sourceTree = "<group>"; };
-		5691E04B2B3331FF0077B13C /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		5691E04B2B3331FF0077B13C /* PremiumAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumAlert.swift; sourceTree = "<group>"; };
+		5691E04E2B33911E0077B13C /* PremiumAlertFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumAlertFuncs.swift; sourceTree = "<group>"; };
 		569B60D82AE14F1F00CBFF33 /* NotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCell.swift; sourceTree = "<group>"; };
 		569B60DA2AE153C100CBFF33 /* NotificationsCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCVDataSource.swift; sourceTree = "<group>"; };
 		569B60DC2AE1590300CBFF33 /* NotificationsUXFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsUXFuncs.swift; sourceTree = "<group>"; };
@@ -551,7 +553,6 @@
 				56D0E9222B23EC920088C92F /* UIBezierPath.swift */,
 				56D0E9242B2B32200088C92F /* UINavigationBar.swift */,
 				5691E0492B32533D0077B13C /* UITapGestureRecognizer.swift */,
-				5691E04B2B3331FF0077B13C /* Alert.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -559,6 +560,7 @@
 		560AFBED2A13C1CA0054B502 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5691E04D2B3354680077B13C /* PremiumAlert */,
 				5691E0422B3239110077B13C /* WebView */,
 				568999E82B1A31D600075433 /* Picker */,
 				560AFBEE2A13C1D30054B502 /* Basic */,
@@ -1178,6 +1180,15 @@
 			path = WebView;
 			sourceTree = "<group>";
 		};
+		5691E04D2B3354680077B13C /* PremiumAlert */ = {
+			isa = PBXGroup;
+			children = (
+				5691E04B2B3331FF0077B13C /* PremiumAlert.swift */,
+				5691E04E2B33911E0077B13C /* PremiumAlertFuncs.swift */,
+			);
+			path = PremiumAlert;
+			sourceTree = "<group>";
+		};
 		569B60D72AE14D1E00CBFF33 /* NotificitaionsCV */ = {
 			isa = PBXGroup;
 			children = (
@@ -1720,7 +1731,7 @@
 				5691E02B2B30FE8A0077B13C /* HavePremiumUIFuncs.swift in Sources */,
 				560AFC272A1BF5A30054B502 /* HomeCategoryCellCV.swift in Sources */,
 				560AFC392A1C0FC30054B502 /* PieChartConfigure.swift in Sources */,
-				5691E04C2B3331FF0077B13C /* Alert.swift in Sources */,
+				5691E04C2B3331FF0077B13C /* PremiumAlert.swift in Sources */,
 				564F08FE2A531AEE004C89C7 /* AddBudgetVC.swift in Sources */,
 				5676C8B92B20FD8F008A6395 /* PremiumPlansCell.swift in Sources */,
 				568EF0642AB0D81200EB042D /* SettingsCVDelegate.swift in Sources */,
@@ -1851,6 +1862,7 @@
 				5691E0442B3239290077B13C /* WebViewVC.swift in Sources */,
 				567E939D2B039BDE0045C01B /* CreateCategoryCellTFDelegate.swift in Sources */,
 				568EF0382AA61C7200EB042D /* AddAccountUIFuncs.swift in Sources */,
+				5691E04F2B33911E0077B13C /* PremiumAlertFuncs.swift in Sources */,
 				567E93842AF449220045C01B /* AddBudgetCVDelegate.swift in Sources */,
 				560996722AE97D7100EAEE1C /* TransfersHistoryCVHeader.swift in Sources */,
 				568EF0412AA8CA5100EB042D /* AccountsTransferVC.swift in Sources */,

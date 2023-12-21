@@ -19,6 +19,7 @@ class Currencies {
     let currencyCodes: [String] = Currency.allCases.map { "\($0)" }
     
     // Избранные валюты
+    //TODO: не очищаются валюты после удаления всех данных
     var favouriteCurrencies: [FavouriteCurrencyClass] {
         get {
             return RealmService.shared.favouriteCurrenciesArr
