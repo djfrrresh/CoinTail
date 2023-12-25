@@ -10,11 +10,7 @@ import UIKit
 
 final class AccountsVC: BasicVC {
             
-    var accounts: [AccountClass] {
-        get {
-            return RealmService.shared.accountsArr
-        }
-    }
+    var accounts: [AccountClass] = RealmService.shared.accountsArr
     
     static let noAccountsText = "You have no accounts added"
     static let accountsDescriptionText = "Here you can add different money storage methods, such as cards, cash or a bank deposit"
@@ -77,8 +73,11 @@ final class AccountsVC: BasicVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.navigationBar.isHidden = true
+        // Использовать этот способ + dispatch asyncAfter если стоит async на методах 
+        accounts = RealmService.shared.accountsArr
         accountsCV.reloadData()
+
+        navigationController?.navigationBar.isHidden = true
         
         isAccountEmpty()
     }
@@ -86,6 +85,9 @@ final class AccountsVC: BasicVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        accounts = RealmService.shared.accountsArr
+        accountsCV.reloadData()
+
         customNavBar.customButton.addTarget(self, action: #selector(goToAddAccountVC), for: .touchUpInside)
         customNavBar.titleLabel.text = "Accounts".localized()
                 

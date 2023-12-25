@@ -48,7 +48,6 @@ final class BudgetsVC: BasicVC {
         return cv
     }()
 
-    //TODO: не выполняется подсчет суммы при смене валюты 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

@@ -34,12 +34,14 @@ extension AccountsTransferVC {
             infoAlert("No accounts selected".localized())
         } else if firstAccount == secondAccount {
             infoAlert("You cannot select the same account for transfer".localized())
-        } else if firstAccountCurrency != secondAccountCurrency {
+        }
+//        else if firstAccountCurrency != secondAccountCurrency {
             //TODO: premium
 //            if AppSettings.shared.premium?.isPremiumActive ?? false {
-                infoAlert("You cannot transfer money to an account with a different currency!".localized())
+//                infoAlert("You cannot transfer money to an account with a different currency!".localized())
 //            }
-        } else {
+//        }
+    else {
             completion?(firstAccount, secondAccount)
         }
     }

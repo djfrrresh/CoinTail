@@ -27,32 +27,47 @@ final class Transfers {
     func transferBetweenAccounts(from sourceAccount: AccountClass, to targetAccount: AccountClass, amount: Double) {
         // Снимаем деньги с исходного счета и добавляем их на целевой счет
         let firstAccountBalance = sourceAccount.startBalance - amount
-
         var secondAccountBalance: Double = targetAccount.startBalance
-        
+                
         if sourceAccount.currency != targetAccount.currency {
-            let exchangeRates = ExchangeRateManager.shared.exchangeRates[sourceAccount.currency]
+            let baseCurrency = Currencies.shared.selectedCurrency.currency
 
-            guard let exchangeRates = exchangeRates,
-                  let exchangeRate = exchangeRates[targetAccount.currency] else {
+            guard let exchangeRatesToBase = ExchangeRateManager.shared.exchangeRates[baseCurrency],
+                let exchangeRateFromBase = exchangeRatesToBase[targetAccount.currency],
+                let exchangeRateToBase = exchangeRatesToBase[sourceAccount.currency] else {
                 return
             }
             
-            let convertedAmount = amount * exchangeRate
-            secondAccountBalance += convertedAmount
-
-            self.editAccounts(
+            let convertedToBase = amount / exchangeRateToBase
+            let convertedToAccountCurrency = convertedToBase * exchangeRateFromBase
+            secondAccountBalance += convertedToAccountCurrency
+            
+            editAccounts(
+                sourceAccount: sourceAccount,
+                targetAccount: targetAccount,
+                firstAccountBalance: firstAccountBalance,
+                secondAccountBalance: secondAccountBalance
+            )
+            
+            addTransferHistory(
                 sourceAccount: sourceAccount,
                 targetAccount: targetAccount,
                 firstAccountBalance: firstAccountBalance,
                 secondAccountBalance: secondAccountBalance,
                 sourceAccountAmount: amount,
-                targetAccountAmount: convertedAmount
+                targetAccountAmount: convertedToAccountCurrency
             )
         } else {
             secondAccountBalance += amount
             
             editAccounts(
+                sourceAccount: sourceAccount,
+                targetAccount: targetAccount,
+                firstAccountBalance: firstAccountBalance,
+                secondAccountBalance: secondAccountBalance
+            )
+            
+            addTransferHistory(
                 sourceAccount: sourceAccount,
                 targetAccount: targetAccount,
                 firstAccountBalance: firstAccountBalance,
@@ -64,7 +79,7 @@ final class Transfers {
     }
     
     // Функция для редактирования счетов
-    private func editAccounts(sourceAccount: AccountClass, targetAccount: AccountClass, firstAccountBalance: Double, secondAccountBalance: Double, sourceAccountAmount: Double, targetAccountAmount: Double) {
+    func editAccounts(sourceAccount: AccountClass, targetAccount: AccountClass, firstAccountBalance: Double, secondAccountBalance: Double) {
         let firstAccount = AccountClass()
         let secondAccount = AccountClass()
         
@@ -80,6 +95,22 @@ final class Transfers {
         
         Accounts.shared.editAccount(replacingAccount: firstAccount)
         Accounts.shared.editAccount(replacingAccount: secondAccount)
+    }
+    
+    //TODO: оптимизировать повторения c editAccounts
+    private func addTransferHistory(sourceAccount: AccountClass, targetAccount: AccountClass, firstAccountBalance: Double, secondAccountBalance: Double, sourceAccountAmount: Double, targetAccountAmount: Double) {
+        let firstAccount = AccountClass()
+        let secondAccount = AccountClass()
+        
+        firstAccount.id = sourceAccount.id
+        firstAccount.currency = sourceAccount.currency
+        firstAccount.name = sourceAccount.name
+        firstAccount.startBalance = firstAccountBalance
+        
+        secondAccount.id = targetAccount.id
+        secondAccount.currency = targetAccount.currency
+        secondAccount.name = targetAccount.name
+        secondAccount.startBalance = secondAccountBalance
         
         let transferHistory = TransferHistoryClass()
         transferHistory.sourceAccount = sourceAccount.name

@@ -104,7 +104,7 @@ extension PremiumAlert {
             vc.modalPresentationStyle = .fullScreen
 
             self.dismiss(animated: true) {
-                guard var topController = UIApplication.shared.windows.first?.rootViewController?.presentedViewController else { return }
+                guard let topController = UIApplication.shared.windows.first?.rootViewController?.presentedViewController else { return }
                 
                 topController.present(vc, animated: true)
             }

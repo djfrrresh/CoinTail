@@ -17,8 +17,8 @@ final class RevenueCatService {
     
     static let shared = RevenueCatService()
     
-    func getOfferings(completion: @escaping ([PlanData]?) -> ()) {
-        Purchases.shared.getOfferings { (offerings, error) in
+    func getOfferings(completion: @escaping ([PlanData]?) -> Void) {
+        Purchases.shared.getOfferings { (offerings, _) in
             var plan = [PlanData]()
             
             guard let packages = offerings?.current?.availablePackages else {
@@ -87,8 +87,8 @@ final class RevenueCatService {
     }
     
     // Восстановить покупки
-    func restorePurchases(completion: @escaping (RestoreResponse) -> ()) {
-        Purchases.shared.restorePurchases { customerInfo, error in
+    func restorePurchases(completion: @escaping (RestoreResponse) -> Void) {
+        Purchases.shared.restorePurchases { customerInfo, _ in
             if let customerInfo = customerInfo {
                 if customerInfo.activeSubscriptions.count > 0 {
                     if let expirationDate = customerInfo.expirationDate(forProductIdentifier: customerInfo.activeSubscriptions.first!),
@@ -106,8 +106,8 @@ final class RevenueCatService {
         }
     }
     
-    func getCustomerInfo(completion: @escaping (CustomerInfo?, Date?) -> ()) {
-        Purchases.shared.getCustomerInfo { (customerInfo, error) in
+    func getCustomerInfo(completion: @escaping (CustomerInfo?, Date?) -> Void) {
+        Purchases.shared.getCustomerInfo { (customerInfo, _) in
             guard let customerInfo = customerInfo else {
                 completion(nil, nil)
                 return
@@ -135,8 +135,8 @@ final class RevenueCatService {
         }
     }
     
-    func purchase(package: Package, completion: @escaping (CustomerInfo?, Date?) -> ()) {
-        Purchases.shared.purchase(package: package) { (transaction, customerInfo, error, userCancelled) in
+    func purchase(package: Package, completion: @escaping (CustomerInfo?, Date?) -> Void) {
+        Purchases.shared.purchase(package: package) { (_, customerInfo, _, _) in
             guard let customerInfo = customerInfo else {
                 completion(nil, nil)
                 return

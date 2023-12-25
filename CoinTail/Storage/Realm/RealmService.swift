@@ -12,7 +12,7 @@ import RealmSwift
 final class RealmService {
     
     static let shared = RealmService()
-    
+        
     private(set) var realm: Realm?
     
     // Здесь хранятся все объекты классов из базы данных
@@ -29,7 +29,7 @@ final class RealmService {
     }
     
     func write<T: Object>(_ object: T, _ type: T.Type) {
-        DispatchQueue.main.async { [self] in
+//        DispatchQueue.main.async { [self] in
             do {
                 try realm?.write({
                     realm?.add(object)
@@ -39,7 +39,7 @@ final class RealmService {
             }
             
             RealmService.shared.readAll(type)
-        }
+//        }
     }
     
     func read<T: Object>(_ object: T.Type) -> [T] {
@@ -95,7 +95,7 @@ final class RealmService {
     }
     
     func update<T: Object>(_ object: T, _ type: T.Type) {
-        DispatchQueue.main.async { [self] in
+//        DispatchQueue.main.async { [self] in
             do {
                 try realm?.write {
                     realm?.add(object, update: .modified)
@@ -107,11 +107,11 @@ final class RealmService {
             if type != NotificationSettingsClass.self && type != SelectedCurrencyClass.self {
                 RealmService.shared.readAll(type)
             }
-        }
+//        }
     }
     
     func delete<T: Object>(_ object: T, _ type: T.Type) {
-        DispatchQueue.main.async { [self] in
+//        DispatchQueue.main.async { [self] in
             do {
                 try realm?.write {
                     realm?.delete(object)
@@ -121,11 +121,11 @@ final class RealmService {
             }
             
             RealmService.shared.readAll(type)
-        }
+//        }
     }
     
     func deleteAllObjects<T: Object>(_ type: T.Type) {
-        DispatchQueue.main.async { [self] in
+//        DispatchQueue.main.async { [self] in
             guard let objects = realm?.objects(type) else { return }
             
             do {
@@ -139,7 +139,7 @@ final class RealmService {
             if type != NotificationSettingsClass.self && type != SelectedCurrencyClass.self {
                 RealmService.shared.readAll(type)
             }
-        }
+//        }
     }
     
     func readAllClasses() {

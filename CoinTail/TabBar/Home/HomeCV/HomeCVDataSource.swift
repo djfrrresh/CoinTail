@@ -104,7 +104,7 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
             cell.arrowTapDelegate = self
             cell.sendCategoryDelegate = self
             
-            //TODO: сделать условие if userHasPremium
+            //TODO: premium
             cell.chartsUpdate(homeSegment, records: records)
             
             cell.categoriesArrCellData = HomeCategoryCell.packBins(data: categoriesByType).1

@@ -95,7 +95,8 @@ final class HomeVC: BasicVC {
         
         navigationController?.navigationBar.isHidden = true
         period = .allTheTime
-        
+        homeGlobalCV.reloadData()
+
         sortOperations() // Сортировка операций по убыванию по дате
         homeButtonTargets()
         areOperationsEmpty()
