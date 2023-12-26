@@ -6,38 +6,47 @@
 //
 
 import UIKit
+import RealmSwift
 
 
-extension AddBudgetVC: SendСategoryData {
+extension AddBudgetVC: SendCategoryID, SendRegularity, AddBudgetCellDelegate {
+    
+    func cell(didUpdateBudgetAmount amount: String?) {
+        budgetAmount = amount
+    }
+    
+    func sendPeriod(_ period: String) {
+        budgetTimePeriod = period
+    }
     
     // Присылает категорию с SelectCategoryVC
-    func sendCategoryData(category: Category) {
-        self.budgetCategory = category
-        categoryButton.setTitle(category.name, for: .normal)
+    func sendCategoryData(id: ObjectId) {
+        budgetCategoryID = id
+
+        let category = Categories.shared.getCategory(for: id)
+        budgetCategory = category?.name
     }
     
     // Таргеты для кнопок
     func addBudgetTargets() {
-        saveBudgetButton.addTarget(self, action: #selector(saveBudgetAction), for: .touchUpInside)
-        categoryButton.addTarget(self, action: #selector(selectCategoryAction), for: .touchUpInside)
+        deleteBudgetButton.addTarget(self, action: #selector(removeBudget), for: .touchUpInside)
     }
     
-    // Проверка поля Amount и текста из кнопки категории на наличие данных в них
-    func budgetValidation(amount: Double, categoryText: String, isEditingBudget: Bool, completion: ((Double, Category) -> Void)? = nil) {
-        let missingAmount = amount == 0
-        let missingCategory = categoryText == AddBudgetVC.defaultCategory
-        let budgetCategory = Budgets.shared.getBudget(for: categoryText)
-        let activeBudgetByCategory = budgetCategory?.isActive
+    func budgetValidation(amount: Double, categoryText: String, completion: ((Double, ObjectId) -> Void)? = nil) {
+        let missingAmount = "\(amount)" == "" || amount == 0
+        let missingCategory = categoryText == ""
+        let sameBudget = Budgets.shared.getBudget(for: categoryText, withCurrency: selectedCurrency) ?? false
 
         if missingAmount {
-            errorAlert("Missing value in amount field".localized())
+            infoAlert("Missing value in amount field".localized())
         } else if missingCategory {
-            errorAlert("No category selected".localized())
-        } else if budgetCategory != nil && !isEditingBudget && activeBudgetByCategory! {
-            errorAlert("There is already a budget for this category".localized())
+            infoAlert("No category selected".localized())
+        } else if sameBudget && budgetID == nil {
+            infoAlert("There is already a budget for this category and currency".localized())
         } else {
-            guard let category = self.budgetCategory else { return }
-            completion?(amount, category)
+            guard let categoryID = budgetCategoryID else { return }
+            
+            completion?(amount, categoryID)
         }
     }
     

@@ -12,9 +12,15 @@ extension BudgetsVC: UICollectionViewDelegate {
     
     // При нажатии на категорию закрывается контроллер и она передается в кнопку
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let budgetData: Budget
+        var filteredBudgets: [BudgetClass] = []
+
+        if indexPath.section == 0 {
+            filteredBudgets = budgets.filter { $0.isActive }
+        } else {
+            filteredBudgets = budgets.filter { !$0.isActive }
+        }
         
-        budgetData = daySections[indexPath.section].budgets[indexPath.row]
+        let budgetData: BudgetClass = filteredBudgets[indexPath.row]
         
         self.navigationItem.rightBarButtonItem?.target = nil
                 

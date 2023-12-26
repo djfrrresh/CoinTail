@@ -11,88 +11,91 @@ import UIKit
 extension AddBudgetVC {
     
     @objc func saveBudgetAction() {
-        let amount = Double(budgetAmountTF.text ?? "0") ?? 0
-        let categoryText = categoryButton.titleLabel?.text ?? AddBudgetVC.defaultCategory
-        let isEditing = budgetID != nil ? true : false
-        
-        budgetValidation(amount: amount, categoryText: categoryText, isEditingBudget: isEditing) { [weak self] amount, category in
+        let amount = Double(budgetAmount ?? "0") ?? 0
+        let categoryText = budgetCategory ?? ""
+                
+        budgetValidation(amount: amount, categoryText: categoryText) { [weak self] amount, categoryID in
             guard let strongSelf = self else { return }
             
-            var startDate: Date = Date()
-            var untilDate: Date = strongSelf.budgetDateUntil()
-
-            if let budgetID = strongSelf.budgetID {
-                startDate = Budgets.shared.getBudget(for: budgetID)?.startDate ?? startDate
-                untilDate = Budgets.shared.getBudget(for: budgetID)?.untilDate ?? untilDate
+            var startDate, untilDate: Date
+            if let budgetID = strongSelf.budgetID, let budget = Budgets.shared.getBudget(for: budgetID) {
+                startDate = budget.startDate
+                untilDate = budget.untilDate
+            } else {
+                startDate = Date()
+                untilDate = strongSelf.budgetDateUntil()
             }
             
-            let budget = Budget(
-                category: category,
-                amount: amount,
-                startDate: startDate,
-                untilDate: untilDate,
-                id: Budgets.shared.budgetID
-            )
-            Budgets.shared.budgetID += 1
-                   
-            strongSelf.saveBudgetButton.removeTarget(nil, action: nil, for: .allEvents)
-
+            let currency = strongSelf.selectedCurrency
+            
+            let budget = BudgetClass()
+            budget.categoryID = categoryID
+            budget.amount = amount
+            budget.startDate = startDate
+            budget.untilDate = untilDate
+            budget.currency = "\(currency)"
+            
             if let budgetID = strongSelf.budgetID {
-                Budgets.shared.editBudget(for: budgetID, replacingBudget: budget)
+                budget.id = budgetID
+
+                Budgets.shared.editBudget(replacingBudget: budget)
             } else {
-                Budgets.shared.addNewBudget(budget: budget)
+                Budgets.shared.addBudget(budget)
             }
             
             strongSelf.navigationController?.popToRootViewController(animated: true)
-        }        
+        }
     }
     
-    @objc func selectCategoryAction() {
-        saveBudgetButton.removeTarget(nil, action: nil, for: .allEvents)
-        categoryButton.removeTarget(nil, action: nil, for: .allEvents)
-        
+    func goToSelectCategoryVC() {
         // Передаем название и иконки категорий по типу операций
-        let vc = SelectCategoryVC(segmentTitle: "Expense")
-
+        let vc = SelectCategoryVC(segmentTitle: RecordType.expense.rawValue, isParental: false, categoryID: nil)
         vc.categoryDelegate = self
         
-        vc.hidesBottomBarWhenPushed = true // Спрятать TabBar
         navigationController?.pushViewController(vc, animated: true)
+        
+        hidePickerView()
     }
     
-    @objc func removeBudget() {
-        guard let id = budgetID else { return }
+    func goToBudgetPeriodVC() {
+        let vc = BudgetPeriodVC(period: budgetTimePeriod)
+        vc.regulatiryDelegate = self
         
-        let confirmAction = UIAlertAction(title: "Confirm".localized(), style: .default) { [weak self] _ in
+        navigationController?.pushViewController(vc, animated: true)
+        
+        hidePickerView()
+    }
+    
+    @objc func removeBudget(_ sender: UIButton) {
+        guard let id = budgetID else { return }
+
+        confirmationAlert(
+            title: "Delete budget".localized(),
+            message: "Are you sure?".localized(),
+            confirmActionTitle: "Confirm".localized()
+        ) { [weak self] in
             Budgets.shared.deleteBudget(for: id)
+            
             self?.navigationController?.popToRootViewController(animated: true)
         }
-        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel)
-        
-        let alertView = UIAlertController(title: "Delete operation".localized(), message: "Are you sure?".localized(), preferredStyle: .alert)
-        
-        alertView.addAction(confirmAction)
-        alertView.addAction(cancelAction)
-
-        self.present(alertView, animated: true)
     }
     
-    // 
     private func budgetDateUntil() -> Date {
         var daysToAdd: Int
         
-        switch periodSwitcher.selectedSegmentIndex {
-        case 0:
+        switch budgetTimePeriod {
+        case "Week".localized():
             daysToAdd = 7
-        case 1:
+        case "Month".localized():
             daysToAdd = 30
         default:
-            fatalError("no segment")
+            daysToAdd = 30
         }
         
         let dateComponents: DateComponents = {
             var components = DateComponents()
             components.day = daysToAdd
+            
             return components
         }()
         let currentDate = Date()

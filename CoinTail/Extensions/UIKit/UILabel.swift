@@ -10,7 +10,7 @@ import UIKit
 
 extension UILabel {
     
-    convenience init(text: String, alignment: NSTextAlignment = .center, color: UIColor = .black, numOfLines: Int = 0, fontSize: CGFloat = 16) {
+    convenience init(text: String, alignment: NSTextAlignment = .center, color: UIColor = UIColor(named: "black") ?? .black, numOfLines: Int = 0, fontSize: CGFloat = 16) {
         self.init()
         
         self.text = text

@@ -10,6 +10,8 @@ disabled_rules: # rule identifiers to exclude from running
   - comment_spacing
   - function_parameter_count
   - orphaned_doc_comment
+  - line_length
+  - implicit_getter
 
 cyclomatic_complexity:
   warning: 25 # two nested ifs are acceptable

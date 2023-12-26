@@ -12,21 +12,14 @@ import EasyPeasy
 final class BudgetCVHeader: UICollectionReusableView {
     
     static let id = "BudgetCVHeader"
-
-    let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_EN")
-        formatter.dateFormat = "MMM dd, yyyy"
-        return formatter
-    }()
     
-    var dateLabel: UILabel = {
+    let separatorLabel: UILabel = {
         let label = UILabel()
-        return label
-    }()
-    
-    var separatorLabel: UILabel = {
-        let label = UILabel()
+        label.textAlignment = .left
+        label.font = UIFont(name: "SFProText-Regular", size: 12)
+        label.textColor = UIColor(named: "secondaryTextColor")
+        label.numberOfLines = 1
+        
         return label
     }()
     
@@ -35,7 +28,6 @@ final class BudgetCVHeader: UICollectionReusableView {
         
         backgroundColor = .clear
         
-        addSubview(dateLabel)
         addSubview(separatorLabel)
     }
     required init?(coder: NSCoder) {
@@ -44,15 +36,10 @@ final class BudgetCVHeader: UICollectionReusableView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        dateLabel.easy.layout([
-            CenterY(),
-            Left()
-        ])
-        
+
         separatorLabel.easy.layout([
-            CenterY(),
-            Right()
+            Bottom(8),
+            Left(16)
         ])
     }
     

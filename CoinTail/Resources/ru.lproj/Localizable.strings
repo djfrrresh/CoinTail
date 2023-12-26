@@ -6,102 +6,406 @@
   
 */
 
+// General
+"Amount" = "Сумма";
+"Category" = "Категория";
+"Currency" = "Валюта";
+"Week" = "Неделя";
+"Month" = "Месяц";
+"Save" = "Сохранить";
+"Edit" = "Ред.";
+/// Alert
+"Error" = "Ошибка";
+"Confirm" = "Подтвердить";
+"Cancel" = "Отменить";
+"Are you sure?" = "Вы уверены?";
+"No category selected" = "Не выбрана категория";
+"Missing value in amount field" = "Отсутствует значение в поле суммы";
+
 // RecordType
-// TODO: исправить баг, если написать переводом RecordType в свитчерах, то не будет обновляться таблица
-// TODO: для форматтеров поменять строки formatter.locale = Locale(identifier: "en_EN")
-"Expense" = "Expense";
-"Income" = "Income";
-"Total" = "Total";
+"Expense" = "Траты";
+"Income" = "Начисления";
+"Total" = "Всего";
 
 // Categories
-/// income
+/// Income
 "Salary" = "Зарплата";
 "Debt repayment" = "Возврат долга";
 "Side job" = "Подработка";
 "Pleasant finds" = "Приятные находки";
-/// expense
+/// Expense
 "Transport" = "Транспорт";
 "Groceries" = "Продукты";
 "Cloths" = "Одежда";
 "Gym" = "Спортивный зал";
-"Service" = "Сервисное обслуживание";
-"Subscription" = "Онлайн-подписка";
+"Subscription" = "Подписка";
 "Health" = "Здоровье";
 "Cafe" = "Кафе";
 
 // TabBar
 "Home" = "Главная";
 "Budgets" = "Бюджеты";
+"Accounts" = "Счета";
 "Settings" = "Настройки";
 
 // HomeVC
-/// NavBar
-"Total balance:" = "Общий баланс:";
+/// Empty operations
+"Start adding your expenses and income" = "Начните добавлять свои расходы и доходы";
+"Manage your finances by tracking your expenses and income via different categories" = "Управляйте своими финансами, отслеживая расходы и доходы по различным категориям";
+"Add a transaction" = "Добавить операцию";
+/// Title
+"Balance" = "Баланс";
 /// Periods CV
 "All the time" = "Всё время";
 "Year" = "Год";
 "Quarter" = "Квартал";
 "3 months" = "3 месяца";
-"Month" = "Месяц";
-
-// BudgetsVC
-/// NavBar
-"Budgets" = "Бюджеты";
-
-// AddBudgetVC
-"Amount" = "Сумма";
-"Select period" = "Выберите период";
-"Enter your amount" = "Введите сумму";
-"Save Budget" = "Сохранить бюджет";
-"Edit Budget" = "Отредактировать бюджет";
-"Select category" = "Выбрать категорию";
-"Week" = "Неделя";
-/// NavBar
-"Editing budget" = "Редактирование бюджета";
-"Add new Budget" = "Добавить новый бюджет";
-/// Alert
-"Missing value in amount field" = "Отсутствует значение в поле с суммой";
-"No category selected" = "Не выбрана категория";
-"There is already a budget for this category" = "Уже существует бюджет с такой категорией";
-"Error" = "Ошибка";
-"Confirm" = "Подтвердить";
-"Cancel" = "Отменить";
-"Delete operation" = "Удалить операцию";
-"Are you sure?" = "Вы уверены?";
+/// Categories CV
+"Open pie chart" = "Открыть диаграмму";
+"Visualise your activities with chart" = "Просматривайте операции с помощью круговой диаграммы";
 
 // AddOperationVC
-"Amount" = "Сумма";
 "Description" = "Описание";
 "Date" = "Дата";
-"Enter your value" = "Введите ваше значение";
-"For example: Bought in the store" = "Например: Покупка в магазине";
+"Account" = "Счёт";
+"Add a comment to your transaction" = "Добавьте комментарий к вашей операции";
 "Today" = "Сегодня";
-"Select date" = "Выберите дату";
-"Select category" = "Выберите категорию";
-"Save operation" = "Сохранить операцию";
-/// NavBar
-"Add new operation" = "Добавить новую операцию";
-"Editing operation" = "Отредактировать операцию";
+"Delete transaction" = "Удалить операцию";
+"Repeat previous transaction" = "Повторить предыдущую операцию";
+/// Title
+"Add a new transaction" = "Добавить операцию";
+"Edit transaction" = "Редактировать операцию";
 /// Alert
-"Missing value in amount field" = "Отсутствует значение в поле суммы";
-"No category selected" = "Не выбрана категория";
-"Confirm" = "Подтвердить";
-"Cancel" = "Отменить";
-"Repeat last operation" = "Повторить последнюю операцию";
-"Do you want to repeat the last operation?" = "Вы хотите повторить последнюю операцию?";
-"Delete operation" = "Удалить операцию";
-"Are you sure?" = "Вы уверены?";
+"Repeat last transaction" = "Повторить последнюю операцию";
+"Do you want to repeat the last transaction?" = "Вы хотите повторить последнюю операцию?";
+"You cannot specify an account for this transaction with another currency" = "Вы не можете указать счет для этой операции в другой валюте";
+"You don't have any accounts to choose from" = "У вас нет счетов для выбора";
 
 // SelectCategoryVC
-/// NavBar
-"Select category" = "Выбрать категорию";
+"Search categories by name" = "Поиск категорий по имени";
+"Here you can create categories and subcategories for transactions and budgets" = "Здесь вы можете создавать категории и подкатегории для операций и бюджетов";
+"You don't have any categories created" = "У вас нет созданных категорий";
+"Add a category" = "Добавить категорию";
+/// Title
+"Income categories" = "Категории дохода";
+"Expense categories" = "Категории расхода";
 
 // CreateCategoryVC
-"Missing category name or no icon selected!" = "Отсутствует имя категории или не выбрана иконка!";
-"Type a category name" = "Напишите название категории";
-"Add category" = "Добавить категорию";
-"Select color" = "Выбрать цвет";
-"New category" = "Новая категория";
+"Category name" = "Название категории";
+"Icon" = "Значок";
+"Make as subcategory" = "Сделать подкатегорией";
+"Main category" = "Основная категория";
+"Delete category" = "Удалить категорию";
 /// Title
-"Add new category" = "Добавить новую категорию";
+"Create a category" = "Создать категорию";
+"Edit category" = "Редактировать категорию";
+/// Alert
+"Category name is missing" = "Название категории отсутствует";
+"Category icon not selected" = "Значок для категории не выбран";
+"No parent category selected" = "Не выбрана основная категория";
+"Creating subcategories is only available with a Premium subscription" = "Создание подкатегорий доступно только с Премиум-подпиской";
 
+// BudgetsVC
+"Active budgets" = "Активные бюджеты";
+"Non active budgets" = "Неактивные бюджеты";
+/// Empty budgets
+"You have no budgets set up" = "У вас не настроены бюджеты";
+"Here you can set up a budgets for different categories and time periods. Control your expenses now" = "Здесь вы можете настроить бюджеты для разных категорий и периодов времени. Контролируйте свои расходы прямо сейчас";
+"Add a budget" = "Добавить бюджет";
+
+// AddBudgetVC
+"Delete budget" = "Удалить бюджет";
+"Time period" = "Период";
+"Repeat" = "Повторить";
+/// Title
+"Add a new budget" = "Добавить бюджет";
+"Edit budget" = "Редактировать бюджет";
+/// Alert
+"There is already an active budget for this category and currency" = "Уже есть активный бюджет с такой валютой и категорией";
+
+// AccountsVC
+"Transfer money" = "Перевести деньги";
+"Transfer history" = "История переводов";
+/// Empty accounts
+"You have no accounts added" = "У вас нет добавленных аккаунтов";
+"Here you can add different money storage methods, such as cards, cash or a bank deposit" = "Здесь вы можете добавить различные способы хранения денег, такие как карты, наличные или банковский депозит";
+"Add an account" = "Добавить счёт";
+
+// AddAccountVC
+"Account name" = "Название счёта";
+"Delete account" = "Удалить счёт";
+"Set as main account" = "Сделать счёт основным";
+/// Title
+"Add a new account" = "Добавить счёт";
+"Edit account" = "Редактировать счёт";
+/// Alert
+"Account name not entered" = "Название счёта не введено";
+
+// AccountsTransferVC
+"From" = "Из счёта";
+"To" = "На счёт";
+/// Title
+"Transfers" = "Переводы";
+/// Alert
+"No accounts selected" = "Не выбраны счета для перевода";
+"You cannot select the same account for transfer" = "Вы не можете перевести деньги на один и тот же счёт";
+"You cannot transfer money to an account with a different currency" = "Вы не можете перевести деньги на счет в другой валюте";
+
+// TransfersHistoryVC
+/// Title
+"Transfer history" = "История переводов";
+/// Empty transfers
+"You have no transfer transactions" = "У вас нет переводов между счетами";
+"Once you transfer money from one account to another - you can check transfer history here" = "Как только вы переведете деньги с одного счета на другой, вы можете проверить историю переводов здесь";
+
+// SettingsVC
+"Rate on App Store" = "Оценить в App Store";
+/// Banner
+"Upgrade to premium" = "Перейти на премиум";
+"Get even more features with our Premium subscription" = "Получите еще больше возможностей с нашей Премиум-подпиской";
+
+// CurrenciesVC
+"Type USD or Dollar for search" = "Наберите USD или Доллар для поиска";
+"Featured currencies" = "Избранные валюты";
+"All currencies" = "Все валюты";
+/// Title
+"Currencies" = "Валюты";
+
+// NotificationsVC
+"Set a reminder" = "Установить напоминание";
+"Never miss a transaction! Enable push notifications to stay on top of your finances" = "Никогда не пропустите транзакцию! Включите пуш-уведомления, чтобы быть в курсе своих финансов";
+"Push notifications" = "Пуш-уведомления";
+/// Push notification
+"Enter all expenses!" = "Введите все траты!";
+"It's time to make all the transactions" = "Пришло время внести все транзакции";
+/// Title
+"Notifications" = "Уведомления";
+/// Alert
+"You need to enable notifications in settings" = "Вам нужно включить уведомления в настройках";
+"Go to Settings" = "Перейти в Настройки";
+
+// RegularityVC
+"Daily" = "Ежедневно";
+"Weekly" = "Еженедельно";
+/// Title
+"Regularity" = "Периодичность";
+
+// AboutAppVC
+"CoinTail is a reliable assistant in accounting for income and expenses, managing accounts and budgets" = "CoinTail — надежный помощник в учете доходов и расходов, ведении счетов и бюджетов.";
+"Contact us" = "Связаться с нами";
+"Application version" = "Версия приложения";
+"User agreement" = "Пользовательское Соглашение";
+/// Title
+"About" = "О приложении";
+
+// Delete data
+"Delete data" = "Удалить данные";
+"Are you sure you want to delete all data: transactions, budgets, accounts?" = "Вы уверены, что хотите удалить все данные: операции, бюджеты, счета?";
+"Type 'Delete all data' to confirm the action" = "Наберите 'Удалить все данные' для подтверждения действия";
+"Delete all data" = "Удалить все данные";
+"Delete" = "Удалить";
+"All data has been deleted!" = "Все данные были удалены!";
+"Failed to delete data - you entered an invalid line" = "Не получилось удалить данные — вы ввели неправильную строку";
+
+// PremiumVC
+/// Title
+"Premium" = "Премиум";
+/// PremiumDescription
+"Try it for free to get access to all the features" = "Попробуйте бесплатно, чтобы получить доступ ко всем функциям";
+/// PremiumPlans
+"Month" = "Месяц";
+"month" = "месяц";
+"year" = "год";
+"Available rates" = "Доступные тарифы";
+/// PremiumAdvantages
+"Access to all currencies" = "Доступ ко всем валютам";
+"Access to informative diagrams" = "Доступ к информативным диаграммам";
+"Unlimited accounts" = "Неограниченное количество счетов";
+"Unlimited budgets" = "Неограниченное количество бюджетов";
+"Ability to add sub-categories" = "Возможность добавления подкатегорий";
+"A cup of coffee for the developer" = "Чашка кофе разработчику";
+/// PremiumPrivacy
+"Restore purchase" = "Восстановить покупку";
+"Start trial subscription" = "Начать пробную подписку";
+"Continue - total" = "Продолжить - всего";
+"By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our Terms, User Agreement and Privacy Policy." = "Нажимая 'Продолжить', вы принимаете наше Пользовательское Соглашение, Условия Использования и Политику Конфиденциальности. Сумма будет списана, а подписка будет автоматически продлеваться на выбранный период времени и по той же цене до отмены ее действия в настройках App Store.";
+"After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our Terms, User Agreement and Privacy Policy." = "Оформляя подписку, вы принимаете наше Пользовательское Соглашение, Условия Использования и Политику Конфиденциальности. По завершению пробного периода, после %@, произойдет списание суммы полного тарифа, а подписка будет автоматически продлеваться на выбранный период времени и по той же цене до отмены ее действия в настройках App Store.";
+"Privacy Policy" = "Политику Конфиденциальности";
+"User Agreement" = "Пользовательское Соглашение";
+"Terms" = "Условия Использования";
+/// Alert
+"No valid premium subscription found on this account" = "Не обнаружено действующей премиум подписки на этом аккаунте";
+"Failed to restore subscription" = "Не удалось восстановить подписку";
+
+// HavePremiumVC
+"You have bought a premium subscription" = "У вас подключен премиум";
+"Great" = "Отлично";
+"Now you have access to" = "Теперь у вас есть доступ к";
+"The current period will end" = "Текущий период закончится";
+
+// WebViewVC
+"Read" = "Прочитано";
+
+// Currencies
+"United Arab Emirates Dirham" = "Дирхам ОАЭ";
+"Afghan Afghani" = "Афгани";
+"Albanian Lek" = "Албанский лек";
+"Armenian Dram" = "Армянский драм";
+"Netherlands Antillean Guilder" = "Нидерландский антильский гульден";
+"Angolan Kwanza" = "Ангольская кванза";
+"Argentine Peso" = "Аргентинское песо";
+"Australian Dollar" = "Австралийский доллар";
+"Aruban Florin" = "Арубанский флорин";
+"Azerbaijani Manat" = "Азербайджанский манат";
+"Bosnia-Herzegovina Convertible Mark" = "Марка Боснии и Герцеговины";
+"Barbadian Dollar" = "Барбадосский доллар";
+"Bangladeshi Taka" = "Бангладешская така";
+"Bulgarian Lev" = "Болгарский лев";
+"Bahraini Dinar" = "Бахрейнский динар";
+"Burundian Franc" = "Бурундийский франк";
+"Bermudan Dollar" = "Бермудский доллар";
+"Brunei Dollar" = "Брунейский доллар";
+"Bolivian Boliviano" = "Боливийский боливиано";
+"Brazilian Real" = "Бразильский реал";
+"Bahamian Dollar" = "Багамский доллар";
+"Bhutanese Ngultrum" = "Бутангультрум";
+"Botswanan Pula" = "Ботсванская пула";
+"Belarusian Ruble" = "Белорусский рубль";
+"Belize Dollar" = "Белизский доллар";
+"Canadian Dollar" = "Канадский доллар";
+"Congolese Franc" = "Конголезский франк";
+"Swiss Franc" = "Швейцарский франк";
+"Chilean Peso" = "Чилийское песо";
+"Chinese Yuan" = "Китайский юань";
+"Colombian Peso" = "Колумбийское песо";
+"Costa Rican Colón" = "Костариканский колон";
+"Cuban Peso" = "Кубинское песо";
+"Cape Verdean Escudo" = "Кабо-Верде Эскудо";
+"Czech Republic Koruna" = "Чешская крона";
+"Djiboutian Franc" = "Джибутийский франк";
+"Danish Krone" = "Датская крона";
+"Dominican Peso" = "Доминиканское песо";
+"Algerian Dinar" = "Алжирский динар";
+"Egyptian Pound" = "Египетский фунт";
+"Eritrean Nakfa" = "Эритрейская накфа";
+"Ethiopian Birr" = "Эфиопский быр";
+"Euro" = "Евро";
+"Fijian Dollar" = "Фиджийский доллар";
+"Falkland Islands Pound" = "Фунт Фолклендских островов";
+"Faroese Krona" = "Фарерская крона";
+"British Pound Sterling" = "Фунт стерлингов";
+"Georgian Lari" = "Грузинский лари";
+"Guernsey Pound" = "Гернсийский фунт";
+"Ghanaian Cedi" = "Ганский седи";
+"Gibraltar Pound" = "Гибралтарский фунт";
+"Gambian Dalasi" = "Гамбийский даласи";
+"Guinean Franc" = "Гвинейский франк";
+"Guatemalan Quetzal" = "Гватемальский кетсаль";
+"Guyanaese Dollar" = "Гайанский доллар";
+"Hong Kong Dollar" = "Гонконгский доллар";
+"Honduran Lempira" = "Гондурасская лемпира";
+"Croatian Kuna" = "Хорватская куна";
+"Haitian Gourde" = "Гаитянский гурд";
+"Hungarian Forint" = "Венгерский форинт";
+"Indonesian Rupiah" = "Индонезийская рупия";
+"Israeli New Sheqel" = "Израильский новый шекель";
+"Manx pound" = "Мэнский фунт";
+"Indian Rupee" = "Индийская рупия";
+"Iraqi Dinar" = "Иракский динар";
+"Iranian Rial" = "Иранский риал";
+"Icelandic Króna" = "Исландская крона";
+"Jersey Pound" = "Джерсийский фунт";
+"Jamaican Dollar" = "Ямайский доллар";
+"Jordanian Dinar" = "Иорданский динар";
+"Japanese Yen" = "Японская иена";
+"Kenyan Shilling" = "Кенийский шиллинг";
+"Kyrgyzstani Som" = "Киргизский сом";
+"Cambodian Riel" = "Камбоджийский риель";
+"Kyrgystani Som" = "Кыргызский Сом";
+"Kiribati Dollar" = "Доллар Кирибати";
+"Comorian Franc" = "Коморский франк";
+"South Korean Won" = "Южнокорейская вона";
+"Kuwaiti Dinar" = "Кувейтский динар";
+"Cayman Islands Dollar" = "Доллар Каймановых островов";
+"Kazakhstani Tenge" = "Казахстанский тенге";
+"Laotian Kip" = "Лаосский кип";
+"Lebanese Pound" = "Ливанский фунт";
+"Sri Lankan Rupee" = "Шри-ланкийская рупия";
+"Liberian Dollar" = "Либерийский доллар";
+"Lesotho Loti" = "Лоти Лесото";
+"Libyan Dinar" = "Ливийский динар";
+"Moroccan Dirham" = "Марокканский дирхам";
+"Moldovan Leu" = "Молдавский лей";
+"Malagasy Ariary" = "Малагасийский ариари";
+"Macedonian Denar" = "Македонский денар";
+"Myanma Kyat" = "Мьянма кьят";
+"Mongolian Tugrik" = "Монгольский тугрик";
+"Macanese Pataca" = "Макаоская патака";
+"Mauritanian Ouguiya" = "Мавританская угия";
+"Mauritian Rupee" = "Маврикийская рупия";
+"Maldivian Rufiyaa" = "Мальдивская руфия";
+"Malawian Kwacha" = "Малавийская квача";
+"Mexican Peso" = "Мексиканское песо";
+"Malaysian Ringgit" = "Малайзийский ринггит";
+"Mozambican Metical" = "Мозамбикский метикал";
+"Namibian Dollar" = "Намибийский доллар";
+"Nigerian Naira" = "Нигерийская наира";
+"Nicaraguan Córdoba" = "Никарагуанская кордоба";
+"Norwegian Krone" = "Норвежская крона";
+"Nepalese Rupee" = "Непальская рупия";
+"New Zealand Dollar" = "Новозеландский доллар";
+"Omani Rial" = "Оманский риал";
+"Panamanian Balboa" = "Панамский бальбоа";
+"Peruvian Nuevo Sol" = "Перуанский новый соль";
+"Papua New Guinean Kina" = "Папуа-Новогвинейская кина";
+"Philippine Peso" = "Филиппинское песо";
+"Pakistani Rupee" = "Пакистанская рупия";
+"Polish Zloty" = "Польский злотый";
+"Paraguayan Guarani" = "Парагвайский гуарани";
+"Qatari Rial" = "Катарский риал";
+"Romanian Leu" = "Румынский лей";
+"Serbian Dinar" = "Сербский динар";
+"Russian Ruble" = "Российский рубль";
+"Rwandan Franc" = "Франк Руанды";
+"Saudi Riyal" = "Саудовский риял";
+"Solomon Islands Dollar" = "Доллар Соломоновых островов";
+"Seychellois Rupee" = "Сейшельская рупия";
+"Sudanese Pound" = "Суданский фунт";
+"Swedish Krona" = "Шведская крона";
+"Singapore Dollar" = "Сингапурский доллар";
+"Saint Helena Pound" = "Фунт острова Святой Елены";
+"Sierra Leone" = "Сьерра-Леоне";
+"Sierra Leonean Leone" = "Леоне Сьерра-Леоне";
+"Somali Shilling" = "Сомалийский шиллинг";
+"Surinamese Dollar" = "Доллар Суринама";
+"South Sudanese Pound" = "Южносуданский фунт";
+"São Tomé and Príncipe Dobra" = "Добра Сан-Томе и Принсипи";
+"Syrian Pound" = "Сирийский фунт";
+"Swazi Lilangeni" = "Лилангени Свазиленда";
+"Thai Baht" = "Таиландский бат";
+"Tajikistani Somoni" = "Таджикский сомони";
+"Turkmenistani Manat" = "Туркменский манат";
+"Tunisian Dinar" = "Тунисский динар";
+"Tongan Pa'anga" = "Тонганская паанга";
+"Turkish Lira" = "Турецкая лира";
+"Trinidad and Tobago Dollar" = "Доллар Тринидада и Тобаго";
+"New Taiwan Dollar" = "Новый тайваньский доллар";
+"Tanzanian Shilling" = "Танзанийский шиллинг";
+"Ukrainian Hryvnia" = "Украинская гривна";
+"Ugandan Shilling" = "Угандийский шиллинг";
+"United States Dollar" = "Доллар США";
+"Uruguayan Peso" = "Уругвайское песо";
+"Uzbekistan Som" = "Узбекский сум";
+"Venezuelan Bolívar Soberano" = "Венесуэльский боливар";
+"Vietnamese Dong" = "Вьетнамский донг";
+"Vanuatu Vatu" = "Вату Вануату";
+"Samoan Tala" = "Тала Самоа";
+"CFA Franc BEAC" = "Франк КФА (Центральная Африка)";
+"East Caribbean Dollar" = "Доллар Восточного Карибского сообщества";
+"Special Drawing Rights" = "Специальные права заимствования";
+"CFA Franc BCEAO" = "Франк КФА (Западная Африка)";
+"CFP Franc" = "Франк КФП";
+"Yemeni Rial" = "Йеменский риал";
+"South African Rand" = "Южноафриканский рэнд";
+"Zambian Kwacha" = "Замбийская квача";
+"Zimbabwean Dollar" = "Зимбабвийский доллар";

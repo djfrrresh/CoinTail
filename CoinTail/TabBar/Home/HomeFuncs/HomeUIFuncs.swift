@@ -12,54 +12,72 @@ import EasyPeasy
 extension HomeVC {
     
     func homeSubviews() {
-        self.view.addSubview(homeTypeSwitcher)
-        self.view.addSubview(balanceLabel)
+        self.view.addSubview(customNavBar)
         self.view.addSubview(homeGlobalCV)
         
-        homeTypeSwitcher.easy.layout([
-            Left(16),
-            Right(16),
-            Top(24).to(self.view.safeAreaLayoutGuide, .top)
-        ])
-        
-        balanceLabel.easy.layout([
-            CenterX(),
-            Top(-30).to(self.view.safeAreaLayoutGuide, .top)
+        customNavBar.easy.layout([
+            Height(96),
+            Top().to(self.view.safeAreaLayoutGuide, .top),
+            Left(),
+            Right()
         ])
         
         homeGlobalCV.easy.layout([
             Left(),
             Right(),
             Bottom(),
-            Top(16).to(homeTypeSwitcher, .bottom)
+            Top().to(customNavBar, .bottom)
         ])
     }
     
-    // Кнопки "Добавить" и "Поиск" в навигейшен баре
-    func homeNavBar() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector (addNewOperationAction)
-        )
+    func areOperationsEmpty() {
+        let isEmpty = RealmService.shared.recordsArr.isEmpty
+        
+        operationsImageView.isHidden = !isEmpty
+        noOperationsLabel.isHidden = !isEmpty
+        operationsDescriptionLabel.isHidden = !isEmpty
+        addOperationButton.isHidden = !isEmpty
+        emptyDataView.isHidden = !isEmpty
+        
+        homeGlobalCV.isHidden = isEmpty
     }
     
-    func filterMonths() {
-        let getRecord = Records.shared.getRecords(for: period, type: homeSegment, step: currentStep, category: categorySort)
-        
-        Categories.shared.categoriesUpdate(records: getRecord)
-        
-        categoriesArr = Categories.shared.getCategories(for: homeSegment)
-        monthSections = MonthSection.groupRecords(section: homeSegment, groupRecords: getRecord)
-        
-        let totalBalance = "Total balance:".localized()
-        balanceLabel.text = "\(totalBalance) $\(Records.shared.getAmount(for: .allTheTime, type: .allOperations))"
+    func updateBalanceLabel() {
+        DispatchQueue.main.async {
+            let currency = Currencies.shared.selectedCurrency.currency
+            
+            Records.shared.getAmount(for: .allTheTime, type: .allOperations) { amounts in
+                if let amounts = amounts {
+                    // Отображаем сумму с ограничением до 2 знаков после запятой
+                    let formattedAmount = String(format: "%.2f", amounts)
+                    self.customNavBar.titleLabel.text = "\(formattedAmount) \(currency)"
+                } else {
+                    self.customNavBar.titleLabel.text = "0.00 \(currency)"
+                }
+            }
+        }
+    }
     
-        // Отсортировать массив операций по месяцам (убывание)
+    func sortOperations() {
+        let getRecord = Records.shared.getRecords(
+            for: period,
+            type: homeSegment,
+            step: currentStep,
+            categoryID: categorySort?.id
+        )
+        
+        // Обновление категорий
+        Categories.shared.categoriesUpdate(records: getRecord)
+        categoriesByType = Categories.shared.getCategories(for: homeSegment)
+        // Группировка записей
+        monthSections = OperationsDaySection.groupRecords(section: homeSegment, groupRecords: getRecord)
+        
+        updateBalanceLabel()
+                
+        // Отсортировать операции по месяцам (убывание)
         monthSections.sort { l, r in
             return l.month > r.month
         }
     }
-
 
 }

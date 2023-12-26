@@ -11,54 +11,65 @@ import EasyPeasy
 
 extension AddBudgetVC {
     
-    func setAddBudgetStack() {
-        let amountStack = UIStackView()
-        setStack(
-            stack: amountStack,
-            axis: .vertical,
-            spacing: 6,
-            alignment: .fill,
-            distribution: .fill,
-            viewsArray: [budgetAmountLabel, budgetAmountTF]
-        )
+    func setupUI(with budget: BudgetClass) {
+        if let categoryName = Categories.shared.getCategory(for: budget.categoryID)?.name {
+            budgetCategory = categoryName
+        }
+        budgetCategoryID = budget.categoryID
+        selectedCurrency = budget.currency
+        budgetAmount = "\(budget.amount)"
         
-        let categoryAmountStack = UIStackView()
-        setStack(
-            stack: categoryAmountStack,
-            axis: .vertical,
-            spacing: 16,
-            alignment: .fill,
-            distribution: .fill,
-            viewsArray: [amountStack, categoryButton]
-        )
+        let calendar = Calendar.current
+        let startDate = budget.startDate
+        let untilDate = budget.untilDate
+        let components = calendar.dateComponents([.day], from: startDate, to: untilDate)
         
-        let preFinalStack = UIStackView()
-        setStack(
-            stack: preFinalStack,
-            axis: .vertical,
-            spacing: 32,
-            alignment: .fill,
-            distribution: .fill,
-            viewsArray: [periodSwitcher, categoryAmountStack]
-        )
+        if let days = components.day {
+            if days == 7 {
+                budgetTimePeriod = "Week".localized()
+            } else if days == 30 {
+                budgetTimePeriod = "Month".localized()
+            } else {
+                return
+            }
+        }
         
-        let finalStack = UIStackView()
-        setStack(
-            stack: finalStack,
-            axis: .vertical,
-            spacing: 70,
-            alignment: .fill,
-            distribution: .equalCentering,
-            viewsArray: [preFinalStack, saveBudgetButton]
-        )
+        deleteBudgetButton.isHidden = false
+    }
+    
+    func addBudgetSubviews() {
+        self.view.addSubview(addBudgetCV)
+        self.view.addSubview(deleteBudgetButton)
         
-        self.view.addSubview(finalStack)
-        finalStack.easy.layout([
+        let height: CGFloat = (budgetID != nil ? 3 : 4) * 48
+        addBudgetCV.easy.layout([
             Left(16),
             Right(16),
-            Top(10).to(self.view.safeAreaLayoutGuide, .top),
-            Bottom(10).to(self.view.safeAreaLayoutGuide, .bottom)
+            Top(32).to(self.view.safeAreaLayoutGuide, .top),
+            Height(height)
         ])
+        
+        deleteBudgetButton.easy.layout([
+            Left(16),
+            Right(16),
+            Top(24).to(addBudgetCV, .bottom),
+            Height(52)
+        ])
+    }
+    
+    func addBudgetNavBar() {
+        let title = budgetID != nil ? "Edit".localized() : "Save".localized()
+
+        let saveButton = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(saveBudgetAction))
+            
+        self.navigationItem.rightBarButtonItem = saveButton
+    }
+    
+    //TODO: вынести в basicvc
+    func updateCell(at indexPath: IndexPath, text: String) {
+        if let cell = addBudgetCV.cellForItem(at: indexPath) as? AddBudgetCell {
+            cell.updateSubMenuLabel(text)
+        }
     }
     
 }

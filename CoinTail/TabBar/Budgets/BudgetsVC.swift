@@ -6,73 +6,74 @@
 //
 
 import UIKit
+import EasyPeasy
 
 
-class BudgetsVC: BasicVC {
+final class BudgetsVC: BasicVC {
         
-    var daySections = [DaySection]() {
-        didSet {
-            budgetCV.reloadData()
+    var budgets: [BudgetClass] {
+        get {
+            return RealmService.shared.budgetsArr
         }
     }
+        
+    static let noBudgetsText = "You have no budgets set up"
+    static let budgetsDescriptionText = "Here you can set up a budgets for different categories and time periods. Control your expenses now"
+    
+    let noBudgetsLabel: UILabel = getNoDataLabel(text: noBudgetsText)
+    let budgetsDescriptionLabel: UILabel = getDataDescriptionLabel(text: budgetsDescriptionText)
+    let budgetsImageView: UIImageView = getDataImageView(name: "targetEmoji")
+    let addBudgetButton: UIButton = getAddDataButton(text: "Add a budget")
     
     let budgetCV: UICollectionView = {
         let budgetLayout: UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()
             layout.minimumInteritemSpacing = 0
-            layout.minimumLineSpacing = 8
-            
+            layout.minimumLineSpacing = 0
+
             return layout
         }()
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: budgetLayout)
-        // Отступ сверху
-        cv.contentInset = .init(top: 16, left: 0, bottom: 0, right: 0)
         cv.backgroundColor = .clear
+        cv.contentInset = .init(top: 32, left: 0, bottom: 0, right: 0) // Отступ сверху
         cv.register(BudgetCell.self, forCellWithReuseIdentifier: BudgetCell.id)
         cv.register(BudgetCVHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: BudgetCVHeader.id)
         
         cv.showsVerticalScrollIndicator = false
+        cv.showsHorizontalScrollIndicator = false
+        cv.delaysContentTouches = false
         cv.alwaysBounceVertical = true
-        cv.delaysContentTouches = true
         
         return cv
     }()
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        budgetNavBar()
-        // Отсортировать бюджеты по убыванию по дате
-        filterBudgets()
+        navigationController?.navigationBar.isHidden = true
+        budgetCV.reloadData()
+        
+        areBudgetsEmpty()
     }
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = "Budgets".localized()
-        
+                
+        customNavBar.titleLabel.text = "Budgets".localized()
+                
         budgetCV.dataSource = self
         
         budgetCV.delegate = self
         
         budgetSubviews()
-        
-        let dateFormatter: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "dd/MM/yyyy"
-            return formatter
-        }()
-        let string = "12/08/2021"
-        let stringUntil = "12/09/2021"
-        let string1 = "27/05/2023"
-        let stringUntil1 = "27/06/2023"
-        
-        let categoryColor = Colors.shared
-        
-        Budgets.shared.addNewBudget(budget: Budget(category: Category(name: "Service".localized(), color: categoryColor.serviceColor!, image: UIImage(systemName: "gearshape")!, type: .expense), amount: 500, startDate: dateFormatter.date(from: string)!, untilDate: dateFormatter.date(from: stringUntil)!, id: 0))
-        Budgets.shared.addNewBudget(budget: Budget(category: Category(name: "Groceries".localized(), color: categoryColor.gloceryColor!, image: UIImage(systemName: "cart")!, type: .expense), amount: 1000, startDate: dateFormatter.date(from: string)!, untilDate: dateFormatter.date(from: stringUntil)!, id: 1))
-        Budgets.shared.addNewBudget(budget: Budget(category: Category(name: "Transport".localized(), color: categoryColor.transportColor!, image: UIImage(systemName: "car")!, type: .expense), amount: 200, startDate: dateFormatter.date(from: string1)!, untilDate: dateFormatter.date(from: stringUntil1)!, id: 2))
+        budgetButtonTargets()
+        emptyDataSubviews(
+            dataImageView: budgetsImageView,
+            noDataLabel: noBudgetsLabel,
+            dataDescriptionLabel: budgetsDescriptionLabel,
+            addDataButton: addBudgetButton
+        )
     }
     
 }

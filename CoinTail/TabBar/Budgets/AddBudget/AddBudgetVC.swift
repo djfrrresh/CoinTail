@@ -6,71 +6,88 @@
 //
 
 import UIKit
+import RealmSwift
 
 
-class AddBudgetVC: BasicVC {
+final class AddBudgetVC: PickerVC {
     
-    var budgetCategory: Category?
-    
-    var budgetID: Int?
+    var selectedCurrency: String = Currencies.shared.selectedCurrency.currency {
+        didSet {
+            let indexPathToUpdate = IndexPath(item: 1, section: 0)
             
-    let budgetAmountLabel = UILabel(text: "Amount".localized(), alignment: .left)
-    let budgetPeriodLabel = UILabel(text: "Select period".localized(), alignment: .left)
+            updateCell(at: indexPathToUpdate, text: selectedCurrency)
+        }
+    }
+    var budgetTimePeriod: String = "Month".localized() {
+        didSet {
+            let indexPathToUpdate = IndexPath(item: 3, section: 0)
+            
+            updateCell(at: indexPathToUpdate, text: budgetTimePeriod)
+        }
+    }
+    var budgetCategory: String? {
+        didSet {
+            guard let budgetCategory = budgetCategory else { return }
+            let indexPathToUpdate = IndexPath(item: 2, section: 0)
+            
+            updateCell(at: indexPathToUpdate, text: budgetCategory)
+        }
+    }
     
-    let budgetAmountTF = UITextField(
-        defaultText: "0",
-        background: .lightGray.withAlphaComponent(0.2),
-        keyboard: .numberPad,
-        placeholder: "Enter your amount".localized()
-    )
+    var budgetAmount: String?
+    var budgetCategoryID: ObjectId?
+    var budgetID: ObjectId?
     
-    static let defaultCategory = "Select category".localized()
-    let categoryButton = UIButton(
-        name: defaultCategory,
-        background: .clear,
-        textColor: .black
-    )
-    let saveBudgetButton = UIButton(
-        name: "Save Budget".localized(),
-        background: .black,
-        textColor: .white
-    )
+    let favouriteStringCurrencies: [String] = Currencies.shared.currenciesToChoose()
     
-    let periodSwitcher: UISegmentedControl = {
-        let switcher = UISegmentedControl(items: [
-            "Week".localized(),
-            "Month".localized()
-        ])
-        switcher.selectedSegmentIndex = 1
-        return switcher
+    let deleteBudgetButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(named: "cancelAction")
+        button.layer.cornerRadius = 16
+        button.setTitle("Delete budget".localized(), for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
+        button.isHidden = true
+        
+        return button
     }()
     
-    init(budgetID: Int) {
+    let addBudgetCV: UICollectionView = {
+        let addAccountLayout: UICollectionViewFlowLayout = {
+            let layout = UICollectionViewFlowLayout()
+            layout.minimumInteritemSpacing = 0
+            layout.minimumLineSpacing = 0
+
+            return layout
+        }()
+
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: addAccountLayout)
+        cv.backgroundColor = .clear
+        cv.register(AddBudgetCell.self, forCellWithReuseIdentifier: AddBudgetCell.id)
+
+        cv.showsVerticalScrollIndicator = false
+        cv.showsHorizontalScrollIndicator = false
+        cv.alwaysBounceVertical = false
+        cv.isScrollEnabled = false
+
+        return cv
+    }()
+    
+    init(budgetID: ObjectId) {
         self.budgetID = budgetID
-        super.init(nibName: nil, bundle: nil)
-
-        // Передаем значения операции из редактируемой ячейки
-        guard let budget = Budgets.shared.getBudget(for: budgetID) else { return }
         
-        budgetCategory = budget.category
-        categoryButton.setTitle(budget.category.name, for: .normal)
-        budgetAmountTF.text = "\(budget.amount)"
-        saveBudgetButton.setTitle("Edit Budget".localized(), for: .normal)
-        periodSwitcher.isHidden = true
-
-        self.title = "Editing budget".localized()
-
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .trash,
-            target: self,
-            action: #selector (removeBudget)
-        )
+        super.init(nibName: nil, bundle: nil)
+        
+        self.title = "Edit budget".localized()
+        
+        guard let budget = Budgets.shared.getBudget(for: budgetID) else { return }
+        setupUI(with: budget)
     }
     
     public required init() {
         super.init(nibName: nil, bundle: nil)
         
-        self.title = "Add new Budget".localized()
+        self.title = "Add a new budget".localized()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -78,16 +95,24 @@ class AddBudgetVC: BasicVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        addBudgetTargets() // Таргеты для кнопок
+        
+        addBudgetTargets()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        budgetAmountTF.delegate = self
         
-        setAddBudgetStack()
+        navigationController?.navigationBar.isHidden = false
+            
+        itemsPickerView.dataSource = self
+        addBudgetCV.dataSource = self
+        
+        itemsPickerView.delegate = self
+        addBudgetCV.delegate = self
+        
+        addBudgetSubviews()
+        addBudgetNavBar()
+        setupToolBar()
     }
     
 }

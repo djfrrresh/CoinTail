@@ -9,116 +9,98 @@ import UIKit
 import EasyPeasy
 
 
-extension AddOperationVC {
+extension AddOperationVC: UIScrollViewDelegate {
     
-    func addOperationNavBar() {
-        let barButton = UIBarButtonItem(
-            image: UIImage(systemName: "dollarsign.arrow.circlepath"),
-            style: .done,
-            target: self,
-            action: #selector(repeatOperationAction)
-        )
+    func setupUI(with record: RecordClass) {    
+        deleteOperationButton.isHidden = false
         
-        self.navigationItem.rightBarButtonItem = barButton
+        // Дата
+        operationDate = record.date
+
+        guard let recordType = RecordType(rawValue: record.type) else { return }
+
+        // Тип операции
+        addOperationSegment = recordType
+        addOperationTypeSwitcher.selectedSegmentIndex = addOperationSegment == .income ? 0 : 1
+        addOperationTypeSwitcher.isHidden = true
+
+        // Сумма
+        operationAmount = "\(record.amount)"
+        
+        // Описание
+        operationDescription = record.descriptionText
+
+        // Категория
+        self.categoryID = record.categoryID
+        guard let category = Categories.shared.getGeneralCategory(for: record.categoryID) else { return }
+        operationCategory = category.name
+        
+        // Счет
+        if let accountID = record.accountID, let account = Accounts.shared.getAccount(for: accountID) {
+            selectedAccount = account.name
+        }
+        
+        selectedCurrency = record.currency
     }
     
-    func setAddOpStack() {
-        // AMOUNT
-        let amountStack = UIStackView()
-        setStack(
-            stack: amountStack,
-            axis: .vertical,
-            spacing: 6,
-            alignment: .fill,
-            distribution: .fill,
-            viewsArray: [amountLabel, amountTF]
-        )
+    func addOperationNavBar() {
+        let title = recordID != nil ? "Edit".localized() : "Save".localized()
+
+        let saveButton = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(saveButtonAction))
+            
+        self.navigationItem.rightBarButtonItem = saveButton
+    }
+    
+    func addOperationSubviews() {
+        self.view.addSubview(addOperationTypeSwitcher)
+        self.view.addSubview(addOperationCV)
+        self.view.addSubview(deleteOperationButton)
         
-        // CATEGORY BUTTON && AMOUNT
-        let categoryAmountStack = UIStackView()
-        setStack(
-            stack: categoryAmountStack,
-            axis: .vertical,
-            spacing: 16,
-            alignment: .fill,
-            distribution: .fill,
-            viewsArray: [amountStack, categoryButton]
-        )
-        
-        // DESCRIPTION
-        let descriptionStack = UIStackView()
-        setStack(
-            stack: descriptionStack,
-            axis: .vertical,
-            spacing: 6,
-            alignment: .fill,
-            distribution: .fill,
-            viewsArray: [descriptionLabel, descriptionTF]
-        )
-        
-        // DATE
-        let dateStack = UIStackView()
-        setStack(
-            stack: dateStack,
-            axis: .vertical,
-            spacing: 6,
-            alignment: .fill,
-            distribution: .fill,
-            viewsArray: [dateLabel, dateTF]
-        )
-                
-        let preFinalStack = UIStackView()
-        setStack(
-            stack: preFinalStack,
-            axis: .vertical,
-            spacing: 32,
-            alignment: .fill,
-            distribution: .fill,
-            viewsArray: [
-                addOperationTypeSwitcher,
-                categoryAmountStack,
-                descriptionStack,
-                dateStack
-            ]
-        )
-        
-        let finalStack = UIStackView()
-        setStack(
-            stack: finalStack,
-            axis: .vertical,
-            spacing: 70,
-            alignment: .fill,
-            distribution: .equalCentering,
-            viewsArray: [preFinalStack, saveOperationButton]
-        )
-        
-        self.view.addSubview(finalStack)
-        finalStack.easy.layout([
+        addOperationTypeSwitcher.easy.layout([
             Left(16),
             Right(16),
-            Top(10).to(self.view.safeAreaLayoutGuide, .top),
-            Bottom(10).to(self.view.safeAreaLayoutGuide, .bottom)
+            Height(28),
+            Top(24).to(self.view.safeAreaLayoutGuide, .top)
+        ])
+        
+        let firstSectionHeight: CGFloat = 44 * 5
+        let secondSectionHeight: CGFloat = 24 + 80
+        let thirdSectionHeight: CGFloat = recordID != nil ? 0 : 24 + 52
+        let cvHeight = firstSectionHeight + secondSectionHeight + thirdSectionHeight
+        addOperationCV.easy.layout([
+            Left(16),
+            Right(16),
+            recordID == nil ? Top(24).to(addOperationTypeSwitcher, .bottom) : Top(24).to(self.view.safeAreaLayoutGuide, .top),
+            Height(cvHeight)
+        ])
+        
+        deleteOperationButton.easy.layout([
+            Left(16),
+            Right(16),
+            Top(24).to(addOperationCV, .bottom),
+            Height(52)
         ])
     }
     
-    // Создание меню выше пикера времени с кнопками действия
-    static func createToolbar() -> UIToolbar { // Всплывающий снизу DatePicker
-        let toolbar: UIToolbar = {
-            let toolBar = UIToolbar()
-            toolBar.sizeToFit()
-            toolBar.tintColor = .systemBlue
-            
-            let doneButton = UIBarButtonItem(
-                barButtonSystemItem: .done,
-                target: nil,
-                action: #selector(doneButtonAction)
-            )
-            toolBar.setItems([doneButton], animated: true)
-            
-            return toolBar
-        }()
-
-        return toolbar
+    func updateCell(at indexPath: IndexPath, text: String) {
+        if let cell = addOperationCV.cellForItem(at: indexPath) as? AddOperationCell {
+            cell.updateSubMenuLabel(text)
+        }
     }
-    
+    func updateDate(at indexPath: IndexPath, text: String) {
+        if let cell = addOperationCV.cellForItem(at: indexPath) as? AddOperationCell {
+            cell.dateTF.text = text
+        }
+    }
+    func updateDescription(at indexPath: IndexPath, text: String) {
+        if let cell = addOperationCV.cellForItem(at: indexPath) as? AddOperationCell {
+            cell.operationDescriptionTF.text = text
+        }
+    }
+    func updateAmount(at indexPath: IndexPath, text: String) {
+        if let cell = addOperationCV.cellForItem(at: indexPath) as? AddOperationCell {
+            cell.operationAmountTF.text = text
+        }
+    }
+
 }

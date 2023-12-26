@@ -8,29 +8,46 @@
 import UIKit
 
 
-protocol SendСategoryData: AnyObject {
-    func sendCategoryData(category: Category)
-}
-
-extension SelectCategoryVC: UICollectionViewDelegate {
+extension SelectCategoryVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    // При нажатии на категорию закрывается контроллер и она передается в кнопку
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var categoryData: CategoryProtocol
         
-        let categoryLabel = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].name.localized() ?? "Category"
-        let categoryImage = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].image ?? UIImage(named: "house")!
-        let categoryColor = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].color ?? .clear
+        if isSearching {
+            categoryData = filteredData[indexPath.row]
+        } else {
+            categoryData = categories[indexPath.row]
+        }
         
-        categoryDelegate?.sendCategoryData(
-            category: Category(
-                name: categoryLabel,
-                color: categoryColor,
-                image: categoryImage,
-                type: addOperationVCSegment
-            )
-        )
-                        
-        navigationController?.popViewController(animated: true)
+        if isEditingCategory {
+            let vc = CreateCategoryVC(categoryID: categoryData.id, segmentTitle: operationSegmentType.rawValue)
+            
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            if isParental {
+                let vc = SelectCategoryVC(segmentTitle: operationSegmentType.rawValue, isParental: false, categoryID: categoryData.id)
+                vc.categoryDelegate = categoryDelegate
+                
+                navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let categoryID = categoryData.id
+                
+                categoryDelegate?.sendCategoryData(id: categoryID)
+                
+                if let navigationController = navigationController {
+                    navigationController.popToViewController(navigationController.viewControllers[1], animated: true)
+                } else {
+                    dismiss(animated: true, completion: nil)
+                }
+            }
+        }
+        
+        isSearching = false
+        isEditingCategory = false
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return SelectCategoryCell.size()
     }
     
 }

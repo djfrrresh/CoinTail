@@ -6,33 +6,57 @@
 //
 
 import UIKit
+import RealmSwift
 
 
 extension SelectCategoryVC: UICollectionViewDataSource {
 
     // Количество категорий
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Categories.shared.categories[addOperationVCSegment]?.count ?? 0
+        if isSearching {
+            return filteredData.count
+        } else {
+            return categories.count
+        }
     }
     
     // Ячейки заполняются
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: SelectCategoryCVCell.id,
+            withReuseIdentifier: SelectCategoryCell.id,
             for: indexPath
-        ) as? SelectCategoryCVCell else {
-            fatalError("Unable to dequeue SelectCategoryCVCell.")
+        ) as? SelectCategoryCell else {
+            return UICollectionViewCell()
         }
         
-        let categoryLabel = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].name.localized() ?? "Category"
-        let categoryImage = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].image ?? UIImage(systemName: "house")!
-        let categoryColor = Categories.shared.categories[addOperationVCSegment]?[indexPath.row].color ?? .clear
+        var categoryData: CategoryProtocol
         
-        cell.categoryName.text = categoryLabel
-        cell.categoryImage.image = categoryImage
-        cell.backView.backgroundColor = categoryColor
+        if isSearching {
+            categoryData = filteredData[indexPath.row]
+        } else {
+            categoryData = categories[indexPath.row]
+        }
+
+        cell.categoryLabel.text = categoryData.name
+        cell.categoryIcon.text = categoryData.image
+        cell.isEditingCategory(isEditingCategory)
+        cell.chevronImageView.isHidden = !isParental
+        
+        let isLastRow = self.collectionView(collectionView, numberOfItemsInSection: indexPath.section) - 1 == indexPath.row
+        cell.isSeparatorLineHidden(isLastRow)
+        
+        // Динамическое округление ячеек
+        if indexPath.item == 0 && isLastRow {
+            cell.roundCorners(.allCorners, radius: 12)
+        } else if isLastRow {
+            cell.roundCorners(bottomLeft: 12, bottomRight: 12)
+        } else if indexPath.row == 0 {
+            cell.roundCorners(topLeft: 12, topRight: 12)
+        } else {
+            cell.roundCorners(.allCorners, radius: 0)
+        }
         
         return cell
     }
-      
+        
 }

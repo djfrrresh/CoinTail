@@ -6,28 +6,34 @@
 //
 
 import UIKit
+import RealmSwift
 
 
 extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CategoryIsHiddenDelegate, ArrowTapDelegate, SendCategoryCellDelegate, PushVC {
-    
+
+    // Скрытие / показ категорий при нажатии на диаграмму
     func categoryIsHidden(isHidden: Bool) {
         categoryIsHidden = isHidden
+        
         homeGlobalCV.reloadData()
     }
     
+    // Пролистывание круговой диаграммы
     func arrowTap(isLeft: Bool) {
         currentStep += isLeft ? 1 : -1
-        filterMonths()
+        
+        sortOperations()
     }
     
-    func sendCategory(category: Category) {
+    // При нажатии на категорию помечает ее выбранной в коллекции
+    func sendCategory(category: CategoryClass) {
         categorySort = categorySort == category ? nil : category
-                
-        filterMonths()
+        
+        sortOperations()
     }
     
     // Переход на контроллер для редактирования операции
-    func pushVC(record: Record) {
+    func pushVC(record: RecordClass) {
         self.navigationItem.rightBarButtonItem?.target = nil
                 
         let vc = AddOperationVC(operationID: record.id)
@@ -58,7 +64,7 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
         case 2:
             return HomeOperationCell.id
         default:
-            fatalError("no section")
+            return ""
         }
     }
 
@@ -71,10 +77,10 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
                 withReuseIdentifier: HomeDateCell.id,
                 for: indexPath
             ) as? HomeDateCell else {
-                fatalError("Unable to dequeue HomeSelectedDateCell.")
+                return UICollectionViewCell()
             }
             
-            cell.periodDelegate = self
+            cell.segmentDateDelegate = self
             
             cell.period = period
                         
@@ -83,25 +89,49 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: HomeCategoryCell.id,
                 for: indexPath
-            ) as? HomeCategoryCell else { fatalError("Unable to dequeue HomeCategoryCell.")
+            ) as? HomeCategoryCell else {
+                return UICollectionViewCell()
             }
             
-            let records = Records.shared.getRecords(for: period, type: homeSegment, step: currentStep, category: categorySort)
+            let records = Records.shared.getRecords(
+                for: period,
+                type: homeSegment,
+                step: currentStep,
+                categoryID: categorySort?.id
+            )
             
             cell.categoryisHiddenDelegate = self
             cell.arrowTapDelegate = self
             cell.sendCategoryDelegate = self
             
+            //TODO: premium
             cell.chartsUpdate(homeSegment, records: records)
+            cell.segmentType = homeSegment
+            cell.categoriesArrCellData = HomeCategoryCell.packBins(data: categoriesByType).1
             
-            cell.categoriesArrCellData = HomeCategoryCell.packBins(data: categoriesArr).1
-            
-            cell.amountForPeriodLabel.text = "\(Records.shared.getAmount(for: period, type: homeSegment, step: currentStep, category: categorySort))"
+            let selectedCurrency = Currencies.shared.selectedCurrency.currency
+            Records.shared.getAmount(
+                for: period,
+                type: homeSegment,
+                step: currentStep,
+                categoryID: categorySort?.id
+            ) { amounts in
+                if let amounts = amounts {
+                    // Отображаем сумму с ограничением до 2 знаков после запятой
+                    let formattedAmount = String(format: "%.2f", amounts)
+                    cell.amountForPeriodLabel.text = "\(formattedAmount) \(selectedCurrency)"
+                } else {
+                    cell.amountForPeriodLabel.text = "0.00"
+                }
+            }
             cell.periodLabel.text = getPeriodLabel(step: currentStep)
             cell.category = categorySort
             
             let rightArrowIsHidden = currentStep == 0 || period == .allTheTime
-            let leftArrowIsHidden = lastStep(for: Records.shared.total, category: categorySort) == currentStep || period == .allTheTime
+            let leftArrowIsHidden = lastStep(
+                for: Records.shared.records,
+                categoryID: categorySort?.id
+            ) == currentStep || period == .allTheTime
             
             cell.arrowIsHidden(left: leftArrowIsHidden, right: rightArrowIsHidden)
                                     
@@ -110,7 +140,8 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: HomeOperationCell.id,
                 for: indexPath
-            ) as? HomeOperationCell else { fatalError("Unable to dequeue HomeOperationCell.")
+            ) as? HomeOperationCell else {
+                return UICollectionViewCell()
             }
 
             cell.monthSectionsCellData = monthSections
@@ -118,7 +149,7 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 
             return cell
         default:
-            fatalError("no section")
+            return UICollectionViewCell()
         }
     }
     
@@ -128,11 +159,11 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
         case HomeDateCell.id:
             return .init(top: 0, left: 0, bottom: 16, right: 0)
         case HomeCategoryCell.id:
-            return .init(top: 0, left: 0, bottom: 16, right: 0)
+            return .init(top: 16, left: 0, bottom: 16, right: 0)
         case HomeOperationCell.id:
-            return .init(top: 0, left: 0, bottom: 0, right: 0)
+            return .init(top: 0, left: 0, bottom: 16, right: 0)
         default:
-            fatalError("no section")
+            return .init(top: 0, left: 0, bottom: 0, right: 0)
         }
     }
     
@@ -142,19 +173,22 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
         case HomeDateCell.id:
             return HomeDateCell.size()
         case HomeCategoryCell.id:
-            return HomeCategoryCell.size(categoryIsHidden: categoryIsHidden, data: HomeCategoryCell.packBins(data: categoriesArr).0)
+            return HomeCategoryCell.size(
+                categoryIsHidden: categoryIsHidden,
+                data: HomeCategoryCell.packBins(data: categoriesByType).0
+            )
         case HomeOperationCell.id:
             return HomeOperationCell.size(data: monthSections)
         default:
-            fatalError("no section")
+            return CGSize(width: 0, height: 0)
         }
     }
     
-    private func lastStep(for records: [Record], category: Category? = nil) -> Int {
+    private func lastStep(for records: [RecordClass], categoryID: ObjectId? = nil) -> Int {
         var records = records
         
-        if let category = category {
-            records = records.filter { $0.category == category }
+        if let category = categoryID {
+            records = records.filter { $0.categoryID == category }
         }
         
         records.sort { l, r in

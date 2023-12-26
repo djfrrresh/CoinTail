@@ -10,15 +10,9 @@ import UIKit
 
 extension BudgetsVC {
     
-    func filterBudgets() {
-        let budgets = Budgets.shared.budgets
-        
-        daySections = DaySection.groupBudgets(groupBudgets: budgets)
-            
-        // Отсортировать массив бюджетов по дням (убывание)
-        daySections.sort { l, r in
-            return l.day > r.day
-        }
+    func budgetButtonTargets() {
+        addBudgetButton.addTarget(self, action: #selector(goToAddBudgetVC), for: .touchUpInside)
+        customNavBar.customButton.addTarget(self, action: #selector(goToAddBudgetVC), for: .touchUpInside)
     }
     
 }

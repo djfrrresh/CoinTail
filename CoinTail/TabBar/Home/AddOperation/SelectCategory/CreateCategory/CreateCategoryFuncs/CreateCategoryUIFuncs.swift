@@ -10,73 +10,45 @@ import EasyPeasy
 
 
 extension CreateCategoryVC {
+    
+    func setupUI(with category: CategoryProtocol) {
+        categoryName = category.name
+        categoryIcon = category.image
+        
+        deleteCategoryButton.isHidden = false
+    }
 
-    func setPopupElements() {
-        self.view.addSubview(popUpView)
-        popUpView.addSubview(titleLabel)
-        popUpView.addSubview(categoryTF)
-        popUpView.addSubview(errorLabel)
-        popUpView.addSubview(addButton)
-        popUpView.addSubview(createCategoryCV)
-        popUpView.addSubview(selectColorButton)
+    func createCategorySubviews() {
+        self.view.addSubview(createCategoryCV)
+        self.view.addSubview(deleteCategoryButton)
         
-        popUpView.easy.layout([
-            Center(),
-            Left(20),
-            Right(20),
-            Height(300)
-        ])
-        
-        titleLabel.easy.layout([
-            CenterX(),
-            Top(10)
-        ])
-        
-        categoryTF.easy.layout([
-            Top(10).to(titleLabel, .bottom),
-            Height(40),
-            Left(20),
-            Right(20)
-        ])
-        
-        errorLabel.easy.layout([
-            Top(20).to(addButton, .bottom),
-            CenterX()
-        ])
-        
-        addButton.easy.layout([
-            Top(16).to(selectColorButton, .bottom),
-            CenterX(),
-            Left(16),
-            Right(16)
-        ])
-        
+        let createCategoryCVHeight: CGFloat = (categoryID != nil ? 2 : 4) * 44
         createCategoryCV.easy.layout([
-            Height(50),
-            Left(),
-            Right(),
-            Top(10).to(categoryTF, .bottom)
+            Left(16),
+            Right(16),
+            Top(32).to(self.view.safeAreaLayoutGuide, .top),
+            Height(createCategoryCVHeight)
         ])
         
-        selectColorButton.easy.layout([
-            Top(16).to(createCategoryCV, .bottom),
-            CenterX(),
+        deleteCategoryButton.easy.layout([
             Left(16),
-            Right(16)
-        ])        
+            Right(16),
+            Top(24).to(createCategoryCV, .bottom),
+            Height(52)
+        ])
     }
     
-    // Анимация вывода ошибки
-    func errorAnimate() {
-        if categoryTF.text?.isEmpty == true {
-            UIView.animate(withDuration: 0.1) { [self] in
-                errorLabel.isHidden = false
-                errorLabel.alpha = 1
+    func createCategoryNavBar() {
+        let title = (categoryID != nil) ? "Edit".localized() : "Save".localized()
 
-                popUpView.easy.layout([Height(350)])
-                
-                view.layoutIfNeeded()
-            }
+        let saveButton = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(createCategoryAction))
+            
+        self.navigationItem.rightBarButtonItem = saveButton
+    }
+    
+    func updateCell(at indexPath: IndexPath, text: String) {
+        if let cell = createCategoryCV.cellForItem(at: indexPath) as? CreateCategoryCell {
+            cell.updateSubMenuLabel(text)
         }
     }
     

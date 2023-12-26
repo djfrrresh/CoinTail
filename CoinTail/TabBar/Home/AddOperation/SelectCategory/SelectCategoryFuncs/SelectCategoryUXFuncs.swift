@@ -2,18 +2,17 @@
 //  SelectCategoryUXFuncs.swift
 //  CoinTail
 //
-//  Created by Eugene on 15.06.23.
+//  Created by Eugene on 08.12.23.
 //
 
 import UIKit
 
 
-extension SelectCategoryVC: AddNewCategory {
+extension SelectCategoryVC {
     
-    func sendNewCategoryData(category: Category) {
-        Categories.shared.addNewCategory(category, type: addOperationVCSegment)
-        
-        selectCategoryCV.reloadData()
+    func selectCategoryTargets() {
+        createCategoryButton.addTarget(self, action: #selector(goToCreateCategoryVC), for: .touchUpInside)
+        addCategoryButton.addTarget(self, action: #selector(goToCreateCategoryVC), for: .touchUpInside)
     }
     
 }

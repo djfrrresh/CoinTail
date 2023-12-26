@@ -11,12 +11,18 @@ import UIKit
 extension SelectCategoryVC {
     
     // Открывается окно с созданием новой категории
-    @objc func addNewCategoryAction() {
-        let vc = CreateCategoryVC()
-        vc.addNewCategoryDelegate = self
-        vc.modalPresentationStyle = .overCurrentContext
+    @objc func goToCreateCategoryVC() {
+        let vc = CreateCategoryVC(segmentTitle: rawSegmentType ?? RecordType.expense.rawValue)
 
-        self.present(vc, animated: true, completion: nil)
+        self.navigationItem.rightBarButtonItem?.target = nil
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func editCategoryAction() {
+        isEditingCategory = isEditingCategory ? false : true
+        
+        self.navigationItem.rightBarButtonItem?.title = isEditingCategory ? "Save".localized() : "Edit".localized()
     }
     
 }

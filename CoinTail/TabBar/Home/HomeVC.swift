@@ -7,142 +7,110 @@
 
 import UIKit
 import Charts
-import MultipleProgressBar
 
 
-class HomeVC: BasicVC, SelectedDate {
+final class HomeVC: BasicVC {
     
-    func selected(period: Periods) {
-        self.period = period
-        currentStep = 0
-        
-        filterMonths()
-    }
-    
-    var period: Periods = .allTheTime {
+    var period: DatePeriods = .allTheTime {
         didSet {
             homeGlobalCV.reloadData()
         }
     }
     
-    // Операции, сортированные по месяцам
-    var monthSections = [MonthSection]() {
+    // Операции, записанные в массив по месяцам
+    var monthSections = [OperationsDaySection]() {
         didSet {
             homeGlobalCV.reloadData()
         }
     }
     
     // Категории по типам операций
-    var categoriesArr: [Category] = []
-    
+    var categoriesByType: [CategoryClass] = []
     // Выбранная категория
-    var categorySort: Category? {
+    var categorySort: CategoryClass? {
         didSet {
             homeGlobalCV.reloadData()
         }
     }
-    
-    var categoryIsHidden: Bool = true
-    
+        
     var currentStep: Int = 0 {
         didSet {
             homeGlobalCV.reloadData()
         }
     }
-                
-    // Переключатель типов операций
-    let homeTypeSwitcher: UISegmentedControl = {
-        var segmentedControl = UISegmentedControl(items: [
-            RecordType.allOperations.rawValue.localized(),
-            RecordType.income.rawValue.localized(),
-            RecordType.expense.rawValue.localized()
-        ])
-        // Выбранный по умолчанию сегмент
-        segmentedControl.selectedSegmentIndex = 0
-        return segmentedControl
-    }()
-    // Возвращает операции по выбранному типу
+             
+    var categoryIsHidden: Bool = true
+    
+    // Используется для возврата операций по выбранному типу
     var homeSegment: RecordType = .allOperations
+    var segmentIndex: Int = 0
+    
+    static let noOperationsText = "Start adding your expenses and income"
+    static let operationsDescriptionText = "Manage your finances by tracking your expenses and income via different categories"
+    
+    let noOperationsLabel: UILabel = getNoDataLabel(text: noOperationsText)
+    let operationsDescriptionLabel: UILabel = getDataDescriptionLabel(text: operationsDescriptionText)
+    let operationsImageView: UIImageView = getDataImageView(name: "graphicsEmoji")
+    let addOperationButton: UIButton = getAddDataButton(text: "Add a transaction")
     
     // Глобальная коллекция, содержащая выбор даты, диаграммы и операции
     let homeGlobalCV: UICollectionView = {
-        let operationLayout: UICollectionViewFlowLayout = {
+        let globalLayout: UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()
             layout.minimumInteritemSpacing = 0
             layout.minimumLineSpacing = 8
-            
+
             return layout
         }()
         
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: operationLayout)
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: globalLayout)
         cv.backgroundColor = .clear
-        // Регистрация трех ячеек коллекции
         cv.register(HomeOperationCell.self, forCellWithReuseIdentifier: HomeOperationCell.id)
         cv.register(HomeCategoryCell.self, forCellWithReuseIdentifier: HomeCategoryCell.id)
         cv.register(HomeDateCell.self, forCellWithReuseIdentifier: HomeDateCell.id)
         
         cv.showsVerticalScrollIndicator = false
+        cv.showsHorizontalScrollIndicator = false
         cv.alwaysBounceVertical = true
-        cv.delaysContentTouches = true
         
         return cv
     }()
     
-    var balanceLabel = UILabel()
-    
+    // Удаляем наблюдателя
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("ExchangeRatesUpdated"), object: nil)
+    }
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        navigationController?.navigationBar.isHidden = true
         period = .allTheTime
-        filterMonths()
-        homeNavBar() // Кнопки в навбаре
-        homeButtonTargets() // Таргеты для кнопок
+        homeGlobalCV.reloadData()
+
+        sortOperations() // Сортировка операций по убыванию по дате
+        homeButtonTargets()
+        areOperationsEmpty()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        // Реагирование на события
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleExchangeRatesUpdated), name: Notification.Name("ExchangeRatesUpdated"), object: nil)
+        
+        customNavBar.subTitleLabel.text = "Balance".localized()
+                                
         homeGlobalCV.delegate = self
 
-        // Сюда подаются данные
         homeGlobalCV.dataSource = self
-                                        
-        homeSubviews() // Отображение и размеры вьюшек
         
-        let dateFormatter: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "dd/MM/yyyy"
-            return formatter
-        }()
-        let string = "01/02/2019"
-        let string2 = "15/08/2021"
-        let string3 = "27/05/2023"
-                
-        let categoryColor = Colors.shared
-
-        Records.shared.addRecord(record: Record(amount: 100, date: Date(), id: 0, type: .income, category: Category(name: "Salary".localized(), color: categoryColor.salaryColor!, image: UIImage(systemName: "dollarsign")!, type: .income)))
-
-        Records.shared.addRecord(record: Record(amount: -250, date: Date(), id: 1, type: .expense, category: Category(name: "Transport".localized(), color: categoryColor.transportColor!, image: UIImage(systemName: "car")!, type: .expense)))
-
-        if let date = dateFormatter.date(from: string) {
-            Records.shared.addRecord(record: Record(amount: 300, date: date, id: 2, type: .income, category: Category(name: "Pleasant finds".localized(), color: categoryColor.pleasantFindsColor!, image: UIImage(systemName: "heart")!, type: .income)))
-
-            Records.shared.addRecord(record: Record(amount: 350, date: date, id: 3, type: .income, category: Category(name: "Pleasant finds".localized(), color: categoryColor.pleasantFindsColor!, image: UIImage(systemName: "heart")!, type: .income)))
-
-            Records.shared.addRecord(record: Record(amount: -150, date: date, id: 4, type: .expense, category: Category(name: "Groceries".localized(), color: categoryColor.gloceryColor!, image: UIImage(systemName: "cart")!, type: .expense)))
-        }
-        if let date = dateFormatter.date(from: string2) {
-            Records.shared.addRecord(record: Record(amount: 400, date: date, id: 5, type: .income, category: Category(name: "Debt repayment".localized(), color: categoryColor.debtRepaymentColor!, image: UIImage(systemName: "creditcard")!, type: .income)))
-
-            Records.shared.addRecord(record: Record(amount: -450, date: date, id: 6, type: .expense, category: Category(name: "Service".localized(), color: categoryColor.serviceColor!, image: UIImage(systemName: "gearshape")!, type: .expense)))
-        }
-        if let date = dateFormatter.date(from: string3) {
-            Records.shared.addRecord(record: Record(amount: 500, date: date, id: 7, type: .income, category: Category(name: "Salary".localized(), color: categoryColor.salaryColor!, image: UIImage(systemName: "dollarsign")!, type: .income)))
-
-            Records.shared.addRecord(record: Record(amount: -550, date: date, id: 8, type: .expense, category: Category(name: "Subscription".localized(), color: categoryColor.subscriptionColor!, image: UIImage(systemName: "gamecontroller")!, type: .expense)))
-        }
-
+        homeSubviews()
+        emptyDataSubviews(
+            dataImageView: operationsImageView,
+            noDataLabel: noOperationsLabel,
+            dataDescriptionLabel: operationsDescriptionLabel,
+            addDataButton: addOperationButton
+        )
     }
 
 }

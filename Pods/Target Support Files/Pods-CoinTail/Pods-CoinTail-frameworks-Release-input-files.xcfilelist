@@ -1,8 +1,0 @@
-${PODS_ROOT}/Target Support Files/Pods-CoinTail/Pods-CoinTail-frameworks.sh
-${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
-${BUILT_PRODUCTS_DIR}/EasyPeasy/EasyPeasy.framework
-${BUILT_PRODUCTS_DIR}/MultipleProgressBar/MultipleProgressBar.framework
-${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework
-${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework
-${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
-${BUILT_PRODUCTS_DIR}/SwiftAlgorithms/Algorithms.framework

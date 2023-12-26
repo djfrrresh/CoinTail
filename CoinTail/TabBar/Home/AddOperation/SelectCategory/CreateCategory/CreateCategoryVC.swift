@@ -6,97 +6,96 @@
 //
 
 import UIKit
+import RealmSwift
 
 
-class CreateCategoryVC: BasicVC, UIGestureRecognizerDelegate {
+final class CreateCategoryVC: BasicVC {
     
-    // Всплывающее окно добавления новой категории
-    let popUpView: UIView = {
-       let popUp = UIView()
-        popUp.layer.cornerRadius = 15
-        popUp.backgroundColor = UIColor(red: 0.933, green: 0.933, blue: 0.933, alpha: 1)
-        popUp.layer.borderWidth = 1
-        popUp.layer.masksToBounds = true
-        popUp.layer.borderColor = UIColor.black.cgColor
-        return popUp
+    var categoryID: ObjectId?
+    var isToggleOn: Bool = false
+    var isEditingSubcategory: Bool = false
+    var categoryName: String?
+    var categoryIcon: String?
+    var segmentTitle: String?
+    var mainCategoryName: String? {
+        didSet {
+            guard let mainCategoryName = mainCategoryName else { return }
+            let indexPathToUpdate = IndexPath(item: 3, section: 0)
+            
+            updateCell(at: indexPathToUpdate, text: mainCategoryName)
+        }
+    }
+    
+    let deleteCategoryButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(named: "cancelAction")
+        button.layer.cornerRadius = 16
+        button.setTitle("Delete category".localized(), for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
+        button.isHidden = true
+        
+        return button
     }()
     
     let createCategoryCV: UICollectionView = {
-        let layout: UICollectionViewFlowLayout = {
+        let createCategoryLayout: UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .horizontal
-            layout.minimumLineSpacing = 8
-            layout.minimumInteritemSpacing = 1
-            layout.itemSize = CGSize(width: 50, height: 50)
+            layout.minimumInteritemSpacing = 0
+            layout.minimumLineSpacing = 0
+
             return layout
         }()
         
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: createCategoryLayout)
         cv.backgroundColor = .clear
-        cv.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-        cv.scrollIndicatorInsets = .zero
-        cv.register(SelectCategoryCVCell.self, forCellWithReuseIdentifier: SelectCategoryCVCell.id)
+        cv.register(CreateCategoryCell.self, forCellWithReuseIdentifier: CreateCategoryCell.id)
         
+        cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
-        cv.allowsMultipleSelection = false
+        cv.alwaysBounceVertical = false
+        cv.delaysContentTouches = true
         
         return cv
     }()
     
-    let titleLabel = UILabel(
-        text: "Add new category".localized(),
-        alignment: .center,
-        color: .black
-    )
-    let errorLabel: UILabel = {
-        let label = UILabel(
-            text: "Missing category name or no icon selected!".localized(),
-            alignment: .center,
-            color: .black
-        )
-        label.isHidden = true
-        return label
-    }()
-
-    let categoryTF = UITextField(
-        background: .white,
-        keyboard: .default,
-        placeholder: "Type a category name".localized()
-    )
+    init(categoryID: ObjectId, segmentTitle: String) {
+        self.categoryID = categoryID
+        self.segmentTitle = segmentTitle
+        self.isEditingSubcategory = true
+        
+        super.init(nibName: nil, bundle: nil)
+        
+        self.title = "Edit category".localized()
+        
+        guard let category = Categories.shared.getGeneralCategory(for: categoryID) else { return }
+        
+        setupUI(with: category)
+    }
     
-    // Выбранная картинка, передается в делегате
-    var selectedCategoryImage = UIImage(systemName: newImages[0]) ?? UIImage(systemName: "house")!
-    
-    // Передача новой категории в SelectCategoryVC
-    weak var addNewCategoryDelegate: AddNewCategory?
-
-    let addButton = UIButton(
-        name: "Add category".localized(),
-        background: .white,
-        textColor: .black
-    )
-    let selectColorButton = UIButton(
-        name: "Select color".localized(),
-        background: .white,
-        textColor: .black
-    )
-
-    // Картинки для создания категории
-    static let newImages = Categories.shared.createCategoryImages
-    
-    var selectedColor: UIColor?
+    public required init(segmentTitle: String) {
+        self.segmentTitle = segmentTitle
+        
+        super.init(nibName: nil, bundle: nil)
+        
+        self.title = "Create a category".localized()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        self.view.backgroundColor = .clear
-        self.view.isOpaque = false
+        
+        self.navigationItem.backButtonTitle = "Back".localized()
                         
         createCategoryCV.delegate = self
+        
         createCategoryCV.dataSource = self
                         
-        createTargets() // Таргеты для кнопок
-        setPopupElements() // Расположение элементов всплывающего окна
+        createCategorySubviews()
+        createCategoryNavBar()
+        createCategoryTargets()
     }
  
 }

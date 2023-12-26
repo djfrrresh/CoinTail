@@ -5,20 +5,20 @@
 //  Created by Eugene on 11.07.23.
 //
 
-import UIKit
+import Foundation
 
 
-// Секции по дням для бюджетов
-struct DaySection {
+struct DaySectionTransferHistory {
     var day: Date
-    var budgets: [Budget]
+    var transfers: [TransferHistoryClass]
     
-    static func groupBudgets(groupBudgets: [Budget]) -> [DaySection] {
-        let dictionary = Dictionary.init(grouping: groupBudgets) { budget in
-            budget.untilDate.firstDayOfPeriod(components: [.year, .month, .day])
+    static func groupTransfers(groupTransfers: [TransferHistoryClass]) -> [DaySectionTransferHistory] {
+        let dictionary = Dictionary.init(grouping: groupTransfers) { transfer in
+            transfer.date.firstDayOfPeriod(components: [.year, .month, .day])
         }.map { values in
-            DaySection(day: values.key, budgets: values.value)
+            DaySectionTransferHistory(day: values.key, transfers: values.value)
         }
+        
         return dictionary
     }
 }
