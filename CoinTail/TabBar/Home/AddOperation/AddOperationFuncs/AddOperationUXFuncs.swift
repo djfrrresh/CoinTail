@@ -40,10 +40,10 @@ extension AddOperationVC: SendCategoryID, AddOperationCellDelegate {
     func recordValidation(amount: Double, categoryText: String, accountID: ObjectId?, completion: ((ObjectId) -> Void)? = nil) {
         let missingAmount = "\(amount)" == "" || amount == 0
         let missingCategory = categoryText == ""
-        var account: AccountClass?
-        if let accID = accountID {
-            account = Accounts.shared.getAccount(for: accID)
-        }
+//        var account: AccountClass?
+//        if let accID = accountID {
+//            account = Accounts.shared.getAccount(for: accID)
+//        }
 
         if missingAmount {
             infoAlert("Missing value in amount field".localized())

@@ -25,6 +25,7 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
     var pieChartEntries: [ChartDataEntry] = []
     // Цвета для круговой диаграммы
     var pieChartColors: [UIColor] = []
+    var segmentType: RecordType = .allOperations
     
     weak var categoryisHiddenDelegate: CategoryIsHiddenDelegate?
     weak var arrowTapDelegate: ArrowTapDelegate?
@@ -45,7 +46,6 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
         cv.backgroundColor = .clear
         cv.register(CategoryCVCell.self, forCellWithReuseIdentifier: CategoryCVCell.id)
 
-        cv.allowsMultipleSelection = false
         cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
         cv.isScrollEnabled = false

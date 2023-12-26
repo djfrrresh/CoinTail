@@ -18,15 +18,15 @@ extension AccountsTransferVC {
         let missingAmount = amount == 0
         let missingFirstAccount = firstAccount == ""
         let missingSecondAccount = secondAccount == ""
-        var firstAccountCurrency = ""
-        var secondAccountCurrency = ""
+//        var firstAccountCurrency = ""
+//        var secondAccountCurrency = ""
         
-        if let firstAccount = Accounts.shared.getAccount(for: firstAccount) {
-            firstAccountCurrency = firstAccount.currency
-        }
-        if let secondAccount = Accounts.shared.getAccount(for: secondAccount) {
-            secondAccountCurrency = secondAccount.currency
-        }
+//        if let firstAccount = Accounts.shared.getAccount(for: firstAccount) {
+//            firstAccountCurrency = firstAccount.currency
+//        }
+//        if let secondAccount = Accounts.shared.getAccount(for: secondAccount) {
+//            secondAccountCurrency = secondAccount.currency
+//        }
         
         if missingAmount {
             infoAlert("Missing value in amount field".localized())

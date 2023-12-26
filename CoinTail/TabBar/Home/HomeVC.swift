@@ -41,6 +41,10 @@ final class HomeVC: BasicVC {
              
     var categoryIsHidden: Bool = true
     
+    // Используется для возврата операций по выбранному типу
+    var homeSegment: RecordType = .allOperations
+    var segmentIndex: Int = 0
+    
     static let noOperationsText = "Start adding your expenses and income"
     static let operationsDescriptionText = "Manage your finances by tracking your expenses and income via different categories"
     
@@ -48,20 +52,6 @@ final class HomeVC: BasicVC {
     let operationsDescriptionLabel: UILabel = getDataDescriptionLabel(text: operationsDescriptionText)
     let operationsImageView: UIImageView = getDataImageView(name: "graphicsEmoji")
     let addOperationButton: UIButton = getAddDataButton(text: "Add a transaction")
-
-    // Переключатель типов операций
-    let homeTypeSwitcher: UISegmentedControl = {
-        let segmentedControl = UISegmentedControl(items: [
-            RecordType.allOperations.rawValue.localized(),
-            RecordType.income.rawValue.localized(),
-            RecordType.expense.rawValue.localized()
-        ])
-        segmentedControl.selectedSegmentIndex = 0
-        
-        return segmentedControl
-    }()
-    // Используется для возврата операций по выбранному типу
-    var homeSegment: RecordType = .allOperations
     
     // Глобальная коллекция, содержащая выбор даты, диаграммы и операции
     let homeGlobalCV: UICollectionView = {
@@ -86,6 +76,7 @@ final class HomeVC: BasicVC {
         return cv
     }()
     
+    // Удаляем наблюдателя
     deinit {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("ExchangeRatesUpdated"), object: nil)
     }

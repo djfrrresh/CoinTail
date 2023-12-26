@@ -113,7 +113,6 @@ final class SelectCategoryVC: BasicVC {
         cv.layer.cornerRadius = 12
         cv.register(SelectCategoryCell.self, forCellWithReuseIdentifier: SelectCategoryCell.id)
 
-        cv.allowsMultipleSelection = false
         cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
         cv.alwaysBounceVertical = true

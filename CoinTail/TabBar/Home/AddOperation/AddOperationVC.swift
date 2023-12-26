@@ -45,8 +45,12 @@ final class AddOperationVC: PickerVC {
         }
     }
     
-    static let favouriteStringCurrencies: [String] = Currencies.shared.currenciesToChoose()
-    static let accounts = RealmService.shared.accountsArr
+    static var accounts: [AccountClass] {
+        get {
+            return RealmService.shared.accountsArr
+        }
+    }
+    let favouriteStringCurrencies: [String] = Currencies.shared.currenciesToChoose()
     let accountNames = Accounts.shared.getAccountNames(from: accounts)
     
     let addOperationCV: UICollectionView = {

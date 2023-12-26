@@ -13,10 +13,10 @@ extension HomeVC {
     @objc func goToAddOperationVC() {
         self.navigationItem.rightBarButtonItem?.target = nil
 
-        var segmentIndex = homeTypeSwitcher.selectedSegmentIndex
-        segmentIndex = segmentIndex == 0 ? 0 : segmentIndex - 1
+        let index: Int
+        index = segmentIndex == 0 ? 0 : segmentIndex - 1
 
-        let vc = AddOperationVC(segmentIndex: segmentIndex)
+        let vc = AddOperationVC(segmentIndex: index)
         vc.hidesBottomBarWhenPushed = true // Спрятать TabBar
 
         navigationController?.pushViewController(vc, animated: true)
@@ -25,22 +25,6 @@ extension HomeVC {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) { [self] in
             categorySort = nil
         }
-    }
-    
-    @objc func switchAction() {
-        switch homeTypeSwitcher.selectedSegmentIndex {
-        case 0:
-            homeSegment = RecordType.allOperations
-        case 1:
-            homeSegment = RecordType.income
-        case 2:
-            homeSegment = RecordType.expense
-        default:
-            homeSegment = RecordType.allOperations
-        }
-        
-        categorySort = nil
-        sortOperations() // Сортировка коллекции с операциями
     }
     
     @objc func handleExchangeRatesUpdated() {

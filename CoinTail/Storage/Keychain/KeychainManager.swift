@@ -13,6 +13,7 @@ final class KeychainManager {
     
     static let shared = KeychainManager()
     
+    // API ключ для получения курса валют
     private let apiKey = "17d2f298f8f15469bd89f9bb"
     private let service = "CoinTail"
 

@@ -19,7 +19,6 @@ class Currencies {
     let currencyCodes: [String] = Currency.allCases.map { "\($0)" }
     
     // Избранные валюты
-    //TODO: не очищаются валюты после удаления всех данных
     var favouriteCurrencies: [FavouriteCurrencyClass] {
         get {
             return RealmService.shared.favouriteCurrenciesArr
@@ -95,6 +94,23 @@ class Currencies {
     
     func extractCurrencyStrings(from currencies: [Currency]) -> [String] {
         return currencies.map { "\($0)" }
+    }
+    
+    func createDefaultFavouriteCurrenciesIfNeeded() {
+        let defaultCurrencies = ["USD", "EUR", "RUB"]
+
+        // Проверяем, есть ли уже избранные валюты в базе данных
+        guard realmService.read(FavouriteCurrencyClass.self).isEmpty else {
+            return
+        }
+
+        // Создаем избранные валюты
+        for currencyCode in defaultCurrencies {
+            let defaultFavouriteCurrency = FavouriteCurrencyClass()
+            defaultFavouriteCurrency.currency = currencyCode
+
+            realmService.write(defaultFavouriteCurrency, FavouriteCurrencyClass.self)
+        }
     }
     
     // При первом запуске приложения или очистке данных создать валюту по умолчанию

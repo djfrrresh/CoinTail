@@ -8,10 +8,24 @@
 import UIKit
 
 
-extension HomeVC {
+extension HomeVC: SelectedSegmentDate {
+    
+    func sendSegment(_ segment: RecordType, index: Int) {
+        segmentIndex = index
+        homeSegment = segment
+        categorySort = nil
+        sortOperations() // Сортировка коллекции с операциями
+    }
+    
+    // Передает выбранный период и обнуляет счетчик шагов для диаграммы
+    func selectedPeriod(_ period: DatePeriods) {
+        self.period = period
+        currentStep = 0
+        
+        sortOperations()
+    }
         
     func homeButtonTargets() {
-        homeTypeSwitcher.addTarget(self, action: #selector(switchAction), for: .valueChanged)
         addOperationButton.addTarget(self, action: #selector(goToAddOperationVC), for: .touchUpInside)
         customNavBar.customButton.addTarget(self, action: #selector(goToAddOperationVC), for: .touchUpInside)
     }

@@ -15,7 +15,7 @@ extension AddAccountVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
         case 2:
             showPickerView()
             
-            selectedCurrency = AddAccountVC.favouriteStringCurrencies[0]
+            selectedCurrency = favouriteStringCurrencies[0]
         default:
             return
         }

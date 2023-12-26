@@ -91,24 +91,23 @@ extension PremiumAlert {
     @objc func dismissButtonAction(_ button: UIButton) {
         UIView.animate(withDuration: 0.3, animations: {
             self.overlayView.alpha = 0
-        }) { _ in
+        }, completion: { _ in
             self.dismiss(animated: true, completion: nil)
-        }
+        })
     }
     
     @objc func goToPremiumVC(_ button: UIButton) {
         UIView.animate(withDuration: 0.3, animations: {
             self.overlayView.alpha = 0
-        }) { _ in
+        }, completion: { _ in
             let vc = PremiumVC(PremiumPlans.shared.plans)
             vc.modalPresentationStyle = .fullScreen
 
-            self.dismiss(animated: true) {
+            self.dismiss(animated: true, completion: {
                 guard let topController = UIApplication.shared.windows.first?.rootViewController?.presentedViewController else { return }
-                
                 topController.present(vc, animated: true)
-            }
-        }
+            })
+        })
     }
     
 }

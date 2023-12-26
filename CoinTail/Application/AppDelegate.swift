@@ -18,10 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = TabBar() // Корневой контроллер
         window?.makeKeyAndVisible() // Отображение окна
         
+        Currencies.shared.createDefaultFavouriteCurrenciesIfNeeded()
         KeychainManager.shared.saveAPIKeyToKeychain()
         RealmService.shared.readAllClasses()
         ExchangeRateManager.shared.getExchangeRates {}
-        //TODO: прила вылетает после удаления всех данных и захода на экран добавления операции
         //TODO: переместить функции, используемые после выхода с экрана, на viewDidDisappear
         //TODO: переписать код для ячеек коллекций, сделать отдельные ячейки везде
         

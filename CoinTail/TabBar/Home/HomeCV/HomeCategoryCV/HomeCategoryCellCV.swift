@@ -30,12 +30,18 @@ extension HomeCategoryCell: UICollectionViewDataSource, UICollectionViewDelegate
             return UICollectionViewCell()
         }
         
-        let categoryLabel: String?
+        let categoryLabel = categoriesArrCellData[indexPath.row].name
         let categoryColor: UIColor?
         
-        categoryLabel = categoriesArrCellData[indexPath.row].name
-        categoryColor = UIColor(hex: categoriesArrCellData[indexPath.row].color ?? "FFFFFF")
-        
+        switch segmentType {
+        case .expense, .income:
+            categoryColor = UIColor(hex: categoriesArrCellData[indexPath.row].color ?? "FFFFFF")
+        case .allOperations:
+            let categoryType = categoriesArrCellData[indexPath.row].type
+            
+            categoryColor = categoryType == RecordType.income.rawValue ? UIColor(named: "income") : UIColor(named: "expense")
+        }
+                
         cell.categoryName.text = categoryLabel
         cell.contentView.backgroundColor = categoryColor
         cell.isXmark = self.category != nil

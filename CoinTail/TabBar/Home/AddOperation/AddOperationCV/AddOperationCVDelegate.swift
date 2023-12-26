@@ -30,7 +30,7 @@ extension AddOperationVC: UICollectionViewDelegate, UICollectionViewDelegateFlow
                 isUsingCurrenciesPicker = true
                 showPickerView()
                 
-                selectedCurrency = AddOperationVC.favouriteStringCurrencies[0]
+                selectedCurrency = favouriteStringCurrencies[0]
             default:
                 return
             }

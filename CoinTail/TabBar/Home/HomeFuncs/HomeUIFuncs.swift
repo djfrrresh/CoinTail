@@ -9,19 +9,10 @@ import UIKit
 import EasyPeasy
 
 
-extension HomeVC: SelectedDate {
-    
-    // Передает выбранный период и обнуляет счетчик шагов для диаграммы
-    func selectedPeriod(_ period: DatePeriods) {
-        self.period = period
-        currentStep = 0
-        
-        sortOperations()
-    }
+extension HomeVC {
     
     func homeSubviews() {
         self.view.addSubview(customNavBar)
-        self.view.addSubview(homeTypeSwitcher)
         self.view.addSubview(homeGlobalCV)
         
         customNavBar.easy.layout([
@@ -31,22 +22,16 @@ extension HomeVC: SelectedDate {
             Right()
         ])
         
-        homeTypeSwitcher.easy.layout([
-            Left(16),
-            Right(16),
-            Top(24).to(customNavBar, .bottom)
-        ])
-        
         homeGlobalCV.easy.layout([
             Left(),
             Right(),
             Bottom(),
-            Top().to(homeTypeSwitcher, .bottom)
+            Top().to(customNavBar, .bottom)
         ])
     }
     
     func areOperationsEmpty() {
-        let isEmpty = monthSections.isEmpty
+        let isEmpty = RealmService.shared.recordsArr.isEmpty
         
         operationsImageView.isHidden = !isEmpty
         noOperationsLabel.isHidden = !isEmpty
@@ -54,7 +39,6 @@ extension HomeVC: SelectedDate {
         addOperationButton.isHidden = !isEmpty
         emptyDataView.isHidden = !isEmpty
         
-        homeTypeSwitcher.isHidden = isEmpty
         homeGlobalCV.isHidden = isEmpty
     }
     

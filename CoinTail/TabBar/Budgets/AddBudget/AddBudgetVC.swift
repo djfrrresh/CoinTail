@@ -11,8 +11,6 @@ import RealmSwift
 
 final class AddBudgetVC: PickerVC {
     
-    var budgetCategoryID: ObjectId?
-    var budgetID: ObjectId?
     var selectedCurrency: String = Currencies.shared.selectedCurrency.currency {
         didSet {
             let indexPathToUpdate = IndexPath(item: 1, section: 0)
@@ -35,9 +33,12 @@ final class AddBudgetVC: PickerVC {
             updateCell(at: indexPathToUpdate, text: budgetCategory)
         }
     }
-    var budgetAmount: String?
     
-    static let favouriteStringCurrencies: [String] = Currencies.shared.currenciesToChoose()
+    var budgetAmount: String?
+    var budgetCategoryID: ObjectId?
+    var budgetID: ObjectId?
+    
+    let favouriteStringCurrencies: [String] = Currencies.shared.currenciesToChoose()
     
     let deleteBudgetButton: UIButton = {
         let button = UIButton()

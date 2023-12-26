@@ -56,6 +56,7 @@ extension SettingsVC {
         if text == "Delete all data".localized() {
             RealmService.shared.deleteAllData()
             self.selectedCurrency = Currencies.shared.selectedCurrency.currency
+            Currencies.shared.createDefaultFavouriteCurrenciesIfNeeded()
             
             infoAlert("All data has been deleted!".localized(), "")
         } else {

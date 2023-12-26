@@ -8,10 +8,6 @@
 import UIKit
 
 
-protocol SelectedDate: AnyObject {
-    func selectedPeriod(_ period: DatePeriods)
-}
-
 extension HomeDateCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -42,7 +38,7 @@ extension HomeDateCell: UICollectionViewDataSource, UICollectionViewDelegate, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        periodDelegate?.selectedPeriod(DatePeriods(rawValue: DatePeriods.RawValue(indexPath.row)) ?? .allTheTime)
+        segmentDateDelegate?.selectedPeriod(DatePeriods(rawValue: DatePeriods.RawValue(indexPath.row)) ?? .allTheTime)
     }
     
     // Отступ слева и справа от экрана

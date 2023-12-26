@@ -15,7 +15,7 @@ extension AddBudgetVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLay
         case 1:
             showPickerView()
             
-            selectedCurrency = AddBudgetVC.favouriteStringCurrencies[0]
+            selectedCurrency = favouriteStringCurrencies[0]
         case 2:
             goToSelectCategoryVC()
         case 3:

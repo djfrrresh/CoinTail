@@ -16,6 +16,7 @@ final class ExchangeRateManager {
     
     var exchangeRates: [String: [String: Double]] = [:] {
         didSet {
+            // Ставим уведомление на обновление курсов валют
             NotificationCenter.default.post(name: Notification.Name("ExchangeRatesUpdated"), object: nil)
         }
     }

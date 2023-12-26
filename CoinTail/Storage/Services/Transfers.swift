@@ -28,7 +28,7 @@ final class Transfers {
         // Снимаем деньги с исходного счета и добавляем их на целевой счет
         let firstAccountBalance = sourceAccount.startBalance - amount
         var secondAccountBalance: Double = targetAccount.startBalance
-                
+        
         if sourceAccount.currency != targetAccount.currency {
             let baseCurrency = Currencies.shared.selectedCurrency.currency
 
@@ -41,77 +41,48 @@ final class Transfers {
             let convertedToBase = amount / exchangeRateToBase
             let convertedToAccountCurrency = convertedToBase * exchangeRateFromBase
             secondAccountBalance += convertedToAccountCurrency
-            
-            editAccounts(
-                sourceAccount: sourceAccount,
-                targetAccount: targetAccount,
-                firstAccountBalance: firstAccountBalance,
-                secondAccountBalance: secondAccountBalance
-            )
-            
-            addTransferHistory(
-                sourceAccount: sourceAccount,
-                targetAccount: targetAccount,
-                firstAccountBalance: firstAccountBalance,
-                secondAccountBalance: secondAccountBalance,
-                sourceAccountAmount: amount,
-                targetAccountAmount: convertedToAccountCurrency
-            )
         } else {
             secondAccountBalance += amount
-            
-            editAccounts(
-                sourceAccount: sourceAccount,
-                targetAccount: targetAccount,
-                firstAccountBalance: firstAccountBalance,
-                secondAccountBalance: secondAccountBalance
-            )
-            
-            addTransferHistory(
-                sourceAccount: sourceAccount,
-                targetAccount: targetAccount,
-                firstAccountBalance: firstAccountBalance,
-                secondAccountBalance: secondAccountBalance,
-                sourceAccountAmount: amount,
-                targetAccountAmount: amount
-            )
         }
+
+        editAccounts(
+            sourceAccount: sourceAccount,
+            targetAccount: targetAccount,
+            firstAccountBalance: firstAccountBalance,
+            secondAccountBalance: secondAccountBalance,
+            sourceAccountAmount: amount,
+            targetAccountAmount: secondAccountBalance - targetAccount.startBalance
+        )
     }
-    
+        
     // Функция для редактирования счетов
-    func editAccounts(sourceAccount: AccountClass, targetAccount: AccountClass, firstAccountBalance: Double, secondAccountBalance: Double) {
-        let firstAccount = AccountClass()
-        let secondAccount = AccountClass()
-        
-        firstAccount.id = sourceAccount.id
-        firstAccount.currency = sourceAccount.currency
-        firstAccount.name = sourceAccount.name
-        firstAccount.startBalance = firstAccountBalance
-        
-        secondAccount.id = targetAccount.id
-        secondAccount.currency = targetAccount.currency
-        secondAccount.name = targetAccount.name
-        secondAccount.startBalance = secondAccountBalance
-        
-        Accounts.shared.editAccount(replacingAccount: firstAccount)
-        Accounts.shared.editAccount(replacingAccount: secondAccount)
+    func editAccounts(sourceAccount: AccountClass, targetAccount: AccountClass, firstAccountBalance: Double, secondAccountBalance: Double, sourceAccountAmount: Double, targetAccountAmount: Double) {
+        let updatedSourceAccount = createUpdatedAccount(from: sourceAccount, withBalance: firstAccountBalance)
+        let updatedTargetAccount = createUpdatedAccount(from: targetAccount, withBalance: secondAccountBalance)
+
+        Accounts.shared.editAccount(replacingAccount: updatedSourceAccount)
+        Accounts.shared.editAccount(replacingAccount: updatedTargetAccount)
+
+        addTransferHistory(
+            sourceAccount: sourceAccount,
+            targetAccount: targetAccount,
+            sourceAccountAmount: sourceAccountAmount,
+            targetAccountAmount: targetAccountAmount
+        )
     }
     
-    //TODO: оптимизировать повторения c editAccounts
-    private func addTransferHistory(sourceAccount: AccountClass, targetAccount: AccountClass, firstAccountBalance: Double, secondAccountBalance: Double, sourceAccountAmount: Double, targetAccountAmount: Double) {
-        let firstAccount = AccountClass()
-        let secondAccount = AccountClass()
+    private func createUpdatedAccount(from account: AccountClass, withBalance balance: Double) -> AccountClass {
+        let updatedAccount = AccountClass()
+        updatedAccount.id = account.id
+        updatedAccount.currency = account.currency
+        updatedAccount.name = account.name
+        updatedAccount.startBalance = balance
         
-        firstAccount.id = sourceAccount.id
-        firstAccount.currency = sourceAccount.currency
-        firstAccount.name = sourceAccount.name
-        firstAccount.startBalance = firstAccountBalance
-        
-        secondAccount.id = targetAccount.id
-        secondAccount.currency = targetAccount.currency
-        secondAccount.name = targetAccount.name
-        secondAccount.startBalance = secondAccountBalance
-        
+        return updatedAccount
+    }
+    
+    // Добавляем в историю перевод между счетами
+    private func addTransferHistory(sourceAccount: AccountClass, targetAccount: AccountClass, sourceAccountAmount: Double, targetAccountAmount: Double) {
         let transferHistory = TransferHistoryClass()
         transferHistory.sourceAccount = sourceAccount.name
         transferHistory.targetAccount = targetAccount.name
@@ -120,8 +91,7 @@ final class Transfers {
         transferHistory.sourceAmount = sourceAccountAmount
         transferHistory.targetAmount = targetAccountAmount
         transferHistory.date = Date()
-        
-        // Добавляем в историю перевод между счетами
+
         Transfers.shared.addNewTransfer(transferHistory)
     }
     

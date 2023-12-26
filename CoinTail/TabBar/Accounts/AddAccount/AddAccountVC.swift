@@ -10,9 +10,7 @@ import RealmSwift
 
 
 final class AddAccountVC: PickerVC {
-    
-    var accountID: ObjectId?
-    
+        
     var selectedCurrency: String = Currencies.shared.selectedCurrency.currency {
         didSet {
             let indexPathToUpdate = IndexPath(item: 2, section: 0)
@@ -21,11 +19,12 @@ final class AddAccountVC: PickerVC {
         }
     }
     
+    var accountID: ObjectId?
     var accountName: String?
     var accountAmount: String?
     var isAccountMain: Bool = true
     
-    static let favouriteStringCurrencies: [String] = Currencies.shared.currenciesToChoose()
+    let favouriteStringCurrencies: [String] = Currencies.shared.currenciesToChoose()
 
     let deleteAccountButton: UIButton = {
         let button = UIButton()
