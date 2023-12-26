@@ -156,7 +156,7 @@ final class Records {
               let category = Categories.shared.getCategory(for: budget.categoryID) else { return }
 
         let allSubcategoryIDs: [ObjectId] = [category.id] + category.subcategories
-        let date = budget.startDate
+        let startDate = budget.startDate
         let untilDate = budget.untilDate
 
         var totalAmount: Double = 0
@@ -166,9 +166,9 @@ final class Records {
         let records = self.records.filter {
             $0.type == RecordType.expense.rawValue
             && allSubcategoryIDs.contains($0.categoryID)
-            && $0.date >= date && $0.date <= untilDate
+            && $0.date >= startDate && $0.date <= untilDate
         }
-        
+                
         //TODO: premium
 //        if AppSettings.shared.premium?.isPremiumActive ?? false {
         for record in records {
@@ -186,7 +186,7 @@ final class Records {
 
                 let convertedToBase = record.amount / exchangeRateToBase
                 let convertedToAccountCurrency = convertedToBase * exchangeRateFromBase
-                
+                                
                 totalAmount += convertedToAccountCurrency                
             }
         }
