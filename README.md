@@ -1,85 +1,73 @@
-# CoinTail | Swift Mobile App
+# Table of Contents
+1. [CoinTail description](#cointail-description)
+2. [Screenshots](#screenshots)
+3. [Structure](#structure)
+4. [Requirements](#requirements)
+5. [Dependencies](#dependencies)
+6. [API](#api)
+7. [Meta](#meta)
 
-It's my first pet project on Swift that allows controlling budget. Of the main functions in the application, **the following are implemented**: 
-* Adding transactions with division into expenses and incomes;
-* Editing and deleting transactions;
-* Selecting existing categories and adding new ones. Nested categories;
-* Charts for data visualization;
-* Sorting transactions by time periods - for all time, year, quarter and month;
-* Availability of budgets by weeks and months;
-* Localization of the application into English and Russian;
-* Screen of accounts with their creation and editing. Transfer funds between accounts;
-* Select the currency to display in transactions / budgets / accounts. Adding currencies to favorites;
-* Reminder notifications about making an operation;
-* Application rating;
-* Delete all data in settings;
-* Currency converter;
-* Repeat the last transaction.
+## CoinTail description
+<p>CoinTail is a straightforward iOS application designed to optimize financial management.<br> 
+Users can easily record their expenses and income, create categories, manage accounts, and monitor their budget through an intuitive design. Notifications for daily or weekly entries help maintain financial discipline.<br> 
+CoinTail provides visualization of financial data using diagrams and also supports multi-currency transactions with easy currency conversion. The ability to analyze and make informed decisions makes CoinTail a valuable tool for effective financial management.</p>
 
-### The plans for the development of the application include:
-* Submit the app to the AppStore!!!
+## Screenshots
+<img src="images/main.png" alt="Main menu" width="50%" style="display:block; margin:0 auto;">
+<img src="images/budgets.png" alt="Budgets and categories" width="50%" style="display:block; margin:0 auto;">
+<img src="images/accounts.png" alt="Accounts and transfer money" width="50%" style="display:block; margin:0 auto;">
+<img src="images/settings.png" alt="Settings and payment screen" width="50%" style="display:block; margin:0 auto;">
 
-### The main stack i'm focusing on is here:
-* MVC Pattern ✅
-* UIKit without using a Storyboard ✅
-* CocoaPods (EasyPeasy, Charts) ✅
-* Custom UI ✅
-* Adhering to the following develop principles - DRY, KISS, YAGNI ✅
-* ExchangeRate-API ✅
-* Realm Swift database ✅
+## Structure 
+* "Application": Application launch files (info.plist, AppDelegate.swift, LaunchScreen.storyboard).
+* "Storage": Models and singletons for managing them, setting up the Realm database, Keychain for storing API keys, setting up RevenueCat for working with payments, currency conversion API.
+* "TabBar": Hierarchy of screens located on the TabBar. 
+* "Extensions": Extensions to standard classes for UIKit, Foundation and RevenueCat. Basic controller classes to simplify working with screens.
+* "Resources": Fonts, assets with pictures and colors, Localizable files for translation into Russian.
+  
+## Requirements
+- iOS 12.0+
+- Xcode 14.0+
 
-### Screenshots
+## Dependencies
+[CocoaPods](https://cocoapods.org) is used as a dependency manager.
+List of dependencies: 
+* pod 'EasyPeasy' -> A library that makes it easy to organize constraints and animations for the user interface.
+* pod 'RevenueCat' -> Toolkit for managing paid subscriptions, providing a turnkey solution for implementing and tracking payments.
+* pod 'SwiftLint' -> A tool for automatically checking the style and conventions of Swift code, ensuring consistency and cleanliness of code.
+* pod 'RealmSwift' -> A database for storing and managing data in Swift, providing a convenient interface for working with objects and queries.
+* pod 'Charts' -> A library for creating colorful and interactive charts that provide powerful data visualization.
 
-<img width="300" alt="Screenshot 2023-01-09 v3" src="https://github.com/djfrrresh/CoinTail/assets/118223099/e8ff2fb3-6b15-43d9-b1c4-a3ff628198ce.png">
+### Installation
+Place the following code in your `Podfile`:
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '12.0'
 
-> Main menu
+target 'CoinTail' do
+  use_frameworks!
 
-<img width="300" alt="Screenshot 2023-01-09 v3" src="https://github.com/djfrrresh/CoinTail/assets/118223099/5887f4ea-9b35-4d80-8c4b-db79c62b7e47.png">
+  pod 'EasyPeasy'
+  pod 'RevenueCat'
+  pod 'RealmSwift'
+  pod 'SwiftLint'
+  pod 'Charts'
 
-> Pie Chart with sorted transactions per year
+end
+```
 
-<img width="300" alt="Screenshot 2023-01-09 v3" src="https://github.com/djfrrresh/CoinTail/assets/118223099/2f00c72f-c627-4ada-9896-bd0ff18a4043.png">
+To access the contents of the pods, import modules wherever you import UIKit:
 
-> Quarterly sorting of income by the selected category "Salary"
+``` swift
+import UIKit
+import RealmSwift
+```
 
-<img width="300" alt="Screenshot 2023-01-09 v2" src="https://github.com/djfrrresh/CoinTail/assets/118223099/060746f6-5c31-4691-9f7a-f8d5ef6d3a70.png">
+## API 
+API requests for currency conversion are taken from the site https://app.exchangerate-api.com.<br>
+For the API to work correctly, you need to register on the website and get the key in the [dashboard tab](https://app.exchangerate-api.com/dashboard). This key should then be placed in <b>CoinTail->Storage->Keychain->KeychainManager.swift</b> in the <b>apiKey</b> constant
 
-> Adding a new operation
-
-<img width="300" alt="Screenshot 2023-01-09 v3" src="https://github.com/djfrrresh/CoinTail/assets/118223099/25a7c219-3d3e-4455-a0d4-8ee7c16eb44e.png">
-
-> Repeat last operation
-
-<img width="300" alt="Screenshot 2023-01-09 v3" src="https://github.com/djfrrresh/CoinTail/assets/118223099/8f816544-cb57-412c-b72e-9f2fbdf96c43.png">
-
-> List of all categories
-
-<img width="300" alt="Screenshot 2023-01-09 v3" src="https://github.com/djfrrresh/CoinTail/assets/118223099/9a6a4455-f6e3-4176-a8b7-f15985bc3e6f.png">
-
-> Creating a new category
-
-<img width="300" alt="Screenshot 2023-01-09 v3" src="https://github.com/djfrrresh/CoinTail/assets/118223099/62905690-78a9-43c3-8429-20543476895d.png">
-
-> Adding an operation with a new category and sorting monthly income
-
-<img width="300" alt="Screenshot 2023-01-09 v3" src="https://github.com/djfrrresh/CoinTail/assets/118223099/f2e5a0f9-5801-4b9c-95e1-0183e3d2db3a.png">
-
-> Creating a new budget
-
-<img width="300" alt="Screenshot 2023-01-09 v3" src="https://github.com/djfrrresh/CoinTail/assets/118223099/36d8cbac-6832-484f-928a-2c23201fb670.png">
-
-> Screen with added budgets
-
-<img width="300" alt="Screenshot 2023-01-09 v3" src="https://github.com/djfrrresh/CoinTail/assets/118223099/a1842f35-ba35-4325-8cad-aa41d4d8c899.png">
-
-> Account screen
-
-<img width="300" alt="Screenshot 2023-01-09 v3" src="https://github.com/djfrrresh/CoinTail/assets/118223099/2bbe1370-3804-477c-99e5-19994ad640e5.png">
-
-> Transferring between accounts
-
-<img width="300" alt="Screenshot 2023-01-09 v3" src="https://github.com/djfrrresh/CoinTail/assets/118223099/3b9368e0-3c9c-4065-b94d-7caa23117feb.png">
-
-> History of transfers
-
-<img width="300" alt="Screenshot 2023-01-09 v3" src="https://github.com/djfrrresh/CoinTail/assets/118223099/e8a50acd-29a9-486f-87b5-97b4d2adcd94.png">
+## Meta
+Gmail – kunavinjenya55@gmail.com<br>
+Telegram - https://t.me/just_eugeny<br>
+LinkedIn - https://www.linkedin.com/in/kunav1n/
