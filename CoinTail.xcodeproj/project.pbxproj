@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06CAC8321BB976DADF8FFA47 /* Pods_CoinTail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F85C00474EEA46A9A6B22389 /* Pods_CoinTail.framework */; };
 		560996722AE97D7100EAEE1C /* TransfersHistoryCVHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560996712AE97D7100EAEE1C /* TransfersHistoryCVHeader.swift */; };
 		560996742AE9D8F100EAEE1C /* TransfersHistoryActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560996732AE9D8F100EAEE1C /* TransfersHistoryActions.swift */; };
 		560AFBC12A1394A30054B502 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBC02A1394A30054B502 /* AppDelegate.swift */; };
@@ -232,9 +231,11 @@
 		56EFDFEC2A574771003A6A45 /* BudgetCVHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EFDFEB2A574771003A6A45 /* BudgetCVHeader.swift */; };
 		56EFDFEE2A5751EC003A6A45 /* BudgetCVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EFDFED2A5751EC003A6A45 /* BudgetCVDelegate.swift */; };
 		56EFDFF02A5D9176003A6A45 /* DaySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EFDFEF2A5D9176003A6A45 /* DaySection.swift */; };
+		B596446059E579233DEBC5E0 /* Pods_CoinTail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA6B3542BD0B186C891345D /* Pods_CoinTail.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1FA6B3542BD0B186C891345D /* Pods_CoinTail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoinTail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		560996712AE97D7100EAEE1C /* TransfersHistoryCVHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersHistoryCVHeader.swift; sourceTree = "<group>"; };
 		560996732AE9D8F100EAEE1C /* TransfersHistoryActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersHistoryActions.swift; sourceTree = "<group>"; };
 		560AFBBD2A1394A30054B502 /* CoinTail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinTail.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -463,9 +464,8 @@
 		56EFDFEB2A574771003A6A45 /* BudgetCVHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCVHeader.swift; sourceTree = "<group>"; };
 		56EFDFED2A5751EC003A6A45 /* BudgetCVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCVDelegate.swift; sourceTree = "<group>"; };
 		56EFDFEF2A5D9176003A6A45 /* DaySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySection.swift; sourceTree = "<group>"; };
-		5F0464A9916DB62C21424CEF /* Pods-CoinTail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinTail.debug.xcconfig"; path = "Target Support Files/Pods-CoinTail/Pods-CoinTail.debug.xcconfig"; sourceTree = "<group>"; };
-		DAFE28ED067FD03A25DA930C /* Pods-CoinTail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinTail.release.xcconfig"; path = "Target Support Files/Pods-CoinTail/Pods-CoinTail.release.xcconfig"; sourceTree = "<group>"; };
-		F85C00474EEA46A9A6B22389 /* Pods_CoinTail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoinTail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A80C95C17C880F8D20C63EA2 /* Pods-CoinTail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinTail.debug.xcconfig"; path = "Target Support Files/Pods-CoinTail/Pods-CoinTail.debug.xcconfig"; sourceTree = "<group>"; };
+		B152A38E36270E93160F551C /* Pods-CoinTail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinTail.release.xcconfig"; path = "Target Support Files/Pods-CoinTail/Pods-CoinTail.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -473,20 +473,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06CAC8321BB976DADF8FFA47 /* Pods_CoinTail.framework in Frameworks */,
+				B596446059E579233DEBC5E0 /* Pods_CoinTail.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1CC1EC886B1985011B133842 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1FA6B3542BD0B186C891345D /* Pods_CoinTail.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		560AFBB42A1394A30054B502 = {
 			isa = PBXGroup;
 			children = (
 				560AFBBF2A1394A30054B502 /* CoinTail */,
 				560AFBBE2A1394A30054B502 /* Products */,
 				F53419FB73A201142E6555E8 /* Pods */,
-				D6DC9931089CCE73BE4C91D7 /* Frameworks */,
+				1CC1EC886B1985011B133842 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -606,7 +614,7 @@
 				56D0E9312B2B5CBB0088C92F /* RevenueCat */,
 				569E523B2AD86F9D00A4FCA7 /* Realm */,
 				569E522B2ACDB87000A4FCA7 /* Services */,
-				560AFC412A1D09030054B502 /* Structs */,
+				560AFC412A1D09030054B502 /* Models */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -661,7 +669,7 @@
 			path = ChartsFuncs;
 			sourceTree = "<group>";
 		};
-		560AFC412A1D09030054B502 /* Structs */ = {
+		560AFC412A1D09030054B502 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				560AFC1E2A1BF4970054B502 /* OperationsDaySection.swift */,
@@ -675,7 +683,7 @@
 				565009952B3098EB00701670 /* PremiumDisplay.swift */,
 				5691E0472B32438D0077B13C /* PrivacyLink.swift */,
 			);
-			path = Structs;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		5642DB0F2A43297500ADF475 /* TabBar */ = {
@@ -1522,19 +1530,11 @@
 			path = AddBudgetFuncs;
 			sourceTree = "<group>";
 		};
-		D6DC9931089CCE73BE4C91D7 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F85C00474EEA46A9A6B22389 /* Pods_CoinTail.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		F53419FB73A201142E6555E8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5F0464A9916DB62C21424CEF /* Pods-CoinTail.debug.xcconfig */,
-				DAFE28ED067FD03A25DA930C /* Pods-CoinTail.release.xcconfig */,
+				A80C95C17C880F8D20C63EA2 /* Pods-CoinTail.debug.xcconfig */,
+				B152A38E36270E93160F551C /* Pods-CoinTail.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1546,12 +1546,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 560AFBD42A1394A40054B502 /* Build configuration list for PBXNativeTarget "CoinTail" */;
 			buildPhases = (
-				671FC20F23ADA29E41DD48DD /* [CP] Check Pods Manifest.lock */,
+				DD94B406654D90CFBC5417A1 /* [CP] Check Pods Manifest.lock */,
 				560AFBB92A1394A30054B502 /* Sources */,
 				560AFBBA2A1394A30054B502 /* Frameworks */,
 				560AFBBB2A1394A30054B502 /* Resources */,
 				56FEDCE42A2F8189003E2E25 /* ShellScript */,
-				25D386513FE8DA7E5F94579D /* [CP] Embed Pods Frameworks */,
+				A006A5781A61CEBD7CA08656 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1614,23 +1614,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		25D386513FE8DA7E5F94579D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CoinTail/Pods-CoinTail-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CoinTail/Pods-CoinTail-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CoinTail/Pods-CoinTail-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		56FEDCE42A2F8189003E2E25 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
@@ -1648,7 +1631,24 @@
 			shellPath = /bin/sh;
 			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-		671FC20F23ADA29E41DD48DD /* [CP] Check Pods Manifest.lock */ = {
+		A006A5781A61CEBD7CA08656 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoinTail/Pods-CoinTail-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoinTail/Pods-CoinTail-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CoinTail/Pods-CoinTail-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD94B406654D90CFBC5417A1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2043,7 +2043,7 @@
 		};
 		560AFBD52A1394A40054B502 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F0464A9916DB62C21424CEF /* Pods-CoinTail.debug.xcconfig */;
+			baseConfigurationReference = A80C95C17C880F8D20C63EA2 /* Pods-CoinTail.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -2074,12 +2074,6 @@
 					"\"Charts\"",
 					"-framework",
 					"\"EasyPeasy\"",
-					"-framework",
-					"\"RxCocoa\"",
-					"-framework",
-					"\"RxRelay\"",
-					"-framework",
-					"\"RxSwift\"",
 					"-Wno-quoted-include-in-framework-header",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kunavinEugene.CoinTail;
@@ -2092,7 +2086,7 @@
 		};
 		560AFBD62A1394A40054B502 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DAFE28ED067FD03A25DA930C /* Pods-CoinTail.release.xcconfig */;
+			baseConfigurationReference = B152A38E36270E93160F551C /* Pods-CoinTail.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -2123,12 +2117,6 @@
 					"\"Charts\"",
 					"-framework",
 					"\"EasyPeasy\"",
-					"-framework",
-					"\"RxCocoa\"",
-					"-framework",
-					"\"RxRelay\"",
-					"-framework",
-					"\"RxSwift\"",
 					"-Wno-quoted-include-in-framework-header",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kunavinEugene.CoinTail;

@@ -54,7 +54,7 @@ extension PremiumVC {
         let date = Date()
         let vc = HavePremiumVC(AdvantagesData.advantages, expirationDate: date)
         vc.modalPresentationStyle = .fullScreen
-        guard var topController = UIApplication.shared.windows.first?.rootViewController?.presentedViewController else { return }
+        guard let topController = UIApplication.shared.windows.first?.rootViewController?.presentedViewController else { return }
         
         topController.present(vc, animated: true)
             
