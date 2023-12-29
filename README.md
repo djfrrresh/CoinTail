@@ -71,3 +71,5 @@ For the API to work correctly, you need to register on the website and get the k
 Gmail – kunavinjenya55@gmail.com<br>
 Telegram - https://t.me/just_eugeny<br>
 LinkedIn - https://www.linkedin.com/in/kunav1n/
+
+Distributed under the MIT license. See ``LICENSE`` for more information.
