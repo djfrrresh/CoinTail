@@ -17,7 +17,7 @@ final class AccountsVC: BasicVC {
     
     let noAccountsLabel: UILabel = getNoDataLabel(text: noAccountsText)
     let accountsDescriptionLabel: UILabel = getDataDescriptionLabel(text: accountsDescriptionText)
-    let accountsImageView: UIImageView = getDataImageView(name: "monocleEmoji")
+    let accountsEmojiLabel: UILabel = getDataEmojiLabel("🧐")
     let addAccountButton: UIButton = getAddDataButton(text: "Add an account")
 
     let transferButton: UIButton = {
@@ -98,7 +98,7 @@ final class AccountsVC: BasicVC {
         accountsSubviews()
         accountButtonTargets()
         emptyDataSubviews(
-            dataImageView: accountsImageView,
+            dataView: accountsEmojiLabel,
             noDataLabel: noAccountsLabel,
             dataDescriptionLabel: accountsDescriptionLabel,
             addDataButton: addAccountButton

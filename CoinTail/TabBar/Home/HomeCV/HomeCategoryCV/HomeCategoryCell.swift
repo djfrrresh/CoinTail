@@ -4,6 +4,26 @@
 //
 //  Created by Eugene on 12.06.23.
 //
+// The MIT License (MIT)
+// Copyright © 2023 Eugeny Kunavin (kunavinjenya55@gmail.com)
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 
 import UIKit
 import EasyPeasy
@@ -82,24 +102,8 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
         
         return label
     }()
-    let openDiagramsLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.numberOfLines = 0
-        label.text = "Open pie chart".localized()
-        label.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
-        
-        return label
-    }()
-    let diagramsDescriptionLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.numberOfLines = 0
-        label.text = "Visualise your activities with chart".localized()
-        label.font = UIFont(name: "SFProText-Regular", size: 13)
-        
-        return label
-    }()
+    let openDiagramsLabel: UILabel = getOpenDiagramsLabel()
+    let diagramsDescriptionLabel: UILabel = getDiagramsDescriptionLabel()
     
     let diargamsImageView: UIImageView = {
         let imageView = UIImageView()
@@ -184,7 +188,8 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
         diagramsDescriptionLabel.easy.layout([
             Left(16).to(diargamsImageView, .right),
             Right(16),
-            Bottom(16)
+            Bottom(16),
+            Top(8).to(openDiagramsLabel, .bottom)
         ])
         
         periodLabel.easy.layout([
@@ -300,19 +305,52 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
         return (bins.count, categories)
     }
     
-    static func size(categoryIsHidden: Bool, data: Int) -> CGSize {
-        var height: CGFloat = 0
+    static func getOpenDiagramsLabel() -> UILabel {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.text = "Open pie chart".localized()
+        label.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
         
-        let openDiagramsViewHeight: CGFloat = 88
+        return label
+    }
+    
+    static func getDiagramsDescriptionLabel() -> UILabel {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.text = "Visualise your activities with chart".localized()
+        label.font = UIFont(name: "SFProText-Regular", size: 13)
+        
+        return label
+    }
+    
+    static func size(categoryIsHidden: Bool, data: Int) -> CGSize {
+        var cellHeight: CGFloat = 0
+        
+        let imagePadding: CGFloat = 16
+        let imageWidth: CGFloat = 48
+        let defaultHeight: CGFloat = 76
+        let openDiagramsLabel = getOpenDiagramsLabel()
+        let diagramsDescriptionLabel = getDiagramsDescriptionLabel()
+        
         let pieChartHeight: CGFloat = 250
         let categoryCVHeight: CGFloat = CGFloat((32 + 12) * data)
         let periodLabelHeight: CGFloat = 24
+        
+        let textWidth = UIScreen.main.bounds.width - (2 * 16) - (2 * 16) - imagePadding - imageWidth
+        let openDiagramsHeight: CGFloat = openDiagramsLabel.sizeThatFits(.init(width: textWidth, height: 0)).height
+        let diagramsDescriptionHeight: CGFloat = diagramsDescriptionLabel.sizeThatFits(.init(width: textWidth, height: 0)).height
+        
+        let labelsHeight = openDiagramsHeight + diagramsDescriptionHeight + (2 * 16) + 8
+        let diagramsViewHeight = labelsHeight > defaultHeight ? labelsHeight : defaultHeight
             
-        height = categoryIsHidden ? openDiagramsViewHeight : pieChartHeight + 16 + categoryCVHeight + periodLabelHeight + 16 + 12
+        cellHeight = categoryIsHidden ? diagramsViewHeight : pieChartHeight + 16 + categoryCVHeight + periodLabelHeight + 16 + 12
         
         return .init(
             width: UIScreen.main.bounds.width - 16 * 2,
-            height: height
+            height: cellHeight
         )
     }
+    
 }

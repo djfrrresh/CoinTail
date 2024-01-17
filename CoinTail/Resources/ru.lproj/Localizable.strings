@@ -5,6 +5,26 @@
   Created by Eugene on 24.08.23.
   
 */
+// The MIT License (MIT)
+// Copyright © 2023 Eugeny Kunavin (kunavinjenya55@gmail.com)
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 
 // General
 "Amount" = "Сумма";
@@ -12,7 +32,7 @@
 "Currency" = "Валюта";
 "Week" = "Неделя";
 "Month" = "Месяц";
-"Save" = "Сохранить";
+"Save" = "Сохр.";
 "Edit" = "Ред.";
 /// Alert
 "Error" = "Ошибка";
@@ -69,6 +89,7 @@
 "Date" = "Дата";
 "Account" = "Счёт";
 "Add a comment to your transaction" = "Добавьте комментарий к вашей операции";
+"There is no description for the transaction" = "Описание для операции отсутствует";
 "Today" = "Сегодня";
 "Delete transaction" = "Удалить операцию";
 "Repeat previous transaction" = "Повторить предыдущую операцию";
@@ -80,11 +101,13 @@
 "Do you want to repeat the last transaction?" = "Вы хотите повторить последнюю операцию?";
 "You cannot specify an account for this transaction with another currency" = "Вы не можете указать счет для этой операции в другой валюте";
 "You don't have any accounts to choose from" = "У вас нет счетов для выбора";
+"Create at least one operation so that it can be repeated" = "Создайте хотя бы одну операцию, чтобы ее можно было повторить";
 
 // SelectCategoryVC
 "Search categories by name" = "Поиск категорий по имени";
 "Here you can create categories and subcategories for transactions and budgets" = "Здесь вы можете создавать категории и подкатегории для операций и бюджетов";
-"You don't have any categories created" = "У вас нет созданных категорий";
+"You have not created any expense categories" = "У вас не создано ни одной категории расхода";
+"You have not created any income categories" = "У вас не создано ни одной категории дохода";
 "Add a category" = "Добавить категорию";
 /// Title
 "Income categories" = "Категории дохода";

@@ -4,6 +4,26 @@
 //
 //  Created by Eugene on 15.06.23.
 //
+// The MIT License (MIT)
+// Copyright © 2023 Eugeny Kunavin (kunavinjenya55@gmail.com)
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 
 import UIKit
 import RealmSwift
@@ -54,7 +74,6 @@ final class SelectCategoryVC: BasicVC {
     
     var categoryID: ObjectId?
     var filteredData = [CategoryProtocol]()
-    var categoryNavBarTitle = "Edit".localized()
     var isSearching: Bool = false
     var isParental: Bool = false
     var isEditingCategory: Bool = false {
@@ -90,12 +109,16 @@ final class SelectCategoryVC: BasicVC {
         RecordType(rawValue: rawSegmentType ?? RecordType.expense.rawValue) ?? .expense
     }
     
-    static let noCategoriesText = "You don't have any categories created"
+    static var noCategoriesText = ""
     static let categoriesDescriptionText = "Here you can create categories and subcategories for transactions and budgets"
     
-    let noCategoriesLabel: UILabel = getNoDataLabel(text: noCategoriesText)
+    lazy var noCategoriesLabel: UILabel = {
+        let label = SelectCategoryVC.getNoDataLabel(text: SelectCategoryVC.noCategoriesText)
+        
+            return label
+        }()
     let categoriesDescriptionLabel: UILabel = getDataDescriptionLabel(text: categoriesDescriptionText)
-    let categoriesImageView: UIImageView = getDataImageView(name: "foldersEmoji")
+    let categoriesEmojiLabel: UILabel = getDataEmojiLabel("🗂")
     let addCategoryButton: UIButton = getAddDataButton(text: "Add a category")
     
     let selectCategoryCV: UICollectionView = {
@@ -124,6 +147,7 @@ final class SelectCategoryVC: BasicVC {
         self.rawSegmentType = segmentTitle
         self.isParental = isParental
         self.categoryID = categoryID
+        SelectCategoryVC.noCategoriesText = segmentTitle == "Expense" ? "You have not created any expense categories" : "You have not created any income categories"
                         
         super.init(nibName: nil, bundle: nil)
     }
@@ -153,7 +177,7 @@ final class SelectCategoryVC: BasicVC {
         selectCategorySubviews()
         setTitle()
         emptyDataSubviews(
-            dataImageView: categoriesImageView,
+            dataView: categoriesEmojiLabel,
             noDataLabel: noCategoriesLabel,
             dataDescriptionLabel: categoriesDescriptionLabel,
             addDataButton: addCategoryButton

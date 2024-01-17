@@ -11,7 +11,6 @@
 		560996742AE9D8F100EAEE1C /* TransfersHistoryActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560996732AE9D8F100EAEE1C /* TransfersHistoryActions.swift */; };
 		560AFBC12A1394A30054B502 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBC02A1394A30054B502 /* AppDelegate.swift */; };
 		560AFBC52A1394A30054B502 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBC42A1394A30054B502 /* HomeVC.swift */; };
-		560AFBCB2A1394A30054B502 /* CoinTail.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBC92A1394A30054B502 /* CoinTail.xcdatamodeld */; };
 		560AFBCD2A1394A40054B502 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 560AFBCC2A1394A40054B502 /* Assets.xcassets */; };
 		560AFBD02A1394A40054B502 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 560AFBCE2A1394A40054B502 /* LaunchScreen.storyboard */; };
 		560AFBEC2A13BF110054B502 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AFBEB2A13BF110054B502 /* UITextField.swift */; };
@@ -241,7 +240,6 @@
 		560AFBBD2A1394A30054B502 /* CoinTail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinTail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		560AFBC02A1394A30054B502 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		560AFBC42A1394A30054B502 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
-		560AFBCA2A1394A30054B502 /* CoinTail.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoinTail.xcdatamodel; sourceTree = "<group>"; };
 		560AFBCC2A1394A40054B502 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		560AFBCF2A1394A40054B502 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		560AFBD12A1394A40054B502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -531,6 +529,7 @@
 		560AFBD82A13B2450054B502 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				569FFC6C2B55C09C00A3951D /* Cells */,
 				56D0E9342B2B60290088C92F /* RevenueCat */,
 				560AFBED2A13C1CA0054B502 /* Controllers */,
 				560AFBDC2A13B2A40054B502 /* UIKit */,
@@ -789,10 +788,10 @@
 		5676C8A62B20C69B008A6395 /* Premium */ = {
 			isa = PBXGroup;
 			children = (
+				5676C8A72B20C6AD008A6395 /* PremiumVC.swift */,
 				565009972B30CC7F00701670 /* HavePremium */,
 				5676C8AC2B20DD92008A6395 /* PremiumFuncs */,
 				5676C8A92B20D85F008A6395 /* PremiumCV */,
-				5676C8A72B20C6AD008A6395 /* PremiumVC.swift */,
 			);
 			path = Premium;
 			sourceTree = "<group>";
@@ -1320,6 +1319,13 @@
 			path = Realm;
 			sourceTree = "<group>";
 		};
+		569FFC6C2B55C09C00A3951D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		56D0E9082B21F2740088C92F /* PremiumDescription */ = {
 			isa = PBXGroup;
 			children = (
@@ -1394,7 +1400,6 @@
 				560AFBCE2A1394A40054B502 /* LaunchScreen.storyboard */,
 				560AFBC02A1394A30054B502 /* AppDelegate.swift */,
 				560AFBD12A1394A40054B502 /* Info.plist */,
-				560AFBC92A1394A30054B502 /* CoinTail.xcdatamodeld */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1774,7 +1779,6 @@
 				56EFDFE82A54502E003A6A45 /* Budgets.swift in Sources */,
 				568EF02C2AA609F400EB042D /* Account.swift in Sources */,
 				568EF0482AA8F7C100EB042D /* AccountsTransferActions.swift in Sources */,
-				560AFBCB2A1394A30054B502 /* CoinTail.xcdatamodeld in Sources */,
 				568EF02A2AA609B500EB042D /* AccountCVDataSource.swift in Sources */,
 				5676C8C12B2117BE008A6395 /* PlanCell.swift in Sources */,
 				568EF0872AB4C09F00EB042D /* Notifications.swift in Sources */,
@@ -2149,19 +2153,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		560AFBC92A1394A30054B502 /* CoinTail.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				560AFBCA2A1394A30054B502 /* CoinTail.xcdatamodel */,
-			);
-			currentVersion = 560AFBCA2A1394A30054B502 /* CoinTail.xcdatamodel */;
-			path = CoinTail.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 560AFBB52A1394A30054B502 /* Project object */;
 }

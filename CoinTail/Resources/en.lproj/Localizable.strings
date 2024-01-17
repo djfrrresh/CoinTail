@@ -5,6 +5,26 @@
   Created by Eugene on 24.08.23.
   
 */
+// The MIT License (MIT)
+// Copyright © 2023 Eugeny Kunavin (kunavinjenya55@gmail.com)
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 
 // General
 "Amount" = "Amount";
@@ -69,6 +89,7 @@
 "Date" = "Date";
 "Account" = "Account";
 "Add a comment to your transaction" = "Add a comment to your transaction";
+"There is no description for the transaction" = "There is no description for the transaction";
 "Today" = "Today";
 "Delete transaction" = "Delete transaction";
 "Repeat previous transaction" = "Repeat previous transaction";
@@ -80,11 +101,13 @@
 "Do you want to repeat the last transaction?" = "Do you want to repeat the last transaction?";
 "You cannot specify an account for this transaction with another currency" = "You cannot specify an account for this transaction with another currency";
 "You don't have any accounts to choose from" = "You don't have any accounts to choose from";
+"Create at least one operation so that it can be repeated" = "Create at least one operation so that it can be repeated";
 
 // SelectCategoryVC
 "Search categories by name" = "Search categories by name";
 "Here you can create categories and subcategories for transactions and budgets" = "Here you can create categories and subcategories for transactions and budgets";
-"You don't have any categories created" = "You don't have any categories created";
+"You have not created any expense categories" = "You have not created any expense categories";
+"You have not created any income categories" = "You have not created any income categories";
 "Add a category" = "Add a category";
 /// Title
 "Income categories" = "Income categories";

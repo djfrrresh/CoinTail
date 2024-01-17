@@ -4,6 +4,26 @@
 //
 //  Created by Eugene on 16.05.23.
 //
+// The MIT License (MIT)
+// Copyright © 2023 Eugeny Kunavin (kunavinjenya55@gmail.com)
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 
 import UIKit
 import EasyPeasy
@@ -42,15 +62,26 @@ extension BasicVC {
         
         return label
     }
+    
+    static func getDataEmojiLabel(_ emoji: String) -> UILabel {
+        let label = UILabel()
+        label.text = emoji
+        label.font = UIFont(name: "SFProText-Regular", size: 100)
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        
+        return label
+    }
+    
     static func getDataImageView(name: String) -> UIImageView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: name)
-        
+
         return imageView
     }
     
-    func emptyDataSubviews(dataImageView: UIImageView, noDataLabel: UILabel, dataDescriptionLabel: UILabel, addDataButton: UIButton) {
+    func emptyDataSubviews(dataView: UIView, noDataLabel: UILabel, dataDescriptionLabel: UILabel, addDataButton: UIButton) {
         self.view.addSubview(emptyDataView)
         
         emptyDataView.easy.layout([
@@ -63,12 +94,12 @@ extension BasicVC {
             ))
         ])
 
-        emptyDataView.addSubview(dataImageView)
+        emptyDataView.addSubview(dataView)
         emptyDataView.addSubview(noDataLabel)
         emptyDataView.addSubview(dataDescriptionLabel)
         emptyDataView.addSubview(addDataButton)
         
-        dataImageView.easy.layout([
+        dataView.easy.layout([
             Height(100),
             Width(100),
             Top(),
@@ -78,7 +109,7 @@ extension BasicVC {
         noDataLabel.easy.layout([
             Left(),
             Right(),
-            Top(32).to(dataImageView, .bottom)
+            Top(32).to(dataView, .bottom)
         ])
         
         dataDescriptionLabel.easy.layout([
@@ -170,6 +201,7 @@ extension BasicVC {
     
         let noDataLabelHeight: CGFloat = noDataLabel.sizeThatFits(.init(width: textWidth, height: 0)).height
         let descriptionHeight: CGFloat = descriptionLabel.sizeThatFits(.init(width: textWidth, height: 0)).height
+        
         let imageViewHeight: CGFloat = 100.0
         let buttonHeight: CGFloat = 52.0
         

@@ -4,6 +4,26 @@
 //
 //  Created by Eugene on 15.06.23.
 //
+// The MIT License (MIT)
+// Copyright © 2023 Eugeny Kunavin (kunavinjenya55@gmail.com)
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 
 import UIKit
 import RealmSwift
@@ -92,8 +112,8 @@ final class Categories {
                 uniqueCategoryIDs.insert(categoryID)
             }
         }
-        
-        totalCategories = newCategories
+                
+        totalCategories = newCategories        
     }
     
     // Получить ID категории по ее названию
@@ -169,6 +189,50 @@ final class Categories {
         }
         
         completion?(true)
+    }
+    
+    // Создает дефолтные категории разных типов
+    func createDefaultCategoriesIfNeeded() {
+        // Проверяем, есть ли категории в базе данных
+        guard realmService.read(CategoryClass.self).isEmpty else {
+            return
+        }
+        
+        let incomeCategories: [CategoryClass] = [
+            createDefaultCategory(name: "Salary", color: Colors.shared.salaryColor, image: "💸", type: RecordType.income.rawValue),
+            createDefaultCategory(name: "Debt Repayment", color: Colors.shared.debtRepaymentColor, image: "↩️", type: RecordType.income.rawValue),
+            createDefaultCategory(name: "Side Job", color: Colors.shared.sideJobColor, image: "💵", type: RecordType.income.rawValue),
+            createDefaultCategory(name: "Pleasant Finds", color: Colors.shared.pleasantFindsColor, image: "💝", type: RecordType.income.rawValue)
+        ]
+
+        let expenseCategories: [CategoryClass] = [
+            createDefaultCategory(name: "Transport", color: Colors.shared.transportColor, image: "🚎", type: RecordType.expense.rawValue),
+            createDefaultCategory(name: "Grocery", color: Colors.shared.gloceryColor, image: "🥦", type: RecordType.expense.rawValue),
+            createDefaultCategory(name: "Cloths", color: Colors.shared.clothsColor, image: "👔", type: RecordType.expense.rawValue),
+            createDefaultCategory(name: "Gym", color: Colors.shared.gymColor, image: "💪", type: RecordType.expense.rawValue),
+            createDefaultCategory(name: "Service", color: Colors.shared.serviceColor, image: "⚙️", type: RecordType.expense.rawValue),
+            createDefaultCategory(name: "Subscription", color: Colors.shared.subscriptionColor, image: "💎", type: RecordType.expense.rawValue),
+            createDefaultCategory(name: "Health", color: Colors.shared.healthColor, image: "💊", type: RecordType.expense.rawValue),
+            createDefaultCategory(name: "Cafe", color: Colors.shared.cafeColor, image: "🍔", type: RecordType.expense.rawValue)
+        ]
+
+        for category in incomeCategories {
+            realmService.write(category, CategoryClass.self)
+        }
+
+        for category in expenseCategories {
+            realmService.write(category, CategoryClass.self)
+        }
+    }
+    
+    private func createDefaultCategory(name: String, color: String?, image: String, type: String) -> CategoryClass {
+        let category = CategoryClass()
+        category.name = name
+        category.color = color
+        category.image = image
+        category.type = type
+        
+        return category
     }
     
 }
