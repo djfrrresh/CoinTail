@@ -1,5 +1,5 @@
 //
-//  FavouriteCurrency.swift
+//  FavouriteCurrencyClass.swift
 //  CoinTail
 //
 //  Created by Eugene on 23.10.23.
@@ -30,12 +30,6 @@ import RealmSwift
 
 
 class FavouriteCurrencyClass: Object {
-    @Persisted(primaryKey: true) var id: ObjectId
-
-    @Persisted var currency: String = ""
-}
-
-class SelectedCurrencyClass: Object {
     @Persisted(primaryKey: true) var id: ObjectId
 
     @Persisted var currency: String = ""

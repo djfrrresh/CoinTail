@@ -1,8 +1,8 @@
 //
-//  SubcategoryClass.swift
+//  CategoryProtocol.swift
 //  CoinTail
 //
-//  Created by Eugene on 21.09.23.
+//  Created by Eugene on 17.01.24.
 //
 // The MIT License (MIT)
 // Copyright © 2023 Eugeny Kunavin (kunavinjenya55@gmail.com)
@@ -29,12 +29,10 @@ import UIKit
 import RealmSwift
 
 
-class SubcategoryClass: Object, CategoryProtocol {
-    @Persisted(primaryKey: true) var id: ObjectId
-    
-    @Persisted var name: String = ""
-    @Persisted var color: String?
-    @Persisted var image: String?
-    @Persisted var isDeleted: Bool = false
-    @Persisted var parentCategory: ObjectId
+protocol CategoryProtocol {
+    var id: ObjectId { get set }
+    var name: String { get set }
+    var color: String? { get set }
+    var image: String? { get set }
+    var isDeleted: Bool { get set }
 }

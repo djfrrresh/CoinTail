@@ -29,7 +29,15 @@ import UIKit
 import EasyPeasy
 
 
-extension BudgetsVC {
+extension BudgetsVC: UINavigationControllerDelegate {
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        if viewController is BudgetsVC {
+            navigationController.setNavigationBarHidden(true, animated: animated)
+        } else {
+            navigationController.setNavigationBarHidden(false, animated: animated)
+        }
+    }
     
     func budgetSubviews() {
         self.view.addSubview(customNavBar)

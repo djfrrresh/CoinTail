@@ -31,15 +31,23 @@ import MessageUI
 
 extension AboutAppVC {
     
+    // Открыть телеграм
     func telegramAction() {
-        if let url = URL(string: "https://t.me/just_eugeny") {
-            UIApplication.shared.open(url, options: [:])
+        let tgURL = URL.init(string: "tg://resolve?domain=just_eugeny")
+
+        if UIApplication.shared.canOpenURL(tgURL!) {
+            UIApplication.shared.open(tgURL!, options: [:])
+        } else {
+            if let url = URL(string: "https://t.me/just_eugeny") {
+                UIApplication.shared.open(url, options: [:])
+            }
         }
     }
     
-    func gmailAction() {
+    // Открыть почту
+    func mailAction() {
         let subject = "CoinTail"
-        let body = "Hello, I have a question / suggestion regarding the CoinTail app..."
+        let body = "Hello, I have a question / suggestion regarding the CoinTail app".localized()
         let recipientEmail = "kunavinjenya55@gmail.com"
         
         // Открыть приложение "Почта" на устройстве

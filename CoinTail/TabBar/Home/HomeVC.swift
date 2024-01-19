@@ -104,7 +104,6 @@ final class HomeVC: BasicVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.navigationBar.isHidden = true
         period = .allTheTime
         homeGlobalCV.reloadData()
 
@@ -112,14 +111,21 @@ final class HomeVC: BasicVC {
         homeButtonTargets()
         areOperationsEmpty()
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleExchangeRatesUpdated), name: Notification.Name("ExchangeRatesUpdated"), object: nil)
         
         customNavBar.subTitleLabel.text = "Balance".localized()
-                                
+                               
+        navigationController?.delegate = self
         homeGlobalCV.delegate = self
 
         homeGlobalCV.dataSource = self

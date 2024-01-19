@@ -37,7 +37,9 @@ struct OperationsDaySection {
         let dictionary = Dictionary.init(grouping: groupRecords) { record in
             record.date.firstDayOfPeriod(components: [.year, .month, .day])
         }.map { values in
-            OperationsDaySection(month: values.key, records: values.value)
+            let sortedRecords = values.value.sorted(by: { $0.date > $1.date })
+            
+            return OperationsDaySection(month: values.key, records: sortedRecords)
         }
         
         return dictionary

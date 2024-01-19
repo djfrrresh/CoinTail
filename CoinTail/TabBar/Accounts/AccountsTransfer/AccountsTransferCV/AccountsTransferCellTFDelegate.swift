@@ -1,8 +1,8 @@
 //
-//  AmountTFDelegate.swift
+//  AccountsTransferCellTFDelegate.swift
 //  CoinTail
 //
-//  Created by Eugene on 05.07.23.
+//  Created by Eugene on 17.01.24.
 //
 // The MIT License (MIT)
 // Copyright © 2023 Eugeny Kunavin (kunavinjenya55@gmail.com)
@@ -28,10 +28,21 @@
 import UIKit
 
 
-extension AddBudgetVC {
-
+extension TransferCell: UITextFieldDelegate {
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        AmountValidationHelper.isValidInput(textField, shouldChangeCharactersIn: range, replacementString: string)
+        guard let textFieldString = textField.text, let textFieldRange = Range(range, in: textFieldString) else {
+            return false
+        }
+        let allString = textFieldString.replacingCharacters(in: textFieldRange, with: string)
+        
+        if textField == amountTextField {
+            transferCellDelegate?.cell(didUpdateTransferAmount: allString)
+            
+            return AmountValidationHelper.isValidInput(textField, shouldChangeCharactersIn: range, replacementString: string)
+        } else {
+            return false
+        }
     }
-
+    
 }

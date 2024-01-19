@@ -78,7 +78,7 @@
 /// Periods CV
 "All the time" = "All the time";
 "Year" = "Year";
-"Quarter" = "Quarter";
+"Q" = "Q";
 "3 months" = "3 months";
 /// Categories CV
 "Open pie chart" = "Open pie chart";
@@ -153,6 +153,8 @@
 "You have no accounts added" = "You have no accounts added";
 "Here you can add different money storage methods, such as cards, cash or a bank deposit" = "Here you can add different money storage methods, such as cards, cash or a bank deposit";
 "Add an account" = "Add an account";
+/// Alert
+"Transfers are only available if you have 2 or more accounts" = "Transfers are only available if you have 2 or more accounts";
 
 // AddAccountVC
 "Account name" = "Account name";
@@ -220,6 +222,7 @@
 "Contact us" = "Contact us";
 "Application version" = "Application version";
 "User agreement" = "User agreement";
+"Hello, I have a question / suggestion regarding the CoinTail app" = "Hello, I have a question / suggestion regarding the CoinTail app";
 /// Title
 "About" = "About";
 

@@ -1,5 +1,5 @@
 //
-//  RecordStruct.swift
+//  RecordClass.swift
 //  CoinTail
 //
 //  Created by Eugene on 23.05.23.

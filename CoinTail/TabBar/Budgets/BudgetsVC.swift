@@ -71,10 +71,15 @@ final class BudgetsVC: BasicVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.navigationBar.isHidden = true
         budgetCV.reloadData()
         
         areBudgetsEmpty()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = true
     }
         
     override func viewDidLoad() {
@@ -84,6 +89,7 @@ final class BudgetsVC: BasicVC {
                 
         budgetCV.dataSource = self
         
+        navigationController?.delegate = self
         budgetCV.delegate = self
         
         budgetSubviews()

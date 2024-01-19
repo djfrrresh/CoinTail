@@ -120,8 +120,11 @@ extension AddOperationVC: UICollectionViewDataSource {
                 cell.repeatOperationLabel.isHidden = true
                 cell.isSeparatorLineHidden(false)
             case 4:
+                cell.dateTapGesture()
+                
                 cell.cornerRadiusBottom(radius: 12)
                 cell.menuLabel.text = "Date".localized()
+                
                 if recordID != nil {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "dd/MM/yyyy"

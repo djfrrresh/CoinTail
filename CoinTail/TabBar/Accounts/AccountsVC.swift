@@ -76,10 +76,14 @@ final class AccountsVC: BasicVC {
         // Использовать этот способ + dispatch asyncAfter если стоит async на методах 
         accounts = RealmService.shared.accountsArr
         accountsCV.reloadData()
-
-        navigationController?.navigationBar.isHidden = true
         
         isAccountEmpty()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = true
     }
     
     override func viewDidLoad() {
@@ -93,6 +97,7 @@ final class AccountsVC: BasicVC {
                 
         accountsCV.dataSource = self
         
+        navigationController?.delegate = self
         accountsCV.delegate = self
         
         accountsSubviews()

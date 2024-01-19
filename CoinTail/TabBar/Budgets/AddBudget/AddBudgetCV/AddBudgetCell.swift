@@ -74,6 +74,7 @@ final class AddBudgetCell: UICollectionViewCell {
     let budgetAmountTF: UITextField = {
         let textField = UITextField()
         textField.font = UIFont(name: "SFProText-Regular", size: 17)
+        textField.keyboardType = .decimalPad
         
         return textField
     }()

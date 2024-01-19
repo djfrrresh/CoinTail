@@ -1,8 +1,8 @@
 //
-//  SubcategoryClass.swift
+//  SelectedCurrency.swift
 //  CoinTail
 //
-//  Created by Eugene on 21.09.23.
+//  Created by Eugene on 17.01.24.
 //
 // The MIT License (MIT)
 // Copyright © 2023 Eugeny Kunavin (kunavinjenya55@gmail.com)
@@ -25,16 +25,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import UIKit
+import Foundation
 import RealmSwift
 
 
-class SubcategoryClass: Object, CategoryProtocol {
+class SelectedCurrencyClass: Object {
     @Persisted(primaryKey: true) var id: ObjectId
-    
-    @Persisted var name: String = ""
-    @Persisted var color: String?
-    @Persisted var image: String?
-    @Persisted var isDeleted: Bool = false
-    @Persisted var parentCategory: ObjectId
+
+    @Persisted var currency: String = ""
 }

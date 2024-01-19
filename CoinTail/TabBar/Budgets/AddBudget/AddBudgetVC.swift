@@ -116,14 +116,14 @@ final class AddBudgetVC: PickerVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        navigationController?.navigationBar.isHidden = false
+
         addBudgetTargets()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationController?.navigationBar.isHidden = false
-            
+                    
         itemsPickerView.dataSource = self
         addBudgetCV.dataSource = self
         

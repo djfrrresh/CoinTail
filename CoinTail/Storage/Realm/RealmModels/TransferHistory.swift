@@ -1,5 +1,5 @@
 //
-//  TransferHistory.swift
+//  TransferHistoryClass.swift
 //  CoinTail
 //
 //  Created by Eugene on 11.09.23.

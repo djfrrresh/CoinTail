@@ -29,7 +29,15 @@ import UIKit
 import EasyPeasy
 
 
-extension HomeVC {
+extension HomeVC: UINavigationControllerDelegate {
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        if viewController is HomeVC {
+            navigationController.setNavigationBarHidden(true, animated: animated)
+        } else {
+            navigationController.setNavigationBarHidden(false, animated: animated)
+        }
+    }
     
     func homeSubviews() {
         self.view.addSubview(customNavBar)

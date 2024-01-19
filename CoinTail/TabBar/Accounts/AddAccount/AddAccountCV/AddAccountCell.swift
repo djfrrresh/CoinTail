@@ -94,6 +94,7 @@ final class AddAccountCell: UICollectionViewCell {
         let textField = UITextField()
         textField.placeholder = "Amount".localized()
         textField.textColor = .black
+        textField.keyboardType = .decimalPad
         textField.font = UIFont(name: "SFProText-Regular", size: 17)
         
         return textField

@@ -1,5 +1,5 @@
 //
-//  NotificationSettings.swift
+//  NotificationSettingsClass.swift
 //  CoinTail
 //
 //  Created by Eugene on 23.10.23.

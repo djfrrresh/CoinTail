@@ -102,15 +102,15 @@ final class AddAccountVC: PickerVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = false
 
         addAccountTargets()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationController?.navigationBar.isHidden = false
-                
+                        
         itemsPickerView.dataSource = self
         addAccountCV.dataSource = self
 

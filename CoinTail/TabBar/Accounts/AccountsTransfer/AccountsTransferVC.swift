@@ -28,7 +28,6 @@
 import UIKit
 
 
-
 final class AccountsTransferVC: PickerVC {
     
     static var accounts: [AccountClass] {
@@ -36,8 +35,8 @@ final class AccountsTransferVC: PickerVC {
             return RealmService.shared.accountsArr
         }
     }
-    let accountNames = Accounts.shared.getAccountNames(from: accounts)
-    
+    var accountNames = Accounts.shared.getAccountNames(from: accounts)
+
     var selectedRowIndex: Int?
     var transferAmount: String?
     var accountNameFrom: String? {
@@ -206,11 +205,15 @@ final class AccountsTransferVC: PickerVC {
         return cv
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         navigationController?.navigationBar.isHidden = false
-        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+                
         self.title = "Transfers".localized()
                 
         itemsPickerView.delegate = self

@@ -1,5 +1,5 @@
 //
-//  Budget.swift
+//  BudgetClass.swift
 //  CoinTail
 //
 //  Created by Eugene on 30.06.23.

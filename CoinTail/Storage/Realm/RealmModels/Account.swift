@@ -1,5 +1,5 @@
 //
-//  Account.swift
+//  AccountClass.swift
 //  CoinTail
 //
 //  Created by Eugene on 04.09.23.

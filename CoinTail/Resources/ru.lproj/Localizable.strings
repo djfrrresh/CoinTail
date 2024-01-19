@@ -78,7 +78,7 @@
 /// Periods CV
 "All the time" = "Всё время";
 "Year" = "Год";
-"Quarter" = "Квартал";
+"Q" = "Квартал";
 "3 months" = "3 месяца";
 /// Categories CV
 "Open pie chart" = "Открыть диаграмму";
@@ -153,6 +153,8 @@
 "You have no accounts added" = "У вас нет добавленных аккаунтов";
 "Here you can add different money storage methods, such as cards, cash or a bank deposit" = "Здесь вы можете добавить различные способы хранения денег, такие как карты, наличные или банковский депозит";
 "Add an account" = "Добавить счёт";
+/// Alert
+"Transfers are only available if you have 2 or more accounts" = "Переводы доступны только при наличии 2 и более счетов";
 
 // AddAccountVC
 "Account name" = "Название счёта";
@@ -218,6 +220,7 @@
 "Contact us" = "Связаться с нами";
 "Application version" = "Версия приложения";
 "User agreement" = "Пользовательское Соглашение";
+"Hello, I have a question / suggestion regarding the CoinTail app" = "Здравствуйте, у меня есть вопрос / предложение по приложению CoinTail";
 /// Title
 "About" = "О приложении";
 

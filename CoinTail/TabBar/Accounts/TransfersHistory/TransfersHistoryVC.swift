@@ -69,6 +69,8 @@ final class TransfersHistoryVC: BasicVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        navigationController?.navigationBar.isHidden = false
+        
         sortTransfers()
         isTransfersEmpty()
     }
@@ -76,8 +78,6 @@ final class TransfersHistoryVC: BasicVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.isHidden = false
-
         self.title = "Transfer history".localized()
         
         transfersCV.delegate = self

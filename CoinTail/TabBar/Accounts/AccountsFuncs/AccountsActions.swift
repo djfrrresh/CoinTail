@@ -40,10 +40,14 @@ extension AccountsVC {
     }
     
     @objc func goToAccountsTransferVC() {
-        let vc = AccountsTransferVC()
-        vc.hidesBottomBarWhenPushed = true
-                
-        navigationController?.pushViewController(vc, animated: true)
+        if accounts.count >= 2 {
+            let vc = AccountsTransferVC()
+            vc.hidesBottomBarWhenPushed = true
+                    
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            infoAlert("Transfers are only available if you have 2 or more accounts".localized())
+        }
     }
     
     @objc func goToAccountsHistoryVC() {
@@ -52,4 +56,5 @@ extension AccountsVC {
                 
         navigationController?.pushViewController(vc, animated: true)
     }
+    
 }

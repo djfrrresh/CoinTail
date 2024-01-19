@@ -95,6 +95,7 @@ final class AddOperationCell: UICollectionViewCell {
         let textField = UITextField()
         textField.font = UIFont(name: "SFProText-Regular", size: 17)
         textField.placeholder = "Amount".localized()
+        textField.keyboardType = .decimalPad
         
         return textField
     }()
@@ -269,6 +270,16 @@ final class AddOperationCell: UICollectionViewCell {
         addOperationCellDelegate?.cell(didUpdateOperationDate: date)
 
         self.endEditing(true)
+    }
+    
+    @objc func handleCellTap() {
+        dateTF.becomeFirstResponder()
+    }
+    
+    func dateTapGesture() {
+        let dateTFTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleCellTap))
+        
+        addGestureRecognizer(dateTFTapGesture)
     }
     
     static func size() -> CGSize {

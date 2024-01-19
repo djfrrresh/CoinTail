@@ -138,12 +138,16 @@ final class AddOperationVC: PickerVC {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = false
+    }
             
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationController?.navigationBar.isHidden = false
-        
+                
         addOperationCV.delegate = self
         itemsPickerView.delegate = self
         

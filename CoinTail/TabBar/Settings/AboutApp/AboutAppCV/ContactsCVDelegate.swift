@@ -37,7 +37,7 @@ extension AboutAppVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayo
         case 2:
             switch indexPath.row {
             case 0:
-                gmailAction()
+                mailAction()
             case 1:
                 telegramAction()
             default:

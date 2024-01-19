@@ -29,7 +29,15 @@ import UIKit
 import EasyPeasy
 
 
-extension AccountsVC {
+extension AccountsVC: UINavigationControllerDelegate {
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        if viewController is AccountsVC {
+            navigationController.setNavigationBarHidden(true, animated: animated)
+        } else {
+            navigationController.setNavigationBarHidden(false, animated: animated)
+        }
+    }
 
     func accountsSubviews() {
         self.view.addSubview(customNavBar)
