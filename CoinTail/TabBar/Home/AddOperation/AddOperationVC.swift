@@ -73,6 +73,8 @@ final class AddOperationVC: PickerVC {
     let favouriteStringCurrencies: [String] = Currencies.shared.currenciesToChoose()
     let accountNames = Accounts.shared.getAccountNames(from: accounts)
     
+    let defaultDescription = "Add a comment to your transaction".localized()
+    
     let addOperationCV: UICollectionView = {
         let addOperationLayout: UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()

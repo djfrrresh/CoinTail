@@ -102,7 +102,6 @@ final class AddOperationCell: UICollectionViewCell {
     let operationDescriptionTF: UITextView = {
         let textField = UITextView()
         textField.font = UIFont(name: "SFProText-Regular", size: 17)
-        textField.text = "Add a comment to your transaction".localized()
         textField.textColor = UIColor(named: "secondaryTextColor")
         textField.autocorrectionType = .no
         textField.backgroundColor = .white

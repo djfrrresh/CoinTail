@@ -73,22 +73,23 @@ final class Records {
         case .year:
             filteredRecords = totalRecords.filter { calendar.component(.year, from: $0.date) == currentYear - step }
         case .quarter:
-            // TODO: есть баг с прокруткой влево 4 раза когда там нет операций
             let year = Int.norm(hi: currentYear, lo: currentMonth - 1 - step * 3, base: 12).nhi
             let desiredMonth = Int.norm(hi: currentYear, lo: currentMonth - 1 - step * 3, base: 12).nlo + 1
             let desiredQuarter = (desiredMonth - 1) / 3 + 1
-
+            
             filteredRecords = totalRecords.filter {
                 let recordQuarter = (calendar.component(.month, from: $0.date) - 1) / 3 + 1
                 let recordYear = calendar.component(.year, from: $0.date)
-                
+                                
                 return recordQuarter == desiredQuarter && recordYear == year
             }
         case .month:
             let year = Int.norm(hi: currentYear, lo: currentMonth - 1 - step, base: 12).nhi
             let desiredMonth = Int.norm(hi: currentYear, lo: currentMonth - 1 - step, base: 12).nlo + 1
             
-            filteredRecords = totalRecords.filter { calendar.component(.month, from: $0.date) == desiredMonth && calendar.component(.year, from: $0.date) == year }
+            filteredRecords = totalRecords.filter {
+                calendar.component(.month, from: $0.date) == desiredMonth && calendar.component(.year, from: $0.date) == year
+            }
         }
         
         return filteredRecords

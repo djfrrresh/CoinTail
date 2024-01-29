@@ -58,6 +58,7 @@
 "Groceries" = "Продукты";
 "Cloths" = "Одежда";
 "Gym" = "Спортивный зал";
+"Service" = "Сервисное обслуживание";
 "Subscription" = "Подписка";
 "Health" = "Здоровье";
 "Cafe" = "Кафе";
@@ -80,6 +81,19 @@
 "Year" = "Год";
 "Q" = "Квартал";
 "3 months" = "3 месяца";
+/// Months
+"January" = "Январь";
+"February" = "Февраль";
+"March" = "Март";
+"April" = "Апрель";
+"May" = "Май";
+"June" = "Июнь";
+"July" = "Июль";
+"August" = "Август";
+"September" = "Сентябрь";
+"October" = "Октябрь";
+"November" = "Ноябрь";
+"December" = "Декабрь";
 /// Categories CV
 "Open pie chart" = "Открыть диаграмму";
 "Visualise your activities with chart" = "Просматривайте операции с помощью круговой диаграммы";
@@ -244,21 +258,20 @@
 "year" = "год";
 "Available rates" = "Доступные тарифы";
 /// PremiumAdvantages
-"Access to all currencies" = "Доступ ко всем валютам";
+"Access to currency conversions" = "Доступ к валютным конвертациям";
 "Access to informative diagrams" = "Доступ к информативным диаграммам";
 "Unlimited accounts" = "Неограниченное количество счетов";
 "Unlimited budgets" = "Неограниченное количество бюджетов";
 "Ability to add sub-categories" = "Возможность добавления подкатегорий";
-"A cup of coffee for the developer" = "Чашка кофе разработчику";
+"A cup of coffee for the developer" = "Чашка кофе для разработчика";
 /// PremiumPrivacy
 "Restore purchase" = "Восстановить покупку";
 "Start trial subscription" = "Начать пробную подписку";
 "Continue - total" = "Продолжить - всего";
-"By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our Terms, User Agreement and Privacy Policy." = "Нажимая 'Продолжить', вы принимаете наше Пользовательское Соглашение, Условия Использования и Политику Конфиденциальности. Сумма будет списана, а подписка будет автоматически продлеваться на выбранный период времени и по той же цене до отмены ее действия в настройках App Store.";
-"After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our Terms, User Agreement and Privacy Policy." = "Оформляя подписку, вы принимаете наше Пользовательское Соглашение, Условия Использования и Политику Конфиденциальности. По завершению пробного периода, после %@, произойдет списание суммы полного тарифа, а подписка будет автоматически продлеваться на выбранный период времени и по той же цене до отмены ее действия в настройках App Store.";
+"By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy." = "Нажимая 'Продолжить', вы принимаете наше Пользовательское Соглашение и Политику Конфиденциальности. Сумма будет списана, а подписка будет автоматически продлеваться на выбранный период времени и по той же цене до отмены ее действия в настройках App Store.";
+"After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy." = "Оформляя подписку, вы принимаете наше Пользовательское Соглашение и Политику Конфиденциальности. По завершению пробного периода, после %@, произойдет списание суммы полного тарифа, а подписка будет автоматически продлеваться на выбранный период времени и по той же цене до отмены ее действия в настройках App Store.";
 "Privacy Policy" = "Политику Конфиденциальности";
 "User Agreement" = "Пользовательское Соглашение";
-"Terms" = "Условия Использования";
 /// Alert
 "No valid premium subscription found on this account" = "Не обнаружено действующей премиум подписки на этом аккаунте";
 "Failed to restore subscription" = "Не удалось восстановить подписку";
@@ -266,7 +279,7 @@
 // HavePremiumVC
 "You have bought a premium subscription" = "У вас подключен премиум";
 "Great" = "Отлично";
-"Now you have access to" = "Теперь у вас есть доступ к";
+"Now you have" = "Теперь у вас есть";
 "The current period will end" = "Текущий период закончится";
 
 // WebViewVC

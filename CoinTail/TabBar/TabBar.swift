@@ -30,13 +30,6 @@ import UIKit
 
 class TabBar: UITabBarController {
     
-    let separatorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.red
-        
-        return view
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

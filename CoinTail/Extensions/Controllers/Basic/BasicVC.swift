@@ -43,7 +43,7 @@ class BasicVC: UIViewController {
         setupHideKeyboardOnTap()
                 
         self.view.backgroundColor = UIColor(named: "AccentColor")
-        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.tintColor = .systemBlue
     }
     
     override func viewWillAppear(_ animated: Bool) {

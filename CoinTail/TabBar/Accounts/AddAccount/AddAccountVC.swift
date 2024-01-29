@@ -79,7 +79,6 @@ final class AddAccountVC: PickerVC {
         return cv
     }()
     
-    //TODO: переделать сохранение amount и name при удалении 1 символа
     init(accountID: ObjectId) {
         self.accountID = accountID
 

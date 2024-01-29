@@ -151,8 +151,10 @@ extension AddOperationVC: UICollectionViewDataSource {
                 
                 cell.operationDescriptionTF.text = descriptionIsEmpty ? "There is no description for the transaction".localized() : operationDescription
                 cell.operationDescriptionTF.textColor = descriptionIsEmpty ? UIColor(named: "secondaryTextColor") : .black
+            } else {
+                cell.operationDescriptionTF.text = defaultDescription
             }
-            
+                        
             cell.operationAmountTF.isHidden = true
             cell.menuLabel.isHidden = true
             cell.subMenuLabel.isHidden = true

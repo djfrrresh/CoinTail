@@ -39,7 +39,7 @@ final class PremiumAdvantagesHeader: UICollectionReusableView {
         label.font = UIFont(name: "SFProText-Regular", size: 12)
         label.textColor = UIColor(named: "secondaryTextColor")
         label.numberOfLines = 1
-        label.text = "Now you have access to".localized()
+        label.text = "Now you have".localized()
         
         return label
     }()

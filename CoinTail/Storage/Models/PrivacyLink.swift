@@ -36,11 +36,10 @@ struct PrivacyLink: Hashable {
     enum LinkType: Int {
         case eula = 1
         case privacy = 2
-        case tos = 3
     }
     
     var type: LinkType {
-        LinkType(rawValue: internalType) ?? .tos
+        LinkType(rawValue: internalType) ?? .eula
     }
 }
 
@@ -50,10 +49,9 @@ struct Privacy {
     
     static var privacy: Privacy = Privacy(
         premiumLinks: [
-            PrivacyLink(url: "https://www.youtube.com/", internalType: 1, localizationKey: "User Agreement"),
-            PrivacyLink(url: "https://translate.google.com/?hl=ru&sl=ru&tl=en&op=translate", internalType: 2, localizationKey: "Privacy Policy"),
-            PrivacyLink(url: "https://vk.com/feed", internalType: 3, localizationKey: "Terms")
+            PrivacyLink(url: "https://docs.google.com/document/d/1yiNMDxz63Ek_gqnuS21mZm63UMU1ocS4kXynTg4KNDI/edit?usp=sharing", internalType: 1, localizationKey: "User Agreement"),
+            PrivacyLink(url: "https://docs.google.com/document/d/1ySZEggizST7attJrnqCeDutQC15lup11b0v5NwC7m2I/edit?usp=sharing", internalType: 2, localizationKey: "Privacy Policy")
         ],
-        aboutLink: PrivacyLink(url: "https://www.youtube.com/", internalType: 1, localizationKey: "User Agreement")
+        aboutLink: PrivacyLink(url: "https://docs.google.com/document/d/1yiNMDxz63Ek_gqnuS21mZm63UMU1ocS4kXynTg4KNDI/edit?usp=sharing", internalType: 1, localizationKey: "User Agreement")
     )
 }

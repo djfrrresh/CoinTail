@@ -86,13 +86,23 @@ extension HomeVC: UINavigationControllerDelegate {
         }
     }
     
-    func sortOperations() {
+    func sortOperations(isArrow: Bool = false) {
         let getRecord = Records.shared.getRecords(
             for: period,
             type: homeSegment,
             step: currentStep,
             categoryID: categorySort?.id
         )
+        
+        if isArrow {
+            guard !getRecord.isEmpty else {
+                currentStep = isLeft ? currentStep + 1 : currentStep - 1
+                
+                sortOperations(isArrow: true)
+                                
+                return
+            }
+        }
         
         // Обновление категорий
         Categories.shared.categoriesUpdate(records: getRecord)

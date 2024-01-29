@@ -53,12 +53,9 @@ final class HomeVC: BasicVC {
         }
     }
         
-    var currentStep: Int = 0 {
-        didSet {
-            homeGlobalCV.reloadData()
-        }
-    }
-             
+    var currentStep: Int = 0
+    
+    var isLeft: Bool = true
     var categoryIsHidden: Bool = true
     
     // Используется для возврата операций по выбранному типу
@@ -96,28 +93,6 @@ final class HomeVC: BasicVC {
         return cv
     }()
     
-    // Удаляем наблюдателя
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: Notification.Name("ExchangeRatesUpdated"), object: nil)
-    }
-        
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        period = .allTheTime
-        homeGlobalCV.reloadData()
-
-        sortOperations() // Сортировка операций по убыванию по дате
-        homeButtonTargets()
-        areOperationsEmpty()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        navigationController?.navigationBar.isHidden = true
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -137,6 +112,28 @@ final class HomeVC: BasicVC {
             dataDescriptionLabel: operationsDescriptionLabel,
             addDataButton: addOperationButton
         )
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        period = .allTheTime
+        homeGlobalCV.reloadData()
+
+        sortOperations() // Сортировка операций по убыванию по дате
+        homeButtonTargets()
+        areOperationsEmpty()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    // Удаляем наблюдателя
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("ExchangeRatesUpdated"), object: nil)
     }
 
 }

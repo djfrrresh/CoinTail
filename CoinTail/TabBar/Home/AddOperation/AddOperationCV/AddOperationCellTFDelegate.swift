@@ -46,8 +46,6 @@ extension AddOperationCell: UITextFieldDelegate, UITextViewDelegate {
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        guard !text.isEmpty else { return true }
-
         guard let textViewString = textView.text, let textViewRange = Range(range, in: textViewString) else {
             return false
         }
@@ -60,6 +58,9 @@ extension AddOperationCell: UITextFieldDelegate, UITextViewDelegate {
         }
         
         addOperationCellDelegate?.cell(didUpdateOperationDescription: allString)
+        
+        // Эта проверка должна быть всегда ниже функции делегата, чтобы при удалении символа сохранялась данная строка
+        guard !text.isEmpty else { return true }
                 
         return charactersCount < 64
     }

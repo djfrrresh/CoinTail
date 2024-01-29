@@ -58,6 +58,7 @@
 "Groceries" = "Groceries";
 "Cloths" = "Cloths";
 "Gym" = "Gym";
+"Service" = "Service";
 "Subscription" = "Subscription";
 "Health" = "Health";
 "Cafe" = "Cafe";
@@ -80,6 +81,19 @@
 "Year" = "Year";
 "Q" = "Q";
 "3 months" = "3 months";
+/// Months
+"January" = "January";
+"February" = "February";
+"March" = "March";
+"April" = "April";
+"May" = "May";
+"June" = "June";
+"July" = "July";
+"August" = "August";
+"September" = "September";
+"October" = "October";
+"November" = "November";
+"December" = "December";
 /// Categories CV
 "Open pie chart" = "Open pie chart";
 "Visualise your activities with chart" = "Visualise your activities with chart";
@@ -246,7 +260,7 @@
 "year" = "year";
 "Available rates" = "Available rates";
 /// PremiumAdvantages
-"Access to all currencies" = "Access to all currencies";
+"Access to currency conversions" = "Access to currency conversions";
 "Access to informative diagrams" = "Access to informative diagrams";
 "Unlimited accounts" = "Unlimited accounts";
 "Unlimited budgets" = "Unlimited budgets";
@@ -256,8 +270,8 @@
 "Restore purchase" = "Restore purchase";
 "Start trial subscription" = "Start trial subscription";
 "Continue - total" = "Continue - total";
-"By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our Terms, User Agreement and Privacy Policy." = "By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our Terms, User Agreement and Privacy Policy.";
-"After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our Terms, User Agreement and Privacy Policy." = "After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our Terms, User Agreement and Privacy Policy.";
+"By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy." = "By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy.";
+"After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy." = "After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy.";
 /// Alert
 "No valid premium subscription found on this account" = "No valid premium subscription found on this account";
 "Failed to restore subscription" = "Failed to restore subscription";
@@ -265,7 +279,7 @@
 // HavePremiumVC
 "You have bought a premium subscription" = "You have bought a premium subscription";
 "Great" = "Great";
-"Now you have access to" = "Now you have access to";
+"Now you have" = "Now you have";
 "The current period will end" = "The current period will end";
 
 // WebViewVC

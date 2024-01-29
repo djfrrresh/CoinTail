@@ -27,7 +27,6 @@
 
 import UIKit
 import EasyPeasy
-import RealmSwift
 
 
 final class SelectCategoryCell: UICollectionViewCell {
@@ -54,6 +53,7 @@ final class SelectCategoryCell: UICollectionViewCell {
         imageView.image = UIImage(systemName: "square.and.pencil")
         imageView.tintColor = .black
         imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .white
         imageView.isHidden = true
         
         return imageView

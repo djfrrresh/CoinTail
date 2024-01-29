@@ -31,8 +31,6 @@ import UIKit
 extension CreateCategoryCell: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard !string.isEmpty else { return true }
-
         guard let textFieldString = textField.text, let textFieldRange = Range(range, in: textFieldString) else {
             return false
         }
@@ -41,6 +39,8 @@ extension CreateCategoryCell: UITextFieldDelegate {
         
         if textField == categoryNameTF {
             createCategoryCellDelegate?.cell(didUpdateCategoryName: allString)
+            
+            guard !string.isEmpty else { return true }
             
             return charactersCount < 24
         } else {

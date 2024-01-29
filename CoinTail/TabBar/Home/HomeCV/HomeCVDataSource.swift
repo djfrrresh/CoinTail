@@ -41,8 +41,9 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
     // Пролистывание круговой диаграммы
     func arrowTap(isLeft: Bool) {
         currentStep += isLeft ? 1 : -1
+        self.isLeft = isLeft
         
-        sortOperations()
+        sortOperations(isArrow: true)
     }
     
     // При нажатии на категорию помечает ее выбранной в коллекции
@@ -147,10 +148,15 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
             cell.periodLabel.text = getPeriodLabel(step: currentStep)
             cell.category = categorySort
             
-            let rightArrowIsHidden = currentStep == 0 || period == .allTheTime
-            let leftArrowIsHidden = lastStep(
+            let rightArrowIsHidden = borderStep(
                 for: Records.shared.records,
-                categoryID: categorySort?.id
+                categoryID: categorySort?.id,
+                isLeft: false
+            ) == currentStep || period == .allTheTime
+            let leftArrowIsHidden = borderStep(
+                for: Records.shared.records,
+                categoryID: categorySort?.id,
+                isLeft: true
             ) == currentStep || period == .allTheTime
             
             cell.arrowIsHidden(left: leftArrowIsHidden, right: rightArrowIsHidden)
@@ -204,15 +210,28 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
         }
     }
     
-    private func lastStep(for records: [RecordClass], categoryID: ObjectId? = nil) -> Int {
-        var records = records
+    func borderStep(for records: [RecordClass], categoryID: ObjectId? = nil, isLeft: Bool) -> Int {
+        var records = records.filter {
+            switch homeSegment {
+            case .allOperations:
+                return true
+            case .expense:
+                return $0.type == RecordType.expense.rawValue
+            case .income:
+                return $0.type == RecordType.income.rawValue
+            }
+        }
         
         if let category = categoryID {
             records = records.filter { $0.categoryID == category }
         }
         
         records.sort { l, r in
-            return l.date < r.date
+            if isLeft {
+                return l.date < r.date
+            } else {
+                return l.date > r.date
+            }
         }
         
         guard let date = records.first?.date else { return 0 }
@@ -228,10 +247,9 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
         case .year:
             return currentYear - lastYear
         case .quarter:
-            let currentQuarter = (Int.norm(hi: currentYear, lo: currentMonth - 1, base: 12).nlo + 1) / 3
-            let quarterCount = (currentYear - lastYear) * 4 + currentQuarter
+            let monthCount = currentMonth - lastMonth + (currentYear - lastYear) * 12
                         
-            return quarterCount
+            return Int(ceil(Double(monthCount) / 3.0))
         case .month:
             let monthCount = currentMonth - lastMonth + (currentYear - lastYear) * 12
                         
@@ -252,16 +270,48 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
         case .quarter:
             let year = Int.norm(hi: currentYear, lo: currentMonth - 1 - step * 3, base: 12).nhi
             let desiredMonth = Int.norm(hi: currentYear, lo: currentMonth - 1 - step * 3, base: 12).nlo + 1
-            let desiredQuarter = desiredMonth / 3
+            let desiredQuarter = desiredMonth / 3 + 1
             let quarterText = "Q".localized()
             
-            return "\(yearText) \(year), \(quarterText) \(desiredQuarter)"
+            return "\(yearText) \(year), \(quarterText)-\(desiredQuarter)"
         case .month:
             let year = Int.norm(hi: currentYear, lo: currentMonth - 1 - step, base: 12).nhi
             let desiredMonth = Int.norm(hi: currentYear, lo: currentMonth - 1 - step, base: 12).nlo + 1
-            let monthText = "Month".localized()
             
-            return "\(yearText) \(year), \(monthText) \(desiredMonth)"
+            let monthText = monthName(monthNumber: desiredMonth)
+            
+            return "\(yearText) \(year), \(monthText)"
+        }
+    }
+    
+    private func monthName(monthNumber: Int) -> String {
+        switch monthNumber {
+        case 1:
+            return "January".localized()
+        case 2:
+            return "February".localized()
+        case 3:
+            return "March".localized()
+        case 4:
+            return "April".localized()
+        case 5:
+            return "May".localized()
+        case 6:
+            return "June".localized()
+        case 7:
+            return "July".localized()
+        case 8:
+            return "August".localized()
+        case 9:
+            return "September".localized()
+        case 10:
+            return "October".localized()
+        case 11:
+            return "November".localized()
+        case 12:
+            return "December".localized()
+        default:
+            return "Month".localized() + " \(monthNumber)"
         }
     }
     

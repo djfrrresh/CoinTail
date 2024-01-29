@@ -34,6 +34,10 @@ extension HomeVC: SelectedSegmentDate {
         segmentIndex = index
         homeSegment = segment
         categorySort = nil
+        currentStep = borderStep(
+            for: Records.shared.records,
+            isLeft: true
+        )
         
         sortOperations() // Сортировка коллекции с операциями
     }
@@ -41,7 +45,7 @@ extension HomeVC: SelectedSegmentDate {
     // Передает выбранный период и обнуляет счетчик шагов для диаграммы
     func selectedPeriod(_ period: DatePeriods) {
         self.period = period
-        currentStep = 0
+        currentStep = borderStep(for: Records.shared.records, isLeft: true)
         
         sortOperations()
     }

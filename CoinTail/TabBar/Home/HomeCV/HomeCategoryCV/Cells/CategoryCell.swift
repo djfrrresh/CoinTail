@@ -110,9 +110,10 @@ final class CategoryCVCell: UICollectionViewCell {
         }
                 
         let textWidth = category.sizeThatFits(.init(width: 0, height: 0)).width
+        let cellWidth = textWidth + 16 * 2 + xmarkWidth
         
         // Динамический размер одной ячейки с отступами по 16 с краёв
-        return .init(width: textWidth + 16 * 2 + xmarkWidth, height: 32)
+        return .init(width: cellWidth, height: 32)
     }
 
 }

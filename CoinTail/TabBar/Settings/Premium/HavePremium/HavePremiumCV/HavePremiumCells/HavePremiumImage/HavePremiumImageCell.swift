@@ -36,7 +36,7 @@ final class HavePremiumImageCell: UICollectionViewCell {
     private let popperEmojiLabel: UILabel = {
         let label = UILabel()
         label.text = "🎉"
-        label.font = UIFont(name: "SFProText-Regular", size: 200)
+        label.font = UIFont(name: "SFProText-Regular", size: 180)
         label.numberOfLines = 1
         label.textAlignment = .center
         

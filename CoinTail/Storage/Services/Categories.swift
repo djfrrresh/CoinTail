@@ -199,21 +199,21 @@ final class Categories {
         }
         
         let incomeCategories: [CategoryClass] = [
-            createDefaultCategory(name: "Salary", color: Colors.shared.salaryColor, image: "💸", type: RecordType.income.rawValue),
-            createDefaultCategory(name: "Debt Repayment", color: Colors.shared.debtRepaymentColor, image: "↩️", type: RecordType.income.rawValue),
-            createDefaultCategory(name: "Side Job", color: Colors.shared.sideJobColor, image: "💵", type: RecordType.income.rawValue),
-            createDefaultCategory(name: "Pleasant Finds", color: Colors.shared.pleasantFindsColor, image: "💝", type: RecordType.income.rawValue)
+            createDefaultCategory(name: "Salary".localized(), color: Colors.shared.salaryColor, image: "💸", type: RecordType.income.rawValue),
+            createDefaultCategory(name: "Debt repayment".localized(), color: Colors.shared.debtRepaymentColor, image: "↩️", type: RecordType.income.rawValue),
+            createDefaultCategory(name: "Side job".localized(), color: Colors.shared.sideJobColor, image: "💵", type: RecordType.income.rawValue),
+            createDefaultCategory(name: "Pleasant finds".localized(), color: Colors.shared.pleasantFindsColor, image: "💝", type: RecordType.income.rawValue)
         ]
 
         let expenseCategories: [CategoryClass] = [
-            createDefaultCategory(name: "Transport", color: Colors.shared.transportColor, image: "🚎", type: RecordType.expense.rawValue),
-            createDefaultCategory(name: "Grocery", color: Colors.shared.gloceryColor, image: "🥦", type: RecordType.expense.rawValue),
-            createDefaultCategory(name: "Cloths", color: Colors.shared.clothsColor, image: "👔", type: RecordType.expense.rawValue),
-            createDefaultCategory(name: "Gym", color: Colors.shared.gymColor, image: "💪", type: RecordType.expense.rawValue),
-            createDefaultCategory(name: "Service", color: Colors.shared.serviceColor, image: "⚙️", type: RecordType.expense.rawValue),
-            createDefaultCategory(name: "Subscription", color: Colors.shared.subscriptionColor, image: "💎", type: RecordType.expense.rawValue),
-            createDefaultCategory(name: "Health", color: Colors.shared.healthColor, image: "💊", type: RecordType.expense.rawValue),
-            createDefaultCategory(name: "Cafe", color: Colors.shared.cafeColor, image: "🍔", type: RecordType.expense.rawValue)
+            createDefaultCategory(name: "Transport".localized(), color: Colors.shared.transportColor, image: "🚎", type: RecordType.expense.rawValue),
+            createDefaultCategory(name: "Groceries".localized(), color: Colors.shared.gloceryColor, image: "🥦", type: RecordType.expense.rawValue),
+            createDefaultCategory(name: "Cloths".localized(), color: Colors.shared.clothsColor, image: "👔", type: RecordType.expense.rawValue),
+            createDefaultCategory(name: "Gym".localized(), color: Colors.shared.gymColor, image: "💪", type: RecordType.expense.rawValue),
+            createDefaultCategory(name: "Service".localized(), color: Colors.shared.serviceColor, image: "⚙️", type: RecordType.expense.rawValue),
+            createDefaultCategory(name: "Subscription".localized(), color: Colors.shared.subscriptionColor, image: "💎", type: RecordType.expense.rawValue),
+            createDefaultCategory(name: "Health".localized(), color: Colors.shared.healthColor, image: "💊", type: RecordType.expense.rawValue),
+            createDefaultCategory(name: "Cafe".localized(), color: Colors.shared.cafeColor, image: "🍔", type: RecordType.expense.rawValue)
         ]
 
         for category in incomeCategories {

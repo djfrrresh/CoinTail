@@ -1,8 +1,8 @@
 //
-//  BasicVCFuncs.swift
+//  BasicNoDataFuncs.swift
 //  CoinTail
 //
-//  Created by Eugene on 16.05.23.
+//  Created by Eugene on 22.01.24.
 //
 // The MIT License (MIT)
 // Copyright © 2023 Eugeny Kunavin (kunavinjenya55@gmail.com)
@@ -128,72 +128,8 @@ extension BasicVC {
         ])
     }
     
-    // Всплывающий алерт с информацией
-    func infoAlert(_ message: String, _ title: String = "Error") {
-        let alertAction = UIAlertAction(title: "OK", style: .default)
-        
-        let alertView = UIAlertController(title: title.localized(), message: message, preferredStyle: .alert)
-        
-        alertView.addAction(alertAction)
-        
-        self.present(alertView, animated: true)
-    }
-    
-    // Алерт с подтверждением действия
-    func confirmationAlert(title: String, message: String, confirmActionTitle: String, confirmActionHandler: @escaping () -> Void) {
-        let confirmAction = UIAlertAction(title: confirmActionTitle, style: .default) { _ in
-            confirmActionHandler()
-        }
-        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel)
-        
-        let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        alertView.addAction(confirmAction)
-        alertView.addAction(cancelAction)
-        
-        self.present(alertView, animated: true)
-    }
-    
-    // Настройка title для контроллера
-    func setupNavigationTitle(title: String, large: Bool = false) {
-        prefersLargeTitle = large
-        navigationController?.navigationBar.prefersLargeTitles = large
-        navigationItem.largeTitleDisplayMode = large ? .always : .never
-        
-        if large {
-            navigationItem.title = title
-            navigationItem.setValue(1, forKey: "__largeTitleTwoLineMode")
-            
-            
-        } else {
-            let titleLabel: UILabel = {
-                let label = UILabel()
-                label.text = title
-                label.textAlignment = .center
-                label.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
-                
-                return label
-            }()
-            
-            navigationItem.titleView = titleLabel
-        }
-    }
-    
-    // Убрать клавиатуру при нажатии на экран за пределы клавиатуры
-    func setupHideKeyboardOnTap() {
-        self.view.addGestureRecognizer(endEditingRecognizer())
-        navigationController?.navigationBar.addGestureRecognizer(endEditingRecognizer())
-    }
-    // Регистрирует нажатия на экран
-    private func endEditingRecognizer() -> UIGestureRecognizer {
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing(_:)))
-        tap.cancelsTouchesInView = false
-        
-        return tap
-    }
-    
     // Отображает динамически высоту для View
-    static func noDataViewSize(noDataLabel: UILabel, descriptionLabel: UILabel) -> CGFloat {
+    static private func noDataViewSize(noDataLabel: UILabel, descriptionLabel: UILabel) -> CGFloat {
         let padding: CGFloat = 16.0
         let imagePadding: CGFloat = 32.0
         
@@ -208,17 +144,6 @@ extension BasicVC {
         let viewHeight = imageViewHeight + imagePadding + noDataLabelHeight + descriptionHeight + padding * 2 + buttonHeight
                         
         return viewHeight
-    }
-    
-}
-
-extension BasicVC: UITextFieldDelegate {
-    
-    // Обработка нажатия Return на клавиатуре
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder() // Закрыть клавиатуру
-        
-        return true
     }
     
 }

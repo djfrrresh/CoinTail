@@ -108,22 +108,23 @@ final class RevenueCatService {
     
     // Восстановить покупки
     func restorePurchases(completion: @escaping (RestoreResponse) -> Void) {
-        Purchases.shared.restorePurchases { customerInfo, _ in
-            if let customerInfo = customerInfo {
-                if customerInfo.activeSubscriptions.count > 0 {
-                    if let expirationDate = customerInfo.expirationDate(forProductIdentifier: customerInfo.activeSubscriptions.first!),
-                       expirationDate.timeIntervalSince1970 > Date().timeIntervalSince1970 {
+        //TODO: раскоментить
+//        Purchases.shared.restorePurchases { customerInfo, _ in
+//            if let customerInfo = customerInfo {
+//                if customerInfo.activeSubscriptions.count > 0 {
+//                    if let expirationDate = customerInfo.expirationDate(forProductIdentifier: customerInfo.activeSubscriptions.first!),
+//                       expirationDate.timeIntervalSince1970 > Date().timeIntervalSince1970 {
 //                        NetworkManager.shared.premiumReport(customerInfo)
-                        
-                        completion(.success(expirationDate))
-                    }
-                } else {
-                    completion(.noSubs)
-                }
-            } else {
-                completion(.noData)
-            }
-        }
+//
+//                        completion(.success(expirationDate))
+//                    }
+//                } else {
+//                    completion(.noSubs)
+//                }
+//            } else {
+//                completion(.noData)
+//            }
+//        }
     }
     
     func getCustomerInfo(completion: @escaping (CustomerInfo?, Date?) -> Void) {

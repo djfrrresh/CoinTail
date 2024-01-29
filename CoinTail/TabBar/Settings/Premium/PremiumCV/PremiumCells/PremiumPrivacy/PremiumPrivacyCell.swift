@@ -181,11 +181,11 @@ final class PremiumPrivacyCell: UICollectionViewCell {
             let expirationDate = Date().advanced(by: 86400 * Double(trialDays))
             let dateString = dateFormatter.string(from: expirationDate)
             
-            let descriptionFormat = NSLocalizedString("After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our Terms, User Agreement and Privacy Policy.".localized(), comment: "")
+            let descriptionFormat = NSLocalizedString("After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy.".localized(), comment: "")
 
             description.text = String.localizedStringWithFormat(descriptionFormat, dateString)
         } else {
-            description.text = "By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our Terms, User Agreement and Privacy Policy.".localized()
+            description.text = "By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy.".localized()
         }
         
         let descriptionSize = description.sizeThatFits(.init(width: textWidth, height: 0))

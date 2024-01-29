@@ -273,6 +273,8 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
         }
         
         let screenWidth: CGFloat = UIScreen.main.bounds.width - 16 * 2
+        let categoriesCVWidth: CGFloat = screenWidth - 16 * 2
+        
         for (width, category) in categoriesWidth {
             var found = false
             
@@ -283,9 +285,11 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
                 }).reduce(0, +)
                 
                 let spacingBetweenCurrentItems: CGFloat = CGFloat(bins[bin].count) * spacing
-                if currentRowWidth + width + spacingBetweenCurrentItems <= screenWidth {
+                if currentRowWidth + width + spacingBetweenCurrentItems <= categoriesCVWidth {
                     bins[bin].append((width, category))
+                    
                     found = true
+                    
                     break
                 }
             }
@@ -301,7 +305,7 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
                 categories.append(cat)
             }
         }
-        
+                
         return (bins.count, categories)
     }
     

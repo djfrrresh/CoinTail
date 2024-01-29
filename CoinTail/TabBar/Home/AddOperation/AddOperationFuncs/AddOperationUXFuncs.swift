@@ -109,9 +109,15 @@ extension AddOperationVC: SendCategoryID, AddOperationCellDelegate {
         updateAmount(at: amountIndexPath, text: "\(abs(record.amount))")
 
         // Описание
-        operationDescription = record.descriptionText
+        var text: String
+        if record.descriptionText.isEmpty {
+            text = defaultDescription
+        } else {
+            text = record.descriptionText
+        }
+        operationDescription = text
         let descriptionIndexPath = IndexPath(item: 0, section: 1)
-        updateDescription(at: descriptionIndexPath, text: record.descriptionText)
+        updateDescription(at: descriptionIndexPath, text: text)
 
         // Дата
         operationDate = record.date
@@ -135,7 +141,7 @@ extension AddOperationVC: SendCategoryID, AddOperationCellDelegate {
         selectedCurrency = record.currency
 
         // Категория
-        if let category = Categories.shared.getCategory(for: record.categoryID) {
+        if let category = Categories.shared.getGeneralCategory(for: record.categoryID) {
             operationCategory = category.name
             categoryID = record.categoryID
         }

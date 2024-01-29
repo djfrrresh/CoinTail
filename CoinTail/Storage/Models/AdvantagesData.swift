@@ -33,7 +33,7 @@ struct AdvantagesData {
     var icon: String = ""
     
     static var advantages: [AdvantagesData] = [
-        AdvantagesData(descriptionText: "Access to all currencies".localized(), icon: "💱"),
+        AdvantagesData(descriptionText: "Access to currency conversions".localized(), icon: "💱"),
         AdvantagesData(descriptionText: "Access to informative diagrams".localized(), icon: "📊"),
         AdvantagesData(descriptionText: "Unlimited accounts".localized(), icon: "🏦"),
         AdvantagesData(descriptionText: "Unlimited budgets".localized(), icon: "🎯"),
