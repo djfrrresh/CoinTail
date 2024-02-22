@@ -35,7 +35,6 @@ final class AddOperationVC: PickerVC {
     var recordID: ObjectId?
     var categoryID: ObjectId?
     var accountID: ObjectId?
-    var isUsingCurrenciesPicker: Bool = true
     
     var operationAmount: String?
     var operationDescription: String?
@@ -64,14 +63,8 @@ final class AddOperationVC: PickerVC {
             updateCell(at: indexPathToUpdate, text: selectedCurrency)
         }
     }
-    
-    static var accounts: [AccountClass] {
-        get {
-            return RealmService.shared.accountsArr
-        }
-    }
+
     let favouriteStringCurrencies: [String] = Currencies.shared.currenciesToChoose()
-    let accountNames = Accounts.shared.getAccountNames(from: accounts)
     
     let defaultDescription = "Add a comment to your transaction".localized()
     
@@ -140,16 +133,8 @@ final class AddOperationVC: PickerVC {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationController?.navigationBar.isHidden = false
-    }
-            
+
     override func viewDidLoad() {
-        super.viewDidLoad()
-                
         addOperationCV.delegate = self
         itemsPickerView.delegate = self
         
@@ -160,6 +145,15 @@ final class AddOperationVC: PickerVC {
         addOperationSubviews()
         setTargets()
         setupToolBar()
+        
+        // Ставить super.viewDidLoad вниз помогает при неправильном zPosition разных вьюшек и контроллера (например, вью контроллера и отдельный пикер)
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = false
     }
     
 }

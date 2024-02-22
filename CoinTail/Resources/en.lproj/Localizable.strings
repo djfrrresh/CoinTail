@@ -97,6 +97,7 @@
 /// Categories CV
 "Open pie chart" = "Open pie chart";
 "Visualise your activities with chart" = "Visualise your activities with chart";
+"To display the pie chart you must create at least one transaction" = "To display the pie chart you must create at least one transaction";
 
 // AddOperationVC
 "Description" = "Description";

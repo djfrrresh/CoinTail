@@ -56,4 +56,18 @@ extension AccountsTransferVC: TransferCellDelegate {
         }
     }
     
+    @objc func transferFromButtonAction() {
+        showPickerView()
+        
+        selectedRowIndex = 0
+        accountNameFrom = accountNames[0]
+    }
+    
+    @objc func transferToButtonAction() {
+        showPickerView()
+        
+        selectedRowIndex = 1
+        accountNameTo = accountNames[0]
+    }
+    
 }

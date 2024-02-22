@@ -109,7 +109,7 @@ final class HomeDateCell: UICollectionViewCell {
         typeSwitcher.easy.layout([
             Left(16),
             Right(16),
-            Top(24)
+            Top()
         ])
 
         dateCV.easy.layout([
@@ -139,7 +139,7 @@ final class HomeDateCell: UICollectionViewCell {
     
     static func size() -> CGSize {
         let dateCVHeight: CGFloat = 40
-        let typeSwitcherHeight: CGFloat = 40
+        let typeSwitcherHeight: CGFloat = 32
         let padding: CGFloat = 16
         
         let sumHeight = dateCVHeight + typeSwitcherHeight + padding

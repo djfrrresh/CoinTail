@@ -170,7 +170,7 @@ final class Categories {
             
             // Помечает удаленными подкатегории
             for subcategoryId in category.subcategories {
-                deleteSubcategory(for: subcategoryId)
+                self.deleteSubcategory(for: subcategoryId)
             }
         }
         
@@ -184,8 +184,10 @@ final class Categories {
             return
         }
         
-        try? RealmService.shared.realm?.write {
-            subcategory.isDeleted = true
+        DispatchQueue.main.async {
+            try? RealmService.shared.realm?.write {
+                subcategory.isDeleted = true
+            }
         }
         
         completion?(true)

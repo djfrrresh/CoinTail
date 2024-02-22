@@ -29,7 +29,11 @@ import UIKit
 import RealmSwift
 
 
-extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CategoryIsHiddenDelegate, ArrowTapDelegate, SendCategoryCellDelegate, PushVC {
+extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CategoryIsHiddenDelegate, ArrowTapDelegate, SendCategoryCellDelegate, ShowChartsAlertDelegate, PushVC {
+    
+    func showAlert(message: String) {
+        self.infoAlert(message)
+    }
 
     // Скрытие / показ категорий при нажатии на диаграмму
     func categoryIsHidden(isHidden: Bool) {
@@ -121,9 +125,13 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
                 categoryID: categorySort?.id
             )
             
+            // Обновляет categoryIsHidden при переключении свичера, если операции в каком-либо типе отсутствуют
+            categoryIsHidden = monthSections.isEmpty ? true : categoryIsHidden
+            
             cell.categoryisHiddenDelegate = self
             cell.arrowTapDelegate = self
             cell.sendCategoryDelegate = self
+            cell.sendAlertDelegate = self
             
             //TODO: premium
             cell.chartsUpdate(homeSegment, records: records)
@@ -170,8 +178,10 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
                 return UICollectionViewCell()
             }
 
+            cell.segmentType = homeSegment
             cell.monthSectionsCellData = monthSections
             cell.pushVCDelegate = self
+            cell.noOperationsByType()
 
             return cell
         default:
@@ -183,7 +193,7 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         switch cellIdentifier(for: IndexPath(row: 0, section: section)) {
         case HomeDateCell.id:
-            return .init(top: 0, left: 0, bottom: 16, right: 0)
+            return .init(top: 16, left: 0, bottom: 0, right: 0)
         case HomeCategoryCell.id:
             return .init(top: 16, left: 0, bottom: 16, right: 0)
         case HomeOperationCell.id:
@@ -200,7 +210,7 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
             return HomeDateCell.size()
         case HomeCategoryCell.id:
             return HomeCategoryCell.size(
-                categoryIsHidden: categoryIsHidden,
+                categoryIsHidden: monthSections.isEmpty ? true : categoryIsHidden,
                 data: HomeCategoryCell.packBins(data: categoriesByType).0
             )
         case HomeOperationCell.id:

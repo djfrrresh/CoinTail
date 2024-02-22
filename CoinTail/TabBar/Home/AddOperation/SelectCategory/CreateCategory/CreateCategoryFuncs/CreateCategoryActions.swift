@@ -31,54 +31,62 @@ import RealmSwift
 
 extension CreateCategoryVC {
     
-    // Проверка на наличие текста и выбранной иконки, вывод ошибки или закрытие PopVC
     @objc func createCategoryAction() {
         let categoryName = categoryName ?? ""
         let categoryIcon = categoryIcon ?? ""
         let mainCategoryName = mainCategoryName ?? ""
-
-        let isSubcategory = isToggleOn
         let randomColor = UIColor.randomColor().toHex()
+        
+        var isSubcategory: Bool {
+            guard let categoryID = self.categoryID else {
+                return false
+            }
+
+            return Categories.shared.getSubcategory(for: categoryID) != nil || isToggleOn
+        }
                 
-        categoryValidation(name: categoryName, icon: categoryIcon, mainCategory: mainCategoryName, isSubcategory: isSubcategory) { [weak self] categoryName, categoryIcon in
+        categoryValidation(name: categoryName, icon: categoryIcon, mainCategory: mainCategoryName) { [weak self] categoryName, categoryIcon in
             guard let strongSelf = self else { return }
             
-            //TODO: сделать редактирование подкатегории
-                if isSubcategory {
-                    let subcategory = SubcategoryClass()
-                    subcategory.name = categoryName
-                    subcategory.color = randomColor
-                    subcategory.image = categoryIcon
-                                        
-                    guard let categoryID = strongSelf.categoryID else { return }
+            if isSubcategory {
+                let subcategory = SubcategoryClass()
+                subcategory.name = categoryName
+                subcategory.color = randomColor
+                subcategory.image = categoryIcon
+                                    
+                guard let categoryID = strongSelf.categoryID else { return }
+                
+                if strongSelf.isEditingSubcategory {
+                    guard let parentalCategoryID = Categories.shared.getSubcategory(for: categoryID)?.parentCategory else { return }
+                                            
+                    subcategory.id = categoryID
+                    subcategory.parentCategory = parentalCategoryID
                     
-                    if strongSelf.isEditingSubcategory {
-                        guard let parentalCategoryID = Categories.shared.getSubcategory(for: categoryID)?.parentCategory else { return }
-                                                
-                        subcategory.id = categoryID
-                        subcategory.parentCategory = parentalCategoryID
-                        
-                        Categories.shared.editSubcategory(replacingSubcategory: subcategory)
-                    } else {
-                        subcategory.parentCategory = categoryID
-                        
-                        Categories.shared.addNewSubcategory(subcategory: subcategory, for: categoryID)
-                    }
+                    Categories.shared.editSubcategory(replacingSubcategory: subcategory)
                 } else {
-                    let category = CategoryClass()
-                    category.name = categoryName
-                    category.color = randomColor
-                    category.image = categoryIcon
-                    category.type = strongSelf.segmentTitle
+                    subcategory.parentCategory = categoryID
                     
-                    if let categoryID = strongSelf.categoryID {
-                        category.id = categoryID
-                        
-                        Categories.shared.editCategory(replacingCategory: category)
-                    } else {
-                        Categories.shared.addNewCategory(category)
-                    }
+                    Categories.shared.addNewSubcategory(subcategory: subcategory, for: categoryID)
                 }
+            } else {
+                let category = CategoryClass()
+                category.name = categoryName
+                category.color = randomColor
+                category.image = categoryIcon
+                category.type = strongSelf.segmentTitle
+                
+                if let categoryID = strongSelf.categoryID {
+                    category.id = categoryID
+                    
+                    if let subcategories = Categories.shared.getCategory(for: categoryID) {
+                        category.subcategories = subcategories.subcategories
+                    }
+                    
+                    Categories.shared.editCategory(replacingCategory: category)
+                } else {
+                    Categories.shared.addNewCategory(category)
+                }
+            }
 
             strongSelf.navigationController?.popViewController(animated: true)
         }
@@ -105,14 +113,26 @@ extension CreateCategoryVC {
             if let category = categoryOrSubcategory as? CategoryClass {
                 Categories.shared.deleteCategory(for: category.id) { success in
                     if success {
-                        self?.navigationController?.popToRootViewController(animated: true)
+                        self?.returnToSelectCategory()
                     } else { return }
                 }
             } else if let subcategory = categoryOrSubcategory as? SubcategoryClass {
                 Categories.shared.deleteSubcategory(for: subcategory.id) { success in
                     if success {
-                        self?.navigationController?.popToRootViewController(animated: true)
+                        self?.returnToSelectCategory()
                     } else { return }
+                }
+            }
+        }
+    }
+    
+    // Вернуться на экран выбора родительских категорий
+    private func returnToSelectCategory() {
+        if let controllers = navigationController?.viewControllers {
+            for controller in controllers {
+                if let controllerA = controller as? SelectCategoryVC {
+                    navigationController?.popToViewController(controllerA, animated: true)
+                    break
                 }
             }
         }

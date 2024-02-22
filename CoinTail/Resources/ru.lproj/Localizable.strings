@@ -97,6 +97,7 @@
 /// Categories CV
 "Open pie chart" = "Открыть диаграмму";
 "Visualise your activities with chart" = "Просматривайте операции с помощью круговой диаграммы";
+"To display the pie chart you must create at least one transaction" = "Для отображения круговой диаграммы необходимо создать хотя бы одну операцию";
 
 // AddOperationVC
 "Description" = "Описание";

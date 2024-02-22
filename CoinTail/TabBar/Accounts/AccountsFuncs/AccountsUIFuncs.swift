@@ -32,48 +32,63 @@ import EasyPeasy
 extension AccountsVC: UINavigationControllerDelegate {
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        if viewController is AccountsVC {
-            navigationController.setNavigationBarHidden(true, animated: animated)
-        } else {
-            navigationController.setNavigationBarHidden(false, animated: animated)
+        if !isSelecting {
+            if viewController is AccountsVC {
+                navigationController.setNavigationBarHidden(true, animated: animated)
+            } else {
+                navigationController.setNavigationBarHidden(false, animated: animated)
+            }
         }
     }
 
     func accountsSubviews() {
-        self.view.addSubview(customNavBar)
         self.view.addSubview(accountsCV)
-        self.view.addSubview(transferButton)
-        self.view.addSubview(historyButton)
         
-        customNavBar.easy.layout([
-            Height(96),
-            Top().to(self.view.safeAreaLayoutGuide, .top),
-            Left(),
-            Right()
-        ])
-        
-        historyButton.easy.layout([
-            Height(52),
-            Left(16),
-            Right(16),
-            CenterX(),
-            Bottom(24).to(self.view.safeAreaLayoutGuide, .bottom)
-        ])
-        
-        transferButton.easy.layout([
-            Height(52),
-            Left(16),
-            Right(16),
-            CenterX(),
-            Bottom(16).to(historyButton, .top)
-        ])
+        var top: PositionAttribute
+        var bottom: PositionAttribute
+        if !isSelecting {
+            self.view.addSubview(customNavBar)
+            self.view.addSubview(transferButton)
+            self.view.addSubview(historyButton)
+            
+            customNavBar.easy.layout([
+                Height(96),
+                Top().to(self.view.safeAreaLayoutGuide, .top),
+                Left(),
+                Right()
+            ])
+            
+            historyButton.easy.layout([
+                Height(52),
+                Left(16),
+                Right(16),
+                CenterX(),
+                Bottom(24).to(self.view.safeAreaLayoutGuide, .bottom)
+            ])
+            
+            transferButton.easy.layout([
+                Height(52),
+                Left(16),
+                Right(16),
+                CenterX(),
+                Bottom(16).to(historyButton, .top)
+            ])
+            
+            top = Top().to(customNavBar, .bottom)
+            bottom = Bottom(24).to(transferButton, .top)
+        } else {
+            self.title = "Accounts".localized()
+            
+            top = Top().to(self.view.safeAreaLayoutGuide, .top)
+            bottom = Bottom()
+        }
         
         accountsCV.easy.layout([
-            Top().to(customNavBar, .bottom),
+            top,
             CenterX(),
             Left(16),
             Right(16),
-            Bottom(24).to(transferButton, .top)
+            bottom
         ])
     }
     

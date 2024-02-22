@@ -63,7 +63,7 @@ extension CreateCategoryVC: SendCategoryID, CreateCategoryCellDelegate {
         deleteCategoryButton.addTarget(self, action: #selector(removeCategory), for: .touchUpInside)
     }
     
-    func categoryValidation(name: String, icon: String, mainCategory: String, isSubcategory: Bool, completion: ((String, String) -> Void)? = nil) {
+    func categoryValidation(name: String, icon: String, mainCategory: String, completion: ((String, String) -> Void)? = nil) {
         let missingName = name == ""
         let missingIcon = icon == ""
         let missingMainCategory = mainCategory == ""
@@ -72,7 +72,7 @@ extension CreateCategoryVC: SendCategoryID, CreateCategoryCellDelegate {
             infoAlert("Category name is missing".localized())
         } else if missingIcon {
             infoAlert("Category icon not selected".localized())
-        } else if isSubcategory && missingMainCategory {
+        } else if isToggleOn && missingMainCategory {
             infoAlert("No parent category selected".localized())
         }
 //        else if isSubcategory {

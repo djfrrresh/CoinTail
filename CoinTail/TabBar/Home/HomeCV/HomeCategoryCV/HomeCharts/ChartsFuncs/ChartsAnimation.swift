@@ -33,49 +33,18 @@ import EasyPeasy
 protocol CategoryIsHiddenDelegate: AnyObject {
     func categoryIsHidden(isHidden: Bool)
 }
-
 protocol ArrowTapDelegate: AnyObject {
     func arrowTap(isLeft: Bool)
+}
+protocol ShowChartsAlertDelegate: AnyObject {
+    func showAlert(message: String)
 }
 
 extension HomeCategoryCell {
     
-    // Анимация появления круговой диаграммы вместо плоской
+    // Анимация появления круговой диаграммы
     @objc func pieChartAction() {
-        let targetAlpha: CGFloat
-        let targetVisibility: Bool
-                
-        if pieChart.isHidden {
-            targetAlpha = 1
-            targetVisibility = false
-        } else {
-            targetAlpha = 0
-            targetVisibility = true
-            pieChart.easy.clear()
-        }
-        
-        UIView.animate(withDuration: 0.3) { [self] in
-            periodLabel.isHidden = targetVisibility
-            amountForPeriodLabel.isHidden = targetVisibility
-            pieChart.isHidden = targetVisibility
-            categoriesCV.isHidden = targetVisibility
-            arrowImageLeft.isHidden = targetVisibility
-            arrowImageRight.isHidden = targetVisibility
-            openDiagramsView.isHidden = !targetVisibility
-            openDiagramsLabel.isHidden = !targetVisibility
-            diagramsDescriptionLabel.isHidden = !targetVisibility
-            diargamsImageView.isHidden = !targetVisibility
-
-            pieChart.alpha = targetAlpha
-            categoriesCV.alpha = targetAlpha
-            openDiagramsLabel.alpha = 1 - targetAlpha
-            diagramsDescriptionLabel.alpha = 1 - targetAlpha
-            diargamsImageView.alpha = 1 - targetAlpha
-
-            self.contentView.layoutIfNeeded()
-        }
-        
-        categoryisHiddenDelegate?.categoryIsHidden(isHidden: pieChart.isHidden)
+        areRecordsEmpty()
     }
     
     @objc func leftArrowTap() {
@@ -85,4 +54,59 @@ extension HomeCategoryCell {
     @objc func rightArrowTap() {
         arrowTapDelegate?.arrowTap(isLeft: false)
     }
+    
+    func pieChartAnimate(visability: Bool, alpha: CGFloat, duration: CGFloat = 0.3) {
+        UIView.animate(withDuration: duration) { [self] in
+            periodLabel.isHidden = visability
+            amountForPeriodLabel.isHidden = visability
+            pieChart.isHidden = visability
+            categoriesCV.isHidden = visability
+            arrowImageLeft.isHidden = visability
+            arrowImageRight.isHidden = visability
+            openDiagramsView.isHidden = !visability
+            openDiagramsLabel.isHidden = !visability
+            diagramsDescriptionLabel.isHidden = !visability
+            diargamsImageView.isHidden = !visability
+
+            pieChart.alpha = alpha
+            categoriesCV.alpha = alpha
+            openDiagramsLabel.alpha = 1 - alpha
+            diagramsDescriptionLabel.alpha = 1 - alpha
+            diargamsImageView.alpha = 1 - alpha
+
+            self.contentView.layoutIfNeeded()
+        }
+    }
+    
+    private func areRecordsEmpty() {
+        if segmentType != RecordType.allOperations {
+            let records = Records.shared.records.filter { $0.type == segmentType.rawValue }
+            
+            if records.isEmpty {
+                sendAlertDelegate?.showAlert(message: "To display the pie chart you must create at least one transaction".localized())
+                
+                return
+            }
+        }
+                
+        isPieChartHidden()
+    }
+    
+    private func isPieChartHidden() {
+        let targetAlpha: CGFloat
+        let targetVisibility: Bool
+        
+        if pieChart.isHidden {
+            targetAlpha = 1
+            targetVisibility = false
+        } else {
+            targetAlpha = 0
+            targetVisibility = true
+            pieChart.easy.clear()
+        }
+        
+        pieChartAnimate(visability: targetVisibility, alpha: targetAlpha)
+        categoryisHiddenDelegate?.categoryIsHidden(isHidden: pieChart.isHidden)
+    }
+    
 }

@@ -47,11 +47,28 @@ struct Privacy {
     let premiumLinks: [PrivacyLink]
     let aboutLink: PrivacyLink
     
-    static var privacy: Privacy = Privacy(
-        premiumLinks: [
-            PrivacyLink(url: "https://docs.google.com/document/d/1yiNMDxz63Ek_gqnuS21mZm63UMU1ocS4kXynTg4KNDI/edit?usp=sharing", internalType: 1, localizationKey: "User Agreement"),
-            PrivacyLink(url: "https://docs.google.com/document/d/1ySZEggizST7attJrnqCeDutQC15lup11b0v5NwC7m2I/edit?usp=sharing", internalType: 2, localizationKey: "Privacy Policy")
-        ],
-        aboutLink: PrivacyLink(url: "https://docs.google.com/document/d/1yiNMDxz63Ek_gqnuS21mZm63UMU1ocS4kXynTg4KNDI/edit?usp=sharing", internalType: 1, localizationKey: "User Agreement")
-    )
+    static var privacy: Privacy {
+        let currentLocalization = Bundle.main.preferredLocalizations.first ?? "en"
+
+        var privacyPolicyURL = ""
+        var userAgreementURL = ""
+
+        // Выбор перевода в зависимости от языка системы пользователя
+        switch currentLocalization {
+        case "ru":
+            privacyPolicyURL = "https://docs.google.com/document/d/1ySZEggizST7attJrnqCeDutQC15lup11b0v5NwC7m2I/edit?usp=sharing"
+            userAgreementURL = "https://docs.google.com/document/d/1yiNMDxz63Ek_gqnuS21mZm63UMU1ocS4kXynTg4KNDI/edit?usp=sharing"
+        default:
+            privacyPolicyURL = "https://docs.google.com/document/d/1SP_zA5S4noMnV-wfrGdeFKIzFCb0nQbsAdveshKV4Mw/edit?usp=sharing"
+            userAgreementURL = "https://docs.google.com/document/d/19UmcCXu_mDZkuzytpAtUv0OIWKm5mHBe0SS2qC3B6B0/edit?usp=sharing"
+        }
+
+        return Privacy(
+            premiumLinks: [
+                PrivacyLink(url: userAgreementURL, internalType: 1, localizationKey: "User Agreement"),
+                PrivacyLink(url: privacyPolicyURL, internalType: 2, localizationKey: "Privacy Policy")
+            ],
+            aboutLink: PrivacyLink(url: userAgreementURL, internalType: 1, localizationKey: "User Agreement")
+        )
+    }
 }

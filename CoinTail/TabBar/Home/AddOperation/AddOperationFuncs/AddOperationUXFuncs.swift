@@ -29,7 +29,14 @@ import UIKit
 import RealmSwift
 
 
-extension AddOperationVC: SendCategoryID, AddOperationCellDelegate {
+extension AddOperationVC: SendCategoryID, SendAccount, AddOperationCellDelegate {
+    
+    func sendAccountData(id: ObjectId) {
+        guard let account = Accounts.shared.getAccount(for: id) else { return }
+        
+        accountID = id
+        selectedAccount = account.name
+    }
     
     func sendCategoryData(id: ObjectId) {
         guard let category = Categories.shared.getGeneralCategory(for: id) else { return }

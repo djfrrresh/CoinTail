@@ -32,19 +32,19 @@ import EasyPeasy
 extension AccountsTransferVC {
     
     func transferSubviews() {
-        self.view.addSubview(transferFromBackView)
-        self.view.addSubview(transferToBackView)
+        self.view.addSubview(transferFromButton)
+        self.view.addSubview(transferToButton)
         
         self.view.addSubview(transferCV)
         self.view.addSubview(saveTransferButton)
         
-        transferFromBackView.easy.layout([
+        transferFromButton.easy.layout([
             Height(64),
             Top(24).to(self.view.safeAreaLayoutGuide, .top),
             Left(16),
             Right(UIScreen.main.bounds.width / 2)
         ])
-        transferToBackView.easy.layout([
+        transferToButton.easy.layout([
             Height(64),
             Top(24).to(self.view.safeAreaLayoutGuide, .top),
             Right(16),
@@ -59,30 +59,20 @@ extension AccountsTransferVC {
         ])
         
         transferCV.easy.layout([
-            Top(24).to(transferFromBackView, .bottom),
+            Top(24).to(transferFromButton, .bottom),
             Height(72 * 3),
             Left(),
             Right()
         ])
+
+        transferFromButton.addSubview(transferFromLabel)
+        transferToButton.addSubview(transferToLabel)
         
-        transferFromBackView.addSubview(transferFromBackViewFill)
-        transferToBackView.addSubview(transferToBackViewFill)
+        transferFromButton.addSubview(transferFromAccountNameLabel)
+        transferToButton.addSubview(transferToAccountNameLabel)
         
-        transferFromBackViewFill.easy.layout([
-            Edges()
-        ])
-        transferToBackViewFill.easy.layout([
-            Edges()
-        ])
-        
-        transferFromBackViewFill.addSubview(transferFromLabel)
-        transferToBackViewFill.addSubview(transferToLabel)
-        
-        transferFromBackViewFill.addSubview(transferFromAccountNameLabel)
-        transferToBackViewFill.addSubview(transferToAccountNameLabel)
-        
-        transferFromBackViewFill.addSubview(transferFromAccountBalanceLabel)
-        transferToBackViewFill.addSubview(transferToAccountBalanceLabel)
+        transferFromButton.addSubview(transferFromAccountBalanceLabel)
+        transferToButton.addSubview(transferToAccountBalanceLabel)
         
         transferFromLabel.easy.layout([
             Left(16),
@@ -119,10 +109,8 @@ extension AccountsTransferVC {
     func showTransferFrom() {
         guard let accountNameFrom = accountNameFrom,
               let account = Accounts.shared.getAccount(for: accountNameFrom) else { return }
-
-        transferFromBackView.image = transferFromBackView.image?.withRenderingMode(.alwaysTemplate)
-        transferFromBackView.tintColor = .white
-        transferFromBackViewFill.tintColor = UIColor.white
+        
+        transferFromButton.setImage(UIImage(named: "vectorFromFill"), for: .normal)
         
         transferFromLabel.isHidden = true
         transferFromAccountNameLabel.isHidden = false
@@ -136,10 +124,8 @@ extension AccountsTransferVC {
     func showTransferTo() {
         guard let accountNameTo = accountNameTo,
               let account = Accounts.shared.getAccount(for: accountNameTo) else { return }
-
-        transferToBackView.image = transferToBackView.image?.withRenderingMode(.alwaysTemplate)
-        transferToBackView.tintColor = UIColor.white
-        transferToBackViewFill.tintColor = UIColor.white
+        
+        transferToButton.setImage(UIImage(named: "vectorToFill"), for: .normal)
 
         transferToLabel.isHidden = true
         transferToAccountNameLabel.isHidden = false

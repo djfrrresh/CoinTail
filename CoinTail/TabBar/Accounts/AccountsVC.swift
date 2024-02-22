@@ -6,11 +6,20 @@
 //
 
 import UIKit
+import RealmSwift
 
+
+protocol SendAccount: AnyObject {
+    func sendAccountData(id: ObjectId)
+}
 
 final class AccountsVC: BasicVC {
             
     var accounts: [AccountClass] = RealmService.shared.accountsArr
+    
+    weak var accountDelegate: SendAccount?
+    
+    var isSelecting: Bool = false
     
     static let noAccountsText = "You have no accounts added"
     static let accountsDescriptionText = "Here you can add different money storage methods, such as cards, cash or a bank deposit"
@@ -63,27 +72,13 @@ final class AccountsVC: BasicVC {
         return cv
     }()
     
-    public required init() {
+    public required init(isSelecting: Bool = false) {
+        self.isSelecting = isSelecting
+        
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // Использовать этот способ + dispatch asyncAfter если стоит async на методах 
-        accounts = RealmService.shared.accountsArr
-        accountsCV.reloadData()
-        
-        isAccountEmpty()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        navigationController?.navigationBar.isHidden = true
     }
     
     override func viewDidLoad() {
@@ -108,6 +103,26 @@ final class AccountsVC: BasicVC {
             dataDescriptionLabel: accountsDescriptionLabel,
             addDataButton: addAccountButton
         )
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Использовать этот способ + dispatch asyncAfter если стоит async на методах
+        accounts = RealmService.shared.accountsArr
+        accountsCV.reloadData()
+        
+        isAccountEmpty()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !isSelecting {
+            navigationController?.navigationBar.isHidden = true
+        } else {
+            navigationController?.navigationBar.isHidden = false
+        }
     }
     
 }

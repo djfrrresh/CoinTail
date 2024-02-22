@@ -40,6 +40,19 @@ final class HomeOperationCell: UICollectionViewCell {
             operationsCV.reloadData()
         }
     }
+    var segmentType: RecordType = .allOperations
+
+    let noOperationsButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(named: "primaryAction")
+        button.layer.cornerRadius = 16
+        button.setTitle("Add a transaction".localized(), for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
+        button.isHidden = true
+        
+        return button
+    }()
     
     let operationsCV: UICollectionView = {
         let operationLayout: UICollectionViewFlowLayout = {
@@ -71,6 +84,8 @@ final class HomeOperationCell: UICollectionViewCell {
         
         operationsCV.delegate = self
         operationsCV.dataSource = self
+        
+        noOperationsButton.addTarget(self, action: #selector(goToAddOperationVC), for: .touchUpInside)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -80,28 +95,44 @@ final class HomeOperationCell: UICollectionViewCell {
         super.layoutSubviews()
         
         contentView.addSubview(operationsCV)
+        contentView.addSubview(noOperationsButton)
         
         operationsCV.easy.layout([
             Edges()
         ])
+        
+        noOperationsButton.easy.layout([
+            Height(52),
+            Left(),
+            Right(),
+            Top(16)
+        ])
     }
     
-    // Проверка на сегодняшнюю дату
-    func checkToday(date: Date, textField: UITextField) {
-        let headerDF:  DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateStyle = .medium
-            formatter.timeStyle = .none
-            formatter.dateFormat = "dd/MM/yyyy"
-            
-            return formatter
-        }()
-        
-        if (headerDF.string(from: date) == headerDF.string(from: Date())) {
-            textField.text = "Today \(headerDF.string(from: date))"
+    func noOperationsByType() {
+        let records = Records.shared.records.filter { $0.type == segmentType.rawValue }
+
+        if records.isEmpty && segmentType != .allOperations {
+            noOperationsButton.isHidden = false
         } else {
-            textField.text = headerDF.string(from: date)
+            noOperationsButton.isHidden = true
         }
+    }
+    
+    //TODO: button
+    @objc func goToAddOperationVC() {
+//        let index: Int
+//        index = segmentType == .expense ? 0 : 1
+//
+//        let vc = AddOperationVC(segmentIndex: index)
+//        vc.hidesBottomBarWhenPushed = true // Спрятать TabBar
+//
+//        navigationController?.pushViewController(vc, animated: true)
+//
+//        // Ставит задержку на время анимации перехода. Чтобы диаграмма не обнулялась раньше времени
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) { [self] in
+//            categorySort = nil
+//        }
     }
     
     static func size(data: [OperationsDaySection]) -> CGSize {

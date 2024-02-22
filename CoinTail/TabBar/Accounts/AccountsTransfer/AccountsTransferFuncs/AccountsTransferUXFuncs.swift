@@ -32,6 +32,8 @@ extension AccountsTransferVC {
     
     func accountsTransferTargets() {
         saveTransferButton.addTarget(self, action: #selector(saveTransferAction), for: .touchUpInside)
+        transferFromButton.addTarget(self, action: #selector(transferFromButtonAction), for: .touchUpInside)
+        transferToButton.addTarget(self, action: #selector(transferToButtonAction), for: .touchUpInside)
     }
     
     func transferValidation(amount: Double, firstAccount: String, secondAccount: String, completion: ((String, String) -> Void)? = nil) {

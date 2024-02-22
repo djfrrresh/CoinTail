@@ -35,19 +35,15 @@ extension AddOperationVC: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return isUsingCurrenciesPicker ? favouriteStringCurrencies.count : accountNames.count
+        return favouriteStringCurrencies.count
     }
         
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return isUsingCurrenciesPicker ? favouriteStringCurrencies[row] : accountNames[row]
+        return favouriteStringCurrencies[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if isUsingCurrenciesPicker {
-            selectedCurrency = favouriteStringCurrencies[row]
-        } else {
-            selectedAccount = accountNames[row]
-        }
+        selectedCurrency = favouriteStringCurrencies[row]
     }
     
 }

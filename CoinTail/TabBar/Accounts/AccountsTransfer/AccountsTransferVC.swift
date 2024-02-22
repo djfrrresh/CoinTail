@@ -74,39 +74,31 @@ final class AccountsTransferVC: PickerVC {
         "Amount".localized()
     ]
     
-    let transferFromBackView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .black
-        imageView.image = UIImage(named: "vectorFrom")
+    let transferFromButton: UIButton = {
+        let button = UIButton()
+        button.contentMode = .scaleAspectFit
+        button.setImage(UIImage(named: "vectorFrom"), for: .normal)
+        button.adjustsImageWhenHighlighted = false
         
-        return imageView
+        return button
     }()
-    let transferToBackView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .black
-        imageView.image = UIImage(named: "vectorTo")
-        
-        return imageView
+    let transferToButton: UIButton = {
+        let button = UIButton()
+        button.contentMode = .scaleAspectFit
+        button.setImage(UIImage(named: "vectorTo"), for: .normal)
+        button.adjustsImageWhenHighlighted = false
+
+        return button
     }()
-    let transferFromBackViewFill: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "vectorFromFill")
-        imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = UIColor.clear
+    let saveTransferButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(named: "primaryAction")
+        button.layer.cornerRadius = 16
+        button.setTitle("Transfer money".localized(), for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
         
-        return imageView
-    }()
-    let transferToBackViewFill: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "vectorToFill")
-        imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = UIColor.clear
-        
-        return imageView
+        return button
     }()
     
     let transferFromLabel: UILabel = {
@@ -170,17 +162,6 @@ final class AccountsTransferVC: PickerVC {
         label.isHidden = true
         
         return label
-    }()
-    
-    let saveTransferButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = UIColor(named: "primaryAction")
-        button.layer.cornerRadius = 16
-        button.setTitle("Transfer money".localized(), for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
-        
-        return button
     }()
     
     let transferCV: UICollectionView = {

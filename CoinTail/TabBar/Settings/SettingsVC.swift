@@ -90,13 +90,21 @@ final class SettingsVC: BasicVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNavigationTitle(title: "Settings".localized(), large: true)
-        
+        customNavBar.titleLabel.text = "Settings".localized()
+        customNavBar.customButton.isHidden = true
+
+        navigationController?.delegate = self
         settingsCV.delegate = self
 
         settingsCV.dataSource = self
         
         settingsSubviews()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = true
     }
     
 }

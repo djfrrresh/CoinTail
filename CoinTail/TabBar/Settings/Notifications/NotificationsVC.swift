@@ -84,12 +84,6 @@ final class NotificationsVC: BasicVC {
         return cv
     }()
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        notificationsCV.reloadData()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -100,6 +94,14 @@ final class NotificationsVC: BasicVC {
         notificationsCV.dataSource = self
                 
         notificationsSubviews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        notificationsCV.reloadData()
+        
+        navigationController?.navigationBar.isHidden = false
     }
     
 }

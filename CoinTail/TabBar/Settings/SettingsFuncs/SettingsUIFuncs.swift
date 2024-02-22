@@ -29,16 +29,32 @@ import UIKit
 import EasyPeasy
 
 
-extension SettingsVC {
+extension SettingsVC: UINavigationControllerDelegate {
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        if viewController is SettingsVC {
+            navigationController.setNavigationBarHidden(true, animated: animated)
+        } else {
+            navigationController.setNavigationBarHidden(false, animated: animated)
+        }
+    }
     
     func settingsSubviews() {
+        self.view.addSubview(customNavBar)
         self.view.addSubview(settingsCV)
+        
+        customNavBar.easy.layout([
+            Height(96),
+            Top().to(self.view.safeAreaLayoutGuide, .top),
+            Left(),
+            Right()
+        ])
         
         settingsCV.easy.layout([
             Left(),
             Right(),
             Bottom(),
-            Top().to(self.view.safeAreaLayoutGuide, .top)
+            Top().to(customNavBar, .bottom)
         ])
     }
     

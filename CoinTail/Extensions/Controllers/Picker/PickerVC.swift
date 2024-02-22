@@ -38,7 +38,6 @@ class PickerVC: BasicVC {
         toolbar.sizeToFit()
         toolbar.tintColor = .systemBlue
         toolbar.backgroundColor = .white
-        toolbar.layer.zPosition = 1000
 
         return toolbar
     }()
@@ -47,7 +46,6 @@ class PickerVC: BasicVC {
         let picker = UIPickerView()
         picker.isHidden = true
         picker.backgroundColor = .white
-        picker.layer.zPosition = 1000
         
         return picker
     }()

@@ -50,6 +50,7 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
     weak var categoryisHiddenDelegate: CategoryIsHiddenDelegate?
     weak var arrowTapDelegate: ArrowTapDelegate?
     weak var sendCategoryDelegate: SendCategoryCellDelegate?
+    weak var sendAlertDelegate: ShowChartsAlertDelegate?
      
     let categoriesCV: UICollectionView = {
         let categoryLayout: UICollectionViewFlowLayout = {
@@ -238,10 +239,14 @@ final class HomeCategoryCell: UICollectionViewCell, ChartViewDelegate {
     }
     
     func chartsUpdate(_ segment: RecordType, records: [RecordClass]) {
-        // Добавление записей в диаграмму
-        setEntries(segment, records: records)
-        // Добавление данных в диаграмму
-        updatePieChartData()
+        if records.isEmpty {
+            pieChartAnimate(visability: true, alpha: 0, duration: 0)
+        } else {
+            // Добавление записей в диаграмму
+            setEntries(segment, records: records)
+            // Добавление данных в диаграмму
+            updatePieChartData()
+        }
     }
     
     // Привязка функций кнопки к диаграммам

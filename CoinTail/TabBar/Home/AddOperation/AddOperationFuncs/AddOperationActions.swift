@@ -101,6 +101,13 @@ extension AddOperationVC {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc func goToAccountsVC() {
+        let vc = AccountsVC(isSelecting: true)
+        vc.accountDelegate = self
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     // Удаление выбранной операции по ее ID
     @objc func removeOperation() {
         guard let id = recordID else { return }

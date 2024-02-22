@@ -90,5 +90,11 @@ final class AboutAppVC: BasicVC {
 
         aboutSubviews()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = false
+    }
  
 }

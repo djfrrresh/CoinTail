@@ -34,13 +34,18 @@ extension AccountsVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let accountData = accounts[indexPath.row]
 
-        self.navigationItem.rightBarButtonItem?.target = nil
-
-        let vc = AddAccountVC(accountID: accountData.id)
-        vc.hidesBottomBarWhenPushed = true // Спрятать TabBar
+        if !isSelecting {
+            self.navigationItem.rightBarButtonItem?.target = nil
             
-        self.navigationController?.pushViewController(vc, animated: true)
-        
+            let vc = AddAccountVC(accountID: accountData.id)
+            vc.hidesBottomBarWhenPushed = true // Спрятать TabBar
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            accountDelegate?.sendAccountData(id: accountData.id)
+            
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     // Определение размера ячейки

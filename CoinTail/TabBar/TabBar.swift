@@ -30,17 +30,23 @@ import UIKit
 
 class TabBar: UITabBarController {
     
+    private let homeVC = UINavigationController(rootViewController: HomeVC())
+    private let budgetsVC = UINavigationController(rootViewController: BudgetsVC())
+    private let accountsVC = UINavigationController(rootViewController: AccountsVC())
+    private let settingsVC = UINavigationController(rootViewController: SettingsVC())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         delegate = self
-
-        // Навигационные контроллеры (с которых можно переходить в другие)
-        let homeVC = UINavigationController(rootViewController: HomeVC())
-        let budgetsVC = UINavigationController(rootViewController: BudgetsVC())
-        let accountsVC = UINavigationController(rootViewController: AccountsVC())
-        let settingsVC = UINavigationController(rootViewController: SettingsVC())
-                
+        
+        // Установка контроллеров на TabBar
+        self.setViewControllers([homeVC, budgetsVC, accountsVC, settingsVC], animated: false)
+        
+        setAppearance()
+    }
+    
+    private func setAppearance() {
         homeVC.title = "Home".localized()
         budgetsVC.title = "Budgets".localized()
         accountsVC.title = "Accounts".localized()
@@ -50,9 +56,6 @@ class TabBar: UITabBarController {
         UITabBar.appearance().tintColor = UIColor(named: "primaryAction") // Цвет выбранной иконки и текста
         UITabBar.appearance().unselectedItemTintColor = UIColor(named: "unselectedScreen") // Цвет невыбранных иконок
         
-        // Установка контроллеров на TabBar
-        self.setViewControllers([homeVC, budgetsVC, accountsVC, settingsVC], animated: false)
-                        
         guard let items = self.tabBar.items else { return }
         let images = ["house.fill", "chart.bar.xaxis", "creditcard.fill", "gearshape.fill"]
         

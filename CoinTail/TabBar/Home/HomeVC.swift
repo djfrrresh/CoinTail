@@ -54,9 +54,13 @@ final class HomeVC: BasicVC {
     }
         
     var currentStep: Int = 0
-    
     var isLeft: Bool = true
     var categoryIsHidden: Bool = true
+//    var _categoryIsHidden: Bool = true {
+//        didSet {
+//            categoryIsHidden = monthSections.isEmpty ? true : _categoryIsHidden
+//        }
+//    }
     
     // Используется для возврата операций по выбранному типу
     var homeSegment: RecordType = .allOperations

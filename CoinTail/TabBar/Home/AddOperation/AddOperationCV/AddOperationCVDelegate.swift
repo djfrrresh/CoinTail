@@ -37,17 +37,8 @@ extension AddOperationVC: UICollectionViewDelegate, UICollectionViewDelegateFlow
             case 1:
                 goToSelectCategoryVC()
             case 2:
-                // TODO: сделать переход на экран с выбором счетов
-                if !accountNames.isEmpty {
-                    isUsingCurrenciesPicker = false
-                    showPickerView()
-                    
-                    selectedAccount = accountNames[0]
-                } else {
-                    infoAlert("You don't have any accounts to choose from".localized())
-                }
+                goToAccountsVC()
             case 3:
-                isUsingCurrenciesPicker = true
                 showPickerView()
                 
                 selectedCurrency = favouriteStringCurrencies[0]
@@ -59,11 +50,9 @@ extension AddOperationVC: UICollectionViewDelegate, UICollectionViewDelegateFlow
         default:
             return
         }
-        
-        itemsPickerView.selectRow(0, inComponent: 0, animated: false)
-        itemsPickerView.reloadAllComponents()
     }
     
+    //TODO: сделать отдельные ячейки
     // Динамические размеры ячеек
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
