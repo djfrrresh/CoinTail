@@ -118,7 +118,11 @@ final class AddOperationVC: PickerVC {
         
         self.title = "Edit transaction".localized()
 
-        guard let record = Records.shared.getRecord(for: operationID) else { return }
+        guard let record = Records.shared.getRecord(for: operationID) else {
+            SentryManager.shared.capture(error: "No record to edit", level: .error)
+            
+            return
+        }
         setupUI(with: record)
     }
     

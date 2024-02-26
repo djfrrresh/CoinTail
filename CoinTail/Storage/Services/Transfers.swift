@@ -55,6 +55,8 @@ final class Transfers {
             guard let exchangeRatesToBase = ExchangeRateManager.shared.exchangeRates[baseCurrency],
                 let exchangeRateFromBase = exchangeRatesToBase[targetAccount.currency],
                 let exchangeRateToBase = exchangeRatesToBase[sourceAccount.currency] else {
+                SentryManager.shared.capture(error: "Failed to get exchange rates for transfer between accounts", level: .error)
+                
                 return
             }
             

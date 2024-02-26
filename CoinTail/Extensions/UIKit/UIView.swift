@@ -98,7 +98,8 @@ extension UIView {
                 self.layer.maskedCorners = maskedCorners
                 return
             default:
-                fatalError("undefined corner")
+                SentryManager.shared.capture(error: "Undefined corner", level: .fatal)
+                fatalError("Undefined corner")
             }
         }
         self.layer.maskedCorners = maskedCorners

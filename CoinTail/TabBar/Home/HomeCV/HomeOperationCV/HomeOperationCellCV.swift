@@ -28,10 +28,6 @@
 import UIKit
 
 
-protocol PushVC: AnyObject {
-    func pushVC(record: RecordClass)
-}
-
 extension HomeOperationCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

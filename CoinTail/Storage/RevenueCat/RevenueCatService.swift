@@ -37,17 +37,40 @@ final class RevenueCatService {
     
     static let shared = RevenueCatService()
     
+    private init() {
+        // Регистрируем уникальный айди для каждого пользователя
+        let udid = KeychainManager.shared.getUDID()
+        #if DEBUG
+        Purchases.logLevel = .warn
+        #else
+        Purchases.logLevel = .info
+        #endif
+        Purchases.configure(
+            with: Configuration.Builder(withAPIKey: "appl_KdSJMIzkoeQKXwoPlxmFTrdjiml")
+                .with(appUserID: udid)
+//                .with(usesStoreKit2IfAvailable: true)
+                .build()
+        )
+        Purchases.shared.getOfferings { _, _ in }
+    }
+    
     func getOfferings(completion: @escaping ([PlanData]?) -> Void) {
         Purchases.shared.getOfferings { (offerings, _) in
             var plan = [PlanData]()
             
             guard let packages = offerings?.current?.availablePackages else {
+                SentryManager.shared.capture(error: "No available packages", level: .error)
                 completion(nil)
+                
                 return
             }
             
             for package in packages {
-                guard let period = package.storeProduct.subscriptionPeriod else { return }
+                guard let period = package.storeProduct.subscriptionPeriod else {
+                    SentryManager.shared.capture(error: "No subscription periods", level: .error)
+                    
+                    return
+                }
                 
                 let price = package.storeProduct.localizedPriceString
                 
@@ -82,7 +105,7 @@ final class RevenueCatService {
                             break
                         }
                     } else if #available(iOS 15.0, *),
-                              let offer = introductoryDiscount.sk2Discount,
+                                let offer = introductoryDiscount.sk2Discount,
                               introductoryDiscount.paymentMode == .freeTrial {
                         data.promoText =  "\(offer.period.value)" + "free days".localized()
 
@@ -100,37 +123,44 @@ final class RevenueCatService {
                         }
                     }
                 }
+                
                 plan.append(data)
             }
+            
             completion(plan)
         }
     }
     
     // Восстановить покупки
     func restorePurchases(completion: @escaping (RestoreResponse) -> Void) {
-        //TODO: раскоментить
-//        Purchases.shared.restorePurchases { customerInfo, _ in
-//            if let customerInfo = customerInfo {
-//                if customerInfo.activeSubscriptions.count > 0 {
-//                    if let expirationDate = customerInfo.expirationDate(forProductIdentifier: customerInfo.activeSubscriptions.first!),
-//                       expirationDate.timeIntervalSince1970 > Date().timeIntervalSince1970 {
+        Purchases.shared.restorePurchases { customerInfo, _ in
+            if let customerInfo = customerInfo {
+                if customerInfo.activeSubscriptions.count > 0 {
+                    if let expirationDate = customerInfo.expirationDate(forProductIdentifier: customerInfo.activeSubscriptions.first!),
+                       expirationDate.timeIntervalSince1970 > Date().timeIntervalSince1970 {
 //                        NetworkManager.shared.premiumReport(customerInfo)
-//
-//                        completion(.success(expirationDate))
-//                    }
-//                } else {
-//                    completion(.noSubs)
-//                }
-//            } else {
-//                completion(.noData)
-//            }
-//        }
+
+                        completion(.success(expirationDate))
+                    }
+                } else {
+                    SentryManager.shared.capture(error: "No subscription to restore", level: .info)
+                    
+                    completion(.noSubs)
+                }
+            } else {
+                SentryManager.shared.capture(error: "No subscription data", level: .info)
+                
+                completion(.noData)
+            }
+        }
     }
     
     func getCustomerInfo(completion: @escaping (CustomerInfo?, Date?) -> Void) {
         Purchases.shared.getCustomerInfo { (customerInfo, _) in
             guard let customerInfo = customerInfo else {
+                SentryManager.shared.capture(error: "No customer info", level: .error)
                 completion(nil, nil)
+                
                 return
             }
             
@@ -148,7 +178,9 @@ final class RevenueCatService {
 //            }
             
             guard let expDate = expDate else {
+                SentryManager.shared.capture(error: "No expiration date", level: .error)
                 completion(customerInfo, nil)
+                
                 return
             }
             
@@ -159,7 +191,9 @@ final class RevenueCatService {
     func purchase(package: Package, completion: @escaping (CustomerInfo?, Date?) -> Void) {
         Purchases.shared.purchase(package: package) { (_, customerInfo, _, _) in
             guard let customerInfo = customerInfo else {
+                SentryManager.shared.capture(error: "No customer info", level: .error)
                 completion(nil, nil)
+                
                 return
             }
             
@@ -178,11 +212,14 @@ final class RevenueCatService {
 //            }
             
             guard let expDate = expDate else {
+                SentryManager.shared.capture(error: "No expiration date", level: .error)
                 completion(customerInfo, nil)
+                
                 return
             }
             
             completion(customerInfo, expDate)
         }
     }
+    
 }

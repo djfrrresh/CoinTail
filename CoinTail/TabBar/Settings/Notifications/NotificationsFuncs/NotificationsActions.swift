@@ -34,7 +34,6 @@ extension NotificationsVC {
         if toggle.isOn {
             // Запрос на подключение уведомлений
             notificationCenter.requestAuthorization(options: [.alert, .badge ,.sound]) { [weak self] granted, _ in
-
                 guard let strongSelf = self else { return }
 
                 guard granted else {
@@ -62,7 +61,7 @@ extension NotificationsVC {
 
             sendNotifications(segment: segment)
         } else {
-            // Отключение уведомлений по идентификатору
+            // Отключение уведомления
             notificationCenter.removePendingNotificationRequests(withIdentifiers: ["operationNotifications"])
 
             // Сохранить в настройки приложения положение выключателя

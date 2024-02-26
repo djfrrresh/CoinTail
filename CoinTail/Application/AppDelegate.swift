@@ -31,6 +31,9 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    //TODO: переместить функции, используемые после выхода с экрана, на viewDidDisappear
+    //TODO: переписать код для ячеек коллекций, сделать отдельные ячейки везде
+    
     var window: UIWindow? // Окно приложения, координирует представление изображения
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -41,13 +44,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Сбросить значок уведомлений
         UIApplication.shared.applicationIconBadgeNumber = 0
         
+        let _ = RevenueCatService.shared
+        let _ = SentryManager.shared
+        
         KeychainManager.shared.saveAPIKeyToKeychain()
         RealmService.shared.readAllClasses()
         ExchangeRateManager.shared.getExchangeRates {}
         Currencies.shared.createDefaultFavouriteCurrenciesIfNeeded()
         Categories.shared.createDefaultCategoriesIfNeeded()
-        //TODO: переместить функции, используемые после выхода с экрана, на viewDidDisappear
-        //TODO: переписать код для ячеек коллекций, сделать отдельные ячейки везде
         
         return true
     }

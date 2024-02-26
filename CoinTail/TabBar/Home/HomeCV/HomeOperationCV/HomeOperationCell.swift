@@ -29,6 +29,11 @@ import UIKit
 import EasyPeasy
 
 
+protocol PushVC: AnyObject {
+    func pushVC(record: RecordClass)
+    func pushVC()
+}
+
 final class HomeOperationCell: UICollectionViewCell {
     
     static let id = "HomeOperationCell"
@@ -79,13 +84,13 @@ final class HomeOperationCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        contentView.backgroundColor = .clear
+                
+        noOperationsButton.addTarget(self, action: #selector(goToAddOperationVC), for: .touchUpInside)
         
         operationsCV.delegate = self
         operationsCV.dataSource = self
         
-        noOperationsButton.addTarget(self, action: #selector(goToAddOperationVC), for: .touchUpInside)
+        contentView.backgroundColor = .clear
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -119,31 +124,24 @@ final class HomeOperationCell: UICollectionViewCell {
         }
     }
     
-    //TODO: button
-    @objc func goToAddOperationVC() {
-//        let index: Int
-//        index = segmentType == .expense ? 0 : 1
-//
-//        let vc = AddOperationVC(segmentIndex: index)
-//        vc.hidesBottomBarWhenPushed = true // Спрятать TabBar
-//
-//        navigationController?.pushViewController(vc, animated: true)
-//
-//        // Ставит задержку на время анимации перехода. Чтобы диаграмма не обнулялась раньше времени
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) { [self] in
-//            categorySort = nil
-//        }
+    @objc func goToAddOperationVC(_ sender: UIButton) {
+        pushVCDelegate?.pushVC()
     }
     
     static func size(data: [OperationsDaySection]) -> CGSize {
         var height: CGFloat = 0
         
-        // Размер общей коллекции вычисляется по размеру каждой ячейки
-        for monthSection in data {
-            for _ in monthSection.records {
-                height += OperationCVCell.size().height
+        if !data.isEmpty {
+            // Размер общей коллекции вычисляется по размеру каждой ячейки
+            for monthSection in data {
+                for _ in monthSection.records {
+                    height += OperationCVCell.size().height
+                }
+                height += 32
             }
-            height += 32
+        } else {
+            // Эта высота нужна для noOperationsButton
+            height = 100
         }
         
         return .init(

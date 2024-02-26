@@ -52,7 +52,11 @@ final class Budgets {
     // Получить активный бюджет по названию категории и валюте
     func getBudget(for categoryName: String, withCurrency selectedCurrency: String) -> Bool? {
         let budget: BudgetClass? = budgets.filter {
-            guard let category = Categories.shared.getCategory(for: $0.categoryID) else { return false }
+            guard let category = Categories.shared.getCategory(for: $0.categoryID) else {
+                SentryManager.shared.capture(error: "No category to get budget", level: .error)
+                
+                return false
+            }
             
             return category.name == categoryName && $0.currency == selectedCurrency }.last
         let activeBudgetByCategory: Bool = budget?.isActive ?? false
@@ -70,7 +74,9 @@ final class Budgets {
     // Удаляет бюджет по его ID
     func deleteBudget(for id: ObjectId, completion: ((Bool) -> Void)? = nil) {
         guard let budget: BudgetClass = getBudget(for: id) else {
+            SentryManager.shared.capture(error: "No budget to delete", level: .error)
             completion?(false)
+            
             return
         }
         

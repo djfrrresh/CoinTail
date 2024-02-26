@@ -50,7 +50,9 @@ final class ExchangeRateManager {
         } else {
             // В противном случае делаем запрос к API
             guard let apiKey = KeychainManager.shared.getAPIKeyFromKeychain() else {
+                SentryManager.shared.capture(error: "No API Key from Keychain", level: .error)
                 completion()
+                
                 return
             }
             
@@ -58,8 +60,10 @@ final class ExchangeRateManager {
             if let url = URL(string: urlString) {
                 URLSession.shared.dataTask(with: url) { data, _, error in
                     guard let data = data, error == nil else {
+                        SentryManager.shared.capture(error: "\(error?.localizedDescription ?? "Unknown error")", level: .error)
                         print("Error: \(error?.localizedDescription ?? "Unknown error")")
                         completion()
+                        
                         return
                     }
                     
@@ -71,11 +75,14 @@ final class ExchangeRateManager {
                             self.exchangeRates[currencyCode] = conversionRates
                         } else {
                             completion()
+                            
                             return
                         }
                     } catch {
+                        SentryManager.shared.capture(error: "Error parsing JSON: \(error.localizedDescription)", level: .error)
                         print("Error parsing JSON: \(error.localizedDescription)")
                         completion()
+                        
                         return
                     }
 
@@ -83,7 +90,9 @@ final class ExchangeRateManager {
                     completion()
                 }.resume()
             } else {
+                SentryManager.shared.capture(error: "Invalid URL", level: .error)
                 print("Error: Invalid URL")
+                
                 completion()
             }
         }

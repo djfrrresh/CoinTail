@@ -70,7 +70,9 @@ extension HomeCategoryCell {
 
         guard let exchangeRates = exchangeRates,
               let exchangeRate = exchangeRates[recordCurrency] else {
+            SentryManager.shared.capture(error: "Failed to get exchange rates for pie chart", level: .error)
             completion(nil)
+            
             return
         }
 
@@ -99,7 +101,11 @@ extension HomeCategoryCell {
             }
 
             guard let category = Categories.shared.getCategory(for: parentalCategoryID),
-                  let categoryColor = category.color else { return }
+                  let categoryColor = category.color else {
+                SentryManager.shared.capture(error: "No category to get", level: .error)
+                
+                return
+            }
 
             color = UIColor(hex: categoryColor)
         } else {
@@ -120,7 +126,11 @@ extension HomeCategoryCell {
                 parentalCategoryID = $0.categoryID
             }
             
-            guard let category = Categories.shared.getCategory(for: parentalCategoryID) else { return "" }
+            guard let category = Categories.shared.getCategory(for: parentalCategoryID) else {
+                SentryManager.shared.capture(error: "No category to get", level: .error)
+                
+                return ""
+            }
             
             let total = RecordType.allOperations.rawValue
 

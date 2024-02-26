@@ -33,7 +33,11 @@ extension RegularityVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let regularity = regularityMenu[indexPath.row]
         
-        guard let notificationPeriod = NotificationPeriods(rawValue: regularity) else { return }
+        guard let notificationPeriod = NotificationPeriods(rawValue: regularity) else {
+            SentryManager.shared.capture(error: "No notificationPeriod", level: .error)
+            
+            return
+        }
         
         Notifications.shared.regularity = notificationPeriod
         

@@ -80,13 +80,6 @@ final class SettingsVC: BasicVC {
         return cv
     }()
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-                
-        selectedCurrency = Currencies.shared.selectedCurrency.currency
-        settingsCV.reloadData()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -99,6 +92,13 @@ final class SettingsVC: BasicVC {
         settingsCV.dataSource = self
         
         settingsSubviews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+                
+        selectedCurrency = Currencies.shared.selectedCurrency.currency
+        settingsCV.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {

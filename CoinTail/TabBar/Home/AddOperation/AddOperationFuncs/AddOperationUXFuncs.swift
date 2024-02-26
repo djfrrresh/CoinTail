@@ -32,14 +32,22 @@ import RealmSwift
 extension AddOperationVC: SendCategoryID, SendAccount, AddOperationCellDelegate {
     
     func sendAccountData(id: ObjectId) {
-        guard let account = Accounts.shared.getAccount(for: id) else { return }
+        guard let account = Accounts.shared.getAccount(for: id) else {
+            SentryManager.shared.capture(error: "No account to get", level: .error)
+            
+            return
+        }
         
         accountID = id
         selectedAccount = account.name
     }
     
     func sendCategoryData(id: ObjectId) {
-        guard let category = Categories.shared.getGeneralCategory(for: id) else { return }
+        guard let category = Categories.shared.getGeneralCategory(for: id) else {
+            SentryManager.shared.capture(error: "No general category to get", level: .error)
+            
+            return
+        }
         
         categoryID = id
         operationCategory = category.name
@@ -87,7 +95,11 @@ extension AddOperationVC: SendCategoryID, SendAccount, AddOperationCellDelegate 
 //        }
     else {
             guard let categoryID = self.categoryID,
-                  let category = Categories.shared.getGeneralCategory(for: categoryID) else { return }
+                  let category = Categories.shared.getGeneralCategory(for: categoryID) else {
+                SentryManager.shared.capture(error: "No category to get", level: .error)
+                
+                return
+            }
 
             completion?(category.id)
         }
@@ -139,7 +151,11 @@ extension AddOperationVC: SendCategoryID, SendAccount, AddOperationCellDelegate 
         }()
         updateDate(at: dateIndexPath, text: operationDF.string(from: record.date))
 
-        guard let recordType = RecordType(rawValue: record.type) else { return }
+        guard let recordType = RecordType(rawValue: record.type) else {
+            SentryManager.shared.capture(error: "No RecordType to get", level: .error)
+            
+            return
+        }
         // Тип операции
         addOperationSegment = recordType
         addOperationTypeSwitcher.selectedSegmentIndex = addOperationSegment == .expense ? 0 : 1

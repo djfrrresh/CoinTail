@@ -66,15 +66,6 @@ final class TransfersHistoryVC: BasicVC {
         return cv
     }()
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationController?.navigationBar.isHidden = false
-        
-        sortTransfers()
-        isTransfersEmpty()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -92,6 +83,15 @@ final class TransfersHistoryVC: BasicVC {
             dataDescriptionLabel: transfersDescriptionLabel,
             addDataButton: addTransferButton
         )
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = false
+        
+        sortTransfers()
+        isTransfersEmpty()
     }
     
 }

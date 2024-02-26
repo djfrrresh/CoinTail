@@ -186,12 +186,6 @@ final class AccountsTransferVC: PickerVC {
         return cv
     }()
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationController?.navigationBar.isHidden = false
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
                 
@@ -206,6 +200,12 @@ final class AccountsTransferVC: PickerVC {
         transferSubviews()
         accountsTransferTargets()
         setupToolBar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = false
     }
     
 }

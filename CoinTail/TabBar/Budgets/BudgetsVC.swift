@@ -67,24 +67,8 @@ final class BudgetsVC: BasicVC {
         
         return cv
     }()
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        budgetCV.reloadData()
-        
-        areBudgetsEmpty()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        navigationController?.navigationBar.isHidden = true
-    }
         
     override func viewDidLoad() {
-        super.viewDidLoad()
-                
         customNavBar.titleLabel.text = "Budgets".localized()
                 
         budgetCV.dataSource = self
@@ -100,6 +84,22 @@ final class BudgetsVC: BasicVC {
             dataDescriptionLabel: budgetsDescriptionLabel,
             addDataButton: addBudgetButton
         )
+        
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        budgetCV.reloadData()
+        
+        areBudgetsEmpty()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = true
     }
     
 }

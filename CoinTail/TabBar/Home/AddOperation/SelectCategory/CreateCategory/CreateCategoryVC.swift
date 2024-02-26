@@ -88,7 +88,11 @@ final class CreateCategoryVC: BasicVC {
         
         self.title = "Edit category".localized()
         
-        guard let category = Categories.shared.getGeneralCategory(for: categoryID) else { return }
+        guard let category = Categories.shared.getGeneralCategory(for: categoryID) else {
+            SentryManager.shared.capture(error: "No category to edit", level: .error)
+            
+            return
+        }
         
         setupUI(with: category)
     }

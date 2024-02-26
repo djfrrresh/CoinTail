@@ -57,7 +57,8 @@ class Currencies {
                 do {
                     try realmService.realm?.commitWrite()
                 } catch {
-                    print("Error updating: \(error)")
+                    SentryManager.shared.capture(error: "Error updating currencies: \(error.localizedDescription)", level: .error)
+                    print("Error updating currencies: \(error.localizedDescription)")
                 }
             } else {
                 let defaultCurrency = createDefaultCurrency()
@@ -119,9 +120,7 @@ class Currencies {
     // Создает базовые избранные валюты
     func createDefaultFavouriteCurrenciesIfNeeded() {
         // Проверяем, есть ли уже избранные валюты в базе данных
-        guard realmService.read(FavouriteCurrencyClass.self).isEmpty else {
-            return
-        }
+        guard realmService.read(FavouriteCurrencyClass.self).isEmpty else { return }
         
         let defaultCurrencies = ["USD", "EUR", "RUB"]
 

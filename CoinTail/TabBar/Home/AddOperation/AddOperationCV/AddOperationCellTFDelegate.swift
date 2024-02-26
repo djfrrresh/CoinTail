@@ -31,9 +31,8 @@ import UIKit
 extension AddOperationCell: UITextFieldDelegate, UITextViewDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {        
-        guard let textFieldString = textField.text, let textFieldRange = Range(range, in: textFieldString) else {
-            return false
-        }
+        guard let textFieldString = textField.text, let textFieldRange = Range(range, in: textFieldString) else { return false }
+        
         let allString = textFieldString.replacingCharacters(in: textFieldRange, with: string)
         
         if textField == operationAmountTF {
@@ -46,9 +45,8 @@ extension AddOperationCell: UITextFieldDelegate, UITextViewDelegate {
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        guard let textViewString = textView.text, let textViewRange = Range(range, in: textViewString) else {
-            return false
-        }
+        guard let textViewString = textView.text, let textViewRange = Range(range, in: textViewString) else { return false }
+        
         let allString = textViewString.replacingCharacters(in: textViewRange, with: text)
         let charactersCount = String(textViewString).count
         

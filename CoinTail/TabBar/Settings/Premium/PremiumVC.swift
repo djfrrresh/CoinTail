@@ -160,12 +160,6 @@ final class PremiumVC: BasicVC, PremiumPlansDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-                
-        self.navigationController?.isNavigationBarHidden = true
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -178,6 +172,12 @@ final class PremiumVC: BasicVC, PremiumPlansDelegate {
         getPlan()
         premiumSubviews()
         premiumTargets()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+                
+        self.navigationController?.isNavigationBarHidden = true
     }
     
 }

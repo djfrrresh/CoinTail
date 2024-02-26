@@ -64,7 +64,11 @@ extension AddBudgetVC: SendCategoryID, SendRegularity, AddBudgetCellDelegate {
         } else if sameBudget && budgetID == nil {
             infoAlert("There is already a budget for this category and currency".localized())
         } else {
-            guard let categoryID = budgetCategoryID else { return }
+            guard let categoryID = budgetCategoryID else {
+                SentryManager.shared.capture(error: "No category ID for budget", level: .error)
+                
+                return
+            }
             
             completion?(amount, categoryID)
         }

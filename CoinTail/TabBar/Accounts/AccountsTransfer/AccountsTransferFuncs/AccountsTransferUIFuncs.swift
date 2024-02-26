@@ -108,7 +108,11 @@ extension AccountsTransferVC {
     
     func showTransferFrom() {
         guard let accountNameFrom = accountNameFrom,
-              let account = Accounts.shared.getAccount(for: accountNameFrom) else { return }
+              let account = Accounts.shared.getAccount(for: accountNameFrom) else {
+            SentryManager.shared.capture(error: "Failed to get account by name", level: .error)
+            
+            return
+        }
         
         transferFromButton.setImage(UIImage(named: "vectorFromFill"), for: .normal)
         
@@ -123,7 +127,11 @@ extension AccountsTransferVC {
     
     func showTransferTo() {
         guard let accountNameTo = accountNameTo,
-              let account = Accounts.shared.getAccount(for: accountNameTo) else { return }
+              let account = Accounts.shared.getAccount(for: accountNameTo) else {
+            SentryManager.shared.capture(error: "Failed to get account by name", level: .error)
+            
+            return
+        }
         
         transferToButton.setImage(UIImage(named: "vectorToFill"), for: .normal)
 

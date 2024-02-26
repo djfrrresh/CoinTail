@@ -115,7 +115,9 @@ final class Records {
     // Удаляет операцию по ее ID
     func deleteRecord(for id: ObjectId, completion: ((Bool) -> Void)? = nil) {
         guard let record = getRecord(for: id) else {
+            SentryManager.shared.capture(error: "No record to delete", level: .error)
             completion?(false)
+            
             return
         }
         
@@ -138,7 +140,9 @@ final class Records {
             let exchangeRates = ExchangeRateManager.shared.exchangeRates[selectedCurrency]
 
             guard let exchangeRates = exchangeRates else {
+                SentryManager.shared.capture(error: "Failed to get exchange rates for period", level: .error)
                 completion(nil)
+                
                 return
             }
 
@@ -155,6 +159,7 @@ final class Records {
                     if let exchangeRate = exchangeRates[currency] {
                         return total + (record.amount / exchangeRate)
                     }
+                    
                     return total
                 }
 
@@ -174,7 +179,11 @@ final class Records {
     // Получает сумму из категории с начальной даты до конечной с указанным периодом (неделя / месяц)
     func getBudgetAmount(budgetID: ObjectId, completion: (Double?) -> Void) {
         guard let budget = Budgets.shared.getBudget(for: budgetID),
-              let category = Categories.shared.getCategory(for: budget.categoryID) else { return }
+              let category = Categories.shared.getCategory(for: budget.categoryID) else {
+            SentryManager.shared.capture(error: "Failed to get budget or category", level: .error)
+            
+            return
+        }
 
         let allSubcategoryIDs: [ObjectId] = [category.id] + category.subcategories
         let startDate = budget.startDate
@@ -201,7 +210,9 @@ final class Records {
                 guard let exchangeRatesToBase = ExchangeRateManager.shared.exchangeRates[baseCurrency],
                     let exchangeRateFromBase = exchangeRatesToBase[budget.currency],
                     let exchangeRateToBase = exchangeRatesToBase[record.currency] else {
+                    SentryManager.shared.capture(error: "Failed to get exchange rates for records", level: .error)
                     completion(nil)
+                    
                     return
                 }
 
@@ -222,7 +233,9 @@ final class Records {
     // Считает конечный баланс для счёта
     func calculateTotalBalance(for accountID: ObjectId, completion: (Double?) -> Void) {
         guard let account = Accounts.shared.getAccount(for: accountID) else {
+            SentryManager.shared.capture(error: "No account to calculate balance", level: .error)
             completion(nil)
+            
             return
         }
 
@@ -243,7 +256,9 @@ final class Records {
                 guard let exchangeRatesToBase = ExchangeRateManager.shared.exchangeRates[baseCurrency],
                     let exchangeRateFromBase = exchangeRatesToBase[account.currency],
                     let exchangeRateToBase = exchangeRatesToBase[record.currency] else {
+                    SentryManager.shared.capture(error: "No exchange rates to calculate account balance", level: .error)
                     completion(nil)
+                    
                     return
                 }
                 

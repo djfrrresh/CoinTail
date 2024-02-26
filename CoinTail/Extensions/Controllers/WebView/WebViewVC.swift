@@ -27,7 +27,6 @@
 
 import UIKit
 import WebKit
-import EasyPeasy
 
 
 class WebViewVC: BasicVC {

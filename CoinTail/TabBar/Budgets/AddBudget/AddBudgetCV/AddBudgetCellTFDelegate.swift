@@ -31,9 +31,8 @@ import UIKit
 extension AddBudgetCell: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let textFieldString = textField.text, let textFieldRange = Range(range, in: textFieldString) else {
-            return false
-        }
+        guard let textFieldString = textField.text, let textFieldRange = Range(range, in: textFieldString) else { return false }
+        
         let allString = textFieldString.replacingCharacters(in: textFieldRange, with: string)
         
         if textField == budgetAmountTF {

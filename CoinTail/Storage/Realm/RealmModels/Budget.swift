@@ -42,6 +42,8 @@ class BudgetClass: Object {
         
         guard let budgetDate = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: untilDate)),
               let nowDate = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: Date())) else {
+            SentryManager.shared.capture(error: "No budgetDate", level: .error)
+            
             return false
         }
         

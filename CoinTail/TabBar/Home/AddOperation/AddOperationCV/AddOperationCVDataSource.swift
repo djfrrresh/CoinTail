@@ -129,6 +129,7 @@ extension AddOperationVC: UICollectionViewDataSource {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "dd/MM/yyyy"
                     let dateString = dateFormatter.string(from: operationDate ?? Date())
+                    
                     cell.dateTF.text = dateString
                 }
                 

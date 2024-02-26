@@ -122,7 +122,11 @@ extension PremiumAlert {
             vc.modalPresentationStyle = .fullScreen
 
             self.dismiss(animated: true, completion: {
-                guard let topController = UIApplication.shared.windows.first?.rootViewController?.presentedViewController else { return }
+                guard let topController = UIApplication.shared.windows.first?.rootViewController?.presentedViewController else {
+                    SentryManager.shared.capture(error: "Failed to present topController (PremiumVC)", level: .error)
+                    
+                    return
+                }
                 topController.present(vc, animated: true)
             })
         })

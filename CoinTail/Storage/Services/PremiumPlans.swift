@@ -43,12 +43,13 @@ class PremiumPlans {
         PlanData(
             title: "Year".localized(),
             price: 1290,
-            buyButtonTitle: "Start free trial".localized(),
+            buyButtonTitle: "Continue - total".localized(),
             period: "year".localized(),
-            privacyText: "After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy.".localized(),
-            isTrial: true,
-            trialDaysInt: 3,
-            promoText: "3 free days".localized()
+            privacyText: "By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy.".localized(),
+//            privacyText: "After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy.".localized(),
+//            isTrial: true,
+//            trialDaysInt: 3,
+            promoText: "107.50 " + "₽ per month".localized()
         )
     ]
     

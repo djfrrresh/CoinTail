@@ -242,15 +242,14 @@ final class AddOperationCell: UICollectionViewCell {
     
     private static func dateToolbar() -> UIToolbar {
         let toolbar: UIToolbar = {
-            let toolBar = UIToolbar()
-            toolBar.sizeToFit()
-            toolBar.tintColor = .systemBlue
-
             let doneButton = UIBarButtonItem(
                 barButtonSystemItem: .done,
                 target: nil,
                 action: #selector(doneButtonAction)
             )
+            let toolBar = UIToolbar()
+            toolBar.sizeToFit()
+            toolBar.tintColor = .systemBlue
             toolBar.setItems([doneButton], animated: true)
 
             return toolBar

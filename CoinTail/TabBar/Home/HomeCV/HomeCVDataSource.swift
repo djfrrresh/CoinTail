@@ -70,6 +70,14 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
             categorySort = nil
         }
     }
+    func pushVC() {
+        self.navigationItem.rightBarButtonItem?.target = nil
+        
+        let vc = AddOperationVC(segmentIndex: segmentIndex - 1)
+        vc.hidesBottomBarWhenPushed = true // Спрятать TabBar
+
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3

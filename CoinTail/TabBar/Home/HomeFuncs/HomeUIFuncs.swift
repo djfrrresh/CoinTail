@@ -80,6 +80,8 @@ extension HomeVC: UINavigationControllerDelegate {
                     let formattedAmount = String(format: "%.2f", amounts)
                     self.customNavBar.titleLabel.text = "\(formattedAmount) \(currency)"
                 } else {
+                    SentryManager.shared.capture(error: "Empty amount in HomeVC", level: .error)
+                    print("Failed to calculate amount.")
                     self.customNavBar.titleLabel.text = "0.00 \(currency)"
                 }
             }
@@ -97,7 +99,6 @@ extension HomeVC: UINavigationControllerDelegate {
         if isArrow {
             guard !getRecord.isEmpty else {
                 currentStep = isLeft ? currentStep + 1 : currentStep - 1
-                
                 sortOperations(isArrow: true)
                                 
                 return

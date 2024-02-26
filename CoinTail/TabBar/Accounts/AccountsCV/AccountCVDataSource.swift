@@ -60,6 +60,7 @@ extension AccountsVC: UICollectionViewDataSource {
                     let formattedAmount = String(format: "%.2f", totalAmountForCash)
                     cell.amountLabel.text = "\(formattedAmount) \(accountData.currency)"
                 } else {
+                    SentryManager.shared.capture(error: "Empty amount in AccountsVC", level: .error)
                     print("Failed to calculate total amount.")
                     cell.amountLabel.text = "\(0.00) \(accountData.currency)"
                 }

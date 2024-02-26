@@ -60,6 +60,7 @@ extension SettingsVC {
 
         let doneAction = UIAlertAction(title: "Delete".localized(), style: .destructive) { [weak self] _ in
             guard let textField = alertController.textFields?.first else { return }
+            
             let enteredText = textField.text ?? ""
             
             self?.handleTextEntered(enteredText)

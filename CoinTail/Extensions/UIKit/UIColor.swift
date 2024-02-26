@@ -57,6 +57,7 @@ extension UIColor {
         return "#000000"
     }
     
+    // Создает случайный цвет кроме черного и белого
     static func randomColor() -> UIColor {
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0

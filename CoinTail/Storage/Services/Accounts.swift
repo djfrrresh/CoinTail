@@ -64,7 +64,9 @@ final class Accounts {
     // Удаляет счет по его ID
     func deleteAccount(for id: ObjectId, completion: ((Bool) -> Void)? = nil) {
         guard let account = getAccount(for: id) else {
+            SentryManager.shared.capture(error: "No account to delete", level: .error)
             completion?(false)
+            
             return
         }
         
@@ -76,7 +78,9 @@ final class Accounts {
     // Отредактировать баланс счета
     func editBalance(for id: ObjectId, replacingBalance: Double, completion: ((Bool) -> Void)? = nil) {
         guard var account = getAccount(for: id) else {
+            SentryManager.shared.capture(error: "No account to edit balance", level: .error)
             completion?(false)
+            
             return
         }
         

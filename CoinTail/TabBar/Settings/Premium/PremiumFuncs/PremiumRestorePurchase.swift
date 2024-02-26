@@ -51,7 +51,7 @@ extension PremiumVC: PremiumPrivacyDelegate {
         buyPremiumButton.waitingState(true)
         self.view.isUserInteractionEnabled = false
         
-        PaymentFacade.shared.restorePurchases { [weak self] resp in
+        RevenueCatService.shared.restorePurchases { [weak self] resp in
             guard let strongSelf = self else { return }
 
             switch resp {

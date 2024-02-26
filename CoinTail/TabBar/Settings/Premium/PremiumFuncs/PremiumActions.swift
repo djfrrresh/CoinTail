@@ -41,6 +41,7 @@ extension PremiumVC {
 
         revenueCatPayment()
         
+        //TODO: вызов премиум-алерта
 //        let vc = PremiumAlert(description: "This function is premium")
 //
 //        present(vc, animated: true, completion: nil)

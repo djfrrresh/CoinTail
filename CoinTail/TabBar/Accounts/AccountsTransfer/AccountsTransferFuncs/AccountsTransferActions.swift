@@ -43,7 +43,11 @@ extension AccountsTransferVC: TransferCellDelegate {
         transferValidation(amount: amount, firstAccount: firstAccount, secondAccount: secondAccount) { [weak self] sourceAccountName, targetAccountName in
             guard let strongSelf = self,
                   let sourceAccount = Accounts.shared.getAccount(for: sourceAccountName),
-                  let targetAccount = Accounts.shared.getAccount(for: targetAccountName) else { return }
+                  let targetAccount = Accounts.shared.getAccount(for: targetAccountName) else {
+                SentryManager.shared.capture(error: "Failed to get source and target accounts", level: .error)
+                
+                return
+            }
             
             // Формируем перевод
             Transfers.shared.transferBetweenAccounts(

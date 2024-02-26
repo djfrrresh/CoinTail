@@ -258,6 +258,7 @@
 "month" = "месяц";
 "year" = "год";
 "Available rates" = "Доступные тарифы";
+"₽ per month" = "₽ в месяц";
 /// PremiumAdvantages
 "Access to currency conversions" = "Доступ к валютным конвертациям";
 "Access to informative diagrams" = "Доступ к информативным диаграммам";

@@ -36,7 +36,6 @@ extension NotificationsVC {
             if !granted {
                 DispatchQueue.main.async {
                     toggle.isOn = false
-
                     Notifications.shared.toggleStatus = false
                 }
             }
@@ -80,8 +79,8 @@ extension NotificationsVC {
         
         // Триггер по компонентам даты
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
-        
         let request = UNNotificationRequest(identifier: "operationNotifications", content: notificationContent, trigger: trigger)
+        
         notificationCenter.add(request) { (error) in
             print(error?.localizedDescription as Any)
         }

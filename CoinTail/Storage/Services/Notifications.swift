@@ -49,7 +49,8 @@ class Notifications {
                 do {
                     try realmService.realm?.commitWrite() // Завершение блока записи
                 } catch {
-                    print("Error updating toggleStatus: \(error)")
+                    SentryManager.shared.capture(error: "Error updating toggleStatus: \(error.localizedDescription)", level: .error)
+                    print("Error updating toggleStatus: \(error.localizedDescription)")
                 }
                 // Иначе создать новый объект
             } else {
@@ -79,11 +80,13 @@ class Notifications {
                 do {
                     try realmService.realm?.commitWrite()
                 } catch {
-                    print("Error updating toggleStatus: \(error)")
+                    SentryManager.shared.capture(error: "Error updating regularity: \(error.localizedDescription)", level: .error)
+                    print("Error updating regularity: \(error.localizedDescription)")
                 }
             } else {
                 let newSettings = NotificationSettingsClass()
                 newSettings.regularity = stringValue
+                
                 realmService.write(newSettings, NotificationSettingsClass.self)
             }
         }

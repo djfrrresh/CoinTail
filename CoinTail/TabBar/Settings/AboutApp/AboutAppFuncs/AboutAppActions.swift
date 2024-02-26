@@ -63,6 +63,7 @@ extension AboutAppVC {
             // Если "Почты" нет, приложение попросит его скачать
             UIApplication.shared.open(emailUrl)
         } else {
+            SentryManager.shared.capture(error: "Can't open mail app", level: .info)
             infoAlert("We can't open the Mail app on your device")
         }
     }
@@ -70,7 +71,6 @@ extension AboutAppVC {
     private func createEmailUrl(_ subject: String, _ body: String, _ recipient: String) -> URL? {
         let subjectEncoded = subject.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let bodyEncoded = body.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-
         let defaultUrl = URL(string: "mailto:\(recipient)?subject=\(subjectEncoded)&body=\(bodyEncoded)")
         
         return defaultUrl

@@ -67,18 +67,23 @@ extension BudgetsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
                     sumByCategory += abs(totalAmount)
 
                     let percentText = cell.calculatePercent(sum: sumByCategory, total: budgetData.amount)
-
                     let formattedAmount = String(format: "%.2f", sumByCategory)
+                    
                     cell.amountLabel.text = "\(formattedAmount) / \(budgetData.amount) \(budgetData.currency) (\(percentText)%)"
                     cell.isSumExceedsBudget(sumByCategory: sumByCategory, budgetSum: budgetData.amount)
                 } else {
+                    SentryManager.shared.capture(error: "Empty amount in BudgetVC", level: .error)
                     print("Failed to calculate total amount.")
                     cell.amountLabel.text = "\(0.00) / \(budgetData.amount) \(budgetData.currency) (0%)"
                 }
             }
         }
         
-        guard let category = Categories.shared.getCategory(for: budgetData.categoryID) else { return cell }
+        guard let category = Categories.shared.getCategory(for: budgetData.categoryID) else {
+            SentryManager.shared.capture(error: "No category for budget", level: .error)
+            
+            return cell
+        }
 
         cell.categoryLabel.text = category.name
         cell.categoryIcon.text = category.image

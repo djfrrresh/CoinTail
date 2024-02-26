@@ -54,6 +54,7 @@ final class RealmService {
                 realm?.add(object)
             })
         } catch let error {
+            SentryManager.shared.capture(error: "Error: realm write \(error.localizedDescription)", level: .error)
             print(error)
         }
         
@@ -85,7 +86,8 @@ final class RealmService {
         case "FavouriteCurrencyClass":
             favouriteCurrenciesArr.removeAll()
         default:
-            fatalError()
+            SentryManager.shared.capture(error: "Error when trying to read all realm objects", level: .fatal)
+            fatalError("Error when trying to read all realm objects")
         }
         
         if let objects = realm?.objects(object.self).map({$0}) {
@@ -118,6 +120,7 @@ final class RealmService {
                 realm?.add(object, update: .modified)
             }
         } catch let error {
+            SentryManager.shared.capture(error: "Error: realm update \(error.localizedDescription)", level: .error)
             print(error)
         }
         
@@ -132,6 +135,7 @@ final class RealmService {
                 realm?.delete(object)
             }
         } catch let error {
+            SentryManager.shared.capture(error: "Error: realm delete \(error.localizedDescription)", level: .error)
             print(error)
         }
         
@@ -146,6 +150,7 @@ final class RealmService {
                 realm?.delete(objects)
             }
         } catch let error {
+            SentryManager.shared.capture(error: "Error: realm delete all objects \(error.localizedDescription)", level: .error)
             print(error)
         }
         
@@ -184,6 +189,7 @@ final class RealmService {
             
             realm = try Realm()
         } catch let error {
+            SentryManager.shared.capture(error: "Error: realm init \(error.localizedDescription)", level: .error)
             print(error.localizedDescription)
         }
         

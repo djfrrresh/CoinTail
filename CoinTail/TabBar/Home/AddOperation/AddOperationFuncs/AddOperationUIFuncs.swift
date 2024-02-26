@@ -37,7 +37,11 @@ extension AddOperationVC: UIScrollViewDelegate {
         // Дата
         operationDate = record.date
 
-        guard let recordType = RecordType(rawValue: record.type) else { return }
+        guard let recordType = RecordType(rawValue: record.type) else {
+            SentryManager.shared.capture(error: "No RecordType to get", level: .error)
+            
+            return
+        }
 
         // Тип операции
         addOperationSegment = recordType
@@ -52,7 +56,11 @@ extension AddOperationVC: UIScrollViewDelegate {
 
         // Категория
         self.categoryID = record.categoryID
-        guard let category = Categories.shared.getGeneralCategory(for: record.categoryID) else { return }
+        guard let category = Categories.shared.getGeneralCategory(for: record.categoryID) else {
+            SentryManager.shared.capture(error: "No generalCategory to get", level: .error)
+            
+            return
+        }
         operationCategory = category.name
         
         // Счет

@@ -80,10 +80,12 @@ final class Categories {
         do {
             try realmService.realm?.write {
                 guard let category = realmService.realm?.object(ofType: CategoryClass.self, forPrimaryKey: categoryID) else { return }
+                
                 category.subcategories.append(subcategoryID)
             }
         } catch let error {
-            print("Error adding subcategory to category: \(error)")
+            SentryManager.shared.capture(error: "Error adding subcategory to category: \(error.localizedDescription)", level: .error)
+            print("Error adding subcategory to category: \(error.localizedDescription)")
         }
     }
     
@@ -95,7 +97,7 @@ final class Categories {
         for record in records {
             let categoryID: ObjectId
             if let subcategory = getSubcategory(for: record.categoryID) {
-                // Если это подкатегория, берем идентификатор родительской категории
+                // Если это подкатегория, берем id родительской категории
                 categoryID = subcategory.parentCategory
             } else {
                 categoryID = record.categoryID
@@ -158,10 +160,12 @@ final class Categories {
         completion?(true)
     }
     
-    // Помечает удаленной категорию по его ID
+    // Помечает удаленной категорию по ее ID
     func deleteCategory(for id: ObjectId, completion: ((Bool) -> Void)? = nil) {
         guard let category: CategoryClass = getCategory(for: id) else {
+            SentryManager.shared.capture(error: "No category to delete", level: .error)
             completion?(false)
+            
             return
         }
         
@@ -177,10 +181,12 @@ final class Categories {
         completion?(true)
     }
     
-    // Помечает удаленной подкатегорию по его ID
+    // Помечает удаленной подкатегорию по ее ID
     func deleteSubcategory(for id: ObjectId, completion: ((Bool) -> Void)? = nil) {
         guard let subcategory: SubcategoryClass = getSubcategory(for: id) else {
+            SentryManager.shared.capture(error: "No subcategory to delete", level: .error)
             completion?(false)
+            
             return
         }
         
@@ -196,9 +202,7 @@ final class Categories {
     // Создает дефолтные категории разных типов
     func createDefaultCategoriesIfNeeded() {
         // Проверяем, есть ли категории в базе данных
-        guard realmService.read(CategoryClass.self).isEmpty else {
-            return
-        }
+        guard realmService.read(CategoryClass.self).isEmpty else { return }
         
         let incomeCategories: [CategoryClass] = [
             createDefaultCategory(name: "Salary".localized(), color: Colors.shared.salaryColor, image: "💸", type: RecordType.income.rawValue),

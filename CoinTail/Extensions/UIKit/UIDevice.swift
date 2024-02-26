@@ -30,6 +30,7 @@ import UIKit
 
 extension UIDevice {
     
+    // Проверяет имеется ли нижняя полоска для свайпа 
     var hasNotch: Bool {
         guard let window = topWindow(), window.isKeyWindow else { return false }
         if UIDevice.current.orientation.isPortrait {

@@ -37,7 +37,9 @@ extension TransfersHistoryVC: UICollectionViewDelegateFlowLayout {
         
         transferHistoryData = section.transfers[indexPath.row]
         
-        guard let transfer = transferHistoryData else { return .init(width: 0, height: 0) }
+        guard let transfer = transferHistoryData else {
+            return .init(width: 0, height: 0)
+        }
         
         return TransfersHistoryCell.size(data: transfer)
     }

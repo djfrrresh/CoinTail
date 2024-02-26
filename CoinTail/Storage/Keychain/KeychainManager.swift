@@ -27,6 +27,7 @@
 
 import Foundation
 import Security
+import KeychainSwift
 
 
 final class KeychainManager {
@@ -36,6 +37,34 @@ final class KeychainManager {
     // API ключ для получения курса валют
     private let apiKey = "17d2f298f8f15469bd89f9bb"
     private let service = "CoinTail"
+    
+    private var UDIDfromKeyChain: String?
+
+    // TODO: заменить на ОРИГИНАЛ
+    func getUDID() -> String {
+        if let udid = UDIDfromKeyChain {
+            return udid
+        }
+        
+        let keychain = KeychainSwift()
+        let appIdentifierPrefix =
+            Bundle.main.infoDictionary!["AppIdentifierPrefix"] as! String
+        
+        keychain.accessGroup = appIdentifierPrefix + "com.kunavinEugene.CoinTail.keychain"
+        keychain.synchronizable = true
+        
+        if let UDID = keychain.get("UDID"), !UDID.isEmpty {
+            UDIDfromKeyChain = UDID
+            
+            return UDID
+        } else {
+            let UDID = UUID().uuidString
+            keychain.set(UDID, forKey: "UDID")
+            UDIDfromKeyChain = UDID
+            
+            return UDID
+        }
+    }
 
     // Функция для извлечения API ключа из Keychain
     func getAPIKeyFromKeychain() -> String? {
@@ -56,8 +85,10 @@ final class KeychainManager {
             
             return apiKey
         } else if status == errSecItemNotFound {
-            print("API Key did not found.")
+            SentryManager.shared.capture(error: "API Key did not found", level: .error)
+            print("API Key did not found")
         } else {
+            SentryManager.shared.capture(error: "API Key extraction error: \(status)", level: .error)
             print("API Key extraction error: \(status)")
         }
 

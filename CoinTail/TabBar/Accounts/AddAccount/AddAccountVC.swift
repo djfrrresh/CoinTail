@@ -86,7 +86,11 @@ final class AddAccountVC: PickerVC {
 
         self.title = "Edit account".localized()
         
-        guard let account = Accounts.shared.getAccount(for: accountID) else { return }
+        guard let account = Accounts.shared.getAccount(for: accountID) else {
+            SentryManager.shared.capture(error: "No account to edit", level: .error)
+            
+            return
+        }
         setupUI(with: account)
     }
     
@@ -97,14 +101,6 @@ final class AddAccountVC: PickerVC {
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationController?.navigationBar.isHidden = false
-
-        addAccountTargets()
     }
 
     override func viewDidLoad() {
@@ -120,5 +116,13 @@ final class AddAccountVC: PickerVC {
         addAccountSubviews()
         setupToolBar()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = false
 
+        addAccountTargets()
+    }
+    
 }

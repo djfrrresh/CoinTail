@@ -100,7 +100,11 @@ final class AddBudgetVC: PickerVC {
         
         self.title = "Edit budget".localized()
         
-        guard let budget = Budgets.shared.getBudget(for: budgetID) else { return }
+        guard let budget = Budgets.shared.getBudget(for: budgetID) else {
+            SentryManager.shared.capture(error: "No budget to edit", level: .error)
+            
+            return
+        }
         setupUI(with: budget)
     }
     
@@ -111,14 +115,6 @@ final class AddBudgetVC: PickerVC {
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationController?.navigationBar.isHidden = false
-
-        addBudgetTargets()
     }
 
     override func viewDidLoad() {
@@ -133,6 +129,14 @@ final class AddBudgetVC: PickerVC {
         addBudgetSubviews()
         addBudgetNavBar()
         setupToolBar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = false
+
+        addBudgetTargets()
     }
     
 }

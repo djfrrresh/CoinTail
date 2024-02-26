@@ -35,7 +35,11 @@ protocol SendRegularity: AnyObject {
 extension BudgetPeriodVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard var selectedPeriod = self.selectedPeriod else { return }
+        guard var selectedPeriod = self.selectedPeriod else {
+            SentryManager.shared.capture(error: "Failed to get selectedPeriod", level: .error)
+            
+            return
+        }
         selectedPeriod = periodsMenu[indexPath.row]
         
         regulatiryDelegate?.sendPeriod(selectedPeriod)
