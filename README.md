@@ -37,6 +37,7 @@ List of dependencies:
 * pod 'SwiftLint' -> A tool for automatically checking the style and conventions of Swift code, ensuring consistency and cleanliness of code.
 * pod 'RealmSwift' -> A database for storing and managing data in Swift, providing a convenient interface for working with objects and queries.
 * pod 'Charts' -> A library for creating colorful and interactive charts that provide powerful data visualization.
+* pod 'Sentry' -> A useful tool for tracking errors in real time on user devices. Sends detailed information about the error and a screenshot of the screen on which the error was noticed.
 
 ### Installation
 Place the following code in your `Podfile`:
