@@ -52,6 +52,8 @@ target 'CoinTail' do
   pod 'RealmSwift'
   pod 'SwiftLint'
   pod 'Charts'
+  pod "KeychainSwift", '20.0.0'
+  pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git', :tag => '8.1.0'
 
 end
 ```
