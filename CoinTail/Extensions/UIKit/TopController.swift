@@ -1,8 +1,8 @@
 //
-//  CurrencyCVDelegate.swift
+//  TopController.swift
 //  CoinTail
 //
-//  Created by Eugene on 13.09.23.
+//  Created by Eugene on 04.03.24.
 //
 // The MIT License (MIT)
 // Copyright © 2023 Eugeny Kunavin (kunavinjenya55@gmail.com)
@@ -28,34 +28,18 @@
 import UIKit
 
 
-extension CurrenciesVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
-
-    // Определение размера ячейки
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CurrencyCell.size()
+func topController(skipTabBar: Bool = true, modalPresenting: Bool = false) -> UIViewController {
+    var topController = UIApplication.shared.windows.first?.rootViewController
+    
+    while (topController?.presentedViewController != nil) {
+        topController = topController?.presentedViewController
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var currency: String = ""
-        
-        switch indexPath.section {
-        case 0:
-            currency = "\(favouriteCurrencies[indexPath.row].currency)"
-        case 1:
-            if isSearching {
-                currency = "\(filteredData[indexPath.row])"
-            } else {
-                currency =  "\(Currencies.shared.currencyNames[indexPath.row])"
-            }
-        default:
-            return
-        }
-        
-        let selectedCurrency = SelectedCurrencyClass()
-        selectedCurrency.currency = currency
-        
-        currenciesClass.selectedCurrency = selectedCurrency
-        self.selectedCurrency = selectedCurrency
+    if skipTabBar,
+        topController is UITabBarController,
+        let vc = (topController as? UITabBarController)?.selectedViewController {
+        topController = vc
     }
     
+    return topController!
 }

@@ -41,19 +41,19 @@ final class PremiumVC: BasicVC, PremiumPlansDelegate {
     var selectedPlan: PlanData {
         return plan
     }
-    var plans: [PlanData] {
+    var plans: [PlanData] = [] {
         didSet {
             premiumCV.reloadData()
         }
     }
     var plan: PlanData! {
         didSet {
-            buyPremiumButton.setTitle(plan.isTrial ? "Start trial subscription".localized() : "\(plan.buyButtonTitle.localized()) \(plan.price) RUB", for: .normal)
+            buyPremiumButton.setTitle(plan.isTrial ? "Start trial subscription".localized() : "\(plan.buyButtonTitle.localized())", for: .normal)
             
             premiumCV.reloadData()
         }
     }
-    var planCellSizes: [CGSize]
+    var planCellSizes: [CGSize] = []
     
     let buttonBackgroundView: UIView = {
         let view = UIView()
@@ -148,30 +148,27 @@ final class PremiumVC: BasicVC, PremiumPlansDelegate {
         return cv
     }()
     
-    public required init(_ arrayPlan: [PlanData]) {
-        self.plans = arrayPlan
-        self.planCellSizes = arrayPlan.map({ data in
-            PlanCell.size(data)
-        })
-        
-        super.init(nibName: nil, bundle: nil)
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        buyPremiumButton.addTarget(self, action: #selector(buyButtonAction), for: .touchUpInside)
-                
-        premiumCV.delegate = self
-
-        premiumCV.dataSource = self
-        
-        getPlan()
-        premiumSubviews()
-        premiumTargets()
+        RevenueCatService.shared.getOfferings(completion: { [self] plan in
+            guard let plan = plan else { return }
+            
+            self.plans = plan
+            self.planCellSizes = plan.map({ data in
+                PlanCell.size(data)
+            })
+            
+            buyPremiumButton.addTarget(self, action: #selector(buyButtonAction), for: .touchUpInside)
+            
+            premiumCV.delegate = self
+            
+            premiumCV.dataSource = self
+            
+            getPlan()
+            premiumSubviews()
+            premiumTargets()
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {

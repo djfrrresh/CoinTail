@@ -26,6 +26,7 @@
 // SOFTWARE.
 
 import UIKit
+import RevenueCat
 
 
 @main
@@ -44,14 +45,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Сбросить значок уведомлений
         UIApplication.shared.applicationIconBadgeNumber = 0
         
-        let _ = RevenueCatService.shared
-        let _ = SentryManager.shared
+        _ = RevenueCatService.shared
+        _ = SentryManager.shared
         
-        KeychainManager.shared.saveAPIKeyToKeychain()
-        RealmService.shared.readAllClasses()
-        ExchangeRateManager.shared.getExchangeRates {}
-        Currencies.shared.createDefaultFavouriteCurrenciesIfNeeded()
-        Categories.shared.createDefaultCategoriesIfNeeded()
+        Purchases.shared.delegate = self
+        
+        KeychainManager.shared.saveAPIKeyToKeychain() // Сохранение API ключа для конвертаций
+        RealmService.shared.readAllClasses() // Читаем все Realm-классы
+        ExchangeRateManager.shared.getExchangeRates {} // Получение обменных курсов валют
+        Currencies.shared.createDefaultFavouriteCurrenciesIfNeeded() // Создание дефолтной валюты - USD
+        Categories.shared.createDefaultCategoriesIfNeeded() // Создание дефолтных категорий трат и начислений
+        AppSettings.shared.setPremiumUnactive() // Проверка на наличие премиум-подписки
         
         return true
     }

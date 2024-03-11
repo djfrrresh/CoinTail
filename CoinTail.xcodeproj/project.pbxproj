@@ -33,6 +33,7 @@
 		5614B81F2B585A5000782077 /* SelectedCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5614B81E2B585A5000782077 /* SelectedCurrency.swift */; };
 		5614B8212B585A9200782077 /* CategoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5614B8202B585A9200782077 /* CategoryProtocol.swift */; };
 		56191ECF2A9CBC6D00D47052 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56191ECE2A9CBC6D00D47052 /* Date.swift */; };
+		561C10A82B9B5FC300397831 /* PurchasesDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C10A72B9B5FC300397831 /* PurchasesDelegate.swift */; };
 		5642DAEB2A4080BF00ADF475 /* DatePeriods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642DAEA2A4080BF00ADF475 /* DatePeriods.swift */; };
 		5642DAED2A40D2BE00ADF475 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642DAEC2A40D2BE00ADF475 /* Int.swift */; };
 		5642DB112A4329AB00ADF475 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642DB102A4329AB00ADF475 /* TabBar.swift */; };
@@ -45,7 +46,6 @@
 		5642DB2E2A4F34CC00ADF475 /* BudgetCVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642DB2D2A4F34CC00ADF475 /* BudgetCVDataSource.swift */; };
 		5642DB302A4F34F900ADF475 /* BudgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642DB2F2A4F34F900ADF475 /* BudgetCell.swift */; };
 		564F08FE2A531AEE004C89C7 /* AddBudgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564F08FD2A531AEE004C89C7 /* AddBudgetVC.swift */; };
-		565009962B3098EB00701670 /* PremiumDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565009952B3098EB00701670 /* PremiumDisplay.swift */; };
 		565009992B30CC9A00701670 /* HavePremiumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565009982B30CC9A00701670 /* HavePremiumVC.swift */; };
 		5656E9B92A97707500070045 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656E9B82A97707400070045 /* String.swift */; };
 		5656E9BA2A97732000070045 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5656E9BC2A97732000070045 /* Localizable.strings */; };
@@ -186,6 +186,8 @@
 		569E52382AD4405F00A4FCA7 /* AboutAppMailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E52372AD4405F00A4FCA7 /* AboutAppMailDelegate.swift */; };
 		569E523A2AD861DD00A4FCA7 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E52392AD861DD00A4FCA7 /* RealmService.swift */; };
 		56A75DCC2B88EC7100743A57 /* SentryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A75DCB2B88EC7100743A57 /* SentryManager.swift */; };
+		56CED6ED2B9216D700F8E117 /* PremiumStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CED6EC2B9216D700F8E117 /* PremiumStatus.swift */; };
+		56CED6FD2B9628C000F8E117 /* TopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CED6FC2B9628C000F8E117 /* TopController.swift */; };
 		56D0E90B2B21F2C70088C92F /* PremiumAdvantagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0E90A2B21F2C70088C92F /* PremiumAdvantagesCell.swift */; };
 		56D0E90D2B21FE140088C92F /* AdvantagesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0E90C2B21FE140088C92F /* AdvantagesData.swift */; };
 		56D0E9102B2201550088C92F /* AdvantagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0E90F2B2201550088C92F /* AdvantagesCell.swift */; };
@@ -267,6 +269,7 @@
 		5614B81E2B585A5000782077 /* SelectedCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCurrency.swift; sourceTree = "<group>"; };
 		5614B8202B585A9200782077 /* CategoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryProtocol.swift; sourceTree = "<group>"; };
 		56191ECE2A9CBC6D00D47052 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		561C10A72B9B5FC300397831 /* PurchasesDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesDelegate.swift; sourceTree = "<group>"; };
 		5642DAEA2A4080BF00ADF475 /* DatePeriods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePeriods.swift; sourceTree = "<group>"; };
 		5642DAEC2A40D2BE00ADF475 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		5642DB102A4329AB00ADF475 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
@@ -279,7 +282,6 @@
 		5642DB2D2A4F34CC00ADF475 /* BudgetCVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCVDataSource.swift; sourceTree = "<group>"; };
 		5642DB2F2A4F34F900ADF475 /* BudgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCell.swift; sourceTree = "<group>"; };
 		564F08FD2A531AEE004C89C7 /* AddBudgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetVC.swift; sourceTree = "<group>"; };
-		565009952B3098EB00701670 /* PremiumDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumDisplay.swift; sourceTree = "<group>"; };
 		565009982B30CC9A00701670 /* HavePremiumVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HavePremiumVC.swift; sourceTree = "<group>"; };
 		5656E9B52A976E8B00070045 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5656E9B82A97707400070045 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -423,6 +425,8 @@
 		569E52392AD861DD00A4FCA7 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		56A75DC92B87A47200743A57 /* CoinTail.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CoinTail.entitlements; sourceTree = "<group>"; };
 		56A75DCB2B88EC7100743A57 /* SentryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentryManager.swift; sourceTree = "<group>"; };
+		56CED6EC2B9216D700F8E117 /* PremiumStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumStatus.swift; sourceTree = "<group>"; };
+		56CED6FC2B9628C000F8E117 /* TopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopController.swift; sourceTree = "<group>"; };
 		56D0E90A2B21F2C70088C92F /* PremiumAdvantagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumAdvantagesCell.swift; sourceTree = "<group>"; };
 		56D0E90C2B21FE140088C92F /* AdvantagesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvantagesData.swift; sourceTree = "<group>"; };
 		56D0E90F2B2201550088C92F /* AdvantagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvantagesCell.swift; sourceTree = "<group>"; };
@@ -570,6 +574,7 @@
 				56D0E9222B23EC920088C92F /* UIBezierPath.swift */,
 				56D0E9242B2B32200088C92F /* UINavigationBar.swift */,
 				5691E0492B32533D0077B13C /* UITapGestureRecognizer.swift */,
+				56CED6FC2B9628C000F8E117 /* TopController.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -691,7 +696,6 @@
 				568EF07B2AB3AE0F00EB042D /* NotificationPeriods.swift */,
 				5676C8BA2B210ECE008A6395 /* PlanData.swift */,
 				56D0E90C2B21FE140088C92F /* AdvantagesData.swift */,
-				565009952B3098EB00701670 /* PremiumDisplay.swift */,
 				5691E0472B32438D0077B13C /* PrivacyLink.swift */,
 			);
 			path = Models;
@@ -1282,6 +1286,7 @@
 		569B61192AE5860C00CBFF33 /* RealmModels */ = {
 			isa = PBXGroup;
 			children = (
+				56CED6EC2B9216D700F8E117 /* PremiumStatus.swift */,
 				568EF02B2AA609F400EB042D /* Account.swift */,
 				5642DB2A2A4F313A00ADF475 /* Budget.swift */,
 				560AFC3F2A1D08D10054B502 /* Category.swift */,
@@ -1397,6 +1402,7 @@
 			isa = PBXGroup;
 			children = (
 				56D0E9322B2B5CCE0088C92F /* RevenueCatService.swift */,
+				561C10A72B9B5FC300397831 /* PurchasesDelegate.swift */,
 			);
 			path = RevenueCat;
 			sourceTree = "<group>";
@@ -1593,6 +1599,8 @@
 			dependencies = (
 			);
 			name = CoinTail;
+			packageProductDependencies = (
+			);
 			productName = CoinTail;
 			productReference = 560AFBBD2A1394A30054B502 /* CoinTail.app */;
 			productType = "com.apple.product-type.application";
@@ -1622,6 +1630,8 @@
 				ru,
 			);
 			mainGroup = 560AFBB42A1394A30054B502;
+			packageReferences = (
+			);
 			productRefGroup = 560AFBBE2A1394A30054B502 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1724,6 +1734,7 @@
 				5642DB172A432BA200ADF475 /* BudgetsVC.swift in Sources */,
 				568EF0542AAFA6C200EB042D /* TransferHistory.swift in Sources */,
 				5691E0482B32438D0077B13C /* PrivacyLink.swift in Sources */,
+				56CED6ED2B9216D700F8E117 /* PremiumStatus.swift in Sources */,
 				569E52312AD083CB00A4FCA7 /* AboutAppUIFuncs.swift in Sources */,
 				568DEAD32B5E93AC0097A90A /* BasicAlertFuncs.swift in Sources */,
 				5665C1372A9F5B2200B11D34 /* Currency.swift in Sources */,
@@ -1784,7 +1795,9 @@
 				56D0E9102B2201550088C92F /* AdvantagesCell.swift in Sources */,
 				560AFC2B2A1BF8EB0054B502 /* HomeCVDataSource.swift in Sources */,
 				569B611F2AE6E5CA00CBFF33 /* FavouriteCurrency.swift in Sources */,
+				561C10A82B9B5FC300397831 /* PurchasesDelegate.swift in Sources */,
 				56D0E91B2B225B190088C92F /* PremiumUXFuncs.swift in Sources */,
+				56CED6FD2B9628C000F8E117 /* TopController.swift in Sources */,
 				5642DB292A4DE3B700ADF475 /* BudgetActions.swift in Sources */,
 				56DBB6FC2A3B31DB0087271D /* AddOperationVC.swift in Sources */,
 				560AFC1F2A1BF4970054B502 /* OperationsDaySection.swift in Sources */,
@@ -1798,7 +1811,6 @@
 				568EF0622AAFB44300EB042D /* Transfers.swift in Sources */,
 				56191ECF2A9CBC6D00D47052 /* Date.swift in Sources */,
 				56DBB7212A3B64A00087271D /* CreateCategoryActions.swift in Sources */,
-				565009962B3098EB00701670 /* PremiumDisplay.swift in Sources */,
 				56D0E9212B238F870088C92F /* SelectCategoryUXFuncs.swift in Sources */,
 				568EF06C2AB0FC1800EB042D /* CurrencyCVDataSource.swift in Sources */,
 				568EF06E2AB0FC4F00EB042D /* CurrencyCVDelegate.swift in Sources */,

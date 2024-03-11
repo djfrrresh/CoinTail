@@ -40,15 +40,15 @@ extension AccountsTransferVC {
         let missingAmount = amount == 0
         let missingFirstAccount = firstAccount == ""
         let missingSecondAccount = secondAccount == ""
-//        var firstAccountCurrency = ""
-//        var secondAccountCurrency = ""
+        var firstAccountCurrency = ""
+        var secondAccountCurrency = ""
         
-//        if let firstAccount = Accounts.shared.getAccount(for: firstAccount) {
-//            firstAccountCurrency = firstAccount.currency
-//        }
-//        if let secondAccount = Accounts.shared.getAccount(for: secondAccount) {
-//            secondAccountCurrency = secondAccount.currency
-//        }
+        if let firstAccount = Accounts.shared.getAccount(for: firstAccount) {
+            firstAccountCurrency = firstAccount.currency
+        }
+        if let secondAccount = Accounts.shared.getAccount(for: secondAccount) {
+            secondAccountCurrency = secondAccount.currency
+        }
         
         if missingAmount {
             infoAlert("Missing value in amount field".localized())
@@ -56,14 +56,14 @@ extension AccountsTransferVC {
             infoAlert("No accounts selected".localized())
         } else if firstAccount == secondAccount {
             infoAlert("You cannot select the same account for transfer".localized())
-        }
-//        else if firstAccountCurrency != secondAccountCurrency {
-            //TODO: premium
-//            if AppSettings.shared.premium?.isPremiumActive ?? false {
-//                infoAlert("You cannot transfer money to an account with a different currency!".localized())
-//            }
-//        }
-    else {
+        } else if firstAccountCurrency != secondAccountCurrency {
+            if !AppSettings.shared.premiumStatus.isPremiumActive {
+                let vc = PremiumAlert(description: "You can transfer money to an account with another currency only with a premium subscription".localized())
+                present(vc, animated: true, completion: nil)
+                
+                return
+            }
+        } else {
             completion?(firstAccount, secondAccount)
         }
     }

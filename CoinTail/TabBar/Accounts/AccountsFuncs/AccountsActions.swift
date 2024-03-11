@@ -31,24 +31,28 @@ import UIKit
 extension AccountsVC {
     
     @objc func goToAddAccountVC() {
-        let vc = AddAccountVC()
-        vc.hidesBottomBarWhenPushed = true
-        
-        self.navigationItem.rightBarButtonItem?.target = nil
-        
-        navigationController?.pushViewController(vc, animated: true)
+        if !AppSettings.shared.premiumStatus.isPremiumActive && accounts.count >= 2 {
+            let vc = PremiumAlert(description: "Creating more accounts is only possible with a premium subscription".localized())
+            present(vc, animated: true, completion: nil)
+        } else {
+            let vc = AddAccountVC()
+            vc.hidesBottomBarWhenPushed = true
+            
+            self.navigationItem.rightBarButtonItem?.target = nil
+            
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     @objc func goToAccountsTransferVC() {
-        // TODO: premium
-//        if accounts.count >= 2 {
+        if accounts.count >= 2 {
             let vc = AccountsTransferVC()
             vc.hidesBottomBarWhenPushed = true
                     
             navigationController?.pushViewController(vc, animated: true)
-//        } else {
-//            infoAlert("Transfers are only available if you have 2 or more accounts".localized())
-//        }
+        } else {
+            infoAlert("Transfers are only available if you have 2 or more accounts".localized())
+        }
     }
     
     @objc func goToAccountsHistoryVC() {

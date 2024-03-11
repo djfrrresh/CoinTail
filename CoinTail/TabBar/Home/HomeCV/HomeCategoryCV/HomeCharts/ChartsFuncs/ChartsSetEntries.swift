@@ -70,7 +70,8 @@ extension HomeCategoryCell {
 
         guard let exchangeRates = exchangeRates,
               let exchangeRate = exchangeRates[recordCurrency] else {
-            SentryManager.shared.capture(error: "Failed to get exchange rates for pie chart", level: .error)
+            //TODO: sentry
+//            SentryManager.shared.capture(error: "Failed to get exchange rates for pie chart", level: .error)
             completion(nil)
             
             return

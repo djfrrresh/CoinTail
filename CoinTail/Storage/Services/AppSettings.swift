@@ -31,7 +31,53 @@ import UIKit
 class AppSettings {
     
     static let shared = AppSettings()
-                    
-    var privacy: Privacy?
+    
+    private let realmService = RealmService.shared
+    
+    var premiumStatus: PremiumStatusClass {
+        get {
+            return realmService.read(PremiumStatusClass.self).first ?? createNoPremiumUser()
+        }
+        set {
+            if let premium = realmService.read(PremiumStatusClass.self).first {
+                realmService.realm?.beginWrite()
+                premium.isPremiumActive = newValue.isPremiumActive
+                premium.premiumActiveUntil = newValue.premiumActiveUntil
+                
+                do {
+                    try realmService.realm?.commitWrite()
+                } catch {
+                    SentryManager.shared.capture(error: "Error updating premiumStatus: \(error.localizedDescription)", level: .error)
+                    print("Error updating premiumStatus: \(error.localizedDescription)")
+                }
+            } else {
+                let noPremiumUser = createNoPremiumUser()
+                noPremiumUser.isPremiumActive = newValue.isPremiumActive
+                noPremiumUser.premiumActiveUntil = newValue.premiumActiveUntil
+
+                realmService.write(noPremiumUser, PremiumStatusClass.self)
+            }
+        }
+    }
+    
+    // Если закончился срок действия подписки, делаем ее неактивной
+    func setPremiumUnactive() {
+        let isPremiumStillActive = premiumStatus.stillActive
+        
+        print(isPremiumStillActive)
+        if !isPremiumStillActive {
+            let noPremiumUser = PremiumStatusClass()
+            noPremiumUser.isPremiumActive = false
+            
+            premiumStatus = noPremiumUser
+        }
+    }
+    
+    private func createNoPremiumUser() -> PremiumStatusClass {
+        let noPremiumUser = PremiumStatusClass()
+        noPremiumUser.isPremiumActive = false
+        
+        return noPremiumUser
+    }
     
 }

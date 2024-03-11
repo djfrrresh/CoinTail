@@ -1,11 +1,8 @@
 //
-//  PlanData.swift
+//  PremiumStatus.swift
 //  CoinTail
 //
-//  Created by Eugene on 07.12.23.
-//
-// The MIT License (MIT)
-// Copyright © 2023 Eugeny Kunavin (kunavinjenya55@gmail.com)
+//  Created by Eugene on 01.03.24.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,26 +22,24 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import RevenueCat
+import Foundation
+import RealmSwift
 
 
-struct PlanData: Equatable {
-    var title = ""
-    var price = ""
-    var buyButtonTitle = ""
-    var period = ""
-    var description = ""
-    var privacyText = ""
-    var isTrial: Bool = false
-    var trialDaysInt: Int?
-    var promoText: String?
-    var package: Package?
+class PremiumStatusClass: Object {
+    @Persisted(primaryKey: true) var id: ObjectId
+
+    @Persisted var isPremiumActive: Bool = false
+    @Persisted var premiumActiveUntil: Int64?
     
-    static func == (lhs: PlanData, rhs: PlanData) -> Bool {
-        return lhs.package == rhs.package
-        && lhs.title == rhs.title
-        && lhs.description == rhs.description
-        && lhs.buyButtonTitle == rhs.buyButtonTitle
-        && lhs.promoText == rhs.promoText
+    var expirationDate: Date? {
+        guard let expirationDateUnix = premiumActiveUntil else { return nil }
+        
+        return Date(timeIntervalSince1970: TimeInterval(expirationDateUnix))
+    }
+    var stillActive: Bool {
+        guard let expirationDate = expirationDate else { return false }
+        
+        return expirationDate > Date()
     }
 }

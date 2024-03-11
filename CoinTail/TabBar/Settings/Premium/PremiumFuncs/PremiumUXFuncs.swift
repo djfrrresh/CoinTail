@@ -57,26 +57,17 @@ extension PremiumVC {
 
                 return
             }
-
-            //TODO: не приходит date из за plan.package
+            
             if let date = date {
                 self?.dismiss(animated: false) {
-                    guard var topController = UIApplication.shared.windows.first?.rootViewController?.presentedViewController else { return }
-
                     let vc = HavePremiumVC(AdvantagesData.advantages, expirationDate: date)
                     vc.modalPresentationStyle = .fullScreen
 
-                    topController.present(vc, animated: true)
+                    topController().present(vc, animated: true)
                 }
             } else {
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
             }
-        let date = Date()
-        let vc = HavePremiumVC(AdvantagesData.advantages, expirationDate: date)
-        vc.modalPresentationStyle = .fullScreen
-        guard let topController = UIApplication.shared.windows.first?.rootViewController?.presentedViewController else { return }
-        
-        topController.present(vc, animated: true)
             
             strongSelf.buyPremiumButton.waitingState(false)
             strongSelf.view.isUserInteractionEnabled = true

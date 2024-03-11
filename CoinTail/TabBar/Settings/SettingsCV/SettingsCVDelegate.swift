@@ -56,10 +56,21 @@ extension SettingsVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayo
                 navigationController?.pushViewController(vc, animated: true)
             }
         case 1:
-            let vc = PremiumVC(PremiumPlans.shared.plans)
-            vc.modalPresentationStyle = .fullScreen
+            let premium = AppSettings.shared.premiumStatus
             
-            present(vc, animated: true)
+            var vc: UIViewController
+            
+            if premium.isPremiumActive {
+                let nowDate = Int64(Date().timeIntervalSince1970)
+                let date = Date(timeIntervalSince1970: Double(premium.premiumActiveUntil ?? nowDate))
+                
+                vc = HavePremiumVC(AdvantagesData.advantages, expirationDate: date)
+            } else {
+                vc = PremiumVC()
+            }
+            
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
         default:
             return
         }
@@ -71,7 +82,7 @@ extension SettingsVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayo
         case SettingsCell.id:
             return SettingsCell.size()
         case SettingsPremiumCell.id:
-            return SettingsPremiumCell.size()
+            return SettingsPremiumCell.size(premium)
         default:
             return CGSize()
         }

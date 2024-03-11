@@ -85,6 +85,8 @@ final class RealmService {
             return
         case "FavouriteCurrencyClass":
             favouriteCurrenciesArr.removeAll()
+        case "PremiumStatusClass":
+            return
         default:
             SentryManager.shared.capture(error: "Error when trying to read all realm objects", level: .fatal)
             fatalError("Error when trying to read all realm objects")
@@ -124,7 +126,9 @@ final class RealmService {
             print(error)
         }
         
-        if type != NotificationSettingsClass.self && type != SelectedCurrencyClass.self {
+        if type != NotificationSettingsClass.self && 
+            type != SelectedCurrencyClass.self &&
+            type != PremiumStatusClass.self {
             RealmService.shared.readAll(type)
         }
     }
@@ -154,7 +158,9 @@ final class RealmService {
             print(error)
         }
         
-        if type != NotificationSettingsClass.self && type != SelectedCurrencyClass.self {
+        if type != NotificationSettingsClass.self && 
+            type != SelectedCurrencyClass.self &&
+            type != PremiumStatusClass.self {
             RealmService.shared.readAll(type)
         }
     }

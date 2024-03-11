@@ -31,9 +31,8 @@ import EasyPeasy
 
 extension PremiumAlert {
     
-    static func getDescriptionLabel(text: String) -> UILabel {
+    static func getDescriptionLabel() -> UILabel {
         let label = UILabel()
-        label.text = text
         label.font = UIFont(name: "SFProText-Regular", size: 17)
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
@@ -54,9 +53,8 @@ extension PremiumAlert {
         let backViewWidth: CGFloat = UIScreen.main.bounds.width - (16 * 2)
         let textWidth: CGFloat = backViewWidth - (16 * 2)
         let titleHeight: CGFloat = 24
-        
         let descriptionHeight: CGFloat = descriptionLabel.sizeThatFits(.init(width: textWidth, height: 0)).height
-        let backViewHeight = imageViewHeight + (24 * 2) + titleHeight + 8 + descriptionHeight + 24 + buyButtonHeight + 16
+        let backViewHeight = imageViewHeight + 24 + titleHeight + 8 + descriptionHeight + 24 + buyButtonHeight + 16
         
         self.view.addSubview(overlayView)
         self.view.addSubview(backView)
@@ -75,14 +73,14 @@ extension PremiumAlert {
         ])
         
         buyPremiumButton.easy.layout([
-            Height(52),
+            Height(buyButtonHeight),
             Left(16),
             Right(16),
             Bottom(16)
         ])
         
         crownEmojiLabel.easy.layout([
-            Top(24),
+            Top(),
             CenterX()
         ])
         
@@ -96,7 +94,7 @@ extension PremiumAlert {
         titleLabel.easy.layout([
             Left(16),
             Right(16),
-            Top(24).to(crownEmojiLabel, .bottom)
+            Top().to(crownEmojiLabel, .bottom)
         ])
         
         descriptionLabel.easy.layout([
@@ -118,16 +116,11 @@ extension PremiumAlert {
         UIView.animate(withDuration: 0.3, animations: {
             self.overlayView.alpha = 0
         }, completion: { _ in
-            let vc = PremiumVC(PremiumPlans.shared.plans)
+            let vc = PremiumVC()
             vc.modalPresentationStyle = .fullScreen
 
             self.dismiss(animated: true, completion: {
-                guard let topController = UIApplication.shared.windows.first?.rootViewController?.presentedViewController else {
-                    SentryManager.shared.capture(error: "Failed to present topController (PremiumVC)", level: .error)
-                    
-                    return
-                }
-                topController.present(vc, animated: true)
+                topController().present(vc, animated: true)
             })
         })
     }

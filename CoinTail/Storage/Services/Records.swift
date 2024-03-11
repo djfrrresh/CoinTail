@@ -132,15 +132,15 @@ final class Records {
         let records = getRecords(for: period, type: type, step: step, categoryID: categoryID)
 
         // Проверка премиум-статуса
-        //TODO: premium
-//        if AppSettings.shared.premium?.isPremiumActive ?? false {
+        if AppSettings.shared.premiumStatus.isPremiumActive {
             // Получить уникальные валюты
             let uniqueCurrencies = Set(records.map { $0.currency })
             // Получить курсы обмена для каждой валюты
             let exchangeRates = ExchangeRateManager.shared.exchangeRates[selectedCurrency]
 
             guard let exchangeRates = exchangeRates else {
-                SentryManager.shared.capture(error: "Failed to get exchange rates for period", level: .error)
+                //TODO: sentry
+//                SentryManager.shared.capture(error: "Failed to get exchange rates for period", level: .error)
                 completion(nil)
                 
                 return
@@ -167,13 +167,12 @@ final class Records {
             }
 
             completion(totalAmountInSelectedCurrency)
-//        } else {
-//            records = records.filter { $0.currency == selectedCurrency }
-//
-//            let totalAmount = records.reduce(0.0) { $0 + $1.amount }
-//
-//            completion(totalAmount)
-//        }
+        } else {
+            let records = records.filter { $0.currency == selectedCurrency }
+            let totalAmount = records.reduce(0.0) { $0 + $1.amount }
+
+            completion(totalAmount)
+        }
     }
     
     // Получает сумму из категории с начальной даты до конечной с указанным периодом (неделя / месяц)
@@ -199,33 +198,33 @@ final class Records {
             && $0.date >= startDate && $0.date <= untilDate
         }
                 
-        //TODO: premium
-//        if AppSettings.shared.premium?.isPremiumActive ?? false {
-        for record in records {
-            if budget.currency == record.currency {
-                totalAmount += record.amount
-            } else {
-                let baseCurrency = Currencies.shared.selectedCurrency.currency
+        if AppSettings.shared.premiumStatus.isPremiumActive {
+            for record in records {
+                if budget.currency == record.currency {
+                    totalAmount += record.amount
+                } else {
+                    let baseCurrency = Currencies.shared.selectedCurrency.currency
 
-                guard let exchangeRatesToBase = ExchangeRateManager.shared.exchangeRates[baseCurrency],
-                    let exchangeRateFromBase = exchangeRatesToBase[budget.currency],
-                    let exchangeRateToBase = exchangeRatesToBase[record.currency] else {
-                    SentryManager.shared.capture(error: "Failed to get exchange rates for records", level: .error)
-                    completion(nil)
-                    
-                    return
+                    guard let exchangeRatesToBase = ExchangeRateManager.shared.exchangeRates[baseCurrency],
+                        let exchangeRateFromBase = exchangeRatesToBase[budget.currency],
+                        let exchangeRateToBase = exchangeRatesToBase[record.currency] else {
+                        SentryManager.shared.capture(error: "Failed to get exchange rates for records", level: .error)
+                        completion(nil)
+                        
+                        return
+                    }
+
+                    let convertedToBase = record.amount / exchangeRateToBase
+                    let convertedToAccountCurrency = convertedToBase * exchangeRateFromBase
+                                    
+                    totalAmount += convertedToAccountCurrency
                 }
-
-                let convertedToBase = record.amount / exchangeRateToBase
-                let convertedToAccountCurrency = convertedToBase * exchangeRateFromBase
-                                
-                totalAmount += convertedToAccountCurrency                
             }
+        } else {
+            let records = records.filter { $0.currency == budget.currency }
+            
+            totalAmount = records.reduce(0.0) { $0 + $1.amount }
         }
-//        } else {
-//            records = records.filter { $0.currency == budget.currency }
-//            totalAmount = records.reduce(0.0) { $0 + $1.amount }
-//        }
 
         completion(totalAmount)
     }
@@ -241,38 +240,37 @@ final class Records {
 
         var totalAmount: Double = 0
 
-        //TODO: premium
-//        if AppSettings.shared.premium?.isPremiumActive ?? false {
-        for record in records {
-            guard let recordAccountID = record.accountID, recordAccountID == accountID else {
-                continue
-            }
-            
-            if account.currency == record.currency {
-                totalAmount += record.amount
-            } else {
-                let baseCurrency = Currencies.shared.selectedCurrency.currency
-
-                guard let exchangeRatesToBase = ExchangeRateManager.shared.exchangeRates[baseCurrency],
-                    let exchangeRateFromBase = exchangeRatesToBase[account.currency],
-                    let exchangeRateToBase = exchangeRatesToBase[record.currency] else {
-                    SentryManager.shared.capture(error: "No exchange rates to calculate account balance", level: .error)
-                    completion(nil)
-                    
-                    return
+        if AppSettings.shared.premiumStatus.isPremiumActive {
+            for record in records {
+                guard let recordAccountID = record.accountID, recordAccountID == accountID else {
+                    continue
                 }
                 
-                let convertedToBase = record.amount / exchangeRateToBase
-                let convertedToAccountCurrency = convertedToBase * exchangeRateFromBase
-                                
-                totalAmount += convertedToAccountCurrency
+                if account.currency == record.currency {
+                    totalAmount += record.amount
+                } else {
+                    let baseCurrency = Currencies.shared.selectedCurrency.currency
+
+                    guard let exchangeRatesToBase = ExchangeRateManager.shared.exchangeRates[baseCurrency],
+                        let exchangeRateFromBase = exchangeRatesToBase[account.currency],
+                        let exchangeRateToBase = exchangeRatesToBase[record.currency] else {
+                        SentryManager.shared.capture(error: "No exchange rates to calculate account balance", level: .error)
+                        completion(nil)
+                        
+                        return
+                    }
+                    
+                    let convertedToBase = record.amount / exchangeRateToBase
+                    let convertedToAccountCurrency = convertedToBase * exchangeRateFromBase
+                                    
+                    totalAmount += convertedToAccountCurrency
+                }
             }
+        } else {
+            let records = records.filter { $0.currency == account.currency }
+
+            totalAmount = records.reduce(0.0) { $0 + $1.amount }
         }
-//        } else {
-//            let records = records.filter { $0.currency == account.currency }
-//
-//            totalAmount = records.reduce(0.0) { $0 + $1.amount }
-//        }
 
         completion(totalAmount)
     }

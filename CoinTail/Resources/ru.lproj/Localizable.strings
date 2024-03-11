@@ -41,6 +41,12 @@
 "Are you sure?" = "Вы уверены?";
 "No category selected" = "Не выбрана категория";
 "Missing value in amount field" = "Отсутствует значение в поле суммы";
+/// Premium Alert
+"Creating more accounts is only possible with a premium subscription" = "Создать больше счетов возможно только с премиум подпиской";
+"Creating more budgets is only possible with a premium subscription" = "Создать больше бюджетов возможно только с премиум подпиской";
+"Creating subcategories is only available with a Premium subscription" = "Создание подкатегорий доступно только с Премиум-подпиской";
+"You can specify an account for this transaction in another currency only with a premium subscription" = "Указать счет для этой операции в другой валюте можно только с премиум подпиской";
+"You can transfer money to an account with another currency only with a premium subscription" = "Перевести деньги на счет в другой валюте можно только при наличии премиум-подписки";
 
 // RecordType
 "Expense" = "Траты";
@@ -114,7 +120,6 @@
 /// Alert
 "Repeat last transaction" = "Повторить последнюю операцию";
 "Do you want to repeat the last transaction?" = "Вы хотите повторить последнюю операцию?";
-"You cannot specify an account for this transaction with another currency" = "Вы не можете указать счет для этой операции в другой валюте";
 "You don't have any accounts to choose from" = "У вас нет счетов для выбора";
 "Create at least one operation so that it can be repeated" = "Создайте хотя бы одну операцию, чтобы ее можно было повторить";
 
@@ -141,7 +146,6 @@
 "Category name is missing" = "Название категории отсутствует";
 "Category icon not selected" = "Значок для категории не выбран";
 "No parent category selected" = "Не выбрана основная категория";
-"Creating subcategories is only available with a Premium subscription" = "Создание подкатегорий доступно только с Премиум-подпиской";
 
 // BudgetsVC
 "Active budgets" = "Активные бюджеты";
@@ -189,7 +193,6 @@
 /// Alert
 "No accounts selected" = "Не выбраны счета для перевода";
 "You cannot select the same account for transfer" = "Вы не можете перевести деньги на один и тот же счёт";
-"You cannot transfer money to an account with a different currency" = "Вы не можете перевести деньги на счет в другой валюте";
 
 // TransfersHistoryVC
 /// Title
@@ -202,7 +205,9 @@
 "Rate on App Store" = "Оценить в App Store";
 /// Banner
 "Upgrade to premium" = "Перейти на премиум";
+"Premium is active" = "Премиум активен";
 "Get even more features with our Premium subscription" = "Получите еще больше возможностей с нашей Премиум-подпиской";
+"All the features of a premium subscription are available" = "Доступны все преимущества премиум-подписки";
 
 // CurrenciesVC
 "Type USD or Dollar for search" = "Наберите USD или Доллар для поиска";
@@ -258,7 +263,7 @@
 "month" = "месяц";
 "year" = "год";
 "Available rates" = "Доступные тарифы";
-"₽ per month" = "₽ в месяц";
+"per month" = "в месяц";
 /// PremiumAdvantages
 "Access to currency conversions" = "Доступ к валютным конвертациям";
 "Access to informative diagrams" = "Доступ к информативным диаграммам";
@@ -269,7 +274,7 @@
 /// PremiumPrivacy
 "Restore purchase" = "Восстановить покупку";
 "Start trial subscription" = "Начать пробную подписку";
-"Continue - total" = "Продолжить - всего";
+"Continue - total " = "Продолжить - всего ";
 "By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy." = "Нажимая 'Продолжить', вы принимаете наше Пользовательское Соглашение и Политику Конфиденциальности. Сумма будет списана, а подписка будет автоматически продлеваться на выбранный период времени и по той же цене до отмены ее действия в настройках App Store.";
 "After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy." = "Оформляя подписку, вы принимаете наше Пользовательское Соглашение и Политику Конфиденциальности. По завершению пробного периода, после %@, произойдет списание суммы полного тарифа, а подписка будет автоматически продлеваться на выбранный период времени и по той же цене до отмены ее действия в настройках App Store.";
 "Privacy Policy" = "Политику Конфиденциальности";

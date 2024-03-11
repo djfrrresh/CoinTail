@@ -80,7 +80,8 @@ extension HomeVC: UINavigationControllerDelegate {
                     let formattedAmount = String(format: "%.2f", amounts)
                     self.customNavBar.titleLabel.text = "\(formattedAmount) \(currency)"
                 } else {
-                    SentryManager.shared.capture(error: "Empty amount in HomeVC", level: .error)
+                    //TODO: sentry
+//                    SentryManager.shared.capture(error: "Empty amount in HomeVC", level: .error)
                     print("Failed to calculate amount.")
                     self.customNavBar.titleLabel.text = "0.00 \(currency)"
                 }

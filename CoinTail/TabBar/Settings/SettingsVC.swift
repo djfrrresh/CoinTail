@@ -30,6 +30,13 @@ import UIKit
 
 final class SettingsVC: BasicVC {
     
+    // Premium
+    var premium: Bool = AppSettings.shared.premiumStatus.isPremiumActive {
+        didSet {
+            settingsCV.reloadData()
+        }
+    }
+    
     var selectedCurrency: String = Currencies.shared.selectedCurrency.currency {
         didSet {
             settingsCV.reloadData()
@@ -98,6 +105,8 @@ final class SettingsVC: BasicVC {
         super.viewWillAppear(animated)
                 
         selectedCurrency = Currencies.shared.selectedCurrency.currency
+        premium = AppSettings.shared.premiumStatus.isPremiumActive
+        
         settingsCV.reloadData()
     }
     

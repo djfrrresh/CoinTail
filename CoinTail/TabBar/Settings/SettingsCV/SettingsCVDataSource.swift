@@ -82,6 +82,8 @@ extension SettingsVC: UICollectionViewDataSource {
             ) as? SettingsPremiumCell else {
                 return UICollectionViewCell()
             }
+
+            cell.isPremiumActive(premium)
             
             return cell
         default:

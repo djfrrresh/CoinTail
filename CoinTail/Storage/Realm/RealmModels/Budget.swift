@@ -37,6 +37,7 @@ class BudgetClass: Object {
     @Persisted var startDate: Date = Date()
     @Persisted var untilDate: Date = Date()
     @Persisted var currency: String = ""
+    
     var isActive: Bool {
         let calendar = Calendar.current
         

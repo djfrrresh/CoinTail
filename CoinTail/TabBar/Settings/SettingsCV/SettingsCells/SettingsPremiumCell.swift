@@ -32,33 +32,40 @@ import EasyPeasy
 final class SettingsPremiumCell: UICollectionViewCell {
     
     static let id = "SettingsPremiumCell"
-    
-    let premiumLabel: UILabel = getPremiumLabel()
-    let premiumDescription: UILabel = getPremiumDescriptionLabel()
+            
+    var premiumLabel: UILabel = SettingsPremiumCell.getPremiumLabel()
+    var premiumDescription: UILabel = SettingsPremiumCell.getPremiumDescriptionLabel()
     
     let boltImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = UIColor(named: "primaryAction")
         imageView.image = UIImage(systemName: "bolt.fill")
+        imageView.tintColor = UIColor(named: "primaryAction")
+        
+        return imageView
+    }()
+    let crownImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(systemName: "crown.fill")
+        imageView.tintColor = .white
+        imageView.isHidden = true
         
         return imageView
     }()
     
-    let boltImageBackView: UIView = {
+    let imageBackView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
         view.clipsToBounds = true
-        view.layer.cornerRadius = 12
         
         return view
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-                
-        contentView.backgroundColor = UIColor(named: "primaryAction")
+                        
         contentView.layer.cornerRadius = 16
+        contentView.backgroundColor = UIColor(named: "primaryAction")
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -67,7 +74,7 @@ final class SettingsPremiumCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        contentView.addSubview(boltImageBackView)
+        contentView.addSubview(imageBackView)
         contentView.addSubview(premiumLabel)
         contentView.addSubview(premiumDescription)
                 
@@ -75,42 +82,67 @@ final class SettingsPremiumCell: UICollectionViewCell {
             Edges()
         ])
         
-        boltImageBackView.easy.layout([
+        imageBackView.easy.layout([
             Height(48),
             Width(48),
             CenterY(),
             Left(16)
         ])
         
-        boltImageBackView.addSubview(boltImageView)
+        imageBackView.addSubview(boltImageView)
+        imageBackView.addSubview(crownImageView)
 
         boltImageView.easy.layout([
             Height(24),
             Width(24),
             Center()
         ])
+        
+        crownImageView.easy.layout([
+            Height(36),
+            Width(36),
+            Center()
+        ])
 
         premiumLabel.easy.layout([
-            Left(16).to(boltImageBackView, .right),
+            Left(16).to(imageBackView, .right),
             Right(16),
             Top(16)
         ])
         
         premiumDescription.easy.layout([
-            Left(16).to(boltImageBackView, .right),
+            Left(16).to(imageBackView, .right),
             Right(16),
             Bottom(16),
             Top(8).to(premiumLabel, .bottom)
         ])
     }
     
+    func isPremiumActive(_ isActive: Bool) {
+        if isActive {
+            crownImageView.isHidden = false
+            boltImageView.isHidden = true
+            imageBackView.backgroundColor = .white.withAlphaComponent(0.3)
+            imageBackView.layer.cornerRadius = 24
+            premiumLabel.text = "Premium is active".localized()
+            premiumDescription.text = "All the features of a premium subscription are available".localized()
+        } else {
+            boltImageView.isHidden = false
+            crownImageView.isHidden = true
+            imageBackView.backgroundColor = .white
+            imageBackView.layer.cornerRadius = 12
+            premiumLabel.text = "Upgrade to premium".localized()
+            premiumDescription.text = "Get even more features with our Premium subscription".localized()
+        }
+    }
+    
     static func getPremiumLabel() -> UILabel {
         let label = UILabel()
         label.textAlignment = .left
-        label.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
+        label.numberOfLines = 0
         label.textColor = .white
-        label.text = "Upgrade to premium".localized()
-
+        label.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
+        
         return label
     }
     
@@ -118,19 +150,26 @@ final class SettingsPremiumCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .left
         label.numberOfLines = 0
-        label.text = "Get even more features with our Premium subscription".localized()
-        label.textColor = .white.withAlphaComponent(0.8)
         label.font = UIFont(name: "SFProText-Regular", size: 13)
+        label.textColor = .white.withAlphaComponent(0.8)
         
         return label
     }
     
-    static func size() -> CGSize {
+    static func size(_ isPremium: Bool) -> CGSize {
         let imagePadding: CGFloat = 16
         let imageWidth: CGFloat = 48
         let defaultHeight: CGFloat = 76
         let premiumLabel = getPremiumLabel()
         let premiumDescriptionLabel = getPremiumDescriptionLabel()
+        
+        if isPremium {
+            premiumLabel.text = "Upgrade to premium".localized()
+            premiumDescriptionLabel.text = "Get even more features with our Premium subscription".localized()
+        } else {
+            premiumLabel.text = "Premium is active".localized()
+            premiumDescriptionLabel.text = "All the features of a premium subscription are available".localized()
+        }
         
         let textWidth = UIScreen.main.bounds.width - (2 * 16) - (2 * 16) - imagePadding - imageWidth
         let premiumLabelHeight: CGFloat = premiumLabel.sizeThatFits(.init(width: textWidth, height: 0)).height

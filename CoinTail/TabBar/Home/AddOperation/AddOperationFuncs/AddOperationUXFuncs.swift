@@ -75,25 +75,23 @@ extension AddOperationVC: SendCategoryID, SendAccount, AddOperationCellDelegate 
     func recordValidation(amount: Double, categoryText: String, accountID: ObjectId?, completion: ((ObjectId) -> Void)? = nil) {
         let missingAmount = "\(amount)" == "" || amount == 0
         let missingCategory = categoryText == ""
-//        var account: AccountClass?
-//        if let accID = accountID {
-//            account = Accounts.shared.getAccount(for: accID)
-//        }
+        var account: AccountClass?
+        if let accID = accountID {
+            account = Accounts.shared.getAccount(for: accID)
+        }
 
         if missingAmount {
             infoAlert("Missing value in amount field".localized())
         } else if missingCategory {
             infoAlert("No category selected".localized())
-        }
-//        else if account != nil && account?.currency != "\(selectedCurrency)" {
-            //TODO: premium
-//            if AppSettings.shared.premium?.isPremiumActive ?? false {
-//                infoAlert("You cannot specify an account for this transaction with another currency".localized())
+        } else if account != nil && account?.currency != "\(selectedCurrency)" {
+            if !AppSettings.shared.premiumStatus.isPremiumActive {
+                let vc = PremiumAlert(description: "You can specify an account for this transaction in another currency only with a premium subscription".localized())
+                present(vc, animated: true, completion: nil)
                 
-//                return
-//            }
-//        }
-    else {
+                return
+            }
+        } else {
             guard let categoryID = self.categoryID,
                   let category = Categories.shared.getGeneralCategory(for: categoryID) else {
                 SentryManager.shared.capture(error: "No category to get", level: .error)

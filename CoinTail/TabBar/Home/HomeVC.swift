@@ -116,6 +116,8 @@ final class HomeVC: BasicVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        print(AppSettings.shared.premiumStatus)
+        
         period = .allTheTime
         homeGlobalCV.reloadData()
 

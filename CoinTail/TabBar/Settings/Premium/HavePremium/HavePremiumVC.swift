@@ -95,7 +95,6 @@ final class HavePremiumVC: BasicVC, UINavigationBarDelegate {
     
     public required init(_ advantages: [AdvantagesData], expirationDate: Date) {
         self.advantages = advantages
-        //TODO: дата не меняется, показывается сегодняшний день
         self.premiumUntil = "The current period will end".localized() + " \(dateFormatter.string(from: expirationDate))"
         
         super.init(nibName: nil, bundle: nil)

@@ -48,7 +48,7 @@ extension PremiumPlansCell: UICollectionViewDelegate, UICollectionViewDataSource
         
         cell.planDelegate = self
         cell.titleLabel.text = planCellData[indexPath.item].title
-        cell.priceLabel.text = "₽ \(planCellData[indexPath.item].price)/\(planCellData[indexPath.item].period)"
+        cell.priceLabel.text = "\(planCellData[indexPath.item].price)/\(planCellData[indexPath.item].period)"
         cell.roundCorners(.allCorners, radius: 16)
         cell.setTrialIndicator(planCellData[indexPath.item].promoText)
                 

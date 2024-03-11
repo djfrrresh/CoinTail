@@ -40,11 +40,6 @@ extension PremiumVC {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
 
         revenueCatPayment()
-        
-        //TODO: вызов премиум-алерта
-//        let vc = PremiumAlert(description: "This function is premium")
-//
-//        present(vc, animated: true, completion: nil)
     }
     
 }

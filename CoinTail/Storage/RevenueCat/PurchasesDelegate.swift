@@ -1,8 +1,8 @@
 //
-//  PremiumDisplay.swift
+//  PurchasesDelegate.swift
 //  CoinTail
 //
-//  Created by Eugene on 18.12.23.
+//  Created by Eugene on 08.03.24.
 //
 // The MIT License (MIT)
 // Copyright © 2023 Eugeny Kunavin (kunavinjenya55@gmail.com)
@@ -25,10 +25,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
+import RevenueCat
 
 
-enum PremiumDisplay {
-    case none
-    case revenueCat
+extension AppDelegate: PurchasesDelegate {
+    
+    // Автопродление подписки
+    func purchases(_ purchases: Purchases, receivedUpdated customerInfo: CustomerInfo) {
+        var expDate: Date?
+                
+        if let entitlement = customerInfo.entitlements.active.first?.value,
+           let expirationDate = customerInfo.expirationDate(forProductIdentifier: entitlement.productIdentifier),
+           expirationDate.timeIntervalSince1970 > Date().timeIntervalSince1970 {
+            expDate = expirationDate
+        }
+        
+        guard let expDate = expDate else { return }
+        
+        let premiumStatus = PremiumStatusClass()
+        premiumStatus.isPremiumActive = true
+        premiumStatus.premiumActiveUntil = Int64(expDate.timeIntervalSince1970)
+        
+        AppSettings.shared.premiumStatus = premiumStatus
+        
+        print("Subscription has been renewed")
+    }
+    
 }

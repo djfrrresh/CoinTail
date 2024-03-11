@@ -33,8 +33,18 @@ extension SettingsVC {
     
     // Оценка приложения в AppStore
     func rateApp() {
-        if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
-            SKStoreReviewController.requestReview(in: scene)
+        if let appID = Bundle.main.object(forInfoDictionaryKey: "ApplicationID") as? String {
+            let url = "https://apps.apple.com/app/id\(appID)?action=write-review"
+
+            guard let writeReviewURL = URL(string: url) else {
+                SentryManager.shared.capture(error: "Invalid url for RateAlert", level: .error)
+                
+                return
+            }
+            
+            UIApplication.shared.open(writeReviewURL)
+        } else {
+            SentryManager.shared.capture(error: "Not ApplicationID for RateAlert", level: .error)
         }
     }
     

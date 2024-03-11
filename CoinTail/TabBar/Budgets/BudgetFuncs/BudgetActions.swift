@@ -31,12 +31,17 @@ import UIKit
 extension BudgetsVC {
     
     @objc func goToAddBudgetVC() {
-        let vc = AddBudgetVC()
-        vc.hidesBottomBarWhenPushed = true // Спрятать TabBar
-        
-        self.navigationItem.rightBarButtonItem?.target = nil
-        
-        navigationController?.pushViewController(vc, animated: true)
+        if !AppSettings.shared.premiumStatus.isPremiumActive && Budgets.shared.getActiveBudgets() >= 2 {
+            let vc = PremiumAlert(description: "Creating more budgets is only possible with a premium subscription".localized())
+            present(vc, animated: true, completion: nil)
+        } else {
+            let vc = AddBudgetVC()
+            vc.hidesBottomBarWhenPushed = true // Спрятать TabBar
+            
+            self.navigationItem.rightBarButtonItem?.target = nil
+            
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
 }

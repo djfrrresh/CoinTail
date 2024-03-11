@@ -75,8 +75,8 @@ final class PremiumAlert: UIViewController, UIPopoverPresentationControllerDeleg
         
         return label
     }()
-    static var descriptionText: String = ""
-    let descriptionLabel = getDescriptionLabel(text: descriptionText)
+    var descriptionText: String
+    let descriptionLabel = getDescriptionLabel()
     
     let crownEmojiLabel: UILabel = {
         let label = UILabel()
@@ -89,11 +89,11 @@ final class PremiumAlert: UIViewController, UIPopoverPresentationControllerDeleg
     }()
     
     public required init(description: String) {
+        self.descriptionText = description
+
         super.init(nibName: nil, bundle: nil)
         
         self.modalPresentationStyle = .overCurrentContext
-        
-        PremiumAlert.descriptionText = description
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -102,6 +102,8 @@ final class PremiumAlert: UIViewController, UIPopoverPresentationControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
                 
+        descriptionLabel.text = descriptionText
+        
         alertSubviews()
         alertActions()
     }

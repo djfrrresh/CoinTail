@@ -166,7 +166,7 @@ final class PlanCell: UICollectionViewCell {
         
         let titleSize = title.sizeThatFits(.init(width: textWidth, height: 0))
         let description = getPriceLabel()
-        description.text = "₽ \(data.price)/\(data.period)"
+        description.text = "\(data.price)/\(data.period)"
         let descriptionSize = description.sizeThatFits(.init(width: textWidth, height: 0))
         
         let trialIndicatorHeight: CGFloat = 21

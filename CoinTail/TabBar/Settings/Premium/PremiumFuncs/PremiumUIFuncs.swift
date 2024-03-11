@@ -80,8 +80,8 @@ extension PremiumVC {
         buyPremiumButton.easy.layout([
             Top(16),
             Left(16),
-            Height(54),
-            Right(16)
+            Right(16),
+            Height(54)
         ])
     }
     

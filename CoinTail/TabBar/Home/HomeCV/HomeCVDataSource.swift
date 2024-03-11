@@ -74,7 +74,7 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
         self.navigationItem.rightBarButtonItem?.target = nil
         
         let vc = AddOperationVC(segmentIndex: segmentIndex - 1)
-        vc.hidesBottomBarWhenPushed = true // Спрятать TabBar
+        vc.hidesBottomBarWhenPushed = true
 
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -141,7 +141,6 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
             cell.sendCategoryDelegate = self
             cell.sendAlertDelegate = self
             
-            //TODO: premium
             cell.chartsUpdate(homeSegment, records: records)
             cell.segmentType = homeSegment
             cell.categoriesArrCellData = HomeCategoryCell.packBins(data: categoriesByType).1

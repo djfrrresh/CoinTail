@@ -41,6 +41,12 @@
 "Are you sure?" = "Are you sure?";
 "No category selected" = "No category selected";
 "Missing value in amount field" = "Missing value in amount field";
+/// Premium Alert
+"Creating more accounts is only possible with a premium subscription" = "Creating more accounts is only possible with a premium subscription";
+"Creating more budgets is only possible with a premium subscription" = "Creating more budgets is only possible with a premium subscription";
+"Creating subcategories is only available with a Premium subscription" = "Creating subcategories is only available with a Premium subscription";
+"You can specify an account for this transaction in another currency only with a premium subscription" = "You can specify an account for this transaction in another currency only with a premium subscription";
+"You can transfer money to an account with another currency only with a premium subscription" = "You can transfer money to an account with another currency only with a premium subscription";
 
 // RecordType
 "Expense" = "Expense";
@@ -114,7 +120,6 @@
 /// Alert
 "Repeat last transaction" = "Repeat last transaction";
 "Do you want to repeat the last transaction?" = "Do you want to repeat the last transaction?";
-"You cannot specify an account for this transaction with another currency" = "You cannot specify an account for this transaction with another currency";
 "You don't have any accounts to choose from" = "You don't have any accounts to choose from";
 "Create at least one operation so that it can be repeated" = "Create at least one operation so that it can be repeated";
 
@@ -141,7 +146,6 @@
 "Category name is missing" = "Category name is missing";
 "Category icon not selected" = "Category icon not selected";
 "No parent category selected" = "No parent category selected";
-"Creating subcategories is only available with a Premium subscription" = "Creating subcategories is only available with a Premium subscription";
 
 // BudgetsVC
 "Active budgets" = "Active budgets";
@@ -190,7 +194,6 @@
 /// Alert
 "No accounts selected" = "No accounts selected";
 "You cannot select the same account for transfer" = "You cannot select the same account for transfer";
-"You cannot transfer money to an account with a different currency" = "You cannot transfer money to an account with a different currency";
 
 // TransfersHistoryVC
 /// Title
@@ -204,7 +207,9 @@
 "Rate on App Store" = "Rate on App Store";
 /// Banner
 "Upgrade to premium" = "Upgrade to premium";
+"Premium is active" = "Premium is active";
 "Get even more features with our Premium subscription" = "Get even more features with our Premium subscription";
+"All the features of a premium subscription are available" = "All the features of a premium subscription are available";
 
 // CurrenciesVC
 "Type USD or Dollar for search" = "Type USD or Dollar for search";
@@ -260,7 +265,7 @@
 "month" = "month";
 "year" = "year";
 "Available rates" = "Available rates";
-"₽ per month" = "₽ per month";
+"per month" = "per month";
 /// PremiumAdvantages
 "Access to currency conversions" = "Access to currency conversions";
 "Access to informative diagrams" = "Access to informative diagrams";
@@ -271,7 +276,7 @@
 /// PremiumPrivacy
 "Restore purchase" = "Restore purchase";
 "Start trial subscription" = "Start trial subscription";
-"Continue - total" = "Continue - total";
+"Continue - total " = "Continue - total ";
 "By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy." = "By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy.";
 "After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy." = "After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy.";
 /// Alert

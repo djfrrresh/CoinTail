@@ -46,14 +46,14 @@ final class RevenueCatService {
         Purchases.logLevel = .info
         #endif
         Purchases.configure(
-            with: Configuration.Builder(withAPIKey: "appl_KdSJMIzkoeQKXwoPlxmFTrdjiml")
+            with: Configuration.Builder(withAPIKey: "API_KEY")
                 .with(appUserID: udid)
-//                .with(usesStoreKit2IfAvailable: true)
                 .build()
         )
         Purchases.shared.getOfferings { _, _ in }
     }
     
+    // Получение подписок с RevenueCat, создание модели подписок
     func getOfferings(completion: @escaping ([PlanData]?) -> Void) {
         Purchases.shared.getOfferings { (offerings, _) in
             var plan = [PlanData]()
@@ -72,25 +72,35 @@ final class RevenueCatService {
                     return
                 }
                 
-                let price = package.storeProduct.localizedPriceString
+                let titlePackage: String
+                switch period.localized {
+                case "1month":
+                    titlePackage = "Month".localized()
+                case "1year":
+                    titlePackage = "Year".localized()
+                default:
+                    titlePackage = "Period"
+                }
                 
-                let titlePackage: String = period.localized
+                let price = package.storeProduct.localizedPriceString
                 let planPeriod = (period.unit == .year ? "year".localized() : "month".localized())
-                let descriptionPackage = "\(price)" + "/" + planPeriod
+                let descriptionPackage = price + "/" + planPeriod
                 
                 var data = PlanData(
                     title: titlePackage,
-                    price: Int(price) ?? 0,
-                    buyButtonTitle: "\(price)",
+                    price: price,
+                    buyButtonTitle: "Continue - total ".localized() + price,
                     period: planPeriod,
                     description: descriptionPackage,
                     package: package
                 )
+                data.isTrial = false
+                data.privacyText = "By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy."
                 
                 if let introductoryDiscount = package.storeProduct.introductoryDiscount {
                     if let offer = introductoryDiscount.sk1Discount,
                        introductoryDiscount.paymentMode == .freeTrial {
-                        data.promoText = "\(offer.subscriptionPeriod.numberOfUnits)" + "free days".localized()
+                        data.promoText = "\(offer.subscriptionPeriod.numberOfUnits) " + "free days".localized()
                         
                         switch offer.subscriptionPeriod.unit {
                         case .day:
@@ -107,7 +117,7 @@ final class RevenueCatService {
                     } else if #available(iOS 15.0, *),
                                 let offer = introductoryDiscount.sk2Discount,
                               introductoryDiscount.paymentMode == .freeTrial {
-                        data.promoText =  "\(offer.period.value)" + "free days".localized()
+                        data.promoText =  "\(offer.period.value) " + "free days".localized()
 
                         switch offer.period.unit {
                         case .day:
@@ -122,6 +132,9 @@ final class RevenueCatService {
                             break
                         }
                     }
+                    
+                    data.isTrial = true
+                    data.privacyText = "After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy."
                 }
                 
                 plan.append(data)
@@ -130,7 +143,7 @@ final class RevenueCatService {
             completion(plan)
         }
     }
-    
+
     // Восстановить покупки
     func restorePurchases(completion: @escaping (RestoreResponse) -> Void) {
         Purchases.shared.restorePurchases { customerInfo, _ in
@@ -138,8 +151,6 @@ final class RevenueCatService {
                 if customerInfo.activeSubscriptions.count > 0 {
                     if let expirationDate = customerInfo.expirationDate(forProductIdentifier: customerInfo.activeSubscriptions.first!),
                        expirationDate.timeIntervalSince1970 > Date().timeIntervalSince1970 {
-//                        NetworkManager.shared.premiumReport(customerInfo)
-
                         completion(.success(expirationDate))
                     }
                 } else {
@@ -155,41 +166,9 @@ final class RevenueCatService {
         }
     }
     
-    func getCustomerInfo(completion: @escaping (CustomerInfo?, Date?) -> Void) {
-        Purchases.shared.getCustomerInfo { (customerInfo, _) in
-            guard let customerInfo = customerInfo else {
-                SentryManager.shared.capture(error: "No customer info", level: .error)
-                completion(nil, nil)
-                
-                return
-            }
-            
-            var expDate: Date?
-            
-            if let entitlement = customerInfo.entitlements.active.first?.value,
-               let expirationDate = customerInfo.expirationDate(forProductIdentifier: entitlement.productIdentifier),
-               expirationDate.timeIntervalSince1970 > Date().timeIntervalSince1970 {
-                expDate = expirationDate
-            }
-            //TODO: premium
-//            else if let expirationDateUnix = AppSettings.shared.premium?.premiumActiveUntil,
-//                      Date(timeIntervalSince1970: TimeInterval(expirationDateUnix)) > Date() {
-//                expDate = Date(timeIntervalSince1970: TimeInterval(expirationDateUnix))
-//            }
-            
-            guard let expDate = expDate else {
-                SentryManager.shared.capture(error: "No expiration date", level: .error)
-                completion(customerInfo, nil)
-                
-                return
-            }
-            
-            completion(customerInfo ,expDate)
-        }
-    }
-    
+    // Функция оплаты подписки
     func purchase(package: Package, completion: @escaping (CustomerInfo?, Date?) -> Void) {
-        Purchases.shared.purchase(package: package) { (_, customerInfo, _, _) in
+        Purchases.shared.purchase(package: package) { (_, customerInfo, error, _) in
             guard let customerInfo = customerInfo else {
                 SentryManager.shared.capture(error: "No customer info", level: .error)
                 completion(nil, nil)
@@ -197,19 +176,18 @@ final class RevenueCatService {
                 return
             }
             
+            if let error = error {
+                print(error.localizedDescription)
+            }
+                        
             var expDate: Date?
             
+            // Получаем информацию об активных привелегиях и id продукта
             if let entitlement = customerInfo.entitlements.active.first?.value,
                let expirationDate = customerInfo.expirationDate(forProductIdentifier: entitlement.productIdentifier),
                expirationDate.timeIntervalSince1970 > Date().timeIntervalSince1970 {
                 expDate = expirationDate
-//                NetworkManager.shared.premiumReport(customerInfo)
             }
-            //TODO: premium
-//            else if let expirationDateUnix = AppSettings.shared.premium?.premiumActiveUntil,
-//                      Date(timeIntervalSince1970: TimeInterval(expirationDateUnix)) > Date() {
-//                expDate = Date(timeIntervalSince1970: TimeInterval(expirationDateUnix))
-//            }
             
             guard let expDate = expDate else {
                 SentryManager.shared.capture(error: "No expiration date", level: .error)
@@ -218,6 +196,12 @@ final class RevenueCatService {
                 return
             }
             
+            let premiumStatus = PremiumStatusClass()
+            premiumStatus.isPremiumActive = true
+            premiumStatus.premiumActiveUntil = Int64(expDate.timeIntervalSince1970)
+            
+            AppSettings.shared.premiumStatus = premiumStatus
+                        
             completion(customerInfo, expDate)
         }
     }

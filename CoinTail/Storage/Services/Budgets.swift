@@ -49,6 +49,10 @@ final class Budgets {
         return budgets.filter { $0.id == id }.first
     }
     
+    func getActiveBudgets() -> Int {
+        return budgets.filter { $0.isActive }.count
+    }
+    
     // Получить активный бюджет по названию категории и валюте
     func getBudget(for categoryName: String, withCurrency selectedCurrency: String) -> Bool? {
         let budget: BudgetClass? = budgets.filter {

@@ -62,6 +62,7 @@ class Currencies {
                 }
             } else {
                 let defaultCurrency = createDefaultCurrency()
+                defaultCurrency.currency = newValue.currency
                 
                 realmService.write(defaultCurrency, SelectedCurrencyClass.self)
             }

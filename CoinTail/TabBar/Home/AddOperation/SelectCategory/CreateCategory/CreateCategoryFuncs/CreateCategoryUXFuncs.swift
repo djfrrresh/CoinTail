@@ -74,16 +74,12 @@ extension CreateCategoryVC: SendCategoryID, CreateCategoryCellDelegate {
             infoAlert("Category icon not selected".localized())
         } else if isToggleOn && missingMainCategory {
             infoAlert("No parent category selected".localized())
-        }
-//        else if isSubcategory {
-//            if AppSettings.shared.premium?.isPremiumActive ?? false {
-            //TODO: premium
-//                infoAlert("Creating subcategories is only available with a Premium subscription".localized())
+        } else if isToggleOn && !AppSettings.shared.premiumStatus.isPremiumActive {
+            let vc = PremiumAlert(description: "Creating subcategories is only available with a Premium subscription".localized())
+            present(vc, animated: true, completion: nil)
 
-//                return
-//            }
-//        }
-        else {
+            return
+        } else {
             completion?(name, icon)
         }
     }
