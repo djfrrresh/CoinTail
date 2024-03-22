@@ -48,7 +48,7 @@ extension AddOperationCell: UITextFieldDelegate, UITextViewDelegate {
         guard let textViewString = textView.text, let textViewRange = Range(range, in: textViewString) else { return false }
         
         let allString = textViewString.replacingCharacters(in: textViewRange, with: text)
-        let charactersCount = String(textViewString).count
+        let charactersCount = textViewString.count
         
         if textView.text == "Add a comment to your transaction".localized() || textView.text == "There is no description for the transaction".localized() {
             textView.text = ""

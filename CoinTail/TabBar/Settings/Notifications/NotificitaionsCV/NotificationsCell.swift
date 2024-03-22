@@ -94,11 +94,6 @@ final class NotificationsCell: UICollectionViewCell {
         contentView.easy.layout([
             Edges()
         ])
-
-        menuLabel.easy.layout([
-            Left(16),
-            CenterY()
-        ])
         
         separatorView.easy.layout([
             Bottom(),
@@ -117,6 +112,12 @@ final class NotificationsCell: UICollectionViewCell {
         regularityLabel.easy.layout([
             CenterY(),
             Right(4).to(chevronImageView, .left)
+        ])
+        
+        menuLabel.easy.layout([
+            Left(16),
+            Right(4).to(regularityLabel, .left),
+            CenterY()
         ])
         
         onOffToggle.easy.layout([

@@ -25,7 +25,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import UIKit
+import Foundation
 
 
 class AppSettings {
@@ -61,16 +61,24 @@ class AppSettings {
     }
     
     // Если закончился срок действия подписки, делаем ее неактивной
-    func setPremiumUnactive() {
+    func setPremiumUnactive(completion: ((Bool, Int64?) -> Void)? = nil) {
         let isPremiumStillActive = premiumStatus.stillActive
-        
-        print(isPremiumStillActive)
+        let activeUntil = premiumStatus.premiumActiveUntil
+                
         if !isPremiumStillActive {
             let noPremiumUser = PremiumStatusClass()
             noPremiumUser.isPremiumActive = false
+            noPremiumUser.premiumActiveUntil = nil
             
+            completion?(false, activeUntil)
+            
+            // Обновляем статус после completion, чтобы сохранить дату
             premiumStatus = noPremiumUser
+            
+            return
         }
+        
+        completion?(true, nil)
     }
     
     private func createNoPremiumUser() -> PremiumStatusClass {

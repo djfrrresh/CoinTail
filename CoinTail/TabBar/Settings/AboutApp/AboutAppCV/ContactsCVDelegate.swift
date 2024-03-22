@@ -32,6 +32,17 @@ extension AboutAppVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 1:
+                // Копируем текст в буфер обмена
+                UIPasteboard.general.string = userID
+                
+                let notificationView = BasicSnackBarView(title: "User ID copied".localized(), image: UIImage(systemName: "doc.on.doc")!)
+                notificationView.show()
+            default:
+                return
+            }
         case 1:
             userAgreementAction()
         case 2:

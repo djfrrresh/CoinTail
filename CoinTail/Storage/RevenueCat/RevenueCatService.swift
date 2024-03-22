@@ -95,7 +95,7 @@ final class RevenueCatService {
                     package: package
                 )
                 data.isTrial = false
-                data.privacyText = "By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy."
+                data.privacyText = "By tapping Continue, you will be charged, your subscription will auto-renew for the same price and package length until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy.".localized()
                 
                 if let introductoryDiscount = package.storeProduct.introductoryDiscount {
                     if let offer = introductoryDiscount.sk1Discount,
@@ -134,7 +134,7 @@ final class RevenueCatService {
                     }
                     
                     data.isTrial = true
-                    data.privacyText = "After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy."
+                    data.privacyText = "After %@, you will be charged, your subscription will auto-renew for the full price and package until you cancel via App Store settings, and you agree to our User Agreement and Privacy Policy.".localized()
                 }
                 
                 plan.append(data)

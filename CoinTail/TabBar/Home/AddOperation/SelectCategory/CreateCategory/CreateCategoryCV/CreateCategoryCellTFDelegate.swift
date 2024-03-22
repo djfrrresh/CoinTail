@@ -31,10 +31,11 @@ import UIKit
 extension CreateCategoryCell: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let textFieldString = textField.text, let textFieldRange = Range(range, in: textFieldString) else { return false }
+        guard let textFieldString = textField.text, 
+              let textFieldRange = Range(range, in: textFieldString) else { return false }
         
-        let allString = textFieldString.replacingCharacters(in: textFieldRange, with: string)
-        let charactersCount = String(textFieldString).count
+        var allString = textFieldString.replacingCharacters(in: textFieldRange, with: string)
+        let charactersCount = textFieldString.count
         
         if textField == categoryNameTF {
             createCategoryCellDelegate?.cell(didUpdateCategoryName: allString)
@@ -44,9 +45,11 @@ extension CreateCategoryCell: UITextFieldDelegate {
             return charactersCount < 24
         } else {
             createCategoryCellDelegate?.cell(didUpdateCategoryIcon: allString)
+
+            guard !string.isEmpty else { return true }
             
             return charactersCount < 1 && allString.containsEmoji
         }
     }
-    
+        
 }

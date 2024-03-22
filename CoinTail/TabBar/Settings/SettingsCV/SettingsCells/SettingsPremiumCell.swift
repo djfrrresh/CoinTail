@@ -118,8 +118,8 @@ final class SettingsPremiumCell: UICollectionViewCell {
         ])
     }
     
-    func isPremiumActive(_ isActive: Bool) {
-        if isActive {
+    func isPremiumActive(_ isPremium: Bool) {
+        if isPremium {
             crownImageView.isHidden = false
             boltImageView.isHidden = true
             imageBackView.backgroundColor = .white.withAlphaComponent(0.3)
@@ -164,11 +164,11 @@ final class SettingsPremiumCell: UICollectionViewCell {
         let premiumDescriptionLabel = getPremiumDescriptionLabel()
         
         if isPremium {
-            premiumLabel.text = "Upgrade to premium".localized()
-            premiumDescriptionLabel.text = "Get even more features with our Premium subscription".localized()
-        } else {
             premiumLabel.text = "Premium is active".localized()
             premiumDescriptionLabel.text = "All the features of a premium subscription are available".localized()
+        } else {
+            premiumLabel.text = "Upgrade to premium".localized()
+            premiumDescriptionLabel.text = "Get even more features with our Premium subscription".localized()
         }
         
         let textWidth = UIScreen.main.bounds.width - (2 * 16) - (2 * 16) - imagePadding - imageWidth

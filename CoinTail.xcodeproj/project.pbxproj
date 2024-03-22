@@ -66,6 +66,10 @@
 		5676C8BD2B211370008A6395 /* PremiumPlans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5676C8BC2B21136F008A6395 /* PremiumPlans.swift */; };
 		5676C8C12B2117BE008A6395 /* PlanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5676C8C02B2117BE008A6395 /* PlanCell.swift */; };
 		5676C8C32B21311F008A6395 /* PremiumPlansCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5676C8C22B21311F008A6395 /* PremiumPlansCV.swift */; };
+		5679C1392BACBB6600CA35CD /* CustomNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5679C1382BACBB6600CA35CD /* CustomNotificationView.swift */; };
+		5679C13B2BACBEA200CA35CD /* BasicSnackBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5679C13A2BACBEA200CA35CD /* BasicSnackBarView.swift */; };
+		5679C13E2BACC65400CA35CD /* SnackBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5679C13D2BACC65400CA35CD /* SnackBarController.swift */; };
+		5679C1412BACD01900CA35CD /* NotificationWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5679C1402BACD01900CA35CD /* NotificationWindow.swift */; };
 		567E13982ADFE60100F3C244 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E13972ADFE60100F3C244 /* UIView.swift */; };
 		567E93722AEB1E3F0045C01B /* AccountsTransferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93712AEB1E3F0045C01B /* AccountsTransferCell.swift */; };
 		567E93762AEFFBA80045C01B /* AccountsTransferPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E93752AEFFBA80045C01B /* AccountsTransferPicker.swift */; };
@@ -304,6 +308,10 @@
 		5676C8BC2B21136F008A6395 /* PremiumPlans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumPlans.swift; sourceTree = "<group>"; };
 		5676C8C02B2117BE008A6395 /* PlanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCell.swift; sourceTree = "<group>"; };
 		5676C8C22B21311F008A6395 /* PremiumPlansCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumPlansCV.swift; sourceTree = "<group>"; };
+		5679C1382BACBB6600CA35CD /* CustomNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNotificationView.swift; sourceTree = "<group>"; };
+		5679C13A2BACBEA200CA35CD /* BasicSnackBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSnackBarView.swift; sourceTree = "<group>"; };
+		5679C13D2BACC65400CA35CD /* SnackBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackBarController.swift; sourceTree = "<group>"; };
+		5679C1402BACD01900CA35CD /* NotificationWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationWindow.swift; sourceTree = "<group>"; };
 		567E13972ADFE60100F3C244 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		567E93712AEB1E3F0045C01B /* AccountsTransferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsTransferCell.swift; sourceTree = "<group>"; };
 		567E93752AEFFBA80045C01B /* AccountsTransferPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsTransferPicker.swift; sourceTree = "<group>"; };
@@ -565,6 +573,7 @@
 		560AFBDC2A13B2A40054B502 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				5679C13C2BACC37900CA35CD /* NotificationView */,
 				560AFBEB2A13BF110054B502 /* UITextField.swift */,
 				567E13972ADFE60100F3C244 /* UIView.swift */,
 				569B60E02AE1752D00CBFF33 /* UIColor.swift */,
@@ -582,6 +591,7 @@
 		560AFBED2A13C1CA0054B502 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5679C13F2BACCFD800CA35CD /* SnackBar */,
 				5691E04D2B3354680077B13C /* PremiumAlert */,
 				5691E0422B3239110077B13C /* WebView */,
 				568999E82B1A31D600075433 /* Picker */,
@@ -861,6 +871,24 @@
 				5676C8C02B2117BE008A6395 /* PlanCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		5679C13C2BACC37900CA35CD /* NotificationView */ = {
+			isa = PBXGroup;
+			children = (
+				5679C1382BACBB6600CA35CD /* CustomNotificationView.swift */,
+				5679C13A2BACBEA200CA35CD /* BasicSnackBarView.swift */,
+				5679C1402BACD01900CA35CD /* NotificationWindow.swift */,
+			);
+			path = NotificationView;
+			sourceTree = "<group>";
+		};
+		5679C13F2BACCFD800CA35CD /* SnackBar */ = {
+			isa = PBXGroup;
+			children = (
+				5679C13D2BACC65400CA35CD /* SnackBarController.swift */,
+			);
+			path = SnackBar;
 			sourceTree = "<group>";
 		};
 		567E93732AEFE1880045C01B /* AddAccountCV */ = {
@@ -1434,8 +1462,8 @@
 		56DBB6CB2A3358F10087271D /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				560AFBCE2A1394A40054B502 /* LaunchScreen.storyboard */,
 				560AFBC02A1394A30054B502 /* AppDelegate.swift */,
+				560AFBCE2A1394A40054B502 /* LaunchScreen.storyboard */,
 				560AFBD12A1394A40054B502 /* Info.plist */,
 			);
 			path = Application;
@@ -1745,6 +1773,7 @@
 				56D0E9332B2B5CCE0088C92F /* RevenueCatService.swift in Sources */,
 				567E937C2AF053B50045C01B /* AddAccountCVDelegate.swift in Sources */,
 				56EFDFF02A5D9176003A6A45 /* DaySection.swift in Sources */,
+				5679C13E2BACC65400CA35CD /* SnackBarController.swift in Sources */,
 				5642DB252A4DDAC400ADF475 /* BudgetUIFuncs.swift in Sources */,
 				5642DAEB2A4080BF00ADF475 /* DatePeriods.swift in Sources */,
 				567E93892AF44B350045C01B /* AddAccountCellTFDelegate.swift in Sources */,
@@ -1830,10 +1859,12 @@
 				569B610F2AE2C62800CBFF33 /* AboutAppUXFuncs.swift in Sources */,
 				56D0E91F2B22800E0088C92F /* PremiumActions.swift in Sources */,
 				56D0E9142B220D990088C92F /* PremiumPlansHeader.swift in Sources */,
+				5679C1392BACBB6600CA35CD /* CustomNotificationView.swift in Sources */,
 				567E93992AF464880045C01B /* BudgetPeriodCVDelegate.swift in Sources */,
 				56DBB70A2A3B44090087271D /* Categories.swift in Sources */,
 				560AFC052A16B06D0054B502 /* HomeUXFuncs.swift in Sources */,
 				560AFC192A1BAC810054B502 /* HomeActions.swift in Sources */,
+				5679C1412BACD01900CA35CD /* NotificationWindow.swift in Sources */,
 				568282DA2B1FD14B00A39314 /* SettingsPremiumCell.swift in Sources */,
 				5691E0372B31D67F0077B13C /* HavePremiumImageCell.swift in Sources */,
 				5691E0302B31D0D20077B13C /* HavePremiumCVDelegate.swift in Sources */,
@@ -1901,6 +1932,7 @@
 				567E937F2AF110950045C01B /* AddAccountPicker.swift in Sources */,
 				568EF05E2AAFB10100EB042D /* TransfersHistoryCVDelegate.swift in Sources */,
 				567E93A62B0531C70045C01B /* AddOperationCellTFDelegate.swift in Sources */,
+				5679C13B2BACBEA200CA35CD /* BasicSnackBarView.swift in Sources */,
 				569B61072AE2B0AF00CBFF33 /* ContactsCell.swift in Sources */,
 				568EF05C2AAFB0A200EB042D /* TransfersHistoryCVDataSource.swift in Sources */,
 				567E13982ADFE60100F3C244 /* UIView.swift in Sources */,
@@ -2110,13 +2142,14 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
@@ -2129,9 +2162,13 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kunavinEugene.CoinTail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -2154,13 +2191,14 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
@@ -2173,9 +2211,13 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kunavinEugene.CoinTail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

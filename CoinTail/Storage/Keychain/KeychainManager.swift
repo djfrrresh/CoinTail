@@ -85,7 +85,6 @@ final class KeychainManager {
             
             return apiKey
         } else if status == errSecItemNotFound {
-            SentryManager.shared.capture(error: "API Key did not found", level: .error)
             print("API Key did not found")
         } else {
             SentryManager.shared.capture(error: "API Key extraction error: \(status)", level: .error)

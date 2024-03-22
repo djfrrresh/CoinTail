@@ -56,6 +56,9 @@ extension AccountsTransferVC: TransferCellDelegate {
                 amount: amount
             )
             
+            let notificationView = BasicSnackBarView(title: "Added new transfer".localized(), image: UIImage(systemName: "plus")!)
+            notificationView.show()
+            
             strongSelf.navigationController?.popViewController(animated: true)
         }
     }

@@ -31,6 +31,8 @@ import EasyPeasy
 
 final class AboutAppVC: BasicVC {
     
+    let userID = KeychainManager.shared.getUDID()
+    
     let contactsMenu = [
         "E-Mail",
         "Telegram"
@@ -68,6 +70,7 @@ final class AboutAppVC: BasicVC {
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: contactsLayout)
         cv.backgroundColor = .clear
+        cv.layer.cornerRadius = 12
         cv.register(ContactsCell.self, forCellWithReuseIdentifier: ContactsCell.id)
         cv.register(ContactsHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ContactsHeader.id)
         

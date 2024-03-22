@@ -26,6 +26,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+CFBundleDisplayName = "CoinTail - money accounting";
+
 // General
 "Amount" = "Amount";
 "Category" = "Category";
@@ -42,11 +44,33 @@
 "No category selected" = "No category selected";
 "Missing value in amount field" = "Missing value in amount field";
 /// Premium Alert
+"Premium function" = "Premium function";
+"Premium has expired" = "Premium has expired";
+"Buy premium" = "Buy premium";
+"Your premium subscription has expired: you can purchase premium again or continue using the free version" = "Your premium subscription has expired: you can purchase premium again or continue using the free version";
 "Creating more accounts is only possible with a premium subscription" = "Creating more accounts is only possible with a premium subscription";
 "Creating more budgets is only possible with a premium subscription" = "Creating more budgets is only possible with a premium subscription";
 "Creating subcategories is only available with a Premium subscription" = "Creating subcategories is only available with a Premium subscription";
 "You can specify an account for this transaction in another currency only with a premium subscription" = "You can specify an account for this transaction in another currency only with a premium subscription";
 "You can transfer money to an account with another currency only with a premium subscription" = "You can transfer money to an account with another currency only with a premium subscription";
+/// SnackBar
+"User ID copied" = "User ID copied";
+"Edited account - " = "Edited account - ";
+"Added account - " = "Added account - ";
+"Deleted account - " = "Deleted account - ";
+"Added new transfer" = "Added new transfer";
+"Edited budget - " = "Edited budget - ";
+"Added budget - " = "Added budget - ";
+"Deleted budget - " = "Deleted budget - ";
+"Edited transaction - " = "Edited transaction - ";
+"Added transaction - " = "Added transaction - ";
+"Deleted transaction - " = "Deleted transaction - ";
+"Edited subcategory - " = "Edited subcategory - ";
+"Added subcategory - " = "Added subcategory - ";
+"Deleted subcategory - " = "Deleted subcategory - ";
+"Edited category - " = "Edited category - ";
+"Added category - " = "Added category - ";
+"Deleted category - " = "Deleted category - ";
 
 // RecordType
 "Expense" = "Expense";
@@ -178,6 +202,7 @@
 // AddAccountVC
 "Account name" = "Account name";
 "Delete account" = "Delete account";
+"Cancel selected account" = "Cancel selected account";
 "Set as main account" = "Set as main account";
 /// Title
 "Add a new account" = "Add a new account";
@@ -243,6 +268,7 @@
 "Application version" = "Application version";
 "User agreement" = "User agreement";
 "Hello, I have a question / suggestion regarding the CoinTail app" = "Hello, I have a question / suggestion regarding the CoinTail app";
+"User ID" = "User ID";
 /// Title
 "About" = "About";
 
@@ -265,7 +291,7 @@
 "month" = "month";
 "year" = "year";
 "Available rates" = "Available rates";
-"per month" = "per month";
+"free days" = "free days";
 /// PremiumAdvantages
 "Access to currency conversions" = "Access to currency conversions";
 "Access to informative diagrams" = "Access to informative diagrams";

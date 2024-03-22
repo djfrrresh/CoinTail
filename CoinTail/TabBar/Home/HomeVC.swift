@@ -116,8 +116,13 @@ final class HomeVC: BasicVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        print(AppSettings.shared.premiumStatus)
-        
+        AppSettings.shared.setPremiumUnactive() { isPremiumStillActive, activeUntil in
+            if !isPremiumStillActive, activeUntil != nil {
+                let vc = PremiumAlert(description: "Your premium subscription has expired: you can purchase premium again or continue using the free version".localized(), title: "Premium has expired".localized())
+                self.present(vc, animated: true, completion: nil)
+            }
+        }
+                
         period = .allTheTime
         homeGlobalCV.reloadData()
 

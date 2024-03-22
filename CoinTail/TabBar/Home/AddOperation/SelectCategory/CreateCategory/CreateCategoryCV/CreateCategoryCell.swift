@@ -189,7 +189,7 @@ final class CreateCategoryCell: UICollectionViewCell {
     }
     
     @objc func switchValueChanged(_ sender: UISwitch) {
-            createCategoryCellDelegate?.cell(didUpdateOnOffToggle: sender.isOn)
+        createCategoryCellDelegate?.cell(didUpdateOnOffToggle: sender.isOn)
     }
     
     static func size() -> CGSize {

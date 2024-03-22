@@ -48,9 +48,8 @@ final class ContactsCell: UICollectionViewCell {
 
         return label
     }()
-    let appVersionTextLabel: UILabel = {
+    let menuLabel: UILabel = {
         let label = UILabel()
-        label.text = "Application version".localized()
         label.font = UIFont(name: "SFProText-Regular", size: 17)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -58,17 +57,14 @@ final class ContactsCell: UICollectionViewCell {
         
         return label
     }()
-    let appVersionLabel: UILabel = {
+    let submenuLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "SFProText-Regular", size: 17)
         label.numberOfLines = 1
         label.textAlignment = .left
         label.textColor = UIColor(named: "secondaryTextColor")
-        if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-            label.text = appVersion
-        } else {
-            label.text = "1.0"
-        }
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
         
         return label
     }()
@@ -114,38 +110,11 @@ final class ContactsCell: UICollectionViewCell {
         contentView.addSubview(separatorView)
         contentView.addSubview(contactsImageView)
         contentView.addSubview(userAgreementLabel)
-        contentView.addSubview(appVersionLabel)
-        contentView.addSubview(appVersionTextLabel)
+        contentView.addSubview(submenuLabel)
+        contentView.addSubview(menuLabel)
         
         contentView.easy.layout([
             Edges()
-        ])
-        
-        contactsImageView.easy.layout([
-            Left(16),
-            CenterY()
-        ])
-
-        contactsLabel.easy.layout([
-            Left(12).to(contactsImageView, .right),
-            CenterY()
-        ])
-        
-        userAgreementLabel.easy.layout([
-            Left(16),
-            CenterY()
-        ])
-        
-        appVersionTextLabel.easy.layout([
-            Left(16),
-            Right(16),
-            Top(12)
-        ])
-        
-        appVersionLabel.easy.layout([
-            Left(16),
-            Right(16),
-            Bottom(12)
         ])
         
         separatorView.easy.layout([
@@ -160,6 +129,34 @@ final class ContactsCell: UICollectionViewCell {
             CenterY(),
             Height(20),
             Width(20)
+        ])
+        
+        contactsImageView.easy.layout([
+            Left(16),
+            CenterY()
+        ])
+
+        contactsLabel.easy.layout([
+            Left(12).to(contactsImageView, .right),
+            CenterY()
+        ])
+        
+        menuLabel.easy.layout([
+            Left(16),
+            Right(16),
+            Top(12)
+        ])
+        
+        submenuLabel.easy.layout([
+            Left(16),
+            Right(16),
+            Bottom(12)
+        ])
+        
+        userAgreementLabel.easy.layout([
+            Left(16),
+            Right(4).to(chevronImageView, .left),
+            CenterY()
         ])
     }
     

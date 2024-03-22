@@ -49,8 +49,13 @@ final class AddOperationVC: PickerVC {
     }
     var selectedAccount: String? {
         didSet {
-            guard let selectedAccount = selectedAccount, let account = Accounts.shared.getAccount(for: selectedAccount) else { return }
             let indexPathToUpdate = IndexPath(item: 2, section: 0)
+
+            guard let selectedAccount = selectedAccount, let account = Accounts.shared.getAccount(for: selectedAccount) else {
+                updateCell(at: indexPathToUpdate, text: "")
+                
+                return
+            }
             
             updateCell(at: indexPathToUpdate, text: selectedAccount)
             accountID = account.id

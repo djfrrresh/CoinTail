@@ -10,7 +10,7 @@ import RealmSwift
 
 
 protocol SendAccount: AnyObject {
-    func sendAccountData(id: ObjectId)
+    func sendAccountData(id: ObjectId?)
 }
 
 final class AccountsVC: BasicVC {
@@ -45,6 +45,16 @@ final class AccountsVC: BasicVC {
         button.layer.cornerRadius = 16
         button.setTitle("Transfer history".localized(), for: .normal)
         button.setTitleColor(UIColor(named: "primaryAction"), for: .normal)
+        button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
+        
+        return button
+    }()
+    let cancelButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(named: "cancelAction")
+        button.layer.cornerRadius = 16
+        button.setTitle("Cancel selected account".localized(), for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
         
         return button

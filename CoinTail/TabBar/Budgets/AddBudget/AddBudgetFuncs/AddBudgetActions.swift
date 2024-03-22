@@ -57,10 +57,16 @@ extension AddBudgetVC {
             
             if let budgetID = strongSelf.budgetID {
                 budget.id = budgetID
-
+                
                 Budgets.shared.editBudget(replacingBudget: budget)
+                
+                let notificationView = BasicSnackBarView(title: "Edited budget - ".localized() + categoryText, image: UIImage(systemName: "square.and.pencil")!)
+                notificationView.show()
             } else {
                 Budgets.shared.addBudget(budget)
+                
+                let notificationView = BasicSnackBarView(title: "Added budget - ".localized() + categoryText, image: UIImage(systemName: "plus")!)
+                notificationView.show()
             }
             
             strongSelf.navigationController?.popToRootViewController(animated: true)
@@ -94,6 +100,10 @@ extension AddBudgetVC {
             message: "Are you sure?".localized(),
             confirmActionTitle: "Confirm".localized()
         ) { [weak self] in
+            let categoryText = self?.budgetCategory ?? ""
+            let notificationView = BasicSnackBarView(title: "Deleted budget - ".localized() + categoryText, image: UIImage(systemName: "trash")!)
+            notificationView.show()
+            
             Budgets.shared.deleteBudget(for: id)
             
             self?.navigationController?.popToRootViewController(animated: true)

@@ -63,10 +63,16 @@ extension CreateCategoryVC {
                     subcategory.parentCategory = parentalCategoryID
                     
                     Categories.shared.editSubcategory(replacingSubcategory: subcategory)
+                    
+                    let notificationView = BasicSnackBarView(title: "Edited subcategory - ".localized() + categoryName, image: UIImage(systemName: "square.and.pencil")!)
+                    notificationView.show()
                 } else {
                     subcategory.parentCategory = categoryID
                     
                     Categories.shared.addNewSubcategory(subcategory: subcategory, for: categoryID)
+                    
+                    let notificationView = BasicSnackBarView(title: "Added subcategory - ".localized() + categoryName, image: UIImage(systemName: "plus")!)
+                    notificationView.show()
                 }
             } else {
                 let category = CategoryClass()
@@ -83,8 +89,14 @@ extension CreateCategoryVC {
                     }
                     
                     Categories.shared.editCategory(replacingCategory: category)
+                    
+                    let notificationView = BasicSnackBarView(title: "Edited category - ".localized() + categoryName, image: UIImage(systemName: "square.and.pencil")!)
+                    notificationView.show()
                 } else {
                     Categories.shared.addNewCategory(category)
+                    
+                    let notificationView = BasicSnackBarView(title: "Added category - ".localized() + categoryName, image: UIImage(systemName: "plus")!)
+                    notificationView.show()
                 }
             }
 
@@ -110,13 +122,21 @@ extension CreateCategoryVC {
             message: "Are you sure?".localized(),
             confirmActionTitle: "Confirm".localized()
         ) { [weak self] in
+            let categoryText = self?.categoryName ?? ""
+
             if let category = categoryOrSubcategory as? CategoryClass {
+                let notificationView = BasicSnackBarView(title: "Deleted category - ".localized() + categoryText, image: UIImage(systemName: "trash")!)
+                notificationView.show()
+                
                 Categories.shared.deleteCategory(for: category.id) { success in
                     if success {
                         self?.returnToSelectCategory()
                     } else { return }
                 }
             } else if let subcategory = categoryOrSubcategory as? SubcategoryClass {
+                let notificationView = BasicSnackBarView(title: "Deleted subcategory - ".localized() + categoryText, image: UIImage(systemName: "trash")!)
+                notificationView.show()
+                
                 Categories.shared.deleteSubcategory(for: subcategory.id) { success in
                     if success {
                         self?.returnToSelectCategory()

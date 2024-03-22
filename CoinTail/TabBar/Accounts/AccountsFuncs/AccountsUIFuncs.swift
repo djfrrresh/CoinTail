@@ -78,9 +78,18 @@ extension AccountsVC: UINavigationControllerDelegate {
             bottom = Bottom(24).to(transferButton, .top)
         } else {
             self.title = "Accounts".localized()
+            self.view.addSubview(cancelButton)
+            
+            cancelButton.easy.layout([
+                Height(52),
+                Left(16),
+                Right(16),
+                CenterX(),
+                Bottom(24).to(self.view.safeAreaLayoutGuide, .bottom)
+            ])
             
             top = Top().to(self.view.safeAreaLayoutGuide, .top)
-            bottom = Bottom()
+            bottom = Bottom(24).to(cancelButton, .top)
         }
         
         accountsCV.easy.layout([

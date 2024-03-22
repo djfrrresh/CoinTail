@@ -36,7 +36,9 @@ extension AboutAppVC: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
-        case 0, 1:
+        case 0:
+            return 2
+        case 1:
             return 1
         case 2:
             return contactsMenu.count
@@ -58,18 +60,36 @@ extension AboutAppVC: UICollectionViewDataSource {
             cell.chevronImageView.isHidden = true
             cell.contactsImageView.isHidden = true
             cell.userAgreementLabel.isHidden = true
-            cell.appVersionLabel.isHidden = false
-            cell.appVersionTextLabel.isHidden = false
+            cell.submenuLabel.isHidden = false
+            cell.menuLabel.isHidden = false
             cell.contactsLabel.isHidden = true
+            
+            switch indexPath.row {
+            case 0:
+                cell.menuLabel.text = "Application version".localized()
+                if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                    cell.submenuLabel.text = appVersion
+                } else {
+                    cell.submenuLabel.text = "1.0"
+                }
+                
+                cell.cornerRadiusTop(radius: 12)
+                cell.isSeparatorLineHidden(false)
+            case 1:
+                cell.menuLabel.text = "User ID".localized()
+                cell.submenuLabel.text = userID
 
-            cell.roundCorners(.allCorners, radius: 12)
-            cell.isSeparatorLineHidden(true)
+                cell.cornerRadiusBottom(radius: 12)
+                cell.isSeparatorLineHidden(true)
+            default:
+                return cell
+            }
         case 1:
             cell.chevronImageView.isHidden = false
             cell.contactsImageView.isHidden = true
             cell.userAgreementLabel.isHidden = false
-            cell.appVersionLabel.isHidden = true
-            cell.appVersionTextLabel.isHidden = true
+            cell.submenuLabel.isHidden = true
+            cell.menuLabel.isHidden = true
             cell.contactsLabel.isHidden = true
             
             cell.roundCorners(.allCorners, radius: 12)
@@ -81,8 +101,8 @@ extension AboutAppVC: UICollectionViewDataSource {
             cell.chevronImageView.isHidden = false
             cell.contactsImageView.isHidden = false
             cell.userAgreementLabel.isHidden = true
-            cell.appVersionLabel.isHidden = true
-            cell.appVersionTextLabel.isHidden = true
+            cell.submenuLabel.isHidden = true
+            cell.menuLabel.isHidden = true
             cell.contactsLabel.isHidden = false
             
             switch indexPath.row {

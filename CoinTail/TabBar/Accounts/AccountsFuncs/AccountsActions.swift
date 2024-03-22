@@ -62,4 +62,10 @@ extension AccountsVC {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc func cancelAccountAction() {
+        accountDelegate?.sendAccountData(id: nil)
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }

@@ -37,8 +37,8 @@ extension SelectCategoryVC {
         self.view.addSubview(categorySearchBar)
         
         categorySearchBar.easy.layout([
-            Left(16),
-            Right(16),
+            Left(8),
+            Right(8),
             Height(36),
             CenterX(),
             Top(16).to(self.view.safeAreaLayoutGuide, .top)

@@ -66,7 +66,6 @@ final class PremiumAlert: UIViewController, UIPopoverPresentationControllerDeleg
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Premium function".localized()
         label.font = UIFont(name: "SFProDisplay-Semibold", size: 17)
         label.textColor = .black
         label.textAlignment = .center
@@ -88,8 +87,9 @@ final class PremiumAlert: UIViewController, UIPopoverPresentationControllerDeleg
         return label
     }()
     
-    public required init(description: String) {
+    public required init(description: String, title: String = "Premium function".localized()) {
         self.descriptionText = description
+        self.titleLabel.text = title
 
         super.init(nibName: nil, bundle: nil)
         

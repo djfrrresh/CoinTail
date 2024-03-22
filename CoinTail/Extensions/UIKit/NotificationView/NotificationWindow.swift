@@ -1,8 +1,8 @@
 //
-//  SubscriptionPeriod.swift
+//  NotificationWindow.swift
 //  CoinTail
 //
-//  Created by Eugene on 14.12.23.
+//  Created by Eugene on 22.03.24.
 //
 // The MIT License (MIT)
 // Copyright © 2023 Eugeny Kunavin (kunavinjenya55@gmail.com)
@@ -25,22 +25,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import RevenueCat
+import UIKit
 
 
-extension SubscriptionPeriod {
+final class NotificationWindow: UIWindow {
     
-    var localized: String {
-        switch unit {
-        case .day:
-            return "\(value)" + "day"
-        case .week:
-            return "\(value)" + "week"
-        case .month:
-            return "\(value)" + "month"
-        case .year:
-            return "\(value)" + "year"
-        }
+    weak var notificationView: UIView?
+    
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        guard let notificationView = notificationView else { return false }
+        
+        let touchPoint = convert(point, to: notificationView)
+        
+        return notificationView.point(inside: touchPoint, with: event)
     }
     
 }

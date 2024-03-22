@@ -34,7 +34,7 @@ extension AddAccountCell: UITextFieldDelegate {
         guard let textFieldString = textField.text, let textFieldRange = Range(range, in: textFieldString) else { return false }
         
         let allString = textFieldString.replacingCharacters(in: textFieldRange, with: string)
-        let charactersCount = String(textFieldString).count
+        let charactersCount = textFieldString.count
         
         if textField == accountAmountTF {
             addAccountCellDelegate?.cell(didUpdateAccountAmount: allString)

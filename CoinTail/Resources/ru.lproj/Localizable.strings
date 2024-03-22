@@ -26,6 +26,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+CFBundleDisplayName = "CoinTail - учет финансов";
+
 // General
 "Amount" = "Сумма";
 "Category" = "Категория";
@@ -42,11 +44,33 @@
 "No category selected" = "Не выбрана категория";
 "Missing value in amount field" = "Отсутствует значение в поле суммы";
 /// Premium Alert
+"Premium function" = "Премиум функция";
+"Premium has expired" = "Премиум подписка истекла";
+"Buy premium" = "Купить премиум";
+"Your premium subscription has expired: you can purchase premium again or continue using the free version" = "У вас закончился премиум. Вы можете приобрести премиум заново или продолжить использовать бесплатную версию";
 "Creating more accounts is only possible with a premium subscription" = "Создать больше счетов возможно только с премиум подпиской";
 "Creating more budgets is only possible with a premium subscription" = "Создать больше бюджетов возможно только с премиум подпиской";
 "Creating subcategories is only available with a Premium subscription" = "Создание подкатегорий доступно только с Премиум-подпиской";
 "You can specify an account for this transaction in another currency only with a premium subscription" = "Указать счет для этой операции в другой валюте можно только с премиум подпиской";
 "You can transfer money to an account with another currency only with a premium subscription" = "Перевести деньги на счет в другой валюте можно только при наличии премиум-подписки";
+/// SnackBar
+"User ID copied" = "Идентификатор скопирован";
+"Edited account - " = "Отредактирован счёт - ";
+"Added account - " = "Добавлен счёт - ";
+"Deleted account - " = "Удален счёт - ";
+"Added new transfer" = "Добавлен новый перевод";
+"Edited budget - " = "Отредактирован бюджет - ";
+"Added budget - " = "Добавлен бюджет - ";
+"Deleted budget - " = "Удален бюджет - ";
+"Edited transaction - " = "Отредактирована операция - ";
+"Added transaction - " = "Добавлена операция - ";
+"Deleted transaction - " = "Удалена операция - ";
+"Edited subcategory - " = "Отредактирована подкатегория - ";
+"Added subcategory - " = "Добавлена подкатегория - ";
+"Deleted subcategory - " = "Удалена подкатегория - ";
+"Edited category - " = "Отредактирована категория - ";
+"Added category - " = "Добавлена категория - ";
+"Deleted category - " = "Удалена категория - ";
 
 // RecordType
 "Expense" = "Траты";
@@ -178,6 +202,7 @@
 // AddAccountVC
 "Account name" = "Название счёта";
 "Delete account" = "Удалить счёт";
+"Cancel selected account" = "Отменить выбранный счёт";
 "Set as main account" = "Сделать счёт основным";
 /// Title
 "Add a new account" = "Добавить счёт";
@@ -241,6 +266,7 @@
 "Application version" = "Версия приложения";
 "User agreement" = "Пользовательское Соглашение";
 "Hello, I have a question / suggestion regarding the CoinTail app" = "Здравствуйте, у меня есть вопрос / предложение по приложению CoinTail";
+"User ID" = "Идентификатор пользователя";
 /// Title
 "About" = "О приложении";
 
@@ -263,7 +289,7 @@
 "month" = "месяц";
 "year" = "год";
 "Available rates" = "Доступные тарифы";
-"per month" = "в месяц";
+"free days" = "бесплатные дни";
 /// PremiumAdvantages
 "Access to currency conversions" = "Доступ к валютным конвертациям";
 "Access to informative diagrams" = "Доступ к информативным диаграммам";

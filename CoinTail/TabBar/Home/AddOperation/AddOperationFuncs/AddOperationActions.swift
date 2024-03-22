@@ -37,10 +37,7 @@ extension AddOperationVC {
         let amount = Double(operationAmount ?? "0") ?? 0
         let categoryText = operationCategory ?? ""
         let desctiption = operationDescription
-        var accountID: ObjectId?
-        if self.accountID != nil {
-            accountID = self.accountID
-        }
+        let accountID: ObjectId? = self.accountID
 
         recordValidation(amount: amount, categoryText: categoryText, accountID: accountID) { [weak self] categoryID in
             guard let strongSelf = self else { return }
@@ -58,9 +55,16 @@ extension AddOperationVC {
 
             if let recordID = strongSelf.recordID {
                 record.id = recordID
+                
                 Records.shared.editRecord(replacingRecord: record)
+                
+                let notificationView = BasicSnackBarView(title: "Edited transaction - ".localized() + categoryText, image: UIImage(systemName: "square.and.pencil")!)
+                notificationView.show()
             } else {
                 Records.shared.addRecord(record: record)
+                
+                let notificationView = BasicSnackBarView(title: "Added transaction - ".localized() + categoryText, image: UIImage(systemName: "plus")!)
+                notificationView.show()
             }
 
             strongSelf.navigationController?.popToRootViewController(animated: true)
@@ -113,10 +117,14 @@ extension AddOperationVC {
         guard let id = recordID else { return }
         
         confirmationAlert(
-            title: "Delete operation".localized(),
+            title: "Delete transaction".localized(),
             message: "Are you sure?".localized(),
             confirmActionTitle: "Confirm".localized()
         ) { [weak self] in
+            let categoryText = self?.operationCategory ?? ""
+            let notificationView = BasicSnackBarView(title: "Deleted transaction - ".localized() + categoryText, image: UIImage(systemName: "trash")!)
+            notificationView.show()
+            
             Records.shared.deleteRecord(for: id)
             
             self?.navigationController?.popToRootViewController(animated: true)

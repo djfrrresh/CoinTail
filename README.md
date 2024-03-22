@@ -43,13 +43,13 @@ List of dependencies:
 Place the following code in your `Podfile`:
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '12.0'
+platform :ios, '14.0'
 
 target 'CoinTail' do
   use_frameworks!
 
   pod 'EasyPeasy'
-  pod 'RevenueCat'
+  pod 'RevenueCat', '4.17.10'
   pod 'RealmSwift'
   pod 'SwiftLint'
   pod 'Charts'
@@ -57,9 +57,19 @@ target 'CoinTail' do
   pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git', :tag => '8.1.0'
 
 end
+
+post_install do |installer|
+    installer.generated_projects.each do |project|
+        project.targets.each do |target|
+            target.build_configurations.each do |config|
+                config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.0'
+            end
+        end
+    end
+end
 ```
 
-To access the contents of the pods, import modules wherever you import UIKit:
+To access the contents of the pods, import modules wherever you import UIKit or Foundation:
 
 ``` swift
 import UIKit
@@ -68,7 +78,8 @@ import RealmSwift
 
 ## API 
 API requests for currency conversion are taken from the site https://app.exchangerate-api.com.<br>
-For the API to work correctly, you need to register on the website and get the key in the [dashboard tab](https://app.exchangerate-api.com/dashboard). This key should then be placed in <b>CoinTail->Storage->Keychain->KeychainManager.swift</b> in the <b>apiKey</b> constant
+For the API to work correctly, you need to register on the website and get the key in the [dashboard tab](https://app.exchangerate-api.com/dashboard). This key should then be placed in <b>CoinTail->Storage->Keychain->KeychainManager.swift</b> in the <b>apiKey</b> constant.<br>
+It’s simply not possible to test payments in the application via the API. You need to register a developer account in App Store Connect and create subscriptions for this application, then duplicate these same subscriptions on the RevenueCat website so that they can be fully used.
 
 ## Meta
 Gmail – kunavinjenya55@gmail.com<br>

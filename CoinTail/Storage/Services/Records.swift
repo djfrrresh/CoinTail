@@ -267,7 +267,7 @@ final class Records {
                 }
             }
         } else {
-            let records = records.filter { $0.currency == account.currency }
+            let records = records.filter { $0.currency == account.currency && $0.accountID == accountID }
 
             totalAmount = records.reduce(0.0) { $0 + $1.amount }
         }

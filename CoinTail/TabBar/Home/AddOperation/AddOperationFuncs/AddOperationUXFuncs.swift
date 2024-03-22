@@ -31,9 +31,11 @@ import RealmSwift
 
 extension AddOperationVC: SendCategoryID, SendAccount, AddOperationCellDelegate {
     
-    func sendAccountData(id: ObjectId) {
-        guard let account = Accounts.shared.getAccount(for: id) else {
-            SentryManager.shared.capture(error: "No account to get", level: .error)
+    func sendAccountData(id: ObjectId?) {
+        guard let id = id,
+              let account = Accounts.shared.getAccount(for: id) else {
+            selectedAccount = ""
+            accountID = nil
             
             return
         }

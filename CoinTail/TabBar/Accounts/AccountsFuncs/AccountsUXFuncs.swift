@@ -34,6 +34,7 @@ extension AccountsVC {
         historyButton.addTarget(self, action: #selector(goToAccountsHistoryVC), for: .touchUpInside)
         transferButton.addTarget(self, action: #selector(goToAccountsTransferVC), for: .touchUpInside)
         addAccountButton.addTarget(self, action: #selector(goToAddAccountVC), for: .touchUpInside)
+        cancelButton.addTarget(self, action: #selector(cancelAccountAction), for: .touchUpInside)
     }
     
 }

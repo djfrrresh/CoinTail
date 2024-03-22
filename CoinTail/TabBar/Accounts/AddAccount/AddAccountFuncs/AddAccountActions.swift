@@ -46,10 +46,16 @@ extension AddAccountVC {
 
             if let accountID = strongSelf.accountID {
                 account.id = accountID
+                
                 Accounts.shared.editAccount(replacingAccount: account)
+                
+                let notificationView = BasicSnackBarView(title: "Edited account - ".localized() + nameText, image: UIImage(systemName: "square.and.pencil")!)
+                notificationView.show()
             } else {
-                RealmService.shared.write(account, AccountClass.self)
                 Accounts.shared.addNewAccount(account)
+                
+                let notificationView = BasicSnackBarView(title: "Added account - ".localized() + nameText, image: UIImage(systemName: "plus")!)
+                notificationView.show()
             }
 
             strongSelf.navigationController?.popViewController(animated: true)
@@ -64,6 +70,10 @@ extension AddAccountVC {
             message: "Are you sure?".localized(),
             confirmActionTitle: "Confirm".localized()
         ) { [weak self] in
+            let accountName = self?.accountName ?? ""
+            let notificationView = BasicSnackBarView(title: "Deleted account - ".localized() + accountName, image: UIImage(systemName: "trash")!)
+            notificationView.show()
+            
             Accounts.shared.deleteAccount(for: id)
             
             self?.navigationController?.popToRootViewController(animated: true)
